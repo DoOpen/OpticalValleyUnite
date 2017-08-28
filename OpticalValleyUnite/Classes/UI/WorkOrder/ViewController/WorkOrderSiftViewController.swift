@@ -73,14 +73,14 @@ class WorkOrderSiftViewController: UIViewController {
     
     
     @IBAction func beginBtnClick(_ sender: UIButton) {
-        SJPickerView.show(withDateType: .date, defaultingDate: Date(), selctedDateFormot: "yyyy-MM-dd") { (date, dateStr) in
+        SJPickerView.show(withDateType: .date, defaultingDate: Date(),userController:self, selctedDateFormot: "yyyy-MM-dd") { (date, dateStr) in
             sender.setTitle(dateStr, for: .normal)
             self.startTime = dateStr
         }
     }
     
     @IBAction func endBtnClick(_ sender: UIButton) {
-        SJPickerView.show(withDateType: .date, defaultingDate: Date(), selctedDateFormot: "yyyy-MM-dd") { (date, dateStr) in
+        SJPickerView.show(withDateType: .date, defaultingDate: Date(),userController:self, selctedDateFormot: "yyyy-MM-dd") { (date, dateStr) in
             sender.setTitle(dateStr, for: .normal)
             self.endTime = dateStr
         }

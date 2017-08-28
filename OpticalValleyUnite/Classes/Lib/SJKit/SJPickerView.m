@@ -9,6 +9,7 @@
 #import "SJPickerView.h"
 #import "UIView+AdjustFrame.h"
 
+
 typedef NS_ENUM(NSUInteger, SJPickerViewType) {
     SJPickerViewTypeText,
     SJPickerViewTypeDate,
@@ -34,6 +35,8 @@ static CGFloat const SJPickerViewBtnH = 30;
 @property (nonatomic, strong) UIView *pickerView;
 @property (nonatomic, copy) id block;
 @property (nonatomic, assign) SJPickerViewType pickerViewType;
+@property(nonatomic,strong)UIViewController * userVC;
+
 @end
 
 @implementation SJPickerView
@@ -76,15 +79,17 @@ static CGFloat const SJPickerViewBtnH = 30;
 
 + (instancetype)showWithDateType:(UIDatePickerMode)datePickerMode DefaultingDate:(NSDate *)defaultingDate didSelcted:(void (^)(NSDate *, NSString *))block{
     
-    return [self showWithDateType:datePickerMode DefaultingDate:defaultingDate SelctedDateFormot:nil didSelcted:block];
+    return [self showWithDateType:datePickerMode DefaultingDate:defaultingDate userController:nil SelctedDateFormot:nil didSelcted:block];
 }
 
-+ (instancetype)showWithDateType:(UIDatePickerMode)datePickerMode DefaultingDate:(NSDate *)defaultingDate SelctedDateFormot:(NSString *)selctedDateFormotStr didSelcted:(void (^)(NSDate *, NSString *))block{
++ (instancetype)showWithDateType:(UIDatePickerMode)datePickerMode DefaultingDate:(NSDate *)defaultingDate userController:(UIViewController*)VC SelctedDateFormot:(NSString *)selctedDateFormotStr didSelcted:(void (^)(NSDate *, NSString *))block{
     SJPickerView *vv = [[self alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
     vv.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
     vv.block = block;
     vv.pickerViewType = SJPickerViewTypeDate;
     vv.datePickerMode = datePickerMode;
+    vv.userVC = VC;
     
     if(defaultingDate){
         vv.defaultingDate = defaultingDate;
@@ -155,8 +160,6 @@ static CGFloat const SJPickerViewBtnH = 30;
 - (UIView *)optionView{
     if (!_optionView) {
         
-
-        
         _optionView = [[UIView alloc] init];
         
         [_optionView addSubview:self.pickerView];
@@ -210,6 +213,8 @@ static CGFloat const SJPickerViewBtnH = 30;
     return _pickerViewText;
 }
 
+
+#pragma mark - 懒加载dataPicker的情况
 - (UIDatePicker *)dataPicker{
     if (!_dataPicker) {
         UIDatePicker *datePicker = [[UIDatePicker alloc] init];
@@ -218,6 +223,19 @@ static CGFloat const SJPickerViewBtnH = 30;
         
         if (_defaultingDate) {
             _dataPicker.date = _defaultingDate;
+        }
+        //注意的是:这里要求添加的是swift的类名,要求加上工程名:
+        NSString * target = [NSBundle mainBundle].infoDictionary[@"CFBundleExecutable"];
+        NSString * total = [target stringByAppendingString:@".ReportMasterViewController"];
+        
+        NSString * string = NSStringFromClass(self.userVC.class);
+        
+        if( [string isEqualToString:total]){
+        
+            // 要求通过设置来: 只有报事控制器中才不能回滚
+            // 设置最大和最小的时间的选项
+            datePicker.minimumDate = [NSDate date];
+        
         }
         
         NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];//设置为中

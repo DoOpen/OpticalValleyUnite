@@ -331,7 +331,7 @@ class ReportMasterViewController: UIViewController {
         let dic = ["Mon": "星期一", "Tue": "星期二", "Wed": "星期三", "Thu": "星期四", "Fri": "星期五", "Sat": "星期六", "Sun": "星期日"]
         
         
-        SJPickerView.show(withDateType: .dateAndTime, defaultingDate: Date(), selctedDateFormot: "MM-dd EEE HH:mm", didSelcted: {date, dateStr in
+        SJPickerView.show(withDateType: .dateAndTime, defaultingDate: Date(), userController: self, selctedDateFormot: "MM-dd EEE HH:mm", didSelcted: {date, dateStr in
            var text = dateStr
             
             for (key, value) in dic{

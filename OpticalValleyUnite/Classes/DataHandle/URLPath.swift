@@ -25,7 +25,7 @@ struct URLPath {
     ///主机地址
 //    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
     //服务器的basic 地址:
-    static let basicPath = "http://test.ovuems.com/ovu-pcos/api/"
+    static let basicPath = "http://demo.ovuems.com/ovu-pcos/api/"
 
     static let login = "user/login.do"
     static let systemMessage = "message/importentMsg.do"

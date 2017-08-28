@@ -36,22 +36,17 @@ class SignInViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        
-        
         super.viewDidLoad()
         showList()
-        
         addressLabel.text = "地理位置获取中..."
         
         let time = Date.dateStringDate(dateFormetString: "HH:mm")
         timeLabel.text = time
-        
         mapSetup()
         
         }
     
     func getSignCount(){
-        
         var paramet = [String: Any]()
         paramet["DATE"] = Date.dateStringDate(dateFormetString: "YYYY-MM-dd")
         HttpClient.instance.post(path: URLPath.getSignCount, parameters: paramet, success: { (resposen) in
@@ -164,7 +159,6 @@ class SignInViewController: UIViewController {
 //        }
 //    }
     func getParkAddress(){
-        
         var paramet = [String: Any]()
         paramet["MAP_LNG"] = loction?.coordinate.longitude
         paramet["MAP_LAT"] = loction?.coordinate.latitude
@@ -183,11 +177,7 @@ class SignInViewController: UIViewController {
                     
                     self.isPaskAddress = true
                     
-                    if let regeocode = self.reGeocode{
-                        print(regeocode)
-                        self.addressLabel.text = regeocode.formattedAddress
-                        self.mapView.setCenter((self.loction?.coordinate)!, animated: true)
-                    }
+                    
                     
                 }else{
                     if let regeocode = self.reGeocode{
@@ -203,7 +193,6 @@ class SignInViewController: UIViewController {
     }
     
     func  mapSetup(){
-        
         AMapServices.shared().enableHTTPS = true
         mapView.showsUserLocation = true;
         mapView.userTrackingMode = .followWithHeading;
@@ -219,10 +208,8 @@ class SignInViewController: UIViewController {
         
         locationManager.requestLocation(withReGeocode: true, completionBlock:{
             [weak self]  location, regeocode,error in
-            
             if let error = error{
                 print(error.localizedDescription)
-                
                 return
             }
             
@@ -230,7 +217,8 @@ class SignInViewController: UIViewController {
             self?.reGeocode = regeocode
             self?.getParkAddress()
 
-        })
+        }
+        )
 
     }
 }

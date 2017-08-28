@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W1B-66-58W">
+                    <rect key="frame" x="25" y="15" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="NWN-L0-zKX"/>
+                        <constraint firstAttribute="width" constant="40" id="cva-u6-pOJ"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签到" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFq-Bt-uAR">
+                    <rect key="frame" x="0.0" y="64" width="90" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="IFq-Bt-uAR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="K0Q-Qm-ZrH"/>
+                <constraint firstItem="W1B-66-58W" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bm2-d2-O1f"/>
+                <constraint firstAttribute="trailing" secondItem="IFq-Bt-uAR" secondAttribute="trailing" id="dkV-Bu-WDx"/>
+                <constraint firstItem="IFq-Bt-uAR" firstAttribute="top" secondItem="W1B-66-58W" secondAttribute="bottom" constant="9" id="nKC-rz-vAa"/>
+                <constraint firstItem="W1B-66-58W" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="sEv-Eb-4lt"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="W1B-66-58W" id="iwx-Jp-qXd"/>
+                <outlet property="textLabel" destination="IFq-Bt-uAR" id="CWS-12-yzW"/>
+            </connections>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,6 @@
+framework module LCNibBridge {
+  umbrella header "LCNibBridge-umbrella.h"
+
+  export *
+  module * { export * }
+}

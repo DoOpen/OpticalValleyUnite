@@ -10,7 +10,6 @@ PODS:
   - Realm/Headers (2.2.0)
   - RealmSwift (2.2.0):
     - Realm (= 2.2.0)
-  - SnapKit (3.2.0)
   - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
@@ -21,7 +20,6 @@ DEPENDENCIES:
   - Masonry (~> 1.0.1)
   - MJRefresh
   - RealmSwift (~> 2.2.0)
-  - SnapKit (~> 3.2.0)
   - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -33,9 +31,8 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Realm: d95b8fb34c83f1e764b66d319277a62c2b6e4bf5
   RealmSwift: a4fa52d06e946a32ec746b3388374f742e6b8731
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 5aef501eda13bae0454dc481fa8b002cd8488533
+PODFILE CHECKSUM: 3171b5f2e9d0128385e62371d14322274aadc32c
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.1.1

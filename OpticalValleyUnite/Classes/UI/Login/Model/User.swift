@@ -8,9 +8,7 @@
 
 import UIKit
 
-/// 用户信息列表项目:
 public struct UserKey {
-    
     static let UserID = "usrid"
     static let Username = "LOGIN_NAME"
     static let UsernameType = "method"

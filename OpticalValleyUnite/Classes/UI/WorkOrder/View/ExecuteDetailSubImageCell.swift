@@ -11,6 +11,8 @@ import Kingfisher
 
 class ExecuteDetailSubImageCell: UITableViewCell {
 
+    @IBOutlet weak var showImageView: ShowImageView!
+   
     
     @IBOutlet weak var imageHeightConstrait: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
@@ -23,16 +25,34 @@ class ExecuteDetailSubImageCell: UITableViewCell {
         pictureView.addGestureRecognizer(tap)
         pictureView.isUserInteractionEnabled = true
     }
+    
     var model: ExecChild?{
         didSet{
             if let model = model{
                 titleLabel.text = "\(index))" + model.name
                 if model.imageValue != "" {
-                    let basicPath = URLPath.basicPath
-                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + model.imageValue
                     
-                    pictureView.kf.setImage(with: URL(string: imageValue))
-                    imageHeightConstrait.constant = 200.0
+                    let arry = model.imageValue.components(separatedBy: ",")
+                    let imagesUrls = arry.map{ (url) -> String in
+                        let basicPath = URLPath.basicPath
+                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                        return imageValue
+                    }
+                    if arry.isEmpty{
+                        let basicPath = URLPath.basicPath
+                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + model.imageValue
+                        showImageView.showImageUrls([imageValue])
+                    }else{
+                        showImageView.showImageUrls(imagesUrls)
+                    }
+                    showImageView.didClickHandle = { _,image in
+                        CoverView.show(image: image)
+                        
+                    }
+                    
+                    
+//                    pictureView.kf.setImage(with: URL(string: imageValue))
+                    imageHeightConstrait.constant = 76.0
                 }else{
                     imageHeightConstrait.constant = 0.0
                 }
@@ -40,6 +60,8 @@ class ExecuteDetailSubImageCell: UITableViewCell {
             }
         }
     }
+    
+    
     func imageViewClick() {
         if let image = pictureView.image{
             CoverView.show(image: image)

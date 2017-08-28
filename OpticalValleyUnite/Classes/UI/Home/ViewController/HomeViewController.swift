@@ -10,7 +10,6 @@ import UIKit
 import AVFoundation
 import Photos
 import Alamofire
-import SnapKit
 
 let KDistence = 50.0
 
@@ -18,9 +17,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     @IBOutlet weak var messageBtn: UIButton!
     @IBOutlet weak var scanBtn: UIButton!
-    
-    
-/// 模型的数据解析model.swift中的类
     var datas = [SystemMessageModel]()
     
     var locationManager = AMapLocationManager()
@@ -28,13 +24,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     var workCount = 0
     var dubanCount = 0
     
-/// 上面的4个按钮的拖线的事件
+    
     @IBOutlet weak var top1BtnView: HomeBtnView!
     @IBOutlet weak var top2BtnView: HomeBtnView!
     @IBOutlet weak var top3BtnView: HomeBtnView!
     @IBOutlet weak var top4BtnView: HomeBtnView!
- 
-/// 下面的3个按钮的拖线的事件
+    
     @IBOutlet weak var donw1BtnView: HomeBtnView!
     @IBOutlet weak var donw2BtnView: HomeBtnView!
     @IBOutlet weak var donw3BtnView: HomeBtnView!
@@ -45,53 +40,35 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     var allPermissionModels = [PermissionModel]()
     var downPermissionModels = [PermissionModel]()
     
-    
-/// tabelView的拖线的指针
     @IBOutlet weak var tableView: UITableView!
-    
-    
-    // MARK: - 视图生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = "光谷联合"
-        //接受通知
+        
         getNotice()
-        //设置定位
+        
         setUpLocation()
         
-        //分别设置两个(上下)按钮数组
         topBtnViewArray = [top1BtnView,top2BtnView,top3BtnView,top4BtnView]
         downBtnViewArray = [donw1BtnView,donw2BtnView,donw3BtnView]
         
         if let json = UserDefaults.standard.object(forKey: "PermissionModels") as? String{
-            
-            
             do {
                 //Convert to Data
                 let data = json.data(using: .utf8)!
                 let jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                
-                
                 if let arry = jsonData as? Array<[String: Any]>{
-                    
                     setPermission(arry: arry)
-                    
                 }else{
                     print("不能转成数组了")
                 }
                 
 
             } catch  {
-                
                 print("转换错误 ")
             }
-            
-            
         }else{
-            
-            
-            
             self.top1BtnView.textLabel.text = "工单"
             self.top1BtnView.imageView.image = UIImage(named: "工单")
             
@@ -116,22 +93,26 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             self.donw3BtnView.imageView.image = UIImage(named: "ic_door")
         }
         
+        
+
+        
+        
+        
         getPermission()
         
         checkNewBundleVersion(isBlack: true)
         
+
     }
 
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //调用获取工单的数量
         getStaticWorkunitDB()
     }
     
     
-    // MARK: - 接受服务器系统消息
+    
     func getSystemMessage(){
         HttpClient.instance.get(path: URLPath.systemMessage, parameters: nil, success: { (respose) in
             
@@ -149,9 +130,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
     }
     
-    // MARK: - 接受服务消息通知
     func getNotice(){
-        
         HttpClient.instance.get(path: URLPath.getNoticeList, parameters: nil, success: { (respose) in
             
             var temp = [SystemMessageModel]()
@@ -163,6 +142,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 self.datas = temp
                 self.tableView.reloadData()
             }
+            
+
+            
+            
             
         }) { (error) in
             print(error)
@@ -190,16 +173,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
 
     }
     
-    // MARK: - 获取不同管理员权限的方法
     func getPermission(){
-        //调用权限的情况
         HttpClient.instance.get(path: URLPath.getModules, parameters: nil, success: { (respose) in
             
+            
             if let arry = respose as? Array<[String: Any]>{
-                
-                //设置权限btn_array
                 self.setPermission(arry: arry)
-                
                 do {
                     //Convert to Data
                     let jsonData = try JSONSerialization.data(withJSONObject: arry, options: JSONSerialization.WritingOptions.prettyPrinted)
@@ -214,6 +193,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                     print("转换错误 ")
                 }
                 
+                
+                
             }
             
         }) { (error) in
@@ -221,7 +202,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
     }
     
-    //MARK: - 获取读完工单数量
     func getStaticWorkunitDB(){
         HttpClient.instance.get(path: URLPath.getStaticWorkunitDB, parameters: nil, success: { (respose) in
             
@@ -243,25 +223,16 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             print(error)
         }
     }
-    
 
     func settopArry(topArry:[PermissionModel],donwArry: [PermissionModel]){
-        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"报事"]
+        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan"]
         for (index,model) in topArry.enumerated(){
             if index >= 4{
                 break
             }
             let imageName = imageDic[model.aPPMODULENAME] ?? ""
             topBtnViewArray[index].imageView.image = UIImage(named:imageName)
-            //设置appicon的名字
-            if(model.aPPMODULENAME == "电梯报事"){
-                topBtnViewArray[index].textLabel.text = "报事"
-
-            }else{
-                
-                topBtnViewArray[index].textLabel.text = model.aPPMODULENAME
-            }
-            
+            topBtnViewArray[index].textLabel.text = model.aPPMODULENAME
             topBtnViewArray[index].textLabel.textColor = UIColor.white
             topBtnViewArray[index].clickHandle = { [weak self] in
                 self?.actionPush(text: model.aPPMODULENAME)
@@ -269,6 +240,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
         
         let count = [3,donwArry.count].min()!
+        
         
         _ = downBtnViewArray.map{ btnView in
             btnView.isHidden = true
@@ -293,21 +265,15 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     }
     
     
-    // MARK: - 全部按钮点击界面跳转的方法
-    /// 中间全部按钮的点击跳转
     @IBAction func pushToAllVc(){
-        
         if !allPermissionModels.isEmpty{
-            
             let vc = AllViewController.loadFromStoryboard(name: "Home") as! AllViewController
             vc.models = allPermissionModels
             navigationController?.pushViewController(vc, animated: true)
+            
         }
-        
     }
     
-    
-    //MARK: - 设置定位的方法;
     func setUpLocation() {
         locationManager.delegate = self
         locationManager.distanceFilter = KDistence
@@ -324,23 +290,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         locationManager.startUpdatingLocation()
     }
     
-    //MARK: -top和down按钮组点击界面跳转的方法;
-    /// action Push ---> 中间系列的按钮点击的navVC的界面的跳转!
-    //  注意的是 有待办的事项没有设置过来
     func actionPush(text:String){
         switch text {
         case "报事":
-            
             let vc = UIStoryboard(name: "ReportMaster", bundle: nil).instantiateInitialViewController()
-            
             navigationController?.pushViewController(vc!, animated: true)
 //            surveillanceWorkOrderBtnClick()
-        case "电梯报事":
-            
-            let vc = UIStoryboard(name: "ReportMaster", bundle: nil).instantiateInitialViewController()
-            
-            navigationController?.pushViewController(vc!, animated: true)
-            
         case "工单":
             let vc = UIStoryboard(name: "WorkOrder", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)
@@ -361,6 +316,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     }
     
     func uploadLocation(parmat: [String: Any]){
+        
 //        if lastUpdateTime.timeIntervalSinceNow < -3.0 * 60{
             lastUpdateTime = Date()
             HttpClient.instance.post(path: URLPath.updateLocation, parameters: parmat, success: { (response) in
@@ -371,11 +327,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 print(error)
             }
 //        }
+        
     }
-  
- 
     
-/// leftbar消息按钮的点击事件的
+    
     @IBAction func messageBtnClick() {
         let bool1 = allPermissionModels.contains { (model) -> Bool in
             model.aPPMODULENAME == "工单"
@@ -395,24 +350,17 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
         
     }
-    
-  
-/// rightBar扫描二维码的事件的点击:
     @IBAction func scanBtnClick() {
         
 //        pushToDeviceViewController()
 //        return  
         
         if Const.SJIsSIMULATOR {
-            
             alert(message: "模拟器不能使用扫描")
             return
-            
         }
         
         let device = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
-        
-//        let device = AVCaptureDeviceDiscovery
         if device != nil {
             let status = PHPhotoLibrary.authorizationStatus()
             if status == .authorized{
@@ -428,7 +376,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             }
         }
     }
-    
     func surveillanceWorkOrderBtnClick() {
         let vc = SurveillanceWorkOrderViewController.loadFromStoryboard(name: "WorkOrder")
         navigationController?.pushViewController(vc, animated: true)
@@ -440,10 +387,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+
 }
 
-/// 全局的extension的tableView的数据源和代理的方法
-/// 订单数据的tabelView 代理和 数据源方法
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     
@@ -464,7 +410,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
 
     }
 }
-
 
 extension HomeViewController: AMapLocationManagerDelegate{
 

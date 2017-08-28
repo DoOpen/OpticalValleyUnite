@@ -12,7 +12,6 @@ class SJNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationBar.barTintColor = UIColor.white
     }
     
@@ -31,21 +30,15 @@ class SJNavigationController: UINavigationController {
         
     }
     
-    
     func popViewController()
     {
-        
         if let vc =  self.childViewControllers.last as? ShloudPopType {
-            
             vc.viewShloudPop()
-            
         }else{
-            
             self.popViewController(animated: true)
-            
         }
         
+        
+        
     }
-    
-    
 }

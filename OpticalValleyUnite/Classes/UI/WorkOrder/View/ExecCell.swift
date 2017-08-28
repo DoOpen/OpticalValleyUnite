@@ -17,7 +17,7 @@ class ExecCell: UITableViewCell {
     @IBOutlet weak var addPhotoView: SJAddView!
     @IBOutlet weak var textView: UITextView!
     
-    var doneBtnClickHandle: ((UIImage?,String?) -> ())?
+    var doneBtnClickHandle: (([UIImage]?,String?) -> ())?
     
     var model: ExecChild?{
         didSet{
@@ -87,7 +87,7 @@ class ExecCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        addPhotoView.maxCount = 1
+        addPhotoView.maxCount = 3
         selectionStyle = .none
         textView.delegate = self
     }
@@ -99,8 +99,8 @@ class ExecCell: UITableViewCell {
             
             if model?.type == "1"{
                 if addPhotoView.photos.count > 0 {
-                    let image = addPhotoView.photos.first?.image
-                    block(image,nil)
+                    let images = addPhotoView.photos.map{return $0.image}
+                    block(images,nil)
                 }else{
                     SVProgressHUD.showError(withStatus: "必须上传图片")
                 }

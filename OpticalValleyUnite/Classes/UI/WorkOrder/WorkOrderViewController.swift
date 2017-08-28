@@ -76,7 +76,8 @@ class WorkOrderViewController: UIViewController {
         
     }
     
-
+    
+    
     func reload(){
         getWorkOrder(type: currentIndex,indexPage: 0)
     }
@@ -212,7 +213,7 @@ class WorkOrderViewController: UIViewController {
 
 }
 
-///tabelView的数据源和代理方法
+
 extension WorkOrderViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentDatas.count
@@ -229,8 +230,6 @@ extension WorkOrderViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // 点击跳转到 工单进展的界面
         let vc = WorkOrderProgressViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderProgressViewController
 //        vc.workModelId = currentDatas[indexPath.row].workOrderId
         let model = currentDatas[indexPath.row]
@@ -244,7 +243,6 @@ extension WorkOrderViewController: UITableViewDataSource, UITableViewDelegate{
         vc.parmate = parmat
         vc.listVc = self
         navigationController?.pushViewController(vc, animated: true)
-        
     }
     
 }

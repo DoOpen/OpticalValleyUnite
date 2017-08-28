@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/View/WorkOrderDetailsCell.swift"
-            timestampString = "523527871.006386"
+            timestampString = "524989848.516798"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "model"
             landmarkType = "24">
          </BreakpointContent>
@@ -169,12 +169,76 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/View/WorkOrderDistributionCell.swift"
-            timestampString = "523528287.544251"
+            filePath = "OpticalValleyUnite/Classes/Lib/SJKit/SJAddView.swift"
+            timestampString = "524990868.711346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "addBtnClick()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpticalValleyUnite.SJAddView.(addBtnClick in _94DB1BBF3F0D562D86D94865293656BF) () -&gt; ()"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hesijia/Documents/work/OpticalValleyUnite/OpticalValleyUnite/OpticalValleyUnite/Classes/Lib/SJKit/SJAddView.swift"
+                  timestampString = "524992140.97316"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "15">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpticalValleyUnite.SJAddView.((addBtnClick in _94DB1BBF3F0D562D86D94865293656BF) () -&gt; ()).(closure #1)"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hesijia/Documents/work/OpticalValleyUnite/OpticalValleyUnite/OpticalValleyUnite/Classes/Lib/SJKit/SJAddView.swift"
+                  timestampString = "524992140.974763"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "45">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/Lib/SJKit/SJAddView.swift"
+            timestampString = "524990957.632763"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "addImage(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/View/ExecCell.swift"
+            timestampString = "524991083.799891"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "model"
             landmarkType = "24">
          </BreakpointContent>
@@ -185,46 +249,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/View/WorkOrderDistributionCell.swift"
-            timestampString = "523528243.072768"
+            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ExecutingViewConttroller.swift"
+            timestampString = "524992137.994878"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "model"
-            landmarkType = "24">
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "saveBtnClick()"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.WorkOrderDistributionCell.model.didset : Swift.Optional&lt;OpticalValleyUnite.WorkHistoryModel&gt;"
+                  symbolName = "OpticalValleyUnite.ExecutingViewConttroller.saveBtnClick () -&gt; ()"
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hesijia/Documents/work/OpticalValleyUnite/OpticalValleyUnite/OpticalValleyUnite/Classes/UI/WorkOrder/View/WorkOrderDistributionCell.swift"
-                  timestampString = "523528288.352692"
+                  urlString = "file:///Users/hesijia/Documents/work/OpticalValleyUnite/OpticalValleyUnite/OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ExecutingViewConttroller.swift"
+                  timestampString = "524992139.219008"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "19">
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "3631">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.WorkOrderDistributionCell.model.didset : Swift.Optional&lt;OpticalValleyUnite.WorkHistoryModel&gt;"
+                  symbolName = "OpticalValleyUnite.ExecutingViewConttroller.(saveBtnClick () -&gt; ()).(closure #2)"
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hesijia/Documents/work/OpticalValleyUnite/OpticalValleyUnite/OpticalValleyUnite/Classes/UI/WorkOrder/View/WorkOrderDistributionCell.swift"
-                  timestampString = "523528288.354908"
+                  urlString = "file:///Users/hesijia/Documents/work/OpticalValleyUnite/OpticalValleyUnite/OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ExecutingViewConttroller.swift"
+                  timestampString = "524992139.221638"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "88">
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/View/ExecuteDetailSubImageCell.swift"
+            timestampString = "524993700.316705"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "model"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

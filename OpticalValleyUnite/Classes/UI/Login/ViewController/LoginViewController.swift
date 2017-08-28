@@ -20,11 +20,8 @@ class LoginViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
 
-    
     @IBAction func loginBtnClick() {
-        
         let user = userNameTextField.text
         let password = passwordTextField.text
         
@@ -41,30 +38,17 @@ class LoginViewController: UIViewController {
 //        parameters["token"] = "123"
         parameters["LOGIN_NAME"] = user
         parameters["PASSWORD"] = password?.md5()
-        
         if let token = UserDefaults.standard.object(forKey: "SJDeviceToken") as? String{
-            
             parameters["UMENG_TOKEN"] = token
-            
         }
         
         SVProgressHUD.show(withStatus: "登录中")
-        
-        //alamofire 的网络请求:
         Alamofire.request(URLPath.basicPath + URLPath.login, method: .post, parameters: parameters).responseJSON { (response) in
             SVProgressHUD.dismiss()
-            
-            print(response.result)
-            
             switch response.result {
-            //打印出相应的 报事的 情况:
-                
             case .success(_):
-                
                 if let value = response.result.value as? [String: Any] {
-                    
                     guard value["CODE"] as! String == "0" else{
-                        
                         let message = value["MSG"] as! String
 
                         self.alert(message: message)
@@ -73,8 +57,8 @@ class LoginViewController: UIViewController {
                     }
 //                    let token = (value["data"] as!  [String: Any])["TOKEN"] as! String
                    
+                    
                     if let data = value["data"] as? [String: Any]{
-                        
                         let token = data["TOKEN"] as! String
                         
                         UserDefaults.standard.set(token, forKey: Const.SJToken)
@@ -85,21 +69,19 @@ class LoginViewController: UIViewController {
                     
                     self.pushToHomeViewController()
                     
+                   
                     break
                 }
-                
                 break
-                
-                
             case .failure(let error):
                
                 debugPrint(error)
                 break
             }
         }
+
         
     }
-    
     
     private func getDate(){
         HttpClient.instance.get(path: URLPath.getPersonInfo, parameters: nil, success: { (response) in
@@ -127,44 +109,33 @@ class LoginViewController: UIViewController {
         let vc2 = UIStoryboard.instantiateInitialViewController(name: "PersonCore")
         vc1.tabBarItem = UITabBarItem(title: "我的", image: UIImage(named:"me_normal"), selectedImage: UIImage(named:"me_active"))
         
-//        tabVc.setViewControllers([vc1,vc2], animated: false)
-        tabVc.addChildViewController(vc1)
-        tabVc.addChildViewController(vc2)
+        tabVc.setViewControllers([vc1,vc2], animated: false)
         
         
         SJKeyWindow?.rootViewController = tabVc
     }
 
     class func chooseRootViewController(){
-        //在login 的控制器中来加载tabbar的子控制器
-        //首先的是: 判断 用户偏好中是否有值的情况!
         if  ((UserDefaults.standard.value(forKey: Const.SJToken) as? String) != nil){
-            
-            
-//            let vc = UIStoryboard.instantiateInitialViewController(name: "Main")
+            let vc = UIStoryboard.instantiateInitialViewController(name: "Main")
             let tabVc = UITabBarController()
             let vc1 = UIStoryboard.instantiateInitialViewController(name: "Home")
             let vc2 = UIStoryboard.instantiateInitialViewController(name: "PersonCore")
             
-//            tabVc.setViewControllers([vc1,vc2], animated: true) //会产生控制器加载出现bug的问题
-            // 给tabbar 的vc添加子控制器! 注意的是两种的方法,有一定的区别的!
-            tabVc.addChildViewController(vc1)
-            tabVc.addChildViewController(vc2)
+            tabVc.setViewControllers([vc1,vc2], animated: false)
+            
             
             SJKeyWindow?.rootViewController = tabVc
-            
         }else{
-            
-            // 如果没有就还是显示的 登录的界面!
             let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
 //            vc.view.backgroundColor = UIColor.red
             SJKeyWindow?.rootViewController = vc
         }
     }
     
-    
     class func loginOut(){
         
+
         var paramet = [String: Any]()
         if let token = UserDefaults.standard.object(forKey: "SJDeviceToken") as? String{
             paramet["UMENG_TOKEN"] = token

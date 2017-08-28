@@ -13,7 +13,7 @@ class Model: NSObject {
 
 }
 
-/// 应用:系统消息的模型
+
 class SystemMessageModel{
 
     var department = ""
@@ -30,8 +30,6 @@ class SystemMessageModel{
     }
 }
 
-
-/// 项目模型类
 class ProjectModel: NSObject{
     
     var projectName = ""
@@ -42,16 +40,12 @@ class ProjectModel: NSObject{
         projectId = parmart["ID"] as? String ?? ""
 
     }
-    
 }
-
-
 extension ProjectModel: SJHasNameType{
     public var title: String! {
         return projectName
     }
 }
-
 
 class WorkOrderModel: Object {
     //UNIT_STATUS
@@ -59,8 +53,7 @@ class WorkOrderModel: Object {
 //    2：已完成  3：已取消
 //    4：已退回  5：已接受
 //    6：处理中 7：已执行
-//    8：已评价  9：关闭                    
-//    10：督办
+//    8：已评价  9：关闭                    10：督办
     dynamic var id = ""
     dynamic var time = ""
     dynamic var status = -1

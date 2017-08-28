@@ -8,11 +8,24 @@
 
 import Foundation
 
+// 所有的网络请求的地址的类:
+// 项目要求的 整体的测试环境有四种:
+/*
+ 
+ 1.生产环境: http://portal.ovuems.com/
+ 2.演示环境: http://demo.ovuems.com/
+ 3.测试环境: http://test.ovuems.com/
+ 4.开发环境: http://dev.ovuems.com/
+ 
+ */
+
+
 struct URLPath {
-    //static let basicPath = "http://112.74.80.111:8888/ovu-pcos/api/"
+//    static let basicPath = "http://112.74.80.111:8888/ovu-pcos/api/"
     ///主机地址
 //    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
-        static let basicPath = "http://test.ovuems.com/ovu-pcos/api/"
+    //服务器的basic 地址:
+    static let basicPath = "http://test.ovuems.com/ovu-pcos/api/"
 
     static let login = "user/login.do"
     static let systemMessage = "message/importentMsg.do"
@@ -27,6 +40,8 @@ struct URLPath {
     static let getSurveillanceWorkOrderList = "workunit/workunitSuperviseList.do"
     //获取房屋空间信息
     static let getParkInfoById = "user/getParkInfoById.do"
+    //报事类型判断
+    static let typeOfReportMaster = "module/getModules.do"
     //报事提交
     static let reportMaster = "workunit/workunitEmerSave.do"
     

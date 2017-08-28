@@ -17,6 +17,7 @@
 
 
 @interface SJPickerView : UIView
+
 + (void)showWithDataArry:(NSArray<NSString *> *)data didSlected:(void (^)(NSInteger index))block;
 
 + (void)showWithDataArry2:(NSArray<id<SJHasNameType>> *)data didSlected:(void (^)(NSInteger index))block;
@@ -27,6 +28,8 @@
 + (instancetype)showWithDateType:(UIDatePickerMode)datePickerMode DefaultingDate:(NSDate *)defaultingDate didSelcted:(void (^)(NSDate *selectedDate,NSString *selectedDateString))block;
 
 + (instancetype)showWithDateType:(UIDatePickerMode)datePickerMode DefaultingDate:(NSDate *)defaultingDate SelctedDateFormot:(NSString *)selctedDateFormotStr didSelcted:(void (^)(NSDate *selectedDate,NSString *selectedDateString))block;
+
+
 @end
 
 @interface NSDate (SJformat)
@@ -42,5 +45,7 @@
 + (NSString *)dateStrWithDateFrom1970:(NSString *)dateFrom1970 UseForMat:(NSString *)formatString;
 
 + (instancetype)dateWithDateStr:(NSString *)dataStr UseForMat:(NSString *)formatString;
+
+
 @end
 

@@ -36,8 +36,6 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             }
         }
         
-        
-        
     }
 
     @IBAction func checkNewBtnClick() {
@@ -52,9 +50,13 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
 }
 
 protocol CheckNewBundleVersionProtocol {
+    
     func checkNewBundleVersion(isBlack:Bool) -> ()
 }
 
+
+
+/// 获取版本号和升级是否升级方法
 extension CheckNewBundleVersionProtocol{
     func checkNewBundleVersion(isBlack:Bool) -> (){
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String

@@ -177,11 +177,7 @@ class SignInViewController: UIViewController {
                     
                     self.isPaskAddress = true
                     
-                    if let regeocode = self.reGeocode{
-                        print(regeocode)
-                        self.addressLabel.text = regeocode.formattedAddress
-                        self.mapView.setCenter((self.loction?.coordinate)!, animated: true)
-                    }
+                    
                     
                 }else{
                     if let regeocode = self.reGeocode{

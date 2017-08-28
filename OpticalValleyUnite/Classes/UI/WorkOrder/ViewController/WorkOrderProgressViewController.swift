@@ -40,10 +40,11 @@ class WorkOrderProgressViewController: UIViewController {
     @IBOutlet weak var rightBtn: UIButton!
     
     @IBOutlet weak var oprationView: UIView!
+    
     var detailsCell: WorkOrderDetailsCell?
+    
+    //通过type的enmu的值来进行设置left 和 right的显示值
     var type = OperationType.none {
-        
-        
         
         didSet{
             
@@ -72,6 +73,7 @@ class WorkOrderProgressViewController: UIViewController {
                 
                 
                 setupTimer()
+                
             //待处理
             case .waitProcessing:
                 leftBtnClickHandel = processingBtnClick
@@ -82,8 +84,6 @@ class WorkOrderProgressViewController: UIViewController {
                 leftBtn.isHidden = false
              
                 
-                
-                
             //待执行
             case .waitExecuting, .waitDone:
                 leftBtnClickHandel = executingBtnClick
@@ -93,8 +93,6 @@ class WorkOrderProgressViewController: UIViewController {
                 rightText = "退回"
                 leftBtn.isHidden = false
                 
-                
-          
                 //待完成
                 
             //待评价
@@ -119,13 +117,6 @@ class WorkOrderProgressViewController: UIViewController {
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        timer?.invalidate()
-        
-        
-    }
-
     func setupTimer(){
         
         if #available(iOS 10.0, *) {
@@ -141,16 +132,13 @@ class WorkOrderProgressViewController: UIViewController {
                 
             })
             timer?.fire()
+            
         } else {
             
         }
-        
-
-        
-        
-
     }
     
+    // MARK: - view视图生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -191,9 +179,17 @@ class WorkOrderProgressViewController: UIViewController {
         getData()
         getWorkDetail()
     }
-
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        timer?.invalidate()
+        
+    }
+
+    // MARK: - 执行按钮的点击
     @IBAction func leftBtnClick() {
+        
         switch type {
         //待派发
         case .waitDistribution:
@@ -211,6 +207,8 @@ class WorkOrderProgressViewController: UIViewController {
             
         //待执行
         case .waitExecuting, .waitDone:
+            
+            //执行btn的点击事件
             executingBtnClick()
             //待完成
             
@@ -224,6 +222,7 @@ class WorkOrderProgressViewController: UIViewController {
 
     }
     
+    // MARK: - 回退按钮的点击方法
     @IBAction func rightBtnClick() {
         switch type {
         //待派发
@@ -473,7 +472,8 @@ class WorkOrderProgressViewController: UIViewController {
             self.getWorkDetail()
         })
     }
-    //工单退回
+    
+    // MARK: - 点击工单退回按钮的事件
     func meetsListClose(){
 
         OprationConfirmationView.show(doneBtnClickHandel: { [weak self] text in
@@ -494,7 +494,8 @@ class WorkOrderProgressViewController: UIViewController {
             }
         })
     }
-    //处理
+    
+    // MARK: - 待处理按钮的点击执行事件
     func processingBtnClick(){
         var parmat = [String: Any]()
         parmat["WORKUNIT_ID"] = parmate?["WORKUNIT_ID"] as! String
@@ -504,14 +505,17 @@ class WorkOrderProgressViewController: UIViewController {
         })
     }
     
+    // MARK: - 待执行按钮的点击事件
     func executingBtnClick(){
+        
         let  vc = ExecutingViewConttroller.loadFromStoryboard(name: "WorkOrder") as! ExecutingViewConttroller
         vc.workOrderDetalModel = workOrderDetalModel
         vc.ProgressVC = self
         navigationController?.pushViewController(vc, animated: true)
         
     }
-    //待评价
+    
+    // MARK: - 待评价按钮的点击执行事件
     func waitappraisal(){
         let  vc = AppraisalViewController.loadFromStoryboard(name: "WorkOrder") as! AppraisalViewController
         vc.model = workOrderDetalModel
@@ -553,7 +557,6 @@ class WorkOrderProgressViewController: UIViewController {
     }
 
 
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? CallBackListViewController{
             vc.workOrderDetalModel = workOrderDetalModel
@@ -561,6 +564,7 @@ class WorkOrderProgressViewController: UIViewController {
         }
     }
 }
+
 
 extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

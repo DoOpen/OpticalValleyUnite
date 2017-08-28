@@ -56,11 +56,11 @@ class AppraisalViewController: UIViewController {
             return
         }
         
-//        guard textView.text != "" else {
-//            SVProgressHUD.showError(withStatus: "必须输入评价内容")
-//            return
-//        }
-//        
+        guard textView.text != "" else {
+            SVProgressHUD.showError(withStatus: "必须输入评价内容")
+            return
+        }
+        
         
         let images = addPhotoView.photos.map{$0.image}
         if images.count > 0 {

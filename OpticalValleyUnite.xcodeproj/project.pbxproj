@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F4BB0191F4D0ABB00EC184C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4BB0181F4D0ABB00EC184C /* MapKit.framework */; };
 		4B01B08C1ED928AF002A61C9 /* ReportListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */; };
 		4B1558AF1F131AA70023F14D /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1558AE1F131AA70023F14D /* DeviceView.swift */; };
 		4B19ACE41E7A3D26008A8166 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19ACE31E7A3D26008A8166 /* User.swift */; };
@@ -54,7 +55,6 @@
 		4B3952071E29CE1F00E2642F /* WorkOrderOprationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B3952051E29CE1F00E2642F /* WorkOrderOprationCell.xib */; };
 		4B39520A1E29D25D00E2642F /* SJUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3952091E29D25D00E2642F /* SJUpButton.m */; };
 		4B3FD0301E8B61AC005D5231 /* exportPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FD02F1E8B61AC005D5231 /* exportPlist.plist */; };
-		4B429B081F4AC3A000381F3F /* ShowImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B429B071F4AC3A000381F3F /* ShowImagesView.swift */; };
 		4B4BAFC11E5C62E800C9C549 /* OprationConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4BAFC01E5C62E800C9C549 /* OprationConfirmationView.swift */; };
 		4B4BAFC31E5C62F500C9C549 /* OprationConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B4BAFC21E5C62F500C9C549 /* OprationConfirmationView.xib */; };
 		4B50D62B1EB9AA0200BB480F /* HomeBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B50D62A1EB9AA0200BB480F /* HomeBtnView.swift */; };
@@ -112,7 +112,6 @@
 		4BD4A0E21EE2B18300F044C1 /* AppraisalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD4A0E01EE2B18300F044C1 /* AppraisalCell.swift */; };
 		4BD4A0E31EE2B18300F044C1 /* AppraisalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BD4A0E11EE2B18300F044C1 /* AppraisalCell.xib */; };
 		4BD4B9011E272E0C00AE2BC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD4B9001E272E0C00AE2BC9 /* AppDelegate.swift */; };
-		4BD4B9061E272E0C00AE2BC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BD4B9041E272E0C00AE2BC9 /* Main.storyboard */; };
 		4BD4B9081E272E0C00AE2BC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BD4B9071E272E0C00AE2BC9 /* Assets.xcassets */; };
 		4BD4B90B1E272E0C00AE2BC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BD4B9091E272E0C00AE2BC9 /* LaunchScreen.storyboard */; };
 		4BD4B9421E272EA600AE2BC9 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD4B9141E272EA600AE2BC9 /* Const.swift */; };
@@ -162,6 +161,7 @@
 
 /* Begin PBXFileReference section */
 		105C2649D43BEE3CCAEDF08D /* Pods-OpticalValleyUnite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpticalValleyUnite.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpticalValleyUnite/Pods-OpticalValleyUnite.release.xcconfig"; sourceTree = "<group>"; };
+		2F4BB0181F4D0ABB00EC184C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportListViewController.swift; sourceTree = "<group>"; };
 		4B1558AE1F131AA70023F14D /* DeviceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		4B19ACE31E7A3D26008A8166 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -219,7 +219,6 @@
 		4B3952081E29D25D00E2642F /* SJUpButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJUpButton.h; sourceTree = "<group>"; };
 		4B3952091E29D25D00E2642F /* SJUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJUpButton.m; sourceTree = "<group>"; };
 		4B3FD02F1E8B61AC005D5231 /* exportPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = exportPlist.plist; sourceTree = "<group>"; };
-		4B429B071F4AC3A000381F3F /* ShowImagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImagesView.swift; sourceTree = "<group>"; };
 		4B4BAFC01E5C62E800C9C549 /* OprationConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OprationConfirmationView.swift; sourceTree = "<group>"; };
 		4B4BAFC21E5C62F500C9C549 /* OprationConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OprationConfirmationView.xib; sourceTree = "<group>"; };
 		4B50D62A1EB9AA0200BB480F /* HomeBtnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBtnView.swift; sourceTree = "<group>"; };
@@ -291,7 +290,6 @@
 		4BD4A0E11EE2B18300F044C1 /* AppraisalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppraisalCell.xib; sourceTree = "<group>"; };
 		4BD4B8FD1E272E0C00AE2BC9 /* OpticalValleyUnite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpticalValleyUnite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BD4B9001E272E0C00AE2BC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4BD4B9051E272E0C00AE2BC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4BD4B9071E272E0C00AE2BC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BD4B90A1E272E0C00AE2BC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BD4B90C1E272E0C00AE2BC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -316,7 +314,7 @@
 		4BD4B9361E272EA600AE2BC9 /* PersonCoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCoreViewController.swift; sourceTree = "<group>"; };
 		4BD4B9391E272EA600AE2BC9 /* SurveillanceWorkOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveillanceWorkOrderViewController.swift; sourceTree = "<group>"; };
 		4BD4B9401E272EA600AE2BC9 /* WorkOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorkOrder.storyboard; sourceTree = "<group>"; };
-		4BD4B9411E272EA600AE2BC9 /* WorkOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderViewController.swift; sourceTree = "<group>"; };
+		4BD4B9411E272EA600AE2BC9 /* WorkOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorkOrderViewController.swift; path = ../WorkOrderViewController.swift; sourceTree = "<group>"; };
 		4BD4B9561E272EB100AE2BC9 /* OpticalValleyUnite-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpticalValleyUnite-Bridging-Header.h"; sourceTree = "<group>"; };
 		4BD4B9571E2747F000AE2BC9 /* SJTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJTextView.h; sourceTree = "<group>"; };
 		4BD4B9581E2747F000AE2BC9 /* SJTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJTextView.m; sourceTree = "<group>"; };
@@ -354,6 +352,7 @@
 				4B3951E91E27DFA800E2642F /* CoreTelephony.framework in Frameworks */,
 				4B3951E31E27D8F900E2642F /* Security.framework in Frameworks */,
 				4B3951E11E27D8EE00E2642F /* libstdc++.6.0.9.tbd in Frameworks */,
+				2F4BB0191F4D0ABB00EC184C /* MapKit.framework in Frameworks */,
 				4B91E8981F258B1E00F63D66 /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
 				4B3951DF1E27D8E200E2642F /* libc++.tbd in Frameworks */,
 				4B3951DD1E27D8D300E2642F /* libz.tbd in Frameworks */,
@@ -372,6 +371,7 @@
 		2DE0C4DE5B1BF48FFA401773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F4BB0181F4D0ABB00EC184C /* MapKit.framework */,
 				4B91E8991F258BB200F63D66 /* UserNotifications.framework */,
 				4B3951E81E27DFA800E2642F /* CoreTelephony.framework */,
 				4B3951E21E27D8F900E2642F /* Security.framework */,
@@ -532,7 +532,6 @@
 				4BD4B9121E272EA600AE2BC9 /* Classes */,
 				4BD4B9001E272E0C00AE2BC9 /* AppDelegate.swift */,
 				4BD4B9561E272EB100AE2BC9 /* OpticalValleyUnite-Bridging-Header.h */,
-				4BD4B9041E272E0C00AE2BC9 /* Main.storyboard */,
 				4BD4B9071E272E0C00AE2BC9 /* Assets.xcassets */,
 				4BD4B9091E272E0C00AE2BC9 /* LaunchScreen.storyboard */,
 				4BD4B90C1E272E0C00AE2BC9 /* Info.plist */,
@@ -602,7 +601,6 @@
 				4BBBEC9D1E2CB34500F60313 /* SJAddView.swift */,
 				4B751BD21E5B301C00C0CEC0 /* AddScrollerView.swift */,
 				4BE9225A1EE6993000FDEFE1 /* ShowImageView.swift */,
-				4B429B071F4AC3A000381F3F /* ShowImagesView.swift */,
 			);
 			path = SJKit;
 			sourceTree = "<group>";
@@ -669,8 +667,8 @@
 				4B1558AE1F131AA70023F14D /* DeviceView.swift */,
 				4BB53FEE1F14D9CA0061190F /* DeviceCell.swift */,
 				4BB53FEF1F14D9CA0061190F /* DeviceCell.xib */,
-				4B5E43C01F2ECEE000DCE5AC /* SiginCellView.xib */,
 				4B5E43C21F2ECEFE00DCE5AC /* SiginCellView.swift */,
+				4B5E43C01F2ECEE000DCE5AC /* SiginCellView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -678,13 +676,13 @@
 		4BD4B9281E272EA600AE2BC9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4BD4B9291E272EA600AE2BC9 /* Home.storyboard */,
-				4B1DEC5E1E31BD27000917D2 /* Map.storyboard */,
-				4B1DEC671E31F5D1000917D2 /* SlotViewController.swift */,
 				4BD4B92A1E272EA600AE2BC9 /* HomeViewController.swift */,
+				4BD4B9291E272EA600AE2BC9 /* Home.storyboard */,
+				4B1DEC671E31F5D1000917D2 /* SlotViewController.swift */,
 				4B1DEC631E31BE01000917D2 /* MapViewController.swift */,
-				4BD4B92B1E272EA600AE2BC9 /* SignIn.storyboard */,
+				4B1DEC5E1E31BD27000917D2 /* Map.storyboard */,
 				4BD4B92C1E272EA600AE2BC9 /* SignInViewController.swift */,
+				4BD4B92B1E272EA600AE2BC9 /* SignIn.storyboard */,
 				4BD4B95A1E275BDB00AE2BC9 /* SignInListViewController.swift */,
 				4B3951EA1E28715700E2642F /* ReportMasterViewController.swift */,
 				4B3951EC1E28718200E2642F /* ReportMaster.storyboard */,
@@ -808,7 +806,6 @@
 				4BD4B93D1E272EA600AE2BC9 /* Model */,
 				4BD4B93E1E272EA600AE2BC9 /* View */,
 				4BD4B93F1E272EA600AE2BC9 /* ViewController */,
-				4BD4B9411E272EA600AE2BC9 /* WorkOrderViewController.swift */,
 			);
 			path = WorkOrder;
 			sourceTree = "<group>";
@@ -863,6 +860,7 @@
 		4BD4B93F1E272EA600AE2BC9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4BD4B9411E272EA600AE2BC9 /* WorkOrderViewController.swift */,
 				4BD4B9401E272EA600AE2BC9 /* WorkOrder.storyboard */,
 				4B3951CF1E277FBC00E2642F /* WorkOrderScreeningViewController.swift */,
 				4B1DEC651E31E504000917D2 /* ChoosePersonViewController.swift */,
@@ -921,14 +919,23 @@
 				TargetAttributes = {
 					4BD4B8FC1E272E0C00AE2BC9 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = A2R3PWNCGN;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = HVL2C5A8LT;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
-							com.apple.Push = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};
@@ -989,7 +996,6 @@
 				4BD4B94F1E272EA600AE2BC9 /* SignIn.storyboard in Resources */,
 				4BFD07CC1E5D3ACC004AF998 /* ExecutingSectionView.xib in Resources */,
 				4BBBEC971E2CAAE200F60313 /* BoPhotoPicker.bundle in Resources */,
-				4BD4B9061E272E0C00AE2BC9 /* Main.storyboard in Resources */,
 				4B8EE7771F17047400A59F8D /* WorkOrder2Cell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1052,7 +1058,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1111,7 +1117,6 @@
 				4B3951F61E28B64A00E2642F /* UILabel+SJColor.m in Sources */,
 				4B4BAFC11E5C62E800C9C549 /* OprationConfirmationView.swift in Sources */,
 				4BBBEC931E2CAAE200F60313 /* BoPhotoGroupCell.m in Sources */,
-				4B429B081F4AC3A000381F3F /* ShowImagesView.swift in Sources */,
 				4B1DEC681E31F5D1000917D2 /* SlotViewController.swift in Sources */,
 				4BBBEC9E1E2CB34500F60313 /* SJAddView.swift in Sources */,
 				4B3951FF1E28D2B900E2642F /* WorkOrderDistributionCell.swift in Sources */,
@@ -1172,14 +1177,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4BD4B9041E272E0C00AE2BC9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4BD4B9051E272E0C00AE2BC9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4BD4B9091E272E0C00AE2BC9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1292,25 +1289,26 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OpticalValleyUnite/OpticalValleyUnite.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: tao wei (8ES22U6BV5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: tao wei (8ES22U6BV5)";
-				DEVELOPMENT_TEAM = A2R3PWNCGN;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HVL2C5A8LT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",
 				);
 				INFOPLIST_FILE = OpticalValleyUnite/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/UMessage_Sdk_1.5.0a",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.OpticalValleyUnite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fdae256c-d73c-41ab-976c-94edebb44b1e";
-				PROVISIONING_PROFILE_SPECIFIER = OpticalValleyUnite_div;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpticalValleyUnite/OpticalValleyUnite-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wno-unused-variable";
 			};
 			name = Debug;
@@ -1323,25 +1321,26 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OpticalValleyUnite/OpticalValleyUnite.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: WUHAN XIAOMIAO TECHNOLOGY CO. , LTD. (A2R3PWNCGN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WUHAN XIAOMIAO TECHNOLOGY CO. , LTD. (A2R3PWNCGN)";
-				DEVELOPMENT_TEAM = A2R3PWNCGN;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HVL2C5A8LT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",
 				);
 				INFOPLIST_FILE = OpticalValleyUnite/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/UMessage_Sdk_1.5.0a",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.OpticalValleyUnite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba492a9f-f492-4807-9fc4-bd965287c49c";
-				PROVISIONING_PROFILE_SPECIFIER = OpticalValleyUnite_dis;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpticalValleyUnite/OpticalValleyUnite-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wno-unused-variable";
 			};
 			name = Release;

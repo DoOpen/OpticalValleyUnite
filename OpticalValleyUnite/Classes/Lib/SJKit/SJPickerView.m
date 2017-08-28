@@ -34,6 +34,8 @@ static CGFloat const SJPickerViewBtnH = 30;
 @property (nonatomic, strong) UIView *pickerView;
 @property (nonatomic, copy) id block;
 @property (nonatomic, assign) SJPickerViewType pickerViewType;
+
+
 @end
 
 @implementation SJPickerView
@@ -79,12 +81,20 @@ static CGFloat const SJPickerViewBtnH = 30;
     return [self showWithDateType:datePickerMode DefaultingDate:defaultingDate SelctedDateFormot:nil didSelcted:block];
 }
 
+
+#pragma mark - pickerView创建的类方法
 + (instancetype)showWithDateType:(UIDatePickerMode)datePickerMode DefaultingDate:(NSDate *)defaultingDate SelctedDateFormot:(NSString *)selctedDateFormotStr didSelcted:(void (^)(NSDate *, NSString *))block{
+    
+    //1.创建picker类
     SJPickerView *vv = [[self alloc] initWithFrame:[UIScreen mainScreen].bounds];
     vv.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
     vv.block = block;
     vv.pickerViewType = SJPickerViewTypeDate;
     vv.datePickerMode = datePickerMode;
+    
+    //设置pickview的预约时间的限制
+    
+    
     
     if(defaultingDate){
         vv.defaultingDate = defaultingDate;
@@ -100,13 +110,18 @@ static CGFloat const SJPickerViewBtnH = 30;
     return vv;
 }
 
+
+
 - (void)cancelBtnClik{
     [self removeFromSuperview];
    [self removeFromSuperview];
 }
+
+
 - (void)downBtnDidClick{
     
     if (self.pickerViewType == SJPickerViewTypeDate) {
+        
         NSString *selectedDateStr;
         if (self.datePickerMode == UIDatePickerModeDate || self.datePickerMode == UIDatePickerModeDateAndTime) {
             selectedDateStr = [self.dataPicker.date dateStrWithFormat:_dateFormotStr];
@@ -119,6 +134,7 @@ static CGFloat const SJPickerViewBtnH = 30;
         }
         
     }else if (self.pickerViewType == SJPickerViewTypeText){
+        
         void (^selectd)(NSInteger) = self.block;
         if (selectd) {
             selectd(_selectedIndex);
@@ -190,6 +206,7 @@ static CGFloat const SJPickerViewBtnH = 30;
 }
 
 - (UIView *)pickerView{
+    
     if (!_pickerView) {
         if (self.pickerViewType == SJPickerViewTypeDate) {
             _pickerView = self.dataPicker;
@@ -198,13 +215,17 @@ static CGFloat const SJPickerViewBtnH = 30;
         }
     }
     return _pickerView;
+    
 }
 
 - (UIPickerView *)pickerViewText{
     if (!_pickerViewText) {
+        //添加的 整体的pickerV的情况
+        
         UIPickerView *pickerView = [[UIPickerView alloc] init];
         pickerView.dataSource = self;
         pickerView.delegate = self;
+        
         _pickerViewText = pickerView;
     }
     return _pickerViewText;
@@ -212,6 +233,8 @@ static CGFloat const SJPickerViewBtnH = 30;
 
 - (UIDatePicker *)dataPicker{
     if (!_dataPicker) {
+        
+        //添加的时间 datePicker
         UIDatePicker *datePicker = [[UIDatePicker alloc] init];
         _dataPicker = datePicker;
         datePicker.datePickerMode = self.datePickerMode;
@@ -219,6 +242,9 @@ static CGFloat const SJPickerViewBtnH = 30;
         if (_defaultingDate) {
             _dataPicker.date = _defaultingDate;
         }
+        
+        // 设置最大和最小的时间的选项
+        datePicker.minimumDate = [NSDate date];
         
         NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];//设置为中
         datePicker.locale = locale;

@@ -5,7 +5,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 target "OpticalValleyUnite" do
 
-
 pod 'Alamofire'
 #pod 'Kingfisher', '~> 3.2.4'
 pod 'IQKeyboardManager', '~> 4.0.0'
@@ -15,6 +14,8 @@ pod 'RealmSwift', '~> 2.2.0'
 pod 'MJRefresh'
 pod 'Kingfisher', '~> 3.2.4'
 pod 'LCNibBridge'
+pod 'SnapKit', '~> 3.2.0'
+
 end
 
 post_install do |installer|

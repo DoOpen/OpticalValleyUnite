@@ -11,16 +11,24 @@ import SVProgressHUD
 import RealmSwift
 
 class ExecutingViewConttroller: UIViewController {
-
+    //工单详情
     @IBOutlet weak var workOrderContent: UILabel!
+    //工单详情时间
     @IBOutlet weak var timeLabel: UILabel!
+    
+    //放置详情tableview
     @IBOutlet weak var tableView: UITableView!
     
+    //底部bar
     @IBOutlet weak var downView: UIView!
     var isToSee = false
     
+    //添加手机view
     @IBOutlet weak var addPhoneView: SJAddView!
+    //textview 文本框
     @IBOutlet weak var textView: SJTextView!
+    
+    //工单执行view(要求添加事件的view, 最好是用scollview)
     @IBOutlet weak var emergencyView: UIView!
     
     var models = [ExecSectionModel]()
@@ -32,8 +40,11 @@ class ExecutingViewConttroller: UIViewController {
     var hisriyModel: WorkHistoryModel?
     
     @IBOutlet weak var saveBtn: UIButton!
+    
     var url: String?
     var image: UIImage?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,12 +62,14 @@ class ExecutingViewConttroller: UIViewController {
         if isToSee{
             downView.isHidden = true
         }
-        if workOrderDetalModel?.orderType == "计划工单"{ //计划工单
+        
+        if workOrderDetalModel?.orderType == "计划工单"{ //计划工单的执行
+            
             emergencyView.isHidden = true
             getData()
            
+        }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单的执行
             
-        }else if workOrderDetalModel?.orderType == "应急工单"{
             emergencyView.isHidden = false
             saveBtn.isHidden = true
             if isToSee{
@@ -64,27 +77,29 @@ class ExecutingViewConttroller: UIViewController {
             }
         }
         
+        
         if let model = hisriyModel{
             textView.text = model.text
+            
             if let str = model.pictures.first{
+                
                 let url = URL(string: str)
                 
             }
         }
-        
-        
     }
-    
     
     
 
     //MARK: -获取工单步骤信息
     func getData(){
+        
         var parmat = [String: Any]()
         parmat["WORKUNIT_ID"] = workOrderDetalModel?.id
         parmat["GROUPID"] = workOrderDetalModel?.GROUPID
         parmat["TASKID"] = workOrderDetalModel?.TASKID
         SVProgressHUD.show(withStatus: "加载任务中")
+        //设置参数发送请求
         HttpClient.instance.get(path: URLPath.getTaskList, parameters: parmat, success: { (response) in
             SVProgressHUD.dismiss()
             var temp = [ExecSectionModel]()
@@ -105,7 +120,6 @@ class ExecutingViewConttroller: UIViewController {
 //                realm.add(temp, update: true)
 //            }
     
-            
         }) { (error) in
 //            let realm = try! Realm()
 //            let result = realm.objects(ExecSectionModel.self).map({ model in
@@ -127,6 +141,7 @@ class ExecutingViewConttroller: UIViewController {
         }
     }
     
+    // MARK: - 保存更新按钮点击
     func saveUpdate(json: String){
         var parmat = [String: Any]()
 //        parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
@@ -140,8 +155,6 @@ class ExecutingViewConttroller: UIViewController {
             print(error)
         }
     }
-    
-    
     
     @IBAction func saveBtnClick() {
         
@@ -159,9 +172,9 @@ class ExecutingViewConttroller: UIViewController {
                     }
                     
                     if cell!.addPhotoView.photos.count > 0 {
-                        let images = cell!.addPhotoView.photos.map{return $0.image}
+                        let image = cell!.addPhotoView.photos.first?.image
                         group.enter()
-                        upDataImage(images, complit: { (url) in
+                        upDataImage([image!], complit: { (url) in
                             
                             model2.value = url
                             group.leave()
@@ -197,12 +210,9 @@ class ExecutingViewConttroller: UIViewController {
             } catch  {
                 print("转换错误 ")
             }
-            
         }
-        
-
-        
     }
+    
     //MARK: - 上传图片
     func upDataImage(_ images: [UIImage], complit: @escaping ((String) -> ()),errorHandle: (() -> ())? = nil){
         SVProgressHUD.show(withStatus: "上传图片中...")
@@ -217,8 +227,6 @@ class ExecutingViewConttroller: UIViewController {
             }
         }
     }
-    
-
     
     //MARK: - 所有完成按钮点击
     @IBAction func doneBtnClick() {
@@ -350,7 +358,10 @@ class ExecutingViewConttroller: UIViewController {
 //            SVProgressHUD.dismiss()
 //        }
 //    }
+    
 }
+
+
 
 extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
     
@@ -386,6 +397,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
                 cell.isUserInteractionEnabled = false
             }
             return cell
+            
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ExecCell
             
@@ -397,14 +409,15 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             }
             return cell
         }
-        
-
+    
     }
     
+    //headView的高度:
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 64
     }
     
+    //headView里面的内容:
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = ExecutingSectionView.loadFromXib() as! ExecutingSectionView
         
@@ -426,7 +439,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             self?.tableView.reloadData()
 //            try! realm.commitWrite()
         }
-
         return view
     }
+    
 }

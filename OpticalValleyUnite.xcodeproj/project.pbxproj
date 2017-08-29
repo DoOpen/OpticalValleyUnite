@@ -678,9 +678,9 @@
 		4BD4B9281E272EA600AE2BC9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4BD4B9291E272EA600AE2BC9 /* Home.storyboard */,
 				4B1DEC671E31F5D1000917D2 /* SlotViewController.swift */,
 				4BD4B92A1E272EA600AE2BC9 /* HomeViewController.swift */,
+				4BD4B9291E272EA600AE2BC9 /* Home.storyboard */,
 				4B1DEC631E31BE01000917D2 /* MapViewController.swift */,
 				4B1DEC5E1E31BD27000917D2 /* Map.storyboard */,
 				4BD4B92C1E272EA600AE2BC9 /* SignInViewController.swift */,
@@ -761,8 +761,8 @@
 		4BD4B9341E272EA600AE2BC9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4BD4B9351E272EA600AE2BC9 /* PersonCore.storyboard */,
 				4BD4B9361E272EA600AE2BC9 /* PersonCoreViewController.swift */,
+				4BD4B9351E272EA600AE2BC9 /* PersonCore.storyboard */,
 				4B3078101E2A136600FB4007 /* MyStatisticsViewController.swift */,
 				4B776E671E3857100021B5CA /* UpdataPSWViewController.swift */,
 				4BAE59811F04D46F000DB84D /* PersonDetailViewController.swift */,

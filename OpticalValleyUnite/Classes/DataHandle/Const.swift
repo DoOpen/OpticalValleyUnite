@@ -21,7 +21,7 @@ struct Const {
     static let SJUMPushKey = "5976ad34677baa2de60006dc"//企业打包
     
     static let SJToken = "SJToken"
-    
+    static let YQParkID = "YQParkID"
 
     #if TARGET_IPHONE_SIMULATOR
     

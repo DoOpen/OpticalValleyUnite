@@ -298,6 +298,11 @@ class WorkOrderProgressViewController: UIViewController {
         SVProgressHUD.show(withStatus: "加载中...")
         HttpClient.instance.get(path: URLPath.getWorkDetail, parameters: parmate, success: { (respose) in
             SVProgressHUD.dismiss()
+            //添加收藏 parkid的 缓存
+            //  respose["PARK_ID"] 的值是需要的情况
+            let PackId = respose["PARK_ID"] as! String
+            UserDefaults.standard.set(PackId, forKey: Const.YQParkID)
+            
             var temp = [WorkHistoryModel]()
             for dic in respose["histories"] as! Array<[String: Any]>{
                 temp.append(WorkHistoryModel(parmart: dic))

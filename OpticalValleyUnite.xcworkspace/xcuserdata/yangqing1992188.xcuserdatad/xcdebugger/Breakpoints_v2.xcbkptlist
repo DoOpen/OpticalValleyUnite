@@ -42,7 +42,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite/OpticalValleyUnite/OpticalValleyUnite/Classes/UI/Home/ViewController/SignInViewController.swift"
-                  timestampString = "525668169.248984"
+                  timestampString = "525788173.642539"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "167"
@@ -57,7 +57,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite/OpticalValleyUnite/OpticalValleyUnite/Classes/UI/Home/ViewController/SignInViewController.swift"
-                  timestampString = "525668169.252148"
+                  timestampString = "525788173.645596"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "168"
@@ -81,6 +81,54 @@
             endingLineNumber = "235"
             landmarkName = "-dataPicker"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/YQPartsLibaryViewController.swift"
+            timestampString = "525788143.980496"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpticalValleyUnite.YQPartsLibaryViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite/OpticalValleyUnite/OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/YQPartsLibaryViewController.swift"
+                  timestampString = "525788173.657546"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "5844">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpticalValleyUnite.YQPartsLibaryViewController.(viewDidLoad () -&gt; ()).(closure #1)"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite/OpticalValleyUnite/OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/YQPartsLibaryViewController.swift"
+                  timestampString = "525788173.660437"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "69">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

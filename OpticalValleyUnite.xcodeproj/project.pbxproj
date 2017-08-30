@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0F877C1F56D23F0030A6DB /* YQPartsLibary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F0F877A1F56D23F0030A6DB /* YQPartsLibary.storyboard */; };
+		2F0F877D1F56D23F0030A6DB /* YQPartsLibaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F877B1F56D23F0030A6DB /* YQPartsLibaryViewController.swift */; };
+		2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */; };
+		2F0F87811F56DFFE0030A6DB /* YQPartShowHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F877F1F56DFFE0030A6DB /* YQPartShowHeadView.swift */; };
 		4B01B08C1ED928AF002A61C9 /* ReportListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */; };
 		4B1558AF1F131AA70023F14D /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1558AE1F131AA70023F14D /* DeviceView.swift */; };
 		4B19ACE41E7A3D26008A8166 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19ACE31E7A3D26008A8166 /* User.swift */; };
@@ -162,6 +166,10 @@
 
 /* Begin PBXFileReference section */
 		105C2649D43BEE3CCAEDF08D /* Pods-OpticalValleyUnite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpticalValleyUnite.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpticalValleyUnite/Pods-OpticalValleyUnite.release.xcconfig"; sourceTree = "<group>"; };
+		2F0F877A1F56D23F0030A6DB /* YQPartsLibary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPartsLibary.storyboard; sourceTree = "<group>"; };
+		2F0F877B1F56D23F0030A6DB /* YQPartsLibaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartsLibaryViewController.swift; sourceTree = "<group>"; };
+		2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartHeadView.xib; sourceTree = "<group>"; };
+		2F0F877F1F56DFFE0030A6DB /* YQPartShowHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartShowHeadView.swift; sourceTree = "<group>"; };
 		4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportListViewController.swift; sourceTree = "<group>"; };
 		4B1558AE1F131AA70023F14D /* DeviceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		4B19ACE31E7A3D26008A8166 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -316,7 +324,7 @@
 		4BD4B9361E272EA600AE2BC9 /* PersonCoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCoreViewController.swift; sourceTree = "<group>"; };
 		4BD4B9391E272EA600AE2BC9 /* SurveillanceWorkOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveillanceWorkOrderViewController.swift; sourceTree = "<group>"; };
 		4BD4B9401E272EA600AE2BC9 /* WorkOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorkOrder.storyboard; sourceTree = "<group>"; };
-		4BD4B9411E272EA600AE2BC9 /* WorkOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderViewController.swift; sourceTree = "<group>"; };
+		4BD4B9411E272EA600AE2BC9 /* WorkOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorkOrderViewController.swift; path = ../WorkOrderViewController.swift; sourceTree = "<group>"; };
 		4BD4B9561E272EB100AE2BC9 /* OpticalValleyUnite-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpticalValleyUnite-Bridging-Header.h"; sourceTree = "<group>"; };
 		4BD4B9571E2747F000AE2BC9 /* SJTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJTextView.h; sourceTree = "<group>"; };
 		4BD4B9581E2747F000AE2BC9 /* SJTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJTextView.m; sourceTree = "<group>"; };
@@ -808,7 +816,6 @@
 				4BD4B93D1E272EA600AE2BC9 /* Model */,
 				4BD4B93E1E272EA600AE2BC9 /* View */,
 				4BD4B93F1E272EA600AE2BC9 /* ViewController */,
-				4BD4B9411E272EA600AE2BC9 /* WorkOrderViewController.swift */,
 			);
 			path = WorkOrder;
 			sourceTree = "<group>";
@@ -856,6 +863,8 @@
 				4B6E64E51EEA821900BA23E4 /* ExecutEmergencyCell.swift */,
 				4B6E64E61EEA821900BA23E4 /* ExecutEmergencyCell.xib */,
 				4BD4A0E11EE2B18300F044C1 /* AppraisalCell.xib */,
+				2F0F877F1F56DFFE0030A6DB /* YQPartShowHeadView.swift */,
+				2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -863,6 +872,7 @@
 		4BD4B93F1E272EA600AE2BC9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4BD4B9411E272EA600AE2BC9 /* WorkOrderViewController.swift */,
 				4BD4B9401E272EA600AE2BC9 /* WorkOrder.storyboard */,
 				4B3951CF1E277FBC00E2642F /* WorkOrderScreeningViewController.swift */,
 				4B1DEC651E31E504000917D2 /* ChoosePersonViewController.swift */,
@@ -872,6 +882,8 @@
 				4BFD07C71E5D31A3004AF998 /* ExecutingViewConttroller.swift */,
 				4BE9225C1EE6ADD800FDEFE1 /* CallBackListViewController.swift */,
 				4B814A801F1DAC3400CDCA9B /* WorkOrderSiftViewController.swift */,
+				2F0F877B1F56D23F0030A6DB /* YQPartsLibaryViewController.swift */,
+				2F0F877A1F56D23F0030A6DB /* YQPartsLibary.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -963,6 +975,7 @@
 				4B6E64E81EEA821900BA23E4 /* ExecutEmergencyCell.xib in Resources */,
 				4BD4B94C1E272EA600AE2BC9 /* MessageView.xib in Resources */,
 				4BD4B94D1E272EA600AE2BC9 /* Home.storyboard in Resources */,
+				2F0F877C1F56D23F0030A6DB /* YQPartsLibary.storyboard in Resources */,
 				4B3952071E29CE1F00E2642F /* WorkOrderOprationCell.xib in Resources */,
 				4BD4B9541E272EA600AE2BC9 /* WorkOrder.storyboard in Resources */,
 				4B3FD0301E8B61AC005D5231 /* exportPlist.plist in Resources */,
@@ -989,6 +1002,7 @@
 				4BD4B94F1E272EA600AE2BC9 /* SignIn.storyboard in Resources */,
 				4BFD07CC1E5D3ACC004AF998 /* ExecutingSectionView.xib in Resources */,
 				4BBBEC971E2CAAE200F60313 /* BoPhotoPicker.bundle in Resources */,
+				2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */,
 				4BD4B9061E272E0C00AE2BC9 /* Main.storyboard in Resources */,
 				4B8EE7771F17047400A59F8D /* WorkOrder2Cell.xib in Resources */,
 			);
@@ -1072,6 +1086,7 @@
 				4B1DEC5C1E31B646000917D2 /* SGQRCodeTool.m in Sources */,
 				4BD4A0DA1EE24F4100F044C1 /* OrderReturningCell.swift in Sources */,
 				4BAE59821F04D470000DB84D /* PersonDetailViewController.swift in Sources */,
+				2F0F87811F56DFFE0030A6DB /* YQPartShowHeadView.swift in Sources */,
 				4BD4B9451E272EA600AE2BC9 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				4BF807011F0E27AD0047E129 /* DeriveCell.swift in Sources */,
 				4BFD07C81E5D31A3004AF998 /* ExecutingViewConttroller.swift in Sources */,
@@ -1126,6 +1141,7 @@
 				4BD4B9431E272EA600AE2BC9 /* CoverView.swift in Sources */,
 				4B50D62B1EB9AA0200BB480F /* HomeBtnView.swift in Sources */,
 				4BE9225D1EE6ADD800FDEFE1 /* CallBackListViewController.swift in Sources */,
+				2F0F877D1F56D23F0030A6DB /* YQPartsLibaryViewController.swift in Sources */,
 				4B6E64FC1EEAEFCF00BA23E4 /* PhotoExtension.swift in Sources */,
 				4BD4B9461E272EA600AE2BC9 /* UIView+AdjustFrame.m in Sources */,
 				4B776E681E3857100021B5CA /* UpdataPSWViewController.swift in Sources */,

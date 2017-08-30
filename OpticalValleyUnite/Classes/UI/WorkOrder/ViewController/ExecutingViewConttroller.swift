@@ -23,6 +23,10 @@ class ExecutingViewConttroller: UIViewController {
     @IBOutlet weak var textView: SJTextView!
     @IBOutlet weak var emergencyView: UIView!
     
+    @IBOutlet weak var RemarksTextView: UITextView!
+    
+    @IBOutlet weak var hideTableViewHeightConstraint: NSLayoutConstraint!
+    
     var models = [ExecSectionModel]()
     var currentSelectIndexPath: IndexPath?
     var workOrderDetalModel: WorkOrderDetailModel?
@@ -274,6 +278,27 @@ class ExecutingViewConttroller: UIViewController {
         }
     }
     
+    // MARK: - 跳转到配件库
+    
+    @IBAction func pushPartsLibaryClick(_ sender: Any) {
+        
+        let vc = UIStoryboard(name: "YQPartsLibary", bundle: nil).instantiateInitialViewController()
+        
+        navigationController?.pushViewController(vc!, animated: true)
+        
+        
+    }
+    
+    // MARK: - 跳转到报事
+    @IBAction func pushReportBtnClick(_ sender: Any) {
+        
+        let vc = UIStoryboard(name: "ReportMaster", bundle: nil).instantiateInitialViewController()
+        
+        navigationController?.pushViewController(vc!, animated: true)
+        
+    }
+    
+    
 //    //MARK: - 子步骤完成按钮点击
 //    func cellDoneBtnClick(model: ExecChild,image: UIImage?,text: String?){
 //        
@@ -415,9 +440,14 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
         if model.isOpen{
             view.iconBtn.transform =  CGAffineTransform(rotationAngle: CGFloat.pi / 2 )
             view.openBtn.setTitle("收起", for: .normal)
+            self.hideTableViewHeightConstraint.constant = 300
+            
         }else{
             view.iconBtn.transform = .identity
             view.openBtn.setTitle("展开", for: .normal)
+            self.hideTableViewHeightConstraint.constant = 80
+
+            
         }
         view.didTouchHandle = { [weak self] in
 //            let realm = try! Realm()

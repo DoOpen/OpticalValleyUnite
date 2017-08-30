@@ -36,6 +36,10 @@ struct URLPath {
     static let updateLocation = "position/loadPersonPosition.do"
     static let getWorkDetail = "workunit/workunitDetailById.do"
     static let getWorkTypeList = "workunit/getWorkTypeList.do"
+    
+    //获取配件库主页数据接口
+    static let getPartsHome = "parts/list.do"
+    
     //获取督办接口
     static let getSurveillanceWorkOrderList = "workunit/workunitSuperviseList.do"
     //获取房屋空间信息

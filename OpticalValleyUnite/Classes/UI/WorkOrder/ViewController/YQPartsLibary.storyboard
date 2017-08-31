@@ -33,7 +33,7 @@
                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="allPartsButtonClick:" destination="mzW-cj-WOg" eventType="touchUpInside" id="3Ne-65-unv"/>
+                                            <action selector="allPartsButtonClick" destination="mzW-cj-WOg" eventType="touchUpInside" id="0SN-dF-hGz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z93-nT-srS">
@@ -45,7 +45,7 @@
                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="selectPartsButtonClick:" destination="mzW-cj-WOg" eventType="touchUpInside" id="BN2-Nj-9KT"/>
+                                            <action selector="selectPartsButtonClick" destination="mzW-cj-WOg" eventType="touchUpInside" id="tuh-nU-GIu"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yps-iO-Sym">
@@ -89,7 +89,9 @@
                             </searchBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55n-qt-Rqi">
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="mzW-cj-WOg" id="mtr-8i-WdC"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -116,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uW8-tX-gtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-782" y="13"/>
+            <point key="canvasLocation" x="-890" y="27"/>
         </scene>
     </scenes>
 </document>

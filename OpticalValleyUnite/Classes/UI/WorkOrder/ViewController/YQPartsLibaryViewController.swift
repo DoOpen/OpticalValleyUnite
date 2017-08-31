@@ -30,14 +30,19 @@ class YQPartsLibaryViewController: UIViewController {
         
         didSet{
             // 当设置完数据之后 就实现刷新
-            tableView.reloadData()
+            tableViewFrist.reloadData()
         }
     
     }
     //定义tableView
-    var tableView = UITableView()
+    var tableViewFrist = UITableView()
+    var tableViewSecond = UITableView()
+    
     //定义参数数组
     var parmat = [String: Any]()
+    
+    //已经勾选的数据详情数组
+    var selectData = [Any]()
 
     // MARK: - view的生命周期方法
     override func viewDidLoad() {
@@ -51,16 +56,9 @@ class YQPartsLibaryViewController: UIViewController {
         allPartsButton.isSelected = true
         
         //1.1 给scrollView 来进行添加
-        let tabelV = UITableView()
-        tabelV.dataSource = self as UITableViewDataSource
-        tabelV.delegate = self as UITableViewDelegate
-//        tabelV.estimatedRowHeight = 100.0
-//        tabelV.rowHeight = UITableViewAutomaticDimension
-//        tabelV.tableHeaderView = Bundle.main.loadNibNamed("YQPartHeadView", owner: nil, options: nil)![0] as? UIView
-        
-        contentScrollView.addSubview(tabelV)
-        tabelV.frame = contentScrollView.bounds
-        self.tableView = tabelV
+        createTableView(1)
+        createTableView(2)
+       
         
         let width = 2 * UIScreen.main.bounds.width
         contentScrollView.contentSize = CGSize(width: width, height: 0)
@@ -135,7 +133,32 @@ class YQPartsLibaryViewController: UIViewController {
         let nib = UINib.init(nibName: "YQPartDataCell", bundle: nil)
         
         //4.注册原型cell 
-        tableView.register(nib, forCellReuseIdentifier: partCell)
+        tableViewFrist.register(nib, forCellReuseIdentifier: partCell)
+        
+    }
+    
+    // MARK: - 创建tableView
+    func createTableView(_ num : Int ){
+        if num == 1{
+            let tabelV = UITableView()
+            tabelV.dataSource = self as UITableViewDataSource
+            tabelV.delegate = self as UITableViewDelegate
+            
+            contentScrollView.addSubview(tabelV)
+            tabelV.frame = contentScrollView.bounds
+            self.tableViewFrist = tabelV
+
+        }else{
+            let tabelV = UITableView()
+            tabelV.dataSource = self as UITableViewDataSource
+            tabelV.delegate = self as UITableViewDelegate
+            
+            contentScrollView.addSubview(tabelV)
+            tabelV.frame.origin = CGPoint(x: UIScreen.main.bounds.width, y: 0)
+            tabelV.frame.size = contentScrollView.bounds.size ;
+            self.tableViewSecond = tabelV
+
+        }
         
     }
 
@@ -152,19 +175,20 @@ class YQPartsLibaryViewController: UIViewController {
     
     // MARK: - 配件按钮的选择
     ///所有配件
-    @IBAction func allPartsButtonClick(_ sender: UIButton) {
+    @IBAction func allPartsButtonClick() {
         allPartsButton.isSelected = true
         selectPartsButton.isSelected = false
         
-        
+        self.contentScrollView.setContentOffset(CGPoint(x:0 , y: 0), animated: true)
         
     }
     ///已选配件
-    @IBAction func selectPartsButtonClick(_ sender: UIButton) {
+    @IBAction func selectPartsButtonClick() {
         allPartsButton.isSelected = false
         selectPartsButton.isSelected = true
         
-        
+        self.contentScrollView.setContentOffset(CGPoint(x: self.contentScrollView.bounds.width , y: 0), animated: true)
+
     }
    
 }
@@ -223,17 +247,14 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
                         if let partList:NSArray = data["list"] as? NSArray {
                             //遍历数组,字典转模型,最核心的是,将字典数组,转化成模型来进行
                             //                            print(partList)
-                            
                             var model = [PartsModel]()
                             
                             for dic in partList{
                                 
                                 model.append(PartsModel(dict: dic as! [String : AnyObject]))
                             }
-                            
                             //模型赋值 传值!
                             self.dataPart = model
-                            
                         }
                         
                         break
@@ -254,6 +275,31 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     }
     
     // MARK: - scrollView的代理方法,滚动执行的方法
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        self.scrollViewDidEndScrollingAnimation(scrollView)
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        //判断上面的显示的按钮的情况
+        let value = abs(self.contentScrollView.contentOffset.x / self.contentScrollView.frame.size.width)
+        
+        if value == 0{
+            //allbutton 选择了
+            self.allPartsButtonClick()
+        }else{
+            //selectbutton 选择了
+            self.selectPartsButtonClick()
+        }
+
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //判断显示的子view来展示
+        self.view.endEditing(true)
+        
+    }
+    
     
     
 }

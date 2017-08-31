@@ -102,6 +102,9 @@ extension HttpClient {
             
             switch response.result {
             case .success(_):
+                
+                
+                
                 if let value = response.result.value as? [String: Any] {
                     
                     guard !value.isEmpty else{
@@ -130,6 +133,8 @@ extension HttpClient {
                         
                         return
                     }
+                    
+                    
                     success(value["data"]  as AnyObject)
                     break
                 }

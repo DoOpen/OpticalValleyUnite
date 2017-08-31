@@ -91,6 +91,7 @@ struct URLPath {
     ///工单评价
     static let evaluateSave = "workunit/evaluateSave.do"
     
+    ///退出的接口
     static let logOut = "user/logout.do"
     
     ///多个工单步骤执行

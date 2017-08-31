@@ -22,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbk-q2-Gt7">
-                                <rect key="frame" x="0.0" y="20" width="375" height="54"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ej-di-4JU">
-                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="54"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                                         <state key="normal" title="所有配件">
                                             <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -37,7 +37,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z93-nT-srS">
-                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="54"/>
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
                                         <state key="normal" title="已选配件">
                                             <color key="titleColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -49,7 +49,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yps-iO-Sym">
-                                        <rect key="frame" x="187" y="7" width="1" height="40"/>
+                                        <rect key="frame" x="187" y="5" width="1" height="40"/>
                                         <color key="backgroundColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1Rv-Ox-qf7"/>
@@ -65,7 +65,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Z93-nT-srS" secondAttribute="trailing" id="L72-9w-VJK"/>
                                     <constraint firstItem="Z93-nT-srS" firstAttribute="height" secondItem="0Ej-di-4JU" secondAttribute="height" id="TX3-dx-NL4"/>
                                     <constraint firstItem="Yps-iO-Sym" firstAttribute="centerY" secondItem="fbk-q2-Gt7" secondAttribute="centerY" id="WEr-Hv-ypd"/>
-                                    <constraint firstAttribute="height" constant="54" id="X6Q-3D-gTV"/>
+                                    <constraint firstAttribute="height" constant="50" id="X6Q-3D-gTV"/>
                                     <constraint firstAttribute="bottom" secondItem="Z93-nT-srS" secondAttribute="bottom" id="aRa-Rf-g87"/>
                                     <constraint firstItem="Yps-iO-Sym" firstAttribute="centerX" secondItem="fbk-q2-Gt7" secondAttribute="centerX" id="qoE-ua-M7f"/>
                                     <constraint firstItem="0Ej-di-4JU" firstAttribute="leading" secondItem="fbk-q2-Gt7" secondAttribute="leading" id="uP2-Gf-4WQ"/>
@@ -73,28 +73,36 @@
                                     <constraint firstAttribute="bottom" secondItem="0Ej-di-4JU" secondAttribute="bottom" id="w9T-p4-YGf"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="pKU-LV-0k8">
-                                <rect key="frame" x="0.0" y="79" width="375" height="44"/>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pKU-LV-0k8">
+                                <rect key="frame" x="0.0" y="70" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Izo-2c-3bb"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="mzW-cj-WOg" id="ji4-o6-cjX"/>
+                                </connections>
                             </searchBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55n-qt-Rqi">
-                                <rect key="frame" x="0.0" y="128" width="375" height="539"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fbk-q2-Gt7" firstAttribute="leading" secondItem="t3a-hT-nCQ" secondAttribute="leading" id="5cf-kq-riP"/>
                             <constraint firstItem="pKU-LV-0k8" firstAttribute="leading" secondItem="t3a-hT-nCQ" secondAttribute="leading" id="B9i-Mx-su5"/>
-                            <constraint firstItem="55n-qt-Rqi" firstAttribute="top" secondItem="pKU-LV-0k8" secondAttribute="bottom" constant="5" id="C06-jM-ku0"/>
+                            <constraint firstItem="55n-qt-Rqi" firstAttribute="top" secondItem="pKU-LV-0k8" secondAttribute="bottom" id="C06-jM-ku0"/>
                             <constraint firstAttribute="trailing" secondItem="fbk-q2-Gt7" secondAttribute="trailing" id="CAi-ZG-ISK"/>
                             <constraint firstItem="55n-qt-Rqi" firstAttribute="leading" secondItem="pKU-LV-0k8" secondAttribute="leading" id="L0J-ff-QcI"/>
                             <constraint firstItem="55n-qt-Rqi" firstAttribute="trailing" secondItem="pKU-LV-0k8" secondAttribute="trailing" id="U5C-Vw-Hng"/>
                             <constraint firstItem="55n-qt-Rqi" firstAttribute="bottom" secondItem="Skg-hl-qh8" secondAttribute="top" id="Um3-uw-FIm"/>
                             <constraint firstAttribute="trailing" secondItem="pKU-LV-0k8" secondAttribute="trailing" id="V3g-fl-wee"/>
-                            <constraint firstItem="pKU-LV-0k8" firstAttribute="top" secondItem="fbk-q2-Gt7" secondAttribute="bottom" constant="5" id="ZE8-tp-uch"/>
+                            <constraint firstItem="pKU-LV-0k8" firstAttribute="top" secondItem="fbk-q2-Gt7" secondAttribute="bottom" id="ZE8-tp-uch"/>
                             <constraint firstItem="fbk-q2-Gt7" firstAttribute="top" secondItem="pfz-31-cjc" secondAttribute="bottom" id="eZc-Pg-AOa"/>
                         </constraints>
                     </view>
@@ -108,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uW8-tX-gtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-463.19999999999999" y="17.541229385307346"/>
+            <point key="canvasLocation" x="-782" y="13"/>
         </scene>
     </scenes>
 </document>

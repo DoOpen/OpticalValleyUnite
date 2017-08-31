@@ -42,7 +42,12 @@ class YQPartsLibaryViewController: UIViewController {
     var parmat = [String: Any]()
     
     //已经勾选的数据详情数组
-    var selectData = [Any]()
+    var selectData : [Any]?{
+        didSet{
+            
+            tableViewSecond.reloadData()
+        }
+    }
 
     // MARK: - view的生命周期方法
     override func viewDidLoad() {
@@ -58,8 +63,7 @@ class YQPartsLibaryViewController: UIViewController {
         //1.1 给scrollView 来进行添加
         createTableView(1)
         createTableView(2)
-       
-        
+    
         let width = 2 * UIScreen.main.bounds.width
         contentScrollView.contentSize = CGSize(width: width, height: 0)
         automaticallyAdjustsScrollViewInsets = false
@@ -96,23 +100,20 @@ class YQPartsLibaryViewController: UIViewController {
                 if let value = response.result.value as? [String: Any] {
 
                     if let data:NSDictionary = value["data"] as? NSDictionary {
-                    
                         if let partList:NSArray = data["list"] as? NSArray {
                             //遍历数组,字典转模型,最核心的是,将字典数组,转化成模型来进行
 //                            print(partList)
-                            
                             var model = [PartsModel]()
                             
                             for dic in partList{
                                 
-//                                print(dic)
+//                               print(dic)
                                 model.append(PartsModel(dict: dic as! [String : AnyObject]))
                             }
                             
                             //模型赋值 传值!
                             self.dataPart = model
 //                            print(model)
-                    
                         }
                         
                         break
@@ -188,27 +189,45 @@ class YQPartsLibaryViewController: UIViewController {
         selectPartsButton.isSelected = true
         
         self.contentScrollView.setContentOffset(CGPoint(x: self.contentScrollView.bounds.width , y: 0), animated: true)
+        
+        //发送请求给服务器来查看数据
 
     }
    
 }
 
-extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
+extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,YQPartDataCellSwitchDelegate{
     
     // MARK: - tableView的代理方法
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return dataPart?.count ?? 0
+        if tableView == self.tableViewFrist{
+            return dataPart?.count ?? 0
+            
+        }else{
+        
+            return selectData?.count ?? 0
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell : YQPartDataCell = (tableView.dequeueReusableCell(withIdentifier: partCell, for: indexPath)) as! YQPartDataCell
+        if tableView == self.tableViewFrist{
+            
+            cell.delegate = self as YQPartDataCellSwitchDelegate
+//            let status = dataPart![indexPath.row]
+            //传对应的模型给cell
+            cell.modelcell  = dataPart![indexPath.row]
+            
+//            cell.part.text = status.position
+//            cell.partName.text = status.partsName
+
+        }else{
         
-        let status = dataPart![indexPath.row]
-        
-        cell.part.text = status.position
-        cell.partName.text = status.partsName
+        }
         
         return cell
     }
@@ -216,8 +235,13 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         return Bundle.main.loadNibNamed("YQPartHeadView", owner: nil, options: nil)![0] as? UIView
-        
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        
+//        
+//        
+//    }
     
     //headView的高度:
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -231,7 +255,6 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
         parmat["partsName"] = self.searchBar.text
         //搜索点击实现的方法:(发送请求数据刷新)
         SVProgressHUD.show(withStatus: "搜索中")
-        
         Alamofire.request(URLPath.basicPath + URLPath.getPartsHome,  parameters: parmat).responseJSON { (response) in
             
             SVProgressHUD.dismiss()
@@ -300,6 +323,13 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
         
     }
     
+    // MARK: - PartDataCellSwitchDelegate的执行
+    func partDataCellSwitchDelegate(num: String, model: PartsModel){
+        //存储 已选数据的代理方法
+        
+        
+        
+    }
     
     
 }

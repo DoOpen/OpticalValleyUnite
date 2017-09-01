@@ -11,13 +11,16 @@ import UIKit
 
 protocol YQPartDataCellSwitchDelegate : class{
 
-    func partDataCellSwitchDelegate(num : String, model : PartsModel)
+    func partDataCellSwitchDelegate(num : String,numIndex: Int, model : PartsModel)
+    
+    func partDataCellSwitchDelegateMoveModel( numIndex : Int,model : PartsModel)
+    
 }
 
 class YQPartDataCell: UITableViewCell {
     
     // MARK: - 加载的属性
-    @IBOutlet weak var `switch`: UISwitch!
+    @IBOutlet weak var `switch`: UIButton!
     
     @IBOutlet weak var part: UILabel!
  
@@ -25,13 +28,17 @@ class YQPartDataCell: UITableViewCell {
 
     @IBOutlet weak var numText: UITextField!
     
-    //   模型的设置是有问题,设置的
+    // 缓存行号
+    var indexPath : Int = 0
+    
+    // 模型的设置是有问题,设置的
     var modelcell : PartsModel?
     {
         didSet{
 
             self.part.text = modelcell?.position
             self.partName.text = modelcell?.partsName
+            self.numText.text = modelcell?.partNum
             
         }
     
@@ -43,17 +50,19 @@ class YQPartDataCell: UITableViewCell {
     //MARK: - 点击加载方法
     @IBAction func switchClick(_ sender: Any) {
         
-        if self.switch.isOn {
+        self.switch.isSelected = !self.switch.isSelected
+        
+        if self.switch.isSelected {
             
             self.numText.isUserInteractionEnabled = true
-            
+//            modelcell?.partNum = self.numText.text
             //调用代理,传递值的 数量的情况
-            self.delegate?.partDataCellSwitchDelegate(num: self.numText.text!, model : self.modelcell!)
-            
+            self.delegate?.partDataCellSwitchDelegate(num: self.numText.text!,numIndex: self.indexPath, model : self.modelcell!)
             
         }else{
             
             self.numText.isUserInteractionEnabled = false
+            self.delegate?.partDataCellSwitchDelegateMoveModel(numIndex: self.indexPath, model: self.modelcell!)
             
         }
         

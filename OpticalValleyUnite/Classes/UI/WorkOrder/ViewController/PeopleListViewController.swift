@@ -93,12 +93,7 @@ class PeopleListViewController: UIViewController {
                 }
             }
             
-
-            
             self.tableView.reloadData()
-            
-            
-
             
         }) { (error) in
             SVProgressHUD.dismiss()

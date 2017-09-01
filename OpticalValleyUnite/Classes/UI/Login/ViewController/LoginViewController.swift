@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginBtnClick() {
+        
         let user = userNameTextField.text
         let password = passwordTextField.text
         
@@ -57,7 +58,6 @@ class LoginViewController: UIViewController {
                     }
 //                    let token = (value["data"] as!  [String: Any])["TOKEN"] as! String
                    
-                    
                     if let data = value["data"] as? [String: Any]{
                         let token = data["TOKEN"] as! String
                         
@@ -69,7 +69,6 @@ class LoginViewController: UIViewController {
                     
                     self.pushToHomeViewController()
                     
-                   
                     break
                 }
                 break
@@ -79,9 +78,8 @@ class LoginViewController: UIViewController {
                 break
             }
         }
-
-        
     }
+    
     
     private func getDate(){
         HttpClient.instance.get(path: URLPath.getPersonInfo, parameters: nil, success: { (response) in
@@ -105,19 +103,17 @@ class LoginViewController: UIViewController {
         
         let tabVc = UITabBarController()
         let vc1 = UIStoryboard.instantiateInitialViewController(name: "Home")
-//        vc1.tabBarItem = UITabBarItem(title: "首页", image: UIImage(named:"home_normal"), selectedImage: UIImage(named:"home_active"))
         
         let vc2 = UIStoryboard.instantiateInitialViewController(name: "PersonCore")
-//        vc2.tabBarItem = UITabBarItem(title: "我的", image: UIImage(named:"me_normal"), selectedImage: UIImage(named:"me_active"))
         
         tabVc.setViewControllers([vc1,vc2], animated: false)
         
         SJKeyWindow?.rootViewController = tabVc
     }
 
+    
     class func chooseRootViewController(){
         if  ((UserDefaults.standard.value(forKey: Const.SJToken) as? String) != nil){
-//            let vc = UIStoryboard.instantiateInitialViewController(name: "Main")
             
             let tabVc = UITabBarController()
             let vc1 = UIStoryboard.instantiateInitialViewController(name: "Home")
@@ -125,8 +121,8 @@ class LoginViewController: UIViewController {
             
             tabVc.setViewControllers([vc1,vc2], animated: false)
             
-            
             SJKeyWindow?.rootViewController = tabVc
+            
         }else{
             let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
 //            vc.view.backgroundColor = UIColor.red
@@ -134,9 +130,10 @@ class LoginViewController: UIViewController {
         }
     }
     
+    
+    // MARK: - 退出登录按钮点击实现
     class func loginOut(){
         
-
         var paramet = [String: Any]()
         if let token = UserDefaults.standard.object(forKey: "SJDeviceToken") as? String{
             paramet["UMENG_TOKEN"] = token

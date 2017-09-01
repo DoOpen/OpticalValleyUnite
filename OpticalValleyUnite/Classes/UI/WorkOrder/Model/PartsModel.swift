@@ -16,6 +16,9 @@ class PartsModel: NSObject{
     
     var partsName : String?
     
+    var partNum : String?
+    
+    
     // 字典转模型
     //初始化方法 init 的方法
      init( dict : [String: AnyObject] ) {

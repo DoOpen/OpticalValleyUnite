@@ -132,6 +132,7 @@ class ExecutingViewConttroller: UIViewController {
     }
     
     func saveUpdate(json: String){
+        
         var parmat = [String: Any]()
 //        parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
 //        parmat["UNIT_STATUS"] = 2
@@ -143,6 +144,7 @@ class ExecutingViewConttroller: UIViewController {
         }) { (error) in
             print(error)
         }
+        
     }
     
     
@@ -224,7 +226,7 @@ class ExecutingViewConttroller: UIViewController {
     
 
     
-    //MARK: - 所有完成按钮点击
+    //MARK: - 所有完成按钮点击( 数据要求的是 补全接口的相关 数据)
     @IBAction func doneBtnClick() {
         
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单

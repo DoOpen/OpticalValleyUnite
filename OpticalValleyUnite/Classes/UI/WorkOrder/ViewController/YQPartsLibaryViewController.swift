@@ -25,7 +25,7 @@ class YQPartsLibaryViewController: UIViewController {
     ///内容滚动视图
     @IBOutlet weak var contentScrollView: UIScrollView!
     
-    ///定义数据模型,  这里应用的是 didset== 相当于set方法,一旦赋值的话,要求的是刷新表格
+    ///定义数据模var,  这里应用的是 didset== 相当于set方法,一旦赋值的话,要求的是刷新表格
     var dataPart : [PartsModel]?{
         
         didSet{
@@ -42,12 +42,18 @@ class YQPartsLibaryViewController: UIViewController {
     var parmat = [String: Any]()
     
     //已经勾选的数据详情数组
-    var selectData : [Any]?{
-        didSet{
-            
-            tableViewSecond.reloadData()
-        }
-    }
+//    var selectData : [PartsModel]?{
+//        didSet{
+//            
+//            tableViewSecond.reloadData()
+//        }
+//    }
+    
+    var selectData:NSMutableArray = { return NSMutableArray() }()
+    
+    var selectIndex : Int = 0
+    
+    
 
     // MARK: - view的生命周期方法
     override func viewDidLoad() {
@@ -135,6 +141,7 @@ class YQPartsLibaryViewController: UIViewController {
         
         //4.注册原型cell 
         tableViewFrist.register(nib, forCellReuseIdentifier: partCell)
+        tableViewSecond.register(nib, forCellReuseIdentifier: partCell)
         
     }
     
@@ -206,7 +213,7 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
             
         }else{
         
-            return selectData?.count ?? 0
+            return selectData.count
         }
         
         
@@ -216,19 +223,28 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
         
         let cell : YQPartDataCell = (tableView.dequeueReusableCell(withIdentifier: partCell, for: indexPath)) as! YQPartDataCell
         if tableView == self.tableViewFrist{
-            
+        
             cell.delegate = self as YQPartDataCellSwitchDelegate
 //            let status = dataPart![indexPath.row]
             //传对应的模型给cell
             cell.modelcell  = dataPart![indexPath.row]
+            cell.indexPath = indexPath.row
             
 //            cell.part.text = status.position
 //            cell.partName.text = status.partsName
 
         }else{
+            
+            var temp = [String: PartsModel]()
+
+            temp = (selectData[indexPath.row] as? [String: PartsModel])!
+            
+            cell.modelcell = temp["\(self.selectIndex)"]
+            cell.indexPath = indexPath.row
+ 
         
         }
-        
+    
         return cell
     }
     
@@ -324,11 +340,34 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     }
     
     // MARK: - PartDataCellSwitchDelegate的执行
-    func partDataCellSwitchDelegate(num: String, model: PartsModel){
+    func partDataCellSwitchDelegate(num: String,numIndex: Int, model: PartsModel){
         //存储 已选数据的代理方法
+//        var newmodel = [Any]()
+//        newmodel.append(model)
+//        newmodel.append(num)
+        model.partNum = num
+        var temp = [String: PartsModel]()
+        temp["\(numIndex)"] = model
+        self.selectIndex = numIndex
+        self.selectData.add(temp)
+        self.tableViewSecond .reloadData()
         
+    }
+    
+    func partDataCellSwitchDelegateMoveModel(numIndex: Int, model: PartsModel) {
         
+        var dic = [String: PartsModel]()
+        for dict in self.selectData{
+            //移除指定内容的 model
+//            print(dict)
+            dic = dict as! [String : PartsModel]
+            dic.removeValue(forKey: "\(numIndex)")
+            
+        }
         
+//        self.selectIndex = numIndex
+        self.tableViewSecond.reloadData()
+
     }
     
     

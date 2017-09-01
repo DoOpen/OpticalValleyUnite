@@ -26,7 +26,6 @@ class WorkOrderSiftViewController: UIViewController {
     
     let workStatus = ["待派发","待接收","协助查看","待执行","待评价","已关闭"]
     
-    
 
     var startTime: String?
     var endTime: String?
@@ -61,7 +60,6 @@ class WorkOrderSiftViewController: UIViewController {
         setTagsView(tagsView: workStatusTagView,tags: workStatus)
         setTagsView(tagsView: sourceTagsView,tags: ["系统后台","员工app","业主app"])
         
-
 //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
 //            let arry = ["丽岛2046","光谷软件园","创意天地"]
 //            
@@ -71,7 +69,7 @@ class WorkOrderSiftViewController: UIViewController {
     }
     
     
-    
+    // MARK: - 开始日期的点击方法
     @IBAction func beginBtnClick(_ sender: UIButton) {
         SJPickerView.show(withDateType: .date, defaultingDate: Date(), userController:self,selctedDateFormot: "yyyy-MM-dd") { (date, dateStr) in
             sender.setTitle(dateStr, for: .normal)
@@ -79,6 +77,8 @@ class WorkOrderSiftViewController: UIViewController {
         }
     }
     
+    
+    // MARK: - 结束日期的点击方法
     @IBAction func endBtnClick(_ sender: UIButton) {
         SJPickerView.show(withDateType: .date, defaultingDate: Date(), userController:self,selctedDateFormot: "yyyy-MM-dd") { (date, dateStr) in
             sender.setTitle(dateStr, for: .normal)
@@ -86,6 +86,8 @@ class WorkOrderSiftViewController: UIViewController {
         }
     }
     
+    
+    // MARK: - 重置按钮的点击
     @IBAction func resetBtnClick() {
         projectTagsView.deselectAll()
         workTypeTagsView.deselectAll()
@@ -137,7 +139,9 @@ class WorkOrderSiftViewController: UIViewController {
         }
     }
     
+    
     @IBAction func doenBtnClick() {
+        
         var paramert = [String: Any]()
         
         let projectTagsViewIndex = projectTagsView.selectedTagIndexes.first?.intValue

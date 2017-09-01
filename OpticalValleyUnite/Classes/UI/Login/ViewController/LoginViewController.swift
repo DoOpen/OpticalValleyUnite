@@ -21,6 +21,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    // MARK: - 登录界面的按钮的点击
     @IBAction func loginBtnClick() {
         
         let user = userNameTextField.text
@@ -80,6 +81,14 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - 忘记密码的按钮点击
+    @IBAction func forgotPasswordBtnClick(_ sender: Any) {
+        //忘记密码的功能接口的
+        
+        
+        
+    }
+  
     
     private func getDate(){
         HttpClient.instance.get(path: URLPath.getPersonInfo, parameters: nil, success: { (response) in

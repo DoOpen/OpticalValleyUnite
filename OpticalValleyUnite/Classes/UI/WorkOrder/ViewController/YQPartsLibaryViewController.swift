@@ -154,6 +154,7 @@ class YQPartsLibaryViewController: UIViewController {
             
             contentScrollView.addSubview(tabelV)
             tabelV.frame = contentScrollView.bounds
+            
             self.tableViewFrist = tabelV
 
         }else{
@@ -188,6 +189,9 @@ class YQPartsLibaryViewController: UIViewController {
         selectPartsButton.isSelected = false
         
         self.contentScrollView.setContentOffset(CGPoint(x:0 , y: 0), animated: true)
+        //重新加载,清空渲染tableViewSecond数据
+        
+        
         
     }
     ///已选配件
@@ -197,13 +201,14 @@ class YQPartsLibaryViewController: UIViewController {
         
         self.contentScrollView.setContentOffset(CGPoint(x: self.contentScrollView.bounds.width , y: 0), animated: true)
         
-        //发送请求给服务器来查看数据
+        //调用数据,进行渲染tableViewSecond
+        
 
     }
    
 }
 
-extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,YQPartDataCellSwitchDelegate{
+extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,YQPartDataCellSwitchDelegate,YQPartDataFooterCellButtonDelegate{
     
     // MARK: - tableView的代理方法
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -215,7 +220,6 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
         
             return selectData.count
         }
-        
         
     }
     
@@ -253,6 +257,24 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
         return Bundle.main.loadNibNamed("YQPartHeadView", owner: nil, options: nil)![0] as? UIView
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+    
+        if tableView == tableViewSecond {
+            
+            let view = Bundle.main.loadNibNamed("YQPartDataSelect", owner: nil, options: nil)![0] as? YQPartDataFooterCell
+            view?.delegate = self as YQPartDataFooterCellButtonDelegate
+            return view
+
+        }else{
+        
+            let view = Bundle.main.loadNibNamed("YQPartDataAll", owner: nil, options: nil)![0] as? YQPartDataFooterCell
+            view?.delegate = self as YQPartDataFooterCellButtonDelegate
+            return view
+        }
+        
+    }
+    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        
 //        
@@ -261,6 +283,11 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     
     //headView的高度:
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 44
+    }
+    //footerView的高度
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
         return 44
     }
@@ -350,7 +377,7 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
         temp["\(numIndex)"] = model
         self.selectIndex = numIndex
         self.selectData.add(temp)
-        self.tableViewSecond .reloadData()
+//        self.tableViewSecond .reloadData()
         
     }
     
@@ -366,10 +393,24 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
         }
         
 //        self.selectIndex = numIndex
-        self.tableViewSecond.reloadData()
+//        self.tableViewSecond.reloadData()
 
     }
     
+    // MARK: - YQPartDataFooterCellButtonDelegate代理方法
+    //已选完成界面的实现
+    func partDataFooterCompleteDelegate() {
+        //1.拿数据,以及界面跳转
+        self.selectPartsButtonClick()
+        
+        
+    }
+    
+    //所有界面的 确认勾选的实现
+    func partDataFooterMakeSureCheckDelegate() {
+        
+        
+    }
     
 }
 

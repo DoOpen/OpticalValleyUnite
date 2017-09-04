@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
             SVProgressHUD.showError(withStatus: "请输入账号")
             return
         }
+        
         guard password != "" else {
             SVProgressHUD.showError(withStatus: "请输入密码")
             return
@@ -40,16 +41,22 @@ class LoginViewController: UIViewController {
 //        parameters["token"] = "123"
         parameters["LOGIN_NAME"] = user
         parameters["PASSWORD"] = password?.md5()
+        
         if let token = UserDefaults.standard.object(forKey: "SJDeviceToken") as? String{
+            
             parameters["UMENG_TOKEN"] = token
+            
         }
         
         SVProgressHUD.show(withStatus: "登录中")
+        
         Alamofire.request(URLPath.basicPath + URLPath.login, method: .post, parameters: parameters).responseJSON { (response) in
             SVProgressHUD.dismiss()
             switch response.result {
+                
             case .success(_):
                 if let value = response.result.value as? [String: Any] {
+                    
                     guard value["CODE"] as! String == "0" else{
                         let message = value["MSG"] as! String
 
@@ -58,8 +65,8 @@ class LoginViewController: UIViewController {
                         return
                     }
 //                    let token = (value["data"] as!  [String: Any])["TOKEN"] as! String
-                   
                     if let data = value["data"] as? [String: Any]{
+                        
                         let token = data["TOKEN"] as! String
                         
                         UserDefaults.standard.set(token, forKey: Const.SJToken)
@@ -68,7 +75,9 @@ class LoginViewController: UIViewController {
                         self.getDate()
                     }
                     
-                    self.pushToHomeViewController()
+                    /// 直接跳转到home的主页
+                    //  self.pushToHomeViewController()
+                    self.pushToSystemSelectionVC()
                     
                     break
                 }
@@ -81,6 +90,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    
     // MARK: - 忘记密码的按钮点击
     @IBAction func forgotPasswordBtnClick(_ sender: Any) {
         //忘记密码的功能接口的
@@ -90,9 +100,11 @@ class LoginViewController: UIViewController {
   
     
     private func getDate(){
+        
         HttpClient.instance.get(path: URLPath.getPersonInfo, parameters: nil, success: { (response) in
             
             if let dic = (response as? Array<[String: Any]>)?.first{
+                
                 let model = PersonInfo(parmart: dic)
                 let user = User.currentUser()
                 user?.nickname = model.name
@@ -105,13 +117,22 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - 跳转到子界面选择的
+    func pushToSystemSelectionVC(){
+        
+        let systemVC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
+        SJKeyWindow?.rootViewController = systemVC
+        
+    }
+    
+    // MARK: - 跳转到home主界面的代码
     func pushToHomeViewController(){
 //        let vc = UIStoryboard.instantiateInitialViewController(name: "Main")
 //        SJKeyWindow?.rootViewController = vc
         
         let tabVc = UITabBarController()
-        let vc1 = UIStoryboard.instantiateInitialViewController(name: "Home")
         
+        let vc1 = UIStoryboard.instantiateInitialViewController(name: "Home")
         let vc2 = UIStoryboard.instantiateInitialViewController(name: "PersonCore")
         
         tabVc.setViewControllers([vc1,vc2], animated: false)
@@ -121,6 +142,7 @@ class LoginViewController: UIViewController {
 
     
     class func chooseRootViewController(){
+        
         if  ((UserDefaults.standard.value(forKey: Const.SJToken) as? String) != nil){
             
             let tabVc = UITabBarController()
@@ -132,6 +154,7 @@ class LoginViewController: UIViewController {
             SJKeyWindow?.rootViewController = tabVc
             
         }else{
+            
             let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
 //            vc.view.backgroundColor = UIColor.red
             SJKeyWindow?.rootViewController = vc
@@ -146,6 +169,7 @@ class LoginViewController: UIViewController {
         if let token = UserDefaults.standard.object(forKey: "SJDeviceToken") as? String{
             paramet["UMENG_TOKEN"] = token
         }
+        
         HttpClient.instance.post(path: URLPath.logOut, parameters: paramet, success: { (data) in
             
 //            SVProgressHUD.dismiss()
@@ -160,12 +184,9 @@ class LoginViewController: UIViewController {
 //        "SJlatitude") as? CLLocationDegrees,let longitude = .object(forKey: "SJlongitude")
         
         User.removeUser()
-        
         UserDefaults.standard.set(nil, forKey: Const.SJToken)
-        
         chooseRootViewController()
         
-
     }
     
 

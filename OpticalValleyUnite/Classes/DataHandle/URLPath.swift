@@ -40,6 +40,12 @@ struct URLPath {
     //获取配件库主页数据接口
     static let getPartsHome = "parts/list.do"
     
+    
+    
+    //获取子系统选择的接口
+    static let getSystemSelection = "module/getModuleAndAppRes.do"
+    
+    
     //获取督办接口
     static let getSurveillanceWorkOrderList = "workunit/workunitSuperviseList.do"
     //获取房屋空间信息

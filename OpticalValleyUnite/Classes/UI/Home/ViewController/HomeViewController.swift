@@ -217,16 +217,18 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             }
             
         }) { (error) in
+            
             print(error)
         }
     }
     
     //MARK: - 获取读完工单数量
     func getStaticWorkunitDB(){
+        
         HttpClient.instance.get(path: URLPath.getStaticWorkunitDB, parameters: nil, success: { (respose) in
             
-
             if let dic = respose as? [String: Any]{
+                
                 let workCount = dic["DBSX"] as? Int ?? 0
                 let dubanCount = dic["DDB"] as? Int ?? 0
                 let tatolCount = workCount + dubanCount
@@ -242,6 +244,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }) { (error) in
             print(error)
         }
+        
     }
     
 
@@ -507,9 +510,9 @@ extension HomeViewController: AMapLocationManagerDelegate{
                 }
             })
         }
-        
     }
 }
+
 
 extension HomeViewController:SGScanningQRCodeVCDelegate{
 

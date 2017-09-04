@@ -35,16 +35,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         if #available(iOS 10.0, *) {
+            
             let center = UNUserNotificationCenter.current()
             center.delegate = self
             //let types =
             center.requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted,error in
                 
-                
             })
             
-            
         } else {
+            
             let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
@@ -76,6 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
 }
 
 
@@ -104,7 +106,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
             //应用处于后台时的本地推送接受
         }
         
-        
     }
     ////iOS10新增：处理前台收到通知的代理方法
     @available(iOS 10.0, *)
@@ -124,9 +125,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         completionHandler(UNNotificationPresentationOptions.alert)
     }
     
-    
-    
-
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = NSData(data: deviceToken).description.replacingOccurrences(of: "<", with: "").replacingOccurrences(of: ">", with: "").replacingOccurrences(of: " ", with: "")
@@ -153,7 +151,6 @@ extension AppDelegate{
             print("没有登录")
             return
         }
-        
         
         //应用处于后台时的远程推送接受
         if let type = userInfo["type"] as? String{

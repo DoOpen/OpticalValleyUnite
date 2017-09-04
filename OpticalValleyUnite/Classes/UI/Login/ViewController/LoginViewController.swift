@@ -85,8 +85,7 @@ class LoginViewController: UIViewController {
     @IBAction func forgotPasswordBtnClick(_ sender: Any) {
         //忘记密码的功能接口的
         
-        
-        
+    
     }
   
     

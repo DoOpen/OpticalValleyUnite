@@ -45,7 +45,7 @@
             <connections>
                 <outlet property="makeSureCheck" destination="Rta-L9-3im" id="4d9-ID-7Ru"/>
             </connections>
-            <point key="canvasLocation" x="-319" y="138"/>
+            <point key="canvasLocation" x="-548" y="136"/>
         </tableViewCell>
     </objects>
 </document>

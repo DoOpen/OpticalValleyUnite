@@ -11,19 +11,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="73" id="7WK-jR-pXy" customClass="YQPartDataFooterCell" customModule="OpticalValleyUnite" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="449" height="73"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NPm-ae-jcs" customClass="YQPartDataSelectCell" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7WK-jR-pXy" id="Xyg-cM-f4w" customClass="YQPartDataFooterCell" customModule="OpticalValleyUnite" customModuleProvider="target">
-                <rect key="frame" x="0.0" y="0.0" width="449" height="72.5"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NPm-ae-jcs" id="dHF-wn-yjd">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VR5-zc-VGb">
-                        <rect key="frame" x="0.0" y="0.0" width="449" height="72.5"/>
-                        <color key="backgroundColor" red="0.44571961450000003" green="0.68072509299999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ymk-GQ-jiL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                        <color key="backgroundColor" red="0.50602557429999995" green="0.79368380729999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <state key="normal" title="完成">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -31,19 +31,18 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
-                            <action selector="complete:" destination="7WK-jR-pXy" eventType="touchUpInside" id="jib-4Q-h72"/>
+                            <action selector="complete:" destination="NPm-ae-jcs" eventType="touchUpInside" id="ubq-u9-vd0"/>
                         </connections>
                     </button>
                 </subviews>
-                <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="VR5-zc-VGb" firstAttribute="leading" secondItem="Xyg-cM-f4w" secondAttribute="leading" id="SuO-m7-sFc"/>
-                    <constraint firstAttribute="bottom" secondItem="VR5-zc-VGb" secondAttribute="bottom" id="beG-Rx-OrW"/>
-                    <constraint firstAttribute="trailing" secondItem="VR5-zc-VGb" secondAttribute="trailing" id="h7z-SF-T8f"/>
-                    <constraint firstItem="VR5-zc-VGb" firstAttribute="top" secondItem="Xyg-cM-f4w" secondAttribute="top" id="tkF-tW-wwV"/>
+                    <constraint firstAttribute="bottom" secondItem="Ymk-GQ-jiL" secondAttribute="bottom" id="KNC-gc-WOI"/>
+                    <constraint firstAttribute="trailing" secondItem="Ymk-GQ-jiL" secondAttribute="trailing" id="XK3-3P-ILG"/>
+                    <constraint firstItem="Ymk-GQ-jiL" firstAttribute="top" secondItem="dHF-wn-yjd" secondAttribute="top" id="mbi-g3-rYh"/>
+                    <constraint firstItem="Ymk-GQ-jiL" firstAttribute="leading" secondItem="dHF-wn-yjd" secondAttribute="leading" id="vzK-AL-qyQ"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="48" y="229"/>
+            <point key="canvasLocation" x="-548" y="136"/>
         </tableViewCell>
     </objects>
 </document>

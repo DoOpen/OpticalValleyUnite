@@ -8,11 +8,10 @@
 
 import UIKit
 
-protocol YQPartDataFooterCellButtonDelegate : class{
+protocol YQPartDataAllFooterCellButtonDelegate : class{
     
     func partDataFooterMakeSureCheckDelegate()
     
-    func partDataFooterCompleteDelegate()
     
 }
 
@@ -22,19 +21,16 @@ class YQPartDataFooterCell: UITableViewCell {
     @IBOutlet weak var makeSureCheck: UIButton!
     
     /// 定义代理
-    weak var delegate : YQPartDataFooterCellButtonDelegate?
+    weak var delegate : YQPartDataAllFooterCellButtonDelegate?
+    
+    
     
     @IBAction func makeSureCheck(_ sender: Any) {
         
         self.delegate?.partDataFooterMakeSureCheckDelegate()
     }
     
-    // MARK: - 完成按钮的点击事件
-    @IBAction func complete(_ sender: Any) {
-        
-        self.delegate?.partDataFooterCompleteDelegate()
-        
-    }
+    
     
 
 }

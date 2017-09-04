@@ -158,6 +158,7 @@ class YQPartsLibaryViewController: UIViewController {
             self.tableViewFrist = tabelV
 
         }else{
+            
             let tabelV = UITableView()
             tabelV.dataSource = self as UITableViewDataSource
             tabelV.delegate = self as UITableViewDelegate
@@ -173,9 +174,8 @@ class YQPartsLibaryViewController: UIViewController {
 
     // MARK: - 点击右边完成按钮
      func rightBarButtonClick(){
+        
         //直接调去保存接口进行实现
-        
-        
         // dimiss
         self.navigationController?.popViewController(animated: true)
         
@@ -185,30 +185,30 @@ class YQPartsLibaryViewController: UIViewController {
     // MARK: - 配件按钮的选择
     ///所有配件
     @IBAction func allPartsButtonClick() {
+        
         allPartsButton.isSelected = true
         selectPartsButton.isSelected = false
         
         self.contentScrollView.setContentOffset(CGPoint(x:0 , y: 0), animated: true)
-        //重新加载,清空渲染tableViewSecond数据
-        
         
         
     }
+    
     ///已选配件
     @IBAction func selectPartsButtonClick() {
+        
         allPartsButton.isSelected = false
         selectPartsButton.isSelected = true
         
         self.contentScrollView.setContentOffset(CGPoint(x: self.contentScrollView.bounds.width , y: 0), animated: true)
         
-        //调用数据,进行渲染tableViewSecond
+        self.tableViewSecond.reloadData()
         
-
     }
    
 }
 
-extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,YQPartDataCellSwitchDelegate,YQPartDataFooterCellButtonDelegate{
+extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,YQPartDataCellSwitchDelegate,YQPartDataAllFooterCellButtonDelegate,YQPartDataSelectFooterCellButtonDelegate{
     
     // MARK: - tableView的代理方法
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -229,28 +229,30 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
         if tableView == self.tableViewFrist{
         
             cell.delegate = self as YQPartDataCellSwitchDelegate
-//            let status = dataPart![indexPath.row]
+            let status = dataPart![indexPath.row]
             //传对应的模型给cell
             cell.modelcell  = dataPart![indexPath.row]
             cell.indexPath = indexPath.row
             
-//            cell.part.text = status.position
-//            cell.partName.text = status.partsName
-
+            //添加选择数据
+            if cell.switch.isSelected {
+                
+                selectData.add(status)
+                
+            }
+        
         }else{
             
-            var temp = [String: PartsModel]()
-
-            temp = (selectData[indexPath.row] as? [String: PartsModel])!
-            
-            cell.modelcell = temp["\(self.selectIndex)"]
+//            var temp = [String: PartsModel]()
+//            temp = (selectData[indexPath.row] as? [String: PartsModel])!
+            cell.modelcell = selectData[indexPath.row] as? PartsModel
             cell.indexPath = indexPath.row
  
-        
         }
     
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -259,27 +261,22 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-    
         if tableView == tableViewSecond {
             
-            let view = Bundle.main.loadNibNamed("YQPartDataSelect", owner: nil, options: nil)![0] as? YQPartDataFooterCell
-            view?.delegate = self as YQPartDataFooterCellButtonDelegate
+            let view = Bundle.main.loadNibNamed("YQPartDataSelect", owner: nil, options: nil)![0] as? YQPartDataSelectCell
+            view?.delegate = self as YQPartDataSelectFooterCellButtonDelegate
+            
             return view
 
         }else{
         
             let view = Bundle.main.loadNibNamed("YQPartDataAll", owner: nil, options: nil)![0] as? YQPartDataFooterCell
-            view?.delegate = self as YQPartDataFooterCellButtonDelegate
+            view?.delegate = self as YQPartDataAllFooterCellButtonDelegate
             return view
         }
         
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//        
-//        
-//    }
     
     //headView的高度:
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -311,8 +308,8 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
                     if let data:NSDictionary = value["data"] as? NSDictionary {
                         
                         if let partList:NSArray = data["list"] as? NSArray {
-                            //遍历数组,字典转模型,最核心的是,将字典数组,转化成模型来进行
-                            //                            print(partList)
+                            //  遍历数组,字典转模型,最核心的是,将字典数组,转化成模型来进行
+                            //  print(partList)
                             var model = [PartsModel]()
                             
                             for dic in partList{
@@ -372,25 +369,35 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
 //        var newmodel = [Any]()
 //        newmodel.append(model)
 //        newmodel.append(num)
-        model.partNum = num
-        var temp = [String: PartsModel]()
-        temp["\(numIndex)"] = model
-        self.selectIndex = numIndex
-        self.selectData.add(temp)
+//        model.partNum = num
+        
+//        print("点击的行号" + num)
+//        print( numIndex )
+        //代理的方法,暂时是没有作用的
+        
+        
+//        let indexPath: IndexPath = IndexPath.init(row: numIndex, section: 0)
+//        self.tableViewFrist.reloadRows(at: [indexPath], with: .fade)
+        
+        
+//        var temp = [String: PartsModel]()
+//        temp["\(numIndex)"] = model
+//        self.selectIndex = numIndex
+//        self.selectData.add(model)
 //        self.tableViewSecond .reloadData()
         
     }
     
     func partDataCellSwitchDelegateMoveModel(numIndex: Int, model: PartsModel) {
         
-        var dic = [String: PartsModel]()
-        for dict in self.selectData{
-            //移除指定内容的 model
-//            print(dict)
-            dic = dict as! [String : PartsModel]
-            dic.removeValue(forKey: "\(numIndex)")
-            
-        }
+//        var dic = [String: PartsModel]()
+//        for dict in self.selectData{
+//            //移除指定内容的 model
+////            print(dict)
+//            dic = dict as! [String : PartsModel]
+//            dic.removeValue(forKey: "\(numIndex)")
+        
+//        }
         
 //        self.selectIndex = numIndex
 //        self.tableViewSecond.reloadData()
@@ -400,15 +407,25 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     // MARK: - YQPartDataFooterCellButtonDelegate代理方法
     //已选完成界面的实现
     func partDataFooterCompleteDelegate() {
-        //1.拿数据,以及界面跳转
+        //1.现在读取已选数据,思路是 刷新表格,进行数据添加
+
+        //2.以及界面跳转
         self.selectPartsButtonClick()
-        
+        self.navigationController?.popViewController(animated: true)
         
     }
     
     //所有界面的 确认勾选的实现
     func partDataFooterMakeSureCheckDelegate() {
         
+        //重新加载allPart,清空渲染tableViewSecond数据
+        self.selectData.removeAllObjects()
+        
+        //逻辑调整
+        tableViewFrist.reloadData()
+
+        //传递已选配件,pop相应控件
+        self.selectPartsButtonClick()
         
     }
     

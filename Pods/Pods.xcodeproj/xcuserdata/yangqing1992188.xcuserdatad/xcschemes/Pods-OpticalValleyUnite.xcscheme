@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "91CDEF11CF3E42CE9267A6E56EC2B9E8"
+               BlueprintIdentifier = "8AC01F287D6CEE3BEE6CBF431967975A"
                BuildableName = "Pods_OpticalValleyUnite.framework"
                BlueprintName = "Pods-OpticalValleyUnite"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "91CDEF11CF3E42CE9267A6E56EC2B9E8"
+            BlueprintIdentifier = "8AC01F287D6CEE3BEE6CBF431967975A"
             BuildableName = "Pods_OpticalValleyUnite.framework"
             BlueprintName = "Pods-OpticalValleyUnite"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "91CDEF11CF3E42CE9267A6E56EC2B9E8"
-            BuildableName = "Pods_OpticalValleyUnite.framework"
-            BlueprintName = "Pods-OpticalValleyUnite"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

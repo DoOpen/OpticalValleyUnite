@@ -42,7 +42,8 @@ class AppraisalViewController: UIViewController {
             btn.isSelected = btn.tag < sender.tag + 1
         }
     }
-
+    
+    // MARK: - 提交评价按钮的点击
     @IBAction func doneBtnClick() {
         
         var parmat = [String: Any]()
@@ -52,15 +53,18 @@ class AppraisalViewController: UIViewController {
         if let btn = selectStatBtn {
             parmat["EVALUATE_SCORE"] = (btn.tag + 1)
         }else{
-            SVProgressHUD.showError(withStatus: "请先打分...")
-            return
+            //代码修改,逻辑调整, 不打分也能提交评价
+//            SVProgressHUD.showError(withStatus: "请先打分...")
+            
+            parmat["EVALUATE_SCORE"] = 1
+            
+//            return
         }
         
 //        guard textView.text != "" else {
 //            SVProgressHUD.showError(withStatus: "必须输入评价内容")
 //            return
-//        }
-//        
+//        }     
         
         let images = addPhotoView.photos.map{$0.image}
         if images.count > 0 {

@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Photos
 import Alamofire
-//import SnapKit
+import SnapKit
 
 let KDistence = 50.0
 
@@ -18,6 +18,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     @IBOutlet weak var messageBtn: UIButton!
     @IBOutlet weak var scanBtn: UIButton!
+    
+    var eixtButton : UIButton! = nil
+    
     
     
 /// 模型的数据解析model.swift中的类
@@ -52,6 +55,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     // MARK: - 视图生命周期方法
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         navigationItem.title = "光谷联合"
@@ -90,8 +94,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
         }else{
             
-            
-            
             self.top1BtnView.textLabel.text = "工单"
             self.top1BtnView.imageView.image = UIImage(named: "工单")
             
@@ -103,8 +105,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             self.top4BtnView.textLabel.text = "扫描"
             self.top4BtnView.imageView.image = UIImage(named: "扫描")
-            
-            
             
             self.donw1BtnView.textLabel.text = "定位"
             self.donw1BtnView.imageView.image = UIImage(named: "dingwei")
@@ -120,6 +120,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         checkNewBundleVersion(isBlack: true)
         
+        //创建添加 退出悬浮按钮
+        addSuspendButton()
+        
     }
 
 
@@ -128,11 +131,14 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         //调用获取工单的数量
         getStaticWorkunitDB()
+        
+        
     }
     
     
     // MARK: - 接受服务器系统消息
     func getSystemMessage(){
+        
         HttpClient.instance.get(path: URLPath.systemMessage, parameters: nil, success: { (respose) in
             
             var temp = [SystemMessageModel]()
@@ -141,9 +147,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             }
             self.datas = temp
             self.tableView.reloadData()
-            
-
-            
+        
         }) { (error) in
             print(error)
         }
@@ -190,7 +194,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
 
     }
     
-    // MARK: - 获取不同管理员权限的方法
+    // MARK: - 获取不同管理员权限的方法,首页数据获取核心方法 getModules的接口
     func getPermission(){
         //调用权限的情况
         HttpClient.instance.get(path: URLPath.getModules, parameters: nil, success: { (respose) in
@@ -213,7 +217,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 } catch  {
                     print("转换错误 ")
                 }
-                
             }
             
         }) { (error) in
@@ -363,6 +366,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
     }
     
+    
+    
     func uploadLocation(parmat: [String: Any]){
 //        if lastUpdateTime.timeIntervalSinceNow < -3.0 * 60{
             lastUpdateTime = Date()
@@ -432,6 +437,32 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
     }
     
+    
+    // MARK: - 添加按钮悬浮
+    func addSuspendButton(){
+        
+        let button = UIButton()
+        button.setImage( UIImage(named : "btn_home_quit_nor" ), for: UIControlState.normal)
+        
+        button.setImage( UIImage(named : "btn_home_quit_p" ), for: UIControlState.highlighted)
+        button.frame = CGRect(x: 100, y: 100, width: 60, height: 60)
+        
+        view.addSubview(button)
+        self.eixtButton = button
+        
+        //设置约束布局
+        button.snp.makeConstraints { (make) in
+            make.right.equalTo(40)
+            make.bottom.equalTo(100)
+            make.height.equalTo(60)
+            make.width.equalTo(60)
+        }
+        
+        view.bringSubview(toFront: button)
+    
+    }
+    
+    
     func surveillanceWorkOrderBtnClick() {
         let vc = SurveillanceWorkOrderViewController.loadFromStoryboard(name: "WorkOrder")
         navigationController?.pushViewController(vc, animated: true)
@@ -442,6 +473,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         vc.equipmentId = equipmentId
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
     
 }
 

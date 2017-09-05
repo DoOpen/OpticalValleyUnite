@@ -19,8 +19,6 @@ class YQSystemSelectionVC: UIViewController {
         
         self.systemSelectionNetworkInterface()
         
-        
-        
     }
     
     

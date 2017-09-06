@@ -20,6 +20,7 @@
 		2F648DAF1F57C045006D51D3 /* YQPartDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F648DAE1F57C045006D51D3 /* YQPartDataCell.swift */; };
 		2F648DB11F57C063006D51D3 /* YQPartDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F648DB01F57C063006D51D3 /* YQPartDataCell.xib */; };
 		2F6A83911F5CE073002BB61C /* YQPartDataSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */; };
+		2FE08F2B1F5F8A0A00D6F51D /* YQSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE08F2A1F5F8A0A00D6F51D /* YQSystemView.swift */; };
 		4B01B08C1ED928AF002A61C9 /* ReportListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */; };
 		4B1558AF1F131AA70023F14D /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1558AE1F131AA70023F14D /* DeviceView.swift */; };
 		4B19ACE41E7A3D26008A8166 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19ACE31E7A3D26008A8166 /* User.swift */; };
@@ -188,6 +189,7 @@
 		2F648DAE1F57C045006D51D3 /* YQPartDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataCell.swift; sourceTree = "<group>"; };
 		2F648DB01F57C063006D51D3 /* YQPartDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartDataCell.xib; sourceTree = "<group>"; };
 		2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataSelectCell.swift; sourceTree = "<group>"; };
+		2FE08F2A1F5F8A0A00D6F51D /* YQSystemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQSystemView.swift; sourceTree = "<group>"; };
 		4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportListViewController.swift; sourceTree = "<group>"; };
 		4B1558AE1F131AA70023F14D /* DeviceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		4B19ACE31E7A3D26008A8166 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 		2F5E8C4D1F59598400007717 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2FE08F2A1F5F8A0A00D6F51D /* YQSystemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1259,6 +1262,7 @@
 				4BF807031F0E28D00047E129 /* ChooseDeviceViewController.swift in Sources */,
 				4BBBEC9C1E2CAD5700F60313 /* SJTakePhotoHandle.m in Sources */,
 				4B1DEC641E31BE01000917D2 /* MapViewController.swift in Sources */,
+				2FE08F2B1F5F8A0A00D6F51D /* YQSystemView.swift in Sources */,
 				4B1DEC581E31B646000917D2 /* SGGenerateQRCodeVC.m in Sources */,
 				4B6E64F91EEAEFCF00BA23E4 /* Photo.swift in Sources */,
 				4B50D62F1EBB1B3900BB480F /* AllViewController.swift in Sources */,

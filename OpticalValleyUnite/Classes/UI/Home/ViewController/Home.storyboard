@@ -71,14 +71,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQU-WI-BZd" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                         <rect key="frame" x="239" y="64" width="40" height="95"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6w-Uv-em6">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6w-Uv-em6">
                                                 <rect key="frame" x="0.0" y="15" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Z6w-Uv-em6" secondAttribute="height" id="mUJ-kB-wCd"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="督办"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="督办" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-A7-g8R">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="督办" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-A7-g8R">
                                                 <rect key="frame" x="0.0" y="64" width="40" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,7 +99,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="522-aS-wj6" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                         <rect key="frame" x="32" y="64" width="40" height="95"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQV-wy-NJ7">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQV-wy-NJ7">
                                                 <rect key="frame" x="0.0" y="15" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="NQV-wy-NJ7" secondAttribute="height" id="4xc-hI-vG6"/>
@@ -107,7 +107,7 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="报事"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="报事" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="CDS-6N-hzt">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="报事" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="CDS-6N-hzt">
                                                 <rect key="frame" x="0.0" y="64" width="40" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -127,14 +127,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACN-td-8Ge" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                         <rect key="frame" x="342" y="64" width="40" height="95"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmJ-fz-G1K">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmJ-fz-G1K">
                                                 <rect key="frame" x="0.0" y="15" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="qmJ-fz-G1K" secondAttribute="height" id="p2H-OJ-F7p"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="扫描"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫描" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XE-wL-ndy">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫描" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XE-wL-ndy">
                                                 <rect key="frame" x="0.0" y="64" width="40" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -209,7 +209,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8SK-bd-dhs" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erJ-Ss-bgi">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erJ-Ss-bgi">
                                                         <rect key="frame" x="32" y="15" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="erJ-Ss-bgi" secondAttribute="height" id="Ox1-2r-zZF"/>
@@ -217,7 +217,7 @@
                                                         </constraints>
                                                         <state key="normal" backgroundImage="door"/>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="智能开门" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5R4-J4-UKf">
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="智能开门" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5R4-J4-UKf">
                                                         <rect key="frame" x="0.0" y="64" width="104" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
@@ -258,7 +258,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heH-Cf-e0j" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93G-U7-N5x">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93G-U7-N5x">
                                                         <rect key="frame" x="32" y="15" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="93G-U7-N5x" secondAttribute="height" id="RmD-wS-ULn"/>
@@ -266,7 +266,7 @@
                                                         </constraints>
                                                         <state key="normal" backgroundImage="dingwei"/>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSW-mj-DHy">
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSW-mj-DHy">
                                                         <rect key="frame" x="0.0" y="64" width="104" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
@@ -473,6 +473,18 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="mi8-fu-Beq"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItE-1g-Tdh">
+                                <rect key="frame" x="314" y="567" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="NZ9-3m-ZJg"/>
+                                    <constraint firstAttribute="height" constant="60" id="fh1-tc-DL5"/>
+                                </constraints>
+                                <state key="normal" image="btn_home_quit_nor"/>
+                                <state key="highlighted" image="btn_home_quit_p"/>
+                                <connections>
+                                    <action selector="suspendButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9v6-Ax-lKU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -482,9 +494,11 @@
                             <constraint firstAttribute="trailing" secondItem="eJ7-xV-TzL" secondAttribute="trailing" id="Jm2-UO-baO"/>
                             <constraint firstAttribute="trailing" secondItem="8Xw-GY-sNP" secondAttribute="trailing" id="LBd-fZ-4LX"/>
                             <constraint firstItem="Qtx-ni-0hT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="M8w-Cb-bLQ"/>
+                            <constraint firstAttribute="trailing" secondItem="ItE-1g-Tdh" secondAttribute="trailing" constant="40" id="VhA-Ut-CyN"/>
                             <constraint firstItem="QmW-kA-3Un" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cuz-yS-k0V"/>
                             <constraint firstAttribute="trailing" secondItem="QmW-kA-3Un" secondAttribute="trailing" id="lvo-De-uKC"/>
                             <constraint firstItem="QmW-kA-3Un" firstAttribute="top" secondItem="8Xw-GY-sNP" secondAttribute="bottom" constant="10" id="mqA-Gu-XwL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ItE-1g-Tdh" secondAttribute="bottom" constant="60" id="s3r-Z1-sF3"/>
                             <constraint firstItem="eJ7-xV-TzL" firstAttribute="top" secondItem="QmW-kA-3Un" secondAttribute="bottom" id="sXp-Hy-rgg"/>
                             <constraint firstItem="8Xw-GY-sNP" firstAttribute="top" secondItem="Qtx-ni-0hT" secondAttribute="bottom" id="v0a-5h-3yv"/>
                             <constraint firstItem="8Xw-GY-sNP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="x2g-gT-S1U"/>
@@ -512,7 +526,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2994" y="-106"/>
+            <point key="canvasLocation" x="3249" y="-121"/>
         </scene>
         <!--WorkOrder-->
         <scene sceneID="cT2-oD-UIH">
@@ -552,7 +566,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ej7-W5-Ur9">
-                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="32" y="15" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="6Os-tu-xAh"/>
                                                             <constraint firstAttribute="width" secondItem="ej7-W5-Ur9" secondAttribute="height" id="uPh-82-WhE"/>
@@ -588,13 +602,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jHk-eb-CnR">
-                                        <rect key="frame" x="104" y="0.0" width="103" height="89"/>
+                                        <rect key="frame" x="104" y="0.0" width="104" height="89"/>
                                         <subviews>
                                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qx-3w-EMK" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="103" height="89"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxm-u7-wS5">
-                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="31.666666666666657" y="15" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Pxm-u7-wS5" secondAttribute="height" id="MXI-8A-A0k"/>
                                                             <constraint firstAttribute="height" constant="40" id="VuQ-ms-DbT"/>
@@ -605,7 +619,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签到" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jd-XE-Q4l">
-                                                        <rect key="frame" x="0.0" y="64" width="103" height="16"/>
+                                                        <rect key="frame" x="0.0" y="64" width="104" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -630,13 +644,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h89-gY-Rn9">
-                                        <rect key="frame" x="207" y="0.0" width="103" height="89"/>
+                                        <rect key="frame" x="208" y="0.0" width="104" height="89"/>
                                         <subviews>
                                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aki-JZ-Lak" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="103" height="89"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBB-EU-u7Y">
-                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="31.666666666666657" y="15" width="40.000000000000028" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="A8z-F0-tDZ"/>
                                                             <constraint firstAttribute="width" secondItem="lBB-EU-u7Y" secondAttribute="height" id="Qni-Uc-4Ej"/>
@@ -644,7 +658,7 @@
                                                         <state key="normal" backgroundImage="daiban"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="待办事项" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gab-jP-Icm">
-                                                        <rect key="frame" x="0.0" y="64" width="103" height="16"/>
+                                                        <rect key="frame" x="0.0" y="64" width="104" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -669,13 +683,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nzj-Pf-gOs">
-                                        <rect key="frame" x="310" y="0.0" width="103" height="89"/>
+                                        <rect key="frame" x="312" y="0.0" width="104" height="89"/>
                                         <subviews>
                                             <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaN-Iz-QO6" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="103" height="89"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOo-HS-qIY">
-                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="31.666666666666686" y="15" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="NmN-IF-zK9"/>
                                                             <constraint firstAttribute="width" secondItem="ZOo-HS-qIY" secondAttribute="height" id="pay-OK-c5M"/>
@@ -683,7 +697,7 @@
                                                         <state key="normal" backgroundImage="xueyuan"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="丽岛学院" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuS-6w-h9C">
-                                                        <rect key="frame" x="0.0" y="64" width="103" height="16"/>
+                                                        <rect key="frame" x="0.0" y="64" width="104" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -739,7 +753,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2p-om-XVC">
-                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="32" y="15" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="6AD-9N-jz2"/>
                                                             <constraint firstAttribute="width" secondItem="d2p-om-XVC" secondAttribute="height" id="V5w-IF-gfC"/>
@@ -772,13 +786,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vBv-DK-BdO">
-                                        <rect key="frame" x="104" y="0.0" width="103" height="89"/>
+                                        <rect key="frame" x="104" y="0.0" width="104" height="89"/>
                                         <subviews>
                                             <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wrb-qv-iCQ" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="103" height="89"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bic-If-BKO">
-                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="31.666666666666657" y="15" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Bic-If-BKO" secondAttribute="height" id="UpW-Fe-yi4"/>
                                                             <constraint firstAttribute="height" constant="40" id="ifC-jR-Q29"/>
@@ -789,7 +803,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0I-dP-Ixi">
-                                                        <rect key="frame" x="0.0" y="64" width="103" height="16"/>
+                                                        <rect key="frame" x="0.0" y="64" width="104" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -814,13 +828,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUm-Cy-zO8">
-                                        <rect key="frame" x="207" y="0.0" width="103" height="89"/>
+                                        <rect key="frame" x="208" y="0.0" width="104" height="89"/>
                                         <subviews>
                                             <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSv-2b-VRF" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="103" height="89"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abl-i4-4UK">
-                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="31.666666666666657" y="15" width="40.000000000000028" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Abl-i4-4UK" secondAttribute="height" id="pdv-jy-vJs"/>
                                                             <constraint firstAttribute="height" constant="40" id="vlH-uQ-feZ"/>
@@ -828,7 +842,7 @@
                                                         <state key="normal" backgroundImage="dingwei"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE3-Zv-8Za">
-                                                        <rect key="frame" x="0.0" y="64" width="103" height="16"/>
+                                                        <rect key="frame" x="0.0" y="64" width="104" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -853,13 +867,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YI1-ab-Enb">
-                                        <rect key="frame" x="310" y="0.0" width="104" height="89"/>
+                                        <rect key="frame" x="312" y="0.0" width="102" height="89"/>
                                         <subviews>
                                             <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4aR-ru-JlT" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="102" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4v-dR-Xp2">
-                                                        <rect key="frame" x="32" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="b8T-qq-goS"/>
                                                             <constraint firstAttribute="width" secondItem="l4v-dR-Xp2" secondAttribute="height" id="xwu-Uq-Ifa"/>
@@ -867,7 +881,7 @@
                                                         <state key="normal" backgroundImage="dingwei"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0A7-IK-zIW">
-                                                        <rect key="frame" x="0.0" y="64" width="104" height="16"/>
+                                                        <rect key="frame" x="0.0" y="64" width="102" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -923,7 +937,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFd-Pf-8YU">
-                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="32" y="15" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="jFd-Pf-8YU" secondAttribute="height" id="5vH-3M-b36"/>
                                                             <constraint firstAttribute="height" constant="40" id="Pxc-V8-jts"/>
@@ -956,13 +970,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PF5-yX-ugf">
-                                        <rect key="frame" x="104" y="0.0" width="103" height="89"/>
+                                        <rect key="frame" x="104" y="0.0" width="104" height="89"/>
                                         <subviews>
                                             <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cN9-vb-kEd" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="103" height="89"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9IW-bx-gEy">
-                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="31.666666666666657" y="15" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="9IW-bx-gEy" secondAttribute="height" id="C1p-D8-iht"/>
                                                             <constraint firstAttribute="height" constant="40" id="gGQ-BW-gNv"/>
@@ -970,7 +984,7 @@
                                                         <state key="normal" backgroundImage="dingwei"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kaf-1a-A86">
-                                                        <rect key="frame" x="0.0" y="64" width="103" height="16"/>
+                                                        <rect key="frame" x="0.0" y="64" width="104" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -995,13 +1009,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04A-i8-Mod">
-                                        <rect key="frame" x="207" y="0.0" width="103" height="89"/>
+                                        <rect key="frame" x="208" y="0.0" width="104" height="89"/>
                                         <subviews>
                                             <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVu-NQ-Izi" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="103" height="89"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7n-kL-Lbz">
-                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="31.666666666666657" y="15" width="40.000000000000028" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="U7n-kL-Lbz" secondAttribute="height" id="Q37-aJ-hQT"/>
                                                             <constraint firstAttribute="height" constant="40" id="uCA-0f-72V"/>
@@ -1009,7 +1023,7 @@
                                                         <state key="normal" backgroundImage="dingwei"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0h-00-GwU">
-                                                        <rect key="frame" x="0.0" y="64" width="103" height="16"/>
+                                                        <rect key="frame" x="0.0" y="64" width="104" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1034,13 +1048,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7jV-Ky-QV1">
-                                        <rect key="frame" x="310" y="0.0" width="104" height="89"/>
+                                        <rect key="frame" x="312" y="0.0" width="102" height="89"/>
                                         <subviews>
                                             <view tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHg-0x-AxM" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="102" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6g-bv-UHR">
-                                                        <rect key="frame" x="32" y="15" width="40" height="40"/>
+                                                        <rect key="frame" x="31" y="15" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="k6g-bv-UHR" secondAttribute="height" id="HUu-We-r3x"/>
                                                             <constraint firstAttribute="height" constant="40" id="R9L-Ay-BiZ"/>
@@ -1048,7 +1062,7 @@
                                                         <state key="normal" backgroundImage="dingwei"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLi-B0-RRD">
-                                                        <rect key="frame" x="0.0" y="64" width="104" height="16"/>
+                                                        <rect key="frame" x="0.0" y="64" width="102" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1801,6 +1815,8 @@
     <resources>
         <image name="all" width="30" height="30"/>
         <image name="baoshi" width="30" height="30"/>
+        <image name="btn_home_quit_nor" width="60" height="60"/>
+        <image name="btn_home_quit_p" width="60" height="60"/>
         <image name="daiban" width="30" height="30"/>
         <image name="dingwei" width="30" height="30"/>
         <image name="door" width="30" height="30"/>

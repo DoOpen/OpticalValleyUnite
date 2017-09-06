@@ -25,7 +25,7 @@ struct URLPath {
     ///主机地址
 //    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
     //服务器的basic 地址:
-    static let basicPath = "http://demo.ovuems.com/ovu-pcos/api/"
+    static let basicPath = "http://test.ovuems.com/ovu-pcos/api/"
 
     static let login = "user/login.do"
     static let systemMessage = "message/importentMsg.do"
@@ -37,14 +37,14 @@ struct URLPath {
     static let getWorkDetail = "workunit/workunitDetailById.do"
     static let getWorkTypeList = "workunit/getWorkTypeList.do"
     
+    //子系统选择图片服务器的地址
+    static let systemSelectionURL = "http://test.ovuems.com/ovu-pcos/"
+    
     //获取配件库主页数据接口
     static let getPartsHome = "parts/list.do"
     
-    
-    
     //获取子系统选择的接口
     static let getSystemSelection = "module/getModuleAndAppRes.do"
-    
     
     //获取督办接口
     static let getSurveillanceWorkOrderList = "workunit/workunitSuperviseList.do"

@@ -49,7 +49,13 @@ class YQPartsLibaryViewController: UIViewController {
 //        }
 //    }
     
-    var selectData:NSMutableArray = { return NSMutableArray() }()
+    var selectData:NSMutableArray = { return NSMutableArray() }(){
+        didSet{
+        
+        
+        }
+    
+    }
     
     var selectIndex : Int = 0
     

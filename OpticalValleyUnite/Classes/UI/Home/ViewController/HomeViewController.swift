@@ -22,7 +22,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     var eixtButton : UIButton! = nil
     
     
-    
 /// 模型的数据解析model.swift中的类
     var datas = [SystemMessageModel]()
     
@@ -121,7 +120,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         checkNewBundleVersion(isBlack: true)
         
         //创建添加 退出悬浮按钮
-        addSuspendButton()
+//        addSuspendButton()
         
     }
 
@@ -439,28 +438,40 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     
     // MARK: - 添加按钮悬浮
-    func addSuspendButton(){
-        
-        let button = UIButton()
-        button.setImage( UIImage(named : "btn_home_quit_nor" ), for: UIControlState.normal)
-        
-        button.setImage( UIImage(named : "btn_home_quit_p" ), for: UIControlState.highlighted)
-        button.frame = CGRect(x: 100, y: 100, width: 60, height: 60)
-        
-        view.addSubview(button)
-        self.eixtButton = button
-        
-        //设置约束布局
-        button.snp.makeConstraints { (make) in
-            make.right.equalTo(40)
-            make.bottom.equalTo(100)
-            make.height.equalTo(60)
-            make.width.equalTo(60)
-        }
-        
-        view.bringSubview(toFront: button)
     
+    @IBAction func suspendButtonClick(_ sender: Any) {
+        //跳转到子系统的选择界面
+        let systemVC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
+//        let VC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
+        
+        SJKeyWindow?.rootViewController = systemVC
+        
     }
+    
+    
+//    func addSuspendButton(){
+//        
+//        let button = UIButton()
+//        button.setImage( UIImage(named : "btn_home_quit_nor" ), for: UIControlState.normal)
+//        
+//        button.setImage( UIImage(named : "btn_home_quit_p" ), for: UIControlState.highlighted)
+//        button.frame = CGRect(x: 100, y: 100, width: 60, height: 60)
+//        
+//        button.backgroundColor = UIColor.blue
+//        view.addSubview(button)
+//        self.eixtButton = button
+//        
+//        //设置约束布局
+//        button.snp.makeConstraints { (make) in
+//            make.right.equalTo(40)
+//            make.bottom.equalTo(100)
+//            make.height.equalTo(60)
+//            make.width.equalTo(60)
+//        }
+//        
+//        view.bringSubview(toFront: button)
+//    
+//    }
     
     
     func surveillanceWorkOrderBtnClick() {

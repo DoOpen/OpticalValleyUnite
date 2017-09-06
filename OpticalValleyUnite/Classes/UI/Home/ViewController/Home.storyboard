@@ -70,86 +70,23 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQU-WI-BZd" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                         <rect key="frame" x="239" y="64" width="40" height="95"/>
-                                        <subviews>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6w-Uv-em6">
-                                                <rect key="frame" x="0.0" y="15" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="Z6w-Uv-em6" secondAttribute="height" id="mUJ-kB-wCd"/>
-                                                </constraints>
-                                                <state key="normal" backgroundImage="督办"/>
-                                            </button>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="督办" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-A7-g8R">
-                                                <rect key="frame" x="0.0" y="64" width="40" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="HSr-A7-g8R" firstAttribute="top" secondItem="Z6w-Uv-em6" secondAttribute="bottom" constant="9" id="6dI-Xg-4dX"/>
-                                            <constraint firstAttribute="trailing" secondItem="HSr-A7-g8R" secondAttribute="trailing" id="H3a-tz-cXJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="Z6w-Uv-em6" secondAttribute="trailing" id="St8-c4-EUJ"/>
-                                            <constraint firstItem="Z6w-Uv-em6" firstAttribute="top" secondItem="vQU-WI-BZd" secondAttribute="top" constant="15" id="Zrq-vx-yCZ"/>
                                             <constraint firstAttribute="width" constant="40" id="l9x-1c-sDS"/>
-                                            <constraint firstItem="HSr-A7-g8R" firstAttribute="leading" secondItem="vQU-WI-BZd" secondAttribute="leading" id="oVr-ON-kh9"/>
-                                            <constraint firstItem="Z6w-Uv-em6" firstAttribute="leading" secondItem="vQU-WI-BZd" secondAttribute="leading" id="rWd-S4-B4r"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="522-aS-wj6" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                         <rect key="frame" x="32" y="64" width="40" height="95"/>
-                                        <subviews>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQV-wy-NJ7">
-                                                <rect key="frame" x="0.0" y="15" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="NQV-wy-NJ7" secondAttribute="height" id="4xc-hI-vG6"/>
-                                                    <constraint firstAttribute="width" constant="40" id="m6E-7a-SHg"/>
-                                                </constraints>
-                                                <state key="normal" backgroundImage="报事"/>
-                                            </button>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="报事" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="CDS-6N-hzt">
-                                                <rect key="frame" x="0.0" y="64" width="40" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="46s-Us-Xyk"/>
-                                            <constraint firstItem="CDS-6N-hzt" firstAttribute="top" secondItem="NQV-wy-NJ7" secondAttribute="bottom" constant="9" id="JTr-MK-Dp3"/>
-                                            <constraint firstItem="CDS-6N-hzt" firstAttribute="leading" secondItem="522-aS-wj6" secondAttribute="leading" id="aOp-o2-ON2"/>
-                                            <constraint firstAttribute="trailing" secondItem="CDS-6N-hzt" secondAttribute="trailing" id="cK0-AU-wH6"/>
-                                            <constraint firstItem="NQV-wy-NJ7" firstAttribute="centerX" secondItem="522-aS-wj6" secondAttribute="centerX" id="lke-HA-4S8"/>
-                                            <constraint firstItem="NQV-wy-NJ7" firstAttribute="top" secondItem="522-aS-wj6" secondAttribute="top" constant="15" id="taq-C7-rKj"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACN-td-8Ge" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                         <rect key="frame" x="342" y="64" width="40" height="95"/>
-                                        <subviews>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmJ-fz-G1K">
-                                                <rect key="frame" x="0.0" y="15" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="qmJ-fz-G1K" secondAttribute="height" id="p2H-OJ-F7p"/>
-                                                </constraints>
-                                                <state key="normal" backgroundImage="扫描"/>
-                                            </button>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫描" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XE-wL-ndy">
-                                                <rect key="frame" x="0.0" y="64" width="40" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="qmJ-fz-G1K" firstAttribute="leading" secondItem="ACN-td-8Ge" secondAttribute="leading" id="66p-sL-7fF"/>
-                                            <constraint firstItem="2XE-wL-ndy" firstAttribute="leading" secondItem="ACN-td-8Ge" secondAttribute="leading" id="AaY-2E-Uaa"/>
-                                            <constraint firstItem="2XE-wL-ndy" firstAttribute="top" secondItem="qmJ-fz-G1K" secondAttribute="bottom" constant="9" id="INY-X5-h5z"/>
-                                            <constraint firstItem="qmJ-fz-G1K" firstAttribute="top" secondItem="ACN-td-8Ge" secondAttribute="top" constant="15" id="UXZ-Bd-noe"/>
-                                            <constraint firstAttribute="trailing" secondItem="2XE-wL-ndy" secondAttribute="trailing" id="Urq-MW-s8G"/>
                                             <constraint firstAttribute="width" constant="40" id="gWC-5a-dyB"/>
-                                            <constraint firstAttribute="trailing" secondItem="qmJ-fz-G1K" secondAttribute="trailing" id="laN-RS-uh5"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -208,29 +145,7 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8SK-bd-dhs" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
-                                                <subviews>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erJ-Ss-bgi">
-                                                        <rect key="frame" x="32" y="15" width="40" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="erJ-Ss-bgi" secondAttribute="height" id="Ox1-2r-zZF"/>
-                                                            <constraint firstAttribute="height" constant="40" id="Tue-Kk-ssx"/>
-                                                        </constraints>
-                                                        <state key="normal" backgroundImage="door"/>
-                                                    </button>
-                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="智能开门" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5R4-J4-UKf">
-                                                        <rect key="frame" x="0.0" y="64" width="104" height="16"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="5R4-J4-UKf" firstAttribute="leading" secondItem="8SK-bd-dhs" secondAttribute="leading" id="3Nm-yb-EWT"/>
-                                                    <constraint firstItem="erJ-Ss-bgi" firstAttribute="top" secondItem="8SK-bd-dhs" secondAttribute="top" constant="15" id="FU7-hJ-byF"/>
-                                                    <constraint firstItem="erJ-Ss-bgi" firstAttribute="centerX" secondItem="8SK-bd-dhs" secondAttribute="centerX" id="fj0-KO-DiO"/>
-                                                    <constraint firstItem="5R4-J4-UKf" firstAttribute="top" secondItem="erJ-Ss-bgi" secondAttribute="bottom" constant="9" id="mi4-XH-MoA"/>
-                                                    <constraint firstAttribute="trailing" secondItem="5R4-J4-UKf" secondAttribute="trailing" id="okN-BJ-OJP"/>
-                                                </constraints>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Uh-f2-PPJ">
                                                 <rect key="frame" x="103" y="0.0" width="1" height="89"/>
@@ -257,29 +172,7 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heH-Cf-e0j" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
-                                                <subviews>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93G-U7-N5x">
-                                                        <rect key="frame" x="32" y="15" width="40" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="93G-U7-N5x" secondAttribute="height" id="RmD-wS-ULn"/>
-                                                            <constraint firstAttribute="height" constant="40" id="Voa-MO-lzE"/>
-                                                        </constraints>
-                                                        <state key="normal" backgroundImage="dingwei"/>
-                                                    </button>
-                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSW-mj-DHy">
-                                                        <rect key="frame" x="0.0" y="64" width="104" height="16"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="vSW-mj-DHy" firstAttribute="leading" secondItem="heH-Cf-e0j" secondAttribute="leading" id="5bv-jU-Ez3"/>
-                                                    <constraint firstItem="vSW-mj-DHy" firstAttribute="top" secondItem="93G-U7-N5x" secondAttribute="bottom" constant="9" id="PzC-HB-1xw"/>
-                                                    <constraint firstItem="93G-U7-N5x" firstAttribute="top" secondItem="heH-Cf-e0j" secondAttribute="top" constant="15" id="UnL-Nh-dFN"/>
-                                                    <constraint firstAttribute="trailing" secondItem="vSW-mj-DHy" secondAttribute="trailing" id="xS0-2U-2bG"/>
-                                                    <constraint firstItem="93G-U7-N5x" firstAttribute="centerX" secondItem="heH-Cf-e0j" secondAttribute="centerX" id="zyS-B0-in4"/>
-                                                </constraints>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QgS-I8-f3Z">
                                                 <rect key="frame" x="103" y="0.0" width="1" height="89"/>
@@ -1819,7 +1712,6 @@
         <image name="btn_home_quit_p" width="60" height="60"/>
         <image name="daiban" width="30" height="30"/>
         <image name="dingwei" width="30" height="30"/>
-        <image name="door" width="30" height="30"/>
         <image name="home_active" width="19" height="20"/>
         <image name="home_normal" width="19" height="20"/>
         <image name="ic_door" width="30" height="30"/>
@@ -1829,8 +1721,5 @@
         <image name="scan" width="24" height="24"/>
         <image name="xinzhengb" width="32" height="32"/>
         <image name="xueyuan" width="30" height="30"/>
-        <image name="扫描" width="40" height="40"/>
-        <image name="报事" width="40" height="40"/>
-        <image name="督办" width="40" height="40"/>
     </resources>
 </document>

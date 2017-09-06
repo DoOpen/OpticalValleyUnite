@@ -19,6 +19,7 @@ class AllViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,22 +27,29 @@ class AllViewController: UIViewController {
             
             let btnView = view.sj_viewWithTag(tag: index) as! HomeBtnView
             btnViews.append(btnView)
-           btnView.isHidden = true
+            btnView.isHidden = true
             
         }
         
         let count = [models.count, 12].min()!
-        let imageDic = ["报事": "baoshi2","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan"]
+        let imageDic = ["报事": "baoshi2","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"baoshi2"]
         for index in 0..<count{
             let imageName = imageDic[models[index].aPPMODULENAME] ?? ""
             btnViews[index].imageView.image = UIImage(named:imageName)
-            btnViews[index].textLabel.text = models[index].aPPMODULENAME
+            
+            if models[index].aPPMODULENAME == "电梯报事"{
+                btnViews[index].textLabel.text = "报事"
+                
+            }else{
+                btnViews[index].textLabel.text = models[index].aPPMODULENAME
+            
+            }
+            
 //            btnViews[index].textLabel.textColor = UIColor.white
             btnViews[index].isHidden = false
             btnViews[index].clickHandle = { [weak self] in
                 self?.actionPush(text: (self?.models[index].aPPMODULENAME)!)
             }
-
         }
     }
 
@@ -73,6 +81,8 @@ class AllViewController: UIViewController {
         }
     }
     
+    
+    
     func scanBtnClick() {
         
         if Const.SJIsSIMULATOR {
@@ -97,12 +107,16 @@ class AllViewController: UIViewController {
     }
     
     
+    
+    
     func surveillanceWorkOrderBtnClick() {
         let vc = SurveillanceWorkOrderViewController.loadFromStoryboard(name: "WorkOrder")
         navigationController?.pushViewController(vc, animated: true)
     }
 
 }
+
+
 
 extension UIView{
     func sj_viewWithTag(tag: Int) -> UIView?{

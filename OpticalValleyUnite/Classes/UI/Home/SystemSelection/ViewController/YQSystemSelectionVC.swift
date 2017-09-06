@@ -66,7 +66,6 @@ class YQSystemSelectionVC: UIViewController {
                     let pictureName = data["logo_url"] as! String
                     let url = URL(string: URLPath.systemSelectionURL + pictureName)
                     dataV?.logoImageView.kf.setImage(with: url)
-                    
                     dataV?.logoTitileLabel.text = data["name"] as? String
                     
 //                    print(data)
@@ -110,7 +109,6 @@ class YQSystemSelectionVC: UIViewController {
     
     // MARK: - 子系统的选择的接口调用
     func systemSelectionNetworkInterface(){
-        
         
         let token = UserDefaults.standard.object(forKey: Const.SJToken)
         parameters["token"] = token

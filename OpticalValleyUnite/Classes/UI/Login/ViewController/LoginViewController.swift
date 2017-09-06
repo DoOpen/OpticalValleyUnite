@@ -15,6 +15,15 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    //首先读取的是systemSelection的数据
+    var systemDataArray:NSArray = { return NSArray() }(){
+        didSet{
+            
+            self.pushToSystemSelectionVC()
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,7 +68,8 @@ class LoginViewController: UIViewController {
                     
                     guard value["CODE"] as! String == "0" else{
                         let message = value["MSG"] as! String
-
+                        
+                        //直接调用的是 工具的分类来完成的
                         self.alert(message: message)
    
                         return
@@ -77,7 +87,7 @@ class LoginViewController: UIViewController {
                     
                     /// 直接跳转到home的主页
                     //  self.pushToHomeViewController()
-                    self.pushToSystemSelectionVC()
+                    self.systemSelectionNetworkInterface()
                     
                     break
                 }
@@ -119,16 +129,24 @@ class LoginViewController: UIViewController {
     
     // MARK: - 跳转到子界面选择的
     func pushToSystemSelectionVC(){
+        //添加整体的逻辑处理(重复调用一下接口,如果是有值的话替换 缓存)
         
-        let systemVC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
-        SJKeyWindow?.rootViewController = systemVC
         
+        if  self.systemDataArray.count == 0{
+            //显示登录失败
+            SVProgressHUD.showError(withStatus: "登录失败,请检查!")
+            
+        }else{
+            
+            let systemVC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
+            SJKeyWindow?.rootViewController = systemVC
+
+        }
+    
     }
     
     // MARK: - 跳转到home主界面的代码
     func pushToHomeViewController(){
-//        let vc = UIStoryboard.instantiateInitialViewController(name: "Main")
-//        SJKeyWindow?.rootViewController = vc
         
         let tabVc = UITabBarController()
         
@@ -140,6 +158,51 @@ class LoginViewController: UIViewController {
         SJKeyWindow?.rootViewController = tabVc
     }
 
+    // MARK: - 子系统的选择的接口调用
+    func systemSelectionNetworkInterface(){
+        
+        let token = UserDefaults.standard.object(forKey: Const.SJToken)
+        parameters["token"] = token
+        
+        Alamofire.request(URLPath.basicPath + URLPath.getSystemSelection, method: .post, parameters: parameters).responseJSON { (response) in
+            
+            switch response.result {
+                
+            case .success(_):
+                
+                if let value = response.result.value as? [String: Any] {
+                    
+                    guard value["CODE"] as! String == "0" else{
+                        let message = value["MSG"] as! String
+                        
+                        self.alert(message: message)
+                        
+                        return
+                    }
+                    
+                    if let data = value["data"] {//注意区分这里的值的类型,不要定死是字典和数组
+                        
+                        //进行数据的缓存
+                        UserDefaults.standard.set(data, forKey: Const.YQTotallData)
+                        
+                        //进行UI界面赋值添加
+                        self.systemDataArray = data as! NSArray
+                        
+                    }
+                    
+                    break
+                }
+                
+                break
+            case .failure(let error):
+                
+                debugPrint(error)
+                break
+            }
+        }
+    }
+
+    
     
     class func chooseRootViewController(){
         
@@ -181,6 +244,11 @@ class LoginViewController: UIViewController {
         
         UserDefaults.standard.removeObject(forKey: "SJlongitude")
         UserDefaults.standard.removeObject(forKey: "SJlatitude")
+        
+        //缓存的清理
+        UserDefaults.standard.removeObject(forKey: Const.YQTotallData)
+        UserDefaults.standard.removeObject(forKey: Const.YQSystemSelectData)
+//        UserDefaults.standard.removeObject(forKey: Const.YQTotallData)
 //        "SJlatitude") as? CLLocationDegrees,let longitude = .object(forKey: "SJlongitude")
         
         User.removeUser()

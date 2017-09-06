@@ -21,6 +21,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     var eixtButton : UIButton! = nil
     
+/// 子系统选择的数据
+    var systemSelection : NSDictionary = {return NSDictionary() }()
+    
+    
     
 /// 模型的数据解析model.swift中的类
     var datas = [SystemMessageModel]()
@@ -58,69 +62,72 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         super.viewDidLoad()
 
         navigationItem.title = "光谷联合"
-        //接受通知
-        getNotice()
-        //设置定位
-        setUpLocation()
-        
         //分别设置两个(上下)按钮数组
         topBtnViewArray = [top1BtnView,top2BtnView,top3BtnView,top4BtnView]
         downBtnViewArray = [donw1BtnView,donw2BtnView,donw3BtnView]
         
-        if let json = UserDefaults.standard.object(forKey: "PermissionModels") as? String{
-            
-            
-            do {
-                //Convert to Data
-                let data = json.data(using: .utf8)!
-                let jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                
-                
-                if let arry = jsonData as? Array<[String: Any]>{
-                    
-                    setPermission(arry: arry)
-                    
-                }else{
-                    print("不能转成数组了")
-                }
-                
-
-            } catch  {
-                
-                print("转换错误 ")
-            }
-            
-            
-        }else{
-            
-            self.top1BtnView.textLabel.text = "工单"
-            self.top1BtnView.imageView.image = UIImage(named: "工单")
-            
-            self.top2BtnView.textLabel.text = "报事"
-            self.top2BtnView.imageView.image = UIImage(named: "报事")
-            
-            self.top3BtnView.textLabel.text = "签到"
-            self.top3BtnView.imageView.image = UIImage(named: "qiandao-1")
-            
-            self.top4BtnView.textLabel.text = "扫描"
-            self.top4BtnView.imageView.image = UIImage(named: "扫描")
-            
-            self.donw1BtnView.textLabel.text = "定位"
-            self.donw1BtnView.imageView.image = UIImage(named: "dingwei")
-            
-            self.donw2BtnView.textLabel.text = "代办事项"
-            self.donw2BtnView.imageView.image = UIImage(named: "daiban")
-            
-            self.donw3BtnView.textLabel.text = "智能开门"
-            self.donw3BtnView.imageView.image = UIImage(named: "ic_door")
-        }
+        //接受服务消息通知
+        getNotice()
+        //设置定位
+        setUpLocation()
         
+        //接受新的数据来显示
         getPermission()
+
         
+        //接受VC的数据通知
+        receiveNotes()
+        
+        //获取app版本号的方法
         checkNewBundleVersion(isBlack: true)
         
-        //创建添加 退出悬浮按钮
-//        addSuspendButton()
+        
+//        //重复登录拿缓存的过程
+//        if let json = UserDefaults.standard.object(forKey: "PermissionModels") as? String{
+//            
+//            
+//            do {
+//                //Convert to Data
+//                let data = json.data(using: .utf8)!
+//                let jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+//                
+//                
+//                if let arry = jsonData as? Array<[String: Any]>{
+//                    
+//                    setPermission(arry: arry)
+//                    
+//                }else{
+//                    print("不能转成数组了")
+//                }
+//
+//            } catch  {
+//                
+//                print("转换错误 ")
+//            }
+//            
+//        }else{
+//            
+//            self.top1BtnView.textLabel.text = "工单"
+//            self.top1BtnView.imageView.image = UIImage(named: "工单")
+//            
+//            self.top2BtnView.textLabel.text = "报事"
+//            self.top2BtnView.imageView.image = UIImage(named: "报事")
+//            
+//            self.top3BtnView.textLabel.text = "签到"
+//            self.top3BtnView.imageView.image = UIImage(named: "qiandao-1")
+//            
+//            self.top4BtnView.textLabel.text = "扫描"
+//            self.top4BtnView.imageView.image = UIImage(named: "扫描")
+//            
+//            self.donw1BtnView.textLabel.text = "定位"
+//            self.donw1BtnView.imageView.image = UIImage(named: "dingwei")
+//            
+//            self.donw2BtnView.textLabel.text = "代办事项"
+//            self.donw2BtnView.imageView.image = UIImage(named: "daiban")
+//            
+//            self.donw3BtnView.textLabel.text = "智能开门"
+//            self.donw3BtnView.imageView.image = UIImage(named: "ic_door")
+//        }
         
     }
 
@@ -130,7 +137,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         //调用获取工单的数量
         getStaticWorkunitDB()
-        
         
     }
     
@@ -174,6 +180,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     
     func setPermission(arry: Array<[String: Any]>){
+        
         self.allPermissionModels.removeAll()
         var topArry = [PermissionModel]()
         var downArry = [PermissionModel]()
@@ -195,34 +202,97 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     // MARK: - 获取不同管理员权限的方法,首页数据获取核心方法 getModules的接口
     func getPermission(){
-        //调用权限的情况
-        HttpClient.instance.get(path: URLPath.getModules, parameters: nil, success: { (respose) in
-            
-            if let arry = respose as? Array<[String: Any]>{
-                
-                //设置权限btn_array
-                self.setPermission(arry: arry)
-                
-                do {
-                    //Convert to Data
-                    let jsonData = try JSONSerialization.data(withJSONObject: arry, options: JSONSerialization.WritingOptions.prettyPrinted)
-                    
-                    //Do this for print data only otherwise skip
-                    if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
-                        print(JSONString)
-                        
-                        UserDefaults.standard.set(JSONString, forKey: "PermissionModels")
-                    }
-                } catch  {
-                    print("转换错误 ")
-                }
-            }
-            
-        }) { (error) in
-            
-            print(error)
+        
+        let data = UserDefaults.standard.object(forKey: Const.YQSystemSelectData)
+        if data == nil {
+            return
         }
+        
+        //注意的是:通过的是子系统选择的界面功能取消   URLPath.getModules 的网络请求
+        systemSelection = UserDefaults.standard.object(forKey: Const.YQSystemSelectData) as! NSDictionary
+        
+        
+        if systemSelection.count > 0 {
+            
+            let array = systemSelection["app_res"] as! NSArray
+            
+            self.setPermission(arry: array as! Array<[String : Any]> )
+            
+            do {
+                //Convert to Data
+                let jsonData = try JSONSerialization.data(withJSONObject: systemSelection, options: JSONSerialization.WritingOptions.prettyPrinted)
+                
+                //Do this for print data only otherwise skip
+                if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                    print(JSONString)
+                    
+                    UserDefaults.standard.set(JSONString, forKey: "PermissionModels")
+                }
+                
+            } catch  {
+                print("转换错误 ")
+            }
+
+
+        }else{
+            //弹框提示网络出现异常
+            
+        
+        }
+
+//        //调用权限的情况
+//        HttpClient.instance.get(path: URLPath.getModules, parameters: nil, success: { (respose) in
+//            
+//            if let arry = respose as? Array<[String: Any]>{
+//                
+//                //设置权限btn_array
+//                self.setPermission(arry: arry)
+//                
+//                do {
+//                    //Convert to Data
+//                    let jsonData = try JSONSerialization.data(withJSONObject: arry, options: JSONSerialization.WritingOptions.prettyPrinted)
+//                    
+//                    //Do this for print data only otherwise skip
+//                    if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+//                        print(JSONString)
+//                        
+//                        UserDefaults.standard.set(JSONString, forKey: "PermissionModels")
+//                    }
+//                    
+//                } catch  {
+//                    print("转换错误 ")
+//                }
+//            }
+//            
+//        }) { (error) in
+//            
+//            print(error)
+//        }
+        
     }
+    
+    // MARK: - 接受系统的通知
+    func receiveNotes(){
+        
+        let center = NotificationCenter.default//创建通知
+        
+        center.addObserver(self, selector: #selector(systemSelectionreceiveValue(info:)), name: NSNotification.Name(rawValue: "systemSelectionPassValue"), object: nil)//单个值得传递
+        center.addObserver(self, selector: #selector(systemSelectionreceiveValue(info:)), name: NSNotification.Name(rawValue: "systemSelectionPassValue"), object: nil)
+        
+        
+        
+    }
+    
+    // MARK: - 通知实现的方法
+     func systemSelectionreceiveValue(info:NSNotification){
+//        print(info.userInfo)
+        
+        let dic = info.userInfo! as NSDictionary
+        self.systemSelection = dic
+        
+        
+    }
+    
     
     //MARK: - 获取读完工单数量
     func getStaticWorkunitDB(){
@@ -438,7 +508,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     
     // MARK: - 添加按钮悬浮
-    
     @IBAction func suspendButtonClick(_ sender: Any) {
         //跳转到子系统的选择界面
         let systemVC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
@@ -485,6 +554,14 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    // MARK: - 控制器dealloc的方法
+    deinit{
+        
+        //移除通知监听
+        NotificationCenter.default.removeObserver(self)
+        
+    }
     
     
 }

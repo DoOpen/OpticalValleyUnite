@@ -21,6 +21,7 @@
 		2F648DB11F57C063006D51D3 /* YQPartDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F648DB01F57C063006D51D3 /* YQPartDataCell.xib */; };
 		2F6A83911F5CE073002BB61C /* YQPartDataSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */; };
 		2FE08F2B1F5F8A0A00D6F51D /* YQSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE08F2A1F5F8A0A00D6F51D /* YQSystemView.swift */; };
+		2FE08F2F1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE08F2E1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift */; };
 		4B01B08C1ED928AF002A61C9 /* ReportListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */; };
 		4B1558AF1F131AA70023F14D /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1558AE1F131AA70023F14D /* DeviceView.swift */; };
 		4B19ACE41E7A3D26008A8166 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19ACE31E7A3D26008A8166 /* User.swift */; };
@@ -190,6 +191,7 @@
 		2F648DB01F57C063006D51D3 /* YQPartDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartDataCell.xib; sourceTree = "<group>"; };
 		2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataSelectCell.swift; sourceTree = "<group>"; };
 		2FE08F2A1F5F8A0A00D6F51D /* YQSystemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQSystemView.swift; sourceTree = "<group>"; };
+		2FE08F2E1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportListViewController.swift; sourceTree = "<group>"; };
 		4B1558AE1F131AA70023F14D /* DeviceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		4B19ACE31E7A3D26008A8166 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				2FE08F2A1F5F8A0A00D6F51D /* YQSystemView.swift */,
+				2FE08F2E1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1250,6 +1253,7 @@
 				4B3078111E2A136600FB4007 /* MyStatisticsViewController.swift in Sources */,
 				4B8EE7761F17047400A59F8D /* WorkOrderCell.swift in Sources */,
 				4BD4B94A1E272EA600AE2BC9 /* SJTabBarViewController.swift in Sources */,
+				2FE08F2F1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift in Sources */,
 				4B8EE7791F170AEE00A59F8D /* WorkOrder2Cell.swift in Sources */,
 				2F5E8C541F595D9600007717 /* YQPartDataFooterCell.swift in Sources */,
 				4BD4B9521E272EA600AE2BC9 /* PersonCoreViewController.swift in Sources */,

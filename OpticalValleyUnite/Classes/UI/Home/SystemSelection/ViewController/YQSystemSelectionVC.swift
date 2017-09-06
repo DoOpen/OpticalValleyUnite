@@ -29,8 +29,6 @@ class YQSystemSelectionVC: UIViewController {
     @IBOutlet weak var sixthView: YQSystemView!
     
     
-    
-    
     var dataArray:NSArray = { return NSArray() }(){
         
         didSet{
@@ -61,12 +59,12 @@ class YQSystemSelectionVC: UIViewController {
                     //取出的数据
                     let data =  dataArray[index] as! [String : Any]
                     //取出的view
-                    let dataV = viewArray[index] as? YQSystemView
+                    let dataV = viewArray[index]
                     
                     let pictureName = data["logo_url"] as! String
                     let url = URL(string: URLPath.systemSelectionURL + pictureName)
-                    dataV?.logoImageView.kf.setImage(with: url)
-                    dataV?.logoTitileLabel.text = data["name"] as? String
+                    dataV.logoImageView.kf.setImage(with: url)
+                    dataV.logoTitileLabel.text = data["name"] as? String
                     
 //                    print(data)
                     
@@ -102,7 +100,30 @@ class YQSystemSelectionVC: UIViewController {
         
         super.viewDidLoad()
         
-        self.systemSelectionNetworkInterface()
+        //  systemView 添加tap
+        for index in viewArray {
+            
+            let tap = YQTapGestureRecognizer.init(target: self, action: #selector( systemViewAddTapGesture(tap:)))
+            tap.tapIndex = index.tag
+            
+            index.addGestureRecognizer(tap)
+           
+        }
+        
+        //逻辑判断:如果有缓存的话,就不需要请求
+        let data = UserDefaults.standard.object(forKey: Const.YQTotallData)
+        
+        if data == nil {
+            
+            self.systemSelectionNetworkInterface()
+            
+        }else{
+            
+            //进行UI界面赋值添加
+            self.dataArray = data as! NSArray
+
+        }
+        
         
     }
     
@@ -157,19 +178,55 @@ class YQSystemSelectionVC: UIViewController {
         }
     }
     
+    
+    // MARK: - 添加子系统的手势点击按钮
+    func systemViewAddTapGesture( tap : YQTapGestureRecognizer ) {
+    
+//        print(tap.tapIndex)
+        
+        if tap.tapIndex >= dataArray.count {
+            
+            return
+            
+        }else{
+            //数组取值,进行传值,控制器加载跳转
+            let data = dataArray[tap.tapIndex] as! [String : Any]
+            UserDefaults.standard.set(data, forKey: Const.YQSystemSelectData)
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        let tabVc = UITabBarController()
-        
-        let vc1 = UIStoryboard.instantiateInitialViewController(name: "Home")
-        let vc2 = UIStoryboard.instantiateInitialViewController(name: "PersonCore")
-        
-        tabVc.setViewControllers([vc1,vc2], animated: false)
-        
-        SJKeyWindow?.rootViewController = tabVc
-        
+            
+            let tabVc = UITabBarController()
+            
+            let vc1 = UIStoryboard.instantiateInitialViewController(name: "Home")
+            let vc2 = UIStoryboard.instantiateInitialViewController(name: "PersonCore")
+            
+            tabVc.setViewControllers([vc1,vc2], animated: false)
+            
+            SJKeyWindow?.rootViewController = tabVc
+            
+            
+            ///发送通知的方法(这个控制器都已经死了,通知肯定发不了的)
+//            let center = NotificationCenter.default
+//            center.post(name:  NSNotification.Name(rawValue: "systemSelectionPassValue"), object: nil, userInfo: data)
+            
+
+            
+        }
+    
     }
+    
+
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        
+//        let tabVc = UITabBarController()
+//        
+//        let vc1 = UIStoryboard.instantiateInitialViewController(name: "Home")
+//        let vc2 = UIStoryboard.instantiateInitialViewController(name: "PersonCore")
+//        
+//        tabVc.setViewControllers([vc1,vc2], animated: false)
+//        
+//        SJKeyWindow?.rootViewController = tabVc
+//        
+//    }
     
 
 }

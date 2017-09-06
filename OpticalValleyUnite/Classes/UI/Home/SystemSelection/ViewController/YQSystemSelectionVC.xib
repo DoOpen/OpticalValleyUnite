@@ -47,6 +47,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yo6-gH-MBQ" customClass="YQSystemView" customModule="OpticalValleyUnite" customModuleProvider="target">
                     <rect key="frame" x="14" y="221.5" width="141.5" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="height" constant="128" id="Jjw-2X-zzm"/>
                     </constraints>
@@ -54,22 +55,27 @@
                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAD-4L-nfb" customClass="YQSystemView" customModule="OpticalValleyUnite" customModuleProvider="target">
                     <rect key="frame" x="160.5" y="221.5" width="141" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                 </view>
                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAg-Us-bGj" customClass="YQSystemView" customModule="OpticalValleyUnite" customModuleProvider="target">
                     <rect key="frame" x="306.5" y="221.5" width="141.5" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                 </view>
                 <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7J-NL-baW" customClass="YQSystemView" customModule="OpticalValleyUnite" customModuleProvider="target">
                     <rect key="frame" x="14" y="354.5" width="141.5" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                 </view>
                 <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4PL-4r-Cek" customClass="YQSystemView" customModule="OpticalValleyUnite" customModuleProvider="target">
                     <rect key="frame" x="160.5" y="354.5" width="141" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                 </view>
                 <view hidden="YES" tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UmP-29-bpJ" customClass="YQSystemView" customModule="OpticalValleyUnite" customModuleProvider="target">
                     <rect key="frame" x="306" y="354" width="141.5" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -106,7 +112,7 @@
                 <constraint firstItem="DAg-Us-bGj" firstAttribute="leading" secondItem="lAD-4L-nfb" secondAttribute="trailing" constant="5" id="yjX-SZ-cgn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="47" y="-59"/>
+            <point key="canvasLocation" x="78" y="-105"/>
         </view>
     </objects>
     <resources>

@@ -158,6 +158,7 @@ class SignInViewController: UIViewController {
 //            toVc.parmat = parmat
 //        }
 //    }
+    
     func getParkAddress(){
         var paramet = [String: Any]()
         paramet["MAP_LNG"] = loction?.coordinate.longitude
@@ -174,12 +175,10 @@ class SignInViewController: UIViewController {
                         self.updateSige()
                     }
                     
-                    
                     self.isPaskAddress = true
                     
-                    
-                    
                 }else{
+                    
                     if let regeocode = self.reGeocode{
                         print(regeocode)
                         self.addressLabel.text = regeocode.formattedAddress

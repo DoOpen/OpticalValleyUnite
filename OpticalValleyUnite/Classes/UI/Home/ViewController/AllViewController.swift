@@ -19,7 +19,6 @@ class AllViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +47,7 @@ class AllViewController: UIViewController {
 //            btnViews[index].textLabel.textColor = UIColor.white
             btnViews[index].isHidden = false
             btnViews[index].clickHandle = { [weak self] in
+                
                 self?.actionPush(text: (self?.models[index].aPPMODULENAME)!)
             }
         }
@@ -105,8 +105,6 @@ class AllViewController: UIViewController {
             }
         }
     }
-    
-    
     
     
     func surveillanceWorkOrderBtnClick() {

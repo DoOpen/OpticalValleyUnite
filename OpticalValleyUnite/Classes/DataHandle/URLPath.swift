@@ -68,11 +68,16 @@ struct URLPath {
     //工单派发
     static let workunitDistribute = "workunit/workunitDistribute.do"
     
-    //工单操作
-    static let workunitExecuSave = "workunit/workunitExecuSave.do"
+    
     
     //工单操作
+    static let workunitExecuSave = "workunit/workunitExecuSave.do"
+    //工单操作
     static let workunitExecuSave2 = "workunit/workunitExecuSave2.do"
+    //工单操作的接口
+    static let workunitExecu  = "workunit/WorkunitExec.do"
+    
+    
     
     //计划工单的保存
     static let workunitOpera = "workunit/workunitOpera.do"

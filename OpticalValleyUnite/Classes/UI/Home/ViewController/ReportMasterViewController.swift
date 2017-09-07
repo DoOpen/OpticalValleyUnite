@@ -19,6 +19,9 @@ class ReportMasterViewController: UIViewController {
     @IBOutlet weak var brokerBtn: UIButton!
     //自检按钮
     @IBOutlet weak var selfCheckingBtn: UIButton!
+    //自发按钮
+    @IBOutlet weak var spontaneousBtn: UIButton!
+    
 
 /// 电梯报事的按钮情况
     //电话
@@ -37,6 +40,11 @@ class ReportMasterViewController: UIViewController {
     @IBOutlet weak var projectBtn: UIButton!
 
     @IBOutlet weak var contentHeightConstraint: NSLayoutConstraint!
+    
+/// 区分电梯和普通报事
+    var reportName : String = ""
+    
+    
     //中间要求变换的 contentview
     @IBOutlet weak var contenView: UIView!
     
@@ -118,9 +126,11 @@ class ReportMasterViewController: UIViewController {
                         if let data:NSArray = value["data"] as? NSArray {
                             
                             let dict:NSDictionary = (data[0] as? NSDictionary)!
-                            let name:String = (dict["APP_MODULE_NAME"] as? String)!
-                            print(name)
-                            if name == "报事"{ // 普通报事
+                            self.reportName = (dict["APP_MODULE_NAME"] as? String)!
+                            
+                            print(self.reportName)
+                            
+                            if self.reportName == "报事"{ // 普通报事
                                 self.reportHide()
                                 
                                 // selfCheckingView 直接加载xib的视图
@@ -160,7 +170,8 @@ class ReportMasterViewController: UIViewController {
     @IBAction func brokerBtnClick() {
         setBtnSelect(btn: brokerBtn, true)
         setBtnSelect(btn: selfCheckingBtn, false)
-
+        setBtnSelect(btn: spontaneousBtn, false)
+        
         contentHeightConstraint.constant = selfCheckingView.height
         contenView.layoutIfNeeded()
         selfCheckingView.frame = contenView.bounds
@@ -172,16 +183,30 @@ class ReportMasterViewController: UIViewController {
     @IBAction func selfCheckingBtnClick() {
         setBtnSelect(btn: selfCheckingBtn, true)
         setBtnSelect(btn: brokerBtn, false)
-        
+        setBtnSelect(btn: spontaneousBtn, false)
 
         if contenView.subviews.count != 0 {
             contenView.subviews[0].removeFromSuperview()
         }
         contentHeightConstraint.constant = 0
         contenView.layoutIfNeeded()
-        
     }
     
+    /// 自发按钮点击的方法
+    @IBAction func spontaneousBtnClick() {
+        
+        setBtnSelect(btn: selfCheckingBtn, false)
+        setBtnSelect(btn: brokerBtn, false)
+        setBtnSelect(btn: spontaneousBtn, true)
+        
+        if contenView.subviews.count != 0 {
+            contenView.subviews[0].removeFromSuperview()
+        }
+        contentHeightConstraint.constant = 0
+        contenView.layoutIfNeeded()
+
+    }
+
     /// 电话按钮
     @IBAction func telBtnClick() {
         
@@ -447,12 +472,11 @@ class ReportMasterViewController: UIViewController {
         parmar["equipment_id"] = deviceModel?.id
         
         //新添加逻辑代码:如果是contentView存在,约束不为0的话:
-        if contentHeightConstraint.constant != 0{  //普通报事情况
+        if self.reportName == "报事"{  //普通报事情况
         
-            if selfCheckingBtn.isSelected {//自检
+            if brokerBtn.isSelected {
                 
-                parmar["EVENT_TYPE"] = 0
-            }else{
+                //待客
                 if ownerNameTextField.text == "" {
                     SVProgressHUD.showError(withStatus: "请输入业主名字")
                     return
@@ -474,6 +498,21 @@ class ReportMasterViewController: UIViewController {
                 parmar["REPRE_TYPE"] = !famlyBtn.isSelected
                 
                 parmar["EXEC_DATE"] = selectDate?.dataString(dateFormetStr: "yyyy-MM-dd HH:mm:ss")
+                
+            }else{
+                
+                
+                //自检 and 自发
+                if selfCheckingBtn.isSelected{
+                
+                    parmar["EVENT_TYPE"] = 0
+                
+                }else if spontaneousBtn.isSelected{
+                    
+                    parmar["EVENT_TYPE"] = 9
+                
+                }
+                
             }
             
         }else{//电梯报事:
@@ -527,6 +566,7 @@ class ReportMasterViewController: UIViewController {
     func elevatorReportHide(){
         brokerBtn.isHidden = true
         selfCheckingBtn.isHidden = true
+        spontaneousBtn.isHidden = true
         self.telBtnClick()
         
         contentHeightConstraint.constant = 0

@@ -181,8 +181,16 @@ class YQPartsLibaryViewController: UIViewController {
     // MARK: - 点击右边完成按钮
      func rightBarButtonClick(){
         
+        //使用通知来进行的传值
+        let center = NotificationCenter.default
+        //定义添加一个字典
+        var data = [String : Any]()
+        data["partData"] = self.selectData
+        center.post(name:  NSNotification.Name(rawValue: "partsSelectionPassValue"), object: nil, userInfo: data)
+        
+        
         //直接调去保存接口进行实现
-        // dimiss
+        // dimiss 需要传递的 已选的数据配件库的数据!
         self.navigationController?.popViewController(animated: true)
         
     }

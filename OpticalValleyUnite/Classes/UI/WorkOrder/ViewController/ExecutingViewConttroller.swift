@@ -28,6 +28,7 @@ class ExecutingViewConttroller: UIViewController {
     @IBOutlet weak var hideTableViewHeightConstraint: NSLayoutConstraint!
     
     var models = [ExecSectionModel]()
+    
     var currentSelectIndexPath: IndexPath?
     var workOrderDetalModel: WorkOrderDetailModel?
     
@@ -38,6 +39,12 @@ class ExecutingViewConttroller: UIViewController {
     @IBOutlet weak var saveBtn: UIButton!
     var url: String?
     var image: UIImage?
+    
+    //创建配件库数据数组
+    var partData : NSArray = {return NSArray()}()
+    
+    
+    // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,17 +78,18 @@ class ExecutingViewConttroller: UIViewController {
         if let model = hisriyModel{
             textView.text = model.text
             if let str = model.pictures.first{
+                
                 let url = URL(string: str)
                 
             }
         }
         
+        // 接受通知
+        receiveNotes()
         
     }
     
     
-    
-
     //MARK: -获取工单步骤信息
     func getData(){
         var parmat = [String: Any]()
@@ -131,13 +139,36 @@ class ExecutingViewConttroller: UIViewController {
         }
     }
     
+    // MARK: - 接受通知方法
+    func receiveNotes(){
+    
+        let center = NotificationCenter.default//创建通知
+        
+        center.addObserver(self, selector: #selector(partsSelectionreceiveValue(info:)), name: NSNotification.Name(rawValue: "partsSelectionPassValue"), object: nil)//单个值得传递
+    }
+    
+    // MARK: - 通知实现的方法
+    func partsSelectionreceiveValue(info: NSNotification){
+        //nav 的环境下通知,代理传递是没有问题的,在window的环境下不可以的
+        let array = info.userInfo?["partData"] as! NSArray
+//        print(array)
+        //传递的模型数据
+        self.partData = array
+        
+    
+    }
+    
+    
+    // MARK: - 保存成功更新了调用
     func saveUpdate(json: String){
         
+        //保存的参数和接口 应用的json格式来进行回传
         var parmat = [String: Any]()
 //        parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
 //        parmat["UNIT_STATUS"] = 2
         parmat["data"] = json
         SVProgressHUD.show(withStatus: "上传中")
+        //调用了 相应的接口workunitOpera
         HttpClient.instance.post(path: URLPath.workunitOpera, parameters: parmat, success: { (response) in
             SVProgressHUD.dismiss()
             SVProgressHUD.showSuccess(withStatus: "保存成功")
@@ -148,16 +179,19 @@ class ExecutingViewConttroller: UIViewController {
     }
     
     
-    
+    // MARK: - 保存按钮的点击的实现逻辑
     @IBAction func saveBtnClick() {
         
+        //注意的是:这里通过异步的方式来进行的实现,模型嵌套模型来实现功能的
         let group = DispatchGroup()
+        
         SVProgressHUD.show(withStatus: "上传中")
+        
         for (index1,model) in models.enumerated(){
            
             for (index2,model2) in model.childs.enumerated(){
+                
                 if model2.type == "1"{
-
                     let cell = tableView.cellForRow(at: IndexPath(row: index2, section: index1)) as? ExecCell
                     
                     if cell == nil{
@@ -165,51 +199,62 @@ class ExecutingViewConttroller: UIViewController {
                     }
                     
                     if cell!.addPhotoView.photos.count > 0 {
+                        
                         let images = cell!.addPhotoView.photos.map{return $0.image}
+                        
                         group.enter()
                         upDataImage(images, complit: { (url) in
                             
                             model2.value = url
                             group.leave()
+                            
                         },errorHandle: {
+                            
                             group.leave()
                         })
-                        
                     }
                 }
             }
         }
         
         group.notify(queue: DispatchQueue.main) {
-            print("complete!")
-            SVProgressHUD.dismiss()
-            var arry = Array<[String: Any]>()
             
+            print("complete!")
+            //完成成功的时候,需要的添加那个配件库的功能json的功能
+            
+            
+            
+            SVProgressHUD.dismiss()
+            
+            var arry = Array<[String: Any]>()
             for model in self.models{
+                
                 model.workOrderId = (self.workOrderDetalModel?.id)!
+                
                 let taskDic = model.toDic()
-             
                 arry.append(taskDic)
+                
             }
+            
             do {
                 //Convert to Data
                 let jsonData = try JSONSerialization.data(withJSONObject: arry, options: JSONSerialization.WritingOptions.prettyPrinted)
                 
                 //Do this for print data only otherwise skip
                 if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                    
                     print(JSONString)
                     self.saveUpdate(json: JSONString)
                 }
+                
             } catch  {
                 print("转换错误 ")
             }
-            
         }
-        
-
-        
     }
-    //MARK: - 上传图片
+    
+    
+    //MARK: - 上传图片的专门的接口
     func upDataImage(_ images: [UIImage], complit: @escaping ((String) -> ()),errorHandle: (() -> ())? = nil){
         SVProgressHUD.show(withStatus: "上传图片中...")
         HttpClient.instance.upLoadImages(images, succses: { (url) in
@@ -229,14 +274,20 @@ class ExecutingViewConttroller: UIViewController {
     //MARK: - 所有完成按钮点击( 数据要求的是 补全接口的相关 数据)
     @IBAction func doneBtnClick() {
         
+        
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单
             var parmat = [String: Any]()
             parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
             parmat["UNIT_STATUS"] = 7
+            //设置添加配件库的模型数据进来
+            
+            
             self.alert(message: "整个工单已经完成?完成工单之前必须先点击保存按钮提交内容?") { (action) in
+                
+                //注意的是:这里都做好,提示添加保存完成
+                //数据保存的接口调用
                 self.upload(parmat)
             }
-            
             
         }else if workOrderDetalModel?.orderType == "应急工单"{
             let images = addPhoneView.photos.map { (image) -> UIImage in
@@ -249,7 +300,11 @@ class ExecutingViewConttroller: UIViewController {
                     parmat["UNIT_STATUS"] = 7
                     parmat["photo"] = url
                     parmat["SUCCESS_TEXT"] = self.textView.text
+                    //设置添加配件库的模型数据进来
+
 //                    self.alert(message: "整个工单已经完成?") { (action) in
+                    
+                        //数据保存的接口调用
                         self.upload(parmat)
 //                    }
                 })
@@ -259,17 +314,27 @@ class ExecutingViewConttroller: UIViewController {
                 parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
                 parmat["UNIT_STATUS"] = 2
                 parmat["SUCCESS_TEXT"] = self.textView.text
+                //设置添加配件库的模型数据进来
+
+                
                 self.alert(message: "整个工单已经完成?") { (action) in
+                    
+                    //数据保存的接口调用
                     self.upload(parmat)
                 }
-                
             }
         }
     }
     
+    
+    // MARK: - 工单执行调用数据保存的方法
     func upload(_ parate: [String: Any]){
+        
         SVProgressHUD.show(withStatus: "上传中")
+        ///工单点击, 完成之后的会调用这个接口,现在的是要求 通过接口文档来进行实现传参和调用的
+        //需要修改的后台的接口内容
         HttpClient.instance.post(path: URLPath.workunitExecuSave2, parameters: parate, success: { (response) in
+            
             SVProgressHUD.dismiss()
             SVProgressHUD.showSuccess(withStatus: "操作成功")
             self.ProgressVC?.reloadStatus(status: 7)
@@ -278,25 +343,26 @@ class ExecutingViewConttroller: UIViewController {
         }) { (error) in
             
         }
+        
     }
     
-    // MARK: - 跳转到配件库
     
+    // MARK: - 跳转到配件库
     @IBAction func pushPartsLibaryClick(_ sender: Any) {
         
         let vc = UIStoryboard(name: "YQPartsLibary", bundle: nil).instantiateInitialViewController()
-        
         navigationController?.pushViewController(vc!, animated: true)
         
         
     }
+    
     
     // MARK: - 跳转到报事
     @IBAction func pushReportBtnClick(_ sender: Any) {
         
         let vc = UIStoryboard(name: "ReportMaster", bundle: nil).instantiateInitialViewController()
-        
         navigationController?.pushViewController(vc!, animated: true)
+        
         
     }
     
@@ -316,7 +382,17 @@ class ExecutingViewConttroller: UIViewController {
 //            }
 //    }
     
-//    //MARK: - 子步骤完成按钮点击
+    //MARK: - 控制器dealloc
+    deinit{
+        
+        //移除通知监听
+        NotificationCenter.default.removeObserver(self)
+        
+    }
+
+    
+    
+    
 //    func cellDoneBtnClick(model: ExecChild,isDone: Bool){
 //        
 //    
@@ -377,6 +453,9 @@ class ExecutingViewConttroller: UIViewController {
 //            SVProgressHUD.dismiss()
 //        }
 //    }
+    
+    
+    
 }
 
 extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{

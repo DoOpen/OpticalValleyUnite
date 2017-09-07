@@ -22,6 +22,8 @@ class YQSystemView: UIView {
         logoTitileLabel = UILabel()
         logoImageView = UIImageView()
         
+
+        
         addSubview(logoImageView)
         addSubview(logoTitileLabel)
         

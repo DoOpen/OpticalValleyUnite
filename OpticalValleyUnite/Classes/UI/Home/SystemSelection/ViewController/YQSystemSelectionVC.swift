@@ -44,6 +44,7 @@ class YQSystemSelectionVC: UIViewController {
                         dataV?.logoTitileLabel.text = "敬请期待!"
                         dataV?.logoTitileLabel.tintColor = UIColor.gray
                         dataV?.logoImageView.image = UIImage(named: "login_icon_null")
+
                         
                     }else{
                         //剩余的都进行的隐藏
@@ -63,7 +64,9 @@ class YQSystemSelectionVC: UIViewController {
                     
                     let pictureName = data["logo_url"] as! String
                     let url = URL(string: URLPath.systemSelectionURL + pictureName)
-                    dataV.logoImageView.kf.setImage(with: url)
+                    
+                    dataV.logoImageView.kf.setImage(with: url, placeholder: UIImage(named: "login_icon_null"), options: nil, progressBlock: nil, completionHandler: nil)
+                    
                     dataV.logoTitileLabel.text = data["name"] as? String
                     
 //                    print(data)

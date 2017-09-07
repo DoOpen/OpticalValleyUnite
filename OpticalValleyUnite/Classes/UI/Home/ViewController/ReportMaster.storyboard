@@ -121,7 +121,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAy-al-xnk">
-                                                        <rect key="frame" x="239" y="10" width="50" height="24"/>
+                                                        <rect key="frame" x="235" y="10" width="50" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="B7v-jZ-uaK"/>
                                                             <constraint firstAttribute="width" constant="50" id="MpZ-T6-Hpv"/>
@@ -129,6 +129,35 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <state key="normal" title="自检">
+                                                            <color key="titleColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <state key="selected">
+                                                            <color key="titleColor" red="0.19215686269999999" green="0.64705882349999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="12"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.19215686269999999" green="0.64705882349999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="selfCheckingBtnClick" destination="emb-JF-xJq" eventType="touchUpInside" id="Cm4-6V-Jm6"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qX-Uh-Xqo">
+                                                        <rect key="frame" x="160" y="10" width="50" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="jZk-Mc-FEJ"/>
+                                                            <constraint firstAttribute="width" constant="50" id="v9s-lN-OWF"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <state key="normal" title="自发">
                                                             <color key="titleColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <state key="selected">
@@ -146,7 +175,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="selfCheckingBtnClick" destination="emb-JF-xJq" eventType="touchUpInside" id="Cm4-6V-Jm6"/>
+                                                            <action selector="spontaneousBtnClick" destination="emb-JF-xJq" eventType="touchUpInside" id="1zl-ff-hZ5"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9d-6d-9L3">
@@ -242,9 +271,11 @@
                                                     <constraint firstItem="pBa-oD-nlD" firstAttribute="centerY" secondItem="CyB-99-XyK" secondAttribute="centerY" id="OAX-Hh-kcA"/>
                                                     <constraint firstItem="GY7-vi-AYJ" firstAttribute="centerY" secondItem="CyB-99-XyK" secondAttribute="centerY" id="PME-UB-zZk"/>
                                                     <constraint firstAttribute="trailing" secondItem="J1N-vI-khv" secondAttribute="trailing" constant="30" id="WMm-cx-bMz"/>
-                                                    <constraint firstItem="GY7-vi-AYJ" firstAttribute="leading" secondItem="uAy-al-xnk" secondAttribute="trailing" constant="21" id="X5x-eg-CXA"/>
+                                                    <constraint firstItem="GY7-vi-AYJ" firstAttribute="leading" secondItem="uAy-al-xnk" secondAttribute="trailing" constant="25" id="X5x-eg-CXA"/>
                                                     <constraint firstItem="uAy-al-xnk" firstAttribute="centerY" secondItem="CyB-99-XyK" secondAttribute="centerY" id="YAI-Qq-Cj1"/>
+                                                    <constraint firstItem="uAy-al-xnk" firstAttribute="leading" secondItem="9qX-Uh-Xqo" secondAttribute="trailing" constant="25" id="Zjo-sm-Hdx"/>
                                                     <constraint firstItem="teH-wl-e3h" firstAttribute="centerY" secondItem="CyB-99-XyK" secondAttribute="centerY" id="fGm-nv-Vrn"/>
+                                                    <constraint firstItem="9qX-Uh-Xqo" firstAttribute="centerY" secondItem="CyB-99-XyK" secondAttribute="centerY" id="hvh-Yu-ea7"/>
                                                     <constraint firstItem="j9d-6d-9L3" firstAttribute="centerY" secondItem="CyB-99-XyK" secondAttribute="centerY" id="kg1-BF-7Wf"/>
                                                     <constraint firstAttribute="height" constant="44" id="tbN-u8-C0y"/>
                                                     <constraint firstItem="pBa-oD-nlD" firstAttribute="leading" secondItem="j9d-6d-9L3" secondAttribute="trailing" constant="50" id="vZg-ju-pkT"/>
@@ -886,6 +917,7 @@
                         <outlet property="projectBtn" destination="h1x-uw-R8M" id="O0b-FK-Pew"/>
                         <outlet property="secanBtn" destination="1CY-3e-M1E" id="lcy-Uj-J4K"/>
                         <outlet property="selfCheckingBtn" destination="uAy-al-xnk" id="f5d-ob-OT3"/>
+                        <outlet property="spontaneousBtn" destination="9qX-Uh-Xqo" id="7zG-rT-6kR"/>
                         <outlet property="telReportMaster" destination="j9d-6d-9L3" id="Pbn-o9-MGR"/>
                         <outlet property="textView" destination="bKd-Ak-j45" id="pz9-YG-Hn0"/>
                         <outlet property="workTypeLabel" destination="LgE-lf-oBG" id="3lt-YI-F58"/>
@@ -1023,7 +1055,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3R-am-zfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="375"/>
+            <point key="canvasLocation" x="668" y="387"/>
         </scene>
         <!--Choose Device View Controller-->
         <scene sceneID="JS5-O9-wB3">

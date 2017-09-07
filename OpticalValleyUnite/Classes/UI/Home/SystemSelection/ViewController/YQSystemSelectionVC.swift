@@ -33,7 +33,7 @@ class YQSystemSelectionVC: UIViewController {
         
         didSet{
             
-            if dataArray.count > 1 {
+            if dataArray.count > 1 {//注意的是,这里的大于1的情况,就是默认的一张图片不会显示的直接登录
                 
                 //通过数据遍历来进行设置隐藏
                 for index in dataArray.count ..< viewArray.count {
@@ -70,7 +70,21 @@ class YQSystemSelectionVC: UIViewController {
                     
                 }
                 
-            }else{ // 直接跳转到home界面, 传递数据情况
+            } else if dataArray.count == 1 { //只有一条数据的时候处理
+            
+                let data = dataArray.lastObject as! [String : Any]
+                UserDefaults.standard.set(data, forKey: Const.YQSystemSelectData)
+                let tabVc = UITabBarController()
+                let vc1 = UIStoryboard.instantiateInitialViewController(name: "Home")
+                let vc2 = UIStoryboard.instantiateInitialViewController(name: "PersonCore")
+                
+                tabVc.setViewControllers([vc1,vc2], animated: false)
+                
+                SJKeyWindow?.rootViewController = tabVc
+
+                
+            
+            }else{ // 直接跳转到home界面, 传递数据情况,(没有数据的逻辑处理)
                 //数据都需要保存下来,归档解档,plist文件
                 let tabVc = UITabBarController()
                 

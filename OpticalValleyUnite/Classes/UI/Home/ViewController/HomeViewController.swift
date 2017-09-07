@@ -203,8 +203,11 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     // MARK: - 获取不同管理员权限的方法,首页数据获取核心方法 getModules的接口
     func getPermission(){
         
+        
         let data = UserDefaults.standard.object(forKey: Const.YQSystemSelectData)
+        
         if data == nil {
+            
             return
         }
         
@@ -509,11 +512,22 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     // MARK: - 添加按钮悬浮
     @IBAction func suspendButtonClick(_ sender: Any) {
-        //跳转到子系统的选择界面
-        let systemVC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
-//        let VC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
         
-        SJKeyWindow?.rootViewController = systemVC
+         let data = UserDefaults.standard.object(forKey: Const.YQTotallData) as? NSArray
+        
+        //跳转到子系统的选择界面(需要的是逻辑的判断) 如果是只有一条数据的话,直接调到登录界面
+        if (data?.count)! > 1{
+            
+            let systemVC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
+            SJKeyWindow?.rootViewController = systemVC
+
+        
+        }else{// 跳转到登录界面
+            
+            LoginViewController.loginOut()
+
+        }
+        
         
     }
     

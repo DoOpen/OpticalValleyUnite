@@ -73,6 +73,8 @@ class WorkOrderModel: Object {
     dynamic var statusCn = ""
     dynamic var dubanTime = ""
     dynamic var reportPeopleName = ""
+    dynamic var reportListPName = ""
+    
     var PARK_NAME = ""
     var equipment_id = -1
     var equipment_name = ""
@@ -96,13 +98,23 @@ class WorkOrderModel: Object {
         execPersionId = parmart["EXEC_PERSON_ID"] as? String ?? ""
         PERSONTYPE = parmart["IS_ASSISTANCE_PERSON"] as? Int ?? 0
         statusCn = parmart["UNIT_STATUS_CN"] as? String ?? ""
+        
         reportPeopleName = parmart["SOURCE_PERSON_NAME"] as? String ?? ""
+        
+        reportListPName = parmart["SOURCE_PERSON"] as? String ?? ""
+        
         if let text = parmart["ISSUPERVISE"] as? String{
             isSupervise = text == "FALSE"
         }
+        
         if reportPeopleName == "" {
             reportPeopleName = parmart["SOURCE_PERSON_NAME"] as? String ?? ""
         }
+        
+        if reportListPName == "" {
+            reportListPName = parmart["SOURCE_PERSON"] as? String ?? ""
+        }
+
         
         if let _ = parmart["ID"] as? String ,((parmart["WORKUNIT_ID"] as? String) != nil){
             workOrderId = parmart["WORKUNIT_ID"] as? String ?? ""
@@ -128,6 +140,95 @@ class WorkOrderModel: Object {
         return "workOrderId"
     }
 }
+
+class WorkOrderModel2: Object {
+    //UNIT_STATUS
+    //    0：待派发  1：已派发
+    //    2：已完成  3：已取消
+    //    4：已退回  5：已接受
+    //    6：处理中 7：已执行
+    //    8：已评价  9：关闭
+    //    10：督办
+    dynamic var id = ""
+    dynamic var time = ""
+    dynamic var status = -1
+    dynamic var content = ""
+    dynamic var workOrderId = ""
+    dynamic var isSupervise = false
+    dynamic var execPersionId = ""
+    dynamic var PERSONTYPE = 0
+    dynamic var EXEC_PERSON_ID = ""
+    dynamic var statusCn = ""
+    dynamic var dubanTime = ""
+    dynamic var reportPeopleName = ""
+    
+    
+    var PARK_NAME = ""
+    var equipment_id = -1
+    var equipment_name = ""
+    var is_equip = -1
+    dynamic var type = ""
+    dynamic var type2 = ""
+    
+    convenience init(parmart: [String: Any]) {
+        self.init()
+        content = parmart["DESCRIPTION"] as? String ?? ""
+        
+        if content == ""{
+            content = parmart["WORKUNIT_NAME"] as? String ?? ""
+        }
+        if content == ""{
+            content = parmart["NAME"] as? String ?? ""
+        }
+        
+        time = parmart["CREATE_DATE"] as? String ?? ""
+        status = parmart["UNIT_STATUS"] as? Int ?? -1
+        execPersionId = parmart["EXEC_PERSON_ID"] as? String ?? ""
+        PERSONTYPE = parmart["IS_ASSISTANCE_PERSON"] as? Int ?? 0
+        statusCn = parmart["UNIT_STATUS_CN"] as? String ?? ""
+        
+        reportPeopleName = parmart["SOURCE_PERSON_NAME"] as? String ?? ""
+        
+//        reportListPName = parmart["SOURCE_PERSON"] as? String ?? ""
+        
+        if let text = parmart["ISSUPERVISE"] as? String{
+            isSupervise = text == "FALSE"
+        }
+        
+        if reportPeopleName == "" {
+            reportPeopleName = parmart["SOURCE_PERSON_NAME"] as? String ?? ""
+        }
+        
+//        if reportListPName == "" {
+//            reportListPName = parmart["SOURCE_PERSON"] as? String ?? ""
+//        }
+        
+        
+        if let _ = parmart["ID"] as? String ,((parmart["WORKUNIT_ID"] as? String) != nil){
+            workOrderId = parmart["WORKUNIT_ID"] as? String ?? ""
+            
+        }else{
+            workOrderId = parmart["ID"] as? String ?? ""
+        }
+        
+        dubanTime = parmart["CREATE_DATE"] as? String ?? ""
+        id = parmart["ID"] as? String ?? ""
+        type2 = parmart["WORKUNIT_TYPE"] as? String ?? "1"
+        
+        PARK_NAME = parmart["PARK_NAME"] as? String ?? ""
+        
+        equipment_id = parmart["equipment_id"] as? Int ?? -1
+        equipment_name = parmart["equipment_name"] as? String ?? ""
+        
+        is_equip = parmart["is_equip"] as? Int ?? -1
+        
+    }
+    
+    override static func primaryKey() -> String? {
+        return "workOrderId"
+    }
+}
+
 
 class PersonModel{
     var name = ""

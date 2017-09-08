@@ -20,7 +20,7 @@ class WorkOrderViewController: UIViewController {
     var siftVc: WorkOrderSiftViewController?
     var siftParmat: [String: Any]?
     var isFirstLoad = true
-    var currentDatas = [WorkOrderModel]()
+    var currentDatas = [WorkOrderModel2]()
 
     var currentIndex = 0{
         didSet{
@@ -47,6 +47,7 @@ class WorkOrderViewController: UIViewController {
     
     
     @IBAction func rightBtnClick(_ sender: UIBarButtonItem) {
+        
         let vc = WorkOrderSiftViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderSiftViewController
         vc.status =  ["DCL", "YCL","YGB"][currentIndex]
 //        self.addChildViewController(vc)
@@ -104,13 +105,13 @@ class WorkOrderViewController: UIViewController {
     }
     
 
-    func getWorkOrderFormDataDB(type:String, indexPage: Int = 0) -> [WorkOrderModel]{
+    func getWorkOrderFormDataDB(type:String, indexPage: Int = 0) -> [WorkOrderModel2]{
         let realm = try! Realm()
-        let result =  realm.objects(WorkOrderModel.self)
+        let result =  realm.objects(WorkOrderModel2.self)
  
-        var tempArray = [WorkOrderModel]()
+        var tempArray = [WorkOrderModel2]()
         for model in result {
-            let model = model as WorkOrderModel
+            let model = model as WorkOrderModel2
             if model.type == type{
                 tempArray.append(model)
             }
@@ -143,9 +144,9 @@ class WorkOrderViewController: UIViewController {
             
             SVProgressHUD.dismiss()
             
-            var temp = [WorkOrderModel]()
+            var temp = [WorkOrderModel2]()
             for dic in response["data"] as! Array<[String: Any]> {
-                let model = WorkOrderModel(parmart: dic)
+                let model = WorkOrderModel2(parmart: dic)
                 model.type = array[type]
                 temp.append(model)
             }
@@ -220,11 +221,12 @@ extension WorkOrderViewController: UITableViewDataSource, UITableViewDelegate{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: WorkOrder2Cell
+        
+        var cell: WorkOrder2Cell //注意的是,细小的bug 两个的cell是不同的模型
 
         
         cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! WorkOrder2Cell
-        cell.model = currentDatas[indexPath.row]
+        cell.model2 = currentDatas[indexPath.row]
         
         return cell
     }

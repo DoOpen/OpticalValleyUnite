@@ -403,6 +403,7 @@ class ReportMasterViewController: UIViewController {
     
     
     @IBAction func chooseBtnClick() {
+        
         if self.deriveChoose{
             let vc = ChooseDeviceViewController.loadFromStoryboard(name: "ReportMaster") as! ChooseDeviceViewController
             vc.parkId = selectProject?.projectId

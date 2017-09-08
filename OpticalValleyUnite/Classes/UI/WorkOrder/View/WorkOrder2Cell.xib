@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -74,14 +74,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_person" translatesAutoresizingMaskIntoConstraints="NO" id="l0e-NL-Ie9">
-                                <rect key="frame" x="127" y="18" width="14" height="14"/>
+                                <rect key="frame" x="107" y="18" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="14" id="Oel-Da-qY8"/>
                                     <constraint firstAttribute="height" constant="14" id="oIA-43-vbd"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王磊" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6E-99-Bd8">
-                                <rect key="frame" x="146" y="17" width="29" height="17"/>
+                                <rect key="frame" x="126" y="17" width="29" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -106,7 +106,7 @@
                             <constraint firstItem="q77-ly-gGf" firstAttribute="centerY" secondItem="nRA-QT-IzG" secondAttribute="centerY" id="409-iz-CZJ"/>
                             <constraint firstItem="q77-ly-gGf" firstAttribute="centerY" secondItem="GVy-yQ-zMa" secondAttribute="centerY" id="B5S-5G-SfW"/>
                             <constraint firstItem="ePb-QB-pcG" firstAttribute="centerY" secondItem="d1D-pB-5MX" secondAttribute="centerY" id="DRA-hP-di3"/>
-                            <constraint firstItem="j6E-99-Bd8" firstAttribute="centerX" secondItem="nRA-QT-IzG" secondAttribute="centerX" id="FvB-EA-mYF"/>
+                            <constraint firstItem="j6E-99-Bd8" firstAttribute="centerX" secondItem="nRA-QT-IzG" secondAttribute="centerX" constant="-20" id="FvB-EA-mYF"/>
                             <constraint firstItem="j6E-99-Bd8" firstAttribute="leading" secondItem="l0e-NL-Ie9" secondAttribute="trailing" constant="5" id="GU1-6o-RJ3"/>
                             <constraint firstItem="fdK-Ka-sLL" firstAttribute="top" secondItem="nRA-QT-IzG" secondAttribute="top" id="Gm9-Gx-FaF"/>
                             <constraint firstAttribute="trailing" secondItem="fdK-Ka-sLL" secondAttribute="trailing" id="Lp6-sv-89e"/>

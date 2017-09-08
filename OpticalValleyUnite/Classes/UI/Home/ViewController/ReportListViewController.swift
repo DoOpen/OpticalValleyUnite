@@ -38,6 +38,7 @@ class ReportListViewController: UIViewController {
     }
 
     func getWorkOrder(_ indexPage: Int = 0){
+        
         var parmat = [String: Any]()
         parmat["pageIndex"] = indexPage
         SVProgressHUD.show(withStatus: "加载中...")

@@ -1313,7 +1313,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="我的督办" id="b1z-Gc-90J">
-                        <barButtonItem key="rightBarButtonItem" image="sort1" id="K0M-5X-gEK">
+                        <barButtonItem key="rightBarButtonItem" title="筛选" id="K0M-5X-gEK">
                             <connections>
                                 <action selector="chooseBtnClick:" destination="HpW-xs-agk" id="C1U-zh-whI"/>
                             </connections>
@@ -3512,7 +3512,6 @@
         <image name="larr" width="30" height="30"/>
         <image name="ovalcheck" width="20" height="20"/>
         <image name="shebei" width="14" height="14"/>
-        <image name="sort1" width="30" height="30"/>
         <image name="time" width="15" height="15"/>
     </resources>
 </document>

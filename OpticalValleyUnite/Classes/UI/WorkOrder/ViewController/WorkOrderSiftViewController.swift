@@ -124,6 +124,7 @@ class WorkOrderSiftViewController: UIViewController {
     }
     
     private func getWorkTypeData(){
+        
         HttpClient.instance.get(path: URLPath.getWorkTypeList, parameters: nil, success: { (response) in
             
             var temp = [WorkTypeModel]()

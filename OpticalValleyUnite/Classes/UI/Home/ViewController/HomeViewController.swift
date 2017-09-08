@@ -578,6 +578,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    
     fileprivate func pushToDeviceViewController(equipmentId: String){
         let vc = DeviceViewController.loadFromStoryboard(name: "Home") as! DeviceViewController
         vc.equipmentId = equipmentId

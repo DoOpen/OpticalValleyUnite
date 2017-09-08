@@ -10,10 +10,11 @@ import UIKit
 import Alamofire
 
 
-var parameters = [String : Any]()
+
 
 class YQSystemSelectionVC: UIViewController {
     
+    var parameters = [String : Any]()
     
     /// 暂定义的6个子系统的界面功能
     @IBOutlet weak var firstView: YQSystemView!

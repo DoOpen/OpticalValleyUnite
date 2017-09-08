@@ -96,8 +96,7 @@ class ReportMasterViewController: UIViewController {
     var deviceModel: Equipment?
     
     
-    //请求参数:
-    var parameters = [String : Any]()
+    
 //    if let token = UserDefaults.standard.object(forKey: "SJDeviceToken") as? String{
 //        
 //        parameters["UMENG_TOKEN"] = token
@@ -113,12 +112,15 @@ class ReportMasterViewController: UIViewController {
         //1.通过判断是普通报事,还是电梯报事
         //        Alamofire.request(URLPath.basicPath + URLPath.typeOfReportMaster, method: .get, parameters: parameters, encoding: <#T##ParameterEncoding#>, headers: <#T##HTTPHeaders?#>).responseJSON { (response) in
         
+        //请求参数:
+        var reportParameter = [String : Any]()
+        
         SVProgressHUD.show(withStatus: "登录中")
-        parameters["token"] = UserDefaults.standard.object(forKey: Const.SJToken)
+        reportParameter["token"] = UserDefaults.standard.object(forKey: Const.SJToken)
 //        UserDefaults.standard.set(token, forKey: Const.SJToken)
 
         //发送请求:
-        Alamofire.request(URLPath.basicPath + URLPath.typeOfReportMaster,  parameters: parameters).responseJSON { (response) in
+        Alamofire.request(URLPath.basicPath + URLPath.typeOfReportMaster,  parameters: reportParameter).responseJSON { (response) in
             
             SVProgressHUD.dismiss()
 
@@ -451,7 +453,7 @@ class ReportMasterViewController: UIViewController {
         //直接的是,禁用button
         self.SubmitBtn.isUserInteractionEnabled = false
         
-        var parmar = [String: Any]()
+        var parmarReport = [String: Any]()
         
 //        if selectParkInfo != nil{
 //            let address = selectParkInfo!.id
@@ -461,25 +463,25 @@ class ReportMasterViewController: UIViewController {
         
         let level = urgentDegreeBtn?.tag
         
-        parmar["PARK_ID"] = projectId
+        parmarReport["PARK_ID"] = projectId
 
         if selectParkInfo?.FLOOR_ID != ""{
             
-            parmar["STAGE_ID"] = selectParkInfo?.STAGE_ID ?? ""
-            parmar["FLOOR_ID"] = selectParkInfo?.FLOOR_ID ?? ""
-            parmar["HOUSE_ID"] = selectParkInfo?.id ?? ""
+            parmarReport["STAGE_ID"] = selectParkInfo?.STAGE_ID ?? ""
+            parmarReport["FLOOR_ID"] = selectParkInfo?.FLOOR_ID ?? ""
+            parmarReport["HOUSE_ID"] = selectParkInfo?.id ?? ""
 
         }else{
-            parmar["STAGE_ID"] = selectParkInfo?.STAGE_ID ?? ""
-            parmar["FLOOR_ID"] = selectParkInfo?.id ?? ""
-            parmar["HOUSE_ID"] = ""
+            parmarReport["STAGE_ID"] = selectParkInfo?.STAGE_ID ?? ""
+            parmarReport["FLOOR_ID"] = selectParkInfo?.id ?? ""
+            parmarReport["HOUSE_ID"] = ""
         }
         
-        parmar["WORKTYPE_ID"] = workTypeId
-        parmar["IMPORTENT_LEVEL"] = level
-        parmar["EVENT_ADDR"] = address2Label.text ?? ""
-        parmar["DESCRIPTION"] = textView.text
-        parmar["equipment_id"] = deviceModel?.id
+        parmarReport["WORKTYPE_ID"] = workTypeId
+        parmarReport["IMPORTENT_LEVEL"] = level
+        parmarReport["EVENT_ADDR"] = address2Label.text ?? ""
+        parmarReport["DESCRIPTION"] = textView.text
+        parmarReport["equipment_id"] = deviceModel?.id
         
         //新添加逻辑代码:如果是contentView存在,约束不为0的话:
         if self.reportName == "报事"{  //普通报事情况
@@ -491,23 +493,23 @@ class ReportMasterViewController: UIViewController {
                     SVProgressHUD.showError(withStatus: "请输入业主名字")
                     return
                 }
-                //            if OwnerAddressTextField.text == "" {
-                //                SVProgressHUD.showError(withStatus: "请输入业主地址")
-                //                return
-                //            }
+//                            if OwnerAddressTextField.text == "" {
+//                                SVProgressHUD.showError(withStatus: "请输入业主地址")
+//                                return
+//                            }
                 if ownerPhoneTextField.text == "" {
                     SVProgressHUD.showError(withStatus: "请输入业主电话")
                     return
                 }
                 
-                parmar["CUSTOMER_NAME"] = ownerNameTextField.text
-                parmar["CUSTOMER_ADDR"] = OwnerAddressTextField.text
+                parmarReport["CUSTOMER_NAME"] = ownerNameTextField.text
+                parmarReport["CUSTOMER_ADDR"] = OwnerAddressTextField.text
                 
-                parmar["CUSTOMER_PHONE"] = ownerPhoneTextField.text
+                parmarReport["CUSTOMER_PHONE"] = ownerPhoneTextField.text
                 
-                parmar["REPRE_TYPE"] = !famlyBtn.isSelected
+                parmarReport["REPRE_TYPE"] = !famlyBtn.isSelected
                 
-                parmar["EXEC_DATE"] = selectDate?.dataString(dateFormetStr: "yyyy-MM-dd HH:mm:ss")
+                parmarReport["EXEC_DATE"] = selectDate?.dataString(dateFormetStr: "yyyy-MM-dd HH:mm:ss")
                 
             }else{
                 
@@ -515,11 +517,11 @@ class ReportMasterViewController: UIViewController {
                 //自检 and 自发
                 if selfCheckingBtn.isSelected{
                 
-                    parmar["EVENT_TYPE"] = 0
+                    parmarReport["EVENT_TYPE"] = 0
                 
                 }else if spontaneousBtn.isSelected{
                     
-                    parmar["EVENT_TYPE"] = 9
+                    parmarReport["EVENT_TYPE"] = 9
                 
                 }
                 
@@ -528,13 +530,13 @@ class ReportMasterViewController: UIViewController {
         }else{//电梯报事:
             
             if telReportMaster.isSelected{//电话
-                parmar["EVENT_TYPE"] = 2
+                parmarReport["EVENT_TYPE"] = 2
                 
             }else if maintenanceReportMaster.isSelected{//维保报事
-                parmar["EVENT_TYPE"] = 3
+                parmarReport["EVENT_TYPE"] = 3
                 
             }else{// 其他报事
-                parmar["EVENT_TYPE"] = 4
+                parmarReport["EVENT_TYPE"] = 4
             }
             
         }
@@ -546,9 +548,9 @@ class ReportMasterViewController: UIViewController {
         if images.count > 0 {
             
             HttpClient.instance.upDataImages(images, complit: { (url) in
-                parmar["PICTURE"] = url
+                parmarReport["PICTURE"] = url
                 
-                HttpClient.instance.post(path: URLPath.reportMaster, parameters: parmar, success: { (response) in
+                HttpClient.instance.post(path: URLPath.reportMaster, parameters: parmarReport, success: { (response) in
                 
                     
                     SVProgressHUD.showSuccess(withStatus: "提交成功")
@@ -556,21 +558,30 @@ class ReportMasterViewController: UIViewController {
                     //主线程设置 button可用
                     DispatchQueue.main.async {
                         self.SubmitBtn.isUserInteractionEnabled = true
-                        
+                        self.view .layoutIfNeeded()
                     }
                     
                     
                 }) { (error) in
                     
+                    print(error)
+                    //主线程设置 button可用
+                    DispatchQueue.main.async {
+                        self.SubmitBtn.isUserInteractionEnabled = true
+                        self.view .layoutIfNeeded()
+                    }
+
                 }
-                
                 
             })
             
             return
         }
         
-        HttpClient.instance.post(path: URLPath.reportMaster, parameters: parmar, success: { (response) in
+        
+        print(parmarReport)
+        
+        HttpClient.instance.post(path: URLPath.reportMaster, parameters: parmarReport, success: { (response) in
             
             
             SVProgressHUD.showSuccess(withStatus: "提交成功")
@@ -579,12 +590,23 @@ class ReportMasterViewController: UIViewController {
             //主线程设置 button可用
             DispatchQueue.main.async {
                 self.SubmitBtn.isUserInteractionEnabled = true
-                
+                self.view .layoutIfNeeded()
             }
             
         }) { (error) in
             
+            print(error)
+            //主线程设置 button可用
+            DispatchQueue.main.async {
+                self.SubmitBtn.isUserInteractionEnabled = true
+                self.view .layoutIfNeeded()
+                
+            }
+
         }
+        
+        
+        
         
     }
     

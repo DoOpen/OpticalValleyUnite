@@ -161,6 +161,9 @@ class LoginViewController: UIViewController {
     // MARK: - 子系统的选择的接口调用
     func systemSelectionNetworkInterface(){
         
+        var parameters = [String : Any]()
+        
+        
         let token = UserDefaults.standard.object(forKey: Const.SJToken)
         parameters["token"] = token
         

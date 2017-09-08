@@ -33,6 +33,10 @@ class ReportMasterViewController: UIViewController {
     //其他
     @IBOutlet weak var otherReportMaster: UIButton!
     
+/// 提交按钮button
+    @IBOutlet weak var SubmitBtn: UIButton!
+    
+    
     @IBOutlet weak var famlyBtn: UIButton!
     
     @IBOutlet weak var publicBtn: UIButton!
@@ -43,6 +47,10 @@ class ReportMasterViewController: UIViewController {
     
 /// 区分电梯和普通报事
     var reportName : String = ""
+    
+/// 加锁
+    let lock = 0
+    let lock1 = 0
     
     
     //中间要求变换的 contentview
@@ -406,10 +414,8 @@ class ReportMasterViewController: UIViewController {
             let vc = ChooseHouseViewController.loadFromStoryboard(name: "ReportMaster") as! ChooseHouseViewController
             vc.parkId = selectProject?.projectId
             vc.selectParkHandel = {[weak self] parkInfoModel in
+                
                 self?.selectParkInfo = parkInfoModel
-                
-                
-                
                 self?.addressLabel.text =  parkInfoModel.name
                 
             }
@@ -421,6 +427,7 @@ class ReportMasterViewController: UIViewController {
     
     // MARK: - 提交-完成buttonClick
     @IBAction func doneBtnClick() {
+        
         
 
         if selectProject == nil {
@@ -440,6 +447,9 @@ class ReportMasterViewController: UIViewController {
             SVProgressHUD.showError(withStatus: "请输入工单描述")
             return
         }
+        
+        //直接的是,禁用button
+        self.SubmitBtn.isUserInteractionEnabled = false
         
         var parmar = [String: Any]()
         
@@ -527,18 +537,28 @@ class ReportMasterViewController: UIViewController {
                 parmar["EVENT_TYPE"] = 4
             }
             
-        
         }
         
         let images = addPhotoView.photos.map{$0.image}
         
+//        let time: TimeInterval = 2.0
+        
         if images.count > 0 {
+            
             HttpClient.instance.upDataImages(images, complit: { (url) in
                 parmar["PICTURE"] = url
+                
                 HttpClient.instance.post(path: URLPath.reportMaster, parameters: parmar, success: { (response) in
+                
                     
                     SVProgressHUD.showSuccess(withStatus: "提交成功")
                     _ = self.navigationController?.popViewController(animated: true)
+                    //主线程设置 button可用
+                    DispatchQueue.main.async {
+                        self.SubmitBtn.isUserInteractionEnabled = true
+                        
+                    }
+                    
                     
                 }) { (error) in
                     
@@ -552,8 +572,15 @@ class ReportMasterViewController: UIViewController {
         
         HttpClient.instance.post(path: URLPath.reportMaster, parameters: parmar, success: { (response) in
             
+            
             SVProgressHUD.showSuccess(withStatus: "提交成功")
             _ = self.navigationController?.popViewController(animated: true)
+            
+            //主线程设置 button可用
+            DispatchQueue.main.async {
+                self.SubmitBtn.isUserInteractionEnabled = true
+                
+            }
             
         }) { (error) in
             
@@ -611,8 +638,7 @@ extension ReportMasterViewController: SGScanningQRCodeVCDelegate{
                 self.navigationController?.popViewController(animated: true)
                 
             }
-            
-            
+        
         }) { (error) in
             
         }

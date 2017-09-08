@@ -903,6 +903,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="SubmitBtn" destination="zzn-j2-1Ro" id="EbD-g4-MMm"/>
                         <outlet property="addPhotoView" destination="kiM-Yx-aYh" id="Pjs-y2-8bl"/>
                         <outlet property="address2Label" destination="LZt-lJ-QEL" id="uob-qG-CBc"/>
                         <outlet property="addressLabel" destination="C40-vz-Ma3" id="zHw-8M-3iK"/>

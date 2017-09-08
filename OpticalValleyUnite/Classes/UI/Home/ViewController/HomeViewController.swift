@@ -217,9 +217,26 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         if systemSelection.count > 0 {
             
-            let array = systemSelection["app_res"] as! NSArray
+            let array : NSArray = systemSelection["app_res"] as! [[String : Any]] as NSArray
+            let sortArray : NSMutableArray = {return NSMutableArray()}()
             
-            self.setPermission(arry: array as! Array<[String : Any]> )
+            //解决bug: 需要通过的是 "SORT" : 2 的值来进行对数据来重新排序
+            for xxxx in 0..<array.count {
+                
+                for temp in array {
+                    
+                    let sortTemp = temp as! [String : Any]
+                    let SORT = sortTemp["SORT"] as? Int
+                    
+                    if xxxx == SORT {
+                        //前台的数据重写逻辑!
+                        sortArray.add(temp)
+                    }
+                }
+            }
+            
+            
+            self.setPermission(arry: sortArray as! Array<[String : Any]> )
             
             do {
                 //Convert to Data
@@ -239,7 +256,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
 
         }else{
             //弹框提示网络出现异常
-            
         
         }
 

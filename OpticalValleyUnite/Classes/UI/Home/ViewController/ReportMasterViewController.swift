@@ -579,7 +579,7 @@ class ReportMasterViewController: UIViewController {
         }
         
         
-        print(parmarReport)
+//        print(parmarReport)
         
         HttpClient.instance.post(path: URLPath.reportMaster, parameters: parmarReport, success: { (response) in
             

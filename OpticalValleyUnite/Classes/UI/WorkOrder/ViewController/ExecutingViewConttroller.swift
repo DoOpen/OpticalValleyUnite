@@ -20,10 +20,12 @@ class ExecutingViewConttroller: UIViewController {
     var isToSee = false
     
     @IBOutlet weak var addPhoneView: SJAddView!
+    
+    //应急工单中备注内容testView
     @IBOutlet weak var textView: SJTextView!
     @IBOutlet weak var emergencyView: UIView!
     
-    @IBOutlet weak var RemarksTextView: UITextView!
+    
     
     @IBOutlet weak var hideTableViewHeightConstraint: NSLayoutConstraint!
     
@@ -37,6 +39,29 @@ class ExecutingViewConttroller: UIViewController {
     var hisriyModel: WorkHistoryModel?
     
     @IBOutlet weak var saveBtn: UIButton!
+    
+    // 配件库的功能的组件
+    // 使用配件
+    @IBOutlet weak var doMessageV: UIView!
+    @IBOutlet weak var doMessageViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var doMessageDetailV: UIView!
+    // 其他事项
+    @IBOutlet weak var otherView: UIView!
+    
+    @IBOutlet weak var otherDetailView: UIView!
+    
+    @IBOutlet weak var otherDetailViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var otherViewtop: NSLayoutConstraint!
+    
+    @IBOutlet weak var otherViewHeight: NSLayoutConstraint!
+    // 计划工单的备注textView
+    @IBOutlet weak var RemarksTextView: SJTextView!
+    
+    
+    
+    
     var url: String?
     var image: UIImage?
     
@@ -62,27 +87,34 @@ class ExecutingViewConttroller: UIViewController {
         if isToSee{
             downView.isHidden = true
         }
-        if workOrderDetalModel?.orderType == "计划工单"{ //计划工单
+        if workOrderDetalModel?.orderType == "计划工单"{ //计划工单,是有配件库的选择功能的
             emergencyView.isHidden = true
             getData()
            
             
-        }else if workOrderDetalModel?.orderType == "应急工单"{
+        }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单,里面没有配件的功能
             emergencyView.isHidden = false
             saveBtn.isHidden = true
+            //隐藏应急工单 里面的 报事模块 内容
+            reportFunctionHiden()
+            
             if isToSee{
                 emergencyView.isUserInteractionEnabled = false
             }
         }
         
         if let model = hisriyModel{
+            //设置text中的默认输入选项
             textView.text = model.text
+            
             if let str = model.pictures.first{
                 
-                let url = URL(string: str)
+                _ = URL(string: str)
                 
             }
         }
+        
+        RemarksTextView.placeHolder = "请输入备注内容"
         
         // 接受通知
         receiveNotes()
@@ -281,7 +313,6 @@ class ExecutingViewConttroller: UIViewController {
             parmat["UNIT_STATUS"] = 7
             //设置添加配件库的模型数据进来
             
-            
             self.alert(message: "整个工单已经完成?完成工单之前必须先点击保存按钮提交内容?") { (action) in
                 
                 //注意的是:这里都做好,提示添加保存完成
@@ -353,7 +384,6 @@ class ExecutingViewConttroller: UIViewController {
         let vc = UIStoryboard(name: "YQPartsLibary", bundle: nil).instantiateInitialViewController()
         navigationController?.pushViewController(vc!, animated: true)
         
-        
     }
     
     
@@ -363,6 +393,23 @@ class ExecutingViewConttroller: UIViewController {
         let vc = UIStoryboard(name: "ReportMaster", bundle: nil).instantiateInitialViewController()
         navigationController?.pushViewController(vc!, animated: true)
         
+        
+    }
+    
+    // MARK: - 报事模块隐藏
+    func reportFunctionHiden(){
+        
+        otherView.isHidden = true
+        otherViewtop.constant = 0
+        otherDetailView.isHidden = true
+        otherDetailViewHeight.constant = 0
+        otherViewHeight.constant = 0
+        
+        doMessageV.isHidden = true
+        doMessageDetailV.isHidden = true
+        doMessageViewHeight.constant = 0
+        
+        RemarksTextView.isHidden = true
         
     }
     

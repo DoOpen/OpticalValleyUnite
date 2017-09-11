@@ -3315,9 +3315,17 @@
                     <connections>
                         <outlet property="RemarksTextView" destination="un5-Qq-dQ9" id="h8W-s1-tPy"/>
                         <outlet property="addPhoneView" destination="BaE-Pc-NRb" id="v09-1E-qZl"/>
+                        <outlet property="doMessageDetailV" destination="nH9-ka-3RX" id="M7W-48-jm3"/>
+                        <outlet property="doMessageV" destination="nyi-ZF-szR" id="7pR-9v-BFY"/>
+                        <outlet property="doMessageViewHeight" destination="Z2g-YF-qov" id="kTf-oe-gzt"/>
                         <outlet property="downView" destination="yoy-mP-cZS" id="pUc-Sd-sAl"/>
                         <outlet property="emergencyView" destination="XOY-AV-Uqe" id="Qw1-kl-jkj"/>
                         <outlet property="hideTableViewHeightConstraint" destination="JOy-B0-oev" id="BCv-9m-Al9"/>
+                        <outlet property="otherDetailView" destination="WQ6-8g-fOa" id="uEF-HI-1CJ"/>
+                        <outlet property="otherDetailViewHeight" destination="FyZ-X5-jbB" id="wc1-UZ-8sd"/>
+                        <outlet property="otherView" destination="6xQ-k6-Vai" id="h2R-Tf-7Sg"/>
+                        <outlet property="otherViewHeight" destination="caz-yX-1AL" id="Zol-Aa-HP4"/>
+                        <outlet property="otherViewtop" destination="G48-CK-qrj" id="vZA-HK-1HK"/>
                         <outlet property="saveBtn" destination="rSc-Ha-bB7" id="K0b-1A-NL6"/>
                         <outlet property="tableView" destination="0th-7A-4TV" id="py6-TN-Tbd"/>
                         <outlet property="textView" destination="Way-E1-Nd9" id="b0e-b3-fXC"/>

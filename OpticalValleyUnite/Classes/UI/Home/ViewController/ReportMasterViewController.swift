@@ -503,6 +503,9 @@ class ReportMasterViewController: UIViewController {
                     return
                 }
                 
+                //待客模式
+                parmarReport["EVENT_TYPE"] = 1
+                
                 parmarReport["CUSTOMER_NAME"] = ownerNameTextField.text
                 parmarReport["CUSTOMER_ADDR"] = OwnerAddressTextField.text
                 
@@ -549,6 +552,7 @@ class ReportMasterViewController: UIViewController {
         if images.count > 0 {
             
             HttpClient.instance.upDataImages(images, complit: { (url) in
+                
                 parmarReport["PICTURE"] = url
                 
                 HttpClient.instance.post(path: URLPath.reportMaster, parameters: parmarReport, success: { (response) in
@@ -605,9 +609,6 @@ class ReportMasterViewController: UIViewController {
             }
 
         }
-        
-        
-        
         
     }
     

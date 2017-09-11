@@ -33,6 +33,7 @@ class WorkOrderViewController: UIViewController {
     var currentStatusBtn: UIButton?
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.navigationItem.title = "我的工单"
         statusBtnClick(waitProcessedBtn)
@@ -72,11 +73,9 @@ class WorkOrderViewController: UIViewController {
             self.siftVc = nil
         }
         
-        
 //        view?.addSubview(subView!)
         
     }
-    
     
     
     func reload(){
@@ -176,6 +175,7 @@ class WorkOrderViewController: UIViewController {
 
             
         }) { (error) in
+            
 //            SVProgressHUD.dismiss()
 //            let models = self.getWorkOrderFormDataDB(type: array[type], indexPage: 0)
 //            self.currentDatas = models

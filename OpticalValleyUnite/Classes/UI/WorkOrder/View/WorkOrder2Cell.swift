@@ -18,9 +18,10 @@ class WorkOrder2Cell: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    //创建的人民
+    //创建的人名
     @IBOutlet weak var creatLabel: UILabel!
     @IBOutlet weak var typeBtn: UIButton!
+    //设备类的标签
     @IBOutlet weak var deviceBtn: UIButton!
     @IBOutlet weak var addressLabel: UILabel!
 
@@ -37,6 +38,10 @@ class WorkOrder2Cell: UITableViewCell {
             creatLabel.text = model?.reportListPName
             
             deviceBtn.isHidden =  model!.is_equip != 1
+            
+            print(deviceBtn.isHidden)
+            
+            
             switch model!.status {
             case 0://待派发
 

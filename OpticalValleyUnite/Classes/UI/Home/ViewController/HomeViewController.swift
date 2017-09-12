@@ -68,6 +68,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         //接受服务消息通知
         getNotice()
+        
+        
         //设置定位
         setUpLocation()
         
@@ -202,18 +204,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     // MARK: - 获取不同管理员权限的方法,首页数据获取核心方法 getModules的接口
     func getPermission(){
-        
-        
-        let data = UserDefaults.standard.object(forKey: Const.YQSystemSelectData)
-        
-        if data == nil {
-            
-            return
-        }
-        
+    
         //注意的是:通过的是子系统选择的界面功能取消   URLPath.getModules 的网络请求
         systemSelection = UserDefaults.standard.object(forKey: Const.YQSystemSelectData) as! NSDictionary
-        
+
         
         if systemSelection.count > 0 {
             
@@ -259,35 +253,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         }
 
-//        //调用权限的情况
-//        HttpClient.instance.get(path: URLPath.getModules, parameters: nil, success: { (respose) in
-//            
-//            if let arry = respose as? Array<[String: Any]>{
-//                
-//                //设置权限btn_array
-//                self.setPermission(arry: arry)
-//                
-//                do {
-//                    //Convert to Data
-//                    let jsonData = try JSONSerialization.data(withJSONObject: arry, options: JSONSerialization.WritingOptions.prettyPrinted)
-//                    
-//                    //Do this for print data only otherwise skip
-//                    if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
-//                        print(JSONString)
-//                        
-//                        UserDefaults.standard.set(JSONString, forKey: "PermissionModels")
-//                    }
-//                    
-//                } catch  {
-//                    print("转换错误 ")
-//                }
-//            }
-//            
-//        }) { (error) in
-//            
-//            print(error)
-//        }
-        
     }
     
     // MARK: - 接受系统的通知
@@ -308,7 +273,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         let dic = info.userInfo! as NSDictionary
         self.systemSelection = dic
-        
         
     }
     
@@ -585,6 +549,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         vc.equipmentId = equipmentId
         navigationController?.pushViewController(vc, animated: true)
     }
+    
     
     
     // MARK: - 控制器dealloc的方法

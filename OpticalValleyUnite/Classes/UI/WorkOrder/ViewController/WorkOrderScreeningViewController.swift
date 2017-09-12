@@ -17,6 +17,10 @@ class WorkOrderScreeningViewController: UIViewController {
     @IBOutlet weak var workOrderTipView: UIView!
     
     
+    @IBOutlet weak var startTimeBnt: UIButton!
+    
+    @IBOutlet weak var endTimeBnt: UIButton!
+    
     @IBOutlet weak var projectTagsHeightContstrain: NSLayoutConstraint!
     
     var models = [ProjectModel](){
@@ -147,10 +151,15 @@ class WorkOrderScreeningViewController: UIViewController {
         //重置时间
         startTime = nil
         endTime = nil
+        startTimeBnt.setTitle("开始时间", for: .normal)
+        endTimeBnt.setTitle("结束时间", for: .normal)
         
         //重新设置加载模型
         if self.models.count > 0{
             
+            self.models.removeAll()
+            projectTagsView.removeAllTags()
+
             getWorkTypeList()
         
         }

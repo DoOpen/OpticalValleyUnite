@@ -18,12 +18,13 @@ class WorkOrderScreeningViewController: UIViewController {
     
     
     @IBOutlet weak var projectTagsHeightContstrain: NSLayoutConstraint!
+    
     var models = [ProjectModel](){
         didSet{
+            
             for model in models{
                 projectTagsView.addTag(model.projectName)
             }
-            
             
         }
     }
@@ -73,7 +74,8 @@ class WorkOrderScreeningViewController: UIViewController {
         getWorkTypeList()
     }
     
-
+    
+    // MARK: - 开始时间按钮点击
     @IBAction func beginBtnClick(_ sender: UIButton) {
         SJPickerView.show(withDateType: .date, defaultingDate: Date(),userController:self, selctedDateFormot: "yyyy-MM-dd") { (date, dateStr) in
             sender.setTitle(dateStr, for: .normal)
@@ -81,12 +83,15 @@ class WorkOrderScreeningViewController: UIViewController {
         }
     }
     
+    
+    // MARK: - 截止时间按钮点击
     @IBAction func endBtnClick(_ sender: UIButton) {
         SJPickerView.show(withDateType: .date, defaultingDate: Date(), userController:self, selctedDateFormot: "yyyy-MM-dd") { (date, dateStr) in
             sender.setTitle(dateStr, for: .normal)
             self.endTime = dateStr
         }
     }
+    
 
     func getWorkTypeList(){
         
@@ -98,14 +103,14 @@ class WorkOrderScreeningViewController: UIViewController {
                 temp.append(ProjectModel(parmart: dic))
             }
             self.models = temp
-            
-
+        
             
         }) { (error) in
             
         }
     }
 
+    // MARK: - 完成,确定按钮的点击方法
     @IBAction func doneBtnClick() {
         var parmat = [String: Any]()
         let dic = ["待派发": 0,"待处理" : 5, "待评价": 7,"待接收": 1,"已处理": 7, "已接受": 5,"已派发": 1]
@@ -135,15 +140,34 @@ class WorkOrderScreeningViewController: UIViewController {
         
         _ = navigationController?.popViewController(animated: true)
         
+    }
     
+    // MARK: - 重置设置按钮
+    @IBAction func resetBtnClick(_ sender: UIButton) {
+        //重置时间
+        startTime = nil
+        endTime = nil
+        
+        //重新设置加载模型
+        if self.models.count > 0{
+            
+            getWorkTypeList()
+        
+        }
         
     }
+    
     
 
 }
 
 extension WorkOrderScreeningViewController: RKTagsViewDelegate{
+    
+    // MARK: - RKTagsView的代理的方法
     func tagsViewContentSizeDidChange(_ tagsView: RKTagsView) {
         scrollView.contentSize = CGSize(width: 0, height: 330.0 + tagsView.contentSize.height)
     }
+    
+    
+    
 }

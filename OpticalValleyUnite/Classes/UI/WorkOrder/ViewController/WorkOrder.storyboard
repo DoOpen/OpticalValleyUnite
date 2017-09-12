@@ -1558,7 +1558,7 @@
                                 <rect key="frame" x="0.0" y="682" width="414" height="54"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XcH-q1-MSf">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
+                                        <rect key="frame" x="207" y="0.0" width="207" height="54"/>
                                         <color key="backgroundColor" red="0.19215686269999999" green="0.64705882349999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="确定">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1567,14 +1567,25 @@
                                             <action selector="doneBtnClick" destination="Fuv-w7-sGx" eventType="touchUpInside" id="RLB-xg-yEO"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHg-qJ-CjZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="54"/>
+                                        <state key="normal" title="重置"/>
+                                        <connections>
+                                            <action selector="resetBtnClick:" destination="Fuv-w7-sGx" eventType="touchUpInside" id="aU1-HC-Ljy"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="XcH-q1-MSf" secondAttribute="bottom" id="AQJ-9H-GR9"/>
-                                    <constraint firstAttribute="trailing" secondItem="XcH-q1-MSf" secondAttribute="trailing" id="Crh-QU-GxN"/>
-                                    <constraint firstItem="XcH-q1-MSf" firstAttribute="leading" secondItem="53P-gt-1sx" secondAttribute="leading" id="EKt-bW-bOu"/>
-                                    <constraint firstItem="XcH-q1-MSf" firstAttribute="top" secondItem="53P-gt-1sx" secondAttribute="top" id="GIT-qn-K7H"/>
+                                    <constraint firstAttribute="bottom" secondItem="hHg-qJ-CjZ" secondAttribute="bottom" id="6TK-yv-mEp"/>
+                                    <constraint firstAttribute="bottom" secondItem="XcH-q1-MSf" secondAttribute="bottom" id="91E-sI-32Y"/>
+                                    <constraint firstItem="XcH-q1-MSf" firstAttribute="top" secondItem="53P-gt-1sx" secondAttribute="top" id="H4D-uw-FRd"/>
                                     <constraint firstAttribute="height" constant="54" id="Joa-ZY-wi3"/>
+                                    <constraint firstItem="XcH-q1-MSf" firstAttribute="width" secondItem="hHg-qJ-CjZ" secondAttribute="width" id="O5R-Xn-nx4"/>
+                                    <constraint firstItem="hHg-qJ-CjZ" firstAttribute="top" secondItem="53P-gt-1sx" secondAttribute="top" id="SK7-Np-sW1"/>
+                                    <constraint firstItem="XcH-q1-MSf" firstAttribute="leading" secondItem="hHg-qJ-CjZ" secondAttribute="trailing" id="Y6E-4T-bTj"/>
+                                    <constraint firstItem="hHg-qJ-CjZ" firstAttribute="leading" secondItem="53P-gt-1sx" secondAttribute="leading" id="dQ7-Gr-XGC"/>
+                                    <constraint firstAttribute="trailing" secondItem="XcH-q1-MSf" secondAttribute="trailing" id="wYi-nZ-nD5"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1600,7 +1611,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPQ-B3-rnO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4186" y="700"/>
+            <point key="canvasLocation" x="4185.507246376812" y="699.45652173913049"/>
         </scene>
         <!--Work Order Sift View Controller-->
         <scene sceneID="b83-nf-f8k">

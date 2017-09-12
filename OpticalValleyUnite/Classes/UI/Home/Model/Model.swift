@@ -375,9 +375,10 @@ class WorkOrderDetailModel: Object{
     convenience init(parmart: [String: Any]) {
         self.init()
         
-        content = parmart["DESCRIPTION"] as? String ?? ""
+        
         
         workTypeName = parmart["WORKTYPE_NAME"] as? String ?? ""
+        
         status = parmart["UNIT_STATUS"] as? Int ?? -1
         importentLivel = parmart["IMPORTENT_LEVEL"] as? Int ?? 0
         workName = parmart["WORKUNIT_NAME"] as? String ?? ""
@@ -389,20 +390,32 @@ class WorkOrderDetailModel: Object{
         EXEC_PICTURE = parmart["EXEC_PICTURE"] as? String ?? ""
         EXEC_PERSON_NAME = parmart["EXEC_PERSON_NAME"] as? String ?? ""
         PARK_ID = parmart["PARK_ID"] as? String ?? ""
-        if let type = parmart["WORKUNIT_TYPE"] as? String{
+        
+        if let type = parmart["WORKUNIT_TYPE"] as? String{//计划工单
             if type == "1"{
                 orderType = "计划工单"
                 if let arry = parmart["tasks"] as? Array<[String: Any]> {
                     equipment_id = arry.first?["equipment_id"] as? Int ?? -1
+                    content = arry.first?["DESCRIPTION"] as? String ?? ""
+                    
                 }else{
+                    
                     equipment_id = -1
+                    
                 }
                 
-            }else if type == "2" {
+//                let tempP = parmart["tasks"] as?  [String: Any]
+//                content = tempP?["DESCRIPTION"] as? String ?? ""
+            
+                
+            }else if type == "2" {//应急工单
                 orderType = "应急工单"
                 equipment_id = parmart["equipment_id"] as? Int ?? -1
+                content = parmart["DESCRIPTION"] as? String ?? ""
             }
+            
         }else{
+            
             orderType = ""
         }
         

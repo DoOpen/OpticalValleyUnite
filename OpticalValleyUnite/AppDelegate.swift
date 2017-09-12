@@ -81,6 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
+
+/// 集成的友盟的接口
 extension AppDelegate: UNUserNotificationCenterDelegate{
     //iOS10以下使用这个方法接收通知
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
@@ -96,17 +98,21 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let userInfo = response.notification.request.content.userInfo
+        
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
 
-            
+            // 接受通知执行界面的跳转功能
             noticHandel(userInfo: userInfo)
-            
+    
             UMessage.didReceiveRemoteNotification(userInfo)
+            
         }else{
             //应用处于后台时的本地推送接受
+            
         }
         
     }
+    
     ////iOS10新增：处理前台收到通知的代理方法
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

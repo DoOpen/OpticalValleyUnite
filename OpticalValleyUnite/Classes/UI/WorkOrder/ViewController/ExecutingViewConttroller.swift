@@ -59,9 +59,7 @@ class ExecutingViewConttroller: UIViewController {
     // 计划工单的备注textView
     @IBOutlet weak var RemarksTextView: SJTextView!
     
-    
-    
-    
+
     var url: String?
     var image: UIImage?
     
@@ -75,6 +73,7 @@ class ExecutingViewConttroller: UIViewController {
 
         title = "工单执行"
         
+        //工单详情里面的数据,直接从workOrderDetalModel 中来进行获取的数据!
         workOrderContent.text = workOrderDetalModel?.content
         timeLabel.text = workOrderDetalModel?.time
         
@@ -87,6 +86,7 @@ class ExecutingViewConttroller: UIViewController {
         if isToSee{
             downView.isHidden = true
         }
+        
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单,是有配件库的选择功能的
             emergencyView.isHidden = true
             getData()

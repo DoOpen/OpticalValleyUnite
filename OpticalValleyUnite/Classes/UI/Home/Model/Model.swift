@@ -374,7 +374,9 @@ class WorkOrderDetailModel: Object{
     
     convenience init(parmart: [String: Any]) {
         self.init()
+        
         content = parmart["DESCRIPTION"] as? String ?? ""
+        
         workTypeName = parmart["WORKTYPE_NAME"] as? String ?? ""
         status = parmart["UNIT_STATUS"] as? Int ?? -1
         importentLivel = parmart["IMPORTENT_LEVEL"] as? Int ?? 0

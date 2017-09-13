@@ -28,7 +28,7 @@ class SurveillanceWorkOrderViewController: UIViewController {
         }
     }
     
-    
+    // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,25 +53,33 @@ class SurveillanceWorkOrderViewController: UIViewController {
     
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: .UITableViewSelectionDidChange, object: self.tableView)
         
+        NotificationCenter.default.removeObserver(self, name: .UITableViewSelectionDidChange, object: self.tableView)
         
         print("SurveillanceWorkOrderViewController----deinit")
        
     }
     
+    
+    // MARK: - 添加上拉下拉刷新的方法
     func addRefirsh(){
+        
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
             self.getWorkOrder(type: self.currentStatusBtn?.tag ?? 0)
         })
+        
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
             self.getWorkOrder(type: self.currentStatusBtn?.tag ?? 0, pageIndex: self.pageNo + 1)
         })
+        
+        
     }
 
     @IBAction func statusBtnClick(_ sender: UIButton) {
+        
         currentStatusBtn?.isSelected = false
         currentStatusBtn = sender
         currentStatusBtn?.isSelected = true
@@ -79,7 +87,6 @@ class SurveillanceWorkOrderViewController: UIViewController {
         currentDatas.removeAll()
         tableView.reloadData()
         
-
         getWorkOrder(type: sender.tag)
 
         
@@ -130,6 +137,8 @@ class SurveillanceWorkOrderViewController: UIViewController {
             leftBtn.setTitle("全选", for: .normal)
         }
     }
+    
+    
     @IBAction func rightBtnClick() {
 //        electsBtnClick(UIBarButtonItem())
         if tableView.indexPathsForSelectedRows == nil{
@@ -167,6 +176,7 @@ class SurveillanceWorkOrderViewController: UIViewController {
     }
     
     
+    // MARK: - 加载搜索工单的方法
     func getWorkOrder(type: Int,pageIndex: Int = 0 ,dic: [String: Any] = [String: Any]() ){
         
         var status = ""
@@ -178,6 +188,7 @@ class SurveillanceWorkOrderViewController: UIViewController {
             status = "YDB"
         }
         
+        //督办的筛选条件的制定情况,需要的是 进行传参限定
         var parmat = [String: Any]()
         parmat["STATUS"] = status
         parmat["pageIndex"] = pageIndex
@@ -185,7 +196,9 @@ class SurveillanceWorkOrderViewController: UIViewController {
         for (key,value) in dic{
             parmat[key] = value
         }
+        
         SVProgressHUD.show(withStatus: "加载中...")
+        
         HttpClient.instance.get(path: URLPath.getSurveillanceWorkOrderList, parameters: parmat, success: { (response) in
             SVProgressHUD.dismiss()
             guard response.count > 0 else{
@@ -202,10 +215,6 @@ class SurveillanceWorkOrderViewController: UIViewController {
                 }
             }
             
-
-            
-            
-
             if pageIndex == 0{
                 self.pageNo = 0
                 self.currentDatas = temp
@@ -234,8 +243,11 @@ class SurveillanceWorkOrderViewController: UIViewController {
             self.tableView.mj_footer.endRefreshing()
         }
     }
+    
+    
  
     func surveillance(workOrderIds: Array<String>){
+        
         var text = ""
 
         text = workOrderIds.reduce("", {$0 + "," + $1})
@@ -252,7 +264,12 @@ class SurveillanceWorkOrderViewController: UIViewController {
     }
 }
 
+
+
+
 extension SurveillanceWorkOrderViewController: UITableViewDataSource, UITableViewDelegate{
+    
+    // MARK: - tableView的数据源和代理的方法
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentDatas.count
     }

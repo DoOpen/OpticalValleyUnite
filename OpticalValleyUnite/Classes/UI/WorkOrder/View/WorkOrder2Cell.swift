@@ -113,7 +113,7 @@ class WorkOrder2Cell: UITableViewCell {
                 statusLabel.text = "已退回"
             case 5://待处理 （已接收）
                 iconView.image = UIImage(name: "todo")
-                statusLabel.text = "待处理"
+                statusLabel.text = "待执行"
             case 7://待评价（已处理）
                 iconView.image = UIImage(name: "ToEvaluate")
                 statusLabel.text = "待评价"

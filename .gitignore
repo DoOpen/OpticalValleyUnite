@@ -1,0 +1,12 @@
+
+Pods/Target Support Files/MJRefresh/MJRefresh.modulemap
+
+*.h
+
+Pods/Realm/include/RLMObjectSchema_Private.h
+
+Pods/Realm/include/RLMObjectSchema_Private.h
+
+Pods/Realm/include/RLMObjectSchema_Private.hpp
+
+Pods/Realm/include/RLMRealmUtil.hpp

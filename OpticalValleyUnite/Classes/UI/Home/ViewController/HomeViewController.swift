@@ -83,54 +83,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         //获取app版本号的方法
         checkNewBundleVersion(isBlack: true)
         
-        
-//        //重复登录拿缓存的过程
-//        if let json = UserDefaults.standard.object(forKey: "PermissionModels") as? String{
-//            
-//            
-//            do {
-//                //Convert to Data
-//                let data = json.data(using: .utf8)!
-//                let jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-//                
-//                
-//                if let arry = jsonData as? Array<[String: Any]>{
-//                    
-//                    setPermission(arry: arry)
-//                    
-//                }else{
-//                    print("不能转成数组了")
-//                }
-//
-//            } catch  {
-//                
-//                print("转换错误 ")
-//            }
-//            
-//        }else{
-//            
-//            self.top1BtnView.textLabel.text = "工单"
-//            self.top1BtnView.imageView.image = UIImage(named: "工单")
-//            
-//            self.top2BtnView.textLabel.text = "报事"
-//            self.top2BtnView.imageView.image = UIImage(named: "报事")
-//            
-//            self.top3BtnView.textLabel.text = "签到"
-//            self.top3BtnView.imageView.image = UIImage(named: "qiandao-1")
-//            
-//            self.top4BtnView.textLabel.text = "扫描"
-//            self.top4BtnView.imageView.image = UIImage(named: "扫描")
-//            
-//            self.donw1BtnView.textLabel.text = "定位"
-//            self.donw1BtnView.imageView.image = UIImage(named: "dingwei")
-//            
-//            self.donw2BtnView.textLabel.text = "代办事项"
-//            self.donw2BtnView.imageView.image = UIImage(named: "daiban")
-//            
-//            self.donw3BtnView.textLabel.text = "智能开门"
-//            self.donw3BtnView.imageView.image = UIImage(named: "ic_door")
-//        }
-        
     }
 
 

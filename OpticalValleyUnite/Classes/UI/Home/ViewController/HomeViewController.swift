@@ -204,6 +204,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     // MARK: - 获取不同管理员权限的方法,首页数据获取核心方法 getModules的接口
     func getPermission(){
+        
+        let data = UserDefaults.standard.object(forKey: Const.YQSystemSelectData)
+        if data == nil {
+            
+            return
+        }
     
         //注意的是:通过的是子系统选择的界面功能取消   URLPath.getModules 的网络请求
         systemSelection = UserDefaults.standard.object(forKey: Const.YQSystemSelectData) as! NSDictionary

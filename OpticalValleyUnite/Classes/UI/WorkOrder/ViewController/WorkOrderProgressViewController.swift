@@ -43,8 +43,6 @@ class WorkOrderProgressViewController: UIViewController {
     var detailsCell: WorkOrderDetailsCell?
     var type = OperationType.none {
         
-        
-        
         didSet{
             
             var leftText = ""
@@ -115,16 +113,9 @@ class WorkOrderProgressViewController: UIViewController {
             
             leftBtn.setTitle(leftText, for: .normal)
             rightBtn.setTitle(rightText, for: .normal)
-
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        timer?.invalidate()
-        
-        
-    }
 
     func setupTimer(){
         
@@ -144,13 +135,10 @@ class WorkOrderProgressViewController: UIViewController {
         } else {
             
         }
-        
-
-        
-        
-
+    
     }
     
+    // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -191,8 +179,16 @@ class WorkOrderProgressViewController: UIViewController {
         getData()
         getWorkDetail()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        timer?.invalidate()
+        
+    }
 
     
+    // MARK: - left,rightButton的点击
     @IBAction func leftBtnClick() {
         switch type {
         //待派发
@@ -206,8 +202,6 @@ class WorkOrderProgressViewController: UIViewController {
         //待处理
         case .waitProcessing:
             processingBtnClick()
-            
-            
             
         //待执行
         case .waitExecuting, .waitDone:
@@ -238,8 +232,6 @@ class WorkOrderProgressViewController: UIViewController {
         case .waitProcessing:
             meetsListClose()
             
-            
-            
         //待执行
         case .waitExecuting, .waitDone:
             meetsListClose()
@@ -254,8 +246,9 @@ class WorkOrderProgressViewController: UIViewController {
         }
     }
     
-    
+    // MARK: - 刷新状态
     func reloadStatus(status: Int){
+        
         parmate?["UNIT_STATUS"] = status
         SVProgressHUD.show(withStatus: "加载中...")
         HttpClient.instance.get(path: URLPath.getWorkDetail, parameters: parmate, success: { (respose) in
@@ -293,6 +286,7 @@ class WorkOrderProgressViewController: UIViewController {
     }
     
     
+    // MARK: - 拿到工单详情
     func getWorkDetail(){
         
         SVProgressHUD.show(withStatus: "加载中...")
@@ -338,6 +332,7 @@ class WorkOrderProgressViewController: UIViewController {
         
     }
     
+    // MARK: - 拿到设备
     func getEquipment(_ equipment: Int){
         
         if equipment == -1{
@@ -354,14 +349,12 @@ class WorkOrderProgressViewController: UIViewController {
 
             }
 
-            
-            
-            
         }) { (error) in
             
         }
     }
     
+    // MARK: - 拿到数据
     func getData(){
 //        var parmat = [String: Any]()
 //        parmat["WORKUNIT_ID"] = workOrderDetalModel?.id
@@ -389,8 +382,6 @@ class WorkOrderProgressViewController: UIViewController {
                 cell.contentLabel.text = temp.first?.TASK_DESCRIPTION
             }
 
-            
-            
         }) { (error) in
 
         }
@@ -525,16 +516,25 @@ class WorkOrderProgressViewController: UIViewController {
     }
     
     
+    // MARK: - 点击督办按钮的执行的方法
     @IBAction func dubanBtnClick(_ sender: UIButton) {
+        
         let text = workOrderDetalModel!.id
         HttpClient.instance.post(path: URLPath.batchsetSupervisestatus, parameters: ["SUPERVISE_IDS": text], success: { (response) in
             
             SVProgressHUD.showSuccess(withStatus: "督办成功")
             self.heightConstraint.constant = 0
+            //重新的调用接口,加载数据刷新表格
+            self.reloadStatus(status: 0)
+            
             self.view.setNeedsLayout()
+            
+            
         }) { (error) in
             
         }
+        
+        
     }
     
     
@@ -637,7 +637,5 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
                 navigationController?.pushViewController(vc, animated: true)
             }
         }
-        
-        
     }
 }

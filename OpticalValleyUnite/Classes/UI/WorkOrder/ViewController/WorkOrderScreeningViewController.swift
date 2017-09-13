@@ -16,7 +16,6 @@ class WorkOrderScreeningViewController: UIViewController {
     @IBOutlet weak var workOrderStatusTagsView: RKTagsView!
     @IBOutlet weak var workOrderTipView: UIView!
     
-    
     @IBOutlet weak var startTimeBnt: UIButton!
     
     @IBOutlet weak var endTimeBnt: UIButton!
@@ -76,7 +75,10 @@ class WorkOrderScreeningViewController: UIViewController {
         }
         
         getWorkTypeList()
+        
     }
+    
+    
     
     
     // MARK: - 开始时间按钮点击
@@ -116,27 +118,26 @@ class WorkOrderScreeningViewController: UIViewController {
 
     // MARK: - 完成,确定按钮的点击方法
     @IBAction func doneBtnClick() {
+        
         var parmat = [String: Any]()
         let dic = ["待派发": 0,"待处理" : 5, "待评价": 7,"待接收": 1,"已处理": 7, "已接受": 5,"已派发": 1]
         
         if projectTagsView.selectedTagIndexes.first != nil {
+            
             projectModel = models[(projectTagsView.selectedTagIndexes.first!.intValue)]
+            
             parmat["PARK_ID"] = projectModel?.projectId
         }
-        
         if workOrderStatusTagsView.selectedTagIndexes.first != nil {
             let str = models2[(workOrderStatusTagsView.selectedTagIndexes.first!.intValue)]
             parmat["UNIT_STATUS"] = dic[str]
         }
-        
-
         if let startTime = startTime{
             parmat["STAR"] = startTime
         }
         if let endTime = endTime{
             parmat["END"] = endTime
         }
-        
         if let block = doneBtnClickHandel{
             
             block(parmat)
@@ -145,6 +146,8 @@ class WorkOrderScreeningViewController: UIViewController {
         _ = navigationController?.popViewController(animated: true)
         
     }
+    
+    
     
     // MARK: - 重置设置按钮
     @IBAction func resetBtnClick(_ sender: UIButton) {
@@ -165,9 +168,6 @@ class WorkOrderScreeningViewController: UIViewController {
         }
         
     }
-    
-    
-
 }
 
 extension WorkOrderScreeningViewController: RKTagsViewDelegate{

@@ -45,13 +45,16 @@ class SurveillanceWorkOrderViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
         if shouldReload {
+            
             getWorkOrder(type:(currentStatusBtn?.tag) ?? 0)
         }
         
     }
     
-    
+    // MARK: - dealloc的方法
     deinit {
         
         NotificationCenter.default.removeObserver(self, name: .UITableViewSelectionDidChange, object: self.tableView)
@@ -98,6 +101,8 @@ class SurveillanceWorkOrderViewController: UIViewController {
         }
     }
 
+    
+    // MARK: - 筛选按钮的点击执行的方法
     @IBAction func chooseBtnClick(_ sender: UIBarButtonItem) {
         
         let vc = WorkOrderScreeningViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderScreeningViewController
@@ -125,6 +130,7 @@ class SurveillanceWorkOrderViewController: UIViewController {
         
     }
     
+    // MARK: - 全选的按钮的点击的情况
     @IBAction func leftBtnClick() {
         tableView.setEditing(!tableView.isEditing, animated: true)
         if tableView.isEditing{
@@ -139,6 +145,7 @@ class SurveillanceWorkOrderViewController: UIViewController {
     }
     
     
+    // MARK: - 一键督办的按钮的点击情况
     @IBAction func rightBtnClick() {
 //        electsBtnClick(UIBarButtonItem())
         if tableView.indexPathsForSelectedRows == nil{
@@ -168,11 +175,13 @@ class SurveillanceWorkOrderViewController: UIViewController {
 
 
     func selectionDidChange(noti: NSNotification){
+        
         if tableView.indexPathsForSelectedRows == nil{
             leftBtn.setTitle("全部选择", for: .normal)
         }else{
             leftBtn.setTitle("完成", for: .normal)
         }
+        
     }
     
     
@@ -192,6 +201,11 @@ class SurveillanceWorkOrderViewController: UIViewController {
         var parmat = [String: Any]()
         parmat["STATUS"] = status
         parmat["pageIndex"] = pageIndex
+        //需要的是,补传的三个参数:
+        parmat["START"] = ""
+        parmat["END"] = ""
+        parmat["PARK_ID"] = ""
+        
         
         for (key,value) in dic{
             parmat[key] = value
@@ -245,7 +259,6 @@ class SurveillanceWorkOrderViewController: UIViewController {
     }
     
     
- 
     func surveillance(workOrderIds: Array<String>){
         
         var text = ""
@@ -262,6 +275,7 @@ class SurveillanceWorkOrderViewController: UIViewController {
         }
         
     }
+    
 }
 
 
@@ -289,8 +303,6 @@ extension SurveillanceWorkOrderViewController: UITableViewDataSource, UITableVie
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
         
         if tableView.isEditing == true {
             

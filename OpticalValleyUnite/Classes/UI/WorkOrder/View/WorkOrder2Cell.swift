@@ -102,7 +102,6 @@ class WorkOrder2Cell: UITableViewCell {
             deviceBtn.isHidden =  model2!.is_equip != 1
             switch model2!.status {
             case 0://待派发
-                
                 statusLabel.text = "待派发"
                 iconView.image = UIImage(name: "StayOut")
             case 1://待接收（已派发

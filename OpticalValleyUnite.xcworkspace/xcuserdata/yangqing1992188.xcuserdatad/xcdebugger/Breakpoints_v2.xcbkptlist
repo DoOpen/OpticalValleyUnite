@@ -162,7 +162,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/SurveillanceWorkOrder/Controller/SurveillanceWorkOrderViewController.swift"
-                  timestampString = "527050248.018178"
+                  timestampString = "527073379.530648"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "76"
@@ -177,7 +177,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/SurveillanceWorkOrder/Controller/SurveillanceWorkOrderViewController.swift"
-                  timestampString = "527050248.020699"
+                  timestampString = "527073379.533958"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "78"
@@ -210,7 +210,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/SurveillanceWorkOrder/Controller/SurveillanceWorkOrderViewController.swift"
-                  timestampString = "527050248.026674"
+                  timestampString = "527073379.540186"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
@@ -225,7 +225,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/SurveillanceWorkOrder/Controller/SurveillanceWorkOrderViewController.swift"
-                  timestampString = "527050248.029676"
+                  timestampString = "527073379.542567"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "84"
@@ -322,7 +322,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/SurveillanceWorkOrder/Controller/SurveillanceWorkOrderViewController.swift"
-                  timestampString = "527050248.055667"
+                  timestampString = "527073379.568327"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "58"
@@ -337,7 +337,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/SurveillanceWorkOrder/Controller/SurveillanceWorkOrderViewController.swift"
-                  timestampString = "527050248.058201"
+                  timestampString = "527073379.570991"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "58"
@@ -424,6 +424,22 @@
             startingLineNumber = "234"
             endingLineNumber = "234"
             landmarkName = "getWorkOrder(type:pageIndex:dic:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/Home/ViewController/MapViewController.swift"
+            timestampString = "527068415.082468"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "mapViewDidFinishLoadingMap(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

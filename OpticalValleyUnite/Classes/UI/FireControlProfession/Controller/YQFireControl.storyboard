@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9by-b3-RO4">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="hbt-M3-dfM">
+            <objects>
+                <navigationController id="9by-b3-RO4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QeM-jk-yJT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rYK-YH-62r" kind="relationship" relationship="rootViewController" id="m6G-T0-bo6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nEd-C3-SXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-924" y="171"/>
+        </scene>
+        <!--实时地图-->
+        <scene sceneID="Cgo-Fd-9tp">
+            <objects>
+                <viewController id="rYK-YH-62r" customClass="YQFireControlViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iMj-Dd-UHX"/>
+                        <viewControllerLayoutGuide type="bottom" id="qvP-Yw-RX8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bVF-D6-wei">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qW-LL-TKh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="DA5-3v-ifY"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yb3-Sb-cBk" customClass="MAMapView">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3qW-LL-TKh" firstAttribute="leading" secondItem="bVF-D6-wei" secondAttribute="leading" id="6ni-Kg-g6s"/>
+                            <constraint firstItem="yb3-Sb-cBk" firstAttribute="leading" secondItem="bVF-D6-wei" secondAttribute="leading" id="Om6-JR-bKy"/>
+                            <constraint firstItem="yb3-Sb-cBk" firstAttribute="top" secondItem="3qW-LL-TKh" secondAttribute="bottom" id="Pyr-FS-4Yd"/>
+                            <constraint firstItem="3qW-LL-TKh" firstAttribute="top" secondItem="iMj-Dd-UHX" secondAttribute="bottom" id="RMh-5C-cg6"/>
+                            <constraint firstAttribute="trailing" secondItem="yb3-Sb-cBk" secondAttribute="trailing" id="XJL-bh-gH9"/>
+                            <constraint firstAttribute="trailing" secondItem="3qW-LL-TKh" secondAttribute="trailing" id="Z9k-S0-rXu"/>
+                            <constraint firstItem="qvP-Yw-RX8" firstAttribute="top" secondItem="yb3-Sb-cBk" secondAttribute="bottom" id="gv7-UC-aXf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="实时地图" id="RNX-7K-Gq7"/>
+                    <connections>
+                        <outlet property="fireMapView" destination="yb3-Sb-cBk" id="O7d-hY-zx7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q5K-Nm-a0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-191" y="170"/>
+        </scene>
+    </scenes>
+</document>

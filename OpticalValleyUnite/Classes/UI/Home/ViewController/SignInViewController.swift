@@ -227,6 +227,6 @@ class SignInViewController: UIViewController {
 extension SignInViewController: MAMapViewDelegate{
     func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
 //        print(mapView.userLocation.location)
-        self.mapView.setCenter((self.loction?.coordinate)!, animated: true)
+        self.mapView.setCenter((mapView.userLocation!.coordinate), animated: true)
     }
 }

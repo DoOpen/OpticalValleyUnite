@@ -12,18 +12,21 @@ import UIKit
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MAMapView!
+    
     var locationManager = AMapLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mapSetup()
     }
 
-    func  mapSetup(){
+     private func  mapSetup(){
+        
         AMapServices.shared().enableHTTPS = true
         mapView.showsUserLocation = true;
         mapView.userTrackingMode = .followWithHeading;
-        mapView.delegate = self
+        mapView.delegate = self as MAMapViewDelegate
         mapView.zoomLevel = 17.0
         
         
@@ -46,9 +49,9 @@ class MapViewController: UIViewController {
             }
             }
         )
-        
     }
 }
+
 
 extension MapViewController: MAMapViewDelegate{
     func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
@@ -56,3 +59,4 @@ extension MapViewController: MAMapViewDelegate{
         self.mapView.setCenter((mapView.userLocation!.coordinate), animated: true)
     }
 }
+

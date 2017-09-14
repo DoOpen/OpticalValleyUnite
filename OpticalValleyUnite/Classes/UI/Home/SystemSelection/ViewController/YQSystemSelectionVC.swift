@@ -204,7 +204,11 @@ class YQSystemSelectionVC: UIViewController {
         
         if tap.tapIndex >= dataArray.count {
             
-            return
+//            return
+            //跳进消防的界面功能
+            let fireVC = UIStoryboard.instantiateInitialViewController(name: "YQFireControl")
+            SJKeyWindow?.rootViewController = fireVC
+            
             
         }else{
             //数组取值,进行传值,控制器加载跳转

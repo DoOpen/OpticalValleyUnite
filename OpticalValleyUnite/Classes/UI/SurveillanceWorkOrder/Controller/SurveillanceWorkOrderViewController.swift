@@ -17,7 +17,13 @@ class SurveillanceWorkOrderViewController: UIViewController {
     @IBOutlet weak var leftBtn: UIButton!
     @IBOutlet weak var rightBtn: UIButton!
     
+    //设置检索参数
     var pageNo = 0
+    var startT = ""
+    var endT   = ""
+    var park_ID = ""
+    
+    
     @IBOutlet weak var didProcessedBtn: UIButton!
     @IBOutlet weak var waitProcessedBtn: UIButton!
     var currentStatusBtn: UIButton?
@@ -36,12 +42,12 @@ class SurveillanceWorkOrderViewController: UIViewController {
         tableView.allowsMultipleSelectionDuringEditing = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(selectionDidChange(noti:)), name: .UITableViewSelectionDidChange, object: self.tableView)
+        
         statusBtnClick(waitProcessedBtn)
-//        getWorkOrder(type: 0)
+
         addRefirsh()
         
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -105,9 +111,13 @@ class SurveillanceWorkOrderViewController: UIViewController {
     // MARK: - 筛选按钮的点击执行的方法
     @IBAction func chooseBtnClick(_ sender: UIBarButtonItem) {
         
+        //控制器回来的时候,调用了筛选按钮,然后的是调用了闭包,设置的代码块,进行的是筛选条件的读取的操作
+        
         let vc = WorkOrderScreeningViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderScreeningViewController
         vc.type = 2
         vc.doneBtnClickHandel = { parmat in
+            
+            //控制器出来的时候触发了筛选按钮,注意的这个 坑!
             
             self.getWorkOrder(type: self.currentStatusBtn!.tag,pageIndex: 0,dic: parmat)
             
@@ -153,7 +163,6 @@ class SurveillanceWorkOrderViewController: UIViewController {
             alert(message: "还没有选中需要督办的项", doneBlock: { (alertAction) in
                 print("全部督办按钮被点击")
                 
-                
 //                let arry = self.currentDatas.map{
 //                    $0.workOrderId
 //                }
@@ -173,7 +182,8 @@ class SurveillanceWorkOrderViewController: UIViewController {
         }
     }
 
-
+    
+    // MARK: - 接受通知的方法
     func selectionDidChange(noti: NSNotification){
         
         if tableView.indexPathsForSelectedRows == nil{
@@ -201,12 +211,46 @@ class SurveillanceWorkOrderViewController: UIViewController {
         var parmat = [String: Any]()
         parmat["STATUS"] = status
         parmat["pageIndex"] = pageIndex
+        
+        if startT != "" {
+            parmat["STAR"] = startT
+        }
+        
+        if endT != "" {
+            
+            parmat["END"] = endT
+        }
+        
+        if park_ID != "" {
+            
+            parmat["PARK_ID"] = park_ID
+        }
+        
+        
+        
         //需要的是,补传的三个参数:
-        parmat["START"] = ""
-        parmat["END"] = ""
-        parmat["PARK_ID"] = ""
+        if let start = dic["STAR"] {
+        
+            parmat["STAR"] = start
+            startT = start as! String
+        
+        }
+        if let end = dic["END"] {
+            
+            parmat["END"] = end
+            endT = end as! String
+            
+        }
+        
+        if let parkID = dic["PARK_ID"] {
+            
+            parmat["PARK_ID"] = parkID
+            park_ID = parkID as! String
+            
+        }
         
         
+        // 取出所有的参数来 进行赋值
         for (key,value) in dic{
             parmat[key] = value
         }
@@ -270,6 +314,7 @@ class SurveillanceWorkOrderViewController: UIViewController {
                         
             SVProgressHUD.showSuccess(withStatus: "督办成功")
             self.getWorkOrder(type: 0)
+            
         }) { (error) in
             
         }
@@ -301,7 +346,6 @@ extension SurveillanceWorkOrderViewController: UITableViewDataSource, UITableVie
     }
     
 
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView.isEditing == true {
@@ -322,6 +366,7 @@ extension SurveillanceWorkOrderViewController: UITableViewDataSource, UITableVie
         vc.workType = 1
         vc.hasDuban = (currentStatusBtn?.tag)!
         navigationController?.pushViewController(vc, animated: true)
+        
     }
     
 }

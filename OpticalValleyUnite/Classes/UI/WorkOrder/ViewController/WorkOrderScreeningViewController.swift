@@ -79,8 +79,6 @@ class WorkOrderScreeningViewController: UIViewController {
     }
     
     
-    
-    
     // MARK: - 开始时间按钮点击
     @IBAction func beginBtnClick(_ sender: UIButton) {
         SJPickerView.show(withDateType: .date, defaultingDate: Date(),userController:self, selctedDateFormot: "yyyy-MM-dd") { (date, dateStr) in
@@ -120,6 +118,7 @@ class WorkOrderScreeningViewController: UIViewController {
     @IBAction func doneBtnClick() {
         
         var parmat = [String: Any]()
+        
         let dic = ["待派发": 0,"待处理" : 5, "待评价": 7,"待接收": 1,"已处理": 7, "已接受": 5,"已派发": 1]
         
         if projectTagsView.selectedTagIndexes.first != nil {
@@ -127,7 +126,9 @@ class WorkOrderScreeningViewController: UIViewController {
             projectModel = models[(projectTagsView.selectedTagIndexes.first!.intValue)]
             
             parmat["PARK_ID"] = projectModel?.projectId
+            
         }
+        
         if workOrderStatusTagsView.selectedTagIndexes.first != nil {
             let str = models2[(workOrderStatusTagsView.selectedTagIndexes.first!.intValue)]
             parmat["UNIT_STATUS"] = dic[str]
@@ -138,6 +139,7 @@ class WorkOrderScreeningViewController: UIViewController {
         if let endTime = endTime{
             parmat["END"] = endTime
         }
+        
         if let block = doneBtnClickHandel{
             
             block(parmat)

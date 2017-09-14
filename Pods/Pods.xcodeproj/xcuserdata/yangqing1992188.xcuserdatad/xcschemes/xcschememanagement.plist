@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KYDrawerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -72,17 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4D58A1A7EC4C21F71876FA1F07C9A4D0</key>
+		<key>4638B4115CB10168E88D26AB56E2BEBD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6BAE005347EAD2BBDFE7CFFB823A64BB</key>
+		<key>53299A3543D24AF2D12684FE87B70E1F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7B17C4DA4FC35B3B187E2BE9BC2F0924</key>
+		<key>7AF8670FDECF80EFCAA3D04318C4B4D1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7DBA7F2FA3420F8843A4CBD4C229DF7B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,12 +102,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8AC01F287D6CEE3BEE6CBF431967975A</key>
+		<key>932BC198CDB269D78AD59194D90A449E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B19DE74B3D12BF2781C8DF5281963110</key>
+		<key>AE0DDBDB22881113DDCE5CC421593E1B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

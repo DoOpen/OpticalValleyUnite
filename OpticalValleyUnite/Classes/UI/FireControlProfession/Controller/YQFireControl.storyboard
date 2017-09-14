@@ -39,9 +39,41 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qW-LL-TKh">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFQ-Dz-02n">
+                                        <rect key="frame" x="275" y="0.0" width="100" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="h0t-NN-xzb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="查看地图">
+                                            <color key="titleColor" red="1" green="0.46529667392394147" blue="0.16034268341936875" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广播:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kse-mV-A4j">
+                                        <rect key="frame" x="20" y="12" width="39.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创意天地1期1号楼1单元5楼502房间..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7o-xr-Ff0">
+                                        <rect key="frame" x="64.5" y="12" width="210.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="eFQ-Dz-02n" secondAttribute="trailing" id="4GX-Kq-qfb"/>
                                     <constraint firstAttribute="height" constant="44" id="DA5-3v-ifY"/>
+                                    <constraint firstItem="eFQ-Dz-02n" firstAttribute="leading" secondItem="u7o-xr-Ff0" secondAttribute="trailing" id="JGS-d2-5c3"/>
+                                    <constraint firstItem="u7o-xr-Ff0" firstAttribute="centerY" secondItem="3qW-LL-TKh" secondAttribute="centerY" id="KlY-pF-6gQ"/>
+                                    <constraint firstItem="kse-mV-A4j" firstAttribute="centerY" secondItem="3qW-LL-TKh" secondAttribute="centerY" id="SdX-Vk-ohM"/>
+                                    <constraint firstAttribute="bottom" secondItem="eFQ-Dz-02n" secondAttribute="bottom" id="foU-8D-S2m"/>
+                                    <constraint firstItem="eFQ-Dz-02n" firstAttribute="top" secondItem="3qW-LL-TKh" secondAttribute="top" id="gXO-I8-d0g"/>
+                                    <constraint firstItem="u7o-xr-Ff0" firstAttribute="leading" secondItem="3qW-LL-TKh" secondAttribute="leading" constant="65" id="oNU-It-fbl"/>
+                                    <constraint firstItem="kse-mV-A4j" firstAttribute="leading" secondItem="3qW-LL-TKh" secondAttribute="leading" constant="20" id="vMV-u3-g8l"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yb3-Sb-cBk" customClass="MAMapView">
@@ -63,11 +95,12 @@
                     <navigationItem key="navigationItem" title="实时地图" id="RNX-7K-Gq7"/>
                     <connections>
                         <outlet property="fireMapView" destination="yb3-Sb-cBk" id="O7d-hY-zx7"/>
+                        <outlet property="messageContentV" destination="3qW-LL-TKh" id="v4y-fb-2Hj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5K-Nm-a0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-191" y="170"/>
+            <point key="canvasLocation" x="-191.19999999999999" y="169.56521739130437"/>
         </scene>
     </scenes>
 </document>

@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import SnapKit
+
 
 class YQFireControlViewController: UIViewController {
     
     // MARK: - 属性列表
+    // 中间contentView
+    @IBOutlet weak var messageContentV: UIView!
+    
+    // mapview
     @IBOutlet weak var fireMapView: MAMapView!
+    
+    // MAMap单例
     var locationManager = AMapLocationManager()
     
     // MARK: - 视图生命周期的方法
@@ -78,7 +86,8 @@ class YQFireControlViewController: UIViewController {
 
 extension YQFireControlViewController: MAMapViewDelegate{
     
-     func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
+    // MARK: - 地图加载成功的调用的方法
+    func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
         //        print(mapView.userLocation.location)
         self.fireMapView.setCenter((mapView.userLocation!.coordinate), animated: true)
     }

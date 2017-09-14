@@ -154,8 +154,8 @@ class WorkOrderScreeningViewController: UIViewController {
     // MARK: - 重置设置按钮
     @IBAction func resetBtnClick(_ sender: UIButton) {
         //重置时间
-        startTime = nil
-        endTime = nil
+        startTime = ""
+        endTime = ""
         startTimeBnt.setTitle("开始时间", for: .normal)
         endTimeBnt.setTitle("结束时间", for: .normal)
         

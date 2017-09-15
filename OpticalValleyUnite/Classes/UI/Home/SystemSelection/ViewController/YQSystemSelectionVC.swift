@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-
+import KYDrawerController
 
 
 
@@ -205,12 +205,28 @@ class YQSystemSelectionVC: UIViewController {
         if tap.tapIndex >= dataArray.count {
             
 //            return
+            
             //跳进消防的界面功能
             let fireVC = UIStoryboard.instantiateInitialViewController(name: "YQFireControl")
-            SJKeyWindow?.rootViewController = fireVC
+            let mainViewController   = fireVC
+            let drawerViewController = YQDrawerViewController()
+            //初始化drawerVC的位置
+            let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 300)
+
             
+            drawerController.mainViewController =  mainViewController
+    
+            drawerController.drawerViewController = drawerViewController
+            
+            /* Customize
+             drawerController.drawerDirection = .Right   视图的方向
+             drawerController.drawerWidth     = 200      宽度的大小
+             */
+            
+            SJKeyWindow?.rootViewController = drawerController
             
         }else{
+            
             //数组取值,进行传值,控制器加载跳转
             let data = dataArray[tap.tapIndex] as! [String : Any]
             UserDefaults.standard.set(data, forKey: Const.YQSystemSelectData)

@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-
+import KYDrawerController
 
 class YQFireControlViewController: UIViewController {
     
@@ -22,6 +22,9 @@ class YQFireControlViewController: UIViewController {
     // MAMap单例
     var locationManager = AMapLocationManager()
     
+    // leftBtn
+    var leftBtn : UIButton!
+    
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
         
@@ -29,10 +32,10 @@ class YQFireControlViewController: UIViewController {
         
         //设置leftBar图片和点击事件
         let image = UIImage(named : "pic_default")
-        let bnt = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        let bnt = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         bnt.setImage(image, for: .normal)
         bnt.addTarget(self, action:  #selector(leftBarButtonClick), for: UIControlEvents.touchUpInside)
-        
+
         //设置显示原始图片的情况
         // image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         // let item2=UIBarButtonItem(customView: btn1)
@@ -42,7 +45,7 @@ class YQFireControlViewController: UIViewController {
         
         //设置地图
         mapSetup()
-
+        
     }
     
     // MARK: - 设置地图的方法
@@ -75,10 +78,14 @@ class YQFireControlViewController: UIViewController {
         )
     }
     
+    
     // MARK: - leftBarButtonClick
     func leftBarButtonClick(){
-    
-    
+        
+        if let drawerController = navigationController?.parent as? KYDrawerController {
+            drawerController.setDrawerState(.opened, animated: true)
+        }
+
     }
     
 }

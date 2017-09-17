@@ -15,6 +15,8 @@
 		2F3B96011F6B68BE0008AFEB /* YQDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */; };
 		2F3B96031F6BC15B0008AFEB /* YQJoinTotallNumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */; };
 		2F3B96051F6BC17E0008AFEB /* YQJoinTotall.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F3B96041F6BC17E0008AFEB /* YQJoinTotall.storyboard */; };
+		2F3B96071F6BCCDA0008AFEB /* YQJoinTotallHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B96061F6BCCDA0008AFEB /* YQJoinTotallHeadView.swift */; };
+		2F3B96091F6BCD0E0008AFEB /* YQJoinTotallHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3B96081F6BCD0E0008AFEB /* YQJoinTotallHead.xib */; };
 		2F5E8C511F59598400007717 /* YQSystemSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5E8C4F1F59598400007717 /* YQSystemSelectionVC.swift */; };
 		2F5E8C521F59598400007717 /* YQSystemSelectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5E8C501F59598400007717 /* YQSystemSelectionVC.xib */; };
 		2F5E8C541F595D9600007717 /* YQPartDataFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5E8C531F595D9600007717 /* YQPartDataFooterCell.swift */; };
@@ -191,6 +193,8 @@
 		2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDrawerViewController.xib; sourceTree = "<group>"; };
 		2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJoinTotallNumVC.swift; sourceTree = "<group>"; };
 		2F3B96041F6BC17E0008AFEB /* YQJoinTotall.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJoinTotall.storyboard; sourceTree = "<group>"; };
+		2F3B96061F6BCCDA0008AFEB /* YQJoinTotallHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJoinTotallHeadView.swift; sourceTree = "<group>"; };
+		2F3B96081F6BCD0E0008AFEB /* YQJoinTotallHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQJoinTotallHead.xib; sourceTree = "<group>"; };
 		2F5E8C4F1F59598400007717 /* YQSystemSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQSystemSelectionVC.swift; sourceTree = "<group>"; };
 		2F5E8C501F59598400007717 /* YQSystemSelectionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQSystemSelectionVC.xib; sourceTree = "<group>"; };
 		2F5E8C531F595D9600007717 /* YQPartDataFooterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataFooterCell.swift; sourceTree = "<group>"; };
@@ -489,6 +493,8 @@
 		2F6A438C1F6A33A0003E10C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F3B96061F6BCCDA0008AFEB /* YQJoinTotallHeadView.swift */,
+				2F3B96081F6BCD0E0008AFEB /* YQJoinTotallHead.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1095,6 +1101,7 @@
 				2F6A43901F6A52CA003E10C9 /* YQFireControl.storyboard in Resources */,
 				4BD4B9611E2763D500AE2BC9 /* DateView.xib in Resources */,
 				4BF005271F03586900A5764B /* WorkOrderDetailsCell.xib in Resources */,
+				2F3B96091F6BCD0E0008AFEB /* YQJoinTotallHead.xib in Resources */,
 				4B4BAFC31E5C62F500C9C549 /* OprationConfirmationView.xib in Resources */,
 				4B5AF64B1E36F73B00844F3D /* LoginViewController.xib in Resources */,
 				4BB53FF11F14D9CA0061190F /* DeviceCell.xib in Resources */,
@@ -1296,6 +1303,7 @@
 				4BD4B95D1E27603400AE2BC9 /* DateChooseView.swift in Sources */,
 				4BE9225B1EE6993000FDEFE1 /* ShowImageView.swift in Sources */,
 				4B3951D01E277FBC00E2642F /* WorkOrderScreeningViewController.swift in Sources */,
+				2F3B96071F6BCCDA0008AFEB /* YQJoinTotallHeadView.swift in Sources */,
 				4B5AF6471E36F14700844F3D /* SystemMessageViewController.swift in Sources */,
 				4B814A811F1DAC3400CDCA9B /* WorkOrderSiftViewController.swift in Sources */,
 				4B3951D21E278F5300E2642F /* APPHandle.swift in Sources */,

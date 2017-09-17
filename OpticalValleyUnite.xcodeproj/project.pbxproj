@@ -32,6 +32,10 @@
 		2FE08F2F1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE08F2E1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift */; };
 		2FEB0E7F1F6E5EA10002DEE8 /* YQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB0E7E1F6E5EA10002DEE8 /* YQViewController.swift */; };
 		2FEB0E811F6E614A0002DEE8 /* YQUpdataPSW.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEB0E801F6E614A0002DEE8 /* YQUpdataPSW.storyboard */; };
+		2FEB0E841F6E70900002DEE8 /* YQFireAlarmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB0E821F6E70900002DEE8 /* YQFireAlarmDetailViewController.swift */; };
+		2FEB0E851F6E70900002DEE8 /* YQFireAlarmDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FEB0E831F6E70900002DEE8 /* YQFireAlarmDetailViewController.xib */; };
+		2FEB0E871F6E710B0002DEE8 /* YQFalsePositivesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB0E861F6E710B0002DEE8 /* YQFalsePositivesVC.swift */; };
+		2FEB0E891F6E713F0002DEE8 /* YQFalsePositives.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FEB0E881F6E713F0002DEE8 /* YQFalsePositives.xib */; };
 		4B01B08C1ED928AF002A61C9 /* ReportListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */; };
 		4B1558AF1F131AA70023F14D /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1558AE1F131AA70023F14D /* DeviceView.swift */; };
 		4B19ACE41E7A3D26008A8166 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19ACE31E7A3D26008A8166 /* User.swift */; };
@@ -212,6 +216,10 @@
 		2FE08F2E1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		2FEB0E7E1F6E5EA10002DEE8 /* YQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQViewController.swift; sourceTree = "<group>"; };
 		2FEB0E801F6E614A0002DEE8 /* YQUpdataPSW.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQUpdataPSW.storyboard; sourceTree = "<group>"; };
+		2FEB0E821F6E70900002DEE8 /* YQFireAlarmDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireAlarmDetailViewController.swift; sourceTree = "<group>"; };
+		2FEB0E831F6E70900002DEE8 /* YQFireAlarmDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQFireAlarmDetailViewController.xib; sourceTree = "<group>"; };
+		2FEB0E861F6E710B0002DEE8 /* YQFalsePositivesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFalsePositivesVC.swift; sourceTree = "<group>"; };
+		2FEB0E881F6E713F0002DEE8 /* YQFalsePositives.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQFalsePositives.xib; sourceTree = "<group>"; };
 		4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportListViewController.swift; sourceTree = "<group>"; };
 		4B1558AE1F131AA70023F14D /* DeviceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		4B19ACE31E7A3D26008A8166 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -482,6 +490,10 @@
 				2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */,
 				2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */,
 				2F3B96041F6BC17E0008AFEB /* YQJoinTotall.storyboard */,
+				2FEB0E821F6E70900002DEE8 /* YQFireAlarmDetailViewController.swift */,
+				2FEB0E831F6E70900002DEE8 /* YQFireAlarmDetailViewController.xib */,
+				2FEB0E861F6E710B0002DEE8 /* YQFalsePositivesVC.swift */,
+				2FEB0E881F6E713F0002DEE8 /* YQFalsePositives.xib */,
 			);
 			name = ViewController;
 			path = Controller;
@@ -1097,6 +1109,7 @@
 				4B6E64E81EEA821900BA23E4 /* ExecutEmergencyCell.xib in Resources */,
 				4BD4B94C1E272EA600AE2BC9 /* MessageView.xib in Resources */,
 				4BD4B94D1E272EA600AE2BC9 /* Home.storyboard in Resources */,
+				2FEB0E851F6E70900002DEE8 /* YQFireAlarmDetailViewController.xib in Resources */,
 				2F0F877C1F56D23F0030A6DB /* YQPartsLibary.storyboard in Resources */,
 				4B3952071E29CE1F00E2642F /* WorkOrderOprationCell.xib in Resources */,
 				2F5E8C581F595FED00007717 /* YQPartDataSelect.xib in Resources */,
@@ -1111,6 +1124,7 @@
 				2F3B96091F6BCD0E0008AFEB /* YQJoinTotallHead.xib in Resources */,
 				4B4BAFC31E5C62F500C9C549 /* OprationConfirmationView.xib in Resources */,
 				4B5AF64B1E36F73B00844F3D /* LoginViewController.xib in Resources */,
+				2FEB0E891F6E713F0002DEE8 /* YQFalsePositives.xib in Resources */,
 				4BB53FF11F14D9CA0061190F /* DeviceCell.xib in Resources */,
 				4BE88A611E88D242003D9179 /* SigninCell.xib in Resources */,
 				2F5E8C561F595F7000007717 /* YQPartDataAll.xib in Resources */,
@@ -1264,6 +1278,7 @@
 				4BD4B9011E272E0C00AE2BC9 /* AppDelegate.swift in Sources */,
 				4B30780D1E29FBD100FB4007 /* ChooseHouseCell.swift in Sources */,
 				4B7A59C11E359B89002E96B6 /* UIMonthYearPicker.m in Sources */,
+				2FEB0E841F6E70900002DEE8 /* YQFireAlarmDetailViewController.swift in Sources */,
 				4B7A59C31E35DB27002E96B6 /* URLPath.swift in Sources */,
 				4BD4B9501E272EA600AE2BC9 /* SignInViewController.swift in Sources */,
 				4B3951CE1E277D8600E2642F /* RKTagsView.m in Sources */,
@@ -1326,6 +1341,7 @@
 				4B7A59C71E35E0D4002E96B6 /* SystemMessageCell.swift in Sources */,
 				4B3078111E2A136600FB4007 /* MyStatisticsViewController.swift in Sources */,
 				4B8EE7761F17047400A59F8D /* WorkOrderCell.swift in Sources */,
+				2FEB0E871F6E710B0002DEE8 /* YQFalsePositivesVC.swift in Sources */,
 				4BD4B94A1E272EA600AE2BC9 /* SJTabBarViewController.swift in Sources */,
 				2FE08F2F1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift in Sources */,
 				4B8EE7791F170AEE00A59F8D /* WorkOrder2Cell.swift in Sources */,

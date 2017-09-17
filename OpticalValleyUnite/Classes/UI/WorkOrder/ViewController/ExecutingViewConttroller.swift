@@ -72,7 +72,6 @@ class ExecutingViewConttroller: UIViewController {
         super.viewDidLoad()
 
         title = "工单执行"
-        
         //工单详情里面的数据,直接从workOrderDetalModel 中来进行获取的数据!
         workOrderContent.text = workOrderDetalModel?.content
         timeLabel.text = workOrderDetalModel?.time
@@ -149,7 +148,6 @@ class ExecutingViewConttroller: UIViewController {
 //                realm.add(temp, update: true)
 //            }
     
-            
         }) { (error) in
 //            let realm = try! Realm()
 //            let result = realm.objects(ExecSectionModel.self).map({ model in

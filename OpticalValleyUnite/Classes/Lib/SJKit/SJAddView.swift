@@ -9,6 +9,7 @@
 import UIKit
 
 protocol ImageProtocol {
+    
     var image: UIImage {get}
 }
 
@@ -90,6 +91,8 @@ class SJAddView: UIView {
     }
 
 }
+
+
 
 class SJPhotpView: UIView {
     var imageView = UIImageView()

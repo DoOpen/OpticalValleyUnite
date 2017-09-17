@@ -35,10 +35,19 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
                 photoImageView.kf.setImage(with: URL(string: imageValue))
             }
         }
-        
-        
+    }
+    
+    
+    @IBAction func modifyPassWordClick(_ sender: Any) {
+        //修改密码的界面
+        let vc = UIStoryboard.instantiateInitialViewController(name: "YQUpdataPSW")
+
+        navigationController?.pushViewController(vc, animated: true)
+        vc.title = "修改密码"
+
         
     }
+    
 
     @IBAction func checkNewBtnClick() {
         self.checkNewBundleVersion(isBlack: false)

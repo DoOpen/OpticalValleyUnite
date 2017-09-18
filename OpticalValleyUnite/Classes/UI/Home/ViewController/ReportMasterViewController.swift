@@ -327,6 +327,9 @@ class ReportMasterViewController: UIViewController {
         setBtnSelect(btn: urgentDegreeBtn, true)
     }
     
+    
+    
+    // MARK: - 选择项目列表的pickView展示
     @IBAction func chooseProjectBtnClick(){
         
         SVProgressHUD.show(withStatus: "加载中")
@@ -339,6 +342,7 @@ class ReportMasterViewController: UIViewController {
             }
             
             var temp = [ProjectModel]()
+            
             for dic in response as! Array<[String: Any]> {
                 temp.append(ProjectModel(parmart: dic))
             }
@@ -353,14 +357,9 @@ class ReportMasterViewController: UIViewController {
         }
         
     }
-    
- 
-    func rightBtnClick(){
-        
-    }
 
     
-    // 选择时间按钮的内容
+    // MARK: - 时间pickView选择时间按钮的内容
     @IBAction func chooseTimeBtnClick(_ sender: UITapGestureRecognizer) {
         
         let dic = ["Mon": "星期一", "Tue": "星期二", "Wed": "星期三", "Thu": "星期四", "Fri": "星期五", "Sat": "星期六", "Sun": "星期日"]

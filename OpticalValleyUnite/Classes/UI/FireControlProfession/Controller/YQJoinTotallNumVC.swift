@@ -13,8 +13,20 @@ class YQJoinTotallNumVC:UIViewController{
     // MARK: - 控制器的属性情况
     @IBOutlet weak var detailTableV: UITableView!
 
+    @IBOutlet weak var titleButton: UIButton!
+    
+    @IBOutlet weak var timeButton: UIButton!
+    
+    @IBOutlet weak var seachTextField: UITextField!
+    
+    var selectProject : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //初始设置内容
+        titleButton.setTitle(self.title, for: .normal)
+        
         //添加leftBar属性
         self.setUpLeftBar()
         
@@ -41,6 +53,49 @@ class YQJoinTotallNumVC:UIViewController{
         noties.post(name: name, object: nil)
         
     }
+    
+    // MARK: - datePickerView的展示
+    @IBAction func datePickerButtonClick(_ sender: Any) {
+        
+        view.endEditing(true)
+        let dic =  ["Mon": "星期一", "Tue": "星期二", "Wed": "星期三", "Thu": "星期四", "Fri": "星期五", "Sat": "星期六", "Sun": "星期日"]
+        
+        SJPickerView.show(withDateType: .dateAndTime, defaultingDate: Date(), userController: self, selctedDateFormot: "yyyy-MM-dd", didSelcted: {date, dateStr in
+            var text = dateStr
+            
+            for (key, value) in dic{
+                text = text?.replacingOccurrences(of: key, with: value)
+            }
+            
+            self.timeButton .setTitle(text, for: .normal)
+            
+        })
+    }
+    
+    
+    // MARK: - allProjectPickerView的展示
+    @IBAction func allProjectPickerButtonClick(_ sender: Any) {
+        view.endEditing(true)
+        let temp = ["参与总单量","火警单","误报单"]
+        
+//        SJPickerView.show(withDataArry2: temp, didSlected: { [weak self] index in
+//            self?.projectBtn.setTitle(temp[index].title, for: .normal)
+//            self?.selectProject = temp[index]
+//        })
+        SJPickerView.show(withDataArry: temp, didSlected: { [weak self] index in
+            
+            if index == 0 {
+                self?.titleButton .setTitle("总单量", for: .normal)
+            }else{
+                self?.titleButton .setTitle(temp[index], for: .normal)
+            }
+            
+            self?.selectProject = temp[index]
+            
+        })
+    }
+    
+    
 
 }
 

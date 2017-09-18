@@ -170,12 +170,21 @@ class SignInViewController: UIViewController {
                 
                 self.hasAddress = true
                 if let address = arry.first?["PARK_NAME"] as? String,address != ""{
+                    
                     self.addressLabel.text = address
+                    
                     if !self.isPaskAddress {
                         self.updateSige()
                     }
                     
                     self.isPaskAddress = true
+                    
+                    if let regeocode = self.reGeocode{
+                        print(regeocode)
+                        self.addressLabel.text = regeocode.formattedAddress
+                        self.mapView.setCenter((self.loction?.coordinate)!, animated: true)
+                    }
+
                     
                 }else{
                     
@@ -186,6 +195,7 @@ class SignInViewController: UIViewController {
                     }
                 }
             }
+            
         }) { (error) in
             print(error)
         }
@@ -216,9 +226,7 @@ class SignInViewController: UIViewController {
             self?.reGeocode = regeocode
             self?.getParkAddress()
 
-        }
-        )
-
+        })
     }
 }
 

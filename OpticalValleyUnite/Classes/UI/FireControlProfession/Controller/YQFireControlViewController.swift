@@ -175,6 +175,14 @@ class YQFireControlViewController: UIViewController {
                 //退出登录界面
                 LoginViewController.loginOut()
                 break
+            
+            case "personalProfile":
+                //个人资料
+                let vc = UIStoryboard.instantiateInitialViewController(name: "YQPersonDetail")
+                navigationController?.pushViewController(vc, animated: true)
+                vc.title = "个人资料"
+                
+                break
                 
             default:
                 break

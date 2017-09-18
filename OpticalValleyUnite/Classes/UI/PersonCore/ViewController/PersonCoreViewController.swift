@@ -37,15 +37,22 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
     }
     
-    
+    // MARK: - 修改密码按钮点击功能实现
     @IBAction func modifyPassWordClick(_ sender: Any) {
         //修改密码的界面
         let vc = UIStoryboard.instantiateInitialViewController(name: "YQUpdataPSW")
 
         navigationController?.pushViewController(vc, animated: true)
         vc.title = "修改密码"
-
+    }
+    
+    // MARK: - 个人详情信息的界面跳转
+    @IBAction func PersonDetailButtonClick(_ sender: Any) {
         
+        let vc = UIStoryboard.instantiateInitialViewController(name: "YQPersonDetail")
+        navigationController?.pushViewController(vc, animated: true)
+        vc.title = "个人资料"
+
     }
     
 

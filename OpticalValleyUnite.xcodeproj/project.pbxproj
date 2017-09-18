@@ -11,6 +11,7 @@
 		2F0F877D1F56D23F0030A6DB /* YQPartsLibaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F877B1F56D23F0030A6DB /* YQPartsLibaryViewController.swift */; };
 		2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */; };
 		2F0F87811F56DFFE0030A6DB /* YQPartShowHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F877F1F56DFFE0030A6DB /* YQPartShowHeadView.swift */; };
+		2F236B701F6FADF700F1B0DF /* YQPersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */; };
 		2F3B96001F6B68BE0008AFEB /* YQDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B95FE1F6B68BE0008AFEB /* YQDrawerViewController.swift */; };
 		2F3B96011F6B68BE0008AFEB /* YQDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */; };
 		2F3B96031F6BC15B0008AFEB /* YQJoinTotallNumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */; };
@@ -195,6 +196,7 @@
 		2F0F877B1F56D23F0030A6DB /* YQPartsLibaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartsLibaryViewController.swift; sourceTree = "<group>"; };
 		2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartHeadView.xib; sourceTree = "<group>"; };
 		2F0F877F1F56DFFE0030A6DB /* YQPartShowHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartShowHeadView.swift; sourceTree = "<group>"; };
+		2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPersonDetail.storyboard; sourceTree = "<group>"; };
 		2F3B95FE1F6B68BE0008AFEB /* YQDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDrawerViewController.swift; sourceTree = "<group>"; };
 		2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDrawerViewController.xib; sourceTree = "<group>"; };
 		2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJoinTotallNumVC.swift; sourceTree = "<group>"; };
@@ -899,6 +901,7 @@
 				4B776E671E3857100021B5CA /* UpdataPSWViewController.swift */,
 				2FEB0E801F6E614A0002DEE8 /* YQUpdataPSW.storyboard */,
 				4BAE59811F04D46F000DB84D /* PersonDetailViewController.swift */,
+				2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */,
 				2FEB0E7E1F6E5EA10002DEE8 /* YQViewController.swift */,
 			);
 			path = ViewController;
@@ -1138,6 +1141,7 @@
 				4BD4B9081E272E0C00AE2BC9 /* Assets.xcassets in Resources */,
 				4BE922671EE84BA100FDEFE1 /* ExecuteDetailSubCell.xib in Resources */,
 				4BE9226B1EE84CC000FDEFE1 /* ExecuteDetailSubImageCell.xib in Resources */,
+				2F236B701F6FADF700F1B0DF /* YQPersonDetail.storyboard in Resources */,
 				4BE922631EE7EEA900FDEFE1 /* ExecutDetailCell.xib in Resources */,
 				4B5854E91EB072160087CFF0 /* ProcessingCell.xib in Resources */,
 				4BD4B94F1E272EA600AE2BC9 /* SignIn.storyboard in Resources */,

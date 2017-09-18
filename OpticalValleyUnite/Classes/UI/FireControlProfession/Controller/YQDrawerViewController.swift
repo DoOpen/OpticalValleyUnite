@@ -85,6 +85,13 @@ class YQDrawerViewController: UIViewController {
     
     }
     
+    @IBAction func personalProfileButtonClick(_ sender: Any) {
+        
+        self.sendNoties(Notifaction: "personalProfile")
+        
+    }
+    
+    
     
 
    

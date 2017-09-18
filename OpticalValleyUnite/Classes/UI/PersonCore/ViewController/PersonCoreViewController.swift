@@ -25,10 +25,12 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         let user = User.currentUser()
         if let user = user{
+            
             nickNameLabel.text = user.nickname
             userNameLabel.text = "账号: " + user.userName!
             
             if let url = user.avatar,url != ""{
+                
                 let basicPath = URLPath.basicPath
                 let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
                 

@@ -25,7 +25,7 @@ struct URLPath {
     ///主机地址
 //    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
     //服务器的basic 地址:
-    static let basicPath = "http://test.ovuems.com/ovu-pcos/api/"
+    static let basicPath = "http://192.168.0.18:8080/ovu-pcos/api/"
 
     static let login = "user/login.do"
     static let systemMessage = "message/importentMsg.do"
@@ -140,4 +140,10 @@ struct URLPath {
     
     ///获取设备的工单
     static let getEquipmentWorkunit = "workunit/getEquipmentWorkunit.do"
+    
+
+    // MARK: - 消防专业化的接口参数
+    static let getFireAmount = "fire/workunit/amount.do"
+    static let getFireList  = "fire/workunit/list.do"
+    
 }

@@ -12,6 +12,8 @@
 		2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */; };
 		2F0F87811F56DFFE0030A6DB /* YQPartShowHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F877F1F56DFFE0030A6DB /* YQPartShowHeadView.swift */; };
 		2F236B701F6FADF700F1B0DF /* YQPersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */; };
+		2F236B721F6FE40300F1B0DF /* YQfireMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */; };
+		2F236B741F6FEA1B00F1B0DF /* YQFireDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */; };
 		2F3B96001F6B68BE0008AFEB /* YQDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B95FE1F6B68BE0008AFEB /* YQDrawerViewController.swift */; };
 		2F3B96011F6B68BE0008AFEB /* YQDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */; };
 		2F3B96031F6BC15B0008AFEB /* YQJoinTotallNumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */; };
@@ -197,6 +199,8 @@
 		2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartHeadView.xib; sourceTree = "<group>"; };
 		2F0F877F1F56DFFE0030A6DB /* YQPartShowHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartShowHeadView.swift; sourceTree = "<group>"; };
 		2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPersonDetail.storyboard; sourceTree = "<group>"; };
+		2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQfireMessage.swift; sourceTree = "<group>"; };
+		2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireDetailCell.swift; sourceTree = "<group>"; };
 		2F3B95FE1F6B68BE0008AFEB /* YQDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDrawerViewController.swift; sourceTree = "<group>"; };
 		2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDrawerViewController.xib; sourceTree = "<group>"; };
 		2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJoinTotallNumVC.swift; sourceTree = "<group>"; };
@@ -504,6 +508,7 @@
 		2F6A438B1F6A33A0003E10C9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 			children = (
 				2F3B96061F6BCCDA0008AFEB /* YQJoinTotallHeadView.swift */,
 				2F3B96081F6BCD0E0008AFEB /* YQJoinTotallHead.xib */,
+				2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1258,6 +1264,7 @@
 				4B3952061E29CE1F00E2642F /* WorkOrderOprationCell.swift in Sources */,
 				4B30780F1E29FBF500FB4007 /* ChooseHouseViewController.swift in Sources */,
 				4B1DEC5C1E31B646000917D2 /* SGQRCodeTool.m in Sources */,
+				2F236B721F6FE40300F1B0DF /* YQfireMessage.swift in Sources */,
 				4BD4A0DA1EE24F4100F044C1 /* OrderReturningCell.swift in Sources */,
 				4BAE59821F04D470000DB84D /* PersonDetailViewController.swift in Sources */,
 				2F0F87811F56DFFE0030A6DB /* YQPartShowHeadView.swift in Sources */,
@@ -1321,6 +1328,7 @@
 				4B50D62B1EB9AA0200BB480F /* HomeBtnView.swift in Sources */,
 				2F6A438E1F6A528D003E10C9 /* YQFireControlViewController.swift in Sources */,
 				4BE9225D1EE6ADD800FDEFE1 /* CallBackListViewController.swift in Sources */,
+				2F236B741F6FEA1B00F1B0DF /* YQFireDetailCell.swift in Sources */,
 				2F0F877D1F56D23F0030A6DB /* YQPartsLibaryViewController.swift in Sources */,
 				4B6E64FC1EEAEFCF00BA23E4 /* PhotoExtension.swift in Sources */,
 				4BD4B9461E272EA600AE2BC9 /* UIView+AdjustFrame.m in Sources */,

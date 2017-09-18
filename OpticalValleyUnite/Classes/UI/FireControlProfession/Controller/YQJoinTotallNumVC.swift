@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import SVProgressHUD
+
 
 class YQJoinTotallNumVC:UIViewController{
     
@@ -19,7 +22,21 @@ class YQJoinTotallNumVC:UIViewController{
     
     @IBOutlet weak var seachTextField: UITextField!
     
-    var selectProject : String = ""
+    var selectProject : String = "" {
+        didSet{
+        
+        }
+    }
+    
+    //定义的是模型数组
+    var dataArray :[YQfireMessage]?{
+        didSet{
+            //刷新表格数据
+            self.detailTableV.reloadData()
+        
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +46,9 @@ class YQJoinTotallNumVC:UIViewController{
         
         //添加leftBar属性
         self.setUpLeftBar()
+        
+        //添加调用接口数据
+        requestFireDetailData(title: self.title!, time: nil, location: nil)
         
     }
     
@@ -69,6 +89,10 @@ class YQJoinTotallNumVC:UIViewController{
             
             self.timeButton .setTitle(text, for: .normal)
             
+            //调用获取加载数据的方法
+            self.requestFireDetailData(title: (self.titleButton.titleLabel?.text)!, time: self.timeButton.titleLabel?.text, location:self
+                .seachTextField?.text )
+            
         })
     }
     
@@ -91,8 +115,83 @@ class YQJoinTotallNumVC:UIViewController{
             }
             
             self?.selectProject = temp[index]
+            // 调用筛选的接口
+            self?.requestFireDetailData(title: (self?.titleButton.titleLabel?.text)!, time: self?.timeButton.titleLabel?.text, location:self?
+                .seachTextField?.text )
             
         })
+    }
+    
+    // MARK: - 点击搜索执行的方法
+    
+    @IBAction func searchImageClick(_ sender: Any) {
+        
+        self.view.endEditing(true)
+        // 调用筛选的接口
+        self.requestFireDetailData(title: (self.titleButton.titleLabel?.text)!, time: self.timeButton.titleLabel?.text, location:self
+            .seachTextField?.text )
+        
+    }
+    
+    // MARK: - 获取接口数据的方法
+    func requestFireDetailData(title : String, time : String?, location : String?){
+        
+        var type = -1
+        
+        switch title {
+            case "总单量":
+                type = 0
+                
+            case "火警单":
+                type = 1
+                
+            case "误报单":
+                type = 2
+                
+            default:
+                break
+        }
+        
+        var parameters = [String : Any]()
+        
+        let token = UserDefaults.standard.object(forKey: Const.SJToken)
+        parameters["token"] = token
+        parameters["type"] = type
+        parameters["time"] = time
+        parameters["location"] = location
+            
+        Alamofire.request(URLPath.basicPath + URLPath.getFireList , method: .post, parameters: parameters).responseJSON { (response) in
+            
+            switch response.result {
+                
+            case .success(_):
+                
+                if let value = response.result.value as? [String: Any] {
+                    
+                    guard value["CODE"] as! String == "0" else{
+                        let message = value["MSG"] as! String
+                        
+                        self.alert(message: message)
+                        return
+                    }
+                    
+                    if let data = value["data"] as? NSDictionary{
+                        //字典转模型的操作
+                        
+                        
+                    }
+                    
+                    break
+                }
+                
+                break
+            case .failure(let error):
+                
+                debugPrint(error)
+                self.alert(message: "请求失败!")
+                break
+            }
+        }
     }
     
     
@@ -102,7 +201,7 @@ class YQJoinTotallNumVC:UIViewController{
 extension YQJoinTotallNumVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return (dataArray?.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -11,9 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQDrawerViewController" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
-                <outlet property="falsePositerNum" destination="Ku1-Bc-NfA" id="LT7-eD-iAg"/>
+                <outlet property="falsePositerNum" destination="iwK-e1-wDH" id="wsz-iI-Rb0"/>
                 <outlet property="fireNum" destination="HAT-ui-i6E" id="evA-FS-VdR"/>
                 <outlet property="joinNum" destination="Gfg-Z7-PQA" id="hNy-bz-CjY"/>
+                <outlet property="userImageView" destination="4mi-i7-Ji2" id="Z6b-Ic-vAa"/>
                 <outlet property="userName" destination="klp-Eh-dN1" id="5cY-U9-mUg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,7 +27,7 @@
                 <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="WX1-KF-2RQ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_default" translatesAutoresizingMaskIntoConstraints="NO" id="4mi-i7-Ji2">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_default" translatesAutoresizingMaskIntoConstraints="NO" id="4mi-i7-Ji2">
                             <rect key="frame" x="152.5" y="40" width="70" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="FtD-hG-I5t"/>
@@ -202,7 +203,7 @@
                                         <constraint firstAttribute="height" constant="30" id="dQd-dM-FL3"/>
                                         <constraint firstAttribute="width" constant="30" id="qpE-oz-rvg"/>
                                     </constraints>
-                                    <state key="normal" title="45">
+                                    <state key="normal" title="0">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
@@ -257,7 +258,7 @@
                                         <constraint firstAttribute="width" constant="30" id="LkG-nn-ZD6"/>
                                         <constraint firstAttribute="height" constant="30" id="sdz-ko-8PI"/>
                                     </constraints>
-                                    <state key="normal" title="45">
+                                    <state key="normal" title="0">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>

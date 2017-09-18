@@ -51,12 +51,16 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_fire_search" translatesAutoresizingMaskIntoConstraints="NO" id="zAa-vZ-0OQ">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_fire_search" translatesAutoresizingMaskIntoConstraints="NO" id="zAa-vZ-0OQ">
                                         <rect key="frame" x="335" y="7.5" width="30" height="30"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="1Tx-Ne-uoO"/>
                                             <constraint firstAttribute="height" constant="30" id="cgx-P9-jKO"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="dLa-PX-ZP7" appends="YES" id="xAL-pq-37u"/>
+                                        </connections>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caret_down" translatesAutoresizingMaskIntoConstraints="NO" id="95b-d4-me6">
                                         <rect key="frame" x="167" y="17.5" width="15" height="10"/>
@@ -105,7 +109,7 @@
                                 <rect key="frame" x="0.0" y="65" width="375" height="602"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fireDetailCell" rowHeight="67" id="faM-dG-Edb">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fireDetailCell" rowHeight="67" id="faM-dG-Edb" customClass="YQFireDetailCell" customModule="OpticalValleyUnite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="faM-dG-Edb" id="gWG-Tq-NWR">
@@ -193,6 +197,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cn-6u-0cC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="dLa-PX-ZP7">
+                    <connections>
+                        <action selector="searchImageClick:" destination="HlC-xv-DhW" id="BsU-Ck-vXi"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-399.19999999999999" y="212.74362818590706"/>
         </scene>

@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-
+import SVProgressHUD
 
 class YQDrawerViewController: UIViewController {
     
@@ -126,8 +126,10 @@ class YQDrawerViewController: UIViewController {
         parameters["token"] = token
         
 //        let url = NSURL(string : "http://192.168.0.18:8080/ovu-pcos/api/fire/workunit/amount.do")!
+        SVProgressHUD.show(withStatus: "加载中...")
         
         Alamofire.request(URLPath.basicPath + URLPath.getFireAmount , method: .post, parameters: parameters).responseJSON { (response) in
+            SVProgressHUD.dismiss()
             
             switch response.result {
                 

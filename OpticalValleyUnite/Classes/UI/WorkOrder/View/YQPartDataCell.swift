@@ -41,7 +41,6 @@ class YQPartDataCell: UITableViewCell {
             self.numText.text = modelcell?.partNum
             
         }
-    
     }
     
     /// 定义代理

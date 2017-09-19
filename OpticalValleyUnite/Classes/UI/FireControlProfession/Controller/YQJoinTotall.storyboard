@@ -147,6 +147,9 @@
                                                         <constraint firstAttribute="width" constant="50" id="qFC-y6-kJs"/>
                                                     </constraints>
                                                     <state key="normal" title="详情"/>
+                                                    <connections>
+                                                        <action selector="detailButtonClick:" destination="faM-dG-Edb" eventType="touchUpInside" id="S1g-dg-40U"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f4U-7g-EJg">
                                                     <rect key="frame" x="57" y="16" width="12" height="15"/>
@@ -170,6 +173,13 @@
                                                 <constraint firstItem="Jhc-mc-oEW" firstAttribute="centerY" secondItem="gWG-Tq-NWR" secondAttribute="centerY" id="xBY-8o-BtC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="detailButton" destination="Jhc-mc-oEW" id="3R7-S8-dIZ"/>
+                                            <outlet property="detailMessageLable" destination="t8D-Q8-5Pg" id="YgS-TW-ALB"/>
+                                            <outlet property="orderTypeLabel" destination="8PD-1x-6kC" id="Kjg-N6-Pcm"/>
+                                            <outlet property="timeLabel" destination="Hio-c2-9qi" id="MPg-O4-YtX"/>
+                                            <outlet property="typeImageView" destination="f4U-7g-EJg" id="mwG-Cp-IXN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

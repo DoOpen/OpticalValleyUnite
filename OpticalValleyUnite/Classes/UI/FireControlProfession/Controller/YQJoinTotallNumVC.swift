@@ -22,6 +22,8 @@ class YQJoinTotallNumVC:UIViewController{
     
     @IBOutlet weak var seachTextField: UITextField!
     
+    var cellIndex = "fireDetailCell"
+    
     var selectProject : String = "" {
         didSet{
         
@@ -159,9 +161,11 @@ class YQJoinTotallNumVC:UIViewController{
         parameters["type"] = type
         parameters["time"] = time
         parameters["location"] = location
-            
+        
+        SVProgressHUD.show(withStatus: "加载中...")
         Alamofire.request(URLPath.basicPath + URLPath.getFireList , method: .post, parameters: parameters).responseJSON { (response) in
             
+            SVProgressHUD.dismiss()
             switch response.result {
                 
             case .success(_):
@@ -177,7 +181,18 @@ class YQJoinTotallNumVC:UIViewController{
                     
                     if let data = value["data"] as? NSDictionary{
                         //字典转模型的操作
+                        if let dataList:NSArray = data["data"] as? NSArray {
+
+                            var model = [YQfireMessage]()
+                            
+                            for dic in dataList{
+                                
+                                model.append(YQfireMessage.init(dict: dic as! [String : Any]))
+                            }
+                            
+                            self.dataArray = model
                         
+                        }
                         
                     }
                     
@@ -201,13 +216,21 @@ class YQJoinTotallNumVC:UIViewController{
 extension YQJoinTotallNumVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (dataArray?.count)!
+        if self.dataArray?.count == 0{
+            return 10
+        }else{
+            
+            return (dataArray?.count)!
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
+        let cell : YQFireDetailCell = tableView.dequeueReusableCell(withIdentifier: cellIndex, for: indexPath) as! YQFireDetailCell
+        cell.deleage = self as YQFireDetailCellDeleage
         
+        cell.fireMessage = self.dataArray?[indexPath.row]
         return cell
     }
     
@@ -223,6 +246,37 @@ extension YQJoinTotallNumVC : UITableViewDelegate,UITableViewDataSource{
     }
 
 
+}
+
+
+extension YQJoinTotallNumVC : YQFireDetailCellDeleage {
+    
+    func fireDetailCellDetailClickDeleage(model: YQfireMessage) {
+        
+        switch model.type! {
+            case "火警单":
+                //跳入火警详情
+                let fireAlarm = YQFireAlarmDetailViewController(nibName : "YQFireAlarmDetailViewController" , bundle: nil)
+                navigationController?.pushViewController(fireAlarm, animated: true)
+                fireAlarm.workunitID = model.workunitId
+                fireAlarm.type = model.type!
+                
+                break
+            case "误报单":
+                //跳入误报详情
+                let falsePositives = YQFalsePositivesVC(nibName : "YQFalsePositivesVC" , bundle: nil)
+                navigationController?.pushViewController(falsePositives, animated: true)
+                falsePositives.workunitID = model.workunitId
+                falsePositives.type = model.type!
+                
+                break
+            default:
+                break
+        }
+        
+        
+    }
+    
 }
 
 

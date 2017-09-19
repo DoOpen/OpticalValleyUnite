@@ -201,6 +201,7 @@
 		2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPersonDetail.storyboard; sourceTree = "<group>"; };
 		2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQfireMessage.swift; sourceTree = "<group>"; };
 		2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireDetailCell.swift; sourceTree = "<group>"; };
+		2F2892321F70FDC1000F879A /* Development-3.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Development-3.mobileprovision"; sourceTree = "<group>"; };
 		2F3B95FE1F6B68BE0008AFEB /* YQDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDrawerViewController.swift; sourceTree = "<group>"; };
 		2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDrawerViewController.xib; sourceTree = "<group>"; };
 		2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJoinTotallNumVC.swift; sourceTree = "<group>"; };
@@ -666,6 +667,7 @@
 		4BD4B8FF1E272E0C00AE2BC9 /* OpticalValleyUnite */ = {
 			isa = PBXGroup;
 			children = (
+				2F2892321F70FDC1000F879A /* Development-3.mobileprovision */,
 				4B91E89B1F25904B00F63D66 /* OpticalValleyUnite.entitlements */,
 				4BD4B9121E272EA600AE2BC9 /* Classes */,
 				4BD4B9001E272E0C00AE2BC9 /* AppDelegate.swift */,
@@ -1076,13 +1078,14 @@
 				TargetAttributes = {
 					4BD4B8FC1E272E0C00AE2BC9 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = JULHSND4WY;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1502,10 +1505,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = OpticalValleyUnite/OpticalValleyUnite.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: tao wei (8ES22U6BV5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JULHSND4WY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",
@@ -1519,8 +1521,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "2f891814-9d1d-4a56-9bec-3dfa28dcf159";
+				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SWIFT_OBJC_BRIDGING_HEADER = "OpticalValleyUnite/OpticalValleyUnite-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				WARNING_CFLAGS = "-Wno-unused-variable";
@@ -1533,10 +1535,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = OpticalValleyUnite/OpticalValleyUnite.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: WUHAN XIAOMIAO TECHNOLOGY CO. , LTD. (A2R3PWNCGN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JULHSND4WY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",
@@ -1550,8 +1551,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "2f891814-9d1d-4a56-9bec-3dfa28dcf159";
+				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SWIFT_OBJC_BRIDGING_HEADER = "OpticalValleyUnite/OpticalValleyUnite-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				WARNING_CFLAGS = "-Wno-unused-variable";

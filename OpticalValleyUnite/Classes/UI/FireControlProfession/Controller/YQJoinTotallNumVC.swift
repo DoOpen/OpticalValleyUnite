@@ -216,8 +216,9 @@ class YQJoinTotallNumVC:UIViewController{
 extension YQJoinTotallNumVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.dataArray?.count == 0{
-            return 10
+        if self.dataArray == nil{
+            return 0
+            
         }else{
             
             return (dataArray?.count)!

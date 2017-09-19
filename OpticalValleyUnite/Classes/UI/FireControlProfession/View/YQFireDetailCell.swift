@@ -39,10 +39,14 @@ class YQFireDetailCell: UITableViewCell {
     var fireMessage : YQfireMessage?{
         didSet{
             
+            if fireMessage == nil{
+                return
+            }
             self.orderTypeLabel.text = fireMessage?.type
             self.timeLabel.text = fireMessage?.time
             self.detailMessageLable.text = fireMessage?.location
             //设置图片
+            
             setTypeImage(type: (fireMessage?.type)!)
             
             self.workunitId = (fireMessage?.workunitId)!

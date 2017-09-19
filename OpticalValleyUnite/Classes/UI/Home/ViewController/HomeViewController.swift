@@ -331,11 +331,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         locationManager.locatingWithReGeocode = true
         
         
-        if Double(UIDevice.current.systemVersion.components(separatedBy: ".").first!)! >= 9.0{
-            locationManager.allowsBackgroundLocationUpdates = true
-        }else{
-            locationManager.pausesLocationUpdatesAutomatically = false
-        }
+//        if Double(UIDevice.current.systemVersion.components(separatedBy: ".").first!)! >= 9.0{
+//            locationManager.allowsBackgroundLocationUpdates = true
+//        }else{
+//            locationManager.pausesLocationUpdatesAutomatically = false
+//        }
+        locationManager.pausesLocationUpdatesAutomatically = false
         
         locationManager.startUpdatingLocation()
     }

@@ -96,7 +96,6 @@ class YQFalsePositivesVC: UIViewController {
                 break
             }
         }
-    
     }
 
 }

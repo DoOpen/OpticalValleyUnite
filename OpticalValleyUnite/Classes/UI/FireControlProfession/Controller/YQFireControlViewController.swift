@@ -63,9 +63,9 @@ class YQFireControlViewController: UIViewController {
         // 带逆地理信息的一次定位（返回坐标和地址信息）
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         //   定位超时时间，最低2s，此处设置为2s
-        self.locationManager.locationTimeout = 2;
+        self.locationManager.locationTimeout = 5;
         //   逆地理请求超时时间，最低2s，此处设置为2s
-        self.locationManager.reGeocodeTimeout = 2;
+        self.locationManager.reGeocodeTimeout = 5;
         
         locationManager.requestLocation(withReGeocode: true, completionBlock:{
             [weak self]  location, regeocode,error in
@@ -190,7 +190,6 @@ class YQFireControlViewController: UIViewController {
     }
     
     deinit{
-        
         //移除所有通知
         NotificationCenter.default.removeObserver(self)
     }

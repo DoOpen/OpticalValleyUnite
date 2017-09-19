@@ -331,14 +331,15 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         locationManager.locatingWithReGeocode = true
         
         
-//        if Double(UIDevice.current.systemVersion.components(separatedBy: ".").first!)! >= 9.0{
-//            locationManager.allowsBackgroundLocationUpdates = true
-//        }else{
-//            locationManager.pausesLocationUpdatesAutomatically = false
-//        }
-        locationManager.pausesLocationUpdatesAutomatically = false
+        if Double(UIDevice.current.systemVersion.components(separatedBy: ".").first!)! >= 9.0{
+            locationManager.allowsBackgroundLocationUpdates = true
+        }else{
+            locationManager.pausesLocationUpdatesAutomatically = false
+        }
+    
         
         locationManager.startUpdatingLocation()
+        
     }
     
     //MARK: -top和down按钮组点击界面跳转的方法;

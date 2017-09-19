@@ -145,5 +145,9 @@ struct URLPath {
     // MARK: - 消防专业化的接口参数
     static let getFireAmount = "fire/workunit/amount.do"
     static let getFireList  = "fire/workunit/list.do"
+    static let getFireDetail = "fire/workunit/detail.do"
+    
+    
+    
     
 }

@@ -52,7 +52,7 @@ class YQFireAlarmDetailViewController: UIViewController {
         parameters["workunitId"] = workunitID
         
         SVProgressHUD.show(withStatus: "加载中...")
-        Alamofire.request(URLPath.basicPath + URLPath.getFireList , method: .post, parameters: parameters).responseJSON { (response) in
+        Alamofire.request(URLPath.basicPath + URLPath.getFireDetail , method: .post, parameters: parameters).responseJSON { (response) in
             
             SVProgressHUD.dismiss()
             switch response.result {
@@ -70,25 +70,28 @@ class YQFireAlarmDetailViewController: UIViewController {
                     
                     if let data = value["data"] as? NSDictionary{
 //                        //字典转模型的操作
-//                        if let dataList:NSArray = data["data"] as? NSArray {
-//                            
+                        if let dataList = data["workunit"] as? [String : Any] {
+                            
 //                            var model = [YQfireMessage]()
-//                            
+                            
 //                            for dic in dataList{
 //                                
 //                                model.append(YQfireMessage.init(dict: dic as! [String : Any]))
 //                            }
 //                            
 //                            self.dataArray = model
-//                            
-//                        }
-                        
+                            self.handlePersonText.text = dataList["execPersonName"] as? String
+                            self.coordinatePersonText.text = dataList["coopPersonName"] as? String
+                            self.handleTimeText.text = dataList["time"] as? String
+                            self.failureCauseText.text = dataList["detail"] as? String
+                            self.resultText.text = dataList["reason"] as? String
+                            
+                        }
                     }
-                    
                     break
                 }
-                
                 break
+                
             case .failure(let error):
                 
                 debugPrint(error)

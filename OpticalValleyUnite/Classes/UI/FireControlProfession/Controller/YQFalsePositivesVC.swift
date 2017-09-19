@@ -49,7 +49,7 @@ class YQFalsePositivesVC: UIViewController {
         
         SVProgressHUD.show(withStatus: "加载中...")
         
-        Alamofire.request(URLPath.basicPath + URLPath.getFireList , method: .post, parameters: parameters).responseJSON { (response) in
+        Alamofire.request(URLPath.basicPath + URLPath.getFireDetail , method: .post, parameters: parameters).responseJSON { (response) in
             
             SVProgressHUD.dismiss()
             
@@ -67,19 +67,21 @@ class YQFalsePositivesVC: UIViewController {
                     }
                     
                     if let data = value["data"] as? NSDictionary{
-                        //                        //字典转模型的操作
-                        //                        if let dataList:NSArray = data["data"] as? NSArray {
-                        //
-                        //                            var model = [YQfireMessage]()
-                        //
-                        //                            for dic in dataList{
-                        //
-                        //                                model.append(YQfireMessage.init(dict: dic as! [String : Any]))
-                        //                            }
-                        //
-                        //                            self.dataArray = model
-                        //
-                        //                        }
+//                        //字典转模型的操作
+                        if let dataList = data["workunit"] as? [String : Any] {
+                            
+//                            var model = [YQfireMessage]()
+//
+//                            for dic in dataList{
+//                                
+//                                model.append(YQfireMessage.init(dict: dic as! [String : Any]))
+//                            }
+//                            
+//                            self.dataArray = model
+                            self.handlePerson.text = dataList["execPersonName"] as? String
+                            self.handleTime.text = dataList["coopPersonName"] as? String
+                        
+                        }
                         
                     }
                     

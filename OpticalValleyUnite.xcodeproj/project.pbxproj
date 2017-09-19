@@ -31,6 +31,7 @@
 		2F6A438E1F6A528D003E10C9 /* YQFireControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */; };
 		2F6A43901F6A52CA003E10C9 /* YQFireControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */; };
 		2F6A83911F5CE073002BB61C /* YQPartDataSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */; };
+		2FDED33E1F711DF000E4BA2E /* YQFireLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDED33D1F711DF000E4BA2E /* YQFireLocationModel.swift */; };
 		2FE08F2B1F5F8A0A00D6F51D /* YQSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE08F2A1F5F8A0A00D6F51D /* YQSystemView.swift */; };
 		2FE08F2F1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE08F2E1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift */; };
 		2FEB0E7F1F6E5EA10002DEE8 /* YQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB0E7E1F6E5EA10002DEE8 /* YQViewController.swift */; };
@@ -219,6 +220,7 @@
 		2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireControlViewController.swift; sourceTree = "<group>"; };
 		2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireControl.storyboard; sourceTree = "<group>"; };
 		2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataSelectCell.swift; sourceTree = "<group>"; };
+		2FDED33D1F711DF000E4BA2E /* YQFireLocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireLocationModel.swift; sourceTree = "<group>"; };
 		2FE08F2A1F5F8A0A00D6F51D /* YQSystemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQSystemView.swift; sourceTree = "<group>"; };
 		2FE08F2E1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		2FEB0E7E1F6E5EA10002DEE8 /* YQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQViewController.swift; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */,
+				2FDED33D1F711DF000E4BA2E /* YQFireLocationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1374,6 +1377,7 @@
 				2FE08F2B1F5F8A0A00D6F51D /* YQSystemView.swift in Sources */,
 				4B1DEC581E31B646000917D2 /* SGGenerateQRCodeVC.m in Sources */,
 				4B6E64F91EEAEFCF00BA23E4 /* Photo.swift in Sources */,
+				2FDED33E1F711DF000E4BA2E /* YQFireLocationModel.swift in Sources */,
 				4B50D62F1EBB1B3900BB480F /* AllViewController.swift in Sources */,
 				4B8A9FD01E2C7C440009F757 /* AppraisalViewController.swift in Sources */,
 				4B6E64FA1EEAEFCF00BA23E4 /* PhotoBrowser.swift in Sources */,

@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 import KYDrawerController
+import Alamofire
+import SVProgressHUD
 
 class YQFireControlViewController: UIViewController {
     
@@ -24,6 +26,17 @@ class YQFireControlViewController: UIViewController {
     
     // leftBtn
     var leftBtn : UIButton!
+    // 模型数组
+    var fireModel = [YQFireLocationModel](){
+        didSet{
+            //调用地图渲染,打点的方法
+            
+        
+        }
+    
+    }
+    
+    
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
@@ -48,6 +61,10 @@ class YQFireControlViewController: UIViewController {
         
         //接受通知
         setUpNoties()
+        
+        //获取火警状态的信息
+        /*消防点信息, 地图打点使用*/
+        makeMapLocationData()
         
     }
     
@@ -188,6 +205,67 @@ class YQFireControlViewController: UIViewController {
                 break
             }
     }
+    
+    // MARK: - 获取地图打点的位置坐标
+    func makeMapLocationData(){
+        
+        var parameters = [String : Any]()
+        let token = UserDefaults.standard.object(forKey: Const.SJToken)
+        parameters["token"] = token
+        
+        SVProgressHUD.show(withStatus: "加载中...")
+        
+        Alamofire.request(URLPath.basicPath + URLPath.getFireLocation , method: .get, parameters: parameters).responseJSON { (response) in
+            
+            SVProgressHUD.dismiss()
+            switch response.result {
+                
+            case .success(_):
+                
+                if let value = response.result.value as? [String: Any] {
+                    
+                    guard value["CODE"] as! String == "0" else{
+                        let message = value["MSG"] as! String
+                        
+                        self.alert(message: message)
+                        return
+                    }
+                    
+                    
+                    if let data = value["data"] as? NSDictionary{
+                        
+                        let array = data["firePointList"] as! NSArray
+                        var temp = [YQFireLocationModel]()
+                        
+                        for dict in array{
+                            
+                            temp.append(YQFireLocationModel.init(dic: dict as! [String : Any]))
+                        }
+                        self.fireModel = temp
+                        
+                    }
+                    
+                    break
+                }
+                
+                break
+            case .failure(let error):
+                
+                debugPrint(error)
+                self.alert(message: "请求失败!")
+                break
+            }
+        }
+    }
+    
+    // MARK: - 高德添加 大头针,添加点击弹框视图的
+    func addLocationAndMessageView(model : YQFireLocationModel) {
+        //添加大头针location点
+        
+        
+        
+    }
+
     
     deinit{
         //移除所有通知

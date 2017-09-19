@@ -20,7 +20,7 @@ class YQfireMessage: NSObject {
     //定义属性,字典转模型
     var workunitId : Int = -1
     
-    var type : String?
+    var type : Int = -1
     
     var time : String?
     

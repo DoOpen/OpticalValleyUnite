@@ -254,21 +254,21 @@ extension YQJoinTotallNumVC : YQFireDetailCellDeleage {
     
     func fireDetailCellDetailClickDeleage(model: YQfireMessage) {
         
-        switch model.type! {
-            case "火警单":
+        switch model.type {
+            case 1:
                 //跳入火警详情
                 let fireAlarm = YQFireAlarmDetailViewController(nibName : "YQFireAlarmDetailViewController" , bundle: nil)
                 navigationController?.pushViewController(fireAlarm, animated: true)
                 fireAlarm.workunitID = model.workunitId
-                fireAlarm.type = model.type!
+                fireAlarm.type = model.type
                 
                 break
-            case "误报单":
+            case 2:
                 //跳入误报详情
                 let falsePositives = YQFalsePositivesVC(nibName : "YQFalsePositivesVC" , bundle: nil)
                 navigationController?.pushViewController(falsePositives, animated: true)
                 falsePositives.workunitID = model.workunitId
-                falsePositives.type = model.type!
+                falsePositives.type = model.type
                 
                 break
             default:

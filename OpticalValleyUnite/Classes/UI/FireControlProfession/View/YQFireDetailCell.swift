@@ -42,12 +42,20 @@ class YQFireDetailCell: UITableViewCell {
             if fireMessage == nil{
                 return
             }
-            self.orderTypeLabel.text = fireMessage?.type
+            if fireMessage?.type == 1 {
+                self.orderTypeLabel.text = "火警单"
+                //设置图片
+                setTypeImage(type: "火警单")
+            }else{
+                self.orderTypeLabel.text = "误报单"
+                //设置图片
+                setTypeImage(type: "误报单")
+
+            
+            }
+            
             self.timeLabel.text = fireMessage?.time
             self.detailMessageLable.text = fireMessage?.location
-            //设置图片
-            
-            setTypeImage(type: (fireMessage?.type)!)
             
             self.workunitId = (fireMessage?.workunitId)!
         }
@@ -58,6 +66,7 @@ class YQFireDetailCell: UITableViewCell {
     func setTypeImage(type : String){
         
         switch type {
+            
             case "火警单":
                 self.typeImageView.image = UIImage(named : "tag_fire")
             case "误报单":

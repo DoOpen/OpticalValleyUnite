@@ -146,7 +146,7 @@ struct URLPath {
     static let getFireAmount = "fire/workunit/amount.do"
     static let getFireList  = "fire/workunit/list.do"
     static let getFireDetail = "fire/workunit/detail.do"
-    
+    static let getFireLocation = "fire/firepoint/list.do"
     
     
     

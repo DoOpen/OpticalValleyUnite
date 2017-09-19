@@ -23,7 +23,7 @@ class YQFalsePositivesVC: UIViewController {
     
     //获取详细信息的接口
     var workunitID : Int = -1
-    var  type = ""
+    var  type : Int = -1
 
     
     override func viewDidLoad() {

@@ -85,7 +85,6 @@ class PersonDetailViewController: UITableViewController{
                 self.uploadImage(image: image)
             }
             
-            
         }, viewController: self)
     }
 

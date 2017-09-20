@@ -11,10 +11,25 @@ import SnapKit
 import KYDrawerController
 import Alamofire
 import SVProgressHUD
+import MapKit
+//import MAMapKit
+
 
 class YQFireControlViewController: UIViewController {
     
     // MARK: - 属性列表
+    // 执行操作view
+    @IBOutlet weak var implementView: YQImplementView!
+    // 立即执行bnt
+    @IBOutlet weak var backButton: UIButton!
+    // 执行listTableView
+    @IBOutlet weak var implementTableView: UITableView!
+    
+    // footer buttonlist
+    @IBOutlet weak var alreadyImplementBtn: UIButton!
+    @IBOutlet weak var abandonImplementBtn: UIButton!
+    @IBOutlet weak var gotoImplementBtn: UIButton!
+    
     // 中间contentView
     @IBOutlet weak var messageContentV: UIView!
     
@@ -62,6 +77,8 @@ class YQFireControlViewController: UIViewController {
         let left = UIBarButtonItem(customView: bnt)
         self.navigationItem.leftBarButtonItem = left
         
+        self.messageContentV.backgroundColor = UIColor(red: 255.0/255.0, green: 240.0/255.0, blue: 230.0/255.0, alpha: 1.0)
+        
         //设置地图
         mapSetup()
         
@@ -90,6 +107,16 @@ class YQFireControlViewController: UIViewController {
         self.locationManager.locationTimeout = 5;
         //   逆地理请求超时时间，最低2s，此处设置为5s
         self.locationManager.reGeocodeTimeout = 5;
+        
+        //添加自定义的小蓝点的情况
+        /*
+         以下功能自iOS 地图 SDK V5.0.0 版本起支持。
+         let r = MAUserLocationRepresentation()
+         r.image = UIImage(named: "您的图片")
+         mapView.update(r)
+         
+         */
+        
         
         locationManager.requestLocation(withReGeocode: true, completionBlock:{
             [weak self]  location, regeocode,error in
@@ -269,7 +296,7 @@ class YQFireControlViewController: UIViewController {
         //添加大头针location点
         //合成生成经纬度的情况
         let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(model.latitude), CLLocationDegrees(model.longitude))
-        let userPoint = MAUserLocation()//用户的location的情况
+        // let userPoint = MAUserLocation()//用户的location的情况
         
         let starPoint = MAPointAnnotation()//系统标记点location
     
@@ -279,7 +306,12 @@ class YQFireControlViewController: UIViewController {
         self.pointLocation = starPoint
         
         self.fireMapView.addAnnotation(starPoint)
+    }
+    
+    // MARK: - 生成implementView
+    func implementViewDataAndDetailShow(){
         
+    
     }
 
     
@@ -311,9 +343,10 @@ extension YQFireControlViewController: MAMapViewDelegate{
                 annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
             }
             
-            annotationView!.canShowCallout = true
-            annotationView!.animatesDrop = true
-            annotationView!.isDraggable = true
+            annotationView!.image = UIImage(named: "icon_fire_position_red")
+            annotationView!.canShowCallout = true //设置气泡可以弹出，默认为NO
+            annotationView!.animatesDrop = true  //设置标注动画显示，默认为NO
+            annotationView!.isDraggable = false  //设置标注可以拖动，默认为NO
 //            annotationView!.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
             
 //            let idx = annotation.index(of: annotation as! MAPointAnnotation)
@@ -321,9 +354,58 @@ extension YQFireControlViewController: MAMapViewDelegate{
             
             return annotationView!
         }
+    
+        return nil
+    }
+
+    // MARK: - markView点击的回调方法
+    func mapView(_ mapView: MAMapView!, didSelect view: MAAnnotationView!) {
+        
+    }
+    
+    func mapView(_ mapView: MAMapView!, didDeselect view: MAAnnotationView!) {
+        
+    }
+    
+    
+    /**
+     
+     // 点击annotation弹框视图的添加的添加方法
+     - (void)mapView:(MAMapView *)mapView annotationView:(MAAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control;
+     
+     */
+    func mapView(_ mapView: MAMapView!, annotationView view: MAAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
         
         
+        
+    }
+    
+    /**
+     // 点击annotation弹框视图的添加的添加方法
+     - (void)mapView:(MAMapView *)mapView didAnnotationViewCalloutTapped:(MAAnnotationView *)view;
+     */
+    func mapView(_ mapView: MAMapView!, didAnnotationViewCalloutTapped view: MAAnnotationView!) {
+        
+        
+        
+    }
+    
+}
+
+extension YQFireControlViewController: UITableViewDelegate,UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return nil
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
+        return cell
+    }
+    
+
 }

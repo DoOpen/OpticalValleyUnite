@@ -24,16 +24,22 @@ class YQFireControlViewController: UIViewController {
     // MAMap单例
     var locationManager = AMapLocationManager()
     
+    // userPointLocation
+    var pointLocation : MAPointAnnotation!
+    
     // leftBtn
     var leftBtn : UIButton!
     // 模型数组
     var fireModel = [YQFireLocationModel](){
         didSet{
-            //调用地图渲染,打点的方法
             
-        
+            //调用地图渲染,打点的方法(有多少个模型,就需要多少个标记)
+            for model in fireModel{
+                
+                addLocationAndMessageView(model: model)
+                
+            }
         }
-    
     }
     
     
@@ -68,6 +74,7 @@ class YQFireControlViewController: UIViewController {
         
     }
     
+    
     // MARK: - 设置地图的方法
     private func  mapSetup(){
         
@@ -75,13 +82,13 @@ class YQFireControlViewController: UIViewController {
         fireMapView.showsUserLocation = true;
         fireMapView.userTrackingMode = .followWithHeading;
         fireMapView.delegate = self as MAMapViewDelegate
-        fireMapView.zoomLevel = 17.0
+        fireMapView.zoomLevel = 10.0 //地图的缩放的级别比例
         
         // 带逆地理信息的一次定位（返回坐标和地址信息）
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        //   定位超时时间，最低2s，此处设置为2s
+        //   定位超时时间，最低2s，此处设置为5s
         self.locationManager.locationTimeout = 5;
-        //   逆地理请求超时时间，最低2s，此处设置为2s
+        //   逆地理请求超时时间，最低2s，此处设置为5s
         self.locationManager.reGeocodeTimeout = 5;
         
         locationManager.requestLocation(withReGeocode: true, completionBlock:{
@@ -198,7 +205,6 @@ class YQFireControlViewController: UIViewController {
                 let vc = UIStoryboard.instantiateInitialViewController(name: "YQPersonDetail")
                 navigationController?.pushViewController(vc, animated: true)
                 vc.title = "个人资料"
-                
                 break
                 
             default:
@@ -261,8 +267,18 @@ class YQFireControlViewController: UIViewController {
     // MARK: - 高德添加 大头针,添加点击弹框视图的
     func addLocationAndMessageView(model : YQFireLocationModel) {
         //添加大头针location点
+        //合成生成经纬度的情况
+        let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(model.latitude), CLLocationDegrees(model.longitude))
+        let userPoint = MAUserLocation()//用户的location的情况
         
+        let starPoint = MAPointAnnotation()//系统标记点location
+    
+        starPoint.coordinate = CLLocationCoordinate2D
+        starPoint.title = model.name
         
+        self.pointLocation = starPoint
+        
+        self.fireMapView.addAnnotation(starPoint)
         
     }
 
@@ -282,6 +298,32 @@ extension YQFireControlViewController: MAMapViewDelegate{
     func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
         //        print(mapView.userLocation.location)
         self.fireMapView.setCenter((mapView.userLocation!.coordinate), animated: true)
+    }
+    
+    // MARK: - 设置mark的标记的类型
+    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
+        //通过这里来进行的样式的设置,点击的弹框的效果情况
+        if annotation.isKind(of: MAPointAnnotation.self) {
+            let pointReuseIndetifier = "pointReuseIndetifier"
+            var annotationView: MAPinAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier) as! MAPinAnnotationView?
+            
+            if annotationView == nil {
+                annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
+            }
+            
+            annotationView!.canShowCallout = true
+            annotationView!.animatesDrop = true
+            annotationView!.isDraggable = true
+//            annotationView!.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
+            
+//            let idx = annotation.index(of: annotation as! MAPointAnnotation)
+//            annotationView!.pinColor = MAPinAnnotationColor(rawValue: idx!)!
+            
+            return annotationView!
+        }
+        
+        
+        return nil
     }
     
 }

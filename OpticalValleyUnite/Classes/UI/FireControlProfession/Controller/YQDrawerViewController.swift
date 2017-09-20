@@ -53,7 +53,7 @@ class YQDrawerViewController: UIViewController {
         () ->[String : Any]
         in
     
-        return["total" : self.joinNum, "fireTotal" : self.fireNum,  "misinfoTotal" : self.falsePositerNum]
+        return["total" : self.joinNum, "firetotal" : self.fireNum,  "misinfoTotal" : self.falsePositerNum]
     
     }()
     
@@ -150,7 +150,8 @@ class YQDrawerViewController: UIViewController {
                         let array = data["amount"] as! NSDictionary
                         for (index,value) in array {
                             
-                            let btn =  self.amountArray["\(index)"] as! UIButton
+                            let btn =  self.amountArray[index as! String
+                                ] as! UIButton
                             btn.setTitle("\(value)", for: .normal)
                             
                         }

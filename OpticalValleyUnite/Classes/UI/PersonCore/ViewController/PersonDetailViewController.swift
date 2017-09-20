@@ -49,8 +49,6 @@ class PersonDetailViewController: UITableViewController{
                     
                 }
                 
-                
-                
             }
             
             
@@ -77,8 +75,10 @@ class PersonDetailViewController: UITableViewController{
             
         }
     }
-
+    
+    // MARK: - 调用点击上传图片框架接口
     @IBAction func changePhotoBtnClick() {
+        
         SJTakePhotoHandle.takePhoto(imageBlock: { image in
             self.photoBtn.setBackgroundImage(image, for: .normal)
             if let image = image{
@@ -89,6 +89,7 @@ class PersonDetailViewController: UITableViewController{
         }, viewController: self)
     }
 
+    // MARK: - 更新后台的图片的接口
     func uploadImage(image:UIImage){
         
         HttpClient.instance.upDataImage(image) { (url) in
@@ -97,7 +98,6 @@ class PersonDetailViewController: UITableViewController{
                 
                 SVProgressHUD.showSuccess(withStatus: "上传成功")
 
-                
             }) { (error) in
                 
             }

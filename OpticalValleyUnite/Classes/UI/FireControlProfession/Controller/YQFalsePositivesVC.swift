@@ -21,6 +21,9 @@ class YQFalsePositivesVC: UIViewController {
     
     @IBOutlet weak var editButton: UIButton!
     
+    @IBOutlet weak var proveImageV: UIImageView!
+    
+    
     //获取详细信息的接口
     var workunitID : Int = -1
     var  type : Int = -1
@@ -81,8 +84,11 @@ class YQFalsePositivesVC: UIViewController {
                             self.handlePerson.text = dataList["execPersonName"] as? String
                             self.handleTime.text = dataList["coopPersonName"] as? String
                         
+                            //setImage
+                            let url = URL(string : dataList["imgPaths"] as! String)
+                            self.proveImageV.kf.setImage(with: url, placeholder: UIImage(named: "avatar"), options: nil, progressBlock: nil, completionHandler: nil)
+
                         }
-                        
                     }
                     
                     break

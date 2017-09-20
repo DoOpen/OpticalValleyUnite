@@ -26,6 +26,9 @@ class YQFireAlarmDetailViewController: UIViewController {
     
     @IBOutlet weak var editButton: UIButton!
     
+    @IBOutlet weak var proveImageV: UIImageView!
+    
+    
     //获取详细信息的接口
     var workunitID : Int = -1
     var  type : Int = -1
@@ -85,6 +88,11 @@ class YQFireAlarmDetailViewController: UIViewController {
                             self.handleTimeText.text = dataList["time"] as? String
                             self.failureCauseText.text = dataList["detail"] as? String
                             self.resultText.text = dataList["reason"] as? String
+                            
+                            //setImage
+                            let url = URL(string : dataList["imgPaths"] as! String)
+                            self.proveImageV.kf.setImage(with: url, placeholder: UIImage(named: "avatar"), options: nil, progressBlock: nil, completionHandler: nil)
+                            
                             
                         }
                     }

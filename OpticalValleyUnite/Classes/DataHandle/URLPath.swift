@@ -151,5 +151,8 @@ struct URLPath {
     static let getFireState = "fire/firepoint/state.do"
     //前往执行、放弃执行
     static let getFireExecute = "fire/firepoint/execute.do"
+    //执行反馈接口
+    static let getFirefeedback = "fire/workunit/feedback.do"
+    
     
 }

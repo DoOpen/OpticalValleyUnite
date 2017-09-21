@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M6P-DO-dK4">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Implement FeedbackVC-->
+        <scene sceneID="C9b-e0-kRl">
+            <objects>
+                <viewController id="M6P-DO-dK4" customClass="YQImplementFeedbackVC" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="maf-Q2-oQZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="SPa-Ta-37w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Eqg-kY-KFc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTP-jG-Mtx">
+                                <rect key="frame" x="0.0" y="64" width="375" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBz-A0-AXl">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="48"/>
+                                        <state key="normal" title="  已解决" image="icon_fire_solve_nor">
+                                            <color key="titleColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="icon_fire_solve_sel">
+                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resolveButtonClick:" destination="M6P-DO-dK4" eventType="touchUpInside" id="J71-pN-kNL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Acy-mw-H6f">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="48"/>
+                                        <state key="normal" title=" 误报" image="icon_fire_error_nor">
+                                            <color key="titleColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="icon_fire_error_sel">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="falsePositivesClick:" destination="M6P-DO-dK4" eventType="touchUpInside" id="Psj-ii-uPz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Acy-mw-H6f" secondAttribute="bottom" id="2MR-Iv-sQA"/>
+                                    <constraint firstItem="Acy-mw-H6f" firstAttribute="top" secondItem="kTP-jG-Mtx" secondAttribute="top" id="8P0-Jc-yzA"/>
+                                    <constraint firstItem="FBz-A0-AXl" firstAttribute="leading" secondItem="kTP-jG-Mtx" secondAttribute="leading" id="9lB-1e-Xz7"/>
+                                    <constraint firstItem="Acy-mw-H6f" firstAttribute="leading" secondItem="FBz-A0-AXl" secondAttribute="trailing" id="JA9-Uz-EWj"/>
+                                    <constraint firstAttribute="bottom" secondItem="FBz-A0-AXl" secondAttribute="bottom" id="TMz-DF-Cd5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Acy-mw-H6f" secondAttribute="trailing" id="ajp-F6-VP8"/>
+                                    <constraint firstAttribute="height" constant="48" id="giB-UC-i5c"/>
+                                    <constraint firstItem="FBz-A0-AXl" firstAttribute="top" secondItem="kTP-jG-Mtx" secondAttribute="top" id="pbo-Wz-F47"/>
+                                    <constraint firstItem="Acy-mw-H6f" firstAttribute="width" secondItem="FBz-A0-AXl" secondAttribute="width" id="y2e-oB-7ri"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NC8-Rn-6Zm">
+                                <rect key="frame" x="0.0" y="112" width="375" height="555"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NC8-Rn-6Zm" secondAttribute="trailing" id="5eo-0b-aF3"/>
+                            <constraint firstItem="NC8-Rn-6Zm" firstAttribute="top" secondItem="kTP-jG-Mtx" secondAttribute="bottom" id="Egb-q5-xq2"/>
+                            <constraint firstItem="kTP-jG-Mtx" firstAttribute="top" secondItem="Eqg-kY-KFc" secondAttribute="top" constant="64" id="Fy9-Lr-4oV"/>
+                            <constraint firstItem="SPa-Ta-37w" firstAttribute="top" secondItem="NC8-Rn-6Zm" secondAttribute="bottom" id="Gbj-1W-I2A"/>
+                            <constraint firstItem="NC8-Rn-6Zm" firstAttribute="leading" secondItem="Eqg-kY-KFc" secondAttribute="leading" id="Haj-mm-CDV"/>
+                            <constraint firstAttribute="trailing" secondItem="kTP-jG-Mtx" secondAttribute="trailing" id="Wzn-jF-aWO"/>
+                            <constraint firstItem="kTP-jG-Mtx" firstAttribute="leading" secondItem="Eqg-kY-KFc" secondAttribute="leading" id="zeP-Ix-oxC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="NC8-Rn-6Zm" id="u0w-4V-QqB"/>
+                        <outlet property="falsePositivesButton" destination="Acy-mw-H6f" id="yzL-HQ-cgv"/>
+                        <outlet property="resolveButton" destination="FBz-A0-AXl" id="f4g-gf-XAQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JCE-O6-wdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-457" y="81"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_fire_error_nor" width="16" height="16"/>
+        <image name="icon_fire_error_sel" width="16" height="16"/>
+        <image name="icon_fire_solve_nor" width="16" height="16"/>
+        <image name="icon_fire_solve_sel" width="16" height="16"/>
+    </resources>
+</document>

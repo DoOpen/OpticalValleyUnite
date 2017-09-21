@@ -35,6 +35,8 @@ class YQFireControlViewController: UIViewController {
     
     // mapview
     @IBOutlet weak var fireMapView: MAMapView!
+    // currentMapPointAnnotation
+    var currentMapPointAnnotation : YQPointAnnotation!
     
     // MAMap单例
     var locationManager = AMapLocationManager()
@@ -308,7 +310,7 @@ class YQFireControlViewController: UIViewController {
         let starPoint = YQPointAnnotation()//系统标记点location
         starPoint.coordinate = CLLocationCoordinate2D
         starPoint.title = model.name
-        starPoint.firePointId = model.firePointId
+        starPoint.pointModel = model
         
         self.pointLocation = starPoint
         self.fireMapView.addAnnotation(starPoint)
@@ -318,13 +320,14 @@ class YQFireControlViewController: UIViewController {
     // MARK: - 生成implementView
     // 大头针的详情点击,添加网络的数据,判断网络数据来进行的设置显示UI的功能
     func implementViewDataAndDetailShow(pointAnnotation : YQPointAnnotation){
+        self.currentMapPointAnnotation = pointAnnotation
         
         self.implementView.isHidden = false
         //调取火警点执行的动态的接口
         var parameters = [String : Any]()
         let token = UserDefaults.standard.object(forKey: Const.SJToken)
         parameters["token"] = token
-        parameters["firePointId"] = pointAnnotation.firePointId
+        parameters["firePointId"] = pointAnnotation.pointModel.firePointId
         
         SVProgressHUD.show(withStatus: "加载中...")
         
@@ -383,35 +386,90 @@ class YQFireControlViewController: UIViewController {
             self.alreadyImplementBtn.isHidden = false
             
         }else{//没有执行
-           self.abandonImplementBtn.isHidden = false
+//           self.abandonImplementBtn.isHidden = false
            self.gotoImplementBtn.isHidden = false
         }
     
     }
     
     // MARK: - implementView执行操作的所有点击的事件
+    // 立即执行功能按钮实现
+    @IBAction func atOnceFeedBack(_ sender: Any) {
+        //跳转到立即反馈的界面进行操作
+        let feedBack = UIStoryboard.instantiateInitialViewController(name: "YQImplementFeedback") as! YQImplementFeedbackVC
+        
+        
+        self.navigationController?.pushViewController(feedBack, animated: true)
+        
+    }
+    
+    
     //已经执行,前往查看点击
     @IBAction func alreadyImplementAndCheckOutMapViewClick(_ sender: Any) {
-        
-        
-        
+        //执行也是跳转到地图详情界面,重新拉接口,传模型
+        //跳转界面来进行地图渲染,规划路线,显示详细信息
+        let detailVC = UIStoryboard.instantiateInitialViewController(name: "YQFireMapDetail") as! YQFireMapDetailViewController
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        // 直接进行model 的传值
+        detailVC.fireModel = self.currentMapPointAnnotation.pointModel
+    
     }
     
     //前往执行
     @IBAction func gotoImplementClick(_ sender: Any) {
-    }
-  
-    
-    
-    //放弃执行
-    @IBAction func abandonImplementClick(_ sender: Any) {
+        
+        if self.currentMapPointAnnotation == nil {
+            return
+        }
+        //调用执行接口,成功就跳转,失败就弹框执行失败
+        var parameters = [String : Any]()
+        let token = UserDefaults.standard.object(forKey: Const.SJToken)
+        parameters["token"] = token
+        parameters["firePointId"] = self.currentMapPointAnnotation.pointModel.firePointId
+        /*
+         1:前往执行 2:放弃执行
+         */
+        parameters["status"] = 1
         
         
+        SVProgressHUD.show(withStatus: "执行中...")
+        
+        Alamofire.request(URLPath.basicPath + URLPath.getFireExecute , method: .get, parameters: parameters).responseJSON { (response) in
+            
+            SVProgressHUD.dismiss()
+            switch response.result {
+                
+            case .success(_):
+                
+                if let value = response.result.value as? [String: Any] {
+                    
+                    guard value["CODE"] as! String == "0" else{
+                        let message = value["MSG"] as! String
+                        
+                        self.alert(message: message)
+                        return
+                    }
+                    
+                    break
+                }
+                //跳转界面来进行地图渲染,规划路线,显示详细信息
+                let detailVC = UIStoryboard.instantiateInitialViewController(name: "YQFireMapDetail") as! YQFireMapDetailViewController
+                self.navigationController?.pushViewController(detailVC, animated: true)
+                // 直接进行model 的传值
+                detailVC.fireModel = self.currentMapPointAnnotation.pointModel
+                
+                break
+            case .failure(let error):
+                
+                debugPrint(error)
+                self.alert(message: "火警执行失败!")
+                break
+            }
+        }
+        
     }
     
-    
-    
-    
+
     // MARK: - 控制器销毁的方法
     deinit{
         //移除所有通知

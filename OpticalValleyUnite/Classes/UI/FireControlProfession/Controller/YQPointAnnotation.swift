@@ -11,7 +11,8 @@ import UIKit
 class YQPointAnnotation: MAPointAnnotation {
     
     //定义一个模型
-    var firePointId : Int = -1
+    var pointModel : YQFireLocationModel!
+    
     
 
 }

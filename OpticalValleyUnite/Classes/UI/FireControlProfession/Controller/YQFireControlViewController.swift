@@ -57,6 +57,14 @@ class YQFireControlViewController: UIViewController {
         }
     }
     
+    var stateListModel = [YQStateListModel](){
+        didSet{
+            
+            self.implementTableView.reloadData()
+        }
+    
+    }
+    
     
     
     // MARK: - 视图生命周期的方法
@@ -275,7 +283,6 @@ class YQFireControlViewController: UIViewController {
                             temp.append(YQFireLocationModel.init(dic: dict as! [String : Any]))
                         }
                         self.fireModel = temp
-                        
                     }
                     
                     break
@@ -298,23 +305,114 @@ class YQFireControlViewController: UIViewController {
         let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(model.latitude), CLLocationDegrees(model.longitude))
         // let userPoint = MAUserLocation()//用户的location的情况
         
-        let starPoint = MAPointAnnotation()//系统标记点location
-    
+        let starPoint = YQPointAnnotation()//系统标记点location
         starPoint.coordinate = CLLocationCoordinate2D
         starPoint.title = model.name
+        starPoint.firePointId = model.firePointId
         
         self.pointLocation = starPoint
-        
         self.fireMapView.addAnnotation(starPoint)
+        
     }
     
     // MARK: - 生成implementView
-    func implementViewDataAndDetailShow(){
+    // 大头针的详情点击,添加网络的数据,判断网络数据来进行的设置显示UI的功能
+    func implementViewDataAndDetailShow(pointAnnotation : YQPointAnnotation){
         
+        self.implementView.isHidden = false
+        //调取火警点执行的动态的接口
+        var parameters = [String : Any]()
+        let token = UserDefaults.standard.object(forKey: Const.SJToken)
+        parameters["token"] = token
+        parameters["firePointId"] = pointAnnotation.firePointId
+        
+        SVProgressHUD.show(withStatus: "加载中...")
+        
+        Alamofire.request(URLPath.basicPath + URLPath.getFireState , method: .get, parameters: parameters).responseJSON { (response) in
+            
+            SVProgressHUD.dismiss()
+            switch response.result {
+                
+            case .success(_):
+                
+                if let value = response.result.value as? [String: Any] {
+                    
+                    guard value["CODE"] as! String == "0" else{
+                        let message = value["MSG"] as! String
+                        
+                        self.alert(message: message)
+                        return
+                    }
+                    
+                    
+                    if let data = value["data"] as? NSDictionary{
+                        
+                        //判断isExec,主线程跟新UI设置
+                        let isExec = data["isExec"] as! String
+                        DispatchQueue.main.async {
+                            self.setImplementFooterState(isExec: isExec)
+                        }
+                        
+                        let array = data["stateList"] as! NSArray
+                        var temp = [YQStateListModel]()
+                        for dict in array{
+                            
+                            temp.append(YQStateListModel.init(dic: dict as! [String : Any]))
+                        }
+                        self.stateListModel = temp
+                    }
+                    
+                    break
+                }
+                
+                break
+            case .failure(let error):
+                
+                debugPrint(error)
+                self.alert(message: "请求失败!")
+                break
+            }
+        }
+    }
+    
+    // MARK: - 设置implementFooterView
+    // 设置implementFooter 的底部显示状态
+    func setImplementFooterState(isExec : String){
+        //
+        if isExec == "true" {//已经有执行了
+            self.alreadyImplementBtn.isHidden = false
+            
+        }else{//没有执行
+           self.abandonImplementBtn.isHidden = false
+           self.gotoImplementBtn.isHidden = false
+        }
     
     }
-
     
+    // MARK: - implementView执行操作的所有点击的事件
+    //已经执行,前往查看点击
+    @IBAction func alreadyImplementAndCheckOutMapViewClick(_ sender: Any) {
+        
+        
+        
+    }
+    
+    //前往执行
+    @IBAction func gotoImplementClick(_ sender: Any) {
+    }
+  
+    
+    
+    //放弃执行
+    @IBAction func abandonImplementClick(_ sender: Any) {
+        
+        
+    }
+    
+    
+    
+    
+    // MARK: - 控制器销毁的方法
     deinit{
         //移除所有通知
         NotificationCenter.default.removeObserver(self)
@@ -334,8 +432,10 @@ extension YQFireControlViewController: MAMapViewDelegate{
     
     // MARK: - 设置mark的标记的类型
     func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
+        
         //通过这里来进行的样式的设置,点击的弹框的效果情况
-        if annotation.isKind(of: MAPointAnnotation.self) {
+        if annotation.isKind(of: MAPointAnnotation.self){
+            
             let pointReuseIndetifier = "pointReuseIndetifier"
             var annotationView: MAPinAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier) as! MAPinAnnotationView?
             
@@ -354,7 +454,6 @@ extension YQFireControlViewController: MAMapViewDelegate{
             
             return annotationView!
         }
-    
         return nil
     }
 
@@ -395,15 +494,21 @@ extension YQFireControlViewController: MAMapViewDelegate{
 extension YQFireControlViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.stateListModel.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
+        
+        return Bundle.main.loadNibNamed("YQImplementDetailHead", owner: nil, options: nil)![0] as? UIView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "implementCell", for: indexPath)
+        cell.textLabel?.text = self.stateListModel[indexPath.row].content
         return cell
     }
     

@@ -14,6 +14,8 @@
 		2F236B701F6FADF700F1B0DF /* YQPersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */; };
 		2F236B721F6FE40300F1B0DF /* YQfireMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */; };
 		2F236B741F6FEA1B00F1B0DF /* YQFireDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */; };
+		2F2DF4361F735BF200ADA588 /* YQPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2DF4351F735BF200ADA588 /* YQPointAnnotation.swift */; };
+		2F2DF4381F7365B300ADA588 /* YQStateListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2DF4371F7365B300ADA588 /* YQStateListModel.swift */; };
 		2F3B96001F6B68BE0008AFEB /* YQDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B95FE1F6B68BE0008AFEB /* YQDrawerViewController.swift */; };
 		2F3B96011F6B68BE0008AFEB /* YQDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */; };
 		2F3B96031F6BC15B0008AFEB /* YQJoinTotallNumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */; };
@@ -206,6 +208,8 @@
 		2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQfireMessage.swift; sourceTree = "<group>"; };
 		2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireDetailCell.swift; sourceTree = "<group>"; };
 		2F2892321F70FDC1000F879A /* Development-3.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Development-3.mobileprovision"; sourceTree = "<group>"; };
+		2F2DF4351F735BF200ADA588 /* YQPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YQPointAnnotation.swift; path = ../Controller/YQPointAnnotation.swift; sourceTree = "<group>"; };
+		2F2DF4371F7365B300ADA588 /* YQStateListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStateListModel.swift; sourceTree = "<group>"; };
 		2F3B95FE1F6B68BE0008AFEB /* YQDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDrawerViewController.swift; sourceTree = "<group>"; };
 		2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDrawerViewController.xib; sourceTree = "<group>"; };
 		2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJoinTotallNumVC.swift; sourceTree = "<group>"; };
@@ -519,6 +523,7 @@
 			children = (
 				2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */,
 				2FDED33D1F711DF000E4BA2E /* YQFireLocationModel.swift */,
+				2F2DF4371F7365B300ADA588 /* YQStateListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -526,6 +531,7 @@
 		2F6A438C1F6A33A0003E10C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F2DF4351F735BF200ADA588 /* YQPointAnnotation.swift */,
 				2F3B96061F6BCCDA0008AFEB /* YQJoinTotallHeadView.swift */,
 				2F3B96081F6BCD0E0008AFEB /* YQJoinTotallHead.xib */,
 				2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */,
@@ -1327,6 +1333,7 @@
 				4B3951F61E28B64A00E2642F /* UILabel+SJColor.m in Sources */,
 				4B4BAFC11E5C62E800C9C549 /* OprationConfirmationView.swift in Sources */,
 				4BBBEC931E2CAAE200F60313 /* BoPhotoGroupCell.m in Sources */,
+				2F2DF4381F7365B300ADA588 /* YQStateListModel.swift in Sources */,
 				2FEB0E7F1F6E5EA10002DEE8 /* YQViewController.swift in Sources */,
 				4B429B081F4AC3A000381F3F /* ShowImagesView.swift in Sources */,
 				4B1DEC681E31F5D1000917D2 /* SlotViewController.swift in Sources */,
@@ -1373,6 +1380,7 @@
 				4B8EE7761F17047400A59F8D /* WorkOrderCell.swift in Sources */,
 				2FEB0E871F6E710B0002DEE8 /* YQFalsePositivesVC.swift in Sources */,
 				4BD4B94A1E272EA600AE2BC9 /* SJTabBarViewController.swift in Sources */,
+				2F2DF4361F735BF200ADA588 /* YQPointAnnotation.swift in Sources */,
 				2FE08F2F1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift in Sources */,
 				4B8EE7791F170AEE00A59F8D /* WorkOrder2Cell.swift in Sources */,
 				2F5E8C541F595D9600007717 /* YQPartDataFooterCell.swift in Sources */,

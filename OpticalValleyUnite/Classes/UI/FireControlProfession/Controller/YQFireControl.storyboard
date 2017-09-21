@@ -80,7 +80,7 @@
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZp-q0-eYc" customClass="YQImplementView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZp-q0-eYc" customClass="YQImplementView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                 <rect key="frame" x="20" y="387" width="335" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHE-nn-eEZ">
@@ -137,6 +137,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="已经执行,前往查看"/>
+                                                <connections>
+                                                    <action selector="alreadyImplementAndCheckOutMapViewClick:" destination="rYK-YH-62r" eventType="touchUpInside" id="LOg-kN-ENx"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXC-Ny-0RB">
                                                 <rect key="frame" x="0.0" y="0.0" width="167.5" height="44"/>
@@ -144,6 +147,9 @@
                                                 <state key="normal" title="放弃执行">
                                                     <color key="titleColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="abandonImplementClick:" destination="rYK-YH-62r" eventType="touchUpInside" id="EuR-Mx-JBi"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDw-Sn-FBj">
                                                 <rect key="frame" x="167.5" y="0.0" width="167.5" height="44"/>
@@ -152,6 +158,9 @@
                                                 <state key="normal" title="前往执行">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="gotoImplementClick:" destination="rYK-YH-62r" eventType="touchUpInside" id="4XP-wT-ZzY"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -203,10 +212,10 @@
                     <navigationItem key="navigationItem" title="实时地图" id="RNX-7K-Gq7"/>
                     <connections>
                         <outlet property="abandonImplementBtn" destination="mXC-Ny-0RB" id="XSU-gm-BRV"/>
-                        <outlet property="alreadyImplementBtn" destination="sv3-II-Zc7" id="m4d-x9-g52"/>
+                        <outlet property="alreadyImplementBtn" destination="sv3-II-Zc7" id="9BL-av-JVh"/>
                         <outlet property="backButton" destination="IHE-nn-eEZ" id="6Wd-jD-uc2"/>
                         <outlet property="fireMapView" destination="yb3-Sb-cBk" id="O7d-hY-zx7"/>
-                        <outlet property="gotoImplementBtn" destination="IDw-Sn-FBj" id="53a-YG-Ch3"/>
+                        <outlet property="gotoImplementBtn" destination="IDw-Sn-FBj" id="Fkn-he-Je7"/>
                         <outlet property="implementTableView" destination="9nI-C8-NFG" id="kfB-3q-1NT"/>
                         <outlet property="implementView" destination="KZp-q0-eYc" id="7Nx-Gf-wxJ"/>
                         <outlet property="messageContentV" destination="3qW-LL-TKh" id="v4y-fb-2Hj"/>

@@ -453,7 +453,13 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     // MARK: - 添加按钮悬浮
     @IBAction func suspendButtonClick(_ sender: Any) {
         
-         let data = UserDefaults.standard.object(forKey: Const.YQTotallData) as? NSArray
+        let data = UserDefaults.standard.object(forKey: Const.YQTotallData) as? NSArray
+        
+        if UserDefaults.standard.object(forKey: Const.YQTotallData) == nil {
+            
+             LoginViewController.loginOut()
+        }
+        
         
         //跳转到子系统的选择界面(需要的是逻辑的判断) 如果是只有一条数据的话,直接调到登录界面
         if (data?.count)! > 1{

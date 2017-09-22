@@ -107,16 +107,16 @@ class YQFireControlViewController: UIViewController {
         
         AMapServices.shared().enableHTTPS = true
         fireMapView.showsUserLocation = true;
-        fireMapView.userTrackingMode = .followWithHeading;
+        fireMapView.userTrackingMode = .none;
         fireMapView.delegate = self as MAMapViewDelegate
         fireMapView.zoomLevel = 10.0 //地图的缩放的级别比例
         
         // 带逆地理信息的一次定位（返回坐标和地址信息）
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         //   定位超时时间，最低2s，此处设置为5s
-        self.locationManager.locationTimeout = 5;
+        self.locationManager.locationTimeout = 2;
         //   逆地理请求超时时间，最低2s，此处设置为5s
-        self.locationManager.reGeocodeTimeout = 5;
+        self.locationManager.reGeocodeTimeout = 2;
         
         //添加自定义的小蓝点的情况
         /*
@@ -126,7 +126,6 @@ class YQFireControlViewController: UIViewController {
          mapView.update(r)
          
          */
-        
         
         locationManager.requestLocation(withReGeocode: true, completionBlock:{
             [weak self]  location, regeocode,error in
@@ -261,6 +260,7 @@ class YQFireControlViewController: UIViewController {
         Alamofire.request(URLPath.basicPath + URLPath.getFireLocation , method: .get, parameters: parameters).responseJSON { (response) in
             
             SVProgressHUD.dismiss()
+            
             switch response.result {
                 
             case .success(_):
@@ -485,7 +485,7 @@ extension YQFireControlViewController: MAMapViewDelegate{
     // MARK: - 地图加载成功的调用的方法
     func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
         //        print(mapView.userLocation.location)
-        self.fireMapView.setCenter((mapView.userLocation!.coordinate), animated: true)
+        
     }
     
     // MARK: - 设置mark的标记的类型

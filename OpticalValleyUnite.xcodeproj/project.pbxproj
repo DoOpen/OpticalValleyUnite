@@ -36,6 +36,9 @@
 		2F6A438E1F6A528D003E10C9 /* YQFireControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */; };
 		2F6A43901F6A52CA003E10C9 /* YQFireControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */; };
 		2F6A83911F5CE073002BB61C /* YQPartDataSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */; };
+		2F73FA631F74C0B600D37FDA /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F73FA621F74C0B600D37FDA /* AMapSearchKit.framework */; };
+		2F73FA651F74CE1300D37FDA /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F73FA641F74CE1300D37FDA /* GLKit.framework */; };
+		2F73FA671F74CE8600D37FDA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F73FA661F74CE8600D37FDA /* CoreLocation.framework */; };
 		2F94A27F1F73A5C500455162 /* YQFireMapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */; };
 		2F94A2811F73A5F500455162 /* YQFireMapDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */; };
 		2F94A2831F73B46B00455162 /* YQImplementFeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A2821F73B46B00455162 /* YQImplementFeedbackVC.swift */; };
@@ -238,6 +241,9 @@
 		2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireControlViewController.swift; sourceTree = "<group>"; };
 		2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireControl.storyboard; sourceTree = "<group>"; };
 		2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataSelectCell.swift; sourceTree = "<group>"; };
+		2F73FA621F74C0B600D37FDA /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
+		2F73FA641F74CE1300D37FDA /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		2F73FA661F74CE8600D37FDA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireMapDetailViewController.swift; sourceTree = "<group>"; };
 		2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireMapDetail.storyboard; sourceTree = "<group>"; };
 		2F94A2821F73B46B00455162 /* YQImplementFeedbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQImplementFeedbackVC.swift; sourceTree = "<group>"; };
@@ -443,6 +449,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F73FA671F74CE8600D37FDA /* CoreLocation.framework in Frameworks */,
+				2F73FA651F74CE1300D37FDA /* GLKit.framework in Frameworks */,
 				4B91E89A1F258BB200F63D66 /* UserNotifications.framework in Frameworks */,
 				4B3951E91E27DFA800E2642F /* CoreTelephony.framework in Frameworks */,
 				4B3951E31E27D8F900E2642F /* Security.framework in Frameworks */,
@@ -451,6 +459,7 @@
 				4B3951DF1E27D8E200E2642F /* libc++.tbd in Frameworks */,
 				4B3951DD1E27D8D300E2642F /* libz.tbd in Frameworks */,
 				4B3951E51E27DDCE00E2642F /* MAMapKit.framework in Frameworks */,
+				2F73FA631F74C0B600D37FDA /* AMapSearchKit.framework in Frameworks */,
 				4B3951DB1E27D8A800E2642F /* SystemConfiguration.framework in Frameworks */,
 				4B3951D91E27D88A00E2642F /* JavaScriptCore.framework in Frameworks */,
 				4B3951D71E27D85B00E2642F /* AMapLocationKit.framework in Frameworks */,
@@ -465,6 +474,8 @@
 		2DE0C4DE5B1BF48FFA401773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F73FA661F74CE8600D37FDA /* CoreLocation.framework */,
+				2F73FA641F74CE1300D37FDA /* GLKit.framework */,
 				4B91E8991F258BB200F63D66 /* UserNotifications.framework */,
 				4B3951E81E27DFA800E2642F /* CoreTelephony.framework */,
 				4B3951E21E27D8F900E2642F /* Security.framework */,
@@ -638,6 +649,7 @@
 		4B3951D31E27D85B00E2642F /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				2F73FA621F74C0B600D37FDA /* AMapSearchKit.framework */,
 				4B3951E61E27DE0A00E2642F /* AMap.bundle */,
 				4B3951E41E27DDCE00E2642F /* MAMapKit.framework */,
 				4B3951D41E27D85B00E2642F /* AMapFoundationKit.framework */,

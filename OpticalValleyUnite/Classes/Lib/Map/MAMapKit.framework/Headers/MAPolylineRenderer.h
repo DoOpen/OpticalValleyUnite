@@ -3,10 +3,8 @@
 //  MAMapKit
 //
 //  
-//  Copyright (c) 2011年 Autonavi Inc. All rights reserved.
+//  Copyright (c) 2011年 Amap. All rights reserved.
 //
-
-
 
 #import "MAConfig.h"
 #import <UIKit/UIKit.h>
@@ -23,7 +21,7 @@
  * @brief 根据指定的MAPolyline生成一个多段线Renderer
  * @param polyline 指定MAPolyline
  * @return 新生成的多段线Renderer
-*/
+ */
 - (instancetype)initWithPolyline:(MAPolyline *)polyline;
 
 @end

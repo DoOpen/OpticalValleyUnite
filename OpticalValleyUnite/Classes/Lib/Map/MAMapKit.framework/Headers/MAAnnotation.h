@@ -3,7 +3,7 @@
 //  MAMapKit
 //
 //  Created by yin cai on 11-12-13.
-//  Copyright (c) 2011年 Autonavi Inc. All rights reserved.
+//  Copyright (c) 2011年 Amap. All rights reserved.
 //
 
 #import "MAConfig.h"
@@ -12,14 +12,10 @@
 #import <Foundation/Foundation.h>
 #import "MAGeometry.h"
 
-/**
- *  该类为标注点的protocol，提供了标注类的基本信息函数
- */
+///该类为标注点的protocol，提供了标注类的基本信息函数
 @protocol MAAnnotation <NSObject>
 
-/**
- * @brief 标注view中心坐标
- */
+///标注view中心坐标
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 @optional

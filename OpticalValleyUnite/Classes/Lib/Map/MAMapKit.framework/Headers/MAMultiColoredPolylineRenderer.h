@@ -6,8 +6,6 @@
 //  Copyright © 2016 Amap. All rights reserved.
 //
 
-
-
 #import "MAConfig.h"
 #import "MAPolylineRenderer.h"
 #import "MAMultiPolyline.h"

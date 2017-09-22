@@ -10,9 +10,7 @@
 #import "MACircle.h"
 #import "MAOverlayPathRenderer.h"
 
-/**
- * 该类是MACircle的显示圆Renderer,可以通过MAOverlayPathRenderer修改其fill和stroke attributes
- */
+///该类是MACircle的显示圆Renderer,可以通过MAOverlayPathRenderer修改其fill和stroke attributes
 @interface MACircleRenderer : MAOverlayPathRenderer
 
 ///关联的MAcirlce model

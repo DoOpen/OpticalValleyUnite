@@ -42,6 +42,8 @@ class SignInViewController: UIViewController {
         
         let time = Date.dateStringDate(dateFormetString: "HH:mm")
         timeLabel.text = time
+        
+        
         mapSetup()
         
         }
@@ -235,6 +237,6 @@ class SignInViewController: UIViewController {
 extension SignInViewController: MAMapViewDelegate{
     func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
 //        print(mapView.userLocation.location)
-        self.mapView.setCenter((mapView.userLocation!.coordinate), animated: true)
+       
     }
 }

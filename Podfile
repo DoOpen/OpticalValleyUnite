@@ -1,10 +1,11 @@
 
 # platform :osx, '10.9'
-platform :ios, '8.1'
+platform :ios, ‘7.0’
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
-target "OpticalValleyUnite" do
 
+
+target "OpticalValleyUnite" do
 
 pod 'Alamofire'
 #pod 'Kingfisher', '~> 3.2.4'
@@ -16,9 +17,11 @@ pod 'MJRefresh'
 pod 'Kingfisher', '~> 3.2.4'
 pod 'LCNibBridge'
 pod 'SnapKit', '~> 3.2.0'
-pod 'KYDrawerController'
+pod 'KYDrawerController',
 
 end
+
+
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

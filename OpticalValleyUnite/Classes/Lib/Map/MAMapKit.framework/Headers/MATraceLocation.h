@@ -3,7 +3,7 @@
 //  MAMapKit
 //
 //  Created by shaobin on 16/9/1.
-//  Copyright © 2016年 AutoNavi. All rights reserved.
+//  Copyright © 2016年 Amap. All rights reserved.
 //
 
 
@@ -16,7 +16,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 ///返回轨迹点定义
-@interface MATracePoint : NSObject
+@interface MATracePoint : NSObject<NSCoding>
 
 ///纬度坐标
 @property (nonatomic, assign) CLLocationDegrees latitude;

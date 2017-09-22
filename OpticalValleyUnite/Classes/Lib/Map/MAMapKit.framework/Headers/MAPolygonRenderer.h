@@ -3,7 +3,7 @@
 //  MAMapKit
 //
 //  
-//  Copyright (c) 2011年 Autonavi Inc. All rights reserved.
+//  Copyright (c) 2011年 Amap. All rights reserved.
 //
 
 #import "MAConfig.h"
@@ -21,7 +21,7 @@
  * @brief 根据指定的多边形生成一个多边形Renderer
  * @param polygon polygon 指定的多边形数据对象
  * @return 新生成的多边形Renderer
-*/
+ */
 - (instancetype)initWithPolygon:(MAPolygon *)polygon;
 
 @end

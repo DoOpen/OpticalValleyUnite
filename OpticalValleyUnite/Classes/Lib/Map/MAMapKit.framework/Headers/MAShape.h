@@ -3,7 +3,7 @@
 //  MAMapKit
 //
 //  
-//  Copyright (c) 2011年 Autonavi Inc. All rights reserved.
+//  Copyright (c) 2011年 Amap. All rights reserved.
 //
 
 #import "MAConfig.h"

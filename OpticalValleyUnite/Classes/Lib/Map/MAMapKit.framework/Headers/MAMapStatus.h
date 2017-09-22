@@ -31,7 +31,7 @@
 @property (nonatomic) CGPoint screenAnchor;
 
 /**
- * @biref 根据指定参数生成对应的status
+ * @brief 根据指定参数生成对应的status
  * @param coordinate     地图的中心点，改变该值时，地图的比例尺级别不会发生变化
  * @param zoomLevel      缩放级别
  * @param rotationDegree 设置地图旋转角度(逆时针为正向)

@@ -56,7 +56,7 @@ class MapViewController: UIViewController {
 extension MapViewController: MAMapViewDelegate{
     func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
         //        print(mapView.userLocation.location)
-        self.mapView.setCenter((mapView.userLocation!.coordinate), animated: true)
+       
     }
 }
 

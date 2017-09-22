@@ -3,7 +3,7 @@
 //  MAMapKit
 //
 //  Created by AutoNavi.
-//  Copyright (c) 2013年 AutoNavi. All rights reserved.
+//  Copyright (c) 2013年 Amap. All rights reserved.
 //
 
 #import "MAConfig.h"
@@ -69,18 +69,6 @@ extern "C" {
     extern const MAMapRect MAMapRectNull;
     ///(MAMapRect){{0, 0}, {0, 0}}
     extern const MAMapRect MAMapRectZero;
-    
-    ///坐标系类型枚举
-    typedef NS_ENUM(NSUInteger, MACoordinateType)
-    {
-        MACoordinateTypeBaidu = 0,  ///< Baidu
-        MACoordinateTypeMapBar,     ///< MapBar
-        MACoordinateTypeMapABC,     ///< MapABC
-        MACoordinateTypeSoSoMap,    ///< SoSoMap
-        MACoordinateTypeAliYun,     ///< AliYun
-        MACoordinateTypeGoogle,     ///< Google
-        MACoordinateTypeGPS,        ///< GPS
-    };
     
     static inline MACoordinateBounds MACoordinateBoundsMake(CLLocationCoordinate2D northEast,CLLocationCoordinate2D southWest)
     {
@@ -367,6 +355,18 @@ extern "C" {
         return [NSString stringWithFormat:@"{%@, %@}", MAStringFromMapPoint(rect.origin), MAStringFromMapSize(rect.size)];
     }
     
+    ///坐标系类型枚举
+    typedef NS_ENUM(NSUInteger, MACoordinateType)
+    {
+        MACoordinateTypeBaidu = 0,  ///< Baidu
+        MACoordinateTypeMapBar,     ///< MapBar
+        MACoordinateTypeMapABC,     ///< MapABC
+        MACoordinateTypeSoSoMap,    ///< SoSoMap
+        MACoordinateTypeAliYun,     ///< AliYun
+        MACoordinateTypeGoogle,     ///< Google
+        MACoordinateTypeGPS,        ///< GPS
+    };
+    
     /**
      * @brief 转换目标经纬度为高德坐标系
      * @param coordinate 待转换的经纬度
@@ -382,6 +382,23 @@ extern "C" {
      * @return 方向，详情参考系统 CLLocationDirection
      */
     extern CLLocationDirection MAGetDirectionFromCoords(CLLocationCoordinate2D fromCoord, CLLocationCoordinate2D toCoord);
+    
+    /**
+     * @brief 获取矢量坐标方向
+     * @param fromPoint 矢量坐标起点
+     * @param toPoint   矢量坐标终点
+     * @return 方向，详情参考系统 CLLocationDirection
+     */
+    extern CLLocationDirection MAGetDirectionFromPoints(MAMapPoint fromPoint, MAMapPoint toPoint);
+    
+    /**
+     * @brief 获取点到线的垂直距离
+     * @param point 起点
+     * @param lineBegin 线的起点
+     * @param lineEnd   线的终点
+     * @return 距离，单位米
+     */
+    extern double MAGetDistanceFromPointToLine(MAMapPoint point, MAMapPoint lineBegin, MAMapPoint lineEnd);
     
 #ifdef __cplusplus
 }

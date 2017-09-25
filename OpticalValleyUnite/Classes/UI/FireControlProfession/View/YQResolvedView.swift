@@ -9,6 +9,31 @@
 import UIKit
 
 class YQResolvedView: UIView {
+    
+    
+    @IBOutlet weak var ImplementPersonTextField: UITextField!
+    
+    @IBOutlet weak var cooperatePersonTextField: UITextField!
 
+    @IBOutlet weak var reasonTextField: UITextField!
+    
+    
+    
+    
+    @IBAction func addImplementPersonClick(_ sender: Any) {
+        
+        
+    }
+    
+    @IBAction func addCooperateClick(_ sender: Any) {
+        
+        
+    }
+    
+    
+    @IBAction func saveButtonClick(_ sender: Any) {
+        
+        
+    }
     
 }

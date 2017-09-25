@@ -132,7 +132,7 @@ class WorkOrderModel: Object {
         equipment_id = parmart["equipment_id"] as? Int ?? -1
         equipment_name = parmart["equipment_name"] as? String ?? ""
         
-        is_equip = parmart["is_equip"] as? Int ?? -1
+        is_equip = parmart["IS_EQUIP"] as? Int ?? -1
         
     }
     

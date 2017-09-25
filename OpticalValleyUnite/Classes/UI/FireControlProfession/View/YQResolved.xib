@@ -32,6 +32,9 @@
                         <constraint firstAttribute="width" constant="45" id="zn8-nc-OLg"/>
                     </constraints>
                     <state key="normal" image="btn_fire_add"/>
+                    <connections>
+                        <action selector="addImplementPersonClick:" destination="dlO-eS-T8Z" eventType="touchUpInside" id="wnX-Ah-CGK"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="火警" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2B-ef-fkD">
                     <rect key="frame" x="167" y="20" width="41" height="24"/>
@@ -81,7 +84,7 @@
                         <constraint firstAttribute="width" constant="65" id="EOi-Sm-H9N"/>
                         <constraint firstAttribute="height" constant="30" id="dgr-n6-1LX"/>
                     </constraints>
-                    <state key="normal" title="执行人" image="sign_required">
+                    <state key="normal" title="配合人" image="sign_required">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -92,6 +95,9 @@
                         <constraint firstAttribute="height" constant="45" id="ruC-14-ilv"/>
                     </constraints>
                     <state key="normal" image="btn_fire_add"/>
+                    <connections>
+                        <action selector="addCooperateClick:" destination="dlO-eS-T8Z" eventType="touchUpInside" id="dTn-kw-fi0"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="添加一个" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Mn-u0-Oad">
                     <rect key="frame" x="185" y="135" width="78.5" height="30"/>
@@ -123,6 +129,9 @@
                     <state key="normal" title="保存">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="saveButtonClick:" destination="dlO-eS-T8Z" eventType="touchUpInside" id="n83-yp-XYn"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -152,6 +161,11 @@
                 <constraint firstItem="N95-Pb-Smp" firstAttribute="leading" secondItem="WQV-cP-Tqa" secondAttribute="trailing" constant="15" id="wqJ-lj-eRn"/>
                 <constraint firstItem="QxI-6h-p81" firstAttribute="top" secondItem="dlO-eS-T8Z" secondAttribute="top" constant="65" id="zeH-vH-c3l"/>
             </constraints>
+            <connections>
+                <outlet property="ImplementPersonTextField" destination="Tnq-30-tIa" id="sVo-8R-aSZ"/>
+                <outlet property="cooperatePersonTextField" destination="0Mn-u0-Oad" id="N3w-Sz-tXn"/>
+                <outlet property="reasonTextField" destination="N95-Pb-Smp" id="f51-gg-wKv"/>
+            </connections>
             <point key="canvasLocation" x="-158.5" y="49.5"/>
         </view>
     </objects>

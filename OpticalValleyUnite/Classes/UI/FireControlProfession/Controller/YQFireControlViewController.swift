@@ -59,6 +59,7 @@ class YQFireControlViewController: UIViewController {
         }
     }
     
+    
     var stateListModel = [YQStateListModel](){
         didSet{
             
@@ -109,30 +110,34 @@ class YQFireControlViewController: UIViewController {
         fireMapView.showsUserLocation = true;
         fireMapView.userTrackingMode = .none;
         fireMapView.delegate = self as MAMapViewDelegate
-        fireMapView.zoomLevel = 10.0 //地图的缩放的级别比例
+        fireMapView.zoomLevel = 12.0 //地图的缩放的级别比例
         
         // 带逆地理信息的一次定位（返回坐标和地址信息）
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         //   定位超时时间，最低2s，此处设置为5s
-        self.locationManager.locationTimeout = 2;
+        self.locationManager.locationTimeout = 5;
         //   逆地理请求超时时间，最低2s，此处设置为5s
-        self.locationManager.reGeocodeTimeout = 2;
+        self.locationManager.reGeocodeTimeout = 5;
         
         //添加自定义的小蓝点的情况
         /*
-         以下功能自iOS 地图 SDK V5.0.0 版本起支持。
-         let r = MAUserLocationRepresentation()
-         r.image = UIImage(named: "您的图片")
-         mapView.update(r)
          
-         */
+         以下功能自iOS 地图 SDK V5.0.0 版本起支持。
+        */
+        let r = MAUserLocationRepresentation()
+        var image = UIImage(named: "icon_fire_position_blue")
+        image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
+        r.image = image
+        fireMapView.update(r)
         
+        //加载定位的 实时方法
         locationManager.requestLocation(withReGeocode: true, completionBlock:{
             [weak self]  location, regeocode,error in
             if let error = error{
                 print(error.localizedDescription)
             }
             if let regeocode = regeocode{
+                
                 print(regeocode)
                 
                 self?.fireMapView.setCenter((location?.coordinate)!, animated: true)
@@ -305,7 +310,7 @@ class YQFireControlViewController: UIViewController {
         //添加大头针location点
         //合成生成经纬度的情况
         let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(model.latitude), CLLocationDegrees(model.longitude))
-        // let userPoint = MAUserLocation()//用户的location的情况
+         //let userPoint = MAAnnotation()//用户的location的情况
         
         let starPoint = YQPointAnnotation()//系统标记点location
         starPoint.coordinate = CLLocationCoordinate2D
@@ -323,6 +328,7 @@ class YQFireControlViewController: UIViewController {
         self.currentMapPointAnnotation = pointAnnotation
         
         self.implementView.isHidden = false
+        
         //调取火警点执行的动态的接口
         var parameters = [String : Any]()
         let token = UserDefaults.standard.object(forKey: Const.SJToken)
@@ -347,11 +353,10 @@ class YQFireControlViewController: UIViewController {
                         return
                     }
                     
-                    
                     if let data = value["data"] as? NSDictionary{
                         
                         //判断isExec,主线程跟新UI设置
-                        let isExec = data["isExec"] as! String
+                        let isExec = data["isExec"] as! Bool
                         DispatchQueue.main.async {
                             self.setImplementFooterState(isExec: isExec)
                         }
@@ -380,9 +385,9 @@ class YQFireControlViewController: UIViewController {
     
     // MARK: - 设置implementFooterView
     // 设置implementFooter 的底部显示状态
-    func setImplementFooterState(isExec : String){
+    func setImplementFooterState(isExec : Bool){
         //
-        if isExec == "true" {//已经有执行了
+        if isExec  {//已经有执行了
             self.alreadyImplementBtn.isHidden = false
             
         }else{//没有执行
@@ -393,16 +398,20 @@ class YQFireControlViewController: UIViewController {
     }
     
     // MARK: - implementView执行操作的所有点击的事件
-    // 立即执行功能按钮实现
+    // 立即反馈按钮实现
     @IBAction func atOnceFeedBack(_ sender: Any) {
+        
+        if self.currentMapPointAnnotation == nil {
+            return
+        }
+        
         //跳转到立即反馈的界面进行操作
         let feedBack = UIStoryboard.instantiateInitialViewController(name: "YQImplementFeedback") as! YQImplementFeedbackVC
-        
+        feedBack.fireModel = self.currentMapPointAnnotation.pointModel
         
         self.navigationController?.pushViewController(feedBack, animated: true)
         
     }
-    
     
     //已经执行,前往查看点击
     @IBAction func alreadyImplementAndCheckOutMapViewClick(_ sender: Any) {
@@ -431,7 +440,6 @@ class YQFireControlViewController: UIViewController {
          */
         parameters["status"] = 1
         
-        
         SVProgressHUD.show(withStatus: "执行中...")
         
         Alamofire.request(URLPath.basicPath + URLPath.getFireExecute , method: .get, parameters: parameters).responseJSON { (response) in
@@ -449,14 +457,18 @@ class YQFireControlViewController: UIViewController {
                         self.alert(message: message)
                         return
                     }
-                    
-                    break
-                }
+               }
+                
                 //跳转界面来进行地图渲染,规划路线,显示详细信息
-                let detailVC = UIStoryboard.instantiateInitialViewController(name: "YQFireMapDetail") as! YQFireMapDetailViewController
-                self.navigationController?.pushViewController(detailVC, animated: true)
-                // 直接进行model 的传值
-                detailVC.fireModel = self.currentMapPointAnnotation.pointModel
+                DispatchQueue.main.async {
+                    
+                    let detailVC = UIStoryboard.instantiateInitialViewController(name: "YQFireMapDetail") as! YQFireMapDetailViewController
+                    self.navigationController?.pushViewController(detailVC, animated: true)
+                    
+                    // 直接进行model 的传值
+                    detailVC.fireModel = self.currentMapPointAnnotation.pointModel
+
+                }
                 
                 break
             case .failure(let error):
@@ -468,8 +480,8 @@ class YQFireControlViewController: UIViewController {
         }
         
     }
-    
 
+    
     // MARK: - 控制器销毁的方法
     deinit{
         //移除所有通知
@@ -492,7 +504,7 @@ extension YQFireControlViewController: MAMapViewDelegate{
     func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
         
         //通过这里来进行的样式的设置,点击的弹框的效果情况
-        if annotation.isKind(of: MAPointAnnotation.self){
+        if annotation.isKind(of: YQPointAnnotation.self){
             
             let pointReuseIndetifier = "pointReuseIndetifier"
             var annotationView: MAPinAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier) as! MAPinAnnotationView?
@@ -500,15 +512,12 @@ extension YQFireControlViewController: MAMapViewDelegate{
             if annotationView == nil {
                 annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
             }
-            
-            annotationView!.image = UIImage(named: "icon_fire_position_red")
+            var image = UIImage(named: "icon_fire_position_red")
+            image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
+            annotationView!.image = image
             annotationView!.canShowCallout = true //设置气泡可以弹出，默认为NO
             annotationView!.animatesDrop = true  //设置标注动画显示，默认为NO
             annotationView!.isDraggable = false  //设置标注可以拖动，默认为NO
-//            annotationView!.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
-            
-//            let idx = annotation.index(of: annotation as! MAPointAnnotation)
-//            annotationView!.pinColor = MAPinAnnotationColor(rawValue: idx!)!
             
             return annotationView!
         }
@@ -516,34 +525,33 @@ extension YQFireControlViewController: MAMapViewDelegate{
     }
 
     // MARK: - markView点击的回调方法
-    func mapView(_ mapView: MAMapView!, didSelect view: MAAnnotationView!) {
-        
-    }
-    
-    func mapView(_ mapView: MAMapView!, didDeselect view: MAAnnotationView!) {
-        
-    }
-    
-    
     /**
      
-     // 点击annotation弹框视图的添加的添加方法
+     // 点击annotation弹框视图的取消的添加方法
      - (void)mapView:(MAMapView *)mapView annotationView:(MAAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control;
      
      */
     func mapView(_ mapView: MAMapView!, annotationView view: MAAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
         
-        
-        
+        //设置为隐藏
+        self.implementView.isHidden = true
     }
     
     /**
      // 点击annotation弹框视图的添加的添加方法
      - (void)mapView:(MAMapView *)mapView didAnnotationViewCalloutTapped:(MAAnnotationView *)view;
      */
-    func mapView(_ mapView: MAMapView!, didAnnotationViewCalloutTapped view: MAAnnotationView!) {
+     func mapView(_ mapView: MAMapView!, didAnnotationViewCalloutTapped view: MAAnnotationView!) {
         
+        let  YQPoint = view.annotation as! YQPointAnnotation
         
+        if YQPoint.pointModel == nil {
+            
+            return
+            
+        }
+        
+        self.implementViewDataAndDetailShow(pointAnnotation: YQPoint)
         
     }
     

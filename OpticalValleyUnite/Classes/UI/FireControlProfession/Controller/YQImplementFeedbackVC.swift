@@ -9,6 +9,9 @@
 import UIKit
 
 class YQImplementFeedbackVC: UIViewController {
+    
+    //火警模型的情况
+    var fireModel : YQFireLocationModel!
 
     @IBOutlet weak var resolveButton: UIButton!
     
@@ -71,6 +74,29 @@ class YQImplementFeedbackVC: UIViewController {
         self.resolve.removeFromSuperview()
         contentView.addSubview(falsePositive)
         
+    }
+    
+    // MARK: - 保存数据的调用的接口方法
+    func saveButtonClickWithBackStage(){
+        
+        var parmert = [String : Any]()
+        parmert["token"] = ""
+        parmert["firePointId"] = ""
+        parmert["type"] =
+        parmert["execPersonId"] = ""
+        parmert["coopPersonIds"] = ""
+        parmert["reason"] = ""
+        parmert["imgPaths"] = ""
+        
+        HttpClient.instance.post(path: URLPath.getFirefeedback, parameters: parmert, success: { (respose) in
+            
+            
+        }) { (error) in
+            
+            
+        }
+        
+    
     }
     
 

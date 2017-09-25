@@ -9,7 +9,24 @@
 import UIKit
 
 class YQFalsePositiveView: UIView {
+    
+    
+    @IBOutlet weak var addNameTextField: UITextField!
+    
+    @IBOutlet weak var reasonTextField: UITextField!
+    
+    
+
+    
+    @IBAction func addButtonClick(_ sender: Any) {
+        
+        
+        
+    }
 
 
-
+    @IBAction func saveButtonClick(_ sender: Any) {
+        
+        
+    }
 }

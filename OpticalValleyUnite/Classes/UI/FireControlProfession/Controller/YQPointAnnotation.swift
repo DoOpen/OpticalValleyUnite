@@ -12,7 +12,6 @@ class YQPointAnnotation: MAPointAnnotation {
     
     //定义一个模型
     var pointModel : YQFireLocationModel!
-    
-    
+
 
 }

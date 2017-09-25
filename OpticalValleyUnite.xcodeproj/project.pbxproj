@@ -649,8 +649,8 @@
 		4B3951D31E27D85B00E2642F /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				2F73FA621F74C0B600D37FDA /* AMapSearchKit.framework */,
 				4B3951E61E27DE0A00E2642F /* AMap.bundle */,
+				2F73FA621F74C0B600D37FDA /* AMapSearchKit.framework */,
 				4B3951E41E27DDCE00E2642F /* MAMapKit.framework */,
 				4B3951D41E27D85B00E2642F /* AMapFoundationKit.framework */,
 				4B3951D51E27D85B00E2642F /* AMapLocationKit.framework */,

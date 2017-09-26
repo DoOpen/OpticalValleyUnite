@@ -14,6 +14,11 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
     @IBOutlet weak var addManageerView: AddScrollerView!
     @IBOutlet weak var execPeopleBtn: SJUpButton!
     @IBOutlet weak var managePeopleBtn: SJUpButton!
+    
+    //添加输入框备注框
+    @IBOutlet weak var remarksTextView: SJTextView!
+    
+    
     weak var ProgressVC: WorkOrderProgressViewController?
     var workId = ""
     var parkId = ""
@@ -34,6 +39,8 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //设置text 默认的文字
+        self.remarksTextView.placeHolder = "请输入备注内容"
         
         addManageerView.addBtnClickHandel = { [weak self] in
             let vc = PeopleListViewController.loadFromStoryboard(name: "WorkOrder") as! PeopleListViewController
@@ -43,14 +50,18 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
             self?.navigationController?.pushViewController(vc, animated: true)
         }
     }
-
+    
+    
+    // MARK: - 完成按钮的点击,传输所有的输入的字段
     @IBAction func doneBtnClick() {
         
         if let execPeopleModel = execPeopleModel, let managePeopleModel = managePeopleModel{
+            //添加备注消息的内容
             var parmat = [String: Any]()
             parmat["WORKUNIT_ID"] = workId
             parmat["EXEC_PERSON_ID"] = execPeopleModel.id
             parmat["MANAGE_PERSON_ID"] = managePeopleModel.id
+            parmat["REMARK"] = self.remarksTextView.text
             
             if let assePeopleModel = assePeopleModel{
                 var text = ""
@@ -69,8 +80,6 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
                 return
             }
             
-
-            
             SVProgressHUD.show(withStatus: "派发中")
             HttpClient.instance.post(path: URLPath.workunitDistribute, parameters: parmat, success: { (response) in
                 SVProgressHUD.dismiss()
@@ -84,10 +93,8 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
                 SVProgressHUD.dismiss()
             })
             
-            
-            
-            
         }else{
+            
             SVProgressHUD.showError(withStatus: "请选择所有人员后再点击派发")
         }
         

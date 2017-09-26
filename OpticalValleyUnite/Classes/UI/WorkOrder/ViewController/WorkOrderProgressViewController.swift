@@ -323,14 +323,15 @@ class WorkOrderProgressViewController: UIViewController {
             
             
             self.models = temp
+            
             self.tableView.reloadData()
             
         }) { (error) in
             print(error)
             SVProgressHUD.dismiss()
         }
-        
     }
+    
     
     // MARK: - 拿到设备
     func getEquipment(_ equipment: Int){
@@ -425,9 +426,12 @@ class WorkOrderProgressViewController: UIViewController {
             (cell as! WorkOrderStutasCell).model = model
             
         case 0,1://已派发
+            
             cell = tableView.dequeueReusableCell(withIdentifier: "WorkOrderDistributionCell")!
+            
             (cell as! WorkOrderDistributionCell).model2 = workOrderDetalModel
             (cell as! WorkOrderDistributionCell).model = model
+            
             
         default:
             break

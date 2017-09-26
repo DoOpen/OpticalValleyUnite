@@ -278,6 +278,7 @@ class WorkHistoryModel{
     var type = "1"
     var pictures = [String]()
     var text = ""
+    var DESCRIPTION = ""
 //    var icon = ""
 //    var content = ""
 //    
@@ -295,6 +296,8 @@ class WorkHistoryModel{
         time = parmart["time"] as? String ?? ""
         source = parmart["EVALUATE_SCORE"] as? Int ?? 10
         text = parmart["text"] as? String ?? ""
+        DESCRIPTION = parmart["content"] as? String ?? ""
+        
         if let content = parmart["EVALUATE_TEXT"] as? String{
             self.content = content
         }

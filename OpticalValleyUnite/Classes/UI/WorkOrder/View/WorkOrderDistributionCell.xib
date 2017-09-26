@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="116" id="KGk-i7-Jjw" customClass="WorkOrderDistributionCell" customModule="OpticalValleyUnite" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="182"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="KGk-i7-Jjw" customClass="WorkOrderDistributionCell" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="354" height="156"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="181.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="354" height="155.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="281" placeholderIntrinsicHeight="171.5" translatesAutoresizingMaskIntoConstraints="NO" id="X8s-ST-hVo">
-                        <rect key="frame" x="39" y="0.0" width="281" height="171.5"/>
+                        <rect key="frame" x="39" y="0.0" width="315" height="145.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已派发" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeA-dr-vdv">
                                 <rect key="frame" x="12" y="10" width="46" height="18"/>
@@ -31,29 +31,36 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="2016-11-11 16:48:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOt-XD-eh6">
-                                <rect key="frame" x="12" y="142" width="117" height="17.5"/>
+                                <rect key="frame" x="12" y="119" width="117" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="派发人:  张四风    负责人:  张三     协助人:     李四, 王五,  呵呵    管理人: 和打炮" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya7-Fk-A6n">
-                                <rect key="frame" x="12" y="40" width="257" height="90"/>
+                                <rect key="frame" x="12" y="38" width="291" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2y-dD-wOD">
+                                <rect key="frame" x="12" y="82" width="291" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="F2y-dD-wOD" firstAttribute="trailing" secondItem="Ya7-Fk-A6n" secondAttribute="trailing" id="10q-9I-JBc"/>
+                            <constraint firstItem="F2y-dD-wOD" firstAttribute="leading" secondItem="Ya7-Fk-A6n" secondAttribute="leading" id="2Ur-Ms-TiF"/>
                             <constraint firstItem="Ya7-Fk-A6n" firstAttribute="leading" secondItem="X8s-ST-hVo" secondAttribute="leading" constant="12" id="331-A5-ay4"/>
                             <constraint firstItem="LOt-XD-eh6" firstAttribute="leading" secondItem="Ya7-Fk-A6n" secondAttribute="leading" id="7b9-GI-g1M"/>
                             <constraint firstItem="LeA-dr-vdv" firstAttribute="top" secondItem="X8s-ST-hVo" secondAttribute="top" constant="10" id="ANh-Um-3h6"/>
                             <constraint firstItem="LeA-dr-vdv" firstAttribute="leading" secondItem="X8s-ST-hVo" secondAttribute="leading" constant="12" id="Aov-sR-Ew2"/>
                             <constraint firstItem="Ya7-Fk-A6n" firstAttribute="centerX" secondItem="X8s-ST-hVo" secondAttribute="centerX" id="D1P-xm-bSz"/>
-                            <constraint firstItem="LOt-XD-eh6" firstAttribute="top" secondItem="Ya7-Fk-A6n" secondAttribute="bottom" constant="12" id="EX6-Rg-ki7"/>
-                            <constraint firstItem="Ya7-Fk-A6n" firstAttribute="centerY" secondItem="X8s-ST-hVo" secondAttribute="centerY" id="OWz-06-AKd"/>
-                            <constraint firstItem="Ya7-Fk-A6n" firstAttribute="top" secondItem="LeA-dr-vdv" secondAttribute="bottom" constant="12" id="cq0-fK-6RF"/>
+                            <constraint firstItem="Ya7-Fk-A6n" firstAttribute="top" secondItem="LeA-dr-vdv" secondAttribute="bottom" constant="10" id="cxP-A0-9tv"/>
                             <constraint firstAttribute="bottom" secondItem="LOt-XD-eh6" secondAttribute="bottom" priority="750" constant="12" id="efh-9H-6c2"/>
+                            <constraint firstItem="F2y-dD-wOD" firstAttribute="top" secondItem="Ya7-Fk-A6n" secondAttribute="bottom" constant="8" id="j2v-TN-XMZ"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -62,7 +69,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UMw-JO-zUC">
-                        <rect key="frame" x="20" y="0.0" width="1" height="181.5"/>
+                        <rect key="frame" x="20" y="0.0" width="1" height="155.5"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="qYl-nc-gYp"/>
@@ -97,9 +104,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="contentLabel" destination="Ya7-Fk-A6n" id="gug-qL-fnp"/>
+                <outlet property="markLabel" destination="F2y-dD-wOD" id="Yao-jc-2vw"/>
                 <outlet property="timeLabel" destination="LOt-XD-eh6" id="S5D-Pj-nPH"/>
             </connections>
-            <point key="canvasLocation" x="36" y="128"/>
+            <point key="canvasLocation" x="53" y="115"/>
         </tableViewCell>
     </objects>
 </document>

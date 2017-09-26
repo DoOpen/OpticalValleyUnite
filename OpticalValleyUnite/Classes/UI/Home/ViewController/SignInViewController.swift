@@ -52,10 +52,12 @@ class SignInViewController: UIViewController {
         var paramet = [String: Any]()
         paramet["DATE"] = Date.dateStringDate(dateFormetString: "YYYY-MM-dd")
         HttpClient.instance.post(path: URLPath.getSignCount, parameters: paramet, success: { (resposen) in
-            if let count = resposen as? Int{
+            
+            if let count = resposen as? String{
+                //接口文档的改变, int --> string 的数据类型
                 self.countLabel.text = "今天签到\(count)次"
-                
-                self.countLabel.contentNumber(count, andColor: UIColor.orange)
+                let countInt = Int(count)!
+                self.countLabel.contentNumber(countInt, andColor: UIColor.orange)
             }
         }) { (error) in
             print(error)

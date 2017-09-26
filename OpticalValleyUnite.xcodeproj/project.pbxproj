@@ -48,6 +48,11 @@
 		2F94A28D1F73BA2D00455162 /* YQFalsePositive.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A28C1F73BA2D00455162 /* YQFalsePositive.xib */; };
 		2F94A28F1F73BA4F00455162 /* YQResolved.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A28E1F73BA4F00455162 /* YQResolved.xib */; };
 		2FDED33E1F711DF000E4BA2E /* YQFireLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDED33D1F711DF000E4BA2E /* YQFireLocationModel.swift */; };
+		2FDF32981F7926ED008EDEB4 /* MANaviRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF32971F7926ED008EDEB4 /* MANaviRoute.m */; };
+		2FDF329B1F79276B008EDEB4 /* MANaviAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF329A1F79276B008EDEB4 /* MANaviAnnotation.m */; };
+		2FDF32A01F79280E008EDEB4 /* LineDashPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF329D1F79280E008EDEB4 /* LineDashPolyline.m */; };
+		2FDF32A11F79280E008EDEB4 /* MANaviPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF329F1F79280E008EDEB4 /* MANaviPolyline.m */; };
+		2FDF32A51F792975008EDEB4 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF32A41F792975008EDEB4 /* CommonUtility.m */; };
 		2FE08F2B1F5F8A0A00D6F51D /* YQSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE08F2A1F5F8A0A00D6F51D /* YQSystemView.swift */; };
 		2FE08F2F1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE08F2E1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift */; };
 		2FEB0E7F1F6E5EA10002DEE8 /* YQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB0E7E1F6E5EA10002DEE8 /* YQViewController.swift */; };
@@ -253,6 +258,17 @@
 		2F94A28C1F73BA2D00455162 /* YQFalsePositive.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQFalsePositive.xib; sourceTree = "<group>"; };
 		2F94A28E1F73BA4F00455162 /* YQResolved.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQResolved.xib; sourceTree = "<group>"; };
 		2FDED33D1F711DF000E4BA2E /* YQFireLocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireLocationModel.swift; sourceTree = "<group>"; };
+		2FDF32961F7926ED008EDEB4 /* MANaviRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviRoute.h; sourceTree = "<group>"; };
+		2FDF32971F7926ED008EDEB4 /* MANaviRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviRoute.m; sourceTree = "<group>"; };
+		2FDF32991F79276B008EDEB4 /* MANaviAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviAnnotation.h; sourceTree = "<group>"; };
+		2FDF329A1F79276B008EDEB4 /* MANaviAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviAnnotation.m; sourceTree = "<group>"; };
+		2FDF329C1F79280E008EDEB4 /* LineDashPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDashPolyline.h; sourceTree = "<group>"; };
+		2FDF329D1F79280E008EDEB4 /* LineDashPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDashPolyline.m; sourceTree = "<group>"; };
+		2FDF329E1F79280E008EDEB4 /* MANaviPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviPolyline.h; sourceTree = "<group>"; };
+		2FDF329F1F79280E008EDEB4 /* MANaviPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviPolyline.m; sourceTree = "<group>"; };
+		2FDF32A21F792855008EDEB4 /* RouteCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RouteCommon.h; sourceTree = "<group>"; };
+		2FDF32A31F792975008EDEB4 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
+		2FDF32A41F792975008EDEB4 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
 		2FE08F2A1F5F8A0A00D6F51D /* YQSystemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQSystemView.swift; sourceTree = "<group>"; };
 		2FE08F2E1F5FDC7500D6F51D /* YQTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		2FEB0E7E1F6E5EA10002DEE8 /* YQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQViewController.swift; sourceTree = "<group>"; };
@@ -555,6 +571,17 @@
 				2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */,
 				2FDED33D1F711DF000E4BA2E /* YQFireLocationModel.swift */,
 				2F2DF4371F7365B300ADA588 /* YQStateListModel.swift */,
+				2FDF32A31F792975008EDEB4 /* CommonUtility.h */,
+				2FDF32A41F792975008EDEB4 /* CommonUtility.m */,
+				2FDF32991F79276B008EDEB4 /* MANaviAnnotation.h */,
+				2FDF329A1F79276B008EDEB4 /* MANaviAnnotation.m */,
+				2FDF32961F7926ED008EDEB4 /* MANaviRoute.h */,
+				2FDF32971F7926ED008EDEB4 /* MANaviRoute.m */,
+				2FDF329C1F79280E008EDEB4 /* LineDashPolyline.h */,
+				2FDF329D1F79280E008EDEB4 /* LineDashPolyline.m */,
+				2FDF329E1F79280E008EDEB4 /* MANaviPolyline.h */,
+				2FDF329F1F79280E008EDEB4 /* MANaviPolyline.m */,
+				2FDF32A21F792855008EDEB4 /* RouteCommon.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1321,6 +1348,7 @@
 				4B5AF64A1E36F73B00844F3D /* LoginViewController.swift in Sources */,
 				2F3C093F1F72623000036547 /* YQImplementDetailHeadView.swift in Sources */,
 				4B7A59C51E35DD5B002E96B6 /* HttpClient.swift in Sources */,
+				2FDF32981F7926ED008EDEB4 /* MANaviRoute.m in Sources */,
 				4BD4B9491E272EA600AE2BC9 /* SJNavigationController.swift in Sources */,
 				4BB53FF01F14D9CA0061190F /* DeviceCell.swift in Sources */,
 				4B7A59C91E35E1AD002E96B6 /* Model.swift in Sources */,
@@ -1348,6 +1376,7 @@
 				4B3951FA1E28CF1F00E2642F /* WorkOrderStutasCell.swift in Sources */,
 				4BBBEC941E2CAAE200F60313 /* BoPhotoGroupView.m in Sources */,
 				4B3951F11E2899AE00E2642F /* WorkOrderTypeChooseViewController.swift in Sources */,
+				2FDF32A01F79280E008EDEB4 /* LineDashPolyline.m in Sources */,
 				4BD4B9471E272EA600AE2BC9 /* MessageShowView.swift in Sources */,
 				4BF0A08A1E5AD71600D9ECE5 /* PeopleListViewController.swift in Sources */,
 				4BD4B9011E272E0C00AE2BC9 /* AppDelegate.swift in Sources */,
@@ -1361,6 +1390,7 @@
 				4B3951F31E28B38D00E2642F /* AddSignInViewController.swift in Sources */,
 				4BA520361E8E0F8000398F34 /* ExexSwithCell.swift in Sources */,
 				4BAA134A1E5D7F7800E54534 /* ExecCell.swift in Sources */,
+				2FDF32A11F79280E008EDEB4 /* MANaviPolyline.m in Sources */,
 				4BE922621EE7EEA900FDEFE1 /* ExecutDetailCell.swift in Sources */,
 				4B1DEC571E31B646000917D2 /* ScanSuccessJumpVC.m in Sources */,
 				4BD4B9551E272EA600AE2BC9 /* WorkOrderViewController.swift in Sources */,
@@ -1378,6 +1408,7 @@
 				2FEB0E7F1F6E5EA10002DEE8 /* YQViewController.swift in Sources */,
 				4B429B081F4AC3A000381F3F /* ShowImagesView.swift in Sources */,
 				4B1DEC681E31F5D1000917D2 /* SlotViewController.swift in Sources */,
+				2FDF32A51F792975008EDEB4 /* CommonUtility.m in Sources */,
 				4BBBEC9E1E2CB34500F60313 /* SJAddView.swift in Sources */,
 				4B3951FF1E28D2B900E2642F /* WorkOrderDistributionCell.swift in Sources */,
 				4BD4B95B1E275BDB00AE2BC9 /* SignInListViewController.swift in Sources */,
@@ -1386,6 +1417,7 @@
 				2F94A2831F73B46B00455162 /* YQImplementFeedbackVC.swift in Sources */,
 				4BD4A0E21EE2B18300F044C1 /* AppraisalCell.swift in Sources */,
 				4BD4B9421E272EA600AE2BC9 /* Const.swift in Sources */,
+				2FDF329B1F79276B008EDEB4 /* MANaviAnnotation.m in Sources */,
 				2F5E8C511F59598400007717 /* YQSystemSelectionVC.swift in Sources */,
 				4BBBEC831E2CA76900F60313 /* SJComposePhotoView.m in Sources */,
 				4B01B08C1ED928AF002A61C9 /* ReportListViewController.swift in Sources */,

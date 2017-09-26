@@ -14,23 +14,12 @@ class YQFireMapDetailViewController: UIViewController {
 
     // MARK: - 视图属性
     // 传递的fireModel,监听set方法
-    var fireModel  : YQFireLocationModel!{
+    var fireModel : YQFireLocationModel!{
+        
         didSet{
-            let Coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(fireModel.latitude), CLLocationDegrees(fireModel.longitude))
-            self.endCoordinate = Coordinate
-            
-            //设置打点和渲染
-            addLocationAndMessageView(model: fireModel)
-            
-            //调用规划路径的方法
-            showRoute()
             
             //调用展示详情list的数据
-            makeImplementTableViewData(model : fireModel)
-            
-            //用户执行按钮可用
-            self.giveupAbandon.isUserInteractionEnabled = true
-            self.atOnceImplement.isUserInteractionEnabled = true
+            self.makeImplementTableViewData(model : (self.fireModel)!)
             
         }
     }
@@ -58,8 +47,13 @@ class YQFireMapDetailViewController: UIViewController {
     
     // MAMap单例
     var locationManager = AMapLocationManager()
+    
+    /* 路径规划的系列的属性 */
     // 主search对象
     var search : AMapSearchAPI!
+    var naviRoute: MANaviRoute?
+    var route: AMapRoute?
+    var currentSearchType: AMapRoutePlanningType = AMapRoutePlanningType.drive
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
@@ -73,7 +67,25 @@ class YQFireMapDetailViewController: UIViewController {
         //设置地图
         mapSetup()
         
+        //接受通知
+//        acceptNotes()
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let Coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(fireModel.latitude), CLLocationDegrees(fireModel.longitude))
+        self.endCoordinate = Coordinate
+        
+        //用户执行按钮可用
+        self.giveupAbandon.isUserInteractionEnabled = true
+        self.atOnceImplement.isUserInteractionEnabled = true
+        
+        //设置打点和渲染
+        self.addLocationAndMessageView(model: (self.fireModel)!)
+
+        
+    }
+
     
     
     // MARK: - 执行界面(implementView)系列buttonClick
@@ -100,10 +112,10 @@ class YQFireMapDetailViewController: UIViewController {
         paramet["token"] = token
         paramet["firePointId"] = self.fireModel.firePointId
         paramet["status"] = 1
+        self.atOnceImplement.isUserInteractionEnabled = false
     
         self.gotoImplementDataWithBackStage(parameters: paramet)
         
-        self.atOnceImplement.isUserInteractionEnabled = false
 
     }
     
@@ -118,15 +130,29 @@ class YQFireMapDetailViewController: UIViewController {
         paramet["token"] = token
         paramet["firePointId"] = self.fireModel.firePointId
         paramet["status"] = 2
+        self.giveupAbandon.isUserInteractionEnabled = false
         
         self.gotoImplementDataWithBackStage(parameters: paramet)
         
-        self.giveupAbandon.isUserInteractionEnabled = false
     }
+    
+    // MARK: - 接受通知方法
+//    func acceptNotes(){
+//        
+//        NotificationCenter.default.addObserver(self
+//            , selector: #selector(locationDetailModel(notes:)), name: NSNotification.Name(rawValue: "locationDetailModelPassValue"), object: nil)
+//    }
+//    func locationDetailModel(notes : NSNotification){
+//        
+//        let model = notes.userInfo?["model"] as! YQFireLocationModel
+//        
+//        self.fireModel = model
+//    
+//    }
     
     
     // MARK: - 调用展示详情list的数据
-    private func makeImplementTableViewData(model : YQFireLocationModel){
+    func makeImplementTableViewData(model : YQFireLocationModel){
         
         //调取火警点执行的动态的接口
         var parameters = [String : Any]()
@@ -158,20 +184,13 @@ class YQFireMapDetailViewController: UIViewController {
                     }
                     
                     if let data = value["data"] as? NSDictionary{
-                        
                         //判断isExec,主线程跟新UI设置
                         let isExec = data["isExec"] as! Bool
-                        DispatchQueue.main.sync {
-                            //主线程进行设置,btn的循环显示
-                            if isExec {//已经执行,显示放弃执行
-                                self.giveupAbandon.isHidden = !isExec
-                                self.atOnceImplement.isHidden = isExec
-                            }else{//没有执行,显示已经执行
-                                self.giveupAbandon.isHidden = isExec
-                                self.atOnceImplement.isHidden = !isExec
+                        DispatchQueue.main.async {
+                            
+                            self.setUpFooterButtonState(isExec: isExec)
+                            
                             }
-                        }
-                        
                         
                         let array = data["stateList"] as! NSArray
                         
@@ -210,7 +229,6 @@ class YQFireMapDetailViewController: UIViewController {
         //设置移动的最小定位距离
         locationMapView.distanceFilter = 10.0 //位移10米才进行的定位操作
         
-        
         // 带逆地理信息的一次定位（返回坐标和地址信息）
         self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         //   定位超时时间，最低2s，此处设置为5s
@@ -221,32 +239,53 @@ class YQFireMapDetailViewController: UIViewController {
         //添加自定义的小蓝点的情况
         /*
          以下功能自iOS 地图 SDK V5.0.0 版本起支持。
-         let r = MAUserLocationRepresentation()
-         r.image = UIImage(named: "您的图片")
-         mapView.update(r)
-         */
-        
+        */
         //添加自定义的_UserLocationRepresentation
         let r = MAUserLocationRepresentation()
+        r.image = UIImage(named: "icon_fire_position_blue")
         //精度圈是否显示
-        r.showsAccuracyRing = false
+        r.showsAccuracyRing = true
         //方向箭头是否显示
         r.showsHeadingIndicator = true
         locationMapView.update(r)
         
         locationManager.requestLocation(withReGeocode: true, completionBlock:{
             [weak self]  location, regeocode,error in
+            
             if let error = error{
                 print(error.localizedDescription)
                 
             }
+            
             if let regeocode = regeocode{
                 print(regeocode)
                 
                 self?.locationMapView.setCenter((location?.coordinate)!, animated: true)
+                
+                let  loc = (location?.coordinate)!
+                self?.startCoordinate = CLLocationCoordinate2DMake(loc.latitude, loc.longitude)
+                
+                //调用规划路径的方法
+                self?.showRoute()
             }
             
             })
+    }
+    
+    // MARK: - 设置底部的footer的显示状态的方法
+    func setUpFooterButtonState(isExec : Bool){
+        //主线程进行设置,btn的循环显示
+        if isExec {//已经执行,显示放弃执行
+            self.giveupAbandon.isHidden = !isExec
+            self.atOnceImplement.isHidden = isExec
+        }else{//没有执行,显示已经执行
+            self.giveupAbandon.isHidden = isExec
+            self.atOnceImplement.isHidden = !isExec
+        }
+        
+        self.giveupAbandon.isUserInteractionEnabled = true
+        self.atOnceImplement.isUserInteractionEnabled = true
+
     }
     
     
@@ -268,12 +307,41 @@ class YQFireMapDetailViewController: UIViewController {
     
     // MARK: - 展示路径
     func showRoute() {
+        
         //通过start 和 end 的经纬度来进行规划路线
         let request = AMapWalkingRouteSearchRequest()
         request.origin = AMapGeoPoint.location(withLatitude: CGFloat(startCoordinate.latitude), longitude: CGFloat(startCoordinate.longitude))
         request.destination = AMapGeoPoint.location(withLatitude: CGFloat(endCoordinate.latitude), longitude: CGFloat(endCoordinate.longitude))
         
         search.aMapWalkingRouteSearch(request)
+
+    }
+    
+    /* 展示当前路线方案 */
+    func presentCurrentCourse() {
+        
+        let start = AMapGeoPoint.location(withLatitude: CGFloat(startCoordinate.latitude), longitude: CGFloat(startCoordinate.longitude))
+        let end = AMapGeoPoint.location(withLatitude: CGFloat(endCoordinate.latitude), longitude: CGFloat(endCoordinate.longitude))
+        
+        if currentSearchType == .bus || currentSearchType == .busCrossCity {
+            naviRoute = MANaviRoute(for: route?.transits.first, start: start, end: end)
+        } else {
+            let type = MANaviAnnotationType(rawValue: currentSearchType.rawValue)
+            
+            naviRoute = MANaviRoute(for: route?.paths.first, withNaviType: type!, showTraffic: true, start: start, end: end)
+        }
+        
+        naviRoute?.add(to: locationMapView)
+        
+        locationMapView.showOverlays(naviRoute?.routePolylines, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
+    }
+    
+
+    
+    // MARK: - 控制器销毁的方法
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -281,11 +349,62 @@ class YQFireMapDetailViewController: UIViewController {
 
 extension YQFireMapDetailViewController : MAMapViewDelegate{
     
+    func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
+        
+    }
+    
+    func mapInitComplete(_ mapView: MAMapView!) {
+        
+    }
+    
+    // MARK: - overlay执行的代理方法
+    // overlay
+    func mapView(_ mapView: MAMapView!, rendererFor overlay: MAOverlay!) -> MAOverlayRenderer! {
+        
+        if overlay.isKind(of: LineDashPolyline.self) {
+            let naviPolyline: LineDashPolyline = overlay as! LineDashPolyline
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: naviPolyline.polyline)
+            renderer.lineWidth = 8.0
+            renderer.strokeColor = UIColor.red
+            renderer.lineDash = true
+            
+            return renderer
+        }
+        if overlay.isKind(of: MANaviPolyline.self) {
+            
+            let naviPolyline: MANaviPolyline = overlay as! MANaviPolyline
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: naviPolyline.polyline)
+            renderer.lineWidth = 8.0
+            
+            if naviPolyline.type == MANaviAnnotationType.walking {
+                renderer.strokeColor = naviRoute?.walkingColor
+            }
+            else if naviPolyline.type == MANaviAnnotationType.railway {
+                renderer.strokeColor = naviRoute?.railwayColor;
+            }
+            else {
+                renderer.strokeColor = naviRoute?.routeColor;
+            }
+            
+            return renderer
+        }
+        if overlay.isKind(of: MAMultiPolyline.self) {
+            let renderer: MAMultiColoredPolylineRenderer = MAMultiColoredPolylineRenderer(multiPolyline: overlay as! MAMultiPolyline!)
+            renderer.lineWidth = 8.0
+            renderer.strokeColors = naviRoute?.multiPolylineColors
+            
+            return renderer
+        }
+        
+        return nil
+    }
+    
+    
     // MARK: - 设置mark的标记的类型
     func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
         
         //通过这里来进行的样式的设置,点击的弹框的效果情况
-        if annotation.isKind(of: MAPointAnnotation.self){
+        if annotation.isKind(of: YQPointAnnotation.self){
             
             let pointReuseIndetifier = "pointReuseIndetifier"
             var annotationView: MAPinAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier) as! MAPinAnnotationView?
@@ -307,19 +426,19 @@ extension YQFireMapDetailViewController : MAMapViewDelegate{
         }
         return nil
     }
-
 }
 
 extension YQFireMapDetailViewController : AMapSearchDelegate{
     
     // MARK: - 解析search_response获取路径信息
     func onRouteSearchDone(_ request: AMapRouteSearchBaseRequest!, response: AMapRouteSearchResponse!) {
+        self.route = nil
         if response.count > 0 {
-            //解析response获取路径信息
             
+            self.route = response.route
+            presentCurrentCourse()
         }
     }
-    
     
     // MARK: - search失败的代理方法
     func aMapSearchRequest(_ request: Any!, didFailWithError error: Error!) {

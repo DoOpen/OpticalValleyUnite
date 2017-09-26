@@ -115,9 +115,9 @@ class YQFireControlViewController: UIViewController {
         // 带逆地理信息的一次定位（返回坐标和地址信息）
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         //   定位超时时间，最低2s，此处设置为5s
-        self.locationManager.locationTimeout = 5;
+        self.locationManager.locationTimeout = 2;
         //   逆地理请求超时时间，最低2s，此处设置为5s
-        self.locationManager.reGeocodeTimeout = 5;
+        self.locationManager.reGeocodeTimeout = 2;
         
         //添加自定义的小蓝点的情况
         /*
@@ -445,6 +445,7 @@ class YQFireControlViewController: UIViewController {
         Alamofire.request(URLPath.basicPath + URLPath.getFireExecute , method: .get, parameters: parameters).responseJSON { (response) in
             
             SVProgressHUD.dismiss()
+            
             switch response.result {
                 
             case .success(_):
@@ -460,15 +461,23 @@ class YQFireControlViewController: UIViewController {
                }
                 
                 //跳转界面来进行地图渲染,规划路线,显示详细信息
-                DispatchQueue.main.async {
+                DispatchQueue.main.async(execute: {
                     
                     let detailVC = UIStoryboard.instantiateInitialViewController(name: "YQFireMapDetail") as! YQFireMapDetailViewController
+                    
                     self.navigationController?.pushViewController(detailVC, animated: true)
                     
-                    // 直接进行model 的传值
+                    // 直接进行model 的传值 发送通知来执行
                     detailVC.fireModel = self.currentMapPointAnnotation.pointModel
+                    
+                    // 调用通知是多余的操作
+                    //        NotificationCenter.default.post(
+                    //            name: NSNotification.Name(rawValue: "locationDetailModelPassValue"),
+                    //            object: self,
+                    //            userInfo: ["model" : self.currentMapPointAnnotation.pointModel]
+                    //        )
 
-                }
+                })
                 
                 break
             case .failure(let error):
@@ -478,9 +487,7 @@ class YQFireControlViewController: UIViewController {
                 break
             }
         }
-        
     }
-
     
     // MARK: - 控制器销毁的方法
     deinit{
@@ -525,6 +532,17 @@ extension YQFireControlViewController: MAMapViewDelegate{
     }
 
     // MARK: - markView点击的回调方法
+//    func mapView(_ mapView: MAMapView!, didSelect view: MAAnnotationView!) {
+//        
+//        //设置为隐藏
+//    }
+    
+    func mapView(_ mapView: MAMapView!, didDeselect view: MAAnnotationView!) {
+        
+        //设置为隐藏
+        self.implementView.isHidden = true
+    }
+    
     /**
      
      // 点击annotation弹框视图的取消的添加方法
@@ -535,6 +553,7 @@ extension YQFireControlViewController: MAMapViewDelegate{
         
         //设置为隐藏
         self.implementView.isHidden = true
+        
     }
     
     /**
@@ -548,7 +567,6 @@ extension YQFireControlViewController: MAMapViewDelegate{
         if YQPoint.pointModel == nil {
             
             return
-            
         }
         
         self.implementViewDataAndDetailShow(pointAnnotation: YQPoint)

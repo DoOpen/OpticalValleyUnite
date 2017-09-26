@@ -19,4 +19,6 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "UMessage.h"
 
+#import "MANaviRoute.h"
 #import <AMapSearchKit/AMapSearchKit.h>
+#import "RouteCommon.h"

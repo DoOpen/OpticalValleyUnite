@@ -142,8 +142,7 @@ class YQFireControlViewController: UIViewController {
                 
                 self?.fireMapView.setCenter((location?.coordinate)!, animated: true)
             }
-            }
-        )
+            })
     }
     
     
@@ -154,6 +153,24 @@ class YQFireControlViewController: UIViewController {
             drawerController.setDrawerState(.opened, animated: true)
         }
 
+    }
+    
+    // MARK: - 手动添加定位按钮点击方法
+    @IBAction func manualLocationBntClick(_ sender: Any) {
+        //加载定位的 实时方法
+        locationManager.requestLocation(withReGeocode: true, completionBlock:{
+            [weak self]  location, regeocode,error in
+            if let error = error{
+                print(error.localizedDescription)
+            }
+            if let regeocode = regeocode{
+                
+                print(regeocode)
+                
+                self?.fireMapView.setCenter((location?.coordinate)!, animated: true)
+            }
+        })
+        
     }
     
     

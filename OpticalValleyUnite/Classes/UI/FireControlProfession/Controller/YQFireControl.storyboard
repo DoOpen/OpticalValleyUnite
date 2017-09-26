@@ -78,7 +78,24 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yb3-Sb-cBk" customClass="MAMapView">
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCK-ok-a4d">
+                                        <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="Zp9-pn-DYR"/>
+                                            <constraint firstAttribute="height" constant="40" id="dOb-Ek-UbI"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_map_location"/>
+                                        <connections>
+                                            <action selector="manualLocationBntClick:" destination="rYK-YH-62r" eventType="touchUpInside" id="usZ-HL-M53"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="YCK-ok-a4d" firstAttribute="top" secondItem="yb3-Sb-cBk" secondAttribute="top" constant="10" id="Scl-ta-MlT"/>
+                                    <constraint firstItem="YCK-ok-a4d" firstAttribute="leading" secondItem="yb3-Sb-cBk" secondAttribute="leading" constant="10" id="sg3-VA-lqI"/>
+                                </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZp-q0-eYc" customClass="YQImplementView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                 <rect key="frame" x="20" y="387" width="335" height="240"/>
@@ -216,5 +233,6 @@
     </scenes>
     <resources>
         <image name="icon_fire_edit" width="20" height="20"/>
+        <image name="icon_map_location" width="22" height="22"/>
     </resources>
 </document>

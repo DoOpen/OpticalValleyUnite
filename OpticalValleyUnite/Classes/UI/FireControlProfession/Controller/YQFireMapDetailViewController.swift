@@ -136,6 +136,14 @@ class YQFireMapDetailViewController: UIViewController {
         
     }
     
+    // MARK: - 手动添加定位按钮点击方法
+    
+    @IBAction func manualLocationBtnClick(_ sender: Any) {
+        
+        
+        
+    }
+    
     // MARK: - 接受通知方法
 //    func acceptNotes(){
 //        
@@ -317,6 +325,7 @@ class YQFireMapDetailViewController: UIViewController {
 
     }
     
+    // MARK: - 展示当前路线方案,规划路径
     /* 展示当前路线方案 */
     func presentCurrentCourse() {
         

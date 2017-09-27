@@ -291,6 +291,7 @@ class WorkHistoryModel{
     
     convenience init(parmart: [String: Any]) {
         self.init()
+        
         person_name = parmart["person_name"] as? String ?? ""
         status = parmart["unit_status"] as? Int ?? -1
         time = parmart["time"] as? String ?? ""
@@ -301,6 +302,7 @@ class WorkHistoryModel{
         if let content = parmart["EVALUATE_TEXT"] as? String{
             self.content = content
         }
+        
         //发起人评价1，管理人评价2
         type = parmart["EVALUATE_TYPE"] as? String ?? ""
         
@@ -659,13 +661,18 @@ class ExecSectionModel: Object{
     }
     
     func toDic() -> [String: Any] {
+        
         var taskDic = [String: Any]()
+        
         taskDic["WORKUNIT_ID"] = workOrderId
         taskDic["WORKTASK_ID"] = id
         taskDic["UNIT_STATUS"] = 5
         taskDic["ID"] = DESCRIPTION_ID
+        
         var arry = Array<[String: Any]>()
+        
         for model in childs{
+            
             arry.append(model.toDic())
         }
         

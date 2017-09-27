@@ -31,21 +31,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="2016-11-11 16:48:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOt-XD-eh6">
-                                <rect key="frame" x="12" y="119" width="117" height="14.5"/>
+                                <rect key="frame" x="12" y="126" width="117" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="派发人:  张四风    负责人:  张三     协助人:     李四, 王五,  呵呵    管理人: 和打炮" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya7-Fk-A6n">
-                                <rect key="frame" x="12" y="38" width="291" height="36"/>
+                                <rect key="frame" x="12" y="38" width="291" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2y-dD-wOD">
-                                <rect key="frame" x="12" y="82" width="291" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="备注" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2y-dD-wOD">
+                                <rect key="frame" x="12" y="103" width="291" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="TZG-qf-jut"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -53,14 +56,15 @@
                         <constraints>
                             <constraint firstItem="F2y-dD-wOD" firstAttribute="trailing" secondItem="Ya7-Fk-A6n" secondAttribute="trailing" id="10q-9I-JBc"/>
                             <constraint firstItem="F2y-dD-wOD" firstAttribute="leading" secondItem="Ya7-Fk-A6n" secondAttribute="leading" id="2Ur-Ms-TiF"/>
-                            <constraint firstItem="Ya7-Fk-A6n" firstAttribute="leading" secondItem="X8s-ST-hVo" secondAttribute="leading" constant="12" id="331-A5-ay4"/>
                             <constraint firstItem="LOt-XD-eh6" firstAttribute="leading" secondItem="Ya7-Fk-A6n" secondAttribute="leading" id="7b9-GI-g1M"/>
                             <constraint firstItem="LeA-dr-vdv" firstAttribute="top" secondItem="X8s-ST-hVo" secondAttribute="top" constant="10" id="ANh-Um-3h6"/>
                             <constraint firstItem="LeA-dr-vdv" firstAttribute="leading" secondItem="X8s-ST-hVo" secondAttribute="leading" constant="12" id="Aov-sR-Ew2"/>
                             <constraint firstItem="Ya7-Fk-A6n" firstAttribute="centerX" secondItem="X8s-ST-hVo" secondAttribute="centerX" id="D1P-xm-bSz"/>
+                            <constraint firstItem="LOt-XD-eh6" firstAttribute="top" secondItem="F2y-dD-wOD" secondAttribute="bottom" constant="5" id="are-SB-4hi"/>
                             <constraint firstItem="Ya7-Fk-A6n" firstAttribute="top" secondItem="LeA-dr-vdv" secondAttribute="bottom" constant="10" id="cxP-A0-9tv"/>
-                            <constraint firstAttribute="bottom" secondItem="LOt-XD-eh6" secondAttribute="bottom" priority="750" constant="12" id="efh-9H-6c2"/>
-                            <constraint firstItem="F2y-dD-wOD" firstAttribute="top" secondItem="Ya7-Fk-A6n" secondAttribute="bottom" constant="8" id="j2v-TN-XMZ"/>
+                            <constraint firstAttribute="bottom" secondItem="LOt-XD-eh6" secondAttribute="bottom" priority="750" constant="5" id="efh-9H-6c2"/>
+                            <constraint firstItem="Ya7-Fk-A6n" firstAttribute="leading" secondItem="X8s-ST-hVo" secondAttribute="leading" constant="12" id="fjm-O3-2J7"/>
+                            <constraint firstItem="F2y-dD-wOD" firstAttribute="top" secondItem="Ya7-Fk-A6n" secondAttribute="bottom" constant="5" id="zh1-hp-24h"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

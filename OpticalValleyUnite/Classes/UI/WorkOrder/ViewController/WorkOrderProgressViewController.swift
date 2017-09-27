@@ -176,6 +176,7 @@ class WorkOrderProgressViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         getData()
         getWorkDetail()
     }
@@ -293,6 +294,8 @@ class WorkOrderProgressViewController: UIViewController {
         
         HttpClient.instance.get(path: URLPath.getWorkDetail, parameters: parmate, success: { (respose) in
             
+            print(respose)
+            
             SVProgressHUD.dismiss()
             //添加收藏 parkid的 缓存
             //  respose["PARK_ID"] 的值是需要的情况
@@ -300,7 +303,11 @@ class WorkOrderProgressViewController: UIViewController {
             UserDefaults.standard.set(PackId, forKey: Const.YQParkID)
             
             var temp = [WorkHistoryModel]()
+            
+            print(respose["histories"])
+            
             for dic in respose["histories"] as! Array<[String: Any]>{
+                
                 temp.append(WorkHistoryModel(parmart: dic))
             }
             
@@ -310,7 +317,7 @@ class WorkOrderProgressViewController: UIViewController {
             }
             self.callbackModels = temp2
 
-             if let type = respose["type"] as? NSString{
+            if let type = respose["type"] as? NSString{
                 self.type = OperationType(rawValue:Int(type as String)!)!
              }else{
                 self.type = OperationType(rawValue:0)!
@@ -362,14 +369,17 @@ class WorkOrderProgressViewController: UIViewController {
 //        parmat["WORKUNIT_ID"] = workOrderDetalModel?.id
 //        SVProgressHUD.show(withStatus: "加载任务中")
         HttpClient.instance.get(path: URLPath.getTaskList, parameters: parmate, success: { (response) in
+            
 //            SVProgressHUD.dismiss()
             var temp = [ExecSectionModel]()
-            for dic in (response as! Array<[String: Any]>){
+            
+            for dic in (response["task"] as! Array<[String: Any]>){
                 let model = ExecSectionModel(parmart: dic)
 //                model.workOrderId = (self.workOrderDetalModel?.id)!
                 
                 temp.append(model)
             }
+            
             if temp.count == 0{
 //                SVProgressHUD.showSuccess(withStatus: "没有待执行任务")
             }
@@ -392,6 +402,7 @@ class WorkOrderProgressViewController: UIViewController {
     
     
     func getCell(model: WorkHistoryModel) -> UITableViewCell {
+        
         var cell = UITableViewCell()
         switch model.status {
         case -1://工单生成
@@ -405,6 +416,7 @@ class WorkOrderProgressViewController: UIViewController {
         case 8://工单评价
             cell = tableView.dequeueReusableCell(withIdentifier: "AppraisalCell")!
             (cell as! AppraisalCell).model = model
+            
         case 7://工单执行
             
             if workOrderDetalModel?.orderType == "应急工单"{
@@ -419,7 +431,6 @@ class WorkOrderProgressViewController: UIViewController {
                 cell2.superTableView = tableView
                 cell = cell2
             }
-            
             
         case 10...12,2...3,5...6://工单生成
             cell = tableView.dequeueReusableCell(withIdentifier: "stutas")!

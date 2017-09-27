@@ -90,7 +90,7 @@ struct URLPath {
     
     
     ///工单执行列表 (<-- 接口有变动 -->)
-    static let getTaskList = "workunit/getTaskListById.do"
+    static let getTaskList = "workunit/getTaskListById2.do"
     
     ///上传图片
     static let uploadImage = "workunit/imgs.do"

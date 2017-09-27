@@ -130,7 +130,9 @@ class ExecutingViewConttroller: UIViewController {
         SVProgressHUD.show(withStatus: "加载任务中")
         HttpClient.instance.get(path: URLPath.getTaskList, parameters: parmat, success: { (response) in
             SVProgressHUD.dismiss()
+            
             var temp = [ExecSectionModel]()
+            
             for dic in (response as! Array<[String: Any]>){
                 let model = ExecSectionModel(parmart: dic)
                 model.workOrderId = (self.workOrderDetalModel?.id)!
@@ -197,6 +199,7 @@ class ExecutingViewConttroller: UIViewController {
 //        parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
 //        parmat["UNIT_STATUS"] = 2
         parmat["data"] = json
+        
         SVProgressHUD.show(withStatus: "上传中")
         //调用了 相应的接口workunitOpera
         HttpClient.instance.post(path: URLPath.workunitOpera, parameters: parmat, success: { (response) in
@@ -252,11 +255,10 @@ class ExecutingViewConttroller: UIViewController {
             print("complete!")
             //完成成功的时候,需要的添加那个配件库的功能json的功能
             
-            
-            
             SVProgressHUD.dismiss()
             
             var arry = Array<[String: Any]>()
+            
             for model in self.models{
                 
                 model.workOrderId = (self.workOrderDetalModel?.id)!

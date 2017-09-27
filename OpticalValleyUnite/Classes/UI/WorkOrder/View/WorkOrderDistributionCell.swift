@@ -35,7 +35,7 @@ class WorkOrderDistributionCell: UITableViewCell {
                     var text = ""
                     timeLabel.text = model.time
                     
-                    markLabel.text = "备注" + model.DESCRIPTION
+                    markLabel.text = "备注: " + model.DESCRIPTION
                     
                     guard model2.assesNamae != "" else {
                         text = "派发人:  \(model.person_name )    执行人:  \(model2.exexName )     协助人:        管理人: \(model2.managerNmae )"

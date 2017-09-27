@@ -602,6 +602,7 @@ class ParkInfoModel{
 
 
 class ExecSectionModel: Object{
+    
     dynamic var name = ""
     dynamic var id = ""
     var childs = List<ExecChild>()

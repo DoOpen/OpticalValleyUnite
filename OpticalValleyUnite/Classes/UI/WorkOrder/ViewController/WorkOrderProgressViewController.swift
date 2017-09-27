@@ -91,8 +91,6 @@ class WorkOrderProgressViewController: UIViewController {
                 rightText = "退回"
                 leftBtn.isHidden = false
                 
-                
-          
                 //待完成
                 
             //待评价
@@ -374,12 +372,14 @@ class WorkOrderProgressViewController: UIViewController {
 //            SVProgressHUD.dismiss()
             var temp = [ExecSectionModel]()
             
-            for dic in (response["task"] as! Array<[String: Any]>){
+            //注意的后台的数据结构的调整,以前是应用的数组集合来放字典,现在的是直接放了一个字典,没有数组了
+//            for dic in (response as! Array<[String: Any]>){
+                let dic = response["task"] as! [String: Any]
                 let model = ExecSectionModel(parmart: dic)
 //                model.workOrderId = (self.workOrderDetalModel?.id)!
-                
                 temp.append(model)
-            }
+                
+//            }
             
             if temp.count == 0{
 //                SVProgressHUD.showSuccess(withStatus: "没有待执行任务")
@@ -401,7 +401,7 @@ class WorkOrderProgressViewController: UIViewController {
     }
 
     
-    
+    // MARK: - 不同的data对应生成不同cell的方法(重点)
     func getCell(model: WorkHistoryModel) -> UITableViewCell {
         
         var cell = UITableViewCell()

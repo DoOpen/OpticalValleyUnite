@@ -34,7 +34,10 @@ struct URLPath {
     static let getWorkOrderStatic = "workunit/workunitStaticByMonth.do"
     static let updatepwd = "user/updatepwd.do"
     static let updateLocation = "position/loadPersonPosition.do"
+    
+    //工单详情 <  <--接口有变动 --> >!!!
     static let getWorkDetail = "workunit/workunitDetailById.do"
+    
     static let getWorkTypeList = "workunit/getWorkTypeList.do"
     
     //子系统选择图片服务器的地址
@@ -78,14 +81,15 @@ struct URLPath {
     static let workunitExecu  = "workunit/WorkunitExec.do"
     
     
-    
-    //计划工单的保存
+    //计划工单的保存 (<--接口有变动-->)
     static let workunitOpera = "workunit/workunitOpera.do"
+    
     
     ///工单退回
     static let workunitReturn = "workunit/WorkunitReturn.do"
     
-    ///工单执行列表
+    
+    ///工单执行列表 (<-- 接口有变动 -->)
     static let getTaskList = "workunit/getTaskListById.do"
     
     ///上传图片

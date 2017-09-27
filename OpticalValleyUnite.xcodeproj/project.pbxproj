@@ -277,6 +277,7 @@
 		2FEB0E831F6E70900002DEE8 /* YQFireAlarmDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQFireAlarmDetailViewController.xib; sourceTree = "<group>"; };
 		2FEB0E861F6E710B0002DEE8 /* YQFalsePositivesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFalsePositivesVC.swift; sourceTree = "<group>"; };
 		2FEB0E881F6E713F0002DEE8 /* YQFalsePositives.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQFalsePositives.xib; sourceTree = "<group>"; };
+		2FF9CE8A1F7B32AF005736F6 /* Development.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = Development.mobileprovision; sourceTree = "<group>"; };
 		4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportListViewController.swift; sourceTree = "<group>"; };
 		4B1558AE1F131AA70023F14D /* DeviceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		4B19ACE31E7A3D26008A8166 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -748,6 +749,7 @@
 		4BD4B8FF1E272E0C00AE2BC9 /* OpticalValleyUnite */ = {
 			isa = PBXGroup;
 			children = (
+				2FF9CE8A1F7B32AF005736F6 /* Development.mobileprovision */,
 				2F2892321F70FDC1000F879A /* Development-3.mobileprovision */,
 				4B91E89B1F25904B00F63D66 /* OpticalValleyUnite.entitlements */,
 				4BD4B9121E272EA600AE2BC9 /* Classes */,

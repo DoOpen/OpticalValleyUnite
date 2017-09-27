@@ -290,7 +290,9 @@ class WorkOrderProgressViewController: UIViewController {
     func getWorkDetail(){
         
         SVProgressHUD.show(withStatus: "加载中...")
+        
         HttpClient.instance.get(path: URLPath.getWorkDetail, parameters: parmate, success: { (respose) in
+            
             SVProgressHUD.dismiss()
             //添加收藏 parkid的 缓存
             //  respose["PARK_ID"] 的值是需要的情况
@@ -320,7 +322,6 @@ class WorkOrderProgressViewController: UIViewController {
                 
                 self.getEquipment(model.equipment_id)
             }
-            
             
             self.models = temp
             

@@ -83,6 +83,7 @@ class ExecutingViewConttroller: UIViewController {
               
         
         if isToSee{
+            
             downView.isHidden = true
         }
         
@@ -192,13 +193,23 @@ class ExecutingViewConttroller: UIViewController {
     
     
     // MARK: - 保存成功更新了调用
-    func saveUpdate(json: String){
+    func saveUpdate(json: NSArray){
         
         //保存的参数和接口 应用的json格式来进行回传
         var parmat = [String: Any]()
 //        parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
 //        parmat["UNIT_STATUS"] = 2
-        parmat["data"] = json
+
+        parmat["WORKUNIT_ID"] = json[0]
+        parmat["WORKTASK_ID"] = json[1]
+        parmat["UNIT_STATUS"] = json[2]
+        parmat["ID"] = json[3]
+        parmat["DESCRIPTION"] = json[4]
+        
+        /*
+         注意的是:这里的接口的变动的是 以前的是直接传递一个 data 的json 序列化的列表,现在是要求分开来传递,一共是5个参数
+         
+         */
         
         SVProgressHUD.show(withStatus: "上传中")
         //调用了 相应的接口workunitOpera
@@ -270,14 +281,15 @@ class ExecutingViewConttroller: UIViewController {
             
             do {
                 //Convert to Data
-                let jsonData = try JSONSerialization.data(withJSONObject: arry, options: JSONSerialization.WritingOptions.prettyPrinted)
+                //let jsonData = try JSONSerialization.data(withJSONObject: arry, options: JSONSerialization.WritingOptions.prettyPrinted)
                 
                 //Do this for print data only otherwise skip
-                if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
-                    
-                    print(JSONString)
-                    self.saveUpdate(json: JSONString)
-                }
+                //if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                    //print(JSONString)
+                //}
+                
+                //改变数据的
+                self.saveUpdate(json: arry as NSArray)
                 
             } catch  {
                 print("转换错误 ")

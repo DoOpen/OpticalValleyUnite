@@ -304,7 +304,7 @@ class WorkOrderProgressViewController: UIViewController {
             
             var temp = [WorkHistoryModel]()
             
-            print(respose["histories"])
+            //print(respose["histories"])
             
             for dic in respose["histories"] as! Array<[String: Any]>{
                 
@@ -312,6 +312,7 @@ class WorkOrderProgressViewController: UIViewController {
             }
             
             var temp2 = [CallbackModel]()
+            
             for dic in respose["callbacks"] as! Array<[String: Any]>{
                 temp2.append(CallbackModel(parmart: dic))
             }

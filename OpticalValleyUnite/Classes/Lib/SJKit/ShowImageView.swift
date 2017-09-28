@@ -25,6 +25,7 @@ class ShowImageView: UIView {
         }
         
         if subviews.isEmpty{
+            
             addView(count: urls.count)
         }
         

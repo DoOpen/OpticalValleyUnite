@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,7 +38,6 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vug-bc-x9b" customClass="ShowImageView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                 <rect key="frame" x="12" y="102" width="312" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="hE7-Hc-wTP"/>
                                 </constraints>
@@ -101,10 +100,18 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="r87-Hv-0QA">
+                        <rect key="frame" x="51" y="102" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="BmB-s0-Te8"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="w4B-bk-YD5" firstAttribute="leading" secondItem="bih-CF-9bc" secondAttribute="leading" constant="39" id="023-0f-uJU"/>
+                    <constraint firstItem="r87-Hv-0QA" firstAttribute="leading" secondItem="Vug-bc-x9b" secondAttribute="leading" id="136-LD-Vwc"/>
                     <constraint firstItem="w4B-bk-YD5" firstAttribute="top" secondItem="bih-CF-9bc" secondAttribute="top" id="21b-6i-7j4"/>
+                    <constraint firstItem="r87-Hv-0QA" firstAttribute="top" secondItem="Vug-bc-x9b" secondAttribute="top" id="H8D-9M-VdQ"/>
                     <constraint firstAttribute="trailing" secondItem="w4B-bk-YD5" secondAttribute="trailing" id="HaV-2h-XVf"/>
                     <constraint firstItem="yEJ-W5-QEk" firstAttribute="leading" secondItem="bih-CF-9bc" secondAttribute="leading" constant="20" id="Jlq-Ak-Nym"/>
                     <constraint firstAttribute="bottom" secondItem="w4B-bk-YD5" secondAttribute="bottom" constant="10" id="WIs-px-vas"/>
@@ -121,7 +128,10 @@
                 <outlet property="showImageviewHeithConstraint" destination="hE7-Hc-wTP" id="0kE-wZ-L0P"/>
                 <outlet property="timeLabel" destination="uED-u5-yIH" id="aGl-Z2-fLy"/>
             </connections>
-            <point key="canvasLocation" x="30.5" y="95.5"/>
+            <point key="canvasLocation" x="203.5" y="159.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="btn_addphoto" width="60" height="60"/>
+    </resources>
 </document>

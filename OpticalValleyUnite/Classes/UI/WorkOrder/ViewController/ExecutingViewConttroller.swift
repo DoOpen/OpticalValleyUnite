@@ -134,12 +134,13 @@ class ExecutingViewConttroller: UIViewController {
             
             var temp = [ExecSectionModel]()
             
-            for dic in (response as! Array<[String: Any]>){
-                let model = ExecSectionModel(parmart: dic)
+//            for dic in (response as! Array<[String: Any]>){
+                let dic = response["task"]
+                let model = ExecSectionModel(parmart: dic as! [String : Any])
                 model.workOrderId = (self.workOrderDetalModel?.id)!
 
                 temp.append(model)
-            }
+//            }
             if temp.count == 0{
                 SVProgressHUD.showSuccess(withStatus: "没有待执行任务")
             }

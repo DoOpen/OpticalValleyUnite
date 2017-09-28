@@ -120,14 +120,18 @@ class YQPartsLibaryViewController: UIViewController {
                             for dic in partList{
                                 
 //                               print(dic)
-                                model.append(PartsModel(dict: dic as! [String : AnyObject]))
+                                //需要在这里的是:进行的拼接 配件数量的 加上模型来执行
+                                var d = dic as! [String : AnyObject]
+                                //没有的键值就是 新增
+                                d["partNum"] = "0" as AnyObject
+                                
+                                model.append(PartsModel(dict: d ))
                             }
                             
                             //模型赋值 传值!
                             self.dataPart = model
 //                            print(model)
                         }
-                        
                         break
                     }
                     break
@@ -153,6 +157,7 @@ class YQPartsLibaryViewController: UIViewController {
     
     // MARK: - 创建tableView
     func createTableView(_ num : Int ){
+        
         if num == 1{
             let tabelV = UITableView()
             tabelV.dataSource = self as UITableViewDataSource
@@ -252,7 +257,6 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
             if cell.switch.isSelected {
                 
                 selectData.add(status)
-                
             }
         
         }else{

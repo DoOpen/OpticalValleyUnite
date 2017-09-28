@@ -51,12 +51,15 @@ class WorkOrderViewController: UIViewController {
     @IBAction func rightBtnClick(_ sender: UIBarButtonItem) {
         
         let vc = WorkOrderSiftViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderSiftViewController
+        
         vc.status =  ["DCL", "YCL","YGB"][currentIndex]
+        
 //        self.addChildViewController(vc)
         siftVc = vc
 //        vc.didMove(toParentViewController: self)
+        
         let subView = vc.view
-        subView?.frame = CGRect(x: 50, y: 0, width: SJScreeW - 50, height: SJScreeH)
+        subView?.frame = CGRect(x: 100, y: 0, width: SJScreeW - 100, height: SJScreeH)
         CoverView.show(view: subView!)
         
         vc.doenBtnClickHandel = { parmat in

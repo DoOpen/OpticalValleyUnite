@@ -424,13 +424,18 @@ class WorkOrderProgressViewController: UIViewController {
                 cell = tableView.dequeueReusableCell(withIdentifier: "ExecutEmergencyCell")!
                 (cell as! ExecutEmergencyCell).detailModel = workOrderDetalModel
                 (cell as! ExecutEmergencyCell).model = model
+                
             }else{
+                
+                
                 let cell2 = tableView.dequeueReusableCell(withIdentifier: "ExecutDetailCell") as! ExecutDetailCell
                 
                 cell2.models = self.taskModels
                 taskCell = cell2
                 cell2.superTableView = tableView
+                
                 cell = cell2
+                
             }
             
         case 10...12,2...3,5...6://工单生成
@@ -490,6 +495,7 @@ class WorkOrderProgressViewController: UIViewController {
     func meetsListClose(){
 
         OprationConfirmationView.show(doneBtnClickHandel: { [weak self] text in
+            
             var parmat = [String: Any]()
             
             parmat["WORKUNIT_ID"] = self?.parmate?["WORKUNIT_ID"] as! String

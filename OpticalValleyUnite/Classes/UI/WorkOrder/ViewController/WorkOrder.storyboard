@@ -2013,7 +2013,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrA-1w-vyW">
-                                                <rect key="frame" x="12" y="48" width="108" height="40"/>
+                                                <rect key="frame" x="10" y="48" width="108" height="40"/>
                                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="108" id="3TV-K3-B0J"/>
@@ -2034,7 +2034,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvs-iU-yWd">
-                                                <rect key="frame" x="180" y="48" width="108" height="40"/>
+                                                <rect key="frame" x="296" y="48" width="108" height="40"/>
                                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Cuo-rM-edg"/>
@@ -2074,9 +2074,9 @@
                                             <constraint firstAttribute="trailing" secondItem="Nqm-hL-DdV" secondAttribute="trailing" id="Zq7-6A-m45"/>
                                             <constraint firstAttribute="height" constant="103" id="fqk-Up-XUg"/>
                                             <constraint firstAttribute="bottom" secondItem="REW-mg-DcO" secondAttribute="bottom" id="gmz-yH-VKH"/>
-                                            <constraint firstItem="BrA-1w-vyW" firstAttribute="leading" secondItem="4lv-is-MT1" secondAttribute="leading" constant="12" id="jBp-z5-nts"/>
-                                            <constraint firstItem="qvs-iU-yWd" firstAttribute="leading" secondItem="BrA-1w-vyW" secondAttribute="trailing" constant="60" id="lWe-9d-Xtl"/>
+                                            <constraint firstItem="BrA-1w-vyW" firstAttribute="leading" secondItem="4lv-is-MT1" secondAttribute="leading" constant="10" id="jBp-z5-nts"/>
                                             <constraint firstItem="9uA-Mw-Qev" firstAttribute="top" secondItem="4lv-is-MT1" secondAttribute="top" id="m0m-Ed-yiJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="qvs-iU-yWd" secondAttribute="trailing" constant="10" id="x3M-Df-AXB"/>
                                             <constraint firstItem="qvs-iU-yWd" firstAttribute="centerY" secondItem="BrA-1w-vyW" secondAttribute="centerY" id="xHz-TR-AZh"/>
                                         </constraints>
                                     </view>

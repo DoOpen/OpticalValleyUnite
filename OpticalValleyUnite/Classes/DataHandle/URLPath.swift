@@ -27,6 +27,7 @@ struct URLPath {
     //服务器的basic 地址:
 //    static let basicPath = "http://192.168.0.18:8080/ovu-pcos/api/"
 
+    
     static let login = "user/login.do"
     static let systemMessage = "message/importentMsg.do"
     static let getWorkunitList = "workunit/workunitList.do"

@@ -24,11 +24,12 @@ class OrderReturningCell: UITableViewCell {
 
     var model: WorkHistoryModel?{
         didSet{
+            
             if let model = model{
                 
                 text1Label.text = model.person_name
                 timeLabel.text = model.time
-                text2Label.text = model.content
+                text2Label.text = model.DESCRIPTION
             }
             
         }

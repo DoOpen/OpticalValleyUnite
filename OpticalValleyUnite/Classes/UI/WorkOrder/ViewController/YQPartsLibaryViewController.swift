@@ -26,11 +26,11 @@ class YQPartsLibaryViewController: UIViewController {
     @IBOutlet weak var contentScrollView: UIScrollView!
     
     ///定义数据模var,  这里应用的是 didset== 相当于set方法,一旦赋值的话,要求的是刷新表格
-    var dataPart : [PartsModel]?{
+    var dataPart  : [PartsModel]?{
         
         didSet{
             // 当设置完数据之后 就实现刷新
-            tableViewFrist.reloadData()
+            //tableViewFrist.reloadData()
         }
     
     }
@@ -49,16 +49,14 @@ class YQPartsLibaryViewController: UIViewController {
 //        }
 //    }
     
-    var selectData:NSMutableArray = { return NSMutableArray() }(){
+    var selectData:[PartsModel]? {
         didSet{
-        
-        
+            
         }
     
     }
     
     var selectIndex : Int = 0
-    
     
 
     // MARK: - view的生命周期方法
@@ -112,6 +110,7 @@ class YQPartsLibaryViewController: UIViewController {
                 if let value = response.result.value as? [String: Any] {
 
                     if let data:NSDictionary = value["data"] as? NSDictionary {
+                        
                         if let partList:NSArray = data["list"] as? NSArray {
                             //遍历数组,字典转模型,最核心的是,将字典数组,转化成模型来进行
 //                            print(partList)
@@ -121,15 +120,16 @@ class YQPartsLibaryViewController: UIViewController {
                                 
 //                               print(dic)
                                 //需要在这里的是:进行的拼接 配件数量的 加上模型来执行
-                                var d = dic as! [String : AnyObject]
+                                var d = dic as! [String : Any]
                                 //没有的键值就是 新增
                                 d["partNum"] = "0" as AnyObject
                                 
-                                model.append(PartsModel(dict: d ))
+                                model.append(PartsModel(dict: d as [String : AnyObject] ))
                             }
                             
                             //模型赋值 传值!
                             self.dataPart = model
+                            self.tableViewFrist.reloadData()
 //                            print(model)
                         }
                         break
@@ -155,10 +155,12 @@ class YQPartsLibaryViewController: UIViewController {
         
     }
     
+    
     // MARK: - 创建tableView
     func createTableView(_ num : Int ){
         
         if num == 1{
+            
             let tabelV = UITableView()
             tabelV.dataSource = self as UITableViewDataSource
             tabelV.delegate = self as UITableViewDelegate
@@ -209,8 +211,6 @@ class YQPartsLibaryViewController: UIViewController {
         selectPartsButton.isSelected = false
         
         self.contentScrollView.setContentOffset(CGPoint(x:0 , y: 0), animated: true)
-        
-        
     }
     
     ///已选配件
@@ -219,9 +219,12 @@ class YQPartsLibaryViewController: UIViewController {
         allPartsButton.isSelected = false
         selectPartsButton.isSelected = true
         
+        //添加调用的,移动配件库的完善逻辑
+//        self.partDataFooterMakeSureCheckDelegate()
+        
         self.contentScrollView.setContentOffset(CGPoint(x: self.contentScrollView.bounds.width , y: 0), animated: true)
         
-        self.tableViewSecond.reloadData()
+        tableViewSecond.reloadData()
         
     }
    
@@ -233,11 +236,13 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if tableView == self.tableViewFrist{
+            
             return dataPart?.count ?? 0
             
         }else{
+            
+            return selectData?.count ?? 0
         
-            return selectData.count
         }
         
     }
@@ -248,7 +253,8 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
         if tableView == self.tableViewFrist{
         
             cell.delegate = self as YQPartDataCellSwitchDelegate
-            let status = dataPart![indexPath.row]
+            
+            let status = dataPart?[indexPath.row]
             //传对应的模型给cell
             cell.modelcell  = dataPart![indexPath.row]
             cell.indexPath = indexPath.row
@@ -256,15 +262,36 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
             //添加选择数据
             if cell.switch.isSelected {
                 
-                selectData.add(status)
+//                let numIndex = indexPath.row
+//                
+//                if (selectData?[indexPath.row]) != nil {
+//                    
+//                    let temp : PartsModel = selectData![indexPath.row]
+//                    selectData!.replaceSubrange(numIndex...numIndex, with: [temp])
+//                    
+//                }else{
+                
+                    if selectData == nil{
+                        
+                        selectData = [status!]
+                        
+                    }else{
+                        
+                        selectData?.append(status!)
+                    }
+
+//                }
+                
             }
         
         }else{
             
 //            var temp = [String: PartsModel]()
 //            temp = (selectData[indexPath.row] as? [String: PartsModel])!
-            cell.modelcell = selectData[indexPath.row] as? PartsModel
+            cell.modelcell = selectData?[indexPath.row]
             cell.indexPath = indexPath.row
+            cell.switch.isSelected = true
+            cell.numText.isUserInteractionEnabled = true
  
         }
     
@@ -332,10 +359,16 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
                             
                             for dic in partList{
                                 
-                                model.append(PartsModel(dict: dic as! [String : AnyObject]))
+                                var d = dic as! [String : AnyObject]
+                                //没有的键值就是 新增
+                                d["partNum"] = "0" as AnyObject
+                                
+                                model.append(PartsModel(dict: d))
                             }
                             //模型赋值 传值!
                             self.dataPart = model
+                            self.tableViewFrist.reloadData()
+
                         }
                         
                         break
@@ -383,6 +416,7 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     
     // MARK: - PartDataCellSwitchDelegate的执行
     func partDataCellSwitchDelegate(num: String,numIndex: Int, model: PartsModel){
+        
         //存储 已选数据的代理方法
 //        var newmodel = [Any]()
 //        newmodel.append(model)
@@ -393,10 +427,8 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
 //        print( numIndex )
         //代理的方法,暂时是没有作用的
         
-        
 //        let indexPath: IndexPath = IndexPath.init(row: numIndex, section: 0)
 //        self.tableViewFrist.reloadRows(at: [indexPath], with: .fade)
-        
         
 //        var temp = [String: PartsModel]()
 //        temp["\(numIndex)"] = model
@@ -404,6 +436,12 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
 //        self.selectData.add(model)
 //        self.tableViewSecond .reloadData()
         
+        //默认是修改第一个的数组的模型
+//        self.dataPart?.remove(at: numIndex)
+//        self.dataPart?.insert(model, at: numIndex)
+        
+        self.dataPart?.replaceSubrange(numIndex...numIndex, with: [model])
+
     }
     
     func partDataCellSwitchDelegateMoveModel(numIndex: Int, model: PartsModel) {
@@ -425,8 +463,14 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     // MARK: - YQPartDataFooterCellButtonDelegate代理方法
     //已选完成界面的实现
     func partDataFooterCompleteDelegate() {
-        //1.现在读取已选数据,思路是 刷新表格,进行数据添加
-
+        //1.保存已选的模型数据
+        //使用通知来进行的传值
+        let center = NotificationCenter.default
+        //定义添加一个字典
+        var data = [String : Any]()
+        data["partData"] = self.selectData
+        center.post(name:  NSNotification.Name(rawValue: "partsSelectionPassValue"), object: nil, userInfo: data)
+        
         //2.以及界面跳转
         self.selectPartsButtonClick()
         self.navigationController?.popViewController(animated: true)
@@ -436,14 +480,17 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     //所有界面的 确认勾选的实现
     func partDataFooterMakeSureCheckDelegate() {
         
-        //重新加载allPart,清空渲染tableViewSecond数据
-        self.selectData.removeAllObjects()
+        //结束键盘输入
+        self.view.endEditing(true)
+        
+        self.selectData?.removeAll()
         
         //逻辑调整
         tableViewFrist.reloadData()
 
         //传递已选配件,pop相应控件
         self.selectPartsButtonClick()
+        
         
     }
     

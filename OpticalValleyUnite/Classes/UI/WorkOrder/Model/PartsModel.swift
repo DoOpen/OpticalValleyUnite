@@ -36,7 +36,7 @@ class PartsModel: NSObject{
     
     // 打印当前的模型
     /// 重写父类的方法
-    var  properties  = ["partsId","position","partsName"]
+    var  properties  = ["partsId","position","partsName","partNum"]
     override var description : String{
         
         let dict = dictionaryWithValues(forKeys: properties)

@@ -394,8 +394,13 @@ class ExecutingViewConttroller: UIViewController {
     // MARK: - 跳转到配件库
     @IBAction func pushPartsLibaryClick(_ sender: Any) {
         
-        let vc = UIStoryboard(name: "YQPartsLibary", bundle: nil).instantiateInitialViewController()
-        navigationController?.pushViewController(vc!, animated: true)
+        let vc = UIStoryboard(name: "YQPartsLibary", bundle: nil).instantiateInitialViewController() as! YQPartsLibaryViewController
+        if self.partData.count != 0 {
+            
+            vc.selectData = self.partData as? [PartsModel]
+            
+        }
+        navigationController?.pushViewController(vc, animated: true)
         
     }
     

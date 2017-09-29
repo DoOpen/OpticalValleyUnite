@@ -444,6 +444,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                     
                 })
             }else{
+                
                 self.alert(message: "授权失败")
             }
         }
@@ -511,6 +512,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     
     fileprivate func pushToDeviceViewController(equipmentId: String){
+        
         let vc = DeviceViewController.loadFromStoryboard(name: "Home") as! DeviceViewController
         vc.equipmentId = equipmentId
         navigationController?.pushViewController(vc, animated: true)

@@ -56,16 +56,44 @@ class YQPartDataCell: UITableViewCell {
             self.numText.isUserInteractionEnabled = true
 //            modelcell?.partNum = self.numText.text
             //调用代理,传递值的 数量的情况
-            self.delegate?.partDataCellSwitchDelegate(num: self.numText.text!,numIndex: self.indexPath, model : self.modelcell!)
+//            self.delegate?.partDataCellSwitchDelegate(num: self.numText.text!,numIndex: self.indexPath, model : self.modelcell!)
             
         }else{
             
             self.numText.isUserInteractionEnabled = false
-            self.delegate?.partDataCellSwitchDelegateMoveModel(numIndex: self.indexPath, model: self.modelcell!)
+//            self.delegate?.partDataCellSwitchDelegateMoveModel(numIndex: self.indexPath, model: self.modelcell!)
             
         }
         
     }
     
+    override func awakeFromNib() {
+        
+        self.numText.delegate = self
+        
+    }
 
+    
+
+}
+
+extension YQPartDataCell : UITextFieldDelegate{
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        //合成模型:
+        var dict = [String : Any]()
+        dict["position"] = self.part.text
+        dict["partsName"] = self.partName.text
+        dict["partNum"] = self.numText.text
+        dict["partsId"] = modelcell?.partsId
+        
+        let newModel = PartsModel(dict: dict as [String : AnyObject])
+//        newModel!.partNum = self.part.text
+//        newModel!.partsName = self.partName.text
+        
+        self.delegate?.partDataCellSwitchDelegate(num: "", numIndex: self.indexPath, model: newModel)
+        
+    }
+   
 }

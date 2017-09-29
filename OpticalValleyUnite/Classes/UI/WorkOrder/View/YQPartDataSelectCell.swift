@@ -10,7 +10,7 @@ import UIKit
 
 protocol YQPartDataSelectFooterCellButtonDelegate : class{
     
-    func partDataFooterCompleteDelegate()
+    func partDataSelectFooterCompleteDelegate()
     
 }
 
@@ -27,7 +27,7 @@ class YQPartDataSelectCell: UITableViewCell {
     // MARK: - 完成按钮的点击事件
     @IBAction func complete(_ sender: Any) {
         
-        self.delegate?.partDataFooterCompleteDelegate()
+        self.delegate?.partDataSelectFooterCompleteDelegate()
         
     }
 

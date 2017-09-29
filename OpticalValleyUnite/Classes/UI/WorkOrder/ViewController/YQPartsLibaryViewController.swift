@@ -250,14 +250,18 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell : YQPartDataCell = (tableView.dequeueReusableCell(withIdentifier: partCell, for: indexPath)) as! YQPartDataCell
+        
+        
+        cell.delegate = self as YQPartDataCellSwitchDelegate
+        cell.indexPath = indexPath.row
+        cell.tableView = tableView
+        
         if tableView == self.tableViewFrist{
         
-            cell.delegate = self as YQPartDataCellSwitchDelegate
             
             let status = dataPart?[indexPath.row]
             //传对应的模型给cell
             cell.modelcell  = dataPart![indexPath.row]
-            cell.indexPath = indexPath.row
             
             //添加选择数据
             if cell.switch.isSelected {
@@ -288,6 +292,8 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
             
 //            var temp = [String: PartsModel]()
 //            temp = (selectData[indexPath.row] as? [String: PartsModel])!
+//            cell.delegate = self as YQPartDataCellSwitchDelegate
+            
             cell.modelcell = selectData?[indexPath.row]
             cell.indexPath = indexPath.row
             cell.switch.isSelected = true
@@ -415,7 +421,7 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     }
     
     // MARK: - PartDataCellSwitchDelegate的执行
-    func partDataCellSwitchDelegate(num: String,numIndex: Int, model: PartsModel){
+    func partDataCellSwitchDelegate(tableView: UITableView,numIndex: Int, model: PartsModel){
         
         //存储 已选数据的代理方法
 //        var newmodel = [Any]()
@@ -440,7 +446,14 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
 //        self.dataPart?.remove(at: numIndex)
 //        self.dataPart?.insert(model, at: numIndex)
         
-        self.dataPart?.replaceSubrange(numIndex...numIndex, with: [model])
+        if tableView == tableViewFrist {
+            
+            self.dataPart?.replaceSubrange(numIndex...numIndex, with: [model])
+            
+        }else{
+            
+            self.selectData?.replaceSubrange(numIndex...numIndex, with: [model])
+        }
 
     }
     
@@ -462,13 +475,14 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     
     // MARK: - YQPartDataFooterCellButtonDelegate代理方法
     //已选完成界面的实现
-    func partDataFooterCompleteDelegate() {
+    func partDataSelectFooterCompleteDelegate() {
         //1.保存已选的模型数据
         //使用通知来进行的传值
         let center = NotificationCenter.default
         //定义添加一个字典
         var data = [String : Any]()
         data["partData"] = self.selectData
+        
         center.post(name:  NSNotification.Name(rawValue: "partsSelectionPassValue"), object: nil, userInfo: data)
         
         //2.以及界面跳转

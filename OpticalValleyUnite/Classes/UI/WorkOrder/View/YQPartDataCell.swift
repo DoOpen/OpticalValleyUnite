@@ -11,7 +11,7 @@ import UIKit
 
 protocol YQPartDataCellSwitchDelegate : class{
 
-    func partDataCellSwitchDelegate(num : String,numIndex: Int, model : PartsModel)
+    func partDataCellSwitchDelegate(tableView : UITableView,numIndex: Int, model : PartsModel)
     
     func partDataCellSwitchDelegateMoveModel( numIndex : Int,model : PartsModel)
     
@@ -30,6 +30,8 @@ class YQPartDataCell: UITableViewCell {
     
     // 缓存行号
     var indexPath : Int = 0
+    
+    var tableView : UITableView!
     
     // 模型的设置是有问题,设置的
     var modelcell : PartsModel?
@@ -92,7 +94,7 @@ extension YQPartDataCell : UITextFieldDelegate{
 //        newModel!.partNum = self.part.text
 //        newModel!.partsName = self.partName.text
         
-        self.delegate?.partDataCellSwitchDelegate(num: "", numIndex: self.indexPath, model: newModel)
+        self.delegate?.partDataCellSwitchDelegate(tableView: tableView, numIndex: self.indexPath, model: newModel)
         
     }
    

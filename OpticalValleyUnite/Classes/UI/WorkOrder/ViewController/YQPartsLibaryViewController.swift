@@ -374,9 +374,7 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
                             //模型赋值 传值!
                             self.dataPart = model
                             self.tableViewFrist.reloadData()
-
                         }
-                        
                         break
                     }
                     break

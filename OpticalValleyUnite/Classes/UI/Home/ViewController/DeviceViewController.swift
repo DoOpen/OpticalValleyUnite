@@ -62,6 +62,10 @@ class DeviceViewController: UIViewController {
         tableView.register(UINib(nibName: "DeviceCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
+        
+        //设置scrollView的x方向的滚动
+        self.deviceView.setContentOffset(CGPoint(x:300 , y: 300 ), animated: true)
+        
     }
 
     @IBAction func deviceBtnClick() {
@@ -94,7 +98,6 @@ class DeviceViewController: UIViewController {
                     temp.append(model)
                 }
                 self.detailModels = temp
-                
                 
             }
         }) { (error) in

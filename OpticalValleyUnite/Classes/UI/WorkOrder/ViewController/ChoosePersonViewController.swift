@@ -11,6 +11,9 @@ import SVProgressHUD
 
 class ChoosePersonViewController: UIViewController,ShloudPopType {
 
+    /*
+     add 协助人的按钮的点击的 执行的block代码块的情况
+     */
     @IBOutlet weak var addManageerView: AddScrollerView!
     @IBOutlet weak var execPeopleBtn: SJUpButton!
     @IBOutlet weak var managePeopleBtn: SJUpButton!
@@ -27,8 +30,9 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
     var managePeopleModel: PersonModel?
     var assePeopleModel: [PersonModel]?
     
-    
+    // MARK: - 添加执行人和 添加管理人的点击方法
     @IBAction func chooseBtnClick(_ sender: UIButton) {
+        
         let vc = PeopleListViewController.loadFromStoryboard(name: "WorkOrder") as! PeopleListViewController
         vc.type = sender.tag
         vc.parkId = self.parkId
@@ -43,11 +47,13 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
         self.remarksTextView.placeHolder = "请输入备注内容"
         
         addManageerView.addBtnClickHandel = { [weak self] in
+            
             let vc = PeopleListViewController.loadFromStoryboard(name: "WorkOrder") as! PeopleListViewController
             vc.type = 2
             vc.parkId = (self?.parkId)!
             vc.doneBtnClickHandel = self?.didSelecte
             self?.navigationController?.pushViewController(vc, animated: true)
+            
         }
     }
     
@@ -100,24 +106,25 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
         
     }
 
-    
 
     func didSelecte(type: Int, models: [PersonModel]){
+        
         if type == 0 {
+            
             execPeopleBtn.setTitle(models.first?.name, for: .normal)
             
             if let url = URL(string: (models.first?.icon)!){
                 execPeopleBtn.kf.setImage(with: url, for: .normal)
+                
             }else{
+                
                 execPeopleBtn.setImage(UIImage.normalImageIcon(), for: .normal)
             }
-            
             
             execPeopleBtn.isHidden = false
             execPeopleModel = models.first
             
         }else if type == 1{
-            managePeopleBtn.setTitle(models.first?.name, for: .normal)
             
             managePeopleBtn.kf.setImage(with: URL(string: (models.first?.icon)!), for: .normal)
             managePeopleBtn.isHidden = false
@@ -133,7 +140,9 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
             addManageerView.models = models
             assePeopleModel = models
         }
+        
     }
+    
 
     func viewShloudPop(){
         
@@ -145,12 +154,14 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
             })
         }
     }
+    
 
 }
 
 protocol ShloudPopType {
     func viewShloudPop()
 }
+
 
 extension UIImage{
     static func normalImageIcon() -> (UIImage){

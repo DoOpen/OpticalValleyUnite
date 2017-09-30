@@ -31,6 +31,7 @@ class PeopleListViewController: UIViewController {
                 
             case 1:
                 title = "选择管理人"
+                
             case 2:
                 title = "选择协助人"
                 isMultipSelect = true
@@ -48,6 +49,7 @@ class PeopleListViewController: UIViewController {
     }
     
     func addRefirsh(){
+        
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.getPeople()
         })

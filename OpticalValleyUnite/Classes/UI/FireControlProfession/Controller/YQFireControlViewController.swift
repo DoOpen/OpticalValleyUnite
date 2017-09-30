@@ -579,6 +579,11 @@ extension YQFireControlViewController: MAMapViewDelegate{
      */
      func mapView(_ mapView: MAMapView!, didAnnotationViewCalloutTapped view: MAAnnotationView!) {
         
+        if view.annotation.isKind(of: MAUserLocation.self){
+            //注意的是 MAUserLocation.self ---> 这个是当前用户的 定位个人的类
+            return
+        }
+        
         let  YQPoint = view.annotation as! YQPointAnnotation
         
         if YQPoint.pointModel == nil {

@@ -54,6 +54,7 @@ class DeviceViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         title = "设备台账"

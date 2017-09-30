@@ -164,6 +164,7 @@
             <connections>
                 <outlet property="ImplementPersonTextField" destination="Tnq-30-tIa" id="sVo-8R-aSZ"/>
                 <outlet property="cooperatePersonTextField" destination="0Mn-u0-Oad" id="N3w-Sz-tXn"/>
+                <outlet property="proofImageAddView" destination="4qU-Jm-7rI" id="9Uu-ai-JOV"/>
                 <outlet property="reasonTextField" destination="N95-Pb-Smp" id="f51-gg-wKv"/>
             </connections>
             <point key="canvasLocation" x="-158.5" y="49.5"/>

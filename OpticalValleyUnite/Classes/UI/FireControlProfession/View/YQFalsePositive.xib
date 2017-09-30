@@ -124,6 +124,7 @@
             </constraints>
             <connections>
                 <outlet property="addNameTextField" destination="NMs-Ff-9kQ" id="rIz-8V-0fz"/>
+                <outlet property="proofPictureAddView" destination="weP-KY-KeG" id="Cd2-5g-FMI"/>
                 <outlet property="reasonTextField" destination="LYL-nJ-cgt" id="DpB-YO-dT6"/>
             </connections>
             <point key="canvasLocation" x="-158.5" y="49.5"/>

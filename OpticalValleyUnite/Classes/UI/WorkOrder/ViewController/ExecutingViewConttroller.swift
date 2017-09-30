@@ -400,6 +400,7 @@ class ExecutingViewConttroller: UIViewController {
             vc.selectData = self.partData as? [PartsModel]
             
         }
+        
         navigationController?.pushViewController(vc, animated: true)
         
     }

@@ -99,8 +99,8 @@ class DeviceViewController: UIViewController {
                     temp.append(model)
                 }
                 self.detailModels = temp
-                
             }
+            
         }) { (error) in
             print(error)
         }

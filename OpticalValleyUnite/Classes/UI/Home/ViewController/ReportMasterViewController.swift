@@ -544,10 +544,9 @@ class ReportMasterViewController: UIViewController {
             
         }
         
+        
         let images = addPhotoView.photos.map{$0.image}
-        
 //        let time: TimeInterval = 2.0
-        
         if images.count > 0 {
             
             HttpClient.instance.upDataImages(images, complit: { (url) in

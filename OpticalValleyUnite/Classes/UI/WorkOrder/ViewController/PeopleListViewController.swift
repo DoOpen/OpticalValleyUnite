@@ -11,6 +11,7 @@ import SVProgressHUD
 import MJRefresh
 
 class PeopleListViewController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
 
     var models = [PersonModel]()
@@ -21,6 +22,8 @@ class PeopleListViewController: UIViewController {
     var isSearchIng = false
     var doneBtnClickHandel: ((Int,[PersonModel]) -> ())?
     var parkId = ""
+    
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var type = 0 {
@@ -91,6 +94,7 @@ class PeopleListViewController: UIViewController {
                     self.models.append(contentsOf: temp)
                     self.tableView.mj_footer.endRefreshing()
                 }else{
+                    
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
                 }
             }
@@ -100,6 +104,8 @@ class PeopleListViewController: UIViewController {
         }) { (error) in
             SVProgressHUD.dismiss()
         }
+        
+        
     }
     
     

@@ -198,18 +198,18 @@ class ExecutingViewConttroller: UIViewController {
         
         //保存的参数和接口 应用的json格式来进行回传
         var parmat = [String: Any]()
-//        parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
-//        parmat["UNIT_STATUS"] = 2
-
-        parmat["WORKUNIT_ID"] = json[0]
-        parmat["WORKTASK_ID"] = json[1]
-        parmat["UNIT_STATUS"] = json[2]
-        parmat["ID"] = json[3]
-        parmat["DESCRIPTION"] = json[4]
+        
+        //调整接口的数据的类型,上传数据类型调整
+        let json0 = json[0] as! [String : Any]
+        
+        parmat["WORKUNIT_ID"] = json0["WORKUNIT_ID"]
+        parmat["WORKTASK_ID"] = json0["WORKTASK_ID"]
+        parmat["UNIT_STATUS"] = json0["UNIT_STATUS"]
+        parmat["ID"] = json0["ID"]
+        parmat["DESCRIPTION"] = json0["DESCRIPTION"]
         
         /*
          注意的是:这里的接口的变动的是 以前的是直接传递一个 data 的json 序列化的列表,现在是要求分开来传递,一共是5个参数
-         
          */
         
         SVProgressHUD.show(withStatus: "上传中")
@@ -237,11 +237,13 @@ class ExecutingViewConttroller: UIViewController {
             for (index2,model2) in model.childs.enumerated(){
                 
                 if model2.type == "1"{
+                    
                     let cell = tableView.cellForRow(at: IndexPath(row: index2, section: index1)) as? ExecCell
                     
                     if cell == nil{
                         continue
                     }
+                    
                     
                     if cell!.addPhotoView.photos.count > 0 {
                         
@@ -258,6 +260,7 @@ class ExecutingViewConttroller: UIViewController {
                             group.leave()
                         })
                     }
+                    
                 }
             }
         }
@@ -276,6 +279,7 @@ class ExecutingViewConttroller: UIViewController {
                 model.workOrderId = (self.workOrderDetalModel?.id)!
                 
                 let taskDic = model.toDic()
+                
                 arry.append(taskDic)
                 
             }
@@ -292,7 +296,7 @@ class ExecutingViewConttroller: UIViewController {
                 //改变数据的
                 self.saveUpdate(json: arry as NSArray)
                 
-            } catch  {
+            } catch {
                 print("转换错误 ")
             }
         }
@@ -318,7 +322,6 @@ class ExecutingViewConttroller: UIViewController {
     
     //MARK: - 所有完成按钮点击( 数据要求的是 补全接口的相关 数据)
     @IBAction func doneBtnClick() {
-        
         
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单
             var parmat = [String: Any]()

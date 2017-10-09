@@ -38,6 +38,8 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
         vc.parkId = self.parkId
         vc.doneBtnClickHandel = didSelecte
             navigationController?.pushViewController(vc, animated: true)
+        
+        
     }
     
     override func viewDidLoad() {
@@ -126,6 +128,8 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
             
         }else if type == 1{
             
+            managePeopleBtn.setTitle(models.first?.name, for: .normal)
+            
             managePeopleBtn.kf.setImage(with: URL(string: (models.first?.icon)!), for: .normal)
             managePeopleBtn.isHidden = false
             managePeopleModel = models.first
@@ -137,6 +141,7 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
             }
             
         }else if type == 2{
+            
             addManageerView.models = models
             assePeopleModel = models
         }
@@ -159,6 +164,7 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
 }
 
 protocol ShloudPopType {
+    
     func viewShloudPop()
 }
 

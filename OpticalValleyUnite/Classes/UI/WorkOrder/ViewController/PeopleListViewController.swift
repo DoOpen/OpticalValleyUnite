@@ -105,7 +105,6 @@ class PeopleListViewController: UIViewController {
             SVProgressHUD.dismiss()
         }
         
-        
     }
     
     
@@ -124,14 +123,12 @@ class PeopleListViewController: UIViewController {
             _ = navigationController?.popViewController(animated: true)
         }
     }
-    
 
 }
 
 
 extension PeopleListViewController: UISearchBarDelegate{
 
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text{
             isSearchIng = true
@@ -152,6 +149,7 @@ extension PeopleListViewController: UISearchBarDelegate{
         tableView.reloadData()
 //        self.getPeople(indexPage: self.pageNo)
     }
+    
 }
 
 

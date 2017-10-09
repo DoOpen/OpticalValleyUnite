@@ -37,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vug-bc-x9b" customClass="ShowImageView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                <rect key="frame" x="12" y="92" width="346" height="165.5"/>
+                                <rect key="frame" x="12" y="89" width="346" height="168.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="hE7-Hc-wTP"/>
                                 </constraints>
@@ -49,12 +49,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoC-gk-c3v">
-                                <rect key="frame" x="12" y="67" width="346" height="20"/>
+                                <rect key="frame" x="12" y="67" width="346" height="17"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="pkj-pc-dnL"/>
+                                    <constraint firstAttribute="height" constant="17" id="pkj-pc-dnL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gs-M0-rje">
@@ -109,7 +109,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="r87-Hv-0QA">
-                        <rect key="frame" x="51" y="92" width="60" height="60"/>
+                        <rect key="frame" x="51" y="89" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="BmB-s0-Te8"/>
                             <constraint firstAttribute="height" constant="60" id="OfR-gS-bQH"/>

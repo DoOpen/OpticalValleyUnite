@@ -17,6 +17,9 @@ class ExecutEmergencyCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var showImageView: ShowImageView!
     
+    @IBOutlet weak var remaskDetailLabel: UILabel!
+    
+    
     var detailModel :WorkOrderDetailModel?
     var model: WorkHistoryModel?{
         didSet{
@@ -24,6 +27,8 @@ class ExecutEmergencyCell: UITableViewCell {
                 nameLabel.text = "执行人: " + model.person_name
                 contentLabel.text = model.content
                 timeLabel.text = model.time
+                remaskDetailLabel.text = "备注:" + model.text
+                
                 var temp = [String]()
                 for url in model.pictures{
                     
@@ -37,7 +42,7 @@ class ExecutEmergencyCell: UITableViewCell {
                 }
                 
                 if temp.isEmpty{
-                    showImageviewHeithConstraint.constant = 0.0
+                    showImageviewHeithConstraint.constant = 60.0
                     showImageView.setNeedsLayout()
                 }else{
                     showImageviewHeithConstraint.constant = 70.0
@@ -48,16 +53,13 @@ class ExecutEmergencyCell: UITableViewCell {
                         CoverView.show(image: image)
                 }
                 
-                
-                    for constraint in contentLabel.constraints{
-                        
-                    }
+//                    for constraint in contentLabel.constraints{
+//                        
+//                    }
                 
 
                 }
             }
-            
-        
         }
     }
     

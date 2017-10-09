@@ -33,9 +33,8 @@ class ReportMasterViewController: UIViewController {
     //其他
     @IBOutlet weak var otherReportMaster: UIButton!
     
-/// 提交按钮button
+    /// 提交按钮button
     @IBOutlet weak var SubmitBtn: UIButton!
-    
     
     @IBOutlet weak var famlyBtn: UIButton!
     
@@ -45,10 +44,10 @@ class ReportMasterViewController: UIViewController {
 
     @IBOutlet weak var contentHeightConstraint: NSLayoutConstraint!
     
-/// 区分电梯和普通报事
+    /// 区分电梯和普通报事
     var reportName : String = ""
     
-/// 加锁
+    /// 加锁
     let lock = 0
     let lock1 = 0
     
@@ -83,7 +82,10 @@ class ReportMasterViewController: UIViewController {
     
     @IBOutlet weak var deviceView: DeviceView!
     
+
+/// 紧急报事的情况下的按钮的缓存
     var urgentDegreeBtn: UIButton?
+    @IBOutlet weak var UrgentMatterlow: UIButton!
     
     var selfCheckingView = UIView()
     
@@ -171,6 +173,10 @@ class ReportMasterViewController: UIViewController {
         }
         
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "报事记录", style: .plain, target: self, action: "rightBtnClick")
+        
+        //设置默认的紧急的报事情况
+        self.urgentDegreeBtn = self.UrgentMatterlow
+        self.urgentDegreeBtnClick(urgentDegreeBtn!)
         
     }
     
@@ -282,7 +288,6 @@ class ReportMasterViewController: UIViewController {
         }
     }
     
-    
     // MARK: - 各种按钮的点击方法
     @IBAction func deriveChooseValueChange(_ sender: UISwitch) {
         chooseAddressLabel.text = sender.isOn ? "选择设备位置" : "报事位置"
@@ -321,9 +326,14 @@ class ReportMasterViewController: UIViewController {
         
     }
     
+    
+    // MARK: - 紧急程度的系列按钮点击事件
     @IBAction func urgentDegreeBtnClick(_ sender: UIButton) {
+        
         setBtnSelect(btn: urgentDegreeBtn, false)
+        
         urgentDegreeBtn = sender
+        
         setBtnSelect(btn: urgentDegreeBtn, true)
     }
     
@@ -364,14 +374,12 @@ class ReportMasterViewController: UIViewController {
         
         let dic = ["Mon": "星期一", "Tue": "星期二", "Wed": "星期三", "Thu": "星期四", "Fri": "星期五", "Sat": "星期六", "Sun": "星期日"]
         
-        
         SJPickerView.show(withDateType: .dateAndTime, defaultingDate: Date(), userController: self, selctedDateFormot: "MM-dd EEE HH:mm", didSelcted: {date, dateStr in
            var text = dateStr
             
             for (key, value) in dic{
                 text = text?.replacingOccurrences(of: key, with: value)
             }
-            
             
             self.timeLabel.text = text
             self.selectDate = date
@@ -430,8 +438,6 @@ class ReportMasterViewController: UIViewController {
     // MARK: - 提交-完成buttonClick
     @IBAction func doneBtnClick() {
         
-        
-
         if selectProject == nil {
             SVProgressHUD.showError(withStatus: "请选择一个项目")
             return

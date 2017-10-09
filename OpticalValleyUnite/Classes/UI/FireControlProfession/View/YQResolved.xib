@@ -59,11 +59,11 @@
                     </state>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qU-Jm-7rI" customClass="SJAddView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                    <rect key="frame" x="135" y="289" width="240" height="100"/>
+                    <rect key="frame" x="55" y="289" width="320" height="100"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="Vkj-vZ-AN5"/>
-                        <constraint firstAttribute="width" constant="240" id="ZfV-bn-wsv"/>
+                        <constraint firstAttribute="width" constant="320" id="ZfV-bn-wsv"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="添加一个" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tnq-30-tIa">

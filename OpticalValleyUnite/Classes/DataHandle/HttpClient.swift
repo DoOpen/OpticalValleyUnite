@@ -140,7 +140,9 @@ extension HttpClient {
                 }
                 break
             case .failure(let error):
+                
                 failure(error as NSError)
+                
                 debugPrint(error)
                 
                 SVProgressHUD.dismiss()

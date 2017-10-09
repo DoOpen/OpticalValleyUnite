@@ -189,7 +189,6 @@ class ExecutingViewConttroller: UIViewController {
         //传递的模型数据
         self.partData = array
         
-    
     }
     
     
@@ -337,9 +336,11 @@ class ExecutingViewConttroller: UIViewController {
             }
             
         }else if workOrderDetalModel?.orderType == "应急工单"{
+            
             let images = addPhoneView.photos.map { (image) -> UIImage in
                 return image.image
             }
+            
             if images.count > 0 {
                 upDataImage(images, complit: { (url) in
                     var parmat = [String: Any]()
@@ -581,6 +582,8 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        
         let view = ExecutingSectionView.loadFromXib() as! ExecutingSectionView
         
         let model = models[section]

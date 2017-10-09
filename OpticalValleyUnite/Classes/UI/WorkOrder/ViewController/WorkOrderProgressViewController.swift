@@ -351,7 +351,9 @@ class WorkOrderProgressViewController: UIViewController {
         
         HttpClient.instance.get(path: URLPath.getEquipmentDetail, parameters: parmate, success: { (response) in
 
+            
             if let dic = response as? [String: Any]{
+                
                 self.equimentModel = EquimentModel(parmart: dic)
                 self.tableView.reloadData()
 
@@ -559,8 +561,6 @@ class WorkOrderProgressViewController: UIViewController {
         
         
     }
-    
-    
     
     //MARK: - HTTP
     func request(paramat: [String: Any], completionHandler: (() -> ())?){

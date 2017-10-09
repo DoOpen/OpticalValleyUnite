@@ -39,6 +39,7 @@ class SJAddView: UIView {
     
     
     func addImage(_ image :ImageProtocol){
+        
         if photos.count > maxCount {
             return
         }else{
@@ -83,11 +84,14 @@ class SJAddView: UIView {
     
     @objc private func addBtnClick(){
         
+        
         SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
             
             
             self.addImage(AddViewModel(image: image!))
-        }, viewController: (SJKeyWindow?.rootViewController as! UITabBarController).selectedViewController)
+            
+        }, viewController: (SJKeyWindow?.rootViewController ))
+        
     }
 
 }

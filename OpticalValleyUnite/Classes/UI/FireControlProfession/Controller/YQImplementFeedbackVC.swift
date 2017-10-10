@@ -81,33 +81,31 @@ class YQImplementFeedbackVC: UIViewController {
         
     }
     
-    // MARK: - 保存数据的调用的接口方法
-    func saveButtonClickWithBackStage(){
         
-        var parmert = [String : Any]()
-        parmert["token"] = ""
-        parmert["firePointId"] = ""
-        parmert["type"] =
-        parmert["execPersonId"] = ""
-        parmert["coopPersonIds"] = ""
-        parmert["reason"] = ""
-        parmert["imgPaths"] = ""
+    //MARK: - 上传图片的专门的接口
+    func upDataImage(_ images: [UIImage], complit: @escaping ((String) -> ()),errorHandle: (() -> ())? = nil){
         
-        HttpClient.instance.post(path: URLPath.getFirefeedback, parameters: parmert, success: { (respose) in
+        SVProgressHUD.show(withStatus: "上传图片中...")
+        HttpClient.instance.upLoadImages(images, succses: { (url) in
+            SVProgressHUD.dismiss()
             
+            complit(url!)
             
         }) { (error) in
-            
-            
+            SVProgressHUD.dismiss()
+            if let errorHandle = errorHandle{
+                errorHandle()
+            }
         }
-    
     }
+
     
     func pushPersonListVC(type : Int){
         
         let vc = PeopleListViewController.loadFromStoryboard(name: "WorkOrder") as! PeopleListViewController
-        
+        //传递的是执行人的type,通过type来设置相应的 是 执行人还是协助人
         vc.type = type // "选择执行人" 的 type值
+        
         vc.parkId = "" // 传值为 空
         vc.doneBtnClickHandel = didSelecte
         
@@ -188,7 +186,7 @@ class YQImplementFeedbackVC: UIViewController {
 extension YQImplementFeedbackVC : YQResolvedViewDelegate{
     
     // MARK: - resolve保存按钮点击
-    func resolvedViewSaveButtonClick(view: YQResolvedView) {
+    func resolvedViewSaveButtonClick(view :YQResolvedView ,images : NSArray) {
         
         //已解决:   误报:  1:已解决 2:误报
         if resolve.ImplementPersonTextField.text == nil {
@@ -207,13 +205,27 @@ extension YQImplementFeedbackVC : YQResolvedViewDelegate{
         }
         
         var par = [String : Any]()
-        
         par["firePointId"] = fireModel.firePointId
         par["type"] = 1
         par["execPersonId"] = resolve.ImplementPersonTextField.text
         par["coopPersonIds"] = resolve.cooperatePersonTextField.text
         par["reason"] = resolve.reasonTextField.text
         par["imgPaths"] = ""
+        
+        if images.count > 0 {
+            
+            self.upDataImage(images as! [UIImage], complit: { (url) in
+                if par["imgPaths"] as! String == "" {
+                    
+                    par["imgPaths"] =  url
+                    
+                }else{
+                    
+                     par["imgPaths"] =   par["imgPaths"] as! String + "," + url
+                }
+                
+            })
+        }
 
         SVProgressHUD.show(withStatus: "正在保存中...")
         HttpClient.instance.post(path: URLPath.getFirefeedback, parameters: par, success: { (respose) in
@@ -259,7 +271,7 @@ extension YQImplementFeedbackVC : YQFalsePositiveViewDelegate{
     }
     
     // MARK: - false保存按钮的点击
-    func falsePositiveViewSaveButtonClick(view: YQFalsePositiveView) {
+    func falsePositiveViewSaveButtonClick(view :YQFalsePositiveView, images: NSArray) {
         //已解决:   误报:  1:已解决 2:误报
         if falsePositive.addNameTextField.text == nil {
             SVProgressHUD.showError(withStatus: "请选择执行人")
@@ -284,6 +296,21 @@ extension YQImplementFeedbackVC : YQFalsePositiveViewDelegate{
         par["reason"] = falsePositive.reasonTextField.text
         par["imgPaths"] = ""
         
+        if images.count > 0 {
+            
+            self.upDataImage(images as! [UIImage], complit: { (url) in
+                if par["imgPaths"] as! String == "" {
+                    
+                    par["imgPaths"] =  url
+                    
+                }else{
+                    
+                    par["imgPaths"] =   par["imgPaths"] as! String + "," + url
+                }
+                
+            })
+        }
+
         SVProgressHUD.show(withStatus: "正在保存中...")
         HttpClient.instance.post(path: URLPath.getFirefeedback, parameters: par, success: { (respose) in
             

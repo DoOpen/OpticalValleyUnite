@@ -14,7 +14,7 @@ protocol YQFalsePositiveViewDelegate : class{
     
     func falsePositiveViewAddPersonClick(view :YQFalsePositiveView)
     
-    func falsePositiveViewSaveButtonClick(view :YQFalsePositiveView)
+    func falsePositiveViewSaveButtonClick(view :YQFalsePositiveView, images: NSArray)
 }
 
 class YQFalsePositiveView: UIView {
@@ -44,8 +44,12 @@ class YQFalsePositiveView: UIView {
     // MARK: - 保存按钮点击情况
     @IBAction func saveButtonClick(_ sender: Any) {
         
+        let images = proofPictureAddView.photos.map { (image) -> UIImage in
+            return image.image
+        }
         
-        self.delegate?.falsePositiveViewSaveButtonClick(view: self)
+       
+        self.delegate?.falsePositiveViewSaveButtonClick(view: self, images: images as NSArray)
     
     }
     

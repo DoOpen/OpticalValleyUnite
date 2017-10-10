@@ -296,6 +296,7 @@ class ExecutingViewConttroller: UIViewController {
                 self.saveUpdate(json: arry as NSArray)
                 
             } catch {
+                
                 print("转换错误 ")
             }
         }
@@ -304,9 +305,11 @@ class ExecutingViewConttroller: UIViewController {
     
     //MARK: - 上传图片的专门的接口
     func upDataImage(_ images: [UIImage], complit: @escaping ((String) -> ()),errorHandle: (() -> ())? = nil){
+        
         SVProgressHUD.show(withStatus: "上传图片中...")
         HttpClient.instance.upLoadImages(images, succses: { (url) in
             SVProgressHUD.dismiss()
+            
             complit(url!)
             
         }) { (error) in
@@ -342,18 +345,23 @@ class ExecutingViewConttroller: UIViewController {
             }
             
             if images.count > 0 {
+                
                 upDataImage(images, complit: { (url) in
+                    
+                    //保存的数据的接口的重调!
                     var parmat = [String: Any]()
                     parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
                     parmat["UNIT_STATUS"] = 7
                     parmat["photo"] = url
                     parmat["SUCCESS_TEXT"] = self.textView.text
+                    
                     //设置添加配件库的模型数据进来
 
 //                    self.alert(message: "整个工单已经完成?") { (action) in
                     
-                        //数据保存的接口调用
-                        self.upload(parmat)
+                    //接着是调用了数据保存的接口
+                    //数据保存的接口调用
+                    self.upload(parmat)
 //                    }
                 })
             }else{

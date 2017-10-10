@@ -15,7 +15,7 @@ protocol YQResolvedViewDelegate : class{
     
     func resolvedViewAddCooperatePerson(view :YQResolvedView )
     
-    func resolvedViewSaveButtonClick(view :YQResolvedView)
+    func resolvedViewSaveButtonClick(view :YQResolvedView ,images : NSArray)
     
 }
 
@@ -52,8 +52,12 @@ class YQResolvedView: UIView {
     // MARK: - 整体的按钮 保存的点击
     @IBAction func saveButtonClick(_ sender: Any) {
         
-    
-        self.delegate?.resolvedViewSaveButtonClick(view: self)
+        let images = proofImageAddView.photos.map { (image) -> UIImage in
+            return image.image
+        }
+        
+        
+        self.delegate?.resolvedViewSaveButtonClick(view: self, images: images as NSArray)
         
     }
     

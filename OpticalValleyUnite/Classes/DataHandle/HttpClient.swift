@@ -268,11 +268,7 @@ extension HttpClient {
                 multipartFormData.append(data!, withName: "file\(count)",fileName:"file\(count).jpg", mimeType: "image/jpeg")
                 count += 1
             }
-        
-           
-          
-            
-            
+    
         }, to: url) { (response) in
             
             switch response {

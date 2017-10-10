@@ -560,7 +560,6 @@ class WorkOrderProgressViewController: UIViewController {
             
             self.view.setNeedsLayout()
             
-            
         }) { (error) in
             
         }

@@ -103,8 +103,6 @@ extension HttpClient {
             switch response.result {
             case .success(_):
                 
-                
-                
                 if let value = response.result.value as? [String: Any] {
                     
                     guard !value.isEmpty else{
@@ -121,6 +119,7 @@ extension HttpClient {
                     
         
                     guard value["CODE"] as! String == "0" else{
+                        
                         let message = value["MSG"] as! String
                         let status = 1111
                         

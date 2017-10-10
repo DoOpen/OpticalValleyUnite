@@ -372,7 +372,7 @@ class WorkOrderDetailModel: Object{
     dynamic var statu = ""
     dynamic var picture = ""
     dynamic var PARK_NAME = ""
-    dynamic var equipment_id = -1
+    dynamic var equipment_id : Double  = -1
     
     dynamic var isOpen = false
     var SUPERVISE_PERSON_NAMES = ""
@@ -396,32 +396,49 @@ class WorkOrderDetailModel: Object{
         EXEC_PERSON_NAME = parmart["EXEC_PERSON_NAME"] as? String ?? ""
         PARK_ID = parmart["PARK_ID"] as? String ?? ""
         
+        
+        
         if let type = parmart["WORKUNIT_TYPE"] as? String{//计划工单
+            
             if type == "1"{
+                
                 orderType = "计划工单"
-                if let arry = parmart["tasks"] as? Array<[String: Any]> {
-                    equipment_id = arry.first?["equipment_id"] as? Int ?? -1
-                    content = arry.first?["DESCRIPTION"] as? String ?? ""
-                    
-                }else{
-                    
-                    equipment_id = -1
-                    
-                }
+/// 注意的是: 数据的接口全部发生改变和 调动了
+//                if let arry = parmart["tasks"] as? Array<[String: Any]> {
+//                    
+//                    equipment_id = arry.first?["equipment_id"] as? Double ?? -1
+//                    content = arry.first?["DESCRIPTION"] as? String ?? ""
+//                    
+//                }else{
+//                    
+//                    equipment_id = -1
+//                    
+//                }
                 
 //                let tempP = parmart["tasks"] as?  [String: Any]
 //                content = tempP?["DESCRIPTION"] as? String ?? ""
             
                 
-            }else if type == "2" {//应急工单
+            }else{//应急工单
+                
                 orderType = "应急工单"
-                equipment_id = parmart["equipment_id"] as? Int ?? -1
-                content = parmart["DESCRIPTION"] as? String ?? ""
             }
+            
+            
+            let equipmentID = parmart["equipment_id"] as? Double ?? -1
+            
+            //                print(equipmentID)
+            
+            equipment_id = equipmentID
+            content = parmart["DESCRIPTION"] as? String ?? ""
+            
+            
             
         }else{
             
+            //工单的类型的是 未知的情况
             orderType = ""
+        
         }
         
         GROUPID = parmart["GROUPID"] as? String ?? ""

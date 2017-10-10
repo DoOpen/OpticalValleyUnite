@@ -22,7 +22,7 @@ class PeopleListViewController: UIViewController {
     var isSearchIng = false
     var doneBtnClickHandel: ((Int,[PersonModel]) -> ())?
     var parkId = ""
-    
+    var personType = ""
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -31,12 +31,13 @@ class PeopleListViewController: UIViewController {
             switch type {
             case 0:
                 title = "选择执行人"
-                
+                personType = "exec"
             case 1:
                 title = "选择管理人"
-                
+                personType = "manage"
             case 2:
                 title = "选择协助人"
+                personType = "assis"
                 isMultipSelect = true
             default:
                 break
@@ -68,10 +69,14 @@ class PeopleListViewController: UIViewController {
         SVProgressHUD.show(withStatus: "加载中...")
         var parmat = [String: Any]()
         parmat["pageIndex"] = indexPage
+        
         if name != ""{
             parmat["NAME"] = name
         }
         parmat["parkId"] = parkId
+        //新增一个选择执行人的类型
+        parmat["personType"] = personType
+        
         HttpClient.instance.get(path: URLPath.getPersonList, parameters: parmat, success: { (response) in
             SVProgressHUD.dismiss()
             var temp = [PersonModel]()

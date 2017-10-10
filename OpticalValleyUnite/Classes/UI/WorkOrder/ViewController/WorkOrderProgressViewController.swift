@@ -323,10 +323,15 @@ class WorkOrderProgressViewController: UIViewController {
             }
             
             if let dic = respose as? [String: Any]{
+                
                 let model = WorkOrderDetailModel(parmart: dic)
+                
                 self.workOrderDetalModel = model
                 
+//                print(model.equipment_id)
                 self.getEquipment(model.equipment_id)
+                
+                
             }
             
             self.models = temp
@@ -341,17 +346,18 @@ class WorkOrderProgressViewController: UIViewController {
     
     
     // MARK: - 拿到设备
-    func getEquipment(_ equipment: Int){
+    func getEquipment(_ equipment: Double){
         
-        if equipment == -1{
+        if equipment == -1{//没有设备的列表,拿到的是原始默认值
             return
         }
         
-        let parmate = ["id": equipment]
+        let equipmentInt = Int64(equipment)
+        let equipmentString = "\(equipmentInt)"
+        let parmate = ["id": equipmentString]
         
         HttpClient.instance.get(path: URLPath.getEquipmentDetail, parameters: parmate, success: { (response) in
 
-            
             if let dic = response as? [String: Any]{
                 
                 self.equimentModel = EquimentModel(parmart: dic)
@@ -641,8 +647,6 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
         }
    
         return cell
-
-
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

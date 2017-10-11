@@ -312,8 +312,10 @@ class WorkOrderProgressViewController: UIViewController {
             var temp2 = [CallbackModel]()
             
             for dic in respose["callbacks"] as! Array<[String: Any]>{
+                
                 temp2.append(CallbackModel(parmart: dic))
             }
+            
             self.callbackModels = temp2
 
             if let type = respose["type"] as? NSString{
@@ -540,6 +542,7 @@ class WorkOrderProgressViewController: UIViewController {
     }
     //待评价
     func waitappraisal(){
+        
         let  vc = AppraisalViewController.loadFromStoryboard(name: "WorkOrder") as! AppraisalViewController
         vc.model = workOrderDetalModel
         

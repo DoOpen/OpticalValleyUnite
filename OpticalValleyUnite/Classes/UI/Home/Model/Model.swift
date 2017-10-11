@@ -291,6 +291,8 @@ class WorkHistoryModel{
     
     convenience init(parmart: [String: Any]) {
         self.init()
+        //系统自己派发的工单需要,histories ---> positon ---> personName中来拿到 发起人的详细信息!
+        //注意 要求修改的bug 内容
         
         person_name = parmart["person_name"] as? String ?? ""
         status = parmart["unit_status"] as? Int ?? -1
@@ -426,9 +428,7 @@ class WorkOrderDetailModel: Object{
             
             
             let equipmentID = parmart["equipment_id"] as? Double ?? -1
-            
             //                print(equipmentID)
-            
             equipment_id = equipmentID
             content = parmart["DESCRIPTION"] as? String ?? ""
             
@@ -536,6 +536,7 @@ class EquimentModel{
         year_maintain_date = parmart["year_maintain_date"] as? String ?? ""
         
     }
+    
 //    type_name: "摄像头",
 //    ground_num: 2,
 //    is_model: 1,
@@ -561,7 +562,9 @@ class EquimentModel{
 //    pids: "19"
 }
 
+
 class WorkTypeModel{
+    
     var id = ""
     var name = ""
     

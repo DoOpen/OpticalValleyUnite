@@ -166,7 +166,7 @@ class YQPartsLibaryViewController: UIViewController {
             tabelV.delegate = self as UITableViewDelegate
             
             contentScrollView.addSubview(tabelV)
-            tabelV.frame = contentScrollView.bounds
+            tabelV.frame = UIScreen.main.bounds
             
             self.tableViewFrist = tabelV
 
@@ -178,7 +178,7 @@ class YQPartsLibaryViewController: UIViewController {
             
             contentScrollView.addSubview(tabelV)
             tabelV.frame.origin = CGPoint(x: UIScreen.main.bounds.width, y: 0)
-            tabelV.frame.size = contentScrollView.bounds.size ;
+            tabelV.frame.size =  UIScreen.main.bounds.size ;
             self.tableViewSecond = tabelV
 
         }

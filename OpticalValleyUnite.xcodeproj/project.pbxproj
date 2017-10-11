@@ -16,6 +16,10 @@
 		2F236B741F6FEA1B00F1B0DF /* YQFireDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */; };
 		2F2DF4361F735BF200ADA588 /* YQPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2DF4351F735BF200ADA588 /* YQPointAnnotation.swift */; };
 		2F2DF4381F7365B300ADA588 /* YQStateListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2DF4371F7365B300ADA588 /* YQStateListModel.swift */; };
+		2F2F95761F8DAE9000870DC8 /* YQJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F95751F8DAE9000870DC8 /* YQJournalViewController.swift */; };
+		2F2F95781F8DAECD00870DC8 /* YQJournal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F95771F8DAECD00870DC8 /* YQJournal.storyboard */; };
+		2F2F957A1F8DF74800870DC8 /* YQJournalCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F95791F8DF74800870DC8 /* YQJournalCellView.swift */; };
+		2F2F957C1F8DF7C800870DC8 /* YQJournalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F957B1F8DF7C800870DC8 /* YQJournalCell.xib */; };
 		2F3B96001F6B68BE0008AFEB /* YQDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B95FE1F6B68BE0008AFEB /* YQDrawerViewController.swift */; };
 		2F3B96011F6B68BE0008AFEB /* YQDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */; };
 		2F3B96031F6BC15B0008AFEB /* YQJoinTotallNumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */; };
@@ -226,6 +230,10 @@
 		2F2892321F70FDC1000F879A /* Development-3.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Development-3.mobileprovision"; sourceTree = "<group>"; };
 		2F2DF4351F735BF200ADA588 /* YQPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YQPointAnnotation.swift; path = ../Controller/YQPointAnnotation.swift; sourceTree = "<group>"; };
 		2F2DF4371F7365B300ADA588 /* YQStateListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStateListModel.swift; sourceTree = "<group>"; };
+		2F2F95751F8DAE9000870DC8 /* YQJournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalViewController.swift; sourceTree = "<group>"; };
+		2F2F95771F8DAECD00870DC8 /* YQJournal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJournal.storyboard; sourceTree = "<group>"; };
+		2F2F95791F8DF74800870DC8 /* YQJournalCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalCellView.swift; sourceTree = "<group>"; };
+		2F2F957B1F8DF7C800870DC8 /* YQJournalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQJournalCell.xib; sourceTree = "<group>"; };
 		2F3B95FE1F6B68BE0008AFEB /* YQDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDrawerViewController.swift; sourceTree = "<group>"; };
 		2F3B95FF1F6B68BE0008AFEB /* YQDrawerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDrawerViewController.xib; sourceTree = "<group>"; };
 		2F3B96021F6BC15B0008AFEB /* YQJoinTotallNumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJoinTotallNumVC.swift; sourceTree = "<group>"; };
@@ -504,6 +512,41 @@
 				D91F2B9B4D67FFDCC95274E4 /* Pods_OpticalValleyUnite.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2F2F95711F8DACB800870DC8 /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				2F2F95721F8DACB800870DC8 /* Model */,
+				2F2F95731F8DACB800870DC8 /* View */,
+				2F2F95741F8DACB800870DC8 /* ViewController */,
+			);
+			path = Journal;
+			sourceTree = "<group>";
+		};
+		2F2F95721F8DACB800870DC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2F2F95731F8DACB800870DC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F2F95791F8DF74800870DC8 /* YQJournalCellView.swift */,
+				2F2F957B1F8DF7C800870DC8 /* YQJournalCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F2F95741F8DACB800870DC8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2F2F95751F8DAE9000870DC8 /* YQJournalViewController.swift */,
+				2F2F95771F8DAECD00870DC8 /* YQJournal.storyboard */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		2F5E8C481F59589B00007717 /* SystemSelection */ = {
@@ -847,6 +890,7 @@
 		4BD4B9221E272EA600AE2BC9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2F2F95711F8DACB800870DC8 /* Journal */,
 				2F6A43891F6A33A0003E10C9 /* FireControlProfession */,
 				4BD4B9231E272EA600AE2BC9 /* Home */,
 				4BD4B92D1E272EA600AE2BC9 /* Login */,
@@ -1213,6 +1257,7 @@
 				4BD4B9541E272EA600AE2BC9 /* WorkOrder.storyboard in Resources */,
 				4B3FD0301E8B61AC005D5231 /* exportPlist.plist in Resources */,
 				4BD4B9511E272EA600AE2BC9 /* PersonCore.storyboard in Resources */,
+				2F2F957C1F8DF7C800870DC8 /* YQJournalCell.xib in Resources */,
 				4B3952001E28D2B900E2642F /* WorkOrderDistributionCell.xib in Resources */,
 				2F6A43901F6A52CA003E10C9 /* YQFireControl.storyboard in Resources */,
 				2F3C09411F7262C200036547 /* YQImplementDetailHead.xib in Resources */,
@@ -1223,6 +1268,7 @@
 				4B5AF64B1E36F73B00844F3D /* LoginViewController.xib in Resources */,
 				2FEB0E891F6E713F0002DEE8 /* YQFalsePositives.xib in Resources */,
 				4BB53FF11F14D9CA0061190F /* DeviceCell.xib in Resources */,
+				2F2F95781F8DAECD00870DC8 /* YQJournal.storyboard in Resources */,
 				2F94A2851F73B49C00455162 /* YQImplementFeedback.storyboard in Resources */,
 				4BE88A611E88D242003D9179 /* SigninCell.xib in Resources */,
 				2F5E8C561F595F7000007717 /* YQPartDataAll.xib in Resources */,
@@ -1388,6 +1434,7 @@
 				4B7A59C31E35DB27002E96B6 /* URLPath.swift in Sources */,
 				4BD4B9501E272EA600AE2BC9 /* SignInViewController.swift in Sources */,
 				4B3951CE1E277D8600E2642F /* RKTagsView.m in Sources */,
+				2F2F95761F8DAE9000870DC8 /* YQJournalViewController.swift in Sources */,
 				4BE9225F1EE6DB7C00FDEFE1 /* CallBackCell.swift in Sources */,
 				4B3951F31E28B38D00E2642F /* AddSignInViewController.swift in Sources */,
 				4BA520361E8E0F8000398F34 /* ExexSwithCell.swift in Sources */,
@@ -1416,6 +1463,7 @@
 				4BD4B95B1E275BDB00AE2BC9 /* SignInListViewController.swift in Sources */,
 				4BBBEC951E2CAAE200F60313 /* BoPhotoListCell.m in Sources */,
 				4B6E64FD1EEAEFCF00BA23E4 /* PhotoTransition.swift in Sources */,
+				2F2F957A1F8DF74800870DC8 /* YQJournalCellView.swift in Sources */,
 				2F94A2831F73B46B00455162 /* YQImplementFeedbackVC.swift in Sources */,
 				4BD4A0E21EE2B18300F044C1 /* AppraisalCell.swift in Sources */,
 				4BD4B9421E272EA600AE2BC9 /* Const.swift in Sources */,

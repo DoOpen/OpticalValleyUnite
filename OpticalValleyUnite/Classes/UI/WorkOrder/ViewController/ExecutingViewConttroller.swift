@@ -184,10 +184,13 @@ class ExecutingViewConttroller: UIViewController {
     // MARK: - 通知实现的方法
     func partsSelectionreceiveValue(info: NSNotification){
         //nav 的环境下通知,代理传递是没有问题的,在window的环境下不可以的
-        let array = info.userInfo?["partData"] as! NSArray
+        let array = info.userInfo?["partData"] as? NSArray
+        if array == nil {
+            return
+        }
 //        print(array)
         //传递的模型数据
-        self.partData = array
+        self.partData = array!
         
     }
     

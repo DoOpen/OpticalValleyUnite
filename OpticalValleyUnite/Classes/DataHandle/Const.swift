@@ -32,4 +32,5 @@ struct Const {
     #else
     static let SJIsSIMULATOR = false
     #endif
+    
 }

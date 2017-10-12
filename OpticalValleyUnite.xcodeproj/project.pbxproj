@@ -1205,14 +1205,14 @@
 				TargetAttributes = {
 					4BD4B8FC1E272E0C00AE2BC9 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = JULHSND4WY;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = UAHXEMH9BC;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1655,9 +1655,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OpticalValleyUnite/OpticalValleyUnite.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: tao wei (8ES22U6BV5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = JULHSND4WY;
+				DEVELOPMENT_TEAM = UAHXEMH9BC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",
@@ -1671,8 +1672,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2f891814-9d1d-4a56-9bec-3dfa28dcf159";
-				PROVISIONING_PROFILE_SPECIFIER = Development;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpticalValleyUnite/OpticalValleyUnite-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				WARNING_CFLAGS = "-Wno-unused-variable";
@@ -1685,9 +1686,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OpticalValleyUnite/OpticalValleyUnite.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: WUHAN XIAOMIAO TECHNOLOGY CO. , LTD. (A2R3PWNCGN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = JULHSND4WY;
+				DEVELOPMENT_TEAM = UAHXEMH9BC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",
@@ -1701,8 +1703,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2f891814-9d1d-4a56-9bec-3dfa28dcf159";
-				PROVISIONING_PROFILE_SPECIFIER = Development;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpticalValleyUnite/OpticalValleyUnite-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				WARNING_CFLAGS = "-Wno-unused-variable";

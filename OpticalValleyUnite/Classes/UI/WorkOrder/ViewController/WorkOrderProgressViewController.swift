@@ -292,7 +292,7 @@ class WorkOrderProgressViewController: UIViewController {
         
         HttpClient.instance.get(path: URLPath.getWorkDetail, parameters: parmate, success: { (respose) in
             
-            print(respose)
+//            print(respose)
             
             SVProgressHUD.dismiss()
             //添加收藏 parkid的 缓存
@@ -416,8 +416,15 @@ class WorkOrderProgressViewController: UIViewController {
         
         var cell = UITableViewCell()
         switch model.status {
+            
         case -1://工单生成
             cell = tableView.dequeueReusableCell(withIdentifier: "WorkOrderDescription")!
+            let reportName = workOrderDetalModel?.reportPeopleName
+            if reportName == "" {
+//                (cell as! WorkOrderCreatCell).model?.reportPeopleName = model.person_name
+                workOrderDetalModel?.reportPeopleName = model.person_name
+            }
+            
             (cell as! WorkOrderCreatCell).model = workOrderDetalModel
         
         case 4://工单生成
@@ -617,6 +624,7 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
             var cell = UITableViewCell()
             
             if indexPath.row == 0{
+                //显示设备详情的cell 就是第一行的 所有的数据和逻辑
                 let DetailsCell = tableView.dequeueReusableCell(withIdentifier: "xiangqing") as! WorkOrderDetailsCell
                 DetailsCell.model = self.workOrderDetalModel
                 DetailsCell.hasCallBackList = callbackModels.count != 0
@@ -634,12 +642,14 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
                     DetailsCell.contentLabel.text = content
                 }
             }else{
+                
                 let model = models[indexPath.row - 1]
                 let cell2 = getCell(model: model)
                 cell = cell2
             }
         
         let dotView = cell.contentView.viewWithTag(777)
+        
         if let view = dotView{
             if indexPath.row == 1{
                 view.backgroundColor = UIColor.blue

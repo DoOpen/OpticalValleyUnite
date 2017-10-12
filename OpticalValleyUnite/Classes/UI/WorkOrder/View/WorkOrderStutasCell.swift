@@ -119,6 +119,7 @@ class WorkOrderCreatCell: UITableViewCell {
     
     var model: WorkOrderDetailModel?{
         didSet{
+            
             if let model = model{
                 timeLabel.text = model.time
                 nameLabel.text = model.reportPeopleName

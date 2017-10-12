@@ -253,6 +253,7 @@ class LoginViewController: UIViewController {
         UserDefaults.standard.removeObject(forKey: Const.YQSystemSelectData)
 //        UserDefaults.standard.removeObject(forKey: Const.YQTotallData)
 //        "SJlatitude") as? CLLocationDegrees,let longitude = .object(forKey: "SJlongitude")
+        UserDefaults.standard.removeObject(forKey: Const.YQIs_Group)
         
         User.removeUser()
         UserDefaults.standard.set(nil, forKey: Const.SJToken)

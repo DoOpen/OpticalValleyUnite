@@ -73,7 +73,15 @@ class PeopleListViewController: UIViewController {
         if name != ""{
             parmat["NAME"] = name
         }
-        parmat["parkId"] = parkId
+        
+        //获取集团和 项目版的参数
+        let isgroup = UserDefaults.standard.object(forKey: Const.YQIs_Group) as? Int ?? -1
+        if isgroup == 2 {//集团版
+            
+        }else{//项目版
+            parmat["parkId"] = parkId
+        }
+        
         //新增一个选择执行人的类型
         parmat["personType"] = personType
         

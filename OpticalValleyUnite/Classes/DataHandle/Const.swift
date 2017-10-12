@@ -25,6 +25,8 @@ struct Const {
     static let YQTotallData = "YQTotallData"
     static let YQSystemSelectData = "YQSystemSelectData"
     
+    static let YQIs_Group = "YQIs_Group"
+    
 
     #if TARGET_IPHONE_SIMULATOR
     

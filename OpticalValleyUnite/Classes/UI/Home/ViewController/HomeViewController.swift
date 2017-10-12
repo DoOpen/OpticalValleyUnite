@@ -165,9 +165,14 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
         //注意的是:通过的是子系统选择的界面功能取消   URLPath.getModules 的网络请求
         systemSelection = UserDefaults.standard.object(forKey: Const.YQSystemSelectData) as! NSDictionary
-
+        
+        //新增 获取集团版 和 项目版  的区别 来进行的操作
+        let isgroup = systemSelection["is_group"] as? Int ?? -1
+        UserDefaults.standard.set(isgroup, forKey: Const.YQIs_Group)
+        
         
         if systemSelection.count > 0 {
+            
             
             let array : NSArray = systemSelection["app_res"] as! [[String : Any]] as NSArray
             let sortArray : NSMutableArray = {return NSMutableArray()}()

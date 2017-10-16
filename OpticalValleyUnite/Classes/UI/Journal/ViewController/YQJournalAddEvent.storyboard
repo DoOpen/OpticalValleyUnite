@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uDc-Hh-Vjf">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Journal Add Event View Controller-->
+        <scene sceneID="3Zj-Si-X4h">
+            <objects>
+                <viewController id="uDc-Hh-Vjf" customClass="YQJournalAddEventViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V1h-qZ-mpQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="aKW-kG-Jxz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kAe-jr-kFv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZaJ-Ec-glC">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cMO-OE-Uvp"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="添加事项" id="h71-SG-BYP">
+                                        <barButtonItem key="rightBarButtonItem" title="完成" id="ZKe-Ye-H17">
+                                            <connections>
+                                                <action selector="addEventComplete:" destination="uDc-Hh-Vjf" id="6Vb-mY-JdY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="drD-7G-B18" customClass="SJTextView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="iBJ-Zg-5sy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZaJ-Ec-glC" firstAttribute="top" secondItem="V1h-qZ-mpQ" secondAttribute="bottom" id="cf4-s2-ece"/>
+                            <constraint firstItem="drD-7G-B18" firstAttribute="leading" secondItem="kAe-jr-kFv" secondAttribute="leading" id="hQb-d3-8Xm"/>
+                            <constraint firstAttribute="trailing" secondItem="ZaJ-Ec-glC" secondAttribute="trailing" id="ldb-yR-nbo"/>
+                            <constraint firstItem="drD-7G-B18" firstAttribute="top" secondItem="ZaJ-Ec-glC" secondAttribute="bottom" id="tQL-gY-oDC"/>
+                            <constraint firstItem="ZaJ-Ec-glC" firstAttribute="leading" secondItem="kAe-jr-kFv" secondAttribute="leading" id="uNn-5Y-DIx"/>
+                            <constraint firstAttribute="trailing" secondItem="drD-7G-B18" secondAttribute="trailing" id="upJ-K0-8wg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addTextView" destination="drD-7G-B18" id="tSx-Qo-849"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1To-uY-j0y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="111" y="152"/>
+        </scene>
+    </scenes>
+</document>

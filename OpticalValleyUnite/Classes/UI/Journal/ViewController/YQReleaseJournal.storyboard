@@ -28,7 +28,11 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="发布日志" id="61E-5g-spx">
-                                        <barButtonItem key="rightBarButtonItem" title="提交" id="d8Y-5x-dPx"/>
+                                        <barButtonItem key="rightBarButtonItem" title="提交" id="d8Y-5x-dPx">
+                                            <connections>
+                                                <action selector="submitButtonClick:" destination="VD2-mN-nB8" id="dsf-EG-wvt"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -86,6 +90,9 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="55" id="wrb-Xp-0jb"/>
                                     <constraint firstItem="YkR-Fu-YxR" firstAttribute="centerY" secondItem="WUu-RJ-orG" secondAttribute="centerY" id="zdj-AC-PcN"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3nP-WI-02B" appends="YES" id="bMo-9l-11e"/>
+                                </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LBG-V2-yRD">
                                 <rect key="frame" x="0.0" y="149" width="375" height="518"/>
@@ -111,8 +118,16 @@
                             <constraint firstItem="LBG-V2-yRD" firstAttribute="leading" secondItem="4Qp-IH-fGo" secondAttribute="leading" id="wu7-eV-lC9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailTableView" destination="LBG-V2-yRD" id="JIU-yg-eDJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9R-ub-8bt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3nP-WI-02B">
+                    <connections>
+                        <action selector="tapClickWithWorkRecord:" destination="VD2-mN-nB8" id="9Ed-3t-k74"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="218" y="-10"/>
         </scene>

@@ -8,14 +8,22 @@
 
 import UIKit
 
+protocol YQReseaseJouranlFooterDeletage : class{
+    
+    func reseaseJouranlFooterButtonClick(releaseJournal : YQReleaseJournalFooterV)
+    
+}
+
 class YQReleaseJournalFooterV: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var addEventButtonClick: UIButton!
+    
+    /// 设置代理
+    weak var deletage : YQReseaseJouranlFooterDeletage?
+    
+    @IBAction func addEventButtonClick(_ sender: Any) {
+        //添加代理,执行代理方法,跳转到界面详情
+        self.deletage?.reseaseJouranlFooterButtonClick(releaseJournal: self)
     }
-    */
 
 }

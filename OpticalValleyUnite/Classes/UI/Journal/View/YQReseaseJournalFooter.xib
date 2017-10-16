@@ -35,6 +35,9 @@
                             <real key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="addEventButtonClick:" destination="cDd-51-tfZ" eventType="touchUpInside" id="JwI-lg-MNq"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,6 +46,9 @@
                 <constraint firstItem="DaX-BC-v61" firstAttribute="centerY" secondItem="cDd-51-tfZ" secondAttribute="centerY" id="twa-ki-t7f"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addEventButtonClick" destination="DaX-BC-v61" id="S1k-tx-EDQ"/>
+            </connections>
             <point key="canvasLocation" x="-55.5" y="-483.5"/>
         </view>
     </objects>

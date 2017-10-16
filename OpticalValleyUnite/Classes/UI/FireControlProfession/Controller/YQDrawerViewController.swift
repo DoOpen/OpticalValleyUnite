@@ -70,6 +70,16 @@ class YQDrawerViewController: UIViewController {
         
         self.sendNoties(Notifaction: "fireAlarm")
     }
+    
+    /// 签到按钮执行的详情
+    @IBAction func SignTapClick(_ sender: Any) {
+        
+      self.sendNoties(Notifaction: "signTap")
+        
+        
+    }
+    
+    
    
     /// 误报单详情
     @IBAction func falsePositives(_ sender: UITapGestureRecognizer) {
@@ -108,7 +118,6 @@ class YQDrawerViewController: UIViewController {
         let notiesName = NSNotification.Name(rawValue: "drawerDetailNoties")
         
         center.post(name: notiesName, object: nil, userInfo: ["notiesName": Notifaction])
-    
     
     }
     

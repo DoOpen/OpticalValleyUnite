@@ -201,6 +201,15 @@ class YQFireControlViewController: UIViewController {
 
        
         switch infoName {
+            
+            case "signTap":
+                
+                //加载签到界面
+                let detail = UIStoryboard.instantiateInitialViewController(name: "SignIn") as! SignInViewController
+                self.navigationController?.pushViewController(detail, animated: true)
+                
+                break
+
             case "join":
                 //加载详情界面
                 let detail = UIStoryboard.instantiateInitialViewController(name: "YQJoinTotall") as! YQJoinTotallNumVC

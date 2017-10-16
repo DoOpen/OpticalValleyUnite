@@ -113,11 +113,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         let userInfo = response.notification.request.content.userInfo
         
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
-
+            
+            /// 这个是应用处在后台时候的推送执行的方法
             // 接受通知执行界面的跳转功能
             noticHandel(userInfo: userInfo)
-    
             UMessage.didReceiveRemoteNotification(userInfo)
+            
             
         }else{
             //应用处于后台时的本地推送接受
@@ -136,11 +137,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
             //应用处于前台时的远程推送接受
             //关闭U-Push自带的弹出框
             UMessage.setAutoAlert(false)
+            noticDownstage(userInfo: userInfo)
+            
             UMessage.didReceiveRemoteNotification(userInfo)
             
         }else{
             //应用处于前台时的本地推送接受
+//            UMessage.
         }
+        
         UIApplication.shared.applicationIconBadgeNumber += 1
         completionHandler(UNNotificationPresentationOptions.alert)
     }
@@ -171,7 +176,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
 /// 继承appDelegate的点击进行的界面间跳转的方法
 extension AppDelegate{
     
-    // MARK: - 推送通知返回的 值--->(关联后台的参数值来解析) 进行相应的跳转传值
+    // MARK: - 应用后台推送通知返回的 值--->(关联后台的参数值来解析) 进行相应的跳转传值
     func noticHandel(userInfo: [AnyHashable : Any]){
         
         if !User.isLogin(){
@@ -182,11 +187,14 @@ extension AppDelegate{
         //应用处于后台时的远程推送接受
         if let type = userInfo["type"] as? String{
             if type == "工单"{
+                
                 if let sub_type = userInfo["sub_type"] as? String,sub_type == "督办"{
+                    
                     let workId = userInfo["workId"] as! String
                     pushToDubanViewController(workId)
                     
                 }else{
+                    
                     let workId = userInfo["id"] as! String
                     pushToWorkOrderViewController(workId)
                 }
@@ -194,18 +202,57 @@ extension AppDelegate{
             }else if type == "通知"{
                 
                 pushToHomeViewController()
+                
+            }else if type == "火警"{
+            
+                pushToFireController()
             }
         }
     }
     
+    
+    // MARK: - 应用前台推送通知返回的 值--->(关联后台的参数值来解析) 进行相应的跳转传值
+    func noticDownstage(userInfo: [AnyHashable : Any]){
+        
+        if !User.isLogin(){
+            print("没有登录")
+            return
+        }
+        //应用处于前台时的远程推送接受
+        //这里只是接受了火警的前台接受
+        if let type = userInfo["type"] as? String{
+         
+            if type == "火警"{
+                let vc = getNavController()!
+                if vc.isKind(of: YQFireControlViewController.classForCoder()) {
+//                    if vc is YQFireControlViewController {
+//                        
+//                        
+//                        vc.makeMapLocationData()
+//                    }
+                    
+                    let vc1 = vc.superclass as? YQFireControlViewController
+                    //重新刷新火警列表
+                    vc1?.makeMapLocationData()
+                
+                }else{
+                
+                    pushToFireController()
+                }
+            }
+
+        }
+        
+    }
     
     func getNavController(_ vc: UIViewController = (SJKeyWindow!.rootViewController)!) -> UINavigationController?{
         
         if let vc = vc as? UITabBarController{
             
             return getNavController(vc.selectedViewController!)
-        }else if let vc = vc as? UINavigationController{
             
+        }else if let vc = vc as? UINavigationController{
+        
             return vc
         }
         return nil
@@ -236,14 +283,28 @@ extension AppDelegate{
     
     // MARK: - push到 主界面的情况
     func pushToHomeViewController(){
+        
         if let vc = SJKeyWindow!.rootViewController as? UITabBarController{
+            
             if vc.selectedIndex == 0{
                 (vc.selectedViewController as! UINavigationController).popToRootViewController(animated: true)
             }else{
                 (vc.selectedViewController as! UINavigationController).popToRootViewController(animated: false)
                 vc.selectedIndex = 0
             }
+            
         }
+        
+    }
+    
+    // MARK: - push到 火警的界面
+    func pushToFireController(){
+        
+        let vc = YQFireControlViewController.loadFromStoryboard(name: "YQFireControl") as! YQFireControlViewController
+        
+        getNavController()?.pushViewController(vc
+            , animated: true)
+        
     }
 }
 

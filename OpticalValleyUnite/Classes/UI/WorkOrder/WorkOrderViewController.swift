@@ -4,7 +4,6 @@
 //
 //  Created by 贺思佳 on 2017/1/10.
 //  Copyright © 2017年 贺思佳. All rights reserved.
-//
 
 import UIKit
 import SVProgressHUD
@@ -14,28 +13,56 @@ import RealmSwift
 class WorkOrderViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    /*
+     已处理按钮 (以前)
+     待接受按钮 (现在)
+     */
     @IBOutlet weak var didProcessedBtn: UIButton!
+    
+    /*
+     待处理按钮 (以前)
+     待派发按钮 (现在)
+     */
     @IBOutlet weak var waitProcessedBtn: UIButton!
+    
+    /*
+     现在和以前的都是  已关闭状态
+     */
     @IBOutlet weak var didCloseBtn: UIButton!
+    
+    /*
+     新增的 待执行 按钮
+     */
+    @IBOutlet weak var waitExecutiveBtn: UIButton!
+    
+    /*
+     新增的 待评价 按钮
+     */
+    @IBOutlet weak var waitEvaluateBtn: UIButton!
+    
     var siftVc: WorkOrderSiftViewController?
     var siftParmat: [String: Any]?
     var isFirstLoad = true
     var currentDatas = [WorkOrderModel2]()
-
+    
     var currentIndex = 0{
         didSet{
             pageNo = 0
             getWorkOrder(type:currentIndex, indexPage: pageNo)
         }
     }
+    
     var pageNo = 0
     
     var currentStatusBtn: UIButton?
+    
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.navigationItem.title = "我的工单"
+        
         statusBtnClick(waitProcessedBtn)
         addRefirsh()
 //        getWorkOrder(type: currentIndex,indexPage: 0)
@@ -86,11 +113,16 @@ class WorkOrderViewController: UIViewController {
         getWorkOrder(type: currentIndex,indexPage: 0)
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
+        
         if isFirstLoad {
+            
             isFirstLoad = false
         }else{
+            
             getWorkOrder(type: currentIndex,indexPage: 0)
         }
         
@@ -101,10 +133,12 @@ class WorkOrderViewController: UIViewController {
 //    }
 
     @IBAction func statusBtnClick(_ sender: UIButton) {
+        
         currentStatusBtn?.isSelected = false
         currentStatusBtn = sender
         currentIndex = sender.tag
         currentStatusBtn?.isSelected = true
+        
     }
     
 
@@ -124,6 +158,8 @@ class WorkOrderViewController: UIViewController {
     }
     
     func getWorkOrder(type:Int, indexPage: Int = 0,dic: [String: Any] = [String: Any]() ){
+        
+        //调用 类型的参数的接口!
         var array = ["DCL", "YCL", "YGB"];
         
         var parmat = [String: Any]()

@@ -38,10 +38,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qW-LL-TKh">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="0.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFQ-Dz-02n">
-                                        <rect key="frame" x="275" y="0.0" width="100" height="44"/>
+                                        <rect key="frame" x="275" y="0.0" width="100" height="0.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="h0t-NN-xzb"/>
                                         </constraints>
@@ -51,13 +51,13 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广播:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kse-mV-A4j">
-                                        <rect key="frame" x="20" y="13.5" width="33" height="17"/>
+                                        <rect key="frame" x="20" y="-8" width="33" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创意天地1期1号楼1单元5楼502房间..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7o-xr-Ff0">
-                                        <rect key="frame" x="64.5" y="13.5" width="210.5" height="17"/>
+                                        <rect key="frame" x="64.5" y="-8" width="210.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -66,7 +66,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="eFQ-Dz-02n" secondAttribute="trailing" id="4GX-Kq-qfb"/>
-                                    <constraint firstAttribute="height" constant="44" id="DA5-3v-ifY"/>
+                                    <constraint firstAttribute="height" constant="0.5" id="DA5-3v-ifY"/>
                                     <constraint firstItem="eFQ-Dz-02n" firstAttribute="leading" secondItem="u7o-xr-Ff0" secondAttribute="trailing" id="JGS-d2-5c3"/>
                                     <constraint firstItem="u7o-xr-Ff0" firstAttribute="centerY" secondItem="3qW-LL-TKh" secondAttribute="centerY" id="KlY-pF-6gQ"/>
                                     <constraint firstItem="kse-mV-A4j" firstAttribute="centerY" secondItem="3qW-LL-TKh" secondAttribute="centerY" id="SdX-Vk-ohM"/>
@@ -77,11 +77,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yb3-Sb-cBk" customClass="MAMapView">
-                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="64.5" width="375" height="602.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCK-ok-a4d">
-                                <rect key="frame" x="10" y="118" width="40" height="40"/>
+                                <rect key="frame" x="10" y="74.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Zp9-pn-DYR"/>
                                     <constraint firstAttribute="height" constant="40" id="dOb-Ek-UbI"/>

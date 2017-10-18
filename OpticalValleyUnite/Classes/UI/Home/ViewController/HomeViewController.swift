@@ -365,8 +365,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             navigationController?.pushViewController(vc!, animated: true)
             
         case "工单":
-            let vc = UIStoryboard(name: "WorkOrder", bundle: nil).instantiateInitialViewController()
-            navigationController?.pushViewController(vc!, animated: true)
+            
+            let WO = UIStoryboard.instantiateInitialViewController(name: "YQWorkOrderFirst")
+            navigationController?.pushViewController(WO, animated: true)
+            
         case "签到":
             let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)

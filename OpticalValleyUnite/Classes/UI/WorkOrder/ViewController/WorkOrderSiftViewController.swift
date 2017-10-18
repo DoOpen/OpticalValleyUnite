@@ -11,10 +11,18 @@ import UIKit
 class WorkOrderSiftViewController: UIViewController {
 
     @IBOutlet weak var projectTagsView: RKTagsView!
+    
     @IBOutlet weak var workTypeTagsView: RKTagsView!
+    
+    //工作分类视图框(应急工单 和 计划工单的类型)
     @IBOutlet weak var reportTypeTagsView: RKTagsView!
+    
     @IBOutlet weak var deviceTagsView: RKTagsView!
+    
+    //工单状态是不要的!(["待派发","待接收","协助查看","待执行","待评价","已关闭"])
     @IBOutlet weak var workStatusTagView: RKTagsView!
+    
+    
     @IBOutlet weak var sourceTagsView: RKTagsView!
     
     @IBOutlet weak var workOrderNameLabel: UITextField!
@@ -24,7 +32,8 @@ class WorkOrderSiftViewController: UIViewController {
     @IBOutlet weak var startBtn: UIButton!
     @IBOutlet weak var endBtn: UIButton!
     
-    let workStatus = ["待派发","待接收","协助查看","待执行","待评价","已关闭"]
+    // "待派发","待接收","协助查看","待执行","待评价","已关闭"
+    let workStatus = [String : Any]() //暂时设置为nil,字面量的赋值取消
     
 
     var startTime: String?
@@ -55,9 +64,14 @@ class WorkOrderSiftViewController: UIViewController {
         
         setTagsView(tagsView: projectTagsView)
         setTagsView(tagsView: workTypeTagsView)
-        setTagsView(tagsView: reportTypeTagsView,tags: ["计划工单","应急工单"])
+        
+// reportType 的设置
+//        setTagsView(tagsView: reportTypeTagsView,tags: ["计划工单","应急工单"])
         setTagsView(tagsView: deviceTagsView,tags: ["是","否"])
-        setTagsView(tagsView: workStatusTagView,tags: workStatus)
+        
+// workStatus 的设置
+//        setTagsView(tagsView: workStatusTagView,tags: workStatus as! [String])
+        
         setTagsView(tagsView: sourceTagsView,tags: ["系统后台","员工app","业主app"])
         
 //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
@@ -141,6 +155,8 @@ class WorkOrderSiftViewController: UIViewController {
     }
     
     
+    // MARK: - 点击完成时候实现的逻辑处理方法
+    
     @IBAction func doenBtnClick() {
         
         var paramert = [String: Any]()
@@ -158,15 +174,31 @@ class WorkOrderSiftViewController: UIViewController {
         if let index = workTypeTagsViewIndex{
             paramert["WORKTYPE_ID"] = workTypeData[index].id
         }
+        
+        /*
+         要求实现的是 将工单类型的筛选条件也拿出来到最外层
+         
+        */
         if let index = reportTypeTagsViewIndex{
             paramert["WORKUNIT_TYPE"] = index + 1
         }
+        
+        
         if let index = deviceTagsViewIndex{
             paramert["is_equip"] = index + 1
         }
-        if let index = workStatusTagsViewIndex{
-            let dic = ["待派发": 11,"待执行" : 22, "待评价": 31,"待接收": 21,"已处理": 7, "已接受": 5,"协助查看": 5]
-            paramert["operateType"] = dic[workStatus[index]]
+        
+        
+        /*
+         要求的实现的 逻辑是 将 workStatusTagsView 拿出来到外面来进行筛选
+         
+         还有的是,应急工单和  计划工单也是拿出来进行筛选了
+         if let index = workStatusTagsViewIndex
+         
+         */
+        if workStatusTagsViewIndex != nil{
+//            let dic = ["待派发": 11,"待执行" : 22, "待评价": 31,"待接收": 21,"已处理": 7, "已接受": 5,"协助查看": 5]
+//            paramert["operateType"] = dic[workStatus[index]]
         }
         
         if let index = sourceTagsViewIndex{
@@ -190,11 +222,13 @@ class WorkOrderSiftViewController: UIViewController {
         }
         
         if let block = doenBtnClickHandel{
+            //通过的是block的回调来进行的传值,如果是需要保存的话,要求保存paramert 的参数
             block(paramert)
         }
         doenBtnClickHandel = nil
         
     }
+    
 
     private func setTagsView(tagsView: RKTagsView,tags: [String]? = nil){
         tagsView.editable = false
@@ -203,6 +237,7 @@ class WorkOrderSiftViewController: UIViewController {
         tagsView.interitemSpacing = 15
         tagsView.allowsMultipleSelection = false
 //        projectTagsView.delegate = self
+        
         if tags != nil{
             for tag in tags!{
                 tagsView.addTag(tag)

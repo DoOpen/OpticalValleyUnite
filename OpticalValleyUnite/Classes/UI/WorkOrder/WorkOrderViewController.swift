@@ -11,6 +11,7 @@ import MJRefresh
 import RealmSwift
 
 class WorkOrderViewController: UIViewController {
+    
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -43,13 +44,14 @@ class WorkOrderViewController: UIViewController {
     
     var siftVc: WorkOrderSiftViewController?
     var siftParmat: [String: Any]?
+    
     var isFirstLoad = true
     var currentDatas = [WorkOrderModel2]()
     
     var currentIndex = 0{
         didSet{
             pageNo = 0
-            getWorkOrder(type:currentIndex, indexPage: pageNo)
+            getWorkOrder(type:currentIndex, indexPage: pageNo,dic: siftParmat!)
         }
     }
     
@@ -79,7 +81,11 @@ class WorkOrderViewController: UIViewController {
         
         let vc = WorkOrderSiftViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderSiftViewController
         
-        vc.status =  ["DCL", "YCL","YGB"][currentIndex]
+        if currentIndex < 3 {
+        
+            vc.status =  ["DCL", "YCL","YGB"][currentIndex]
+        }
+        
         
 //        self.addChildViewController(vc)
         siftVc = vc
@@ -90,6 +96,7 @@ class WorkOrderViewController: UIViewController {
         CoverView.show(view: subView!)
         
         vc.doenBtnClickHandel = { parmat in
+            
             self.isFirstLoad = true
             
             if parmat.isEmpty{
@@ -98,8 +105,10 @@ class WorkOrderViewController: UIViewController {
                 self.siftParmat = nil
             }
             
+            //在闭包的 回调中 拿到了选择的参数, 进行重新的网络请求,数据的刷新
             self.getWorkOrder(type: self.currentIndex,indexPage: 0,dic: parmat)
             self.siftParmat = parmat
+            
             subView?.superview?.removeFromSuperview()
             self.siftVc = nil
         }
@@ -157,9 +166,14 @@ class WorkOrderViewController: UIViewController {
         return tempArray
     }
     
+    
     func getWorkOrder(type:Int, indexPage: Int = 0,dic: [String: Any] = [String: Any]() ){
         
         //调用 类型的参数的接口!
+        /*
+         1.以前的按钮类型 分为3类  (待处理  已处理  已关闭)
+         2.现在新增改变的是: 待派发  待接受  待执行  待评价  已关闭  5大类的类型   
+         */
         var array = ["DCL", "YCL", "YGB"];
         
         var parmat = [String: Any]()
@@ -175,7 +189,17 @@ class WorkOrderViewController: UIViewController {
                 parmat[key] = value
             }
         }
-        parmat["STATUS"] = array[type]
+        
+        if type < array.count {
+            
+            parmat["STATUS"] = array[type]
+        }
+        
+        let dic = ["待派发": 11,"待执行" : 22, "待评价": 31,"待接收": 21,"已处理": 7, "已接受": 5,"协助查看": 5]
+        let  string  = currentStatusBtn?.titleLabel?.text
+        
+        parmat["operateType"] = dic[string!]
+
         
         SVProgressHUD.show(withStatus: "加载中...")
         
@@ -186,7 +210,11 @@ class WorkOrderViewController: UIViewController {
             var temp = [WorkOrderModel2]()
             for dic in response["data"] as! Array<[String: Any]> {
                 let model = WorkOrderModel2(parmart: dic)
-                model.type = array[type]
+                if type < array.count {
+                    
+                    model.type = array[type]
+                }
+                
                 temp.append(model)
             }
             

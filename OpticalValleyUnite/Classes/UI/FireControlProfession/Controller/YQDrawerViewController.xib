@@ -238,7 +238,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHa-LP-aYN">
                                     <rect key="frame" x="0.0" y="21" width="375" height="44"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_fire_two" translatesAutoresizingMaskIntoConstraints="NO" id="GXT-tz-PwD">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_fire_sign" translatesAutoresizingMaskIntoConstraints="NO" id="GXT-tz-PwD">
                                             <rect key="frame" x="30" y="2" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="RBo-Zn-vkd"/>
@@ -254,7 +254,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqZ-dm-xvl">
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqZ-dm-xvl">
                                             <rect key="frame" x="160" y="7" width="30" height="30"/>
                                             <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -544,6 +544,7 @@
         <image name="icon_fire_exit" width="20" height="20"/>
         <image name="icon_fire_one" width="22" height="22"/>
         <image name="icon_fire_password" width="20" height="20"/>
+        <image name="icon_fire_sign" width="22" height="22"/>
         <image name="icon_fire_three" width="22" height="22"/>
         <image name="icon_fire_two" width="22" height="22"/>
         <image name="pic_default" width="65" height="65"/>

@@ -11,5 +11,7 @@ import UIKit
 class YQTapGestureRecognizer: UITapGestureRecognizer {
     
     var tapIndex : Int = 0
+    
+    
 
 }

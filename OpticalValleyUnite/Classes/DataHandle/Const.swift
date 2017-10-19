@@ -16,7 +16,7 @@ struct Const {
 //    static let SJMapKey = "76287f8a7e4a212f4f7328add915f7ca" //com.test
     static let SJMapKey = "beb488178cddd4da0ff7183b079fa24e"  //企业打包
     
-    //    static let SJUMPushKey = "5979b30eaed1793e5d0002c1" //com.test
+//    static let SJUMPushKey = "5979b30eaed1793e5d0002c1" //com.test
 
     static let SJUMPushKey = "5976ad34677baa2de60006dc"//企业打包
     

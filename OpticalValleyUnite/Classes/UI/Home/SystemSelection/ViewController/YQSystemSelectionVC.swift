@@ -29,6 +29,9 @@ class YQSystemSelectionVC: UIViewController {
     
     @IBOutlet weak var sixthView: YQSystemView!
     
+    ///保存消防的index
+    var fireindex : Int = -1
+    
     
     var dataArray:NSArray = { return NSArray() }(){
         
@@ -39,17 +42,17 @@ class YQSystemSelectionVC: UIViewController {
                 //通过数据遍历来进行设置隐藏
                 for index in dataArray.count ..< viewArray.count {
                     
-                    let dataV = viewArray[index] as? YQSystemView
+                    let dataV = viewArray[index]
                     if index == dataArray.count {
                         //设置默认图片
-                        dataV?.logoTitileLabel.text = "敬请期待!"
-                        dataV?.logoTitileLabel.tintColor = UIColor.gray
-                        dataV?.logoImageView.image = UIImage(named: "login_icon_null")
+                        dataV.logoTitileLabel.text = "敬请期待!"
+                        dataV.logoTitileLabel.tintColor = UIColor.gray
+                        dataV.logoImageView.image = UIImage(named: "login_icon_null")
                         
                     }else{
                         //剩余的都进行的隐藏
                         //取出的view
-                        dataV?.isHidden = true
+                        dataV.isHidden = true
                     }
                     
                 }
@@ -69,6 +72,11 @@ class YQSystemSelectionVC: UIViewController {
                     
                     dataV.logoTitileLabel.text = data["name"] as? String
                     
+                    if dataV.logoTitileLabel.text == "智慧消防"{
+                        
+                        fireindex = index
+                        
+                    }
 //                    print(data)
                     
                 }
@@ -203,7 +211,10 @@ class YQSystemSelectionVC: UIViewController {
         
         if tap.tapIndex >= dataArray.count {
             
-//            return
+            //最后一个是显示的图标
+            return
+            
+        }else if tap.tapIndex == fireindex {
             
             //跳进消防的界面功能
             let fireVC = UIStoryboard.instantiateInitialViewController(name: "YQFireControl")
@@ -211,10 +222,10 @@ class YQSystemSelectionVC: UIViewController {
             let drawerViewController = YQDrawerViewController()
             //初始化drawerVC的位置
             let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 300)
-
+            
             
             drawerController.mainViewController =  mainViewController
-    
+            
             drawerController.drawerViewController = drawerViewController
             
             /* Customize
@@ -223,7 +234,8 @@ class YQSystemSelectionVC: UIViewController {
              */
             
             SJKeyWindow?.rootViewController = drawerController
-            
+
+        
         }else{
             
             //数组取值,进行传值,控制器加载跳转
@@ -244,8 +256,6 @@ class YQSystemSelectionVC: UIViewController {
             ///发送通知的方法(这个控制器都已经死了,通知肯定发不了的)
 //            let center = NotificationCenter.default
 //            center.post(name:  NSNotification.Name(rawValue: "systemSelectionPassValue"), object: nil, userInfo: data)
-            
-
             
         }
     

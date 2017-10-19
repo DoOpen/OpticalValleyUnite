@@ -36,8 +36,12 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWV-ab-LBm">
-                                                <rect key="frame" x="378" y="10" width="24" height="24"/>
-                                                <state key="normal" image="scan"/>
+                                                <rect key="frame" x="366" y="2" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="VGa-VV-2Jf"/>
+                                                    <constraint firstAttribute="height" constant="40" id="bIQ-it-DNC"/>
+                                                </constraints>
+                                                <state key="normal" image="larr12"/>
                                                 <connections>
                                                     <action selector="scanBtnClick" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lct-yQ-Fgh"/>
                                                 </connections>
@@ -49,15 +53,28 @@
                                                     <action selector="messageBtnClick" destination="BYZ-38-t0r" eventType="touchUpInside" id="nXA-7C-WlT"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCX-U3-CAw">
+                                                <rect key="frame" x="301" y="2" width="65" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="65" id="jsj-5S-c4H"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" title="项目选择">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="AWV-ab-LBm" secondAttribute="trailing" constant="12" id="4A6-TA-KVv"/>
+                                            <constraint firstItem="mCX-U3-CAw" firstAttribute="height" secondItem="AWV-ab-LBm" secondAttribute="height" id="CWD-OP-AhL"/>
+                                            <constraint firstItem="mCX-U3-CAw" firstAttribute="centerY" secondItem="AWV-ab-LBm" secondAttribute="centerY" id="QHL-gY-5yd"/>
                                             <constraint firstAttribute="height" constant="44" id="Y2S-cC-VAT"/>
                                             <constraint firstItem="VWM-dt-8AB" firstAttribute="leading" secondItem="eyu-dr-Wog" secondAttribute="leading" constant="12" id="bQ8-vJ-Kv8"/>
+                                            <constraint firstItem="AWV-ab-LBm" firstAttribute="leading" secondItem="mCX-U3-CAw" secondAttribute="trailing" id="lCt-PP-5Np"/>
                                             <constraint firstItem="sTN-ax-yYg" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="max-h9-jFs"/>
                                             <constraint firstItem="AWV-ab-LBm" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="mdT-Ru-dq2"/>
                                             <constraint firstItem="VWM-dt-8AB" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="r4c-7H-ifc"/>
+                                            <constraint firstAttribute="trailing" secondItem="AWV-ab-LBm" secondAttribute="trailing" constant="8" id="ryv-G7-YID"/>
                                             <constraint firstItem="sTN-ax-yYg" firstAttribute="centerX" secondItem="eyu-dr-Wog" secondAttribute="centerX" id="ziC-TR-S2X"/>
                                         </constraints>
                                     </view>
@@ -367,7 +384,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItE-1g-Tdh">
-                                <rect key="frame" x="314" y="567" width="60" height="60"/>
+                                <rect key="frame" x="329" y="567" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="NZ9-3m-ZJg"/>
                                     <constraint firstAttribute="height" constant="60" id="fh1-tc-DL5"/>
@@ -387,7 +404,7 @@
                             <constraint firstAttribute="trailing" secondItem="eJ7-xV-TzL" secondAttribute="trailing" id="Jm2-UO-baO"/>
                             <constraint firstAttribute="trailing" secondItem="8Xw-GY-sNP" secondAttribute="trailing" id="LBd-fZ-4LX"/>
                             <constraint firstItem="Qtx-ni-0hT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="M8w-Cb-bLQ"/>
-                            <constraint firstAttribute="trailing" secondItem="ItE-1g-Tdh" secondAttribute="trailing" constant="40" id="VhA-Ut-CyN"/>
+                            <constraint firstAttribute="trailing" secondItem="ItE-1g-Tdh" secondAttribute="trailing" constant="25" id="VhA-Ut-CyN"/>
                             <constraint firstItem="QmW-kA-3Un" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cuz-yS-k0V"/>
                             <constraint firstAttribute="trailing" secondItem="QmW-kA-3Un" secondAttribute="trailing" id="lvo-De-uKC"/>
                             <constraint firstItem="QmW-kA-3Un" firstAttribute="top" secondItem="8Xw-GY-sNP" secondAttribute="bottom" constant="10" id="mqA-Gu-XwL"/>
@@ -419,7 +436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2913" y="-113"/>
+            <point key="canvasLocation" x="2911.594202898551" y="-113.31521739130436"/>
         </scene>
         <!--WorkOrder-->
         <scene sceneID="cT2-oD-UIH">
@@ -1717,9 +1734,9 @@
         <image name="home_normal" width="19" height="20"/>
         <image name="ic_door" width="30" height="30"/>
         <image name="ion-android-volume-up - Ionicons" width="14" height="14"/>
+        <image name="larr12" width="90" height="90"/>
         <image name="mess" width="24" height="24"/>
         <image name="qiandao" width="30" height="30"/>
-        <image name="scan" width="24" height="24"/>
         <image name="xinzhengb" width="32" height="32"/>
         <image name="xueyuan" width="30" height="30"/>
     </resources>

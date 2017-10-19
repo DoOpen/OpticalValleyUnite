@@ -149,7 +149,6 @@ class YQSystemSelectionVC: UIViewController {
 
         }
         
-        
     }
     
     
@@ -222,8 +221,6 @@ class YQSystemSelectionVC: UIViewController {
             let drawerViewController = YQDrawerViewController()
             //初始化drawerVC的位置
             let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 300)
-            
-            
             drawerController.mainViewController =  mainViewController
             
             drawerController.drawerViewController = drawerViewController
@@ -232,8 +229,25 @@ class YQSystemSelectionVC: UIViewController {
              drawerController.drawerDirection = .Right   视图的方向
              drawerController.drawerWidth     = 200      宽度的大小
              */
+
+//test 测试用例的情况
+//            let vc = SJKeyWindow?.rootViewController
+//            
+//            if (vc?.isKind(of: YQFireControlViewController.classForCoder()))! {
+//                
+//                let vc1 = vc as! YQFireControlViewController
+//                //重新刷新火警列表
+//                vc1.makeMapLocationData()
+//                
+//            }else{
+//                
+//                SJKeyWindow?.rootViewController = drawerController
+//                
+//            }
+
+            SJKeyWindow!.rootViewController?.present(drawerController, animated: true, completion: nil)
             
-            SJKeyWindow?.rootViewController = drawerController
+//            getNavController()?.present(drawerController, animated: true, completion: nil)
 
         
         }else{
@@ -261,6 +275,7 @@ class YQSystemSelectionVC: UIViewController {
     
     }
     
+
 
 //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        

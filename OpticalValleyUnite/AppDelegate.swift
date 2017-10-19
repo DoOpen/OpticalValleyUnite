@@ -64,9 +64,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //打开日志，方便调试
         UMessage.setLogEnabled(true)
+//        UMessage.openDebugMode(true)
         
         return true
     }
+    
+    
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -208,7 +212,19 @@ extension AppDelegate{
                 
             }else if type == "火警"{
             
-                noticDownstage(userInfo: userInfo)
+                let vc = SJKeyWindow!.rootViewController
+                
+                if (vc?.isKind(of: YQFireControlViewController.classForCoder()))! {
+                    
+                    let vc1 = vc as! YQFireControlViewController
+                    //重新刷新火警列表
+                    vc1.makeMapLocationData()
+                    
+                }else{
+                    
+                    pushToFireController()
+                }
+
             }
         }
     }
@@ -226,11 +242,11 @@ extension AppDelegate{
 //        if let type = userInfo["type"] as? String{
 //         
 //            if type == "火警"{
-                let vc = getFireController()!
+                let vc = SJKeyWindow!.rootViewController
                 
-                if vc.isKind(of: YQFireControlViewController.classForCoder()) {
+                if (vc?.isKind(of: YQFireControlViewController.classForCoder()))! {
                     
-                    let vc1 = vc 
+                    let vc1 = vc as! YQFireControlViewController
                     //重新刷新火警列表
                     vc1.makeMapLocationData()
                 
@@ -255,15 +271,6 @@ extension AppDelegate{
         
         return nil
 
-    }
-    
-    func getFireController(_ VC: UIViewController = (SJKeyWindow?.rootViewController)!) -> YQFireControlViewController?{
-    
-        if let vc = VC as? YQFireControlViewController {
-            return vc
-        }
-        return nil
-    
     }
     
     // MARK: - push到 工单的界面
@@ -306,8 +313,8 @@ extension AppDelegate{
     // MARK: - push到 火警的界面
     func pushToFireController(){
         
-        let vc = UIStoryboard.instantiateInitialViewController(name: "YQFireControl") as? YQFireControlViewController
-        let mainViewController   = vc
+        let fireVC = UIStoryboard.instantiateInitialViewController(name: "YQFireControl")
+        let mainViewController   = fireVC
         let drawerViewController = YQDrawerViewController()
         //初始化drawerVC的位置
         let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 300)
@@ -316,11 +323,14 @@ extension AppDelegate{
         drawerController.mainViewController =  mainViewController
         
         drawerController.drawerViewController = drawerViewController
+
         
         //应用modal的效果来实现
-        getNavController()?.popToViewController(drawerController, animated: true)
-        //都是navcontroller不能应用的push来操作
-//        getNavController()?.pushViewController(vc!, animated: true)
+        //pop 是控制器的释放,好吗
+        //getNavController()?.popToViewController(drawerController, animated: true)
+        
+        SJKeyWindow!.rootViewController?.present(drawerController, animated: true, completion: nil)
+//        getNavController()?.pushViewController(drawerController, animated: true)
         
     }
 }

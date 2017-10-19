@@ -313,6 +313,16 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
     }
     
+    // MARK: - 选择全局项目的按钮的点击
+    
+    @IBAction func allProjectSelectClick(_ sender: Any) {
+        
+        
+        
+        
+    }
+    
+    
     
     // MARK: - 全部按钮点击界面跳转的方法
     /// 中间全部按钮的点击跳转

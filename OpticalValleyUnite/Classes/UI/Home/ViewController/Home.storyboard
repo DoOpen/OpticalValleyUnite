@@ -35,14 +35,15 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWV-ab-LBm">
-                                                <rect key="frame" x="366" y="2" width="40" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWV-ab-LBm">
+                                                <rect key="frame" x="372" y="2" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="VGa-VV-2Jf"/>
                                                     <constraint firstAttribute="height" constant="40" id="bIQ-it-DNC"/>
                                                 </constraints>
                                                 <state key="normal" image="larr12"/>
                                                 <connections>
+                                                    <action selector="allProjectSelectClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LCr-hM-gGP"/>
                                                     <action selector="scanBtnClick" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lct-yQ-Fgh"/>
                                                 </connections>
                                             </button>
@@ -53,8 +54,8 @@
                                                     <action selector="messageBtnClick" destination="BYZ-38-t0r" eventType="touchUpInside" id="nXA-7C-WlT"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCX-U3-CAw">
-                                                <rect key="frame" x="301" y="2" width="65" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCX-U3-CAw">
+                                                <rect key="frame" x="307" y="2" width="65" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="65" id="jsj-5S-c4H"/>
                                                 </constraints>
@@ -62,6 +63,9 @@
                                                 <state key="normal" title="项目选择">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="allProjectSelectClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YX2-4S-RYW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -74,7 +78,7 @@
                                             <constraint firstItem="sTN-ax-yYg" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="max-h9-jFs"/>
                                             <constraint firstItem="AWV-ab-LBm" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="mdT-Ru-dq2"/>
                                             <constraint firstItem="VWM-dt-8AB" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="r4c-7H-ifc"/>
-                                            <constraint firstAttribute="trailing" secondItem="AWV-ab-LBm" secondAttribute="trailing" constant="8" id="ryv-G7-YID"/>
+                                            <constraint firstAttribute="trailing" secondItem="AWV-ab-LBm" secondAttribute="trailing" constant="2" id="ryv-G7-YID"/>
                                             <constraint firstItem="sTN-ax-yYg" firstAttribute="centerX" secondItem="eyu-dr-Wog" secondAttribute="centerX" id="ziC-TR-S2X"/>
                                         </constraints>
                                     </view>

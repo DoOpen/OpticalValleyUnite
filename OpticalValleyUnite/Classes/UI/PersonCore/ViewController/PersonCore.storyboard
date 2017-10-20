@@ -170,17 +170,52 @@
                                     <action selector="loginOutBtnClick" destination="GTU-aq-x3y" eventType="touchUpInside" id="Pus-GJ-nIZ"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kBF-LV-Tp6">
+                                <rect key="frame" x="0.0" y="277" width="375" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="项目选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xw-Xf-QC6">
+                                        <rect key="frame" x="15" y="12" width="70" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="larr" translatesAutoresizingMaskIntoConstraints="NO" id="91R-Tk-I1q">
+                                        <rect key="frame" x="320" y="2" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="BJn-4x-pU0"/>
+                                            <constraint firstAttribute="width" constant="40" id="E7Z-ju-Yo4"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Jfw-RE-MGB"/>
+                                            <constraint firstAttribute="height" constant="40" id="qpr-Sd-MwV"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="91R-Tk-I1q" secondAttribute="trailing" constant="15" id="1te-Oj-3H7"/>
+                                    <constraint firstAttribute="height" constant="44" id="2h1-F6-wao"/>
+                                    <constraint firstItem="0Xw-Xf-QC6" firstAttribute="leading" secondItem="kBF-LV-Tp6" secondAttribute="leading" constant="15" id="6pj-ax-tNC"/>
+                                    <constraint firstItem="91R-Tk-I1q" firstAttribute="centerY" secondItem="kBF-LV-Tp6" secondAttribute="centerY" id="So9-Mo-hU7"/>
+                                    <constraint firstItem="0Xw-Xf-QC6" firstAttribute="centerY" secondItem="kBF-LV-Tp6" secondAttribute="centerY" id="m6h-bw-Kx7"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4bm-4g-K4P" appends="YES" id="D5w-JZ-uGM"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96068006753921509" green="0.96084433794021606" blue="0.96066969633102417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="t2E-xR-dmq" firstAttribute="top" secondItem="YhN-kq-U4F" secondAttribute="bottom" constant="20" id="569-UD-BYP"/>
+                            <constraint firstItem="kBF-LV-Tp6" firstAttribute="leading" secondItem="S78-Oq-mnY" secondAttribute="leading" id="6bg-eb-91m"/>
                             <constraint firstItem="zd7-xf-n4r" firstAttribute="centerX" secondItem="S78-Oq-mnY" secondAttribute="centerX" id="9jh-67-Le6"/>
                             <constraint firstItem="zd7-xf-n4r" firstAttribute="top" secondItem="xiD-60-gI4" secondAttribute="bottom" constant="17" id="AkO-lU-dQD"/>
                             <constraint firstItem="xiD-60-gI4" firstAttribute="centerX" secondItem="S78-Oq-mnY" secondAttribute="centerX" id="BlH-4y-73e"/>
+                            <constraint firstAttribute="trailing" secondItem="kBF-LV-Tp6" secondAttribute="trailing" id="J5n-yC-2lP"/>
                             <constraint firstItem="YhN-kq-U4F" firstAttribute="leading" secondItem="S78-Oq-mnY" secondAttribute="leading" id="LJH-Hc-3rc"/>
                             <constraint firstAttribute="trailing" secondItem="Ll6-HV-QUM" secondAttribute="trailing" id="MDO-la-jpV"/>
                             <constraint firstItem="67S-20-wfZ" firstAttribute="top" secondItem="Ll6-HV-QUM" secondAttribute="bottom" id="Oql-bB-xaq"/>
                             <constraint firstAttribute="trailing" secondItem="YhN-kq-U4F" secondAttribute="trailing" id="Wr6-jf-4fz"/>
+                            <constraint firstItem="kBF-LV-Tp6" firstAttribute="top" secondItem="t2E-xR-dmq" secondAttribute="bottom" constant="1" id="bqo-Wv-wEs"/>
                             <constraint firstItem="YhN-kq-U4F" firstAttribute="top" secondItem="ZPd-py-GWq" secondAttribute="bottom" constant="20" id="dS0-EG-T8e"/>
                             <constraint firstAttribute="trailing" secondItem="t2E-xR-dmq" secondAttribute="trailing" id="l3e-OI-gJe"/>
                             <constraint firstItem="t2E-xR-dmq" firstAttribute="leading" secondItem="S78-Oq-mnY" secondAttribute="leading" id="m0D-kw-S3x"/>
@@ -197,6 +232,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="naP-St-gZw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4bm-4g-K4P" userLabel="项目选择_TapGestureRecognizer">
+                    <connections>
+                        <action selector="allProjectSelectClick:" destination="GTU-aq-x3y" id="8Mk-9M-zI7"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="662" y="761"/>
         </scene>

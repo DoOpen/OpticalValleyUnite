@@ -36,6 +36,8 @@ class ProjectModel: NSObject{
     
     var projectName = ""
     var projectId = ""
+    var selected = false
+    
     convenience init(parmart: [String: Any]) {
         self.init()
         projectName = parmart["PARK_NAME"] as? String ?? ""

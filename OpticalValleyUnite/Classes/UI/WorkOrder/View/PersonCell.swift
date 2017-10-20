@@ -14,13 +14,16 @@ class PersonCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var selectedBtn: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
     var model: PersonModel?{
+        
         didSet{
+            
             if let model = model {
                 nameLabel.text = model.name
                 

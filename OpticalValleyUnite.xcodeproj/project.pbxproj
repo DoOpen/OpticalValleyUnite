@@ -37,6 +37,9 @@
 		2F4A658E1F945AC300F4C72A /* YQJournalAddEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F4A658D1F945AC300F4C72A /* YQJournalAddEvent.storyboard */; };
 		2F4A65901F9462CF00F4C72A /* YQWorkRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A658F1F9462CF00F4C72A /* YQWorkRecordViewController.swift */; };
 		2F4A65921F9462FE00F4C72A /* YQWorkRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F4A65911F9462FE00F4C72A /* YQWorkRecord.storyboard */; };
+		2F5D276C1F998DE20022F7D6 /* YQProjectSelectFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D276B1F998DE20022F7D6 /* YQProjectSelectFooterView.swift */; };
+		2F5D276E1F998E0C0022F7D6 /* YQProjectSelectFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D276D1F998E0C0022F7D6 /* YQProjectSelectFooter.xib */; };
+		2F5D27701F998F340022F7D6 /* YQProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D276F1F998F340022F7D6 /* YQProjectTableViewCell.swift */; };
 		2F5E8C511F59598400007717 /* YQSystemSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5E8C4F1F59598400007717 /* YQSystemSelectionVC.swift */; };
 		2F5E8C521F59598400007717 /* YQSystemSelectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5E8C501F59598400007717 /* YQSystemSelectionVC.xib */; };
 		2F5E8C541F595D9600007717 /* YQPartDataFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5E8C531F595D9600007717 /* YQPartDataFooterCell.swift */; };
@@ -246,8 +249,8 @@
 		2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQfireMessage.swift; sourceTree = "<group>"; };
 		2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireDetailCell.swift; sourceTree = "<group>"; };
 		2F2892321F70FDC1000F879A /* Development-3.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Development-3.mobileprovision"; sourceTree = "<group>"; };
-		2F2A2BB31F989E1C003015E9 /* YQAllProjectSelectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQAllProjectSelectVC.swift; sourceTree = "<group>"; };
-		2F2A2BB51F989E46003015E9 /* YQAllProjectSelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQAllProjectSelect.storyboard; sourceTree = "<group>"; };
+		2F2A2BB31F989E1C003015E9 /* YQAllProjectSelectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YQAllProjectSelectVC.swift; path = ../../Home/ViewController/YQAllProjectSelectVC.swift; sourceTree = "<group>"; };
+		2F2A2BB51F989E46003015E9 /* YQAllProjectSelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = YQAllProjectSelect.storyboard; path = ../../Home/ViewController/YQAllProjectSelect.storyboard; sourceTree = "<group>"; };
 		2F2DF4351F735BF200ADA588 /* YQPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YQPointAnnotation.swift; path = ../Controller/YQPointAnnotation.swift; sourceTree = "<group>"; };
 		2F2DF4371F7365B300ADA588 /* YQStateListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStateListModel.swift; sourceTree = "<group>"; };
 		2F2F95751F8DAE9000870DC8 /* YQJournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +272,9 @@
 		2F4A658D1F945AC300F4C72A /* YQJournalAddEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJournalAddEvent.storyboard; sourceTree = "<group>"; };
 		2F4A658F1F9462CF00F4C72A /* YQWorkRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkRecordViewController.swift; sourceTree = "<group>"; };
 		2F4A65911F9462FE00F4C72A /* YQWorkRecord.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQWorkRecord.storyboard; sourceTree = "<group>"; };
+		2F5D276B1F998DE20022F7D6 /* YQProjectSelectFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQProjectSelectFooterView.swift; sourceTree = "<group>"; };
+		2F5D276D1F998E0C0022F7D6 /* YQProjectSelectFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQProjectSelectFooter.xib; sourceTree = "<group>"; };
+		2F5D276F1F998F340022F7D6 /* YQProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQProjectTableViewCell.swift; sourceTree = "<group>"; };
 		2F5E8C4F1F59598400007717 /* YQSystemSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQSystemSelectionVC.swift; sourceTree = "<group>"; };
 		2F5E8C501F59598400007717 /* YQSystemSelectionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQSystemSelectionVC.xib; sourceTree = "<group>"; };
 		2F5E8C531F595D9600007717 /* YQPartDataFooterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataFooterCell.swift; sourceTree = "<group>"; };
@@ -597,6 +603,23 @@
 				2F4A65911F9462FE00F4C72A /* YQWorkRecord.storyboard */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2F5D27691F998D940022F7D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2F5D276A1F998D940022F7D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F5D276B1F998DE20022F7D6 /* YQProjectSelectFooterView.swift */,
+				2F5D276D1F998E0C0022F7D6 /* YQProjectSelectFooter.xib */,
+				2F5D276F1F998F340022F7D6 /* YQProjectTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		2F5E8C481F59589B00007717 /* SystemSelection */ = {
@@ -1015,8 +1038,6 @@
 				4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */,
 				4BF807021F0E28D00047E129 /* ChooseDeviceViewController.swift */,
 				4BB53FEC1F14B9C30061190F /* DeviceViewController.swift */,
-				2F2A2BB31F989E1C003015E9 /* YQAllProjectSelectVC.swift */,
-				2F2A2BB51F989E46003015E9 /* YQAllProjectSelect.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1058,25 +1079,11 @@
 		4BD4B9311E272EA600AE2BC9 /* PersonCore */ = {
 			isa = PBXGroup;
 			children = (
-				4BD4B9321E272EA600AE2BC9 /* Model */,
-				4BD4B9331E272EA600AE2BC9 /* View */,
+				2F5D27691F998D940022F7D6 /* Model */,
+				2F5D276A1F998D940022F7D6 /* View */,
 				4BD4B9341E272EA600AE2BC9 /* ViewController */,
 			);
 			path = PersonCore;
-			sourceTree = "<group>";
-		};
-		4BD4B9321E272EA600AE2BC9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4BD4B9331E272EA600AE2BC9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		4BD4B9341E272EA600AE2BC9 /* ViewController */ = {
@@ -1090,6 +1097,8 @@
 				4BAE59811F04D46F000DB84D /* PersonDetailViewController.swift */,
 				2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */,
 				2FEB0E7E1F6E5EA10002DEE8 /* YQViewController.swift */,
+				2F2A2BB31F989E1C003015E9 /* YQAllProjectSelectVC.swift */,
+				2F2A2BB51F989E46003015E9 /* YQAllProjectSelect.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1320,6 +1329,7 @@
 				2F3C09411F7262C200036547 /* YQImplementDetailHead.xib in Resources */,
 				2F4A65921F9462FE00F4C72A /* YQWorkRecord.storyboard in Resources */,
 				4BD4B9611E2763D500AE2BC9 /* DateView.xib in Resources */,
+				2F5D276E1F998E0C0022F7D6 /* YQProjectSelectFooter.xib in Resources */,
 				4BF005271F03586900A5764B /* WorkOrderDetailsCell.xib in Resources */,
 				2FC167591F90B4BE001CEACD /* YQReseaseJournalFooter.xib in Resources */,
 				2F3B96091F6BCD0E0008AFEB /* YQJoinTotallHead.xib in Resources */,
@@ -1493,6 +1503,7 @@
 				4BD4B9011E272E0C00AE2BC9 /* AppDelegate.swift in Sources */,
 				4B30780D1E29FBD100FB4007 /* ChooseHouseCell.swift in Sources */,
 				4B7A59C11E359B89002E96B6 /* UIMonthYearPicker.m in Sources */,
+				2F5D276C1F998DE20022F7D6 /* YQProjectSelectFooterView.swift in Sources */,
 				2FEB0E841F6E70900002DEE8 /* YQFireAlarmDetailViewController.swift in Sources */,
 				4B7A59C31E35DB27002E96B6 /* URLPath.swift in Sources */,
 				4BD4B9501E272EA600AE2BC9 /* SignInViewController.swift in Sources */,
@@ -1505,6 +1516,7 @@
 				2FDF32A11F79280E008EDEB4 /* MANaviPolyline.m in Sources */,
 				4BE922621EE7EEA900FDEFE1 /* ExecutDetailCell.swift in Sources */,
 				4B1DEC571E31B646000917D2 /* ScanSuccessJumpVC.m in Sources */,
+				2F5D27701F998F340022F7D6 /* YQProjectTableViewCell.swift in Sources */,
 				4BD4B9551E272EA600AE2BC9 /* WorkOrderViewController.swift in Sources */,
 				4BD4B9531E272EA600AE2BC9 /* SurveillanceWorkOrderViewController.swift in Sources */,
 				4B3951F81E28C85000E2642F /* WorkOrderProgressViewController.swift in Sources */,

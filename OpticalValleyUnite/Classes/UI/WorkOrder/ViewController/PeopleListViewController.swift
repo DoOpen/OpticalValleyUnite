@@ -18,7 +18,10 @@ class PeopleListViewController: UIViewController {
     var orangeModels = [PersonModel]()
     var pageNo = 0
     var isMultipSelect = false
+    
     var currentSelecIndex: IndexPath?
+    
+    
     var isSearchIng = false
     var doneBtnClickHandel: ((Int,[PersonModel]) -> ())?
     var parkId = ""
@@ -189,6 +192,7 @@ extension PeopleListViewController: UITableViewDelegate, UITableViewDataSource{
             tableView.reloadRows(at: [indexPath], with: .none)
         }else{
             if let index = currentSelecIndex?.row{
+                
                 var model = models[index]
                 model.selected = false
                 
@@ -204,7 +208,5 @@ extension PeopleListViewController: UITableViewDelegate, UITableViewDataSource{
             
             currentSelecIndex = indexPath
         }
-        
-
     }
 }

@@ -57,6 +57,15 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
 
     }
     
+    // MARK: - 选择全局项目的按钮的点击
+    @IBAction func allProjectSelectClick(_ sender: Any) {
+        
+        let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+        navigationController?.pushViewController(project, animated: true)
+    
+        
+    }
+    
 
     @IBAction func checkNewBtnClick() {
         self.checkNewBundleVersion(isBlack: false)

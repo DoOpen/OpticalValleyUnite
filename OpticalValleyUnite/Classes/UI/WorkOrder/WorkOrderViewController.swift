@@ -64,6 +64,7 @@ class WorkOrderViewController: UIViewController {
         
         super.viewDidLoad()
         self.navigationItem.title = "我的工单"
+    
         
         statusBtnClick(waitProcessedBtn)
         addRefirsh()

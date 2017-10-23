@@ -78,7 +78,6 @@ class YQSystemSelectionVC: UIViewController {
                         
                     }
 //                    print(data)
-                    
                 }
                 
             } else if dataArray.count == 1 { //只有一条数据的时候处理

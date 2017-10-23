@@ -76,7 +76,7 @@ class YQFireControlViewController: UIViewController {
         super.viewDidLoad()
         
         //设置leftBar图片和点击事件
-        let image = UIImage(named : "pic_default")
+        let image = UIImage(named : "icon_fire_admin")
         let bnt = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         bnt.setImage(image, for: .normal)
         bnt.addTarget(self, action:  #selector(leftBarButtonClick), for: UIControlEvents.touchUpInside)

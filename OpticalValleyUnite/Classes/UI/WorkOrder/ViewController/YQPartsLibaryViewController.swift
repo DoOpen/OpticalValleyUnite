@@ -503,7 +503,6 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
         //传递已选配件,pop相应控件
         self.selectPartsButtonClick()
         
-        
     }
     
 }

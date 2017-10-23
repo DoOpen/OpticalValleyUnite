@@ -118,6 +118,7 @@ class YQAllProjectSelectVC: UIViewController {
         
     }
     
+    
     // MARK: - 本地数据的模糊查询方法
     func fuzzyQueryMethod(text : String){
         
@@ -138,6 +139,7 @@ class YQAllProjectSelectVC: UIViewController {
     }
 
 }
+
 
 extension YQAllProjectSelectVC : UITableViewDelegate,UITableViewDataSource,YQProjectTableViewCellDelegate{
     
@@ -205,16 +207,29 @@ extension YQAllProjectSelectVC : UITableViewDelegate,UITableViewDataSource,YQPro
         
     }
     
+    
+    // MARK: - 点击完成的 数据的保存添加的功能实现
     func projectSelectCompletedClick() {
         
         if let index = currentSelecIndex?.row {
             
             let model = self.projectData[index]
+            // json化一个组织数组 array
+            // let jsonData = try JSONSerialization.data(withJSONObject: arry, options: JSONSerialization.WritingOptions.prettyPrinted)
+            var dic = [String : Any]()
+            dic["PARK_NAME"] = model.projectName
+            dic["ID"] = model.projectId
+            
+            
             //应用归档解档来存储项目名称
-            UserDefaults.standard.set(model, forKey: Const.YQProjectModel)
+            UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
             
         }
+        
+        navigationController?.popViewController(animated: true)
     }
+    
+    
 }
 
 

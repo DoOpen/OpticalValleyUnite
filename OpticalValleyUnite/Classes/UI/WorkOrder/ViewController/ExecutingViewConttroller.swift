@@ -288,9 +288,13 @@ class ExecutingViewConttroller: UIViewController {
             
             do {
                 //Convert to Data
+                
                 //let jsonData = try JSONSerialization.data(withJSONObject: arry, options: JSONSerialization.WritingOptions.prettyPrinted)
                 
+                
                 //Do this for print data only otherwise skip
+                
+                
                 //if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
                     //print(JSONString)
                 //}

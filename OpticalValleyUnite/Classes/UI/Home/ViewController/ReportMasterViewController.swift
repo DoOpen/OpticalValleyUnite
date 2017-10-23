@@ -40,6 +40,7 @@ class ReportMasterViewController: UIViewController {
     
     @IBOutlet weak var publicBtn: UIButton!
     
+    ///项目选择按钮的点击
     @IBOutlet weak var projectBtn: UIButton!
 
     @IBOutlet weak var contentHeightConstraint: NSLayoutConstraint!
@@ -110,6 +111,7 @@ class ReportMasterViewController: UIViewController {
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         //1.通过判断是普通报事,还是电梯报事
         //        Alamofire.request(URLPath.basicPath + URLPath.typeOfReportMaster, method: .get, parameters: parameters, encoding: <#T##ParameterEncoding#>, headers: <#T##HTTPHeaders?#>).responseJSON { (response) in
@@ -143,6 +145,7 @@ class ReportMasterViewController: UIViewController {
                             print(self.reportName)
                             
                             if self.reportName == "报事"{ // 普通报事
+                                
                                 self.reportHide()
                                 
                                 // selfCheckingView 直接加载xib的视图
@@ -153,20 +156,22 @@ class ReportMasterViewController: UIViewController {
                                 self.familyBtnClick()
                                 
                             }else{  //电梯报事
+                                
                                 self.elevatorReportHide()
                             
                             }
                             
                         }
+                        
                         break
                     }
                     
                     break
-                    
-                    
+                
                 case .failure(let error):
                     
                     debugPrint(error)
+                    
                     break
             }
             
@@ -177,6 +182,26 @@ class ReportMasterViewController: UIViewController {
         //设置默认的紧急的报事情况
         self.urgentDegreeBtn = self.UrgentMatterlow
         self.urgentDegreeBtnClick(urgentDegreeBtn!)
+        getUserDefaultsProject()
+        
+    }
+    
+    
+    // MARK: - 获取默认的项目的值来显示
+    func getUserDefaultsProject() {
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        let model = ProjectModel()
+        model.projectId = (dic?["ID"] as? String)!
+        model.projectName = (dic?["PARK_NAME"] as? String)!
+        
+        if model.projectName != "" {
+            
+            self.projectBtn.setTitle(model.projectName, for: .normal)
+            selectProject = model
+            
+        }
         
     }
     
@@ -275,6 +300,7 @@ class ReportMasterViewController: UIViewController {
         appointmentTimeView.layoutIfNeeded()
     }
 
+    
     func setBtnSelect(btn: UIButton?, _ select: Bool){
         
         if let btn = btn{
@@ -303,7 +329,6 @@ class ReportMasterViewController: UIViewController {
         }
         
     }
-    
     
     @IBAction func scaningBtnClick() {
         
@@ -345,7 +370,9 @@ class ReportMasterViewController: UIViewController {
         SVProgressHUD.show(withStatus: "加载中")
         
         HttpClient.instance.get(path: URLPath.getParkList, parameters: nil, success: { (response) in
+            
             SVProgressHUD.dismiss()
+            
             guard response.count > 0 else{
                 SVProgressHUD.showError(withStatus: "数据为空")
                 return
@@ -358,14 +385,23 @@ class ReportMasterViewController: UIViewController {
             }
             
             SJPickerView.show(withDataArry2: temp, didSlected: { [weak self] index in
+                
                 self?.projectBtn.setTitle(temp[index].title, for: .normal)
                 self?.selectProject = temp[index]
+                //是一个项目的模型,更新传递项目模型
+                //重新传递的是 项目模型
+                var dic = [String : Any]()
+                dic["ID"] = temp[index].title
+                dic["PARK_NAME"] = temp[index].projectId
+                
+                UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
+                
             })
+            
             
         }) { (error) in
             
         }
-        
     }
 
     

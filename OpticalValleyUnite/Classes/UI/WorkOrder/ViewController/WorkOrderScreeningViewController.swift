@@ -23,13 +23,28 @@ class WorkOrderScreeningViewController: UIViewController {
     @IBOutlet weak var projectTagsHeightContstrain: NSLayoutConstraint!
     
     var models = [ProjectModel](){
+        
         didSet{
             
+            let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+            
+            var projectname = ""
+            
+            if dic != nil {
+                
+                projectname = (dic?["PARK_NAME"] as? String)!
+            }
+
             for model in models{
+                
+                if projectname == model.projectName{
+                    
+                    model.selected = true
+                }
                 projectTagsView.addTag(model.projectName)
             }
-            
         }
+        
     }
     
     var models2 = [String]()
@@ -126,6 +141,13 @@ class WorkOrderScreeningViewController: UIViewController {
             projectModel = models[(projectTagsView.selectedTagIndexes.first!.intValue)]
             
             parmat["PARK_ID"] = projectModel?.projectId
+            
+            //重新传递的是 项目模型
+            var dic = [String : Any]()
+            dic["ID"] = projectModel?.projectId
+            dic["PARK_NAME"] = projectModel?.projectName
+            
+            UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
             
         }
         

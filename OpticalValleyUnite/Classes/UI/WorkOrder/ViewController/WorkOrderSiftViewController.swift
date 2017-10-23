@@ -39,13 +39,26 @@ class WorkOrderSiftViewController: UIViewController {
     var startTime: String?
     var endTime: String?
     var status = ""
+    
+    /// 项目选择的
     var projectData = [ProjectModel](){
         didSet{
+            
+//            let model = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? ProjectModel
+            
+            let projectname = getUserDefaultsProject()
+            
             for tag in projectData{
+                
+                if projectname == tag.projectName{
+                    tag.selected = true
+                }
+                
                 self.projectTagsView.addTag(tag.projectName)
             }
         }
     }
+    
     var workTypeData = [WorkTypeModel](){
         didSet{
             for tag in workTypeData{
@@ -80,6 +93,22 @@ class WorkOrderSiftViewController: UIViewController {
 //        }
        
     }
+    
+    // MARK: - 获取默认的项目的值来显示
+    func getUserDefaultsProject() -> String {
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+           projectName = dic?["PARK_NAME"] as! String
+        }
+        
+        return projectName
+        
+    }
+
     
     
     // MARK: - 开始日期的点击方法
@@ -168,15 +197,22 @@ class WorkOrderSiftViewController: UIViewController {
         let sourceTagsViewIndex = sourceTagsView.selectedTagIndexes.first?.intValue
         
         if let index = projectTagsViewIndex{
+            
             paramert["PARK_ID"] = projectData[index].projectId
+            var dic = [String : Any]()
+            dic["ID"] = projectData[index].projectId
+            dic["PARK_NAME"] = projectData[index].projectName
+
+            UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
+            
         }
+        
         if let index = workTypeTagsViewIndex{
             paramert["WORKTYPE_ID"] = workTypeData[index].id
         }
         
         /*
          要求实现的是 将工单类型的筛选条件也拿出来到最外层
-         
         */
         if let index = reportTypeTagsViewIndex{
             paramert["WORKUNIT_TYPE"] = index + 1

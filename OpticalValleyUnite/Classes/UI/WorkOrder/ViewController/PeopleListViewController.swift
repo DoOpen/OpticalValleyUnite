@@ -170,6 +170,7 @@ extension PeopleListViewController: UISearchBarDelegate{
 
 
 extension PeopleListViewController: UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }

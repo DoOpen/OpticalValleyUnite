@@ -201,6 +201,9 @@ class WorkOrderViewController: UIViewController {
         
         parmat["operateType"] = dic[string!]
 
+        //添加默认的选择项目 筛选条件
+        parmat["PARK_ID"] = getUserDefaultsProject()
+        
         
         SVProgressHUD.show(withStatus: "加载中...")
         
@@ -253,6 +256,23 @@ class WorkOrderViewController: UIViewController {
 
         }
     }
+    
+    
+    // MARK: - 获取默认的项目的值来显示
+    func getUserDefaultsProject() -> String {
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectID  = ""
+        
+        if dic != nil {
+            projectID = dic?["ID"] as! String
+        }
+        
+        return projectID
+        
+    }
+
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? WorkOrderScreeningViewController{

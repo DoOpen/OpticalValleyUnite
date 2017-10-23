@@ -23,7 +23,6 @@ class SurveillanceWorkOrderViewController: UIViewController {
     var endT   = ""
     var park_ID = ""
     
-    
     @IBOutlet weak var didProcessedBtn: UIButton!
     @IBOutlet weak var waitProcessedBtn: UIButton!
     var currentStatusBtn: UIButton?
@@ -46,6 +45,9 @@ class SurveillanceWorkOrderViewController: UIViewController {
         statusBtnClick(waitProcessedBtn)
 
         addRefirsh()
+        
+        //添加设置park_id的默认情况
+        park_ID = getUserDefaultsProject()
         
     }
     
@@ -86,6 +88,22 @@ class SurveillanceWorkOrderViewController: UIViewController {
         
         
     }
+    
+    // MARK: - 获取默认的项目的值来显示
+    func getUserDefaultsProject() -> String {
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectID  = ""
+        
+        if dic != nil {
+            projectID = dic?["ID"] as! String
+        }
+        
+        return projectID
+        
+    }
+
 
     @IBAction func statusBtnClick(_ sender: UIButton) {
         
@@ -248,6 +266,7 @@ class SurveillanceWorkOrderViewController: UIViewController {
             park_ID = parkID as! String
             
         }
+        
         
         
         // 取出所有的参数来 进行赋值

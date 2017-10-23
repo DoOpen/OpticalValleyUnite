@@ -202,7 +202,6 @@ class WorkOrderSiftViewController: UIViewController {
     
     
     // MARK: - 点击完成时候实现的逻辑处理方法
-    
     @IBAction func doenBtnClick() {
         
         var paramert = [String: Any]()
@@ -217,6 +216,7 @@ class WorkOrderSiftViewController: UIViewController {
         if let index = projectTagsViewIndex{
             
             paramert["PARK_ID"] = projectData[index].projectId
+            
             var dic = [String : Any]()
             dic["ID"] = projectData[index].projectId
             dic["PARK_NAME"] = projectData[index].projectName

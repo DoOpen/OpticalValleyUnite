@@ -21,11 +21,21 @@ class YQAllProjectSelectVC: UIViewController {
     
     var currentSelecIndex: IndexPath?
     
-    
-    
     var projectData = [ProjectModel](){
         
         didSet{
+            
+            let projectName = getUserDefaultsProject()
+            for index in 0 ..< projectData.count {
+                
+                let model = projectData[index]
+                if projectName == model.projectName {
+                    
+                    model.selected = true
+                    let indexPath = IndexPath.init(row: index, section: 0)
+                    self.currentSelecIndex = indexPath as IndexPath
+                }
+            }
             
             self.tableView.reloadData()
         }
@@ -80,7 +90,20 @@ class YQAllProjectSelectVC: UIViewController {
         
     }
     
-    
+    // MARK: - 获取默认的项目的值来显示
+    func getUserDefaultsProject() -> String {
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            projectName = dic?["PARK_NAME"] as! String
+        }
+        
+        return projectName
+    }
+
     // MARK: - 获取项目data的数据
     private func getProjectData(){
         
@@ -130,7 +153,6 @@ class YQAllProjectSelectVC: UIViewController {
             if projectN.components(separatedBy: text).count > 1  {
                 
                 temp.append(model)
-                
             }
         }
         
@@ -220,10 +242,8 @@ extension YQAllProjectSelectVC : UITableViewDelegate,UITableViewDataSource,YQPro
             dic["PARK_NAME"] = model.projectName
             dic["ID"] = model.projectId
             
-            
             //应用归档解档来存储项目名称
             UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
-            
         }
         
         navigationController?.popViewController(animated: true)

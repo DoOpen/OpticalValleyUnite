@@ -48,14 +48,29 @@ class WorkOrderSiftViewController: UIViewController {
             
             let projectname = getUserDefaultsProject()
             
-            for tag in projectData{
+            var indexNum = -1
+            for index in 0 ..< projectData.count{
+                
+                let tag = projectData[index]
                 
                 if projectname == tag.projectName{
+                    
                     tag.selected = true
+                    indexNum = index
                 }
                 
                 self.projectTagsView.addTag(tag.projectName)
             }
+            
+            if indexNum == -1 {
+                
+                return
+                
+            }else{
+            
+                self.projectTagsView.selectTag(at: indexNum)
+            }
+        
         }
     }
     
@@ -73,9 +88,11 @@ class WorkOrderSiftViewController: UIViewController {
         super.viewDidLoad()
         
         getProjectData()
+        
         getWorkTypeData()
         
         setTagsView(tagsView: projectTagsView)
+        
         setTagsView(tagsView: workTypeTagsView)
         
 // reportType 的设置
@@ -149,6 +166,7 @@ class WorkOrderSiftViewController: UIViewController {
     }
     
     private func getProjectData(){
+        
         HttpClient.instance.get(path: URLPath.getParkList, parameters: nil, success: { (response) in
             
             

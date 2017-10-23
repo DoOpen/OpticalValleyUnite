@@ -30,19 +30,32 @@ class WorkOrderScreeningViewController: UIViewController {
             
             var projectname = ""
             
+            var indexNum = -1
+            
             if dic != nil {
                 
                 projectname = (dic?["PARK_NAME"] as? String)!
             }
 
-            for model in models{
+            for index in 0 ..< models.count{
+                
+                let model = models[index]
                 
                 if projectname == model.projectName{
                     
                     model.selected = true
+                    indexNum = index
                 }
                 projectTagsView.addTag(model.projectName)
             }
+            
+            if indexNum == -1 {
+                return
+            }else{
+                
+               projectTagsView.selectTag(at: indexNum)
+            }
+            
         }
         
     }

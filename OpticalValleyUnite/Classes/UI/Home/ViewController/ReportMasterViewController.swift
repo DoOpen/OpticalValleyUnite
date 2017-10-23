@@ -391,8 +391,8 @@ class ReportMasterViewController: UIViewController {
                 //是一个项目的模型,更新传递项目模型
                 //重新传递的是 项目模型
                 var dic = [String : Any]()
-                dic["ID"] = temp[index].title
-                dic["PARK_NAME"] = temp[index].projectId
+                dic["ID"] = temp[index].projectId
+                dic["PARK_NAME"] = temp[index].projectName
                 
                 UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
                 

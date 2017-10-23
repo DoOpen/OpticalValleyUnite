@@ -191,6 +191,9 @@ class ReportMasterViewController: UIViewController {
     func getUserDefaultsProject() {
         
         let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        if dic == nil {
+            return
+        }
         
         let model = ProjectModel()
         model.projectId = (dic?["ID"] as? String)!

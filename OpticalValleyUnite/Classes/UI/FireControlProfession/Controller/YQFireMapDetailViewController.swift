@@ -37,6 +37,12 @@ class YQFireMapDetailViewController: UIViewController {
         }
     }
     
+    //相距的距离label
+    @IBOutlet weak var distanceLable: UILabel!
+    
+    //步行的时间label
+    @IBOutlet weak var walkingMinuteLable: UILabel!
+    
     
     @IBOutlet weak var tableView: UITableView!
 

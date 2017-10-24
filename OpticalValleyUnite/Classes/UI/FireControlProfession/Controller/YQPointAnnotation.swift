@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YQPointAnnotation: MAPointAnnotation {
+class YQPointAnnotation: AnimatedAnnotation {
     
     //定义一个模型
     var pointModel : YQFireLocationModel!

@@ -22,3 +22,4 @@
 #import "MANaviRoute.h"
 #import <AMapSearchKit/AMapSearchKit.h>
 #import "RouteCommon.h"
+#import "AnimatedAnnotation.h"

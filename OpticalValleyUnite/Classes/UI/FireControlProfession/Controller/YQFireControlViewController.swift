@@ -42,7 +42,7 @@ class YQFireControlViewController: UIViewController {
     var locationManager = AMapLocationManager()
     
     // userPointLocation
-    var pointLocation : MAPointAnnotation!
+    var pointLocation : AnimatedAnnotation!
     
     // leftBtn
     var leftBtn : UIButton!
@@ -352,15 +352,28 @@ class YQFireControlViewController: UIViewController {
         let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(model.latitude), CLLocationDegrees(model.longitude))
          //let userPoint = MAAnnotation()//用户的location的情况
         
+        var fireImages = Array<UIImage>()
+        fireImages.append(UIImage(named: "icon_fire_position_red_0000")!)
+        fireImages.append(UIImage(named: "icon_fire_position_red_0001")!)
+        fireImages.append(UIImage(named: "icon_fire_position_red_0002")!)
+        fireImages.append(UIImage(named: "icon_fire_position_red_0003")!)
+        fireImages.append(UIImage(named: "icon_fire_position_red_0004")!)
+        
         let starPoint = YQPointAnnotation()//系统标记点location
         starPoint.coordinate = CLLocationCoordinate2D
         starPoint.title = model.name
+        starPoint.subtitle = model.detail
         starPoint.pointModel = model
+        starPoint.animatedImages = fireImages
         
-        self.pointLocation = starPoint
+//        starPoint.step(0.5)
+        
+        // 没用的缓存
+        // self.pointLocation = starPoint
         self.fireMapView.addAnnotation(starPoint)
         
     }
+    
     
     // MARK: - 生成implementView
     // 大头针的详情点击,添加网络的数据,判断网络数据来进行的设置显示UI的功能
@@ -559,9 +572,11 @@ extension YQFireControlViewController: MAMapViewDelegate{
             if annotationView == nil {
                 annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
             }
-            var image = UIImage(named: "icon_fire_position_red")
-            image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
-            annotationView!.image = image
+//            var image = UIImage(named: "icon_fire_position_red")
+//            image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
+//            annotationView!.image = image
+//            annotationView.animatedImages
+            
             annotationView!.canShowCallout = true //设置气泡可以弹出，默认为NO
             annotationView!.animatesDrop = true  //设置标注动画显示，默认为NO
             annotationView!.isDraggable = false  //设置标注可以拖动，默认为NO

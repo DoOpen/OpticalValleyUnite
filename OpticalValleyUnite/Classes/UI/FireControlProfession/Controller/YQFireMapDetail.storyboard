@@ -93,7 +93,7 @@
                                         <rect key="frame" x="0.0" y="196" width="335" height="44"/>
                                         <subviews>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0e6-NU-ivH">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                                <rect key="frame" x="80" y="0.0" width="255" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="放弃执行"/>
                                                 <connections>
@@ -101,7 +101,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fU-WA-DTW">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                                <rect key="frame" x="80" y="0.0" width="255" height="44"/>
                                                 <color key="backgroundColor" red="0.44571961450000003" green="0.68072509299999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="立即执行">
@@ -111,18 +111,59 @@
                                                     <action selector="atOnceImplementClick:" destination="aUt-lD-aje" eventType="touchUpInside" id="WsI-S3-sKN"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RC7-jG-wKk">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvB-2x-peL">
+                                                        <rect key="frame" x="1" y="13" width="35" height="19.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="35" id="n21-7Q-j1U"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJP-3W-ylj" userLabel="分钟">
+                                                        <rect key="frame" x="36" y="23" width="44" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWa-iM-ZdS" userLabel="相距米">
+                                                        <rect key="frame" x="36" y="0.0" width="44" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="QWa-iM-ZdS" secondAttribute="trailing" id="2fN-8g-t2F"/>
+                                                    <constraint firstItem="QWa-iM-ZdS" firstAttribute="top" secondItem="RC7-jG-wKk" secondAttribute="top" id="7n2-RY-4lg"/>
+                                                    <constraint firstItem="jvB-2x-peL" firstAttribute="centerY" secondItem="RC7-jG-wKk" secondAttribute="centerY" id="Ncm-mM-djE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="OJP-3W-ylj" secondAttribute="trailing" id="Sxs-MZ-GrR"/>
+                                                    <constraint firstItem="QWa-iM-ZdS" firstAttribute="leading" secondItem="jvB-2x-peL" secondAttribute="trailing" id="Vds-jH-u8h"/>
+                                                    <constraint firstItem="jvB-2x-peL" firstAttribute="leading" secondItem="RC7-jG-wKk" secondAttribute="leading" constant="1" id="e7s-BZ-U7F"/>
+                                                    <constraint firstAttribute="bottom" secondItem="OJP-3W-ylj" secondAttribute="bottom" id="p97-Vg-H2K"/>
+                                                    <constraint firstItem="OJP-3W-ylj" firstAttribute="leading" secondItem="jvB-2x-peL" secondAttribute="trailing" id="yaX-DB-hWF"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="3fU-WA-DTW" firstAttribute="leading" secondItem="FyJ-gP-qhA" secondAttribute="leading" id="0Xp-VS-F2N"/>
+                                            <constraint firstItem="3fU-WA-DTW" firstAttribute="leading" secondItem="FyJ-gP-qhA" secondAttribute="leading" constant="80" id="0Xp-VS-F2N"/>
                                             <constraint firstItem="0e6-NU-ivH" firstAttribute="top" secondItem="FyJ-gP-qhA" secondAttribute="top" id="5GY-mv-50P"/>
+                                            <constraint firstItem="RC7-jG-wKk" firstAttribute="top" secondItem="FyJ-gP-qhA" secondAttribute="top" id="7bX-1G-ARs"/>
                                             <constraint firstItem="3fU-WA-DTW" firstAttribute="top" secondItem="FyJ-gP-qhA" secondAttribute="top" id="BKM-pC-LOQ"/>
                                             <constraint firstAttribute="height" constant="44" id="Iuj-mb-MWh"/>
                                             <constraint firstAttribute="trailing" secondItem="0e6-NU-ivH" secondAttribute="trailing" id="J9q-r4-R8z"/>
                                             <constraint firstAttribute="trailing" secondItem="3fU-WA-DTW" secondAttribute="trailing" id="cno-ud-t7E"/>
-                                            <constraint firstItem="0e6-NU-ivH" firstAttribute="leading" secondItem="FyJ-gP-qhA" secondAttribute="leading" id="fjK-qL-LUy"/>
+                                            <constraint firstItem="0e6-NU-ivH" firstAttribute="leading" secondItem="FyJ-gP-qhA" secondAttribute="leading" constant="80" id="fjK-qL-LUy"/>
                                             <constraint firstAttribute="bottom" secondItem="3fU-WA-DTW" secondAttribute="bottom" id="iKs-qQ-qJX"/>
+                                            <constraint firstAttribute="bottom" secondItem="RC7-jG-wKk" secondAttribute="bottom" id="kJG-t5-3PL"/>
+                                            <constraint firstItem="3fU-WA-DTW" firstAttribute="leading" secondItem="RC7-jG-wKk" secondAttribute="trailing" id="l2W-aj-IQb"/>
                                             <constraint firstAttribute="bottom" secondItem="0e6-NU-ivH" secondAttribute="bottom" id="unj-P6-K6H"/>
+                                            <constraint firstItem="RC7-jG-wKk" firstAttribute="leading" secondItem="FyJ-gP-qhA" secondAttribute="leading" id="xlm-Wn-vOp"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -156,14 +197,16 @@
                     </view>
                     <connections>
                         <outlet property="atOnceImplement" destination="3fU-WA-DTW" id="bEc-Pu-Nda"/>
+                        <outlet property="distanceLable" destination="QWa-iM-ZdS" id="cih-gc-sQS"/>
                         <outlet property="giveupAbandon" destination="0e6-NU-ivH" id="G9b-wI-6BX"/>
                         <outlet property="locationMapView" destination="9to-PZ-M0t" id="pnp-nU-Ctd"/>
                         <outlet property="tableView" destination="jI0-Kx-SDE" id="JAB-6t-J12"/>
+                        <outlet property="walkingMinute" destination="OJP-3W-ylj" id="rDk-tE-n1A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3q-kd-kvj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-110" y="186"/>
+            <point key="canvasLocation" x="-111.2" y="185.75712143928038"/>
         </scene>
     </scenes>
     <resources>

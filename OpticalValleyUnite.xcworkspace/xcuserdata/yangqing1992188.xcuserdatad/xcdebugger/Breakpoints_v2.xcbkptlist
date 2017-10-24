@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQFireMapDetailViewController.swift"
-            timestampString = "530447216.161578"
+            timestampString = "530516485.577784"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "giveUpImplementClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,12 +250,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQFireControlViewController.swift"
-            timestampString = "530501186.057258"
+            timestampString = "530516590.415598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
+            landmarkName = "addLocationAndMessageView(model:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

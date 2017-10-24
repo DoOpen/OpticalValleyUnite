@@ -121,7 +121,7 @@ class YQFireControlViewController: UIViewController {
         fireMapView.showsUserLocation = true;
         fireMapView.userTrackingMode = .none;
         fireMapView.delegate = self as MAMapViewDelegate
-        fireMapView.zoomLevel = 12.0 //地图的缩放的级别比例
+        fireMapView.zoomLevel = 16.0 //地图的缩放的级别比例
         
         // 带逆地理信息的一次定位（返回坐标和地址信息）
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -350,11 +350,12 @@ class YQFireControlViewController: UIViewController {
          //let userPoint = MAAnnotation()//用户的location的情况
         
         var fireImages = Array<UIImage>()
+        
         fireImages.append(UIImage(named: "icon_fire_position_red_0000")!)
-        fireImages.append(UIImage(named: "icon_fire_position_red_0001")!)
-        fireImages.append(UIImage(named: "icon_fire_position_red_0002")!)
-        fireImages.append(UIImage(named: "icon_fire_position_red_0003")!)
-        fireImages.append(UIImage(named: "icon_fire_position_red_0004")!)
+        fireImages.append(UIImage(named: "icon_fire_position_red-_0001")!)
+        fireImages.append(UIImage(named: "icon_fire_position_red-_0002")!)
+        fireImages.append(UIImage(named: "icon_fire_position_red-_0003")!)
+        fireImages.append(UIImage(named: "icon_fire_position_red-_0004")!)
         
         let starPoint = YQPointAnnotation()//系统标记点location
         starPoint.coordinate = CLLocationCoordinate2D
@@ -564,19 +565,21 @@ extension YQFireControlViewController: MAMapViewDelegate{
         if annotation.isKind(of: YQPointAnnotation.self){
             
             let pointReuseIndetifier = "pointReuseIndetifier"
-            var annotationView: MAPinAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier) as! MAPinAnnotationView?
+            
+            var annotationView: AnimatedAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier) as! AnimatedAnnotationView?
             
             if annotationView == nil {
-                annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
+                
+                annotationView = AnimatedAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
             }
 //            var image = UIImage(named: "icon_fire_position_red")
 //            image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
 //            annotationView!.image = image
 //            annotationView.animatedImages
-            
+        
             annotationView!.canShowCallout = true //设置气泡可以弹出，默认为NO
-            annotationView!.animatesDrop = true  //设置标注动画显示，默认为NO
-            annotationView!.isDraggable = false  //设置标注可以拖动，默认为NO
+            //annotationView!.animatesDrop = true  //设置标注动画显示，默认为NO
+            //annotationView!.isDraggable = false  //设置标注可以拖动，默认为NO
             
             return annotationView!
         }

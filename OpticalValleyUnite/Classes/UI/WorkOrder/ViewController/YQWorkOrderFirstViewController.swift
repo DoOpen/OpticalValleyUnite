@@ -44,6 +44,8 @@ class YQWorkOrderFirstViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = "我的工单"
+//        self.navigationItem.rightBarButtonItem
+        
         
         //初始调用的方法
         selectButtonClick(emergencyWorkOrder)

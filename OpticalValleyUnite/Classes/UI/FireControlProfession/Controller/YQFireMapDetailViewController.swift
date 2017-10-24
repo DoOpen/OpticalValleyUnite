@@ -63,15 +63,24 @@ class YQFireMapDetailViewController: UIViewController {
     var naviRoute: MANaviRoute?
     
     //除了驾车以外的所有的路径显示,高德的返回列表
-    var route: AMapRoute?{
+    var route: AMapRoute!{
         
         didSet{
             
-            let MapPath = route?.paths.first
+            let MapPath = route?.paths[0]
             
-            self.distanceLable.text = "\(String(describing: MapPath?.distance))" + "m"
+            if MapPath == nil {
                 
-            self.walkingMinuteLable.text = "\(String(describing: MapPath?.duration))" + "s"
+                return
+            }
+            
+            let x = MapPath?.distance ?? 0
+            let y = MapPath?.duration ?? 0
+//            print(x)
+//            print(y)
+            self.distanceLable.text = "\(x)" + "m"
+            self.walkingMinuteLable.text = "\(y)" + "s"
+        
         }
     }
     
@@ -260,7 +269,7 @@ class YQFireMapDetailViewController: UIViewController {
         locationMapView.userTrackingMode = .none
         
         locationMapView.delegate = self as MAMapViewDelegate
-        locationMapView.zoomLevel = 10.0 //地图的缩放的级别比例
+        locationMapView.zoomLevel = 5.0 //地图的缩放的级别比例
         //设置移动的最小定位距离
         locationMapView.distanceFilter = 10.0 //位移10米才进行的定位操作
         
@@ -375,6 +384,9 @@ class YQFireMapDetailViewController: UIViewController {
         naviRoute?.add(to: locationMapView)
         
         locationMapView.showOverlays(naviRoute?.routePolylines, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
+        locationMapView.zoomLevel = 16.0 //地图的缩放的级别比例
+        
+
     }
     
 
@@ -476,8 +488,13 @@ extension YQFireMapDetailViewController : AMapSearchDelegate{
         self.route = nil
         if response.count > 0 {
             
+//            print(response)
+//            print(response.route)
+            
             self.route = response.route
+            
             presentCurrentCourse()
+            
         }
     }
     

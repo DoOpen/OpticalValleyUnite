@@ -23,3 +23,4 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 #import "RouteCommon.h"
 #import "AnimatedAnnotation.h"
+#import "AnimatedAnnotationView.h"

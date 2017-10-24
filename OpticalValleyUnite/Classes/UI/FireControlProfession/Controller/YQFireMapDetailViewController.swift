@@ -51,6 +51,9 @@ class YQFireMapDetailViewController: UIViewController {
     @IBOutlet weak var giveupAbandon: UIButton!
     @IBOutlet weak var atOnceImplement: UIButton!
     
+    // userPointLocation
+    var pointLocation : AnimatedAnnotation!
+    
     // MAMap单例
     var locationManager = AMapLocationManager()
     
@@ -58,8 +61,22 @@ class YQFireMapDetailViewController: UIViewController {
     // 主search对象
     var search : AMapSearchAPI!
     var naviRoute: MANaviRoute?
-    var route: AMapRoute?
+    
+    //除了驾车以外的所有的路径显示,高德的返回列表
+    var route: AMapRoute?{
+        
+        didSet{
+            
+            let MapPath = route?.paths.first
+            
+            self.distanceLable.text = "\(String(describing: MapPath?.distance))" + "m"
+                
+            self.walkingMinuteLable.text = "\(String(describing: MapPath?.duration))" + "s"
+        }
+    }
+    
     var currentSearchType: AMapRoutePlanningType = AMapRoutePlanningType.drive
+    
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
@@ -79,6 +96,7 @@ class YQFireMapDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         let Coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(fireModel.latitude), CLLocationDegrees(fireModel.longitude))
         self.endCoordinate = Coordinate
         
@@ -88,11 +106,11 @@ class YQFireMapDetailViewController: UIViewController {
         
         //设置打点和渲染
         self.addLocationAndMessageView(model: (self.fireModel)!)
-
+        //添加默认的选中气泡
+        self.locationMapView.selectAnnotation(self.pointLocation, animated: true)
         
     }
 
-    
     
     // MARK: - 执行界面(implementView)系列buttonClick
     //立即反馈
@@ -121,9 +139,9 @@ class YQFireMapDetailViewController: UIViewController {
         self.atOnceImplement.isUserInteractionEnabled = false
     
         self.gotoImplementDataWithBackStage(parameters: paramet)
-        
-
+    
     }
+    
     
     //放弃执行
     @IBAction func giveUpImplementClick(_ sender: Any) {
@@ -207,7 +225,7 @@ class YQFireMapDetailViewController: UIViewController {
                             
                             self.setUpFooterButtonState(isExec: isExec)
                             
-                            }
+                        }
                         
                         let array = data["stateList"] as! NSArray
                         
@@ -319,7 +337,9 @@ class YQFireMapDetailViewController: UIViewController {
         let starPoint = YQPointAnnotation()//系统标记点location
         starPoint.coordinate = CLLocationCoordinate2D
         starPoint.title = model.name
+        starPoint.subtitle = model.detail
         starPoint.pointModel = model
+        self.pointLocation = starPoint
         
         locationMapView.addAnnotation(starPoint)
     }

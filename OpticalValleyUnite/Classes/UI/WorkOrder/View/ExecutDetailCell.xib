@@ -77,7 +77,7 @@
                 <outlet property="tableView" destination="leV-G1-6P1" id="Rx6-EX-5Yi"/>
                 <outlet property="tableViewHeightConstaint" destination="89H-tv-TPB" id="brG-wq-0fS"/>
             </connections>
-            <point key="canvasLocation" x="-110" y="94"/>
+            <point key="canvasLocation" x="-125" y="26"/>
         </tableViewCell>
     </objects>
 </document>

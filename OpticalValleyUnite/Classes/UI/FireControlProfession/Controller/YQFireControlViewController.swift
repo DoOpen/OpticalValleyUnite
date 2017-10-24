@@ -41,9 +41,6 @@ class YQFireControlViewController: UIViewController {
     // MAMap单例
     var locationManager = AMapLocationManager()
     
-    // userPointLocation
-    var pointLocation : AnimatedAnnotation!
-    
     // leftBtn
     var leftBtn : UIButton!
     // 缓存执行的mapview 和 火警的点的位置

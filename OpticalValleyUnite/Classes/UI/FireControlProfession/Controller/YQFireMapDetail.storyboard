@@ -201,7 +201,7 @@
                         <outlet property="giveupAbandon" destination="0e6-NU-ivH" id="G9b-wI-6BX"/>
                         <outlet property="locationMapView" destination="9to-PZ-M0t" id="pnp-nU-Ctd"/>
                         <outlet property="tableView" destination="jI0-Kx-SDE" id="JAB-6t-J12"/>
-                        <outlet property="walkingMinute" destination="OJP-3W-ylj" id="rDk-tE-n1A"/>
+                        <outlet property="walkingMinuteLable" destination="OJP-3W-ylj" id="2DI-Qv-sIz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3q-kd-kvj" userLabel="First Responder" sceneMemberID="firstResponder"/>

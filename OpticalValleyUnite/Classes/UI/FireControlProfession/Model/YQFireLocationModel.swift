@@ -23,7 +23,7 @@ class YQFireLocationModel: NSObject {
      },
      */
     
-    var firePointId : Int = -1
+    var firePointId : Int64 = -1
     
     var name : String = ""
     

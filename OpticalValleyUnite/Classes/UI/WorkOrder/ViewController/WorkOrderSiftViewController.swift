@@ -163,6 +163,7 @@ class WorkOrderSiftViewController: UIViewController {
         endTime = ""
         endBtn.setTitle("截止时间", for: .normal)
         startBtn.setTitle("开始时间", for: .normal)
+        
     }
     
     private func getProjectData(){
@@ -171,12 +172,12 @@ class WorkOrderSiftViewController: UIViewController {
             
             
             var temp = [ProjectModel]()
+            
             for dic in response as! Array<[String: Any]> {
                 temp.append(ProjectModel(parmart: dic))
             }
+            
             self.projectData = temp
-            
-            
             
         }) { (error) in
             
@@ -292,11 +293,11 @@ class WorkOrderSiftViewController: UIViewController {
 //        projectTagsView.delegate = self
         
         if tags != nil{
+            
             for tag in tags!{
                 tagsView.addTag(tag)
             }
         }
-        
     }
 
 }

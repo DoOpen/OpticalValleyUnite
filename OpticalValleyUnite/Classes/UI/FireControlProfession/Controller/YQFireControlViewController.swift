@@ -46,6 +46,10 @@ class YQFireControlViewController: UIViewController {
     
     // leftBtn
     var leftBtn : UIButton!
+    // 缓存执行的mapview 和 火警的点的位置
+    var clickMapView : MAMapView!
+    var clickAnnotationView : MAAnnotationView!
+    
     // 模型数组
     var fireModel = [YQFireLocationModel](){
         didSet{
@@ -100,6 +104,16 @@ class YQFireControlViewController: UIViewController {
         /*消防点信息, 地图打点使用*/
         makeMapLocationData()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(true)
+        
+        if !self.implementView.isHidden {
+            
+            self.mapView(self.clickMapView, didAnnotationViewCalloutTapped: self.clickAnnotationView)
+        }
     }
     
     
@@ -595,13 +609,15 @@ extension YQFireControlViewController: MAMapViewDelegate{
         
         let  YQPoint = view.annotation as! YQPointAnnotation
         
+        self.clickMapView = mapView
+        self.clickAnnotationView = view
+        
         if YQPoint.pointModel == nil {
             
             return
         }
         
         self.implementViewDataAndDetailShow(pointAnnotation: YQPoint)
-        
     }
     
 }

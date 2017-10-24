@@ -134,6 +134,9 @@ class YQFireMapDetailViewController: UIViewController {
         
         self.gotoImplementDataWithBackStage(parameters: paramet)
         
+        //界面重新跳会主界面
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     // MARK: - 手动添加定位按钮点击方法
@@ -282,18 +285,22 @@ class YQFireMapDetailViewController: UIViewController {
     
     // MARK: - 设置底部的footer的显示状态的方法
     func setUpFooterButtonState(isExec : Bool){
+        
         //主线程进行设置,btn的循环显示
         if isExec {//已经执行,显示放弃执行
+            
             self.giveupAbandon.isHidden = !isExec
             self.atOnceImplement.isHidden = isExec
+            
         }else{//没有执行,显示已经执行
+            
             self.giveupAbandon.isHidden = isExec
             self.atOnceImplement.isHidden = !isExec
         }
         
         self.giveupAbandon.isUserInteractionEnabled = true
         self.atOnceImplement.isUserInteractionEnabled = true
-
+        
     }
     
     
@@ -309,7 +316,6 @@ class YQFireMapDetailViewController: UIViewController {
         starPoint.pointModel = model
         
         locationMapView.addAnnotation(starPoint)
-        
     }
     
     
@@ -478,7 +484,6 @@ extension YQFireMapDetailViewController : UITableViewDelegate,UITableViewDataSou
         cell.textLabel?.text = self.implementTableViewDataArray[indexPath.row].content
         return cell
     }
-    
 
 }
 

@@ -16,6 +16,7 @@ class SystemMessageCell: UITableViewCell {
     
     var model: SystemMessageModel?{
         didSet{
+            
             titleView.text = model?.department
             timeLabel.text = model?.time
             contentLabel.text = model?.title

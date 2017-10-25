@@ -28,67 +28,67 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="处理人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibw-uP-KtG">
-                    <rect key="frame" x="56.5" y="35" width="52" height="21"/>
+                    <rect key="frame" x="36.5" y="35" width="52" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="王宝强" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i0H-Tk-a2c">
-                    <rect key="frame" x="120.5" y="30" width="64" height="30"/>
+                    <rect key="frame" x="93.5" y="30" width="58" height="30"/>
                     <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="马蓉" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0BL-Mx-mby">
-                    <rect key="frame" x="120.5" y="81.5" width="50" height="30"/>
+                    <rect key="frame" x="93.5" y="81.5" width="46" height="30"/>
                     <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="配合人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rc-uO-Hs1">
-                    <rect key="frame" x="56.5" y="86" width="52" height="21"/>
+                    <rect key="frame" x="36.5" y="86" width="52" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2017-04-17" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y7P-8x-eT9">
-                    <rect key="frame" x="120.5" y="132.5" width="97" height="30"/>
+                    <rect key="frame" x="93.5" y="132.5" width="88" height="30"/>
                     <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="处理时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75q-sE-FP2">
-                    <rect key="frame" x="38.5" y="137" width="70" height="21"/>
+                    <rect key="frame" x="18.5" y="137" width="70" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="人为导致传感器报警" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xgz-Z6-8eU">
-                    <rect key="frame" x="120.5" y="183.5" width="150" height="30"/>
+                    <rect key="frame" x="93.5" y="183.5" width="246.5" height="30"/>
                     <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="故障原因" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDO-TB-cU6">
-                    <rect key="frame" x="38.5" y="188" width="70" height="21"/>
+                    <rect key="frame" x="18.5" y="188" width="70" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="已解决" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lxS-We-KcT">
-                    <rect key="frame" x="120.5" y="234.5" width="64" height="30"/>
+                    <rect key="frame" x="93.5" y="234.5" width="58" height="30"/>
                     <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="处理结果" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msS-f5-NJt">
-                    <rect key="frame" x="38.5" y="239" width="70" height="21"/>
+                    <rect key="frame" x="18.5" y="239" width="70" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="证明图片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMC-NK-IDV">
-                    <rect key="frame" x="38.5" y="290" width="70" height="21"/>
+                    <rect key="frame" x="18.5" y="290" width="70" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -126,6 +126,7 @@
                 <constraint firstAttribute="trailing" secondItem="d3F-nB-NpB" secondAttribute="trailing" id="JgV-8C-7fn"/>
                 <constraint firstItem="ljH-e0-IC2" firstAttribute="top" secondItem="d3F-nB-NpB" secondAttribute="bottom" constant="10" id="K8t-PL-qSh"/>
                 <constraint firstItem="Y7P-8x-eT9" firstAttribute="leading" secondItem="i0H-Tk-a2c" secondAttribute="leading" id="KZa-vv-JXh"/>
+                <constraint firstAttribute="trailing" secondItem="xgz-Z6-8eU" secondAttribute="trailing" constant="5" id="L2o-GT-kzb"/>
                 <constraint firstItem="msS-f5-NJt" firstAttribute="top" secondItem="EDO-TB-cU6" secondAttribute="bottom" constant="30" id="NLV-27-aSa"/>
                 <constraint firstItem="0BL-Mx-mby" firstAttribute="centerY" secondItem="1Rc-uO-Hs1" secondAttribute="centerY" id="NNY-vz-SUz"/>
                 <constraint firstItem="1Rc-uO-Hs1" firstAttribute="trailing" secondItem="Ibw-uP-KtG" secondAttribute="trailing" id="P2h-tE-lpA"/>
@@ -135,8 +136,7 @@
                 <constraint firstItem="lxS-We-KcT" firstAttribute="leading" secondItem="i0H-Tk-a2c" secondAttribute="leading" id="Stz-0Y-mNC"/>
                 <constraint firstItem="TMV-Dq-5Dr" firstAttribute="centerY" secondItem="d3F-nB-NpB" secondAttribute="centerY" id="Tlr-bB-D28"/>
                 <constraint firstItem="1Rc-uO-Hs1" firstAttribute="top" secondItem="Ibw-uP-KtG" secondAttribute="bottom" constant="30" id="W1i-LJ-nSB"/>
-                <constraint firstItem="Ibw-uP-KtG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-90" id="Ylx-xj-5SQ"/>
-                <constraint firstItem="i0H-Tk-a2c" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-20" id="ZxI-2L-k22"/>
+                <constraint firstItem="Ibw-uP-KtG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-110" id="Ylx-xj-5SQ"/>
                 <constraint firstItem="d3F-nB-NpB" firstAttribute="top" secondItem="vMC-NK-IDV" secondAttribute="bottom" constant="10" id="aHG-37-6pM"/>
                 <constraint firstItem="lxS-We-KcT" firstAttribute="centerY" secondItem="msS-f5-NJt" secondAttribute="centerY" id="c8s-no-2Lm"/>
                 <constraint firstItem="EDO-TB-cU6" firstAttribute="top" secondItem="75q-sE-FP2" secondAttribute="bottom" constant="30" id="cMq-9Q-kFm"/>
@@ -147,6 +147,7 @@
                 <constraint firstItem="Ibw-uP-KtG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="in8-gc-lnk"/>
                 <constraint firstItem="TMV-Dq-5Dr" firstAttribute="width" secondItem="d3F-nB-NpB" secondAttribute="width" id="jnz-AZ-QjM"/>
                 <constraint firstItem="msS-f5-NJt" firstAttribute="trailing" secondItem="EDO-TB-cU6" secondAttribute="trailing" id="q2n-3c-egf"/>
+                <constraint firstItem="i0H-Tk-a2c" firstAttribute="leading" secondItem="Ibw-uP-KtG" secondAttribute="trailing" constant="5" id="u0a-dj-e3c"/>
                 <constraint firstItem="vMC-NK-IDV" firstAttribute="trailing" secondItem="msS-f5-NJt" secondAttribute="trailing" id="vOZ-C2-d11"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

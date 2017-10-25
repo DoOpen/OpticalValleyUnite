@@ -432,16 +432,17 @@ class WorkOrderDetailModel: Object{
             let equipmentID = parmart["equipment_id"] as? Double ?? -1
             //                print(equipmentID)
             equipment_id = equipmentID
-            content = parmart["DESCRIPTION"] as? String ?? ""
             
-            
-            
+//            content = parmart["DESCRIPTION"] as? String ?? ""
+        
         }else{
             
             //工单的类型的是 未知的情况
             orderType = ""
         
         }
+        
+        content = parmart["DESCRIPTION"] as? String ?? ""
         
         GROUPID = parmart["GROUPID"] as? String ?? ""
         picture = parmart["PICTURE"] as? String ?? ""

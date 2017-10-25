@@ -96,8 +96,9 @@ extension HttpClient {
         parameters["token"] = UserDefaults.standard.object(forKey: Const.SJToken)
         
         print("请求URL:" + URLPath.basicPath + urlString)
-        print("请求参数:")
         print(parameters)
+        
+//        print(parameters)
         Alamofire.request(URLPath.basicPath + urlString, method: .get, parameters: parameters).responseJSON { (response) in
             
             switch response.result {

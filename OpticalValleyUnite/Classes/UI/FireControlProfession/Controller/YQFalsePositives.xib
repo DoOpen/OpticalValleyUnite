@@ -24,31 +24,31 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="处理人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brw-fb-0jk">
-                    <rect key="frame" x="77" y="40" width="52" height="21"/>
+                    <rect key="frame" x="57" y="40" width="52" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="王宝强" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fB-Ds-Xcc">
-                    <rect key="frame" x="141" y="35.5" width="64" height="30"/>
+                    <rect key="frame" x="144" y="35.5" width="58" height="30"/>
                     <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="处理时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4T2-AE-Bjj">
-                    <rect key="frame" x="59" y="91" width="70" height="21"/>
+                    <rect key="frame" x="39" y="91" width="70" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2017-04-16" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s8H-et-F4C">
-                    <rect key="frame" x="141" y="87" width="98" height="30"/>
+                    <rect key="frame" x="144" y="87" width="89" height="30"/>
                     <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="证明图片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDt-cB-muL">
-                    <rect key="frame" x="59" y="142" width="70" height="21"/>
+                    <rect key="frame" x="39" y="142" width="70" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -83,7 +83,7 @@
                 <constraint firstItem="WCy-fb-pG9" firstAttribute="leading" secondItem="Drc-20-u7W" secondAttribute="trailing" constant="30" id="7TQ-bY-jov"/>
                 <constraint firstItem="4T2-AE-Bjj" firstAttribute="top" secondItem="brw-fb-0jk" secondAttribute="bottom" constant="30" id="JeX-Zj-8QU"/>
                 <constraint firstItem="s8H-et-F4C" firstAttribute="centerY" secondItem="4T2-AE-Bjj" secondAttribute="centerY" id="Kah-C0-Rtz"/>
-                <constraint firstItem="brw-fb-0jk" firstAttribute="centerX" secondItem="ae1-PS-z08" secondAttribute="centerX" constant="-90" id="LNQ-yj-L3q"/>
+                <constraint firstItem="brw-fb-0jk" firstAttribute="centerX" secondItem="ae1-PS-z08" secondAttribute="centerX" constant="-110" id="LNQ-yj-L3q"/>
                 <constraint firstItem="0fB-Ds-Xcc" firstAttribute="centerX" secondItem="ae1-PS-z08" secondAttribute="centerX" constant="-20" id="LWB-Pm-qau"/>
                 <constraint firstAttribute="trailing" secondItem="WCy-fb-pG9" secondAttribute="trailing" id="MJu-oS-N7d"/>
                 <constraint firstItem="Drc-20-u7W" firstAttribute="width" secondItem="WCy-fb-pG9" secondAttribute="width" id="MOU-5Z-6w6"/>

@@ -211,6 +211,10 @@ class YQSystemSelectionVC: UIViewController {
             
             //最后一个是显示的图标
             return
+            //测试日志模块
+//            let journa = UIStoryboard.instantiateInitialViewController(name: "YQJournal") as? YQJournalViewController
+//            
+//            SJKeyWindow!.rootViewController?.present(journa!, animated: true, completion: nil)
             
         }else if tap.tapIndex == fireindex {
             

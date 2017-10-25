@@ -41,6 +41,7 @@ class WorkOrderProgressViewController: UIViewController {
     
     @IBOutlet weak var oprationView: UIView!
     var detailsCell: WorkOrderDetailsCell?
+    
     var type = OperationType.none {
         
         didSet{
@@ -176,6 +177,7 @@ class WorkOrderProgressViewController: UIViewController {
         super.viewWillAppear(animated)
         
         getData()
+        
         getWorkDetail()
     }
     
@@ -295,6 +297,7 @@ class WorkOrderProgressViewController: UIViewController {
 //            print(respose)
             
             SVProgressHUD.dismiss()
+            
             //添加收藏 parkid的 缓存
             //  respose["PARK_ID"] 的值是需要的情况
             let PackId = respose["PARK_ID"] as! String
@@ -341,7 +344,9 @@ class WorkOrderProgressViewController: UIViewController {
             self.tableView.reloadData()
             
         }) { (error) in
+            
             print(error)
+            
             SVProgressHUD.dismiss()
         }
     }
@@ -402,6 +407,7 @@ class WorkOrderProgressViewController: UIViewController {
             }
             
             if let cell = self.detailsCell{
+                
                 cell.contentLabel.text = temp.first?.TASK_DESCRIPTION
             }
 
@@ -415,9 +421,11 @@ class WorkOrderProgressViewController: UIViewController {
     func getCell(model: WorkHistoryModel) -> UITableViewCell {
         
         var cell = UITableViewCell()
+        
         switch model.status {
             
         case -1://工单生成
+            
             cell = tableView.dequeueReusableCell(withIdentifier: "WorkOrderDescription")!
             let reportName = workOrderDetalModel?.reportPeopleName
             if reportName == "" {
@@ -638,10 +646,15 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
                 
                 DetailsCell.equipmentModel = self.equimentModel
                 
-                if let content = self.taskModels.first?.TASK_DESCRIPTION{
-                    DetailsCell.contentLabel.text = content
+                if (self.taskModels.first?.TASK_DESCRIPTION) != ""{
+                    
+                    DetailsCell.contentLabel.text = self.taskModels.first?.TASK_DESCRIPTION
+                
                 }
+                
             }else{
+                
+                
                 
                 let model = models[indexPath.row - 1]
                 let cell2 = getCell(model: model)

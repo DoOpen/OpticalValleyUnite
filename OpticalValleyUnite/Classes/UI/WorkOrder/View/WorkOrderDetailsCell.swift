@@ -72,8 +72,10 @@ class WorkOrderDetailsCell: UITableViewCell {
     var model: WorkOrderDetailModel?{
         didSet{
             if let model = model{
+                
                 contentLabel.text = model.content
 //                contentLabel.text = "东方化工二手电脑办公二维老地方能够两三年栋欧式文公;色是;我;第呢如果;老实人"
+//                contentLabel.text = "我xxxxx"
                 workOrderNameLabel.text = model.workName
                 reportTypeLabel.text = model.orderType
                 

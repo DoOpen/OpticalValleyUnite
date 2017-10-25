@@ -30,10 +30,10 @@
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电压变电站" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUE-o1-gB8">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电压变电站" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUE-o1-gB8">
                                 <rect key="frame" x="89" y="224" width="200" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="紧急程度: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40I-AJ-O7q">
@@ -115,6 +115,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="报事位置: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPE-mP-2uJ">
                                 <rect key="frame" x="12" y="195" width="65" height="17"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="An2-eh-F2v"/>
                                     <constraint firstAttribute="width" constant="65" id="IIF-FY-fxA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -391,7 +392,6 @@
                             <constraint firstItem="qmY-qu-Ts3" firstAttribute="centerY" secondItem="40I-AJ-O7q" secondAttribute="centerY" id="2r9-Ei-ujz"/>
                             <constraint firstItem="MPV-EG-NXV" firstAttribute="centerY" secondItem="Bbs-XK-WT1" secondAttribute="centerY" id="31Q-Gt-hzj"/>
                             <constraint firstItem="wDE-7N-UMN" firstAttribute="leading" secondItem="3Rl-Aw-Eef" secondAttribute="leading" id="48W-7M-7Ke"/>
-                            <constraint firstItem="kUE-o1-gB8" firstAttribute="top" secondItem="HL0-sK-a4x" secondAttribute="top" id="4Te-rl-baI"/>
                             <constraint firstItem="May-xw-fgM" firstAttribute="leading" secondItem="wDE-7N-UMN" secondAttribute="leading" id="6JC-uo-gxP"/>
                             <constraint firstItem="f5D-aQ-15P" firstAttribute="leading" secondItem="69T-rJ-BRy" secondAttribute="trailing" constant="12" id="8LL-Tv-vad"/>
                             <constraint firstAttribute="trailing" secondItem="Bto-VT-f6y" secondAttribute="trailing" constant="12" id="9cE-jW-brU"/>
@@ -436,6 +436,7 @@
                             <constraint firstItem="Bbs-XK-WT1" firstAttribute="leading" secondItem="3Rl-Aw-Eef" secondAttribute="leading" id="szT-Z3-g8t"/>
                             <constraint firstItem="aWL-Xs-oDp" firstAttribute="leading" secondItem="Bbs-XK-WT1" secondAttribute="leading" id="t1d-cv-JCe"/>
                             <constraint firstItem="MPE-mP-2uJ" firstAttribute="leading" secondItem="40I-AJ-O7q" secondAttribute="leading" id="vlZ-Su-KOp"/>
+                            <constraint firstItem="HL0-sK-a4x" firstAttribute="top" secondItem="kUE-o1-gB8" secondAttribute="top" id="zRf-P1-uYU"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

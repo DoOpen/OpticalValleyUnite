@@ -26,6 +26,10 @@ class YQDrawerViewController: UIViewController {
 //    var amountArray : NSArray = {NSArray()}()
     
     
+    @IBOutlet weak var contentScrollView: UIScrollView!
+    
+    @IBOutlet weak var lastView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +49,10 @@ class YQDrawerViewController: UIViewController {
         
         //2.调用火警数量的接口
         requestData()
+        
+        //3.设置可以滚动
+        let point = CGPoint( x: 0, y: self.lastView.bounds.origin.y + 100)
+        self.contentScrollView.setContentOffset(point, animated: true)
        
     }
     
@@ -76,37 +84,30 @@ class YQDrawerViewController: UIViewController {
         
       self.sendNoties(Notifaction: "signTap")
         
-        
     }
     
-    
-   
     /// 误报单详情
     @IBAction func falsePositives(_ sender: UITapGestureRecognizer) {
         
         self.sendNoties(Notifaction: "falsePost")
-        
     }
     
     /// 系统选择
     @IBAction func systemSelect(_ sender: UITapGestureRecognizer) {
         
         self.sendNoties(Notifaction: "system")
-        
     }
     
     /// 修改密码
     @IBAction func pwdModify(_ sender: UITapGestureRecognizer) {
         
         self.sendNoties(Notifaction: "pwdModify")
-        
     }
     
     /// 退出登录
     @IBAction func eixtLoyout(_ sender: UITapGestureRecognizer) {
         
        self.sendNoties(Notifaction: "eixt")
-        
     }
     
     /// 发送通知的传参数的方法

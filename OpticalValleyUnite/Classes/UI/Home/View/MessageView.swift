@@ -19,12 +19,14 @@ class MessageView: UIView {
     }
     
     @IBAction func workOrderBtnClick() {
+        
 //        APPHandle.tabBarControllerSelected(index: 1)
         
         if let vc = UIStoryboard(name: "YQWorkOrderFirst", bundle: nil).instantiateInitialViewController() as? YQWorkOrderFirstViewController{
             
 //            APPHandle.currentRootViewController()?.present(vc, animated: true, completion: {
 //            })
+            
             APPHandle.currentRootViewController()?.pushViewController(vc, animated: true)
             
             self.closeBtnClick()

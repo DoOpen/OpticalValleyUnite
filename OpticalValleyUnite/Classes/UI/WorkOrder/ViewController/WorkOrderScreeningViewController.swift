@@ -188,6 +188,7 @@ class WorkOrderScreeningViewController: UIViewController {
     
     // MARK: - 重置设置按钮
     @IBAction func resetBtnClick(_ sender: UIButton) {
+        
         //重置时间
         startTime = ""
         endTime = ""
@@ -203,6 +204,9 @@ class WorkOrderScreeningViewController: UIViewController {
             getWorkTypeList()
         
         }
+        
+        //重置没有清空缓存,可以考虑的是重置之后清除缓存
+//        UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
         
     }
 }

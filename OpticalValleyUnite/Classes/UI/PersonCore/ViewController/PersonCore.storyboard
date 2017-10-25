@@ -254,6 +254,7 @@
                         <outlet property="bundleVersionLabel" destination="xiD-60-gI4" id="CUE-pb-1JW"/>
                         <outlet property="nickNameLabel" destination="Oyz-p8-faX" id="aiB-Ab-4eP"/>
                         <outlet property="photoImageView" destination="Ood-Zj-6od" id="hLE-ve-3YP"/>
+                        <outlet property="projectSelectName" destination="Qmb-QH-hBt" id="EaG-DG-OXB"/>
                         <outlet property="userNameLabel" destination="OeV-ba-tFG" id="OmD-ru-qWQ"/>
                     </connections>
                 </viewController>

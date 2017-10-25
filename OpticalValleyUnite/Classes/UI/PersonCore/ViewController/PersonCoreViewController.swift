@@ -14,7 +14,10 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
-
+    
+    // MARK: - 项目选择项目的传递
+    @IBOutlet weak var projectSelectName: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,36 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
                 photoImageView.kf.setImage(with: URL(string: imageValue))
             }
         }
+       
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //设置项目选择的lable
+        self.projectSelectName.text = setUpProjectNameLable()
+
+    }
+    
+    
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            projectName = dic?["PARK_NAME"] as! String
+        }else{
+        
+            projectName = "项目选择"
+        }
+        
+        return projectName
+        
+        
     }
     
     // MARK: - 修改密码按钮点击功能实现

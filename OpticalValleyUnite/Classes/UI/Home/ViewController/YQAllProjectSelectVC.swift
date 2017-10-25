@@ -86,6 +86,9 @@ class YQAllProjectSelectVC: UIViewController {
             
             tableView.reloadRows(at: [currentSelecIndex!], with: .none)
             currentSelecIndex = nil
+            //重置没有清空缓存
+            UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
+            
         }
         
     }

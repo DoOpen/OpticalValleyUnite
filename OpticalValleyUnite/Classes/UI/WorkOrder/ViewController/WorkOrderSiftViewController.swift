@@ -164,6 +164,9 @@ class WorkOrderSiftViewController: UIViewController {
         endBtn.setTitle("截止时间", for: .normal)
         startBtn.setTitle("开始时间", for: .normal)
         
+        //重置没有清空缓存,可以考虑的是重置之后,就清除缓存
+//        UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
+
     }
     
     private func getProjectData(){

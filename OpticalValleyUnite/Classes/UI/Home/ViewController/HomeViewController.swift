@@ -339,6 +339,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         if Double(UIDevice.current.systemVersion.components(separatedBy: ".").first!)! >= 9.0{
             locationManager.allowsBackgroundLocationUpdates = true
+            
         }else{
             locationManager.pausesLocationUpdatesAutomatically = false
         }
@@ -402,25 +403,38 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     }
   
  
-    
+    // MARK: - leftbar消息按钮的点击事件
 /// leftbar消息按钮的点击事件的
     @IBAction func messageBtnClick() {
+        
         let bool1 = allPermissionModels.contains { (model) -> Bool in
+            
             model.aPPMODULENAME == "工单"
         }
+        
         let bool2 = allPermissionModels.contains { (model) -> Bool in
+            
             model.aPPMODULENAME == "督办"
         }
 
-        if bool1 && bool2{
+        if bool1 && bool2{//这个逻辑是 工单和 督办都有选项的值情况
+            
             MessageView.show(workOrderCount: workCount, surveillanceWorkOrder: dubanCount)
-        }else if bool1{
+            
+        }else if bool1{// 只有工单
+            
             actionPush(text:"工单")
-        }else if bool2{
+            
+        }else if bool2{// 只有督办
+            
             actionPush(text:"督办")
-        }else{
+            
+        }else{// 全都没有的情况
+            
             MessageView.show(workOrderCount: workCount, surveillanceWorkOrder: dubanCount)
         }
+        
+        
         
     }
     

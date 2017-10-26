@@ -32,6 +32,7 @@ class YQResolvedView: UIView {
     
     @IBOutlet weak var proofImageAddView: SJAddView!
     
+    
     //定义代理
     weak var delegate : YQResolvedViewDelegate?
     

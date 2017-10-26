@@ -59,11 +59,10 @@
                     </state>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qU-Jm-7rI" customClass="SJAddView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                    <rect key="frame" x="55" y="289" width="320" height="100"/>
+                    <rect key="frame" x="0.0" y="289" width="375" height="100"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="Vkj-vZ-AN5"/>
-                        <constraint firstAttribute="width" constant="320" id="ZfV-bn-wsv"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="添加一个" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tnq-30-tIa">
@@ -151,6 +150,7 @@
                 <constraint firstItem="FYD-iw-Kmb" firstAttribute="trailing" secondItem="QxI-6h-p81" secondAttribute="trailing" id="Lud-99-eXo"/>
                 <constraint firstItem="0Mn-u0-Oad" firstAttribute="centerY" secondItem="FYD-iw-Kmb" secondAttribute="centerY" id="Nay-Q6-jQc"/>
                 <constraint firstItem="Tnq-30-tIa" firstAttribute="leading" secondItem="Unf-Td-gJ7" secondAttribute="trailing" constant="5" id="TW4-Ho-i6Q"/>
+                <constraint firstItem="4qU-Jm-7rI" firstAttribute="leading" secondItem="dlO-eS-T8Z" secondAttribute="leading" id="YpN-Fa-pgi"/>
                 <constraint firstItem="N95-Pb-Smp" firstAttribute="centerY" secondItem="WQV-cP-Tqa" secondAttribute="centerY" id="ab9-F3-2m0"/>
                 <constraint firstItem="QxI-6h-p81" firstAttribute="centerX" secondItem="dlO-eS-T8Z" secondAttribute="centerX" constant="-95" id="eN4-2r-Lto"/>
                 <constraint firstItem="Unf-Td-gJ7" firstAttribute="leading" secondItem="QxI-6h-p81" secondAttribute="trailing" constant="10" id="lgl-FM-uh0"/>

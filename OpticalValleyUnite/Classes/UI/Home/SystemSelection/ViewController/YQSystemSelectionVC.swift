@@ -244,11 +244,12 @@ class YQSystemSelectionVC: UIViewController {
 //                
 //            }else{
 //                
-//                SJKeyWindow?.rootViewController = drawerController
-//                
+            SJKeyWindow?.rootViewController = drawerController
+//
 //            }
 
-            SJKeyWindow!.rootViewController?.present(drawerController, animated: true, completion: nil)
+// 注意的是:这个方法是 保留了SJKeyWindow?.rootViewController的跟控制器,而直接赋值的区别是替换了,这样导致的是弹框的视图的显示问题??????
+//            SJKeyWindow!.rootViewController?.present(drawerController, animated: true, completion: nil)
             
 //            getNavController()?.present(drawerController, animated: true, completion: nil)
 

@@ -139,6 +139,14 @@ class ReportMasterViewController: UIViewController {
                         
                         if let data:NSArray = value["data"] as? NSArray {
                             
+                            if data.count < 1 {
+                                
+                                self.alert(message: "没有显示数据!")
+                                self.elevatorReportHide()
+                                
+                                return
+                            }
+                                
                             let dict:NSDictionary = (data[0] as? NSDictionary)!
                             self.reportName = (dict["APP_MODULE_NAME"] as? String)!
                             
@@ -591,6 +599,7 @@ class ReportMasterViewController: UIViewController {
         
         
         let images = addPhotoView.photos.map{$0.image}
+        
 //        let time: TimeInterval = 2.0
         if images.count > 0 {
             

@@ -612,7 +612,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             view.iconBtn.transform =  CGAffineTransform(rotationAngle: CGFloat.pi / 2 )
             view.openBtn.setTitle("收起", for: .normal)
             self.hideTableViewHeightConstraint.constant = 300
-            self.scrollContent.constant = self.view.bounds.height + 50
+            self.scrollContent.constant = self.view.bounds.height + 180
             
         }else{
             

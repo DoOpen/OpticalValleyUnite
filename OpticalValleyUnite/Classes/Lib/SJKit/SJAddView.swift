@@ -87,10 +87,10 @@ class SJAddView: UIView {
         
         SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
             
-            
             self.addImage(AddViewModel(image: image!))
             
         }, viewController: (SJKeyWindow?.rootViewController ))
+        
         
     }
 

@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface SJTakePhotoHandle : UIView
+
 + (void)takePhotoWithImageBlock:(void(^)(UIImage *image)) selectedImageBlock ViewController:(UIViewController *)vc;
+
 @end

@@ -22,13 +22,25 @@ class YQReleaseJournalViewController: UIViewController {
     // MARK: - 工作记录View的点击,界面跳转
     @IBAction func tapClickWithWorkRecord(_ sender: Any) {
         
+        let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord")
+        self.navigationController?.pushViewController(workRecord, animated: true)
+        
     }
     
     // MARK: - 提交rightBarButtonClick
     @IBAction func submitButtonClick(_ sender: Any) {
         
         
+        
     }
+    
+    // MARK: - 返回按钮leftBarButtonClick
+    
+    @IBAction func returnButtonClick(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
 
 }

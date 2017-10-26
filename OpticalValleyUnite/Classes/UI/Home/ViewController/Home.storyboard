@@ -329,8 +329,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="春节放假通知" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr0-bY-fwy">
-                                                    <rect key="frame" x="5" y="57" width="404" height="22"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <rect key="frame" x="5" y="65.666666666666686" width="404" height="19.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -348,7 +348,7 @@
                                                 <constraint firstItem="eQY-aX-ESa" firstAttribute="top" secondItem="C1C-73-99F" secondAttribute="top" id="FZQ-eL-ly0"/>
                                                 <constraint firstItem="C1C-73-99F" firstAttribute="leading" secondItem="w9E-cL-wHG" secondAttribute="leading" constant="15" id="Gd4-II-j5K"/>
                                                 <constraint firstItem="eQY-aX-ESa" firstAttribute="leading" secondItem="C1C-73-99F" secondAttribute="trailing" constant="6" id="H0x-GL-ODf"/>
-                                                <constraint firstAttribute="bottom" secondItem="Tr0-bY-fwy" secondAttribute="bottom" constant="26" id="JOl-Ug-zK1"/>
+                                                <constraint firstAttribute="bottom" secondItem="Tr0-bY-fwy" secondAttribute="bottom" constant="20" id="JOl-Ug-zK1"/>
                                                 <constraint firstItem="Yh1-BG-A4h" firstAttribute="leading" secondItem="w9E-cL-wHG" secondAttribute="leading" id="JxE-uA-V7x"/>
                                                 <constraint firstItem="3wk-Xy-8lf" firstAttribute="bottom" secondItem="C1C-73-99F" secondAttribute="bottom" id="LCa-hb-MOj"/>
                                                 <constraint firstItem="Tr0-bY-fwy" firstAttribute="leading" secondItem="w9E-cL-wHG" secondAttribute="leading" constant="5" id="LO1-wO-ES4"/>
@@ -425,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2911.594202898551" y="-113.31521739130436"/>
+            <point key="canvasLocation" x="2786" y="-108"/>
         </scene>
         <!--WorkOrder-->
         <scene sceneID="cT2-oD-UIH">

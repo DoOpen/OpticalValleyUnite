@@ -28,7 +28,7 @@
         <!--日志-->
         <scene sceneID="nAq-GR-bnJ">
             <objects>
-                <viewController id="v5g-Nr-XYd" sceneMemberID="viewController">
+                <viewController id="v5g-Nr-XYd" customClass="YQJournalViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5LT-r6-VXu"/>
                         <viewControllerLayoutGuide type="bottom" id="Dtm-UI-6lV"/>

@@ -24,6 +24,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
 
         self.navigationItem.title = "我的设置"
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
+        //写死的项目发版的时间
         bundleVersionLabel.text = bundleVersionLabel.text! + "(\(version))"
         
         let user = User.currentUser()

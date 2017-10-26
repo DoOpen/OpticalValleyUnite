@@ -24,6 +24,7 @@ class YQJournalViewController: UIViewController {
         // 自定义的navigetion right left barItem情况
         // left
         let leftButton = UIButton()
+        leftButton.frame = CGRect(x:0,y:0,width: 40, height:40)
         leftButton.setImage(UIImage(named: "icon_fire_return"), for: .normal)
         leftButton.addTarget(self, action: #selector(leftBarItemButtonClick), for: .touchUpInside)
         
@@ -34,10 +35,14 @@ class YQJournalViewController: UIViewController {
         
         //right
         let right_select_Button = UIButton()
+        right_select_Button.frame = CGRect(x : 0, y : 0, width : 20, height : 40)
+        
         right_select_Button.setImage(UIImage(named: "筛选"), for: .normal)
         right_select_Button.addTarget(self, action: #selector(selectRightBarItemButtonClick), for: .touchUpInside)
         
         let right_add_Button = UIButton()
+        right_add_Button.frame = CGRect(x : 0, y : 0, width : 20, height : 40)
+        
         right_add_Button.setImage(UIImage(named: "发布"), for: .normal)
         right_add_Button.addTarget(self, action: #selector(addRightBarItemButtonClick), for: .touchUpInside)
         
@@ -53,17 +58,37 @@ class YQJournalViewController: UIViewController {
     //MARK: - leftBarItemButtonClick方法
     func leftBarItemButtonClick(){
         //返回子系统选择的界面
-        
+        //查看是否有缓存的数据
+        let data = UserDefaults.standard.object(forKey: Const.YQTotallData) as? NSArray
+        //跳转到子系统的选择界面(需要的是逻辑的判断) 如果是只有一条数据的话,直接调到登录界面
+        if (data?.count)! > 1{
+            
+            let systemVC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
+            SJKeyWindow?.rootViewController = systemVC
+            
+            
+        }else{// 跳转到登录界面
+            
+            LoginViewController.loginOut()
+            
+        }
+
     }
     
     //MARK: - RightBarItemButtonClick(选择和添加)方法
     func selectRightBarItemButtonClick(){
         //筛选的界面弹窗的效果
+        let filerVC = UIStoryboard.instantiateInitialViewController(name: "YQFilterJournal")
+        navigationController?.pushViewController(filerVC, animated: true)
+        
     
     }
     
     func addRightBarItemButtonClick(){
         //添加发布界面弹窗的效果
+        let releaseVC = UIStoryboard.instantiateInitialViewController(name: "YQReleaseJournal")
+//        navigationController?.pushViewController(releaseVC, animated: true)
+        self.present(releaseVC, animated: true, completion: nil)
         
     }
 

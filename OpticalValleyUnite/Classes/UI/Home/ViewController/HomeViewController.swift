@@ -69,7 +69,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         //接受服务消息通知
         getNotice()
         
-        
         //设置定位
         setUpLocation()
         
@@ -344,7 +343,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             locationManager.pausesLocationUpdatesAutomatically = false
         }
     
-        
         locationManager.startUpdatingLocation()
         
     }
@@ -575,6 +573,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         vc.model = datas[indexPath.row]
 
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 120
+    }
+    
 }
 
 

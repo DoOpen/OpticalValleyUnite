@@ -53,6 +53,7 @@ class ExecutingViewConttroller: UIViewController {
     
     @IBOutlet weak var otherDetailViewHeight: NSLayoutConstraint!
     
+    
     @IBOutlet weak var otherViewtop: NSLayoutConstraint!
     
     @IBOutlet weak var otherViewHeight: NSLayoutConstraint!
@@ -66,6 +67,10 @@ class ExecutingViewConttroller: UIViewController {
     //创建配件库数据数组
     var partData : NSArray = {return NSArray()}()
     
+    //设置scrollcontent属性
+    @IBOutlet weak var scrollContent: NSLayoutConstraint!
+    
+    
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
@@ -78,9 +83,9 @@ class ExecutingViewConttroller: UIViewController {
         
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        
         tableView.tableFooterView = UIView()
-              
+        
+        self.automaticallyAdjustsScrollViewInsets = false
         
         if isToSee{
             
@@ -538,9 +543,7 @@ class ExecutingViewConttroller: UIViewController {
 //            SVProgressHUD.dismiss()
 //        }
 //    }
-    
-    
-    
+
 }
 
 extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
@@ -609,14 +612,20 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             view.iconBtn.transform =  CGAffineTransform(rotationAngle: CGFloat.pi / 2 )
             view.openBtn.setTitle("收起", for: .normal)
             self.hideTableViewHeightConstraint.constant = 300
+            self.scrollContent.constant = self.view.bounds.height + 50
             
         }else{
+            
             view.iconBtn.transform = .identity
             view.openBtn.setTitle("展开", for: .normal)
             self.hideTableViewHeightConstraint.constant = 80
-
             
+            self.scrollContent.constant = self.view.bounds.height - 80
         }
+        
+//        self.view.setNeedsDisplay()
+        
+        
         view.didTouchHandle = { [weak self] in
 //            let realm = try! Realm()
 //            realm.beginWrite()

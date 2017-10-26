@@ -50,10 +50,16 @@ class YQDrawerViewController: UIViewController {
         //2.调用火警数量的接口
         requestData()
         
-        //3.设置可以滚动
-        let point = CGPoint( x: 0, y: self.lastView.bounds.origin.y + 100)
-        self.contentScrollView.setContentOffset(point, animated: true)
+        //3.设置可以滚动(验证调试失败)
+        let point = CGPoint( x: 0, y: self.lastView.bounds.origin.y + 800)
+        self.contentScrollView.contentSize = CGSize(width: self.view.bounds.width, height: point.y)
        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        
     }
     
     // MARK: - 懒加载方法

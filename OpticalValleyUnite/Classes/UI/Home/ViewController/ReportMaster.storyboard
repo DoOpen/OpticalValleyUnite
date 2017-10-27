@@ -235,7 +235,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-oD-nlD">
-                                                        <rect key="frame" x="206.5" y="8" width="50" height="29"/>
+                                                        <rect key="frame" x="200.5" y="8" width="50" height="29"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="7MQ-fV-ccY"/>
                                                         </constraints>
@@ -278,7 +278,7 @@
                                                     <constraint firstItem="teH-wl-e3h" firstAttribute="centerY" secondItem="CyB-99-XyK" secondAttribute="centerY" id="fGm-nv-Vrn"/>
                                                     <constraint firstItem="9qX-Uh-Xqo" firstAttribute="centerY" secondItem="CyB-99-XyK" secondAttribute="centerY" id="hvh-Yu-ea7"/>
                                                     <constraint firstItem="j9d-6d-9L3" firstAttribute="centerY" secondItem="CyB-99-XyK" secondAttribute="centerY" id="kg1-BF-7Wf"/>
-                                                    <constraint firstItem="pBa-oD-nlD" firstAttribute="centerX" secondItem="CyB-99-XyK" secondAttribute="centerX" constant="44" id="sTa-4G-nae"/>
+                                                    <constraint firstItem="pBa-oD-nlD" firstAttribute="centerX" secondItem="CyB-99-XyK" secondAttribute="centerX" constant="38" id="sTa-4G-nae"/>
                                                     <constraint firstAttribute="height" constant="44" id="tbN-u8-C0y"/>
                                                 </constraints>
                                             </view>

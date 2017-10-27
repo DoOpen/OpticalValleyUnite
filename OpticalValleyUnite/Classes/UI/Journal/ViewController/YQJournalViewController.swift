@@ -85,10 +85,12 @@ class YQJournalViewController: UIViewController {
     }
     
     func addRightBarItemButtonClick(){
+        
         //添加发布界面弹窗的效果
         let releaseVC = UIStoryboard.instantiateInitialViewController(name: "YQReleaseJournal")
 //        navigationController?.pushViewController(releaseVC, animated: true)
         self.present(releaseVC, animated: true, completion: nil)
+        
         
     }
 

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Journal Add Event View Controller-->
+        <!--添加事项-->
         <scene sceneID="3Zj-Si-X4h">
             <objects>
                 <viewController id="uDc-Hh-Vjf" customClass="YQJournalAddEventViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,26 +21,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZaJ-Ec-glC">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="添加事件详情" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="drD-7G-B18" customClass="SJTextView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="128"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="cMO-OE-Uvp"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="添加事项" id="h71-SG-BYP">
-                                        <barButtonItem key="rightBarButtonItem" title="完成" id="ZKe-Ye-H17">
-                                            <connections>
-                                                <action selector="addEventComplete:" destination="uDc-Hh-Vjf" id="6Vb-mY-JdY"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="drD-7G-B18" customClass="SJTextView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="iBJ-Zg-5sy"/>
+                                    <constraint firstAttribute="height" constant="128" id="kLX-04-Wmi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -48,14 +33,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZaJ-Ec-glC" firstAttribute="top" secondItem="V1h-qZ-mpQ" secondAttribute="bottom" id="cf4-s2-ece"/>
-                            <constraint firstItem="drD-7G-B18" firstAttribute="leading" secondItem="kAe-jr-kFv" secondAttribute="leading" id="hQb-d3-8Xm"/>
-                            <constraint firstAttribute="trailing" secondItem="ZaJ-Ec-glC" secondAttribute="trailing" id="ldb-yR-nbo"/>
-                            <constraint firstItem="drD-7G-B18" firstAttribute="top" secondItem="ZaJ-Ec-glC" secondAttribute="bottom" id="tQL-gY-oDC"/>
-                            <constraint firstItem="ZaJ-Ec-glC" firstAttribute="leading" secondItem="kAe-jr-kFv" secondAttribute="leading" id="uNn-5Y-DIx"/>
-                            <constraint firstAttribute="trailing" secondItem="drD-7G-B18" secondAttribute="trailing" id="upJ-K0-8wg"/>
+                            <constraint firstItem="drD-7G-B18" firstAttribute="top" secondItem="V1h-qZ-mpQ" secondAttribute="bottom" id="ZVx-2G-2rO"/>
+                            <constraint firstItem="drD-7G-B18" firstAttribute="leading" secondItem="kAe-jr-kFv" secondAttribute="leading" id="qeI-JR-RUi"/>
+                            <constraint firstAttribute="trailing" secondItem="drD-7G-B18" secondAttribute="trailing" id="rcj-7n-oPJ"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="添加事项" id="R7f-4D-WOR">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="l8Y-4k-BgP"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addTextView" destination="drD-7G-B18" id="tSx-Qo-849"/>
                     </connections>

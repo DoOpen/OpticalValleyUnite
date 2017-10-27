@@ -55,6 +55,12 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
         return 50
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
+        return 50
+    
+    }
+    
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let header = Bundle.main.loadNibNamed("YQJournalDetailHead", owner: nil, options: nil)?[0] as? YQJoinTotallHeadView
@@ -70,13 +76,11 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
         return footer
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        
-        return 50
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "molishuju" + "\(indexPath.row)"
         
         return cell
     }
@@ -89,7 +93,9 @@ extension YQReleaseJournalViewController : YQReseaseJouranlFooterDeletage{
     
     func reseaseJouranlFooterButtonClick(releaseJournal: YQReleaseJournalFooterV) {
         //跳转到添加 详情的界面
+        let addDetailVC = UIStoryboard.instantiateInitialViewController(name: "YQJournalAddEvent")
         
+        self.navigationController?.pushViewController(addDetailVC, animated: true)
         
     }
 

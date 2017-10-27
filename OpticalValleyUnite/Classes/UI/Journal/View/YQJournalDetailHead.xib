@@ -28,6 +28,11 @@
                 <constraint firstItem="gHe-oI-cib" firstAttribute="leading" secondItem="o7D-xB-zMl" secondAttribute="leading" constant="15" id="plB-MM-R7o"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="102" y="80"/>
         </view>
     </objects>

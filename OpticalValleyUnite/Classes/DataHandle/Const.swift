@@ -27,6 +27,8 @@ struct Const {
     static let YQIs_Group = "YQIs_Group"
     
     static let YQProjectModel = "YQProjectModel"
+    
+    static let YQReportName = "YQReportName"
 
     #if TARGET_IPHONE_SIMULATOR
     

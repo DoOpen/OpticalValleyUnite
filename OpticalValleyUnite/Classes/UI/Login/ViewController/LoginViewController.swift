@@ -183,13 +183,13 @@ class LoginViewController: UIViewController {
                         return
                     }
                     
-                    if let data = value["data"] {//注意区分这里的值的类型,不要定死是字典和数组
+                    if let data = value["data"] as? NSArray{//注意区分这里的值的类型,不要定死是字典和数组
                         
                         //进行数据的缓存
                         UserDefaults.standard.set(data, forKey: Const.YQTotallData)
                         
                         //进行UI界面赋值添加
-                        self.systemDataArray = data as! NSArray
+                        self.systemDataArray = data
                         
                     }
                     
@@ -254,6 +254,7 @@ class LoginViewController: UIViewController {
 //        "SJlatitude") as? CLLocationDegrees,let longitude = .object(forKey: "SJlongitude")
         UserDefaults.standard.removeObject(forKey: Const.YQIs_Group)
         UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
+        UserDefaults.standard.removeObject(forKey: Const.YQReportName)
         
         User.removeUser()
         UserDefaults.standard.set(nil, forKey: Const.SJToken)

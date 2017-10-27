@@ -15,6 +15,7 @@ class DeviceViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var deviceView: UIScrollView!
     
+    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var deviceType: UILabel!
     @IBOutlet weak var deviceName: UILabel!
@@ -64,10 +65,20 @@ class DeviceViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
         
-        //设置scrollView的x方向的滚动
-        self.deviceView.setContentOffset(CGPoint(x:300 , y: 300 ), animated: true)
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //设置scrollView的x方向的滚动
+//        self.deviceView.setContentOffset(CGPoint(x:50 , y: self.mark.frame.origin.y + 200 ), animated: true) //里面添加了视图之后就不收代码限制了
+        self.scrollViewHeight.constant = self.mark.frame.origin.y + 200
+
+        
+    }
+    
+    
 
     @IBAction func deviceBtnClick() {
         deviceDetailBtn.isSelected = true

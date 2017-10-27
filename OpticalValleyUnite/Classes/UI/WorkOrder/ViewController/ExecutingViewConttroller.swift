@@ -57,6 +57,7 @@ class ExecutingViewConttroller: UIViewController {
     @IBOutlet weak var otherViewtop: NSLayoutConstraint!
     
     @IBOutlet weak var otherViewHeight: NSLayoutConstraint!
+    
     // 计划工单的备注textView
     @IBOutlet weak var RemarksTextView: SJTextView!
     
@@ -74,6 +75,7 @@ class ExecutingViewConttroller: UIViewController {
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         title = "工单执行"
@@ -86,6 +88,8 @@ class ExecutingViewConttroller: UIViewController {
         tableView.tableFooterView = UIView()
         
         self.automaticallyAdjustsScrollViewInsets = false
+        self.scrollContent.constant = self.view.bounds.height - 80
+        
         
         if isToSee{
             
@@ -94,18 +98,22 @@ class ExecutingViewConttroller: UIViewController {
         
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单,是有配件库的选择功能的
             emergencyView.isHidden = true
+            
             getData()
-           
+            
+            hiddenReportFromWorkOrder()
             
         }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单,里面没有配件的功能
             emergencyView.isHidden = false
             saveBtn.isHidden = true
-            //隐藏应急工单 里面的 报事模块 内容
+            
+            //隐藏应急工单 里面的 报事模块 内容,区分计划工单和应急工单的区别
             reportFunctionHiden()
             
             if isToSee{
                 emergencyView.isUserInteractionEnabled = false
             }
+            
         }
         
         if let model = hisriyModel{
@@ -129,10 +137,12 @@ class ExecutingViewConttroller: UIViewController {
     
     //MARK: -获取工单步骤信息
     func getData(){
+        
         var parmat = [String: Any]()
         parmat["WORKUNIT_ID"] = workOrderDetalModel?.id
         parmat["GROUPID"] = workOrderDetalModel?.GROUPID
         parmat["TASKID"] = workOrderDetalModel?.TASKID
+        
         SVProgressHUD.show(withStatus: "加载任务中")
         HttpClient.instance.get(path: URLPath.getTaskList, parameters: parmat, success: { (response) in
             SVProgressHUD.dismiss()
@@ -439,7 +449,7 @@ class ExecutingViewConttroller: UIViewController {
         
     }
     
-    // MARK: - 报事模块隐藏
+    // MARK: - 报事模块隐藏(计划工单和 应急工单的区别)
     func reportFunctionHiden(){
         
         otherView.isHidden = true
@@ -453,7 +463,21 @@ class ExecutingViewConttroller: UIViewController {
         doMessageViewHeight.constant = 0
         
         RemarksTextView.isHidden = true
+    }
+    
+    // MARK: - hidden计划工单中的(电梯报事和普通报事)
+    func hiddenReportFromWorkOrder(){
+        let reportName = UserDefaults.standard.object(forKey: Const.YQReportName) as? String
+        if reportName == "报事" {
+            //隐藏配件的功能
+            doMessageViewHeight.constant = 0
+            doMessageV.isHidden = true
+            doMessageDetailV.isHidden = true
+            
+            otherViewtop.constant = 0
+        }
         
+    
     }
     
     
@@ -471,6 +495,7 @@ class ExecutingViewConttroller: UIViewController {
 //                self.cellDoneBtnClickRequeset(model, text!)
 //            }
 //    }
+    
     
     //MARK: - 控制器dealloc
     deinit{
@@ -620,7 +645,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             view.openBtn.setTitle("展开", for: .normal)
             self.hideTableViewHeightConstraint.constant = 80
             
-            self.scrollContent.constant = self.view.bounds.height - 80
+           
         }
         
 //        self.view.setNeedsDisplay()

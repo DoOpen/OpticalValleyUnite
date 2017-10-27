@@ -63,8 +63,10 @@ class AllViewController: UIViewController {
             navigationController?.pushViewController(vc!, animated: true)
         //            surveillanceWorkOrderBtnClick()
         case "工单":
-            let vc = UIStoryboard(name: "WorkOrder", bundle: nil).instantiateInitialViewController()
+            
+            let vc = UIStoryboard(name: "YQWorkOrderFirst", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)
+            
         case "签到":
             let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)

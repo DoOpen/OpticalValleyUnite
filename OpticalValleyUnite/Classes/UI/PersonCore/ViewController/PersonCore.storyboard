@@ -97,7 +97,7 @@
                                 <rect key="frame" x="0.0" y="232" width="375" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="修改密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uti-de-BMc">
-                                        <rect key="frame" x="55" y="12" width="70" height="21"/>
+                                        <rect key="frame" x="45" y="12" width="70" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -115,11 +115,11 @@
                                             <action selector="modifyPassWordClick:" destination="GTU-aq-x3y" eventType="touchUpInside" id="fKw-cp-QD5"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_password" translatesAutoresizingMaskIntoConstraints="NO" id="TDz-3A-Wyx">
-                                        <rect key="frame" x="8" y="4.5" width="35" height="35"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_password" translatesAutoresizingMaskIntoConstraints="NO" id="TDz-3A-Wyx">
+                                        <rect key="frame" x="12" y="9.5" width="25" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="NzU-iv-tuh"/>
-                                            <constraint firstAttribute="height" constant="35" id="vsW-mg-47h"/>
+                                            <constraint firstAttribute="width" constant="25" id="NzU-iv-tuh"/>
+                                            <constraint firstAttribute="height" constant="25" id="vsW-mg-47h"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -129,12 +129,12 @@
                                     <constraint firstAttribute="bottom" secondItem="li4-Bu-OL3" secondAttribute="bottom" id="EWr-Bw-u1p"/>
                                     <constraint firstAttribute="trailing" secondItem="li4-Bu-OL3" secondAttribute="trailing" id="Jc1-W5-vQ2"/>
                                     <constraint firstItem="li4-Bu-OL3" firstAttribute="leading" secondItem="t2E-xR-dmq" secondAttribute="leading" id="YbO-Zl-CsX"/>
-                                    <constraint firstItem="TDz-3A-Wyx" firstAttribute="leading" secondItem="t2E-xR-dmq" secondAttribute="leading" constant="8" id="ebn-mO-2v6"/>
+                                    <constraint firstItem="TDz-3A-Wyx" firstAttribute="leading" secondItem="t2E-xR-dmq" secondAttribute="leading" constant="12" id="ebn-mO-2v6"/>
                                     <constraint firstItem="oul-vM-FCf" firstAttribute="centerY" secondItem="t2E-xR-dmq" secondAttribute="centerY" id="jMR-rN-UBe"/>
                                     <constraint firstItem="Uti-de-BMc" firstAttribute="centerY" secondItem="t2E-xR-dmq" secondAttribute="centerY" id="lGX-F5-HWn"/>
                                     <constraint firstItem="li4-Bu-OL3" firstAttribute="top" secondItem="t2E-xR-dmq" secondAttribute="top" id="nDl-6D-pcz"/>
                                     <constraint firstItem="TDz-3A-Wyx" firstAttribute="centerY" secondItem="t2E-xR-dmq" secondAttribute="centerY" id="syy-Kt-bIy"/>
-                                    <constraint firstItem="Uti-de-BMc" firstAttribute="leading" secondItem="t2E-xR-dmq" secondAttribute="leading" constant="55" id="vwP-JT-zbh"/>
+                                    <constraint firstItem="Uti-de-BMc" firstAttribute="leading" secondItem="t2E-xR-dmq" secondAttribute="leading" constant="45" id="vwP-JT-zbh"/>
                                     <constraint firstAttribute="trailing" secondItem="oul-vM-FCf" secondAttribute="trailing" constant="15" id="wJl-0C-nnA"/>
                                 </constraints>
                             </view>
@@ -183,7 +183,7 @@
                                 <rect key="frame" x="0.0" y="277" width="375" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认项目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xw-Xf-QC6">
-                                        <rect key="frame" x="55" y="12" width="70" height="21"/>
+                                        <rect key="frame" x="45" y="12" width="70" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -197,11 +197,11 @@
                                             <constraint firstAttribute="height" constant="40" id="qpr-Sd-MwV"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_option" translatesAutoresizingMaskIntoConstraints="NO" id="BxX-iS-Qtk">
-                                        <rect key="frame" x="8" y="4.5" width="35" height="35"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_select_projects" translatesAutoresizingMaskIntoConstraints="NO" id="BxX-iS-Qtk">
+                                        <rect key="frame" x="12" y="9.5" width="25" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="dPA-yL-cX5"/>
-                                            <constraint firstAttribute="height" constant="35" id="vzi-Oa-BSH"/>
+                                            <constraint firstAttribute="width" constant="25" id="dPA-yL-cX5"/>
+                                            <constraint firstAttribute="height" constant="25" id="vzi-Oa-BSH"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="项目选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmb-QH-hBt">
@@ -216,9 +216,9 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="91R-Tk-I1q" secondAttribute="trailing" constant="15" id="1te-Oj-3H7"/>
                                     <constraint firstAttribute="height" constant="44" id="2h1-F6-wao"/>
-                                    <constraint firstItem="0Xw-Xf-QC6" firstAttribute="leading" secondItem="kBF-LV-Tp6" secondAttribute="leading" constant="55" id="6pj-ax-tNC"/>
+                                    <constraint firstItem="0Xw-Xf-QC6" firstAttribute="leading" secondItem="kBF-LV-Tp6" secondAttribute="leading" constant="45" id="6pj-ax-tNC"/>
                                     <constraint firstItem="91R-Tk-I1q" firstAttribute="leading" secondItem="Qmb-QH-hBt" secondAttribute="trailing" constant="5" id="FCG-j2-Whe"/>
-                                    <constraint firstItem="BxX-iS-Qtk" firstAttribute="leading" secondItem="kBF-LV-Tp6" secondAttribute="leading" constant="8" id="GE3-N3-DTJ"/>
+                                    <constraint firstItem="BxX-iS-Qtk" firstAttribute="leading" secondItem="kBF-LV-Tp6" secondAttribute="leading" constant="12" id="GE3-N3-DTJ"/>
                                     <constraint firstItem="BxX-iS-Qtk" firstAttribute="centerY" secondItem="kBF-LV-Tp6" secondAttribute="centerY" id="Q2c-EY-rDI"/>
                                     <constraint firstItem="Qmb-QH-hBt" firstAttribute="centerY" secondItem="kBF-LV-Tp6" secondAttribute="centerY" id="SgK-sF-Du6"/>
                                     <constraint firstItem="91R-Tk-I1q" firstAttribute="centerY" secondItem="kBF-LV-Tp6" secondAttribute="centerY" id="So9-Mo-hU7"/>
@@ -633,8 +633,8 @@
         <image name="5" width="75" height="15"/>
         <image name="Shape" width="17" height="18"/>
         <image name="bg" width="375" height="108"/>
-        <image name="icon_option" width="18" height="18"/>
-        <image name="icon_password" width="18" height="18"/>
+        <image name="icon_password" width="14" height="16"/>
+        <image name="icon_select_projects" width="15" height="14"/>
         <image name="larr" width="30" height="30"/>
         <image name="me_active" width="20" height="20"/>
         <image name="me_normal" width="20" height="20"/>

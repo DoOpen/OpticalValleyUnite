@@ -187,14 +187,28 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                     if xxxx == SORT {
                         //前台的数据重写逻辑!
                         sortArray.add(temp)
+                        
                     }
                 }
             }
             
-            
             self.setPermission(arry: sortArray as! Array<[String : Any]> )
             
+            if sortArray.count > 1 {
+                
+                let app = sortArray[0] as! [String : Any]
+//                let app_res = app["app_res"] as? NSArray
+//                let temp = app_res?[0] as? [String : Any]
+                let reportName = (app["APP_MODULE_NAME"] as? String)!
+                
+                //设置保存电梯和普通的报事全局保存
+                UserDefaults.standard.set(reportName, forKey: Const.YQReportName)
+//                print(reportName)
+                
+            }
+        
             do {
+                
                 //Convert to Data
                 let jsonData = try JSONSerialization.data(withJSONObject: systemSelection, options: JSONSerialization.WritingOptions.prettyPrinted)
                 
@@ -224,8 +238,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         center.addObserver(self, selector: #selector(systemSelectionreceiveValue(info:)), name: NSNotification.Name(rawValue: "systemSelectionPassValue"), object: nil)//单个值得传递
         center.addObserver(self, selector: #selector(systemSelectionreceiveValue(info:)), name: NSNotification.Name(rawValue: "systemSelectionPassValue"), object: nil)
-        
-        
         
     }
     

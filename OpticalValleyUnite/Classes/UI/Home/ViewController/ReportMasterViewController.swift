@@ -116,74 +116,102 @@ class ReportMasterViewController: UIViewController {
         //1.通过判断是普通报事,还是电梯报事
         //        Alamofire.request(URLPath.basicPath + URLPath.typeOfReportMaster, method: .get, parameters: parameters, encoding: <#T##ParameterEncoding#>, headers: <#T##HTTPHeaders?#>).responseJSON { (response) in
         
-        //请求参数:
-        var reportParameter = [String : Any]()
         
-        SVProgressHUD.show(withStatus: "登录中")
-        reportParameter["token"] = UserDefaults.standard.object(forKey: Const.SJToken)
-//        UserDefaults.standard.set(token, forKey: Const.SJToken)
-
-        //发送请求:
-        Alamofire.request(URLPath.basicPath + URLPath.typeOfReportMaster,  parameters: reportParameter).responseJSON { (response) in
+        if let reportName = UserDefaults.standard.object(forKey: Const.YQReportName){
             
-            SVProgressHUD.dismiss()
-
-            let type = response.result
-            
-            print(type)
-            switch response.result {
-                
-                case .success(_):
-                    
-                    if let value = response.result.value as? [String: Any] {
-                        
-                        if let data:NSArray = value["data"] as? NSArray {
-                            
-                            if data.count < 1 {
-                                
-                                self.alert(message: "没有显示数据!")
-                                self.elevatorReportHide()
-                                
-                                return
-                            }
-                                
-                            let dict:NSDictionary = (data[0] as? NSDictionary)!
-                            self.reportName = (dict["APP_MODULE_NAME"] as? String)!
-                            
-                            print(self.reportName)
-                            
-                            if self.reportName == "报事"{ // 普通报事
-                                
-                                self.reportHide()
-                                
-                                // selfCheckingView 直接加载xib的视图
-                                self.selfCheckingView = Bundle.main.loadNibNamed("ReportMasterView", owner: self, options: nil)![0] as! UIView
-                                // 默认调取了 selfCheckingBtnClick
-                                self.selfCheckingBtnClick()
-                                // 默认调取了 familyBtnClick
-                                self.familyBtnClick()
-                                
-                            }else{  //电梯报事
-                                
-                                self.elevatorReportHide()
-                            
-                            }
-                            
-                        }
-                        
-                        break
-                    }
-                    
-                    break
-                
-                case .failure(let error):
-                    
-                    debugPrint(error)
-                    
-                    break
-            }
+            self.reportName = reportName as! String
             
         }
+
+        if self.reportName == "报事"{ // 普通报事
+            
+            self.reportHide()
+            
+            // selfCheckingView 直接加载xib的视图
+            self.selfCheckingView = Bundle.main.loadNibNamed("ReportMasterView", owner: self, options: nil)![0] as! UIView
+            // 默认调取了 selfCheckingBtnClick
+            self.selfCheckingBtnClick()
+            // 默认调取了 familyBtnClick
+            self.familyBtnClick()
+            
+        }else{  //电梯报事
+            
+            self.elevatorReportHide()
+            
+        }
+
+        
+        
+        //请求参数:
+//        var reportParameter = [String : Any]()
+//        
+//        SVProgressHUD.show(withStatus: "登录中")
+//        reportParameter["token"] = UserDefaults.standard.object(forKey: Const.SJToken)
+//        
+////        UserDefaults.standard.set(token, forKey: Const.SJToken)
+//
+//        
+//        //发送请求:
+//        Alamofire.request(URLPath.basicPath + URLPath.typeOfReportMaster,  parameters: reportParameter).responseJSON { (response) in
+//            
+//            SVProgressHUD.dismiss()
+//
+//            let type = response.result
+//            
+//            print(type)
+//            switch response.result {
+//                
+//                case .success(_):
+//                    
+//                    if let value = response.result.value as? [String: Any] {
+//                        
+//                        if let data:NSArray = value["data"] as? NSArray {
+//                            
+//                            if data.count < 1 {
+//                                
+//                                self.alert(message: "没有显示数据!")
+//                                self.elevatorReportHide()
+//                                
+//                                return
+//                            }
+//                                
+//                            let dict:NSDictionary = (data[0] as? NSDictionary)!
+//                            self.reportName = (dict["APP_MODULE_NAME"] as? String)!
+//                            
+//                            print(self.reportName)
+//                            
+//                            if self.reportName == "报事"{ // 普通报事
+//                                
+//                                self.reportHide()
+//                                
+//                                // selfCheckingView 直接加载xib的视图
+//                                self.selfCheckingView = Bundle.main.loadNibNamed("ReportMasterView", owner: self, options: nil)![0] as! UIView
+//                                // 默认调取了 selfCheckingBtnClick
+//                                self.selfCheckingBtnClick()
+//                                // 默认调取了 familyBtnClick
+//                                self.familyBtnClick()
+//                                
+//                            }else{  //电梯报事
+//                                
+//                                self.elevatorReportHide()
+//                            
+//                            }
+//                            
+//                        }
+//                        
+//                        break
+//                    }
+//                    
+//                    break
+//                
+//                case .failure(let error):
+//                    
+//                    debugPrint(error)
+//                    
+//                    break
+//            }
+//            
+//        }
         
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "报事记录", style: .plain, target: self, action: "rightBtnClick")
         
@@ -438,11 +466,13 @@ class ReportMasterViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let toVc = segue.destination as? WorkOrderTypeChooseViewController{
+            
             toVc.didSelectedHandel = { [weak self] model in
                 print(model.name)
                 self?.workTypeLabel.text = model.name
                 self?.selectWorkType = model
             }
+            
         }else if let toVc = segue.destination as? ChooseHouseViewController{
            
             toVc.parkId = selectProject?.projectId

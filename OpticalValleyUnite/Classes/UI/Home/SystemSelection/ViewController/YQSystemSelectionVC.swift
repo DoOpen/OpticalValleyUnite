@@ -211,7 +211,7 @@ class YQSystemSelectionVC: UIViewController {
             
             //最后一个是显示的图标
 //            return
-//          //测试日志模块
+            //测试日志模块
             let journa = UIStoryboard.instantiateInitialViewController(name: "YQJournal")
             
             SJKeyWindow!.rootViewController = journa

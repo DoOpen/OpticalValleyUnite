@@ -19,6 +19,9 @@ class YQFilterJournalViewController: UIViewController {
 
         self.title = "选择项目"
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        
     }
 
 }
@@ -31,13 +34,21 @@ extension YQFilterJournalViewController : UITableViewDelegate,UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell =  UITableViewCell()
+        let cell =  tableView.dequeueReusableCell(withIdentifier: "filterJournal", for: indexPath)
+        
+        cell.textLabel?.text = "模拟数据" + "\(indexPath.row)"
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         //传递模型,跳转到(项目 -->  部门 --> 对象)
+        let department = UIStoryboard.instantiateInitialViewController(name: "YQFilterDepartment") as? YQDepartmentTableViewController
+        department?.filerModel = indexPath.row
+        
+        self.navigationController?.pushViewController(department!, animated: true)
+        
         
     }
 

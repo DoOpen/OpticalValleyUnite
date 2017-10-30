@@ -63,7 +63,7 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let header = Bundle.main.loadNibNamed("YQJournalDetailHead", owner: nil, options: nil)?[0] as? YQJoinTotallHeadView
+        let header = Bundle.main.loadNibNamed("YQJournalDetailHead", owner: nil, options: nil)?[0] as? YQJournalDetailHeadView
         
         return header
     }

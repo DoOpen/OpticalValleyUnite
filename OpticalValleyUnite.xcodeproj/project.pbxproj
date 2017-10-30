@@ -56,6 +56,10 @@
 		2F73FA631F74C0B600D37FDA /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F73FA621F74C0B600D37FDA /* AMapSearchKit.framework */; };
 		2F73FA651F74CE1300D37FDA /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F73FA641F74CE1300D37FDA /* GLKit.framework */; };
 		2F73FA671F74CE8600D37FDA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F73FA661F74CE8600D37FDA /* CoreLocation.framework */; };
+		2F7550F31FA6C0B700A5E242 /* YQDepartmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550F21FA6C0B700A5E242 /* YQDepartmentTableViewController.swift */; };
+		2F7550F51FA6C19100A5E242 /* YQFilterDepartment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7550F41FA6C19100A5E242 /* YQFilterDepartment.storyboard */; };
+		2F7550F71FA6C1F600A5E242 /* YQObjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550F61FA6C1F600A5E242 /* YQObjectTableViewController.swift */; };
+		2F7550F91FA6C24700A5E242 /* YQObject.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7550F81FA6C24700A5E242 /* YQObject.storyboard */; };
 		2F94A27F1F73A5C500455162 /* YQFireMapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */; };
 		2F94A2811F73A5F500455162 /* YQFireMapDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */; };
 		2F94A2831F73B46B00455162 /* YQImplementFeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A2821F73B46B00455162 /* YQImplementFeedbackVC.swift */; };
@@ -295,6 +299,10 @@
 		2F73FA621F74C0B600D37FDA /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		2F73FA641F74CE1300D37FDA /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		2F73FA661F74CE8600D37FDA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2F7550F21FA6C0B700A5E242 /* YQDepartmentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDepartmentTableViewController.swift; sourceTree = "<group>"; };
+		2F7550F41FA6C19100A5E242 /* YQFilterDepartment.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFilterDepartment.storyboard; sourceTree = "<group>"; };
+		2F7550F61FA6C1F600A5E242 /* YQObjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQObjectTableViewController.swift; sourceTree = "<group>"; };
+		2F7550F81FA6C24700A5E242 /* YQObject.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQObject.storyboard; sourceTree = "<group>"; };
 		2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireMapDetailViewController.swift; sourceTree = "<group>"; };
 		2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireMapDetail.storyboard; sourceTree = "<group>"; };
 		2F94A2821F73B46B00455162 /* YQImplementFeedbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQImplementFeedbackVC.swift; sourceTree = "<group>"; };
@@ -601,6 +609,10 @@
 				2FC167481F905F5A001CEACD /* YQJournalDetail.storyboard */,
 				2FC1674E1F90A840001CEACD /* YQFilterJournalViewController.swift */,
 				2FC167521F90A977001CEACD /* YQFilterJournal.storyboard */,
+				2F7550F21FA6C0B700A5E242 /* YQDepartmentTableViewController.swift */,
+				2F7550F41FA6C19100A5E242 /* YQFilterDepartment.storyboard */,
+				2F7550F61FA6C1F600A5E242 /* YQObjectTableViewController.swift */,
+				2F7550F81FA6C24700A5E242 /* YQObject.storyboard */,
 				2FC167501F90A942001CEACD /* YQReleaseJournalViewController.swift */,
 				2FC167541F90A9DB001CEACD /* YQReleaseJournal.storyboard */,
 				2F4A658B1F945A9700F4C72A /* YQJournalAddEventViewController.swift */,
@@ -1346,10 +1358,12 @@
 				4B4BAFC31E5C62F500C9C549 /* OprationConfirmationView.xib in Resources */,
 				4B5AF64B1E36F73B00844F3D /* LoginViewController.xib in Resources */,
 				2FEB0E891F6E713F0002DEE8 /* YQFalsePositives.xib in Resources */,
+				2F7550F51FA6C19100A5E242 /* YQFilterDepartment.storyboard in Resources */,
 				4BB53FF11F14D9CA0061190F /* DeviceCell.xib in Resources */,
 				2F35356E1F95AE3300E8E77C /* YQWorkOrderFirst.storyboard in Resources */,
 				2FC167551F90A9DB001CEACD /* YQReleaseJournal.storyboard in Resources */,
 				2F2F95781F8DAECD00870DC8 /* YQJournal.storyboard in Resources */,
+				2F7550F91FA6C24700A5E242 /* YQObject.storyboard in Resources */,
 				2F94A2851F73B49C00455162 /* YQImplementFeedback.storyboard in Resources */,
 				4BE88A611E88D242003D9179 /* SigninCell.xib in Resources */,
 				2F5E8C561F595F7000007717 /* YQPartDataAll.xib in Resources */,
@@ -1561,6 +1575,7 @@
 				2F5E8C511F59598400007717 /* YQSystemSelectionVC.swift in Sources */,
 				4BBBEC831E2CA76900F60313 /* SJComposePhotoView.m in Sources */,
 				4B01B08C1ED928AF002A61C9 /* ReportListViewController.swift in Sources */,
+				2F7550F31FA6C0B700A5E242 /* YQDepartmentTableViewController.swift in Sources */,
 				4B1DEC591E31B646000917D2 /* SGScanningQRCodeVC.m in Sources */,
 				4BD4B9431E272EA600AE2BC9 /* CoverView.swift in Sources */,
 				4B50D62B1EB9AA0200BB480F /* HomeBtnView.swift in Sources */,
@@ -1577,6 +1592,7 @@
 				4B39520A1E29D25D00E2642F /* SJUpButton.m in Sources */,
 				4B1558AF1F131AA70023F14D /* DeviceView.swift in Sources */,
 				4BD4B95D1E27603400AE2BC9 /* DateChooseView.swift in Sources */,
+				2F7550F71FA6C1F600A5E242 /* YQObjectTableViewController.swift in Sources */,
 				2F4A658C1F945A9700F4C72A /* YQJournalAddEventViewController.swift in Sources */,
 				4BE9225B1EE6993000FDEFE1 /* ShowImageView.swift in Sources */,
 				4B3951D01E277FBC00E2642F /* WorkOrderScreeningViewController.swift in Sources */,

@@ -15,6 +15,9 @@ class YQJournalViewController: UIViewController {
         //1.添加设置barItem
         setupRightAndLeftBarItem()
         
+        //2.设置偏移量的问题
+        self.automaticallyAdjustsScrollViewInsets = false
+        
 
         }
     

@@ -16,10 +16,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DaX-BC-v61">
-                    <rect key="frame" x="127.5" y="16" width="80" height="40"/>
+                    <rect key="frame" x="67.5" y="16" width="200" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="RKN-bj-wsJ"/>
-                        <constraint firstAttribute="width" constant="80" id="jrf-a2-gpM"/>
+                        <constraint firstAttribute="width" constant="200" id="jrf-a2-gpM"/>
                     </constraints>
                     <state key="normal" title="添加事项">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

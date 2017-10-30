@@ -9,8 +9,14 @@
 import UIKit
 
 class YQJournalViewController: UIViewController {
-
+    
+    // MARK: - 属性列表
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    // MARK: - 视图生命周期方法
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         //1.添加设置barItem
         setupRightAndLeftBarItem()
@@ -18,8 +24,37 @@ class YQJournalViewController: UIViewController {
         //2.设置偏移量的问题
         self.automaticallyAdjustsScrollViewInsets = false
         
-
+        //3.注册原型cell
+        let nib = UINib.init(nibName: "YQJournalCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "journalCell")
+        //4.设置cell的行高属性和 预估行高
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100.0
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //3.日志列表的数据
+//        getWorklogDataList()
+        
+    }
+    
+    // MARK: - 获取日志数据列表
+    func getWorklogDataList(){
+        
+        let paramerters = [String : Any]()
+        
+        HttpClient.instance.get(path: URLPath.getWorklogList, parameters: paramerters, success: { (response) in
+            
+            
+            
+        }) { (error) in
+            
+            self.alert(message: error.debugDescription)
+            
         }
+    
+    }
     
     // MARK: - 自定义的right_left barItem
     func setupRightAndLeftBarItem(){
@@ -80,11 +115,11 @@ class YQJournalViewController: UIViewController {
     
     //MARK: - RightBarItemButtonClick(选择和添加)方法
     func selectRightBarItemButtonClick(){
+        
         //筛选的界面弹窗的效果
         let filerVC = UIStoryboard.instantiateInitialViewController(name: "YQFilterJournal")
         navigationController?.pushViewController(filerVC, animated: true)
         
-    
     }
     
     func addRightBarItemButtonClick(){
@@ -94,7 +129,36 @@ class YQJournalViewController: UIViewController {
 //        navigationController?.pushViewController(releaseVC, animated: true)
         self.present(releaseVC, animated: true, completion: nil)
         
-        
     }
 
+}
+
+extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath)
+        
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //传递模型,跳转到详情界面
+        let detailVC = UIStoryboard.instantiateInitialViewController(name: "YQJournalDetail") as? YQJournalDetailViewController
+        
+        self.navigationController?.pushViewController(detailVC!, animated: true)
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 300
+    }
+    
 }

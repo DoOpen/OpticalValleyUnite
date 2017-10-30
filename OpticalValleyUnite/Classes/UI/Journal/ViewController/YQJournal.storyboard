@@ -40,6 +40,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E8m-e3-Mvi">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="v5g-Nr-XYd" id="MfO-IH-Yya"/>
+                                    <outlet property="delegate" destination="v5g-Nr-XYd" id="4Xr-Ht-mFZ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,6 +55,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="日志" id="QBk-pc-uSe"/>
+                    <connections>
+                        <outlet property="tableView" destination="E8m-e3-Mvi" id="pbN-6G-1D7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRe-G4-kId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

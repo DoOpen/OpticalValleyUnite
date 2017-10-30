@@ -60,6 +60,9 @@
 		2F7550F51FA6C19100A5E242 /* YQFilterDepartment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7550F41FA6C19100A5E242 /* YQFilterDepartment.storyboard */; };
 		2F7550F71FA6C1F600A5E242 /* YQObjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550F61FA6C1F600A5E242 /* YQObjectTableViewController.swift */; };
 		2F7550F91FA6C24700A5E242 /* YQObject.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7550F81FA6C24700A5E242 /* YQObject.storyboard */; };
+		2F7550FB1FA71D1900A5E242 /* YQJournalDetailTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550FA1FA71D1900A5E242 /* YQJournalDetailTVCell.swift */; };
+		2F7550FD1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550FC1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift */; };
+		2F7550FF1FA7313200A5E242 /* YQWorkRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */; };
 		2F94A27F1F73A5C500455162 /* YQFireMapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */; };
 		2F94A2811F73A5F500455162 /* YQFireMapDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */; };
 		2F94A2831F73B46B00455162 /* YQImplementFeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A2821F73B46B00455162 /* YQImplementFeedbackVC.swift */; };
@@ -303,6 +306,9 @@
 		2F7550F41FA6C19100A5E242 /* YQFilterDepartment.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFilterDepartment.storyboard; sourceTree = "<group>"; };
 		2F7550F61FA6C1F600A5E242 /* YQObjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQObjectTableViewController.swift; sourceTree = "<group>"; };
 		2F7550F81FA6C24700A5E242 /* YQObject.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQObject.storyboard; sourceTree = "<group>"; };
+		2F7550FA1FA71D1900A5E242 /* YQJournalDetailTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalDetailTVCell.swift; sourceTree = "<group>"; };
+		2F7550FC1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkRecordTableViewCell.swift; sourceTree = "<group>"; };
+		2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWorkRecord.xib; sourceTree = "<group>"; };
 		2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireMapDetailViewController.swift; sourceTree = "<group>"; };
 		2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireMapDetail.storyboard; sourceTree = "<group>"; };
 		2F94A2821F73B46B00455162 /* YQImplementFeedbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQImplementFeedbackVC.swift; sourceTree = "<group>"; };
@@ -596,6 +602,9 @@
 				2FC1674A1F906BA4001CEACD /* YQJournalDetailHead.xib */,
 				2FC167561F90B45B001CEACD /* YQReleaseJournalFooterV.swift */,
 				2FC167581F90B4BE001CEACD /* YQReseaseJournalFooter.xib */,
+				2F7550FA1FA71D1900A5E242 /* YQJournalDetailTVCell.swift */,
+				2F7550FC1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift */,
+				2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -605,10 +614,10 @@
 			children = (
 				2F2F95751F8DAE9000870DC8 /* YQJournalViewController.swift */,
 				2F2F95771F8DAECD00870DC8 /* YQJournal.storyboard */,
-				2FC167461F905F34001CEACD /* YQJournalDetailViewController.swift */,
-				2FC167481F905F5A001CEACD /* YQJournalDetail.storyboard */,
 				2FC1674E1F90A840001CEACD /* YQFilterJournalViewController.swift */,
 				2FC167521F90A977001CEACD /* YQFilterJournal.storyboard */,
+				2FC167461F905F34001CEACD /* YQJournalDetailViewController.swift */,
+				2FC167481F905F5A001CEACD /* YQJournalDetail.storyboard */,
 				2F7550F21FA6C0B700A5E242 /* YQDepartmentTableViewController.swift */,
 				2F7550F41FA6C19100A5E242 /* YQFilterDepartment.storyboard */,
 				2F7550F61FA6C1F600A5E242 /* YQObjectTableViewController.swift */,
@@ -1387,6 +1396,7 @@
 				2F3B96051F6BC17E0008AFEB /* YQJoinTotall.storyboard in Resources */,
 				2FC167491F905F5A001CEACD /* YQJournalDetail.storyboard in Resources */,
 				2F5E8C521F59598400007717 /* YQSystemSelectionVC.xib in Resources */,
+				2F7550FF1FA7313200A5E242 /* YQWorkRecord.xib in Resources */,
 				4BBBEC971E2CAAE200F60313 /* BoPhotoPicker.bundle in Resources */,
 				2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */,
 				2FC1674B1F906BA4001CEACD /* YQJournalDetailHead.xib in Resources */,
@@ -1595,7 +1605,9 @@
 				2F7550F71FA6C1F600A5E242 /* YQObjectTableViewController.swift in Sources */,
 				2F4A658C1F945A9700F4C72A /* YQJournalAddEventViewController.swift in Sources */,
 				4BE9225B1EE6993000FDEFE1 /* ShowImageView.swift in Sources */,
+				2F7550FD1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift in Sources */,
 				4B3951D01E277FBC00E2642F /* WorkOrderScreeningViewController.swift in Sources */,
+				2F7550FB1FA71D1900A5E242 /* YQJournalDetailTVCell.swift in Sources */,
 				2F3B96071F6BCCDA0008AFEB /* YQJoinTotallHeadView.swift in Sources */,
 				4B5AF6471E36F14700844F3D /* SystemMessageViewController.swift in Sources */,
 				4B814A811F1DAC3400CDCA9B /* WorkOrderSiftViewController.swift in Sources */,

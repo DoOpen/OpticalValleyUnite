@@ -30,6 +30,10 @@ class YQObjectTableViewController: UITableViewController {
     
     // MARK: - 完成按钮的点击实现
     func compeletedButtonClick() {
+        //读取选择的数据
+        
+        //跳转到根控制器来执行
+        self.navigationController?.popToRootViewController(animated: true)
         
     }
     
@@ -49,7 +53,7 @@ class YQObjectTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        //选择相应行号对应的数据 添加选择数据
         
         
     }

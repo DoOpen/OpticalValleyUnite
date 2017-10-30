@@ -159,5 +159,8 @@ struct URLPath {
     //执行反馈接口
     static let getFirefeedback = "fire/workunit/feedback.do"
     
+    // MARK: - 日志模块的接口参数
+    static let getWorklogList = "worklog/list.do"
+    
     
 }

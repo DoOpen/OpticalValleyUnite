@@ -49,7 +49,6 @@ extension YQFilterJournalViewController : UITableViewDelegate,UITableViewDataSou
         
         self.navigationController?.pushViewController(department!, animated: true)
         
-        
     }
 
 }

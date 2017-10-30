@@ -30,7 +30,9 @@ class YQReleaseJournalViewController: UIViewController {
     // MARK: - 提交rightBarButtonClick
     @IBAction func submitButtonClick(_ sender: Any) {
         
-        
+        //数据接口的请求
+        //界面跳转
+        self.dismiss(animated: true, completion: nil)
         
     }
     

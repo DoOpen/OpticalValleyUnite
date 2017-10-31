@@ -9,11 +9,24 @@
 import UIKit
 
 class YQWorkRecordTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var contentLabel: UILabel!
+    
+    @IBOutlet weak var timeLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    var model : Any? {
+    
+        didSet{
+    
+    
+        }
+    
+    }
+    
 
 }

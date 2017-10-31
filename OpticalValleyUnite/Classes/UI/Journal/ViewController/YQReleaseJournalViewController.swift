@@ -27,6 +27,13 @@ class YQReleaseJournalViewController: UIViewController {
         
     }
     
+    // MARK: - 工单完成情况实现
+    @IBAction func workorderCompleteClick(_ sender: Any) {
+        //直接的跳转到 工单的完成情况界面
+        
+    }
+    
+    
     // MARK: - 提交rightBarButtonClick
     @IBAction func submitButtonClick(_ sender: Any) {
         

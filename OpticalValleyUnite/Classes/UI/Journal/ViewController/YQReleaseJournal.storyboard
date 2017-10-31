@@ -41,8 +41,8 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工单完成情况" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhu-At-ya9">
-                                        <rect key="frame" x="5" y="14" width="116.5" height="23"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <rect key="frame" x="5" y="16" width="92" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="larr" translatesAutoresizingMaskIntoConstraints="NO" id="gKf-4x-t2B">
@@ -63,13 +63,16 @@
                                     <constraint firstItem="gKf-4x-t2B" firstAttribute="centerY" secondItem="rD9-hk-Vbp" secondAttribute="centerY" id="qPc-B2-Q5v"/>
                                     <constraint firstItem="Rhu-At-ya9" firstAttribute="leading" secondItem="rD9-hk-Vbp" secondAttribute="leading" constant="5" id="zES-uh-VeZ"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="oPJ-0N-ib7" appends="YES" id="Ft0-EX-qFA"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WUu-RJ-orG" userLabel="doMessageDetailView">
                                 <rect key="frame" x="0.0" y="114" width="375" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6z-I0-Ynj">
-                                        <rect key="frame" x="5" y="16.5" width="77.5" height="23"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <rect key="frame" x="5" y="19.5" width="61.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="larr" translatesAutoresizingMaskIntoConstraints="NO" id="YkR-Fu-YxR">
@@ -152,9 +155,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9R-ub-8bt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="3nP-WI-02B">
+                <tapGestureRecognizer id="3nP-WI-02B" userLabel="工作记录Tap Gesture Recognizer">
                     <connections>
                         <action selector="tapClickWithWorkRecord:" destination="VD2-mN-nB8" id="9Ed-3t-k74"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="oPJ-0N-ib7" userLabel="工单完成Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="workorderCompleteClick:" destination="VD2-mN-nB8" id="gyk-qv-eTI"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

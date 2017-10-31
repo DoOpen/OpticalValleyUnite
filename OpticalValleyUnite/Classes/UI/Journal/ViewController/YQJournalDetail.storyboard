@@ -47,6 +47,9 @@
                                     <constraint firstItem="zzQ-e3-3J6" firstAttribute="centerY" secondItem="YCj-vc-z2Z" secondAttribute="centerY" id="L4p-QV-2E8"/>
                                     <constraint firstItem="1Yj-9n-n5b" firstAttribute="centerY" secondItem="YCj-vc-z2Z" secondAttribute="centerY" id="Uly-Qn-XMc"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="07a-vi-khX" appends="YES" id="Bz7-Fw-Z2i"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIq-kd-KD4" userLabel="doMessageDetailView">
                                 <rect key="frame" x="0.0" y="70" width="375" height="55"/>
@@ -74,6 +77,9 @@
                                     <constraint firstItem="jkr-2a-b5H" firstAttribute="leading" secondItem="gIq-kd-KD4" secondAttribute="leading" constant="25" id="kwa-Nk-e7q"/>
                                     <constraint firstAttribute="height" constant="55" id="uzM-Oq-U81"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ROk-yc-usV" appends="YES" id="zlY-a0-Vbq"/>
+                                </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LT0-0V-5K7">
                                 <rect key="frame" x="0.0" y="125" width="375" height="542"/>
@@ -129,6 +135,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAb-oF-aez" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="07a-vi-khX" userLabel="工单完成Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="workOrderCompleteClick:" destination="OpA-S6-sKn" id="xGs-Um-Uqg"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="ROk-yc-usV" userLabel="工作记录Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="workRecordButtonClick:" destination="OpA-S6-sKn" id="lHF-Cn-Hgh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="21.600000000000001" y="207.34632683658174"/>
         </scene>

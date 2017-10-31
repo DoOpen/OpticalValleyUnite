@@ -27,9 +27,13 @@ class YQJournalViewController: UIViewController {
         //3.注册原型cell
         let nib = UINib.init(nibName: "YQJournalCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "journalCell")
+        
         //4.设置cell的行高属性和 预估行高
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
+        
+        //5.设置添加上下拉刷新
+        
         
     }
     

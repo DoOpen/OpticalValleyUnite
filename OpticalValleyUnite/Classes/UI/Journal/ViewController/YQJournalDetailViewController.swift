@@ -11,7 +11,6 @@ import UIKit
 class YQJournalDetailViewController: UIViewController {
 
     // MARK: - 控制器的属性
-    
     @IBOutlet weak var detailTableView: UITableView!
     
     
@@ -20,6 +19,21 @@ class YQJournalDetailViewController: UIViewController {
 
     }
     
+
+    @IBAction func workRecordButtonClick(_ sender: Any) {
+        
+        let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord")
+        self.navigationController?.pushViewController(workRecord, animated: true)
+        
+        
+    }
+    
+    
+    @IBAction func workOrderCompleteClick(_ sender: Any) {
+        
+        
+        
+    }
 
 }
 
@@ -43,6 +57,7 @@ extension YQJournalDetailViewController : UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = UITableViewCell()
         
         return cell

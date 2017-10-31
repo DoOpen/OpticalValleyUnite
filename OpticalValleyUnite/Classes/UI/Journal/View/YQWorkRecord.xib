@@ -11,15 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="paP-1b-sQW" customClass="YQWorkRecordTableViewCell" customModule="OpticalValleyUnite" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="381" height="80"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="workRecord" rowHeight="84" id="paP-1b-sQW" customClass="YQWorkRecordTableViewCell" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="84"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="paP-1b-sQW" id="6My-pQ-Jd4">
-                <rect key="frame" x="0.0" y="0.0" width="381" height="79.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="381" height="83.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G76-On-xfW">
-                        <rect key="frame" x="12" y="31" width="18" height="18"/>
+                        <rect key="frame" x="12" y="33" width="18" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="18" id="C5b-dG-gRE"/>
                             <constraint firstAttribute="height" constant="18" id="PQl-tC-22l"/>
@@ -27,27 +27,49 @@
                         <state key="normal" title="Button" image="Oval"/>
                         <state key="selected" image="ovalcheck"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9S-BY-lx9">
-                        <rect key="frame" x="44" y="8" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工单内容详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9S-BY-lx9">
+                        <rect key="frame" x="40" y="5" width="336" height="45.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30Z-ql-OvG">
-                        <rect key="frame" x="44" y="50" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="显示时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30Z-ql-OvG">
+                        <rect key="frame" x="40" y="61.5" width="336" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="EIi-wH-rQj"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="avA-al-vwY">
+                        <rect key="frame" x="35" y="55.5" width="341" height="1"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="EdM-f9-oIz"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="30Z-ql-OvG" secondAttribute="trailing" constant="5" id="Adk-Vo-Bnz"/>
+                    <constraint firstItem="g9S-BY-lx9" firstAttribute="leading" secondItem="6My-pQ-Jd4" secondAttribute="leading" constant="40" id="CAb-Kk-sfW"/>
                     <constraint firstItem="G76-On-xfW" firstAttribute="centerY" secondItem="6My-pQ-Jd4" secondAttribute="centerY" id="F1T-Xb-DmW"/>
+                    <constraint firstAttribute="trailing" secondItem="avA-al-vwY" secondAttribute="trailing" constant="5" id="HiC-Ss-qTO"/>
+                    <constraint firstItem="30Z-ql-OvG" firstAttribute="top" secondItem="avA-al-vwY" secondAttribute="bottom" constant="5" id="K7v-wv-gED"/>
+                    <constraint firstItem="g9S-BY-lx9" firstAttribute="top" secondItem="6My-pQ-Jd4" secondAttribute="top" constant="5" id="L4l-6J-Q0G"/>
+                    <constraint firstAttribute="bottom" secondItem="30Z-ql-OvG" secondAttribute="bottom" constant="5" id="LXR-SU-2PJ"/>
+                    <constraint firstAttribute="trailing" secondItem="g9S-BY-lx9" secondAttribute="trailing" constant="5" id="QKi-PW-eDX"/>
+                    <constraint firstItem="30Z-ql-OvG" firstAttribute="leading" secondItem="g9S-BY-lx9" secondAttribute="leading" id="Zru-em-3dU"/>
+                    <constraint firstItem="avA-al-vwY" firstAttribute="leading" secondItem="G76-On-xfW" secondAttribute="trailing" constant="5" id="pMf-ig-KKY"/>
+                    <constraint firstItem="avA-al-vwY" firstAttribute="top" secondItem="g9S-BY-lx9" secondAttribute="bottom" constant="5" id="qu5-jM-rhh"/>
                     <constraint firstItem="G76-On-xfW" firstAttribute="leading" secondItem="6My-pQ-Jd4" secondAttribute="leading" constant="12" id="sj8-wC-fRx"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="-204.5" y="104"/>
+            <connections>
+                <outlet property="contentLabel" destination="g9S-BY-lx9" id="a7F-jS-phc"/>
+                <outlet property="timeLabel" destination="30Z-ql-OvG" id="pap-EJ-V8i"/>
+            </connections>
+            <point key="canvasLocation" x="-204.5" y="106"/>
         </tableViewCell>
     </objects>
     <resources>

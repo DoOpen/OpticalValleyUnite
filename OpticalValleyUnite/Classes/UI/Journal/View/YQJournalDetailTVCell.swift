@@ -11,10 +11,6 @@ import UIKit
 class YQJournalDetailTVCell: UITableViewCell {
     
     @IBOutlet weak var contentLabel: UILabel!
-    
-    var detailModel : Any?
-
-
 
 
 }

@@ -274,10 +274,7 @@ extension YQJoinTotallNumVC : YQFireDetailCellDeleage {
             default:
                 break
         }
-        
-        
     }
-    
 }
 
 

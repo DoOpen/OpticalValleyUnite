@@ -13,13 +13,22 @@ class YQJournalDetailViewController: UIViewController {
     // MARK: - 控制器的属性
     @IBOutlet weak var detailTableView: UITableView!
     
+    //id 
+    var workIDid : Int64 = -1
+    
+    //detailList
+    var detailList : NSArray?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //刷新数据列表
+        self.detailTableView.reloadData()
+     
     }
     
-
+    // MARK: - 工作记录
     @IBAction func workRecordButtonClick(_ sender: Any) {
         
         let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord")
@@ -28,7 +37,7 @@ class YQJournalDetailViewController: UIViewController {
         
     }
     
-    
+    // MARK: - 工单完成情况
     @IBAction func workOrderCompleteClick(_ sender: Any) {
         
         
@@ -41,7 +50,7 @@ extension YQJournalDetailViewController : UITableViewDelegate, UITableViewDataSo
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return (self.detailList?.count ?? 0)!
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -58,9 +67,18 @@ extension YQJournalDetailViewController : UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
+        var cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as? YQJournalDetailTVCell
         
-        return cell
+        if cell == nil{
+            
+            cell = YQJournalDetailTVCell()
+        }
+        
+        let dic = self.detailList?[indexPath.row] as? [String : Any]
+        let text =  dic?["title"] as? String
+        cell?.contentLabel.text = "\(indexPath.row + 1)." + text!
+        
+        return cell!
     }
 
 

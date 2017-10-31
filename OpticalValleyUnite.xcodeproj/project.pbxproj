@@ -53,6 +53,8 @@
 		2F6A438E1F6A528D003E10C9 /* YQFireControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */; };
 		2F6A43901F6A52CA003E10C9 /* YQFireControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */; };
 		2F6A83911F5CE073002BB61C /* YQPartDataSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */; };
+		2F7307381FA858910067BC4D /* YQToDoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7307371FA858910067BC4D /* YQToDoListModel.swift */; };
+		2F73073A1FA85DFA0067BC4D /* YQWorkLogListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7307391FA85DFA0067BC4D /* YQWorkLogListModel.swift */; };
 		2F73FA631F74C0B600D37FDA /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F73FA621F74C0B600D37FDA /* AMapSearchKit.framework */; };
 		2F73FA651F74CE1300D37FDA /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F73FA641F74CE1300D37FDA /* GLKit.framework */; };
 		2F73FA671F74CE8600D37FDA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F73FA661F74CE8600D37FDA /* CoreLocation.framework */; };
@@ -299,6 +301,8 @@
 		2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireControlViewController.swift; sourceTree = "<group>"; };
 		2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireControl.storyboard; sourceTree = "<group>"; };
 		2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataSelectCell.swift; sourceTree = "<group>"; };
+		2F7307371FA858910067BC4D /* YQToDoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQToDoListModel.swift; sourceTree = "<group>"; };
+		2F7307391FA85DFA0067BC4D /* YQWorkLogListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkLogListModel.swift; sourceTree = "<group>"; };
 		2F73FA621F74C0B600D37FDA /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		2F73FA641F74CE1300D37FDA /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		2F73FA661F74CE8600D37FDA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -589,6 +593,8 @@
 		2F2F95721F8DACB800870DC8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2F7307371FA858910067BC4D /* YQToDoListModel.swift */,
+				2F7307391FA85DFA0067BC4D /* YQWorkLogListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1549,6 +1555,7 @@
 				4BAA134A1E5D7F7800E54534 /* ExecCell.swift in Sources */,
 				2FDF32A11F79280E008EDEB4 /* MANaviPolyline.m in Sources */,
 				4BE922621EE7EEA900FDEFE1 /* ExecutDetailCell.swift in Sources */,
+				2F7307381FA858910067BC4D /* YQToDoListModel.swift in Sources */,
 				4B1DEC571E31B646000917D2 /* ScanSuccessJumpVC.m in Sources */,
 				2F5D27701F998F340022F7D6 /* YQProjectTableViewCell.swift in Sources */,
 				4BD4B9551E272EA600AE2BC9 /* WorkOrderViewController.swift in Sources */,
@@ -1650,6 +1657,7 @@
 				4B50D62F1EBB1B3900BB480F /* AllViewController.swift in Sources */,
 				4B8A9FD01E2C7C440009F757 /* AppraisalViewController.swift in Sources */,
 				2FC167471F905F34001CEACD /* YQJournalDetailViewController.swift in Sources */,
+				2F73073A1FA85DFA0067BC4D /* YQWorkLogListModel.swift in Sources */,
 				4B6E64FA1EEAEFCF00BA23E4 /* PhotoBrowser.swift in Sources */,
 				4BBBEC991E2CAAE200F60313 /* BoTapAssetView.m in Sources */,
 				2F3B96031F6BC15B0008AFEB /* YQJoinTotallNumVC.swift in Sources */,

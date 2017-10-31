@@ -87,7 +87,9 @@ class LoginViewController: UIViewController {
                     
                     /// 直接跳转到home的主页
                     //  self.pushToHomeViewController()
-                    self.systemSelectionNetworkInterface()
+                    // 正版的跳转到子系统选择的界面
+                    // self.systemSelectionNetworkInterface()
+                    self.pushToJournalViewController()
                     
                     break
                 }
@@ -157,6 +159,18 @@ class LoginViewController: UIViewController {
         
         SJKeyWindow?.rootViewController = tabVc
     }
+    
+    
+    // MARK: - 跳转到日志的界面的模块
+    func pushToJournalViewController(){
+        //测试日志模块
+        let journa = UIStoryboard.instantiateInitialViewController(name: "YQJournal")
+        
+        SJKeyWindow!.rootViewController = journa
+
+    
+    }
+    
 
     // MARK: - 子系统的选择的接口调用
     func systemSelectionNetworkInterface(){

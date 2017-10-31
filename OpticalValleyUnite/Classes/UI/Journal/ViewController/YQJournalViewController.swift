@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import MJRefresh
+import SVProgressHUD
 
 class YQJournalViewController: UIViewController {
     
     // MARK: - 属性列表
     @IBOutlet weak var tableView: UITableView!
+    
+    var pageNo : Int = 0
+    
+    var dataArray : [YQWorkLogListModel]?{
+        didSet{
+            
+            self.tableView.reloadData()
+        }
+    }
     
     
     // MARK: - 视图生命周期方法
@@ -33,32 +44,70 @@ class YQJournalViewController: UIViewController {
         tableView.estimatedRowHeight = 100.0
         
         //5.设置添加上下拉刷新
-        
+        addRefirsh()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //3.日志列表的数据
-//        getWorklogDataList()
+        getWorklogDataList()
         
     }
     
     // MARK: - 获取日志数据列表
-    func getWorklogDataList(){
+    // 不是参数的,默认是可传可 不传的情况
+     func getWorklogDataList(indexPage: Int = 0){
         
-        let paramerters = [String : Any]()
+        var paramerters = [String : Any]()
+        paramerters["pageIndex"] = indexPage
         
+        SVProgressHUD.show(withStatus: "数据加载中...")
         HttpClient.instance.get(path: URLPath.getWorklogList, parameters: paramerters, success: { (response) in
             
+            SVProgressHUD.dismiss()
             
+            //字典转模型,实现数据获取情况
+            if let data = response["data"] as? NSArray{
+                
+                var modelArray = [YQWorkLogListModel]()
+                
+                for temp in data {
+                    
+                    modelArray.append(YQWorkLogListModel.init(dic: temp as! [String : Any]))
+                }
+                
+                //成功的模型转入
+                self.dataArray = modelArray
+                
+            }
             
         }) { (error) in
             
             self.alert(message: error.debugDescription)
-            
         }
+        
+        tableView.mj_header.endRefreshing()
+        tableView.mj_footer.endRefreshing()
     
     }
+    
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            self.getWorklogDataList()
+            
+        })
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+            self.getWorklogDataList(indexPage: self.pageNo + 1)
+        })
+        
+        
+    }
+
     
     // MARK: - 自定义的right_left barItem
     func setupRightAndLeftBarItem(){
@@ -141,12 +190,14 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10
+        return (self.dataArray?.count ?? 0)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath) as! YQJournalCellView
+        
+        cell.model = self.dataArray?[indexPath.row]
         
         return cell
         
@@ -154,15 +205,21 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //传递模型,跳转到详情界面
+        //传递数据数组 和 ID 
         let detailVC = UIStoryboard.instantiateInitialViewController(name: "YQJournalDetail") as? YQJournalDetailViewController
         
+        let model = self.dataArray?[indexPath.row]
+        detailVC?.detailList = model?.todoList
+        detailVC?.workIDid = (model?.worklogId)!
+        
+        //跳转
         self.navigationController?.pushViewController(detailVC!, animated: true)
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 300
+        return 200
     }
     
 }

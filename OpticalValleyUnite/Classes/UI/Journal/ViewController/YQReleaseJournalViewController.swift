@@ -9,14 +9,37 @@
 import UIKit
 
 class YQReleaseJournalViewController: UIViewController {
-
+    
+    // MARK: - 属性加载情况
     @IBOutlet weak var detailTableView: UITableView!
     
+    var dataList : [YQToDoListModel]?{
+        didSet{
+            
+            self.detailTableView.reloadData()
+        }
+    }
     
+    // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
         super.viewDidLoad()
+        //获取待办事项的列表信息
+        getTodoDataList()
 
-
+    }
+    
+    // MARK: - 获取待办事项的listdata
+    func getTodoDataList(){
+        
+        let paramet = [String : Any]()
+        HttpClient.instance.get(path: URLPath.getTodoWorklogList, parameters: paramet, success: { (respose) in
+            //获取数据,字典转模型
+            
+            
+        }) { (error) in
+            
+            self.alert(message: error.debugDescription)
+        }
     }
     
     // MARK: - 工作记录View的点击,界面跳转
@@ -33,18 +56,32 @@ class YQReleaseJournalViewController: UIViewController {
         
     }
     
-    
     // MARK: - 提交rightBarButtonClick
     @IBAction func submitButtonClick(_ sender: Any) {
         
         //数据接口的请求
-        //界面跳转
-        self.dismiss(animated: true, completion: nil)
+        /*调用日志新增的接口
+         
+         token
+         workunitIds
+         todoIds
+
+         */
         
+        let parameter = [String : Any]()
+        
+        HttpClient.instance.post(path: URLPath.getAddWorklog, parameters: parameter, success: { (response) in
+            
+            //界面跳转
+            self.dismiss(animated: true, completion: nil)
+            
+        }) { (error) in
+            
+           self.alert(message: error.debugDescription)
+        }
     }
     
     // MARK: - 返回按钮leftBarButtonClick
-    
     @IBAction func returnButtonClick(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)

@@ -11,6 +11,8 @@
 		2F0223B41FA99EAB0090822F /* YQFilterDeptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0223B31FA99EAB0090822F /* YQFilterDeptModel.swift */; };
 		2F0223B61FA99ECF0090822F /* YQFilterPersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0223B51FA99ECF0090822F /* YQFilterPersonModel.swift */; };
 		2F0223B81FA9A3E60090822F /* YQParkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0223B71FA9A3E60090822F /* YQParkTableViewCell.swift */; };
+		2F0223BA1FA9C2030090822F /* YQWorkOrderCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0223B91FA9C2030090822F /* YQWorkOrderCompleteVC.swift */; };
+		2F0223BC1FA9C2330090822F /* YQWorkOderComplete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F0223BB1FA9C2330090822F /* YQWorkOderComplete.storyboard */; };
 		2F0F877C1F56D23F0030A6DB /* YQPartsLibary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F0F877A1F56D23F0030A6DB /* YQPartsLibary.storyboard */; };
 		2F0F877D1F56D23F0030A6DB /* YQPartsLibaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F877B1F56D23F0030A6DB /* YQPartsLibaryViewController.swift */; };
 		2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */; };
@@ -260,6 +262,8 @@
 		2F0223B31FA99EAB0090822F /* YQFilterDeptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFilterDeptModel.swift; sourceTree = "<group>"; };
 		2F0223B51FA99ECF0090822F /* YQFilterPersonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFilterPersonModel.swift; sourceTree = "<group>"; };
 		2F0223B71FA9A3E60090822F /* YQParkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQParkTableViewCell.swift; sourceTree = "<group>"; };
+		2F0223B91FA9C2030090822F /* YQWorkOrderCompleteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkOrderCompleteVC.swift; sourceTree = "<group>"; };
+		2F0223BB1FA9C2330090822F /* YQWorkOderComplete.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQWorkOderComplete.storyboard; sourceTree = "<group>"; };
 		2F0F877A1F56D23F0030A6DB /* YQPartsLibary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPartsLibary.storyboard; sourceTree = "<group>"; };
 		2F0F877B1F56D23F0030A6DB /* YQPartsLibaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartsLibaryViewController.swift; sourceTree = "<group>"; };
 		2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartHeadView.xib; sourceTree = "<group>"; };
@@ -646,6 +650,8 @@
 				2F4A658D1F945AC300F4C72A /* YQJournalAddEvent.storyboard */,
 				2F4A658F1F9462CF00F4C72A /* YQWorkRecordViewController.swift */,
 				2F4A65911F9462FE00F4C72A /* YQWorkRecord.storyboard */,
+				2F0223B91FA9C2030090822F /* YQWorkOrderCompleteVC.swift */,
+				2F0223BB1FA9C2330090822F /* YQWorkOderComplete.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1395,6 +1401,7 @@
 				4BE88A611E88D242003D9179 /* SigninCell.xib in Resources */,
 				2F5E8C561F595F7000007717 /* YQPartDataAll.xib in Resources */,
 				4B5E43C11F2ECEE000DCE5AC /* SiginCellView.xib in Resources */,
+				2F0223BC1FA9C2330090822F /* YQWorkOderComplete.storyboard in Resources */,
 				4B3951ED1E28718200E2642F /* ReportMaster.storyboard in Resources */,
 				4BD4B90B1E272E0C00AE2BC9 /* LaunchScreen.storyboard in Resources */,
 				2F94A2811F73A5F500455162 /* YQFireMapDetail.storyboard in Resources */,
@@ -1673,6 +1680,7 @@
 				4B50D62F1EBB1B3900BB480F /* AllViewController.swift in Sources */,
 				4B8A9FD01E2C7C440009F757 /* AppraisalViewController.swift in Sources */,
 				2FC167471F905F34001CEACD /* YQJournalDetailViewController.swift in Sources */,
+				2F0223BA1FA9C2030090822F /* YQWorkOrderCompleteVC.swift in Sources */,
 				2F73073A1FA85DFA0067BC4D /* YQWorkLogListModel.swift in Sources */,
 				4B6E64FA1EEAEFCF00BA23E4 /* PhotoBrowser.swift in Sources */,
 				4BBBEC991E2CAAE200F60313 /* BoTapAssetView.m in Sources */,

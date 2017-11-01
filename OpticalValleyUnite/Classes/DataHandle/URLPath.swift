@@ -31,6 +31,7 @@ struct URLPath {
     static let login = "user/login.do"
     static let systemMessage = "message/importentMsg.do"
     static let getWorkunitList = "workunit/workunitList.do"
+    
     static let getParkList = "user/getParkList.do"
     static let getWorkOrderStatic = "workunit/workunitStaticByMonth.do"
     static let updatepwd = "user/updatepwd.do"
@@ -184,5 +185,7 @@ struct URLPath {
     //对象
     static let getFilterPersonList = "worklog/person/list.do"
     
+    //日志工单
+    static let getWorkunitList2 = "workunit/workunitList2.do"
     
 }

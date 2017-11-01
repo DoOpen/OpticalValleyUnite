@@ -40,8 +40,9 @@ class YQJournalDetailViewController: UIViewController {
     // MARK: - 工单完成情况
     @IBAction func workOrderCompleteClick(_ sender: Any) {
         
-        
-        
+        let workComplete = UIStoryboard.instantiateInitialViewController(name: "YQWorkOderComplete")
+        self.navigationController?.pushViewController(workComplete, animated: true)
+
     }
 
 }

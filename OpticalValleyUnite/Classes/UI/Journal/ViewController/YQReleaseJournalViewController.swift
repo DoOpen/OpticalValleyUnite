@@ -67,6 +67,9 @@ class YQReleaseJournalViewController: UIViewController {
     @IBAction func workorderCompleteClick(_ sender: Any) {
         //直接的跳转到 工单的完成情况界面
         
+        let workComplete = UIStoryboard.instantiateInitialViewController(name: "YQWorkOderComplete")
+        self.navigationController?.pushViewController(workComplete, animated: true)
+
     }
     
     // MARK: - 提交rightBarButtonClick
@@ -78,7 +81,7 @@ class YQReleaseJournalViewController: UIViewController {
          token
          workunitIds
          todoIds
-
+         
          */
         
         let parameter = [String : Any]()
@@ -92,6 +95,7 @@ class YQReleaseJournalViewController: UIViewController {
             
            self.alert(message: error.debugDescription)
         }
+        
     }
     
     // MARK: - 返回按钮leftBarButtonClick

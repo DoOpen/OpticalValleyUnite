@@ -19,11 +19,13 @@ class YQWorkRecordTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    var model : Any? {
+    var model : WorkOrderModel2? {
     
         didSet{
-    
-    
+            
+            contentLabel.text = model?.content
+            timeLabel.text = model?.time
+            
         }
     
     }

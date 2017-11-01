@@ -31,8 +31,9 @@ class AllViewController: UIViewController {
         }
         
         let count = [models.count, 12].min()!
-        let imageDic = ["报事": "baoshi2","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"baoshi2"]
+        let imageDic = ["报事": "baoshi2","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"baoshi2","日志":"日志"]
         for index in 0..<count{
+            
             let imageName = imageDic[models[index].aPPMODULENAME] ?? ""
             btnViews[index].imageView.image = UIImage(named:imageName)
             
@@ -40,6 +41,7 @@ class AllViewController: UIViewController {
                 btnViews[index].textLabel.text = "报事"
                 
             }else{
+                
                 btnViews[index].textLabel.text = models[index].aPPMODULENAME
             
             }
@@ -48,7 +50,8 @@ class AllViewController: UIViewController {
             btnViews[index].isHidden = false
             btnViews[index].clickHandle = { [weak self] in
                 
-                self?.actionPush(text: (self?.models[index].aPPMODULENAME)!)
+            self?.actionPush(text: (self?.models[index].aPPMODULENAME)!)
+                
             }
         }
     }
@@ -78,6 +81,13 @@ class AllViewController: UIViewController {
         //            surveillanceWorkOrderBtnClick()
         case "督办":
             surveillanceWorkOrderBtnClick()
+            
+        case "日志":
+            //测试日志模块
+            let journa = UIStoryboard.instantiateInitialViewController(name: "YQJournal")
+            
+            self.present(journa, animated: true, completion: nil)
+            
         default: break
             
         }

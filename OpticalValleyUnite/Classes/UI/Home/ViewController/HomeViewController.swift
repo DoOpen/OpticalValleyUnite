@@ -182,7 +182,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 for temp in array {
                     
                     let sortTemp = temp as! [String : Any]
-                    let SORT = sortTemp["SORT"] as? Int
+                    var SORT = sortTemp["SORT"] as? Int
+                    
+                    if SORT == 9 {
+                        
+                        SORT = 6 //重新对sort进行赋值的操作
+                    }
                     
                     if xxxx == SORT {
                         //前台的数据重写逻辑!
@@ -278,8 +283,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
 
     func settopArry(topArry:[PermissionModel],donwArry: [PermissionModel]){
-        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"报事"]
+        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"报事","日志":"日志"]
         for (index,model) in topArry.enumerated(){
+            
             if index >= 4{
                 break
             }
@@ -303,15 +309,20 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         let count = [3,donwArry.count].min()!
         
         _ = downBtnViewArray.map{ btnView in
+            
             btnView.isHidden = true
         }
+        
         for (index,model) in donwArry.enumerated(){
+            
             if index >= count{
+                
                 if index < 3{
                     downBtnViewArray[index].isHidden = true
                 }
                 
             }else{
+                
                 let imageName = imageDic[model.aPPMODULENAME] ?? ""
                 downBtnViewArray[index].imageView.image = UIImage(named:imageName)
                 downBtnViewArray[index].textLabel.text = model.aPPMODULENAME
@@ -392,6 +403,14 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
 //            surveillanceWorkOrderBtnClick()
         case "督办":
             surveillanceWorkOrderBtnClick()
+            
+        case "日志":
+            //测试日志模块
+            let journa = UIStoryboard.instantiateInitialViewController(name: "YQJournal")
+            
+//            navigationController?.pushViewController(journa, animated: true)
+            self.present(journa, animated: true, completion: nil)
+            
         default: break
             
         }

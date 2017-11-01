@@ -92,7 +92,6 @@ class YQSystemSelectionVC: UIViewController {
                 
                 SJKeyWindow?.rootViewController = tabVc
 
-                
             
             }else{ // 直接跳转到home界面, 传递数据情况,(没有数据的逻辑处理)
                 //数据都需要保存下来,归档解档,plist文件
@@ -145,7 +144,6 @@ class YQSystemSelectionVC: UIViewController {
             
             //进行UI界面赋值添加
             self.dataArray = data as! NSArray
-
         }
         
     }
@@ -210,13 +208,8 @@ class YQSystemSelectionVC: UIViewController {
         if tap.tapIndex >= dataArray.count {
             
             //最后一个是显示的图标
-//            return
+            return
             
-            //测试日志模块
-            let journa = UIStoryboard.instantiateInitialViewController(name: "YQJournal")
-            
-            SJKeyWindow!.rootViewController = journa
-                        
             
         }else if tap.tapIndex == fireindex {
             
@@ -260,6 +253,7 @@ class YQSystemSelectionVC: UIViewController {
             
             //数组取值,进行传值,控制器加载跳转
             let data = dataArray[tap.tapIndex] as! [String : Any]
+            
             UserDefaults.standard.set(data, forKey: Const.YQSystemSelectData)
 
             

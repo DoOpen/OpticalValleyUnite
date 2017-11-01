@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="添加事件详情" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="drD-7G-B18" customClass="SJTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="drD-7G-B18" customClass="SJTextView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="128"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -40,7 +40,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="添加事项" id="R7f-4D-WOR">
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="l8Y-4k-BgP"/>
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="l8Y-4k-BgP">
+                            <connections>
+                                <action selector="addEventComplete:" destination="uDc-Hh-Vjf" id="rH2-7t-510"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

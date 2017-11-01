@@ -23,9 +23,9 @@ import Foundation
 struct URLPath {
 //    static let basicPath = "http://112.74.80.111:8888/ovu-pcos/api/"
     ///主机地址
-//    static let basicPath = "http://test.ovuems.com/ovu-pcos/api/"
+    static let basicPath = "http://test.ovuems.com/ovu-pcos/api/"
     //服务器的basic 地址:
-    static let basicPath = "http://192.168.0.18:8080/ovu-pcos/api/"
+//    static let basicPath = "http://192.168.0.18:8080/ovu-pcos/api/"
 
     
     static let login = "user/login.do"

@@ -20,7 +20,11 @@ class YQFilterJournalViewController: UIViewController {
         self.title = "选择项目"
         
         self.automaticallyAdjustsScrollViewInsets = false
-        
+    }
+    
+    func getFilterData(){
+//        
+//        HttpClient.instance.get(path: <#T##String#>, parameters: <#T##[String : Any]?#>, success: <#T##HttpClient.HttpSuccess##HttpClient.HttpSuccess##(AnyObject) -> ()#>, failure: <#T##HttpClient.HttpFailure##HttpClient.HttpFailure##(NSError) -> ()#>)
         
     }
 

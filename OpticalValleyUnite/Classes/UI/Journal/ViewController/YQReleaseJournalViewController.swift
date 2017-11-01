@@ -32,9 +32,21 @@ class YQReleaseJournalViewController: UIViewController {
     func getTodoDataList(){
         
         let paramet = [String : Any]()
+        
         HttpClient.instance.get(path: URLPath.getTodoWorklogList, parameters: paramet, success: { (respose) in
             //获取数据,字典转模型
+            var tempModel = [YQToDoListModel]()
             
+            if let array = respose["todoList"] as? NSArray{
+                
+                for temp in array {
+                    
+                    tempModel.append(YQToDoListModel.init(dic: temp as! [String : Any]))
+                }
+                
+                self.dataList = tempModel
+                
+            }
             
         }) { (error) in
             
@@ -47,6 +59,7 @@ class YQReleaseJournalViewController: UIViewController {
         
         let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord")
         self.navigationController?.pushViewController(workRecord, animated: true)
+        
         
     }
     
@@ -94,7 +107,7 @@ class YQReleaseJournalViewController: UIViewController {
 extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.dataList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -126,9 +139,29 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "molishuju" + "\(indexPath.row)"
+        cell.textLabel?.numberOfLines = 0
+        let model = self.dataList?[indexPath.row]
+        
+        cell.textLabel?.text = "\(indexPath.row + 1)." + (model?.title)!
         
         return cell
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let model = self.dataList?[indexPath.row]{
+            
+            //跳转到添加 详情的界面
+            let addDetailVC = UIStoryboard.instantiateInitialViewController(name: "YQJournalAddEvent") as! YQJournalAddEventViewController
+            addDetailVC.todoId = model.todoId
+            addDetailVC.text = model.title!
+            
+            self.navigationController?.pushViewController(addDetailVC, animated: true)
+
+        }
+        
     }
     
 

@@ -620,10 +620,10 @@
 			children = (
 				2F2F95751F8DAE9000870DC8 /* YQJournalViewController.swift */,
 				2F2F95771F8DAECD00870DC8 /* YQJournal.storyboard */,
-				2FC1674E1F90A840001CEACD /* YQFilterJournalViewController.swift */,
-				2FC167521F90A977001CEACD /* YQFilterJournal.storyboard */,
 				2FC167461F905F34001CEACD /* YQJournalDetailViewController.swift */,
 				2FC167481F905F5A001CEACD /* YQJournalDetail.storyboard */,
+				2FC1674E1F90A840001CEACD /* YQFilterJournalViewController.swift */,
+				2FC167521F90A977001CEACD /* YQFilterJournal.storyboard */,
 				2F7550F21FA6C0B700A5E242 /* YQDepartmentTableViewController.swift */,
 				2F7550F41FA6C19100A5E242 /* YQFilterDepartment.storyboard */,
 				2F7550F61FA6C1F600A5E242 /* YQObjectTableViewController.swift */,

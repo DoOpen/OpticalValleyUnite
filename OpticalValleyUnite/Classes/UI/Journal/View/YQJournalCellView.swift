@@ -34,6 +34,10 @@ class YQJournalCellView: UITableViewCell{
             workID = (model?.worklogId)!
             postLabel.text = model?.post
             
+            //注意的是:这里的符号的正负代表的
+            let index =  timeLabel.text?.index( (timeLabel.text?.endIndex)!, offsetBy: 10)
+            tempTimeLabel.text = (timeLabel.text?.substring(from: index!))! + "工作日志"
+            
             if model?.avatar != nil {
                 
                 imageV.kf.setImage(with:URL(string : (model?.avatar)!) , placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)

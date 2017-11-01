@@ -88,8 +88,10 @@ class LoginViewController: UIViewController {
                     /// 直接跳转到home的主页
                     //  self.pushToHomeViewController()
                     // 正版的跳转到子系统选择的界面
-                    // self.systemSelectionNetworkInterface()
-                    self.pushToJournalViewController()
+                     self.systemSelectionNetworkInterface()
+                    // 跳转到日志的测试的模块
+                    // self.pushToJournalViewController()
+                    
                     
                     break
                 }

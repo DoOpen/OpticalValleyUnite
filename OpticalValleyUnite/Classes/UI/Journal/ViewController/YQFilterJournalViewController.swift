@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YQFilterJournalViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    //模型数据
+    var dataList : [YQFilterParkModel]?{
+        didSet{
+        
+            self.tableView.reloadData()
+        }
+    }
 
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -22,9 +32,37 @@ class YQFilterJournalViewController: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getFilterData()
+    }
+    
     func getFilterData(){
-//        
-//        HttpClient.instance.get(path: <#T##String#>, parameters: <#T##[String : Any]?#>, success: <#T##HttpClient.HttpSuccess##HttpClient.HttpSuccess##(AnyObject) -> ()#>, failure: <#T##HttpClient.HttpFailure##HttpClient.HttpFailure##(NSError) -> ()#>)
+
+        var paramet = [String : Any]()
+        
+        SVProgressHUD.show(withStatus: "数据加载中")
+        
+        HttpClient.instance.get(path: URLPath.getFilterParkList, parameters: paramet, success: { (respones) in
+            SVProgressHUD.dismiss()
+            //字典转模型,数据显示
+            let array = respones["parkList"] as! NSArray
+            
+            var dic = [YQFilterParkModel]()
+            
+            for temp in array{
+                
+                dic.append(YQFilterParkModel.init(dic: temp as! [String : Any]))
+            
+            }
+            
+            self.dataList = dic
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: error.debugDescription)
+        }
         
     }
 
@@ -33,14 +71,19 @@ class YQFilterJournalViewController: UIViewController {
 extension YQFilterJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        
+        return self.dataList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell =  tableView.dequeueReusableCell(withIdentifier: "filterJournal", for: indexPath)
         
-        cell.textLabel?.text = "模拟数据" + "\(indexPath.row)"
+        cell.textLabel?.numberOfLines = 0
+        
+        let model = self.dataList?[indexPath.row]
+        
+        cell.textLabel?.text = model?.name
         
         return cell
     }
@@ -49,7 +92,7 @@ extension YQFilterJournalViewController : UITableViewDelegate,UITableViewDataSou
         
         //传递模型,跳转到(项目 -->  部门 --> 对象)
         let department = UIStoryboard.instantiateInitialViewController(name: "YQFilterDepartment") as? YQDepartmentTableViewController
-        department?.filerModel = indexPath.row
+        department?.filerModel = self.dataList?[indexPath.row]
         
         self.navigationController?.pushViewController(department!, animated: true)
         

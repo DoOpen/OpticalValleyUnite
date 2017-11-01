@@ -7,10 +7,24 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YQObjectTableViewController: UITableViewController {
-
-    var departmentModel : Any?
+    
+    var filterModel : YQFilterParkModel?
+    
+    var departmentModel : YQFilterDeptModel?
+    
+    var dataList : [YQFilterPersonModel]?{
+        didSet{
+            
+            self.personTableView.reloadData()
+        }
+        
+    }
+    
+    @IBOutlet var personTableView: UITableView!
+    
     
     override func viewDidLoad() {
         
@@ -28,8 +42,40 @@ class YQObjectTableViewController: UITableViewController {
         
     }
     
+    func getPersonListData(){
+    
+        var paramet = [String : Any]()
+        paramet["deptId"] = departmentModel?.deptId
+        
+        SVProgressHUD.show(withStatus: "数据加载中")
+        
+        HttpClient.instance.get(path: URLPath.getFilterPersonList, parameters: paramet, success: { (respones) in
+            SVProgressHUD.dismiss()
+            //字典转模型,数据显示
+            let array = respones["personList"] as! NSArray
+            
+            var dic = [YQFilterPersonModel]()
+            
+            for temp in array{
+                
+                dic.append(YQFilterPersonModel.init(dic: temp as! [String : Any]))
+                
+            }
+            
+            self.dataList = dic
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: error.debugDescription)
+        }
+
+    }
+    
+    
+    
     // MARK: - 完成按钮的点击实现
     func compeletedButtonClick() {
+        
         //读取选择的数据
         
         //跳转到根控制器来执行
@@ -41,13 +87,16 @@ class YQObjectTableViewController: UITableViewController {
     // MARK: - tableView 的代理方法和数据源方法
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 30
+        return (self.dataList?.count)! 
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "object", for: indexPath)
-        cell.textLabel?.text = "对象的模拟数据 " + "\(indexPath.row)"
+        
+        let model = self.dataList?[indexPath.row]
+        
+        cell.textLabel?.text = model?.name
         
         return cell
     }

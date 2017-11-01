@@ -176,4 +176,13 @@ struct URLPath {
     static let getTodoWorklogDelete = "worklog/delete.do"
     
     
+    //筛选界面的接口
+    //项目
+    static let getFilterParkList = "worklog/park/list.do"
+    //部门
+    static let getFilterDeptList = "worklog/dept/list.do"
+    //对象
+    static let getFilterPersonList = "worklog/person/list.do"
+    
+    
 }

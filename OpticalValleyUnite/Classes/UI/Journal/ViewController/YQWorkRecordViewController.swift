@@ -18,6 +18,9 @@ class YQWorkRecordViewController: UIViewController {
     
     var workRecord = "workRecord"
     
+    //日志ID
+    var workLogID = ""
+    
 //    var currentData : [WorkOrderModel2]?{
 //        
 //        didSet{
@@ -64,10 +67,12 @@ class YQWorkRecordViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         
         var dic = [String : Any]()
-        dic["worklogId"] = ""
+        dic["worklogId"] = self.workLogID
+        // 工作记录 传递 自发工单
         dic["self"] = "1"
         
         getWorkOrder(dic: dic)
@@ -107,7 +112,7 @@ class YQWorkRecordViewController: UIViewController {
         
         SVProgressHUD.show(withStatus: "加载中...")
         
-        HttpClient.instance.get(path: URLPath.getWorkunitList, parameters: parmat, success: { (response) in
+        HttpClient.instance.get(path: URLPath.getWorkunitList2, parameters: parmat, success: { (response) in
             
             SVProgressHUD.dismiss()
             

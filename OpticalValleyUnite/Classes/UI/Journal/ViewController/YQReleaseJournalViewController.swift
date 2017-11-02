@@ -22,7 +22,9 @@ class YQReleaseJournalViewController: UIViewController {
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         //获取待办事项的列表信息
         getTodoDataList()
 
@@ -57,17 +59,19 @@ class YQReleaseJournalViewController: UIViewController {
     // MARK: - 工作记录View的点击,界面跳转
     @IBAction func tapClickWithWorkRecord(_ sender: Any) {
         
+        //发布界面 没有workLogID传递的值
         let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord")
-        self.navigationController?.pushViewController(workRecord, animated: true)
         
+        self.navigationController?.pushViewController(workRecord, animated: true)
         
     }
     
     // MARK: - 工单完成情况实现
     @IBAction func workorderCompleteClick(_ sender: Any) {
         //直接的跳转到 工单的完成情况界面
-        
+        //发布界面 没有workLogID的值传递
         let workComplete = UIStoryboard.instantiateInitialViewController(name: "YQWorkOderComplete")
+        
         self.navigationController?.pushViewController(workComplete, animated: true)
 
     }
@@ -77,13 +81,10 @@ class YQReleaseJournalViewController: UIViewController {
         
         //数据接口的请求
         /*调用日志新增的接口
-         
          token
          workunitIds
          todoIds
-         
          */
-        
         let parameter = [String : Any]()
         
         HttpClient.instance.post(path: URLPath.getAddWorklog, parameters: parameter, success: { (response) in
@@ -167,8 +168,6 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
         }
         
     }
-    
-
 }
 
 
@@ -181,7 +180,6 @@ extension YQReleaseJournalViewController : YQReseaseJouranlFooterDeletage{
         self.navigationController?.pushViewController(addDetailVC, animated: true)
         
     }
-
 
 }
 

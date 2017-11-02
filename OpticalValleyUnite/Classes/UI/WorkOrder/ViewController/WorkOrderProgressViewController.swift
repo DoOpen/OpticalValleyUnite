@@ -628,7 +628,6 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-   
             var cell = UITableViewCell()
             
             if indexPath.row == 0{
@@ -654,8 +653,6 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
                 
             }else{
                 
-                
-                
                 let model = models[indexPath.row - 1]
                 let cell2 = getCell(model: model)
                 cell = cell2
@@ -675,6 +672,7 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
         let cell = tableView.cellForRow(at: indexPath)

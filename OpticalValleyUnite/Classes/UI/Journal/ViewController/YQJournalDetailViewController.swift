@@ -31,8 +31,10 @@ class YQJournalDetailViewController: UIViewController {
     // MARK: - 工作记录
     @IBAction func workRecordButtonClick(_ sender: Any) {
         
-        let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord")
-        self.navigationController?.pushViewController(workRecord, animated: true)
+        let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord") as? YQWorkRecordViewController
+        workRecord?.workLogID = "\(self.workIDid)"
+        
+        self.navigationController?.pushViewController(workRecord!, animated: true)
         
         
     }
@@ -40,8 +42,11 @@ class YQJournalDetailViewController: UIViewController {
     // MARK: - 工单完成情况
     @IBAction func workOrderCompleteClick(_ sender: Any) {
         
-        let workComplete = UIStoryboard.instantiateInitialViewController(name: "YQWorkOderComplete")
-        self.navigationController?.pushViewController(workComplete, animated: true)
+        let workComplete = UIStoryboard.instantiateInitialViewController(name: "YQWorkOderComplete") as? YQWorkOrderCompleteVC
+        
+        workComplete?.workLogID = "\(self.workIDid)"
+        
+        self.navigationController?.pushViewController(workComplete!, animated: true)
 
     }
 

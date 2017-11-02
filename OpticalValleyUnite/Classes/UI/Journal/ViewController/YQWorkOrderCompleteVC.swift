@@ -23,6 +23,8 @@ class YQWorkOrderCompleteVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    // 日志ID
+    var workLogID = ""
     
     var currentDatas = [WorkOrderModel2]()
     
@@ -100,7 +102,7 @@ class YQWorkOrderCompleteVC: UIViewController {
         
         SVProgressHUD.show(withStatus: "加载中...")
         
-        HttpClient.instance.get(path: URLPath.getWorkunitList, parameters: parmat, success: { (response) in
+        HttpClient.instance.get(path: URLPath.getWorkunitList2, parameters: parmat, success: { (response) in
             
             SVProgressHUD.dismiss()
             
@@ -157,8 +159,8 @@ class YQWorkOrderCompleteVC: UIViewController {
         
         //传递的是四个参数
         var dic = [String : Any]()
-//        dic["worklogId"] = ""
-//        dic["self"] = "0"
+        dic["worklogId"] = self.workLogID
+        dic["self"] = "0"
         dic["STATUS"] = "YCL"
         
         getWorkOrder(dic: dic)
@@ -174,8 +176,8 @@ class YQWorkOrderCompleteVC: UIViewController {
         self.notFinishLabel.textColor = UIColor.blue
         
         var dic = [String : Any]()
-//        dic["worklogId"] = ""
-//        dic["self"] = "0"
+        dic["worklogId"] = self.workLogID
+        dic["self"] = "0"
         dic["STATUS"] = "DCL"
         
         getWorkOrder(dic: dic)

@@ -25,6 +25,16 @@ class YQJournalViewController: UIViewController {
     }
     
     
+    // MARK: - swift懒加载方法
+    lazy var heightDic = {
+        () -> NSMutableDictionary
+        
+        in
+        
+        return NSMutableDictionary()
+    }()
+    
+    
     // MARK: - 视图生命周期方法
     override func viewDidLoad() {
         
@@ -200,12 +210,17 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath) as! YQJournalCellView
         
         cell.model = self.dataArray?[indexPath.row]
+        //强制更新cell的布局高度
+        cell.layoutIfNeeded()
+        //缓存 行高
+        //要求的定义的是 一个可变的字典的类型的来赋值
+        heightDic["\(indexPath.row)"] = cell.cellForHeight()
         
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         //传递模型,跳转到详情界面
         //传递数据数组 和 ID 
         let detailVC = UIStoryboard.instantiateInitialViewController(name: "YQJournalDetail") as? YQJournalDetailViewController
@@ -221,7 +236,9 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 200
+        let height = heightDic["\(indexPath.row)"] as! Float
+        
+        return CGFloat(height)
     }
     
 }

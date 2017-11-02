@@ -67,6 +67,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="contentLabel" destination="g9S-BY-lx9" id="a7F-jS-phc"/>
+                <outlet property="selectButton" destination="G76-On-xfW" id="sFE-uq-3TC"/>
                 <outlet property="timeLabel" destination="30Z-ql-OvG" id="pap-EJ-V8i"/>
             </connections>
             <point key="canvasLocation" x="-204.5" y="106"/>

@@ -7,13 +7,21 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YQReleaseJournalViewController: UIViewController {
     
     // MARK: - 属性加载情况
     @IBOutlet weak var detailTableView: UITableView!
     
+    // 所有的工单ID
+    var workunitIds : String = ""
+    // 所有的日志ID
+    var todoIds : String = ""
+    
+    
     var dataList : [YQToDoListModel]?{
+        
         didSet{
             
             self.detailTableView.reloadData()
@@ -24,7 +32,8 @@ class YQReleaseJournalViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        //添加通知
+        addNotes()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +48,10 @@ class YQReleaseJournalViewController: UIViewController {
         
         let paramet = [String : Any]()
         
+        SVProgressHUD.show(withStatus: "正在加载中...")
         HttpClient.instance.get(path: URLPath.getTodoWorklogList, parameters: paramet, success: { (respose) in
+            
+            SVProgressHUD.dismiss()
             //获取数据,字典转模型
             var tempModel = [YQToDoListModel]()
             
@@ -88,12 +100,28 @@ class YQReleaseJournalViewController: UIViewController {
          workunitIds
          todoIds
          */
-        let parameter = [String : Any]()
+        var parameter = [String : Any]()
+        
+        //全部的id 的字段都是要求string 来进行拼接
+        parameter["workunitIds"] = self.workunitIds
+        parameter["todoIds"] = self.getTodoIdsFunction()
+        
+        if self.workunitIds == ""{
+            
+            self.alert(message: "请选择工单!")
+            return
+        }
+        
+        SVProgressHUD.show(withStatus: "提交中...")
         
         HttpClient.instance.post(path: URLPath.getAddWorklog, parameters: parameter, success: { (response) in
             
+            SVProgressHUD.showSuccess(withStatus: "提交成功!")
             //界面跳转
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                
+                SVProgressHUD.dismiss()
+            })
             
         }) { (error) in
             
@@ -108,6 +136,53 @@ class YQReleaseJournalViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - 获取待办事项的ID
+    func getTodoIdsFunction() -> String {
+    
+        if (dataList?.count)! < 1 {
+            return ""
+        }
+        
+        var str = ""
+        
+        for index in 0 ..< (dataList?.count)! {
+            
+            let model = dataList?[index]
+            if index == 0 {
+                
+                str = "\( model!.todoId)"
+                
+            }else{
+            
+                str = str + "," + "\( model!.todoId)"
+            }
+        }
+        
+        return str
+    }
+    
+    // MARK: - 接受通知方法
+    func addNotes(){
+    
+        let name = NSNotification.Name(rawValue: "workRecordToSuper")
+        NotificationCenter.default.addObserver(self, selector: #selector(workRecordToWorkUNITID(notification:)), name: name, object: nil)
+    
+    }
+    
+    func workRecordToWorkUNITID(notification: Notification){
+        
+        let workUnit = notification.userInfo?["YQWorkRecordTo"] as? String
+        
+        self.workunitIds = workUnit!
+        
+    }
+    
+    // MARK: - dealloc方法
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
+        
+    }
     
 
 }

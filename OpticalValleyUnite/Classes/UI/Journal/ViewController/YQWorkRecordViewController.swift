@@ -43,6 +43,9 @@ class YQWorkRecordViewController: UIViewController {
 
     var dic = [String : Any]()
     
+    var currentSelecIndex : IndexPath?
+    
+    
     // MARK: - 视图生命周期方法
     override func viewDidLoad() {
         
@@ -166,12 +169,42 @@ class YQWorkRecordViewController: UIViewController {
     
     // MARK: - 完成按钮的点击
     func completeButtonClick(){
-        
-        //传参调接口
+        //获取调用
+        let strID = self.getAllWorkunitIdsFunction()
+        //传参调接口,发送通知到super
+        let center = NotificationCenter.default
+        let name = NSNotification.Name(rawValue: "workRecordToSuper")
+        center.post(name: name, object: nil, userInfo: ["YQWorkRecordTo" : strID ])
         
         //控制器的释放
         self.navigationController?.popViewController(animated: true)
     
+    }
+    
+    // MARK: - 获取调用所有的workunitIds
+    func getAllWorkunitIdsFunction() -> String{
+        
+        if self.currentDatas.count < 1 {
+            return ""
+        }
+        
+        var str = ""
+        
+        for team in 0 ..< self.currentDatas.count{
+            
+            let model = self.currentDatas[team]
+            if team == 0 {
+                
+                str = model.workOrderId
+            }else{
+            
+                str = str + "," + model.workOrderId
+            }
+        
+        }
+        
+        
+        return str
     }
     
 
@@ -193,9 +226,16 @@ extension YQWorkRecordViewController: UITableViewDataSource,UITableViewDelegate{
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        //直接编辑模型 设置数据
+        let model = self.currentDatas[indexPath.row]
+        
+        model.selected = !model.selected
+        //tableV 重刷数据
+        self.tableView.reloadRows(at: [indexPath], with: .none)
+        
+    }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         

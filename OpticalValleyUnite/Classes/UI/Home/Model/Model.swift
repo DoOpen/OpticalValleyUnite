@@ -164,6 +164,7 @@ class WorkOrderModel2: Object {
     dynamic var dubanTime = ""
     dynamic var reportPeopleName = ""
     
+    var selected = true
     
     
     var PARK_NAME = ""

@@ -14,6 +14,9 @@ class YQWorkRecordTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
 
+    @IBOutlet weak var selectButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,6 +28,7 @@ class YQWorkRecordTableViewCell: UITableViewCell {
             
             contentLabel.text = model?.content
             timeLabel.text = model?.time
+            selectButton.isSelected = (model?.selected)!
             
         }
     

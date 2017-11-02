@@ -158,6 +158,7 @@ class YQJournalViewController: UIViewController {
     
     //MARK: - leftBarItemButtonClick方法
     func leftBarItemButtonClick(){
+        
 //        //返回子系统选择的界面
 //        //查看是否有缓存的数据
 //        let data = UserDefaults.standard.object(forKey: Const.YQTotallData) as? NSArray

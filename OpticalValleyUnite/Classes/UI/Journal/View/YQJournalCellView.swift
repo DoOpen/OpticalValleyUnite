@@ -35,8 +35,9 @@ class YQJournalCellView: UITableViewCell{
             postLabel.text = model?.post
             
             //注意的是:这里的符号的正负代表的
-            let index =  timeLabel.text?.index( (timeLabel.text?.endIndex)!, offsetBy: 10)
-            tempTimeLabel.text = (timeLabel.text?.substring(from: index!))! + "工作日志"
+            let index =  model?.createTime?.index( (model?.createTime?.startIndex)!, offsetBy: 10)
+            
+            tempTimeLabel.text = (model?.createTime?.substring(to: index!))! + "工作日志"
             
             if model?.avatar != nil {
                 
@@ -97,7 +98,7 @@ class YQJournalCellView: UITableViewCell{
     func cellForHeight() -> Float {
         // detailLabel.frame.maxY + detailLabel.frame.width + 10
         
-        return Float(detailLabel.frame.maxY + detailLabel.frame.width + 10)
+        return Float(detailLabel.frame.maxY + 10)
     }
 
     

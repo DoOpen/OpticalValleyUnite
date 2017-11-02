@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import MJRefresh
 
 class YQWorkRecordViewController: UIViewController {
     
@@ -40,6 +41,7 @@ class YQWorkRecordViewController: UIViewController {
     
     var pageNo = 0
 
+    var dic = [String : Any]()
     
     // MARK: - 视图生命周期方法
     override func viewDidLoad() {
@@ -61,8 +63,12 @@ class YQWorkRecordViewController: UIViewController {
         
         
         //注册原型cell
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
         let nib = UINib.init(nibName: "YQWorkRecord", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: workRecord)
+        
+        //添加刷新
+        addRefirsh()
         
     }
     
@@ -70,7 +76,6 @@ class YQWorkRecordViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
-        var dic = [String : Any]()
         dic["worklogId"] = self.workLogID
         // 工作记录 传递 自发工单
         dic["self"] = "1"
@@ -98,18 +103,7 @@ class YQWorkRecordViewController: UIViewController {
             parmat[key] = value
         }
         
-        
-        //        let dic = ["待派发": 11,"待执行" : 22, "待评价": 31,"待接收": 21,"已处理": 7, "已接受": 5,"协助查看": 5]
-        //        let  string  = currentStatusBtn?.titleLabel?.text
-        
-        /*
-         工单类型 :  2 - 应急工单  1 - 计划工单
-         */
-        //        parmat["WORKUNIT_TYPE"] = currentStatusBtn?.tag
-        
         //添加默认的选择项目 筛选条件
-        
-        
         SVProgressHUD.show(withStatus: "加载中...")
         
         HttpClient.instance.get(path: URLPath.getWorkunitList2, parameters: parmat, success: { (response) in
@@ -117,17 +111,15 @@ class YQWorkRecordViewController: UIViewController {
             SVProgressHUD.dismiss()
             
             var temp = [WorkOrderModel2]()
+            
             for dic in response["data"] as! Array<[String: Any]> {
                 let model = WorkOrderModel2(parmart: dic)
-                //                if type < array.count {
-                //
-                //                    model.type = array[type]
-                //                }
                 
                 temp.append(model)
             }
             
             if indexPage == 0{
+                
                 self.pageNo = 0
                 self.currentDatas = temp
                 self.tableView.mj_header.endRefreshing()
@@ -139,16 +131,12 @@ class YQWorkRecordViewController: UIViewController {
                     self.pageNo = indexPage + 1
                     self.currentDatas.append(contentsOf: temp)
                     self.tableView.mj_footer.endRefreshing()
+                    
                 }else{
-                    //                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    
                     self.tableView.mj_footer.endRefreshing()
                 }
             }
-            
-            //            let realm = try! Realm()
-            //            try! realm.write {
-            //                realm.add(temp, update: true)
-            //            }
             
             self.tableView.reloadData()
             
@@ -159,6 +147,21 @@ class YQWorkRecordViewController: UIViewController {
         }
         
     }
+    
+    // MARK: - 上下拉刷新
+    func addRefirsh(){
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            self.getWorkOrder(type: self.currentIndex ,dic : self.dic)
+        })
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+            self.getWorkOrder(type: self.currentIndex , indexPage: self.pageNo + 1, dic : self.dic)
+        })
+    }
+
 
     
     // MARK: - 完成按钮的点击
@@ -193,5 +196,15 @@ extension YQWorkRecordViewController: UITableViewDataSource,UITableViewDelegate{
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        
 //    }
-
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 80
+    }
+    
 }

@@ -25,9 +25,13 @@ class YQReleaseJournalViewController: UIViewController {
         
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         //获取待办事项的列表信息
         getTodoDataList()
-
     }
     
     // MARK: - 获取待办事项的listdata
@@ -47,7 +51,6 @@ class YQReleaseJournalViewController: UIViewController {
                 }
                 
                 self.dataList = tempModel
-                
             }
             
         }) { (error) in

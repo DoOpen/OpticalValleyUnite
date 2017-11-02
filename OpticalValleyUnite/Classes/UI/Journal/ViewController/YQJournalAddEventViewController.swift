@@ -31,13 +31,15 @@ class YQJournalAddEventViewController: UIViewController {
         if text != "" {
             
             self.addTextView.text = text
-            
+            self.addTextView.placeHolder = nil
         }
     }
     
 
     // MARK: - 编辑完成的按钮点击
     @IBAction func addEventComplete(_ sender: Any) {
+        
+        self.addTextView.endEditing(true)
         
         var parameter = [String : Any]()
         parameter["title"] = self.addTextView.text

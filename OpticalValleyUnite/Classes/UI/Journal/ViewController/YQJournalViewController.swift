@@ -49,16 +49,16 @@ class YQJournalViewController: UIViewController {
         let nib = UINib.init(nibName: "YQJournalCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "journalCell")
         
-        //4.设置cell的行高属性和 预估行高
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100.0
-        
-        //5.设置添加上下拉刷新
+        //4.设置添加上下拉刷新
         addRefirsh()
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
         //3.日志列表的数据
         getWorklogDataList()
         
@@ -212,12 +212,14 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
         cell.model = self.dataArray?[indexPath.row]
         //强制更新cell的布局高度
         cell.layoutIfNeeded()
+        
         //缓存 行高
         //要求的定义的是 一个可变的字典的类型的来赋值
         heightDic["\(indexPath.row)"] = cell.cellForHeight()
         
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -236,9 +238,16 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let height = heightDic["\(indexPath.row)"] as! Float
+//        let height = heightDic["\(indexPath.row)"] as! Float
+//        
+//        return CGFloat(height)
         
-        return CGFloat(height)
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 200
     }
     
 }

@@ -29,9 +29,11 @@ class YQWorkRecordTableViewCell: UITableViewCell {
             contentLabel.text = model?.content
             timeLabel.text = model?.time
             selectButton.isSelected = (model?.selected)!
-            
+        
+            setNeedsDisplay()
+            setNeedsLayout()
         }
-    
+        
     }
     
     // MARK: - 返回非等高cell的height方法

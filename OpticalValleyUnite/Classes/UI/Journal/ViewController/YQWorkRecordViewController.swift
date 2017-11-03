@@ -212,7 +212,6 @@ class YQWorkRecordViewController: UIViewController {
         
         }
         
-        
         return str
     }
 

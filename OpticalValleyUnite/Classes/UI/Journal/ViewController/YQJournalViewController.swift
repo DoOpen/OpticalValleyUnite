@@ -35,6 +35,9 @@ class YQJournalViewController: UIViewController {
     }()
     
     
+    let cellID = "journalCell"
+    
+    
     // MARK: - 视图生命周期方法
     override func viewDidLoad() {
         
@@ -47,8 +50,12 @@ class YQJournalViewController: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         
         //3.注册原型cell
+//        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 100
+//        
 //        let nib = UINib.init(nibName: "YQJournalCell", bundle: nil)
-//        tableView.register(nib, forCellReuseIdentifier: "journalCell")
+//        tableView.register(nib, forCellReuseIdentifier: cellID)
+        
       
         //4.设置添加上下拉刷新
         addRefirsh()
@@ -209,7 +216,7 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "YQJournalCell") as? YQJournalCellView
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? YQJournalCellView
         
         if cell == nil  {
             

@@ -56,6 +56,7 @@ class ExecuteDetailSubImageCell: UITableViewCell {
                 }else{
                     imageHeightConstrait.constant = 0.0
                 }
+                
                 setNeedsLayout()
             }
         }

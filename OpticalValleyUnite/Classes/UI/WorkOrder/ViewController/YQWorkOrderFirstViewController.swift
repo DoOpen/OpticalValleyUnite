@@ -48,7 +48,6 @@ class YQWorkOrderFirstViewController: UIViewController {
         
         
         //初始调用的方法
-        selectButtonClick(emergencyWorkOrder)
         addRefirsh()
         
         //注册cell
@@ -58,6 +57,14 @@ class YQWorkOrderFirstViewController: UIViewController {
         tableView.estimatedRowHeight = 100.0
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //初始调用的方法
+        selectButtonClick(emergencyWorkOrder)
+        
+    }
+    
     
     // MARK: - 按钮点击的方法
     @IBAction func selectButtonClick(_ sender: UIButton) {

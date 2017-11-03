@@ -140,9 +140,12 @@ class WorkOrderProgressViewController: UIViewController {
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //让行高可以自动调节,设置预估行高
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
+        
+        //重点的注册加载cell的行高的情况
         let nib = UINib(nibName: "WorkOrderDistributionCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "WorkOrderDistributionCell")
         let nib2 = UINib(nibName: "WorkOrderOprationCell", bundle: nil)
@@ -626,6 +629,8 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
         
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
             var cell = UITableViewCell()
@@ -661,9 +666,12 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
         let dotView = cell.contentView.viewWithTag(777)
         
         if let view = dotView{
+            
             if indexPath.row == 1{
+                
                 view.backgroundColor = UIColor.blue
             }else{
+                
                 view.backgroundColor = UIColor.colorFromRGB(rgbValue: 0xcccccc)
             }
         }
@@ -671,12 +679,15 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
         return cell
     }
     
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
         let cell = tableView.cellForRow(at: indexPath)
         if let cell = cell as? WorkOrderStutasCell{
+            
             if cell.model?.status == 7{
 //                executingBtnClick()
                 let  vc = ExecutingViewConttroller.loadFromStoryboard(name: "WorkOrder") as! ExecutingViewConttroller

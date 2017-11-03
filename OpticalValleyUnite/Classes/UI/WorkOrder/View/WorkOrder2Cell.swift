@@ -92,6 +92,7 @@ class WorkOrder2Cell: UITableViewCell {
     
     var model2: WorkOrderModel2?{
         didSet{
+            
             workOrderIdLabel.text = model2?.workOrderId
             contentLabel.text = model2?.content
             timeLabel.text = model2?.time
@@ -100,6 +101,7 @@ class WorkOrder2Cell: UITableViewCell {
             creatLabel.text = model2?.reportPeopleName
             
             deviceBtn.isHidden =  model2!.is_equip != 1
+            
             switch model2!.status {
             case 0://待派发
                 statusLabel.text = "待派发"

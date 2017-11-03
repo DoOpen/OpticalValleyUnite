@@ -135,6 +135,9 @@ class YQWorkOrderCompleteVC: UIViewController {
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: error.debugDescription)
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
+            
         }
         
     }

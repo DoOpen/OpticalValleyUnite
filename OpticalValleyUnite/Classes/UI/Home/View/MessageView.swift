@@ -54,7 +54,9 @@ class MessageView: UIView {
             view.surveillanceWorkOrderBtn.badge(text: "\(surveillanceWorkOrder)")
         }
         
-        view.center = CGPoint(x: SJScreeW * 0.5, y: 343.0)
+        view.center = CGPoint(x: SJScreeW * 0.5, y: SJScreeH * 0.5 + 20)
+        view.frame.size = CGSize(width: SJScreeW + 5, height: 250)
+        
         CoverView.show(view: view)
     }
     

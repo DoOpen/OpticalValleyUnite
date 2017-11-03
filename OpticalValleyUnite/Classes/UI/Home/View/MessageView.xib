@@ -88,7 +88,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2b-6b-oPv">
-                    <rect key="frame" x="349" y="-16" width="32" height="32"/>
+                    <rect key="frame" x="344" y="-12" width="32" height="32"/>
                     <state key="normal" image="exit"/>
                     <connections>
                         <action selector="closeBtnClick" destination="iN0-l3-epB" eventType="touchUpInside" id="TdM-1V-TTy"/>
@@ -97,12 +97,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="b2b-6b-oPv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-16" id="0mA-SI-Cly"/>
+                <constraint firstItem="b2b-6b-oPv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-12" id="0mA-SI-Cly"/>
                 <constraint firstAttribute="bottom" secondItem="9D9-Nj-8RD" secondAttribute="bottom" id="Atu-Wy-JNT"/>
                 <constraint firstItem="pNQ-xM-m81" firstAttribute="top" secondItem="KMi-RY-Qb3" secondAttribute="bottom" constant="11" id="H4A-F1-bbo"/>
                 <constraint firstItem="pNQ-xM-m81" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="1" id="IR9-np-Zb6"/>
                 <constraint firstAttribute="trailing" secondItem="pNQ-xM-m81" secondAttribute="trailing" constant="1" id="WXB-KK-Bvs"/>
-                <constraint firstAttribute="trailing" secondItem="b2b-6b-oPv" secondAttribute="trailing" id="eSO-99-6Qw"/>
+                <constraint firstAttribute="trailing" secondItem="b2b-6b-oPv" secondAttribute="trailing" constant="5" id="eSO-99-6Qw"/>
                 <constraint firstItem="9D9-Nj-8RD" firstAttribute="leading" secondItem="zEz-Ku-2Yw" secondAttribute="trailing" constant="54" id="int-3N-QNd"/>
                 <constraint firstAttribute="bottom" secondItem="zEz-Ku-2Yw" secondAttribute="bottom" id="itq-wv-40F"/>
                 <constraint firstItem="KMi-RY-Qb3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="kw5-sd-6VX"/>

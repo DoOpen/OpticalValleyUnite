@@ -174,7 +174,7 @@ struct URLPath {
     // 待办事项的新增修改 接口
     static let getTodoWorklogEdit = "worklog/todo/edit.do"
     // 待办事项的删除接口
-    static let getTodoWorklogDelete = "worklog/delete.do"
+    static let getTodoWorklogDelete = "worklog/todo/delete.do"
     
     
     //筛选界面的接口

@@ -30,9 +30,36 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ua-gW-7CQ">
+                                <rect key="frame" x="87" y="183" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Mh1-7G-dio"/>
+                                    <constraint firstAttribute="width" constant="200" id="bSY-8b-XiI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="删除待办事项">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteEventButtonClick:" destination="uDc-Hh-Vjf" eventType="touchUpInside" id="LVG-KH-noa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7Ua-gW-7CQ" firstAttribute="centerX" secondItem="kAe-jr-kFv" secondAttribute="centerX" id="9LK-aV-DM0"/>
+                            <constraint firstItem="7Ua-gW-7CQ" firstAttribute="top" secondItem="drD-7G-B18" secondAttribute="bottom" constant="35" id="Xa4-l0-R6b"/>
                             <constraint firstItem="drD-7G-B18" firstAttribute="top" secondItem="V1h-qZ-mpQ" secondAttribute="bottom" id="ZVx-2G-2rO"/>
                             <constraint firstItem="drD-7G-B18" firstAttribute="leading" secondItem="kAe-jr-kFv" secondAttribute="leading" id="qeI-JR-RUi"/>
                             <constraint firstAttribute="trailing" secondItem="drD-7G-B18" secondAttribute="trailing" id="rcj-7n-oPJ"/>
@@ -49,6 +76,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addTextView" destination="drD-7G-B18" id="tSx-Qo-849"/>
+                        <outlet property="deleteEvent" destination="7Ua-gW-7CQ" id="iVf-iN-yJW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1To-uY-j0y" userLabel="First Responder" sceneMemberID="firstResponder"/>

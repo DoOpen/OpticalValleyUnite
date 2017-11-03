@@ -25,6 +25,7 @@ class YQJournalCellView: UITableViewCell{
 
     @IBOutlet weak var detailLabel: UILabel!
     
+    @IBOutlet weak var bottomimageV: UIImageView!
     //模型属性
     var model : YQWorkLogListModel?{
         didSet{
@@ -100,10 +101,10 @@ class YQJournalCellView: UITableViewCell{
     }
     
     // MARK: - 返回非等高cell的height方法
-    func cellForHeight() -> Float {
+    func cellForHeight() -> CGFloat {
         // detailLabel.frame.maxY + detailLabel.frame.width + 10
         
-        return Float(detailLabel.frame.maxY + detailLabel.frame.width + 10)
+        return bottomimageV.frame.maxY + 5
     }
 
     

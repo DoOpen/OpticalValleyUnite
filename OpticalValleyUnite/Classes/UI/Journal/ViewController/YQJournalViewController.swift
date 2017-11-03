@@ -246,9 +246,9 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let height = heightDic["\(indexPath.row)"] as! Float
+        let height = heightDic["\(indexPath.row)"] as! CGFloat
         
-        return CGFloat(height)
+        return height
         
     }
     

@@ -45,6 +45,15 @@ class YQWorkRecordViewController: UIViewController {
     
     var currentSelecIndex : IndexPath?
     
+    // MARK: - swift懒加载方法
+    lazy var heightDic = {
+        () -> NSMutableDictionary
+        
+        in
+        
+        return NSMutableDictionary()
+    }()
+
     
     // MARK: - 视图生命周期方法
     override func viewDidLoad() {
@@ -65,10 +74,10 @@ class YQWorkRecordViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightbar
         
         
-        //注册原型cell
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
-        let nib = UINib.init(nibName: "YQWorkRecord", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: workRecord)
+        //注册原型cell,提前注册cell的话,不能动态加载预估行高
+//        self.tableView.rowHeight = UITableViewAutomaticDimension;
+//        let nib = UINib.init(nibName: "YQWorkRecord", bundle: nil)
+//        self.tableView.register(nib, forCellReuseIdentifier: workRecord)
         
         //添加刷新
         addRefirsh()
@@ -206,9 +215,9 @@ class YQWorkRecordViewController: UIViewController {
         
         return str
     }
-    
 
 }
+
 
 extension YQWorkRecordViewController: UITableViewDataSource,UITableViewDelegate{
     
@@ -219,11 +228,26 @@ extension YQWorkRecordViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: workRecord, for: indexPath) as! YQWorkRecordTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: workRecord) as? YQWorkRecordTableViewCell
         
-        cell.model = self.currentDatas[indexPath.row]
+        if cell == nil {
+            
+            cell = Bundle.main.loadNibNamed("YQWorkRecord", owner: nil, options: nil)?[0] as? YQWorkRecordTableViewCell
+        }
         
-        return cell
+        cell?.model = self.currentDatas[indexPath.row]
+        
+        cell?.layoutIfNeeded()
+        
+        //添加行高 缓存
+        if  heightDic["\(indexPath.row)"] != nil {
+            
+            return cell!
+        }
+        
+        heightDic["\(indexPath.row)"] = cell?.cellForHeight()
+        
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -239,12 +263,37 @@ extension YQWorkRecordViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 50
+        return 60
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 80
+        
+        let height = heightDic["\(indexPath.row)"] as! CGFloat
+        
+        return height
     }
+    
+}
+
+extension YQWorkRecordViewController : UISearchBarDelegate{
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        if let text = searchBar.text{
+            //模糊查询的方法
+            print(text)
+        }
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        self.view.endEditing(true)
+        
+        searchBar.text = nil
+        
+    }
+
     
 }

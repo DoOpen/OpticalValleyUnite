@@ -56,6 +56,7 @@ class CoverView: UIView {
     }
     
     class func show( view: UIView) {
+        
         let coverView = CoverView()
         coverView.frame = CGRect(x: 0, y: 0, width: SJScreeW, height: SJScreeH)
 

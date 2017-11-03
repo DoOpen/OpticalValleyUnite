@@ -106,11 +106,11 @@ class YQReleaseJournalViewController: UIViewController {
         parameter["workunitIds"] = self.workunitIds
         parameter["todoIds"] = self.getTodoIdsFunction()
         
-        if self.workunitIds == ""{
-            
-            self.alert(message: "请选择工单!")
-            return
-        }
+//        if self.workunitIds == ""{
+//            
+//            self.alert(message: "请选择工单!")
+//            return
+//        }
         
         SVProgressHUD.show(withStatus: "提交中...")
         

@@ -55,8 +55,12 @@ class AppraisalCell: UITableViewCell {
                 photoView.setNeedsLayout()
                 
                 if model.source <= 0 {
-                    model.source = 0
+                    
+                    //解决model.source 的逻辑bug的 情况
+                    model.source = 1
+                    
                 }else if model.source > 5{
+                    
                     model.source =  model.source / 2
                 }
                 

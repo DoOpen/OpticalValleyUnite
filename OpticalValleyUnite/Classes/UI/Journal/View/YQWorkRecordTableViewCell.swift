@@ -34,5 +34,14 @@ class YQWorkRecordTableViewCell: UITableViewCell {
     
     }
     
+    // MARK: - 返回非等高cell的height方法
+    func cellForHeight() -> CGFloat {
+        // detailLabel.frame.maxY + detailLabel.frame.width + 10
+        
+        return timeLabel.frame.maxY + 25
+        
+    }
+
+    
 
 }

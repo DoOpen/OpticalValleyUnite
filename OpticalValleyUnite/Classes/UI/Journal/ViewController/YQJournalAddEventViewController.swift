@@ -14,6 +14,9 @@ class YQJournalAddEventViewController: UIViewController {
     // MARK: - 属性列表
     @IBOutlet weak var addTextView: SJTextView!
     
+    @IBOutlet weak var deleteEvent: UIButton!
+    
+    
     var text : String = ""
     var todoId : Int64 = -1
     
@@ -22,6 +25,17 @@ class YQJournalAddEventViewController: UIViewController {
         super.viewDidLoad()
         //1.设置默认的 占位字符
         self.addTextView.placeHolder = "添加事件详情"
+        
+        //2.显示隐藏删除按钮
+        if todoId == -1 {
+            
+            self.deleteEvent.isHidden = true
+            
+        }else {
+            
+            self.deleteEvent.isHidden = false
+        }
+        
         
     }
     
@@ -63,6 +77,29 @@ class YQJournalAddEventViewController: UIViewController {
             
         }
     }
+    
+    @IBAction func deleteEventButtonClick(_ sender: Any) {
+        
+        if todoId == -1 {
+            return
+        }
+        //调用接口,popVC
+        var par = [String : Any]()
+        par["todoId"] = todoId
+        
+        HttpClient.instance.get(path: URLPath.getTodoWorklogDelete, parameters: par, success: { (response) in
+            
+            SVProgressHUD.showSuccess(withStatus: "删除成功!")
+            self.navigationController?.popViewController(animated: true)
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "删除失败!")
+        }
+        
+        
+    }
+    
     
     
 

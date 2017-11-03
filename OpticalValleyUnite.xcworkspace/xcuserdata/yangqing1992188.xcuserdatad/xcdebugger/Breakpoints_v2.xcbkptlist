@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpticalValleyUnite/Classes/UI/Journal/ViewController/YQReleaseJournalViewController.swift"
-            timestampString = "531312950.799013"
+            timestampString = "531313647.99422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "workRecordToWorkUNITID(notification:)"
             landmarkType = "7">
          </BreakpointContent>

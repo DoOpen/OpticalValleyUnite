@@ -47,6 +47,7 @@ class YQWorkOrderCompleteVC: UIViewController {
         dict["self"] = "0"
 
         return dict
+        
         }()
     
     // MARK: - 视图生命周期方法

@@ -39,6 +39,7 @@ class YQJournalViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         //1.添加设置barItem
         setupRightAndLeftBarItem()
         
@@ -46,9 +47,9 @@ class YQJournalViewController: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         
         //3.注册原型cell
-        let nib = UINib.init(nibName: "YQJournalCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "journalCell")
-        
+//        let nib = UINib.init(nibName: "YQJournalCell", bundle: nil)
+//        tableView.register(nib, forCellReuseIdentifier: "journalCell")
+      
         //4.设置添加上下拉刷新
         addRefirsh()
         
@@ -208,17 +209,23 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath) as! YQJournalCellView
+        var cell = tableView.dequeueReusableCell(withIdentifier: "YQJournalCell") as? YQJournalCellView
         
-        cell.model = self.dataArray?[indexPath.row]
+        if cell == nil  {
+            
+//            let nib = UINib.init(nibName: "YQJournalCell", bundle: nil)
+            cell = Bundle.main.loadNibNamed("YQJournalCell", owner: nil, options: nil)?[0] as? YQJournalCellView
+        }
+        
+        cell?.model = self.dataArray?[indexPath.row]
         //强制更新cell的布局高度
-        cell.layoutIfNeeded()
+        cell?.layoutIfNeeded()
         
         //缓存 行高
         //要求的定义的是 一个可变的字典的类型的来赋值
-        heightDic["\(indexPath.row)"] = cell.cellForHeight()
+        heightDic["\(indexPath.row)"] = cell?.cellForHeight()
         
-        return cell
+        return cell!
     }
     
     
@@ -239,11 +246,10 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-//        let height = heightDic["\(indexPath.row)"] as! Float
-//        
-//        return CGFloat(height)
+        let height = heightDic["\(indexPath.row)"] as! Float
         
-        return 200
+        return CGFloat(height)
+        
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

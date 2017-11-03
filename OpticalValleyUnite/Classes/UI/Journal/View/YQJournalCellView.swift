@@ -29,10 +29,15 @@ class YQJournalCellView: UITableViewCell{
     var model : YQWorkLogListModel?{
         didSet{
             
-            nameLabel.text = model?.personName
-            timeLabel.text = model?.createTime
+            if model?.personName == "" {
+                
+                return
+            }
+            
+            nameLabel.text = model?.personName ?? ""
+            timeLabel.text = model?.createTime ?? ""
             workID = (model?.worklogId)!
-            postLabel.text = model?.post
+            postLabel.text = model?.post ?? ""
             
             //注意的是:这里的符号的正负代表的
             let index =  model?.createTime?.index( (model?.createTime?.startIndex)!, offsetBy: 10)
@@ -98,7 +103,7 @@ class YQJournalCellView: UITableViewCell{
     func cellForHeight() -> Float {
         // detailLabel.frame.maxY + detailLabel.frame.width + 10
         
-        return Float(detailLabel.frame.maxY + 10)
+        return Float(detailLabel.frame.maxY + detailLabel.frame.width + 10)
     }
 
     

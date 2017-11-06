@@ -140,7 +140,9 @@ class DeviceViewController: UIViewController {
 
     
     var equipmentModel: EquimentModel?{
+        
         didSet{
+            
             if let model = equipmentModel{
 //                deviceName.text = model.name
                 deviceBrand.text = model.brand
@@ -169,14 +171,18 @@ class DeviceViewController: UIViewController {
 }
 
 extension DeviceViewController: UITableViewDelegate,UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return detailModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! DeviceCell
         cell.model = detailModels[indexPath.row]
         
         return cell
     }
+    
 }

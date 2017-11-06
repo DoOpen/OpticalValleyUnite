@@ -21,7 +21,7 @@ class YQWorkRecordTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+ 
     var model : WorkOrderModel2? {
     
         didSet{
@@ -32,6 +32,7 @@ class YQWorkRecordTableViewCell: UITableViewCell {
         
             setNeedsDisplay()
             setNeedsLayout()
+            
         }
         
     }

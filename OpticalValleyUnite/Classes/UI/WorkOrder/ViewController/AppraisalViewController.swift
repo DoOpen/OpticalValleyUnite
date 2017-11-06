@@ -19,6 +19,10 @@ class AppraisalViewController: UIViewController {
     
     var selectStatBtn: UIButton?
     
+    //提交评价按钮的点击的事件
+    @IBOutlet weak var putEvaluateButton: UIButton!
+    
+    
     
     var model: WorkOrderDetailModel?
     
@@ -31,6 +35,7 @@ class AppraisalViewController: UIViewController {
     }
 
     func setupStartView(){
+        
         for btn in startView.subviews as! [UIButton]{
             btn.addTarget(self, action:  #selector(AppraisalViewController.startBtnClick(sender:)), for: .touchUpInside)
         }
@@ -45,6 +50,9 @@ class AppraisalViewController: UIViewController {
     
     // MARK: - 提交评价按钮的点击
     @IBAction func doneBtnClick() {
+        
+        
+        self.putEvaluateButton.isUserInteractionEnabled = false
         
         var parmat = [String: Any]()
         parmat["WORKUNIT_ID"] = model?.id
@@ -67,6 +75,7 @@ class AppraisalViewController: UIViewController {
 //        }     
         
         let images = addPhotoView.photos.map{$0.image}
+        
         if images.count > 0 {
             
             HttpClient.instance.upDataImage(images.first!, complit: { (url) in
@@ -89,9 +98,17 @@ class AppraisalViewController: UIViewController {
             
             SVProgressHUD.showSuccess(withStatus: "评价成功")
             _ = self.navigationController?.popViewController(animated: true)
+            self.putEvaluateButton.isUserInteractionEnabled = true
+
             
         }) { (error) in
             
+            SVProgressHUD.showError(withStatus: "评论失败,请重试!")
+            
+            self.putEvaluateButton.isUserInteractionEnabled = true
+
         }
+        
+        
     }
 }

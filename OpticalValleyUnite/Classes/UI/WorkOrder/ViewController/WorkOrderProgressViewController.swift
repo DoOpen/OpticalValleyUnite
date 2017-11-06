@@ -119,6 +119,7 @@ class WorkOrderProgressViewController: UIViewController {
     func setupTimer(){
         
         if #available(iOS 10.0, *) {
+            
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
                 
                 for cell in self.tableView.visibleCells{
@@ -130,7 +131,9 @@ class WorkOrderProgressViewController: UIViewController {
                 }
                 
             })
+            
             timer?.fire()
+            
         } else {
             
         }
@@ -182,6 +185,7 @@ class WorkOrderProgressViewController: UIViewController {
         getData()
         
         getWorkDetail()
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -195,6 +199,7 @@ class WorkOrderProgressViewController: UIViewController {
     // MARK: - left,rightButton的点击
     @IBAction func leftBtnClick() {
         switch type {
+            
         //待派发
         case .waitDistribution:
             break
@@ -432,8 +437,10 @@ class WorkOrderProgressViewController: UIViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: "WorkOrderDescription")!
             let reportName = workOrderDetalModel?.reportPeopleName
             if reportName == "" {
+                
 //                (cell as! WorkOrderCreatCell).model?.reportPeopleName = model.person_name
                 workOrderDetalModel?.reportPeopleName = model.person_name
+                
             }
             
             (cell as! WorkOrderCreatCell).model = workOrderDetalModel
@@ -449,12 +456,12 @@ class WorkOrderProgressViewController: UIViewController {
         case 7://工单执行
             
             if workOrderDetalModel?.orderType == "应急工单"{
+                
                 cell = tableView.dequeueReusableCell(withIdentifier: "ExecutEmergencyCell")!
                 (cell as! ExecutEmergencyCell).detailModel = workOrderDetalModel
                 (cell as! ExecutEmergencyCell).model = model
                 
             }else{
-                
                 
                 let cell2 = tableView.dequeueReusableCell(withIdentifier: "ExecutDetailCell") as! ExecutDetailCell
                 
@@ -467,6 +474,7 @@ class WorkOrderProgressViewController: UIViewController {
             }
             
         case 10...12,2...3,5...6://工单生成
+            
             cell = tableView.dequeueReusableCell(withIdentifier: "stutas")!
             (cell as! WorkOrderStutasCell).detailModel = workOrderDetalModel
             (cell as! WorkOrderStutasCell).model = model
@@ -483,8 +491,8 @@ class WorkOrderProgressViewController: UIViewController {
             break
         }
         
-        
         return cell
+        
     }
     
     

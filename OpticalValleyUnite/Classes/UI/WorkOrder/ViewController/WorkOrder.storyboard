@@ -3656,6 +3656,7 @@
                     </view>
                     <connections>
                         <outlet property="addPhotoView" destination="63Q-mO-Zi8" id="hD5-Zc-kfw"/>
+                        <outlet property="putEvaluateButton" destination="V2O-4r-ldH" id="tjB-df-8WE"/>
                         <outlet property="startView" destination="uYI-QV-937" id="w18-Uk-gNm"/>
                         <outlet property="textView" destination="BYb-az-8zf" id="RGR-Lc-MkB"/>
                     </connections>

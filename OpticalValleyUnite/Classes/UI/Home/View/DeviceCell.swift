@@ -9,18 +9,37 @@
 import UIKit
 
 class DeviceCell: UITableViewCell {
-
+    //工单编号
     @IBOutlet weak var workOderCodeLabel: UILabel!
+    
+    //工单名称
     @IBOutlet weak var workOrderNameLabel: UILabel!
+    
+    //工单类型
     @IBOutlet weak var workOrderTypeLabel: UILabel!
+    
+    //工单分类
     @IBOutlet weak var workOderClassifyLabel: UILabel!
+    
+    //执行人
     @IBOutlet weak var carryPeopleLabel: UILabel!
+    
+    //管理人
     @IBOutlet weak var managerPeopleLabel: UILabel!
+    
+    //执行时间
     @IBOutlet weak var carryTimeLabel: UILabel!
+    
+    //工单状态
     @IBOutlet weak var workOderStutasLabel: UILabel!
+    
+    //督办人
     @IBOutlet weak var supervisePeopleLabel: UILabel!
     
+    
+    
     var model: WorkOrderDetailModel?{
+        
         didSet{
             workOderCodeLabel.text = model?.id
             workOrderNameLabel.text = model?.content
@@ -31,6 +50,7 @@ class DeviceCell: UITableViewCell {
             managerPeopleLabel.text = model?.managerNmae
             
             switch model!.status {
+                
             case 10:
                 workOderStutasLabel.text = "待督办"
                 

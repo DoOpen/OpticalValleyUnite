@@ -9,7 +9,30 @@
 import UIKit
 
 class DeviceViewController: UIViewController {
+    /// 新增设备的属性
+    //app设备编码
+    @IBOutlet weak var appDeviceCode: UILabel!
+    
+    //app设备名称
+    @IBOutlet weak var appDeviceName: UILabel!
+    
+    //位置惯用名
+    @IBOutlet weak var positionName: UILabel!
+    
+    //设备惯用名
+    @IBOutlet weak var deviceCommonName: UILabel!
+    
+    //品牌
+    @IBOutlet weak var brand: UILabel!
+    
+    //规格参数
+    @IBOutlet weak var specificationParameter: UILabel!
 
+    @IBOutlet weak var openButton: UIButton!
+    
+    @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
+    
+    /// 扫码的设备的属性的列表
     @IBOutlet weak var deviceDetailBtn: UIButton!
     @IBOutlet weak var workOrderBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -18,7 +41,9 @@ class DeviceViewController: UIViewController {
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var deviceType: UILabel!
+    
     @IBOutlet weak var deviceName: UILabel!
+    
     @IBOutlet weak var deviceBrand: UILabel!
     @IBOutlet weak var deviceModel: UILabel!
     @IBOutlet weak var madePeople: UILabel!
@@ -45,14 +70,27 @@ class DeviceViewController: UIViewController {
         }
     }
     
+    var cellID = "deviceCell2"
+    
     var equipmentId: String?{
         didSet{
             if let equipmentId = equipmentId{
+                
                 getEquipment(equipmentId)
                 getData()
             }
         }
     }
+    
+    // MARK: - swift懒加载方法
+    lazy var heightDic = {
+        () -> NSMutableDictionary
+        
+        in
+        
+        return NSMutableDictionary()
+    }()
+
     
     override func viewDidLoad() {
         
@@ -61,7 +99,7 @@ class DeviceViewController: UIViewController {
         title = "设备台账"
         tableView.isHidden = true
         
-        tableView.register(UINib(nibName: "DeviceCell", bundle: nil), forCellReuseIdentifier: "cell")
+//        tableView.register(UINib(nibName: "DeviceCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
         
@@ -73,14 +111,36 @@ class DeviceViewController: UIViewController {
         
         //设置scrollView的x方向的滚动
 //        self.deviceView.setContentOffset(CGPoint(x:50 , y: self.mark.frame.origin.y + 200 ), animated: true) //里面添加了视图之后就不收代码限制了
-        self.scrollViewHeight.constant = self.mark.frame.origin.y + 200
-
+        self.scrollViewHeight.constant =  openButton.frame.origin.y + 50
         
     }
     
     
+    @IBAction func openButtonClick(_ openButton: UIButton) {
+        
+        let titile = openButton.titleLabel?.text
+        
+        if titile == "收起" {
+            
+            self.scrollViewHeightConstraint.constant = openButton.frame.origin.y + 50
+
+            self.scrollViewHeight.constant = openButton.frame.origin.y + 50
+            
+            openButton.setTitle("展开", for: .normal)
+            
+        }else if titile == "展开" {
+            
+             self.scrollViewHeightConstraint.constant = UIScreen.main.bounds.size.height
+                
+            self.scrollViewHeight.constant = self.mark.maxY + 200
+            
+            openButton.setTitle("收起", for: .normal)
+        }
+        
+    }
 
     @IBAction func deviceBtnClick() {
+        
         deviceDetailBtn.isSelected = true
         workOrderBtn.isSelected = false
         
@@ -88,7 +148,9 @@ class DeviceViewController: UIViewController {
         deviceView.isHidden = false
         
     }
+    
     @IBAction func workOrderBtnClick() {
+        
         deviceDetailBtn.isSelected = false
         workOrderBtn.isSelected = true
         
@@ -119,8 +181,6 @@ class DeviceViewController: UIViewController {
     
     private func getEquipment(_ equipment: String){
         
-        
-        
         let parmate = ["id": equipment]
         
         HttpClient.instance.get(path: URLPath.getEquipmentDetail, parameters: parmate, success: { (response) in
@@ -129,9 +189,6 @@ class DeviceViewController: UIViewController {
                 let model = EquimentModel(parmart: dic)
                 self.equipmentModel = model
             }
-            
-            
-            
             
         }) { (error) in
             
@@ -144,6 +201,7 @@ class DeviceViewController: UIViewController {
         didSet{
             
             if let model = equipmentModel{
+                
 //                deviceName.text = model.name
                 deviceBrand.text = model.brand
                 deviceModel.text = model.model_name
@@ -165,6 +223,10 @@ class DeviceViewController: UIViewController {
                 nextMaintainDateLabel.text = model.next_maintain_date
                 yearMaintainDateLabel.text = model.year_maintain_date
                 addressLabel.text = model.parkAddress
+                
+                //设置相应的模型属性
+                
+                
             }
         }
     }
@@ -179,10 +241,34 @@ extension DeviceViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! DeviceCell
-        cell.model = detailModels[indexPath.row]
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? YQDeviceCell2
         
-        return cell
+        if cell == nil {
+            
+            cell = Bundle.main.loadNibNamed("YQDeviceCell2", owner: nil, options: nil)?[0] as? YQDeviceCell2
+        }
+        
+        cell?.model = detailModels[indexPath.row]
+        
+        cell?.layoutIfNeeded()
+        //添加模型的数据内容
+        heightDic["\(indexPath.row)"] = cell?.cellForHeight()
+        
+        
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let height = heightDic["\(indexPath.row)"] as! CGFloat
+        
+        return height
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //传递数据模型, 判断来进行可执行与否
+        
+        
     }
     
 }

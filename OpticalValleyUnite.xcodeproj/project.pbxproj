@@ -79,6 +79,8 @@
 		2F94A28B1F73BA0000455162 /* YQResolvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A28A1F73BA0000455162 /* YQResolvedView.swift */; };
 		2F94A28D1F73BA2D00455162 /* YQFalsePositive.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A28C1F73BA2D00455162 /* YQFalsePositive.xib */; };
 		2F94A28F1F73BA4F00455162 /* YQResolved.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A28E1F73BA4F00455162 /* YQResolved.xib */; };
+		2FAA64221FB04B7F00A34311 /* YQDeviceCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA64201FB04B7F00A34311 /* YQDeviceCell2.swift */; };
+		2FAA64231FB04B7F00A34311 /* YQDeviceCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */; };
 		2FC167471F905F34001CEACD /* YQJournalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC167461F905F34001CEACD /* YQJournalDetailViewController.swift */; };
 		2FC167491F905F5A001CEACD /* YQJournalDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC167481F905F5A001CEACD /* YQJournalDetail.storyboard */; };
 		2FC1674B1F906BA4001CEACD /* YQJournalDetailHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC1674A1F906BA4001CEACD /* YQJournalDetailHead.xib */; };
@@ -333,6 +335,8 @@
 		2F94A28A1F73BA0000455162 /* YQResolvedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQResolvedView.swift; sourceTree = "<group>"; };
 		2F94A28C1F73BA2D00455162 /* YQFalsePositive.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQFalsePositive.xib; sourceTree = "<group>"; };
 		2F94A28E1F73BA4F00455162 /* YQResolved.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQResolved.xib; sourceTree = "<group>"; };
+		2FAA64201FB04B7F00A34311 /* YQDeviceCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDeviceCell2.swift; sourceTree = "<group>"; };
+		2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDeviceCell2.xib; sourceTree = "<group>"; };
 		2FC167461F905F34001CEACD /* YQJournalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalDetailViewController.swift; sourceTree = "<group>"; };
 		2FC167481F905F5A001CEACD /* YQJournalDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJournalDetail.storyboard; sourceTree = "<group>"; };
 		2FC1674A1F906BA4001CEACD /* YQJournalDetailHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQJournalDetailHead.xib; sourceTree = "<group>"; };
@@ -1066,8 +1070,10 @@
 				4B1558AE1F131AA70023F14D /* DeviceView.swift */,
 				4BB53FEE1F14D9CA0061190F /* DeviceCell.swift */,
 				4BB53FEF1F14D9CA0061190F /* DeviceCell.xib */,
-				4B5E43C01F2ECEE000DCE5AC /* SiginCellView.xib */,
+				2FAA64201FB04B7F00A34311 /* YQDeviceCell2.swift */,
+				2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */,
 				4B5E43C21F2ECEFE00DCE5AC /* SiginCellView.swift */,
+				4B5E43C01F2ECEE000DCE5AC /* SiginCellView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1421,6 +1427,7 @@
 				2F3B96051F6BC17E0008AFEB /* YQJoinTotall.storyboard in Resources */,
 				2FC167491F905F5A001CEACD /* YQJournalDetail.storyboard in Resources */,
 				2F5E8C521F59598400007717 /* YQSystemSelectionVC.xib in Resources */,
+				2FAA64231FB04B7F00A34311 /* YQDeviceCell2.xib in Resources */,
 				2F7550FF1FA7313200A5E242 /* YQWorkRecord.xib in Resources */,
 				4BBBEC971E2CAAE200F60313 /* BoPhotoPicker.bundle in Resources */,
 				2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */,
@@ -1613,6 +1620,7 @@
 				2F5E8C511F59598400007717 /* YQSystemSelectionVC.swift in Sources */,
 				4BBBEC831E2CA76900F60313 /* SJComposePhotoView.m in Sources */,
 				4B01B08C1ED928AF002A61C9 /* ReportListViewController.swift in Sources */,
+				2FAA64221FB04B7F00A34311 /* YQDeviceCell2.swift in Sources */,
 				2F7550F31FA6C0B700A5E242 /* YQDepartmentTableViewController.swift in Sources */,
 				4B1DEC591E31B646000917D2 /* SGScanningQRCodeVC.m in Sources */,
 				4BD4B9431E272EA600AE2BC9 /* CoverView.swift in Sources */,

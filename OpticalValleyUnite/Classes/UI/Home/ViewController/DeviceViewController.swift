@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class DeviceViewController: UIViewController {
     /// 新增设备的属性
@@ -44,9 +45,11 @@ class DeviceViewController: UIViewController {
     
     @IBOutlet weak var deviceName: UILabel!
     
-    @IBOutlet weak var deviceBrand: UILabel!
+    
     @IBOutlet weak var deviceModel: UILabel!
+    //厂商
     @IBOutlet weak var madePeople: UILabel!
+    //产地
     @IBOutlet weak var madeAddress: UILabel!
     @IBOutlet weak var productionDate: UILabel!
     @IBOutlet weak var registerCodeLabel: UILabel!
@@ -55,6 +58,8 @@ class DeviceViewController: UIViewController {
     @IBOutlet weak var reformCompanyLabel: UILabel!
     @IBOutlet weak var installCompanyLabel: UILabel!
     @IBOutlet weak var installDateLabel: UILabel!
+    
+    //维保单位
     @IBOutlet weak var maintainCompanyLabel: UILabel!
     @IBOutlet weak var maintainPersonLabel: UILabel!
     @IBOutlet weak var fristMaintainDateLabel: UILabel!
@@ -111,6 +116,7 @@ class DeviceViewController: UIViewController {
         
         //设置scrollView的x方向的滚动
 //        self.deviceView.setContentOffset(CGPoint(x:50 , y: self.mark.frame.origin.y + 200 ), animated: true) //里面添加了视图之后就不收代码限制了
+        self.scrollViewHeightConstraint.constant = openButton.frame.origin.y + 50
         self.scrollViewHeight.constant =  openButton.frame.origin.y + 50
         
     }
@@ -163,27 +169,54 @@ class DeviceViewController: UIViewController {
         
         let parmate = ["equipmentId": equipmentId!]
         
+        SVProgressHUD.show(withStatus: "加载中...")
+        
         HttpClient.instance.get(path: URLPath.getEquipmentWorkunit, parameters: parmate, success: { (response) in
             
+            SVProgressHUD.dismiss()
+            
             if let arry = response["data"] as? Array<[String: Any]>{
+                
                 var temp = [WorkOrderDetailModel]()
+                
+                var DCLTemp = [WorkOrderDetailModel]()
+                
                 for dic in arry{
+                    
                     let model = WorkOrderDetailModel(parmart: dic)
-                    temp.append(model)
+                    
+                    if model.DCL == 1{
+                        
+                        DCLTemp.append(model)
+                        
+                    }else if model.DCL == 0{
+                    
+                        temp.append(model)
+                    }
+    
                 }
-                self.detailModels = temp
+                
+                //分别分两次来进行的添加的操作
+                self.detailModels = DCLTemp
+                self.detailModels.append(contentsOf: temp)
+                
             }
             
+            
         }) { (error) in
+            
             print(error)
         }
+        
     }
     
     private func getEquipment(_ equipment: String){
         
         let parmate = ["id": equipment]
-        
+        SVProgressHUD.show(withStatus: "加载中...")
         HttpClient.instance.get(path: URLPath.getEquipmentDetail, parameters: parmate, success: { (response) in
+            
+            SVProgressHUD.dismiss()
             
             if let dic = response as? [String: Any]{
                 let model = EquimentModel(parmart: dic)
@@ -203,10 +236,12 @@ class DeviceViewController: UIViewController {
             if let model = equipmentModel{
                 
 //                deviceName.text = model.name
-                deviceBrand.text = model.brand
+//                deviceBrand.text = model.brand
                 deviceModel.text = model.model_name
-                madePeople.text = model.manufacturer
-                madeAddress.text = model.madeIn
+                
+                madePeople.text = model.made_company
+                madeAddress.text = model.origin
+                
                 productionDate.text = model.produce_date
                 usePeople.text = model.use_company
                 usePark.text = model.park_name
@@ -217,7 +252,9 @@ class DeviceViewController: UIViewController {
                 reformCompanyLabel.text = model.reform_company
                 installCompanyLabel.text = model.install_company
                 installDateLabel.text = model.install_date
+                
                 maintainCompanyLabel.text = model.maintain_company
+                
                 maintainPersonLabel.text = model.maintain_person
                 fristMaintainDateLabel.text = model.frist_maintain_date
                 nextMaintainDateLabel.text = model.next_maintain_date
@@ -225,7 +262,12 @@ class DeviceViewController: UIViewController {
                 addressLabel.text = model.parkAddress
                 
                 //设置相应的模型属性
-                
+                appDeviceCode.text = model.app_code
+                appDeviceName.text = model.app_name
+                positionName.text = model.loc_simple_name
+                deviceCommonName.text = model.equip_simple_name
+                brand.text = model.brand_name
+                specificationParameter.text = model.attrs
                 
             }
         }
@@ -267,8 +309,22 @@ extension DeviceViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //传递数据模型, 判断来进行可执行与否
+        let vc = WorkOrderProgressViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderProgressViewController
+        //        vc.workModelId = currentDatas[indexPath.row].workOrderId
+        let model = detailModels[indexPath.row]
         
+        var parmat = [String: Any]()
         
+        parmat["UNIT_STATUS"] = model.status
+        
+        parmat["PERSONTYPE"] = model.PERSONTYPE
+        
+//        parmat["EXEC_PERSON_ID"] = model.execPersionId
+        parmat["WORKUNIT_ID"] = model.id
+        
+        vc.parmate = parmat
+//        vc.listVc = self
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

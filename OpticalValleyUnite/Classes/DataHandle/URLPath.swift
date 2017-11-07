@@ -17,6 +17,8 @@ import Foundation
  3.测试环境: http://test.ovuems.com/
  4.开发环境: http://dev.ovuems.com/
  
+ 5.新版的测试环境: http://beta.ovuems.com/
+ 
  */
 
 

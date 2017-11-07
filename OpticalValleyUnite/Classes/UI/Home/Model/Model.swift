@@ -356,6 +356,8 @@ class WorkOrderDetailModel: Object{
     dynamic var reportPeopleIcon = ""
     dynamic var foundType = ""
     dynamic var orderType = ""
+    
+    
     ///紧急程度
     dynamic var importentLivel = 0
     dynamic var GROUPID = ""
@@ -383,10 +385,18 @@ class WorkOrderDetailModel: Object{
     dynamic var isOpen = false
     var SUPERVISE_PERSON_NAMES = ""
     
+    //新增的
+    var PERSONTYPE : Int = -1
+    
+    //待处理的字段
+    var DCL : Int = -1
+    
+    
     convenience init(parmart: [String: Any]) {
+        
         self.init()
         
-        
+        DCL = parmart["DCL"] as? Int ?? -1
         
         workTypeName = parmart["WORKTYPE_NAME"] as? String ?? ""
         
@@ -402,7 +412,7 @@ class WorkOrderDetailModel: Object{
         EXEC_PERSON_NAME = parmart["EXEC_PERSON_NAME"] as? String ?? ""
         PARK_ID = parmart["PARK_ID"] as? String ?? ""
         
-        
+        PERSONTYPE = parmart["IS_ASSISTANCE_PERSON"] as? Int ?? 0
         
         if let type = parmart["WORKUNIT_TYPE"] as? String{//计划工单
             
@@ -500,6 +510,7 @@ class EquimentModel{
     var use_company = ""
     var name = ""
     var parkAddress = ""
+    //备注
     var comment = ""
     
     var regi_code = ""
@@ -511,34 +522,131 @@ class EquimentModel{
     var frist_maintain_date = ""
     var next_maintain_date = ""
     var year_maintain_date = ""
-    convenience init(parmart: [String: Any]) {
-        self.init()
-        type_name = parmart["type_name"] as? String ?? ""
-        name = parmart["name"] as? String ?? ""
-        park_name = parmart["park_name"] as? String ?? ""
-        floor_name = parmart["floor_name"] as? String ?? ""
-        brand = parmart["brand"] as? String ?? ""
-        stage_name = parmart["stage_name"] as? String ?? ""
-        produce_date = parmart["produce_date"] as? String ?? ""
-        model_name = parmart["model_name"] as? String ?? ""
     
-        manufacturer = parmart["manufacturer"] as? String ?? ""
-        madeIn = parmart["madeIn"] as? String ?? ""
+    //新增的模型字段
+    //app设备编码
+    var app_code = ""
+    //app设备名称
+    var app_name = ""
+    //位置惯用名
+    var loc_simple_name = ""
+    //设备惯用名
+    var equip_simple_name = ""
+    //品牌
+    var brand_name = ""
+    
+    //规格参数(进行一个数组的遍历累加 数值)
+    var attrs = ""
+    //厂商
+    var made_company = ""
+    //产地
+    var origin = ""
+    
+    
+    convenience init(parmart: [String: Any]) {
+        
+        self.init()
+        //app设备编码
+        app_code = parmart["app_code"] as? String ?? ""
+        //app设备名称
+        app_name = parmart["app_name"] as? String ?? ""
+        //位置惯用名
+        loc_simple_name = parmart["loc_simple_name"] as? String ?? ""
+        //设备惯用名
+        equip_simple_name = parmart["equip_simple_name"] as? String ?? ""
+        //品牌
+        brand_name = parmart["brand_name"] as? String ?? ""
+        
+        //设备分类
+        type_name = parmart["type_name"] as? String ?? ""
+        
+        //设备型号
+        model_name = parmart["model_name"] as? String ?? ""
+        
+        //设备名称
+        name = parmart["name"] as? String ?? ""
+        
+        //厂商
+        made_company = parmart["made_company"] as? String ?? ""
+        
+        //产地
+        origin = parmart["origin"] as? String ?? ""
+        
+        //出厂日期
+        produce_date = parmart["produce_date"] as? String ?? ""
+        
+        //注册代码
+        regi_code = parmart["regi_code"] as? String ?? ""
+        //使用单位
         use_company = parmart["use_company"] as? String ?? ""
-        comment = parmart["comment"] as? String ?? ""
-        if let stage_name = parmart["stage_name"] as? String,let house_name = parmart["house_name"] as? String,let floor_name = parmart["floor_name"] as? String{
-           parkAddress = stage_name + house_name + floor_name
+        
+        //项目
+        park_name = parmart["park_name"] as? String ?? ""
+        
+        //改造单位
+        reform_company = parmart["reform_company"] as? String ?? ""
+        
+        //安装单位
+        install_company = parmart["install_company"] as? String ?? ""
+        
+        //安装日期
+        install_date = parmart["install_date"] as? String ?? ""
+        
+        
+        let arr  = parmart["attrs"] as? NSArray
+        var attrstr = ""
+        
+        //循环取值
+        for indexTeam in 0 ..< (arr?.count)!  {
+            
+            if indexTeam == 0 {
+                
+                attrstr = arr?[indexTeam] as? String ?? ""
+                
+            }else{
+                
+                let string = arr?[indexTeam] as? String ?? ""
+                
+                attrstr = attrstr + string
+            }
+            
         }
         
-        regi_code = parmart["regi_code"] as? String ?? ""
-        reform_company = parmart["reform_company"] as? String ?? ""
-        install_company = parmart["install_company"] as? String ?? ""
-        install_date = parmart["install_date"] as? String ?? ""
-        maintain_company = parmart["maintain_company"] as? String ?? ""
+        //参数
+        attrs = attrstr
+        
+        
+        floor_name = parmart["floor_name"] as? String ?? ""
+        stage_name = parmart["stage_name"] as? String ?? ""
+        
+        manufacturer = parmart["manufacturer"] as? String ?? ""
+        madeIn = parmart["madeIn"] as? String ?? ""
+//        comment = parmart["comment"] as? String ?? ""
+        
+        if let stage_name = parmart["stage_name"] as? String,let house_name = parmart["house_name"] as? String,let floor_name = parmart["floor_name"] as? String{
+            
+            //地址
+            parkAddress = stage_name + house_name + floor_name
+            
+        }
+        
+        //维保单位
+        maintain_company = parmart["maintain_name"] as? String ?? ""
+        
+        //维保负责人
         maintain_person = parmart["maintain_person"] as? String ?? ""
+        
+        //首保日期
         frist_maintain_date = parmart["frist_maintain_date"] as? String ?? ""
+        
+        //下次维保日期
         next_maintain_date = parmart["next_maintain_date"] as? String ?? ""
+       
+        //年度维保日期
         year_maintain_date = parmart["year_maintain_date"] as? String ?? ""
+        
+        //备注
+        comment = parmart["comment"] as? String ?? ""
         
     }
     

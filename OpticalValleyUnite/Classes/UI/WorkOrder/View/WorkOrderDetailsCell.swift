@@ -185,6 +185,7 @@ class WorkOrderDetailsCell: UITableViewCell {
         
     }
     
+    
     @IBAction func openBtnClick(_ sender: UIButton) {
         model?.isOpen = !(model?.isOpen)!
         

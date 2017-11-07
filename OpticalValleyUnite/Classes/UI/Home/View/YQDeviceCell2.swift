@@ -12,6 +12,7 @@ class YQDeviceCell2: UITableViewCell {
     
     //工单类型(计划和 应急)
     @IBOutlet weak var workOrderTypeButton: UIButton!
+    
     //工单号(p01985375)
     @IBOutlet weak var workOrderNumber: UILabel!
     //工单状态(待派发)
@@ -31,16 +32,22 @@ class YQDeviceCell2: UITableViewCell {
         
         didSet{
             
+            
+            
             workOrderNumber.text = model?.id
             workExecutor.text = "执行人:" + (model?.EXEC_PERSON_NAME)!
             workTime.text = "执行时间:" + (model?.EXEC_DATE)!
+            workOrderContent.text = model?.content
             
-//            workOrderNameLabel.text = model?.content
-//            workOrderTypeLabel.text = model?.orderType
-//            workOderClassifyLabel.text = model?.workTypeName
-//            carryPeopleLabel.text = model?.EXEC_PERSON_NAME
-//            carryTimeLabel.text = model?.EXEC_DATE
-//            managerPeopleLabel.text = model?.managerNmae
+            //区分应急 和 计划工单的设置
+            let order =  model?.orderType
+            
+            if order == "应急工单" {
+                workOrderTypeButton.setTitle("急", for: .normal)
+                workOrderTypeButton.setTitleColor(UIColor.red, for: .normal)
+                workOrderTypeButton.borderColor = UIColor.red
+            }
+
             
             switch model!.status {
                 
@@ -105,7 +112,27 @@ class YQDeviceCell2: UITableViewCell {
             
 //            supervisePeopleLabel.text = model?.SUPERVISE_PERSON_NAMES
             
+            if model?.DCL == 0 {
+                
+                //要求全部设置成为灰色系
+                self.tintColor = UIColor.gray
+                self.alpha = 0.5
+                
+                workOrderTypeButton.setTitleColor(UIColor.gray, for: .normal)
+                workOrderTypeButton.borderColor = UIColor.gray
+                workOrderNumber.tintColor = UIColor.gray
+                workOrderType.backgroundColor = UIColor.gray
+                workOrderContent.tintColor = UIColor.gray
+                workExecutor.tintColor = UIColor.gray
+                workTime.tintColor = UIColor.gray
+                
+            }else{
             
+                self.alpha = 1.0
+               
+                 workOrderType.backgroundColor = UIColor(colorLiteralRed: 37/255.0, green: 117/255.0, blue: 228/255.0, alpha: 0.8)
+                
+            }
         }
     }
 

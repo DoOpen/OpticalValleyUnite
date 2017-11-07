@@ -39,9 +39,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     // 创建扫描边框
     self.scanningView = [[SGScanningQRCodeView alloc] initWithFrame:self.view.frame outsideViewLayer:self.view.layer];
     [self.view addSubview:self.scanningView];
+    
 }
 
 - (void)viewDidLoad {
@@ -56,7 +58,9 @@
     self.first_push = YES;
     
     // rightBarButtonItem
-    [self setupRightBarButtonItem];
+    // 注销调用相册的功能
+    // [self setupRightBarButtonItem];
+    
 }
 
 // rightBarButtonItem

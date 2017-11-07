@@ -41,6 +41,7 @@ class DeviceCell: UITableViewCell {
     var model: WorkOrderDetailModel?{
         
         didSet{
+            
             workOderCodeLabel.text = model?.id
             workOrderNameLabel.text = model?.content
             workOrderTypeLabel.text = model?.orderType

@@ -485,11 +485,15 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
 //        let device = AVCaptureDeviceDiscovery
         if device != nil {
+            
             let status = PHPhotoLibrary.authorizationStatus()
+            
             if status == .authorized{
+                
                 let vc = SGScanningQRCodeVC()
                 vc.delegate = self
                 navigationController?.pushViewController(vc, animated: true)
+                
             }else if status == .notDetermined{
                 PHPhotoLibrary.requestAuthorization({ (authorizationStatus) in
                     

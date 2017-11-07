@@ -23,6 +23,7 @@ class ExecutEmergencyCell: UITableViewCell {
     var detailModel :WorkOrderDetailModel?
     var model: WorkHistoryModel?{
         didSet{
+            
             if let model = model{
                 nameLabel.text = "执行人: " + model.person_name
                 contentLabel.text = model.content
@@ -30,6 +31,7 @@ class ExecutEmergencyCell: UITableViewCell {
                 remaskDetailLabel.text = "备注:" + model.text
                 
                 var temp = [String]()
+                
                 for url in model.pictures{
                     
                     if url == ""{
@@ -42,9 +44,12 @@ class ExecutEmergencyCell: UITableViewCell {
                 }
                 
                 if temp.isEmpty{
+                    
                     showImageviewHeithConstraint.constant = 60.0
                     showImageView.setNeedsLayout()
+                    
                 }else{
+                    
                     showImageviewHeithConstraint.constant = 70.0
                     showImageView.setNeedsLayout()
                     showImageView.showImageUrls(temp)

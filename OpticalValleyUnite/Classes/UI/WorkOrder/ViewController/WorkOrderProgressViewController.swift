@@ -446,10 +446,12 @@ class WorkOrderProgressViewController: UIViewController {
             (cell as! WorkOrderCreatCell).model = workOrderDetalModel
         
         case 4://工单生成
+            
             cell = tableView.dequeueReusableCell(withIdentifier: "OrderReturningCell")!
             (cell as! OrderReturningCell).model = model
             
         case 8://工单评价
+            
             cell = tableView.dequeueReusableCell(withIdentifier: "AppraisalCell")!
             (cell as! AppraisalCell).model = model
             

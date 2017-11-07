@@ -666,13 +666,20 @@ extension HomeViewController:SGScanningQRCodeVCDelegate{
 
     
     func didScanningText(_ text: String!) {
-        if text.contains("设备"){
+        
+        if text.contains("设备"){//区分是否是自己的二维码的情况
+            
             let str = text.components(separatedBy: ":").last
             if let str = str{
                 
                 self.navigationController?.popViewController(animated: false)
                 pushToDeviceViewController(equipmentId: str)
+                
             }
+        }else{
+        
+            self.alert(message: "非可识别二维码!")
+            
         }
     }
     

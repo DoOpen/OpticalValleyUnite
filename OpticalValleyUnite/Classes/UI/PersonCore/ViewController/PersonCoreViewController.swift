@@ -27,11 +27,25 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         //写死的项目发版的时间
         bundleVersionLabel.text = bundleVersionLabel.text! + "(\(version))"
         
+        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        //设置项目选择的lable
+        self.projectSelectName.text = setUpProjectNameLable()
+        
+        //解决bug 上传不能更新的头像
         let user = User.currentUser()
+        
         if let user = user{
             
             nickNameLabel.text = user.nickname
             userNameLabel.text = "账号: " + user.userName!
+            
             
             if let url = user.avatar,url != ""{
                 
@@ -39,18 +53,12 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
                 let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
                 
                 photoImageView.kf.setImage(with: URL(string: imageValue))
+                
             }
+            
         }
-       
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //设置项目选择的lable
-        self.projectSelectName.text = setUpProjectNameLable()
 
+        
     }
     
     
@@ -102,10 +110,12 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     
 
     @IBAction func checkNewBtnClick() {
+        
         self.checkNewBundleVersion(isBlack: false)
     }
     
     @IBAction func loginOutBtnClick() {
+        
         LoginViewController.loginOut()
     }
 
@@ -127,7 +137,6 @@ extension CheckNewBundleVersionProtocol{
         HttpClient.instance.post(path: URLPath.getVersion, parameters: parmat, success: { (response) in
             
             if let response = response as? String{
-                
                 
                 SJKeyWindow?.rootViewController?.alert(message: "有新的版本,点击确认下载最新版本", doneBlock: { (action) in
                     let urlString = response

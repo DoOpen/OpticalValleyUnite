@@ -40,6 +40,7 @@ class PersonDetailViewController: UITableViewController{
                     yearLabel.text = String(compont.year!) + "年"
                 }
                 
+                
                 if model.picture != ""{
                     
                     let basicPath = URLPath.basicPath
@@ -47,10 +48,13 @@ class PersonDetailViewController: UITableViewController{
                     
                     photoBtn.kf.setBackgroundImage(with: URL(string:imageValue), for: .normal)
                     
+                    //重新要求 来进行的设置 user 的图片
+                    let user = User.currentUser()
+                    user?.avatar = model.picture
+                    user?.saveUser()
+                    
                 }
-                
             }
-            
             
         }
     }
@@ -64,6 +68,7 @@ class PersonDetailViewController: UITableViewController{
     }
 
     private func getDate(){
+        
         HttpClient.instance.get(path: URLPath.getPersonInfo, parameters: nil, success: { (response) in
             
             if let dic = (response as? Array<[String: Any]>)?.first{
@@ -80,8 +85,11 @@ class PersonDetailViewController: UITableViewController{
     @IBAction func changePhotoBtnClick() {
         
         SJTakePhotoHandle.takePhoto(imageBlock: { image in
+            
             self.photoBtn.setBackgroundImage(image, for: .normal)
+            
             if let image = image{
+                
                 self.uploadImage(image: image)
             }
             
@@ -96,6 +104,8 @@ class PersonDetailViewController: UITableViewController{
             HttpClient.instance.post(path: URLPath.savePersonIcon, parameters: ["url": url], success: { (response) in
                 
                 SVProgressHUD.showSuccess(withStatus: "上传成功")
+                //重调一下接口 来刷新数据
+                self.getDate()
 
             }) { (error) in
                 

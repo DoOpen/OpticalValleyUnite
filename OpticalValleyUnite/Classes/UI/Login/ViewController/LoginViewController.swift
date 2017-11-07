@@ -80,8 +80,11 @@ class LoginViewController: UIViewController {
                         let token = data["TOKEN"] as! String
                         
                         UserDefaults.standard.set(token, forKey: Const.SJToken)
+                        
                         let user = User(data:data)
+                        
                         user?.saveUser()
+                        
                         self.getDate()
                     }
                     

@@ -53,6 +53,7 @@ class User: NSObject, NSCoding {
     }
     
     func saveUser(){
+        
         User._currentUser = self
         NSKeyedArchiver.archiveRootObject(self, toFile: UserKey.UserFileKey)
     }
@@ -64,6 +65,7 @@ class User: NSObject, NSCoding {
     
     class func currentUser() -> User?{
         if(User._currentUser == nil){
+            
             User._currentUser = NSKeyedUnarchiver.unarchiveObject(withFile: UserKey.UserFileKey) as? User
             
         }else{
@@ -71,15 +73,14 @@ class User: NSObject, NSCoding {
         }
         return User._currentUser
     }
+    
     var nickname: String?
     var avatar: String?
     var userName: String?
     
     //    let name: String = ""
     
-    
 
-    
     init?(data: [String: Any]){
        
             self.nickname = data[UserKey.Nickname] as? String
@@ -98,13 +99,13 @@ class User: NSObject, NSCoding {
 
     }
     
-
-
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(nickname, forKey: "nickname")
         aCoder.encode(avatar, forKey: "avatar")
         aCoder.encode(userName, forKey: "userName")
     }
+    
+    
     
 }

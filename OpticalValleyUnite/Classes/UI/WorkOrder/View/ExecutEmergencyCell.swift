@@ -64,6 +64,9 @@ class ExecutEmergencyCell: UITableViewCell {
                 
 
                 }
+                
+                setNeedsLayout()
+                setNeedsDisplay()
             }
         }
     }

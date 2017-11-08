@@ -676,6 +676,7 @@ extension HomeViewController:SGScanningQRCodeVCDelegate{
                 pushToDeviceViewController(equipmentId: str)
                 
             }
+            
         }else{
         
             self.alert(message: "非可识别二维码!")

@@ -228,6 +228,7 @@ class WorkOrderProgressViewController: UIViewController {
     }
     
     @IBAction func rightBtnClick() {
+        
         switch type {
         //待派发
         case .waitDistribution:
@@ -253,6 +254,7 @@ class WorkOrderProgressViewController: UIViewController {
         default:
             break
         }
+        
     }
     
     // MARK: - 刷新状态
@@ -457,13 +459,13 @@ class WorkOrderProgressViewController: UIViewController {
             
         case 7://工单执行
             
-            if workOrderDetalModel?.orderType == "应急工单"{
+            if workOrderDetalModel?.orderType == "应急工单"{//应急工单的原型cell
                 
                 cell = tableView.dequeueReusableCell(withIdentifier: "ExecutEmergencyCell")!
                 (cell as! ExecutEmergencyCell).detailModel = workOrderDetalModel
                 (cell as! ExecutEmergencyCell).model = model
                 
-            }else{
+            }else{//计划工单的原型cell
                 
                 let cell2 = tableView.dequeueReusableCell(withIdentifier: "ExecutDetailCell") as! ExecutDetailCell
                 

@@ -58,6 +58,7 @@ class ExecuteDetailSubImageCell: UITableViewCell {
                 }
                 
                 setNeedsLayout()
+                setNeedsDisplay()
             }
         }
     }

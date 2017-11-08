@@ -59,17 +59,29 @@ class YQJournalAddEventViewController: UIViewController {
         parameter["title"] = self.addTextView.text
         
         if self.todoId != -1{//让其有真正id
-            parameter["todoId"] = self.todoId
+            
+            parameter["todoId"] = self.todoId //修改界面
         }
         
         SVProgressHUD.show(withStatus: "正在保存中...")
         //调用的编辑,新增和修改的待办事项的接口
         HttpClient.instance.post(path: URLPath.getTodoWorklogEdit, parameters: parameter, success: { (response) in
-            SVProgressHUD.showSuccess(withStatus: "保存成功!")
             
-            self.navigationController?.popViewController(animated: true)
+            SVProgressHUD.showSuccess(withStatus: "保存成功!")
+        
+            let addTodoID = response["todoId"] as? Int64 ?? -1
+            
+            
+                
+            //传递添加事项的内容
+            let string = NSNotification.Name(rawValue: "YQAddEventdata")
+            
+            NotificationCenter.default.post(name: string, object: nil, userInfo: ["YQAddEventdataKey" : "\( addTodoID)","YQAddEventdataValue" : self.addTextView.text])
+            
             
             SVProgressHUD.dismiss()
+            
+            self.navigationController?.popViewController(animated: true)
             
         }) { (error) in
             
@@ -90,6 +102,9 @@ class YQJournalAddEventViewController: UIViewController {
         HttpClient.instance.get(path: URLPath.getTodoWorklogDelete, parameters: par, success: { (response) in
             
             SVProgressHUD.showSuccess(withStatus: "删除成功!")
+            let string = NSNotification.Name(rawValue: "YQDelectEventdata")
+            NotificationCenter.default.post(name: string, object: nil)
+            
             self.navigationController?.popViewController(animated: true)
             
         }) { (error) in

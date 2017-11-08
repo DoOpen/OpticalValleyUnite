@@ -34,6 +34,15 @@ class YQJournalDetailViewController: UIViewController {
     // workunitIds
     var workunitIds : String = ""
     
+    // 项目名
+    var parkName : String = ""{
+        didSet{
+            
+            projectNAME.text = parkName
+        }
+    }
+    
+    @IBOutlet weak var projectNAME: UILabel!
     
     override func viewDidLoad() {
         
@@ -53,6 +62,7 @@ class YQJournalDetailViewController: UIViewController {
         
         var parameter = [String : Any]()
         parameter["parkId"] = parkId
+        
         parameter["worklogId"] = workIDid
         
         SVProgressHUD.show(withStatus: "加载中...")
@@ -75,6 +85,16 @@ class YQJournalDetailViewController: UIViewController {
             if let workunitIds = response["workunitIds"] as? String  {
                 
                 self.workunitIds = workunitIds
+            }
+            
+            if let parkName = response["parkName"] as? String{
+            
+                self.parkName = parkName
+            }
+            
+            if let parkID = response["parkId"] as? String {
+                
+                self.parkId = parkID
             }
             
             

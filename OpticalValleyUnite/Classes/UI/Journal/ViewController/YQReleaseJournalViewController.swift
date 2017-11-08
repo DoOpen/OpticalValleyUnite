@@ -29,8 +29,13 @@ class YQReleaseJournalViewController: UIViewController {
     //日志ID
     var worklogId : Int64 = -1
     
+    //ifupdata
+    var isupdata : Bool = true
     
-    var dataList : [YQToDoListModel]?{
+    var selectIndex : IndexPath?
+    
+    
+    var dataList = [YQToDoListModel](){
         
         didSet{
             
@@ -58,17 +63,24 @@ class YQReleaseJournalViewController: UIViewController {
             navigationController?.pushViewController(project, animated: true)
         }
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         
-        self.projectLabel.text = setUpProjectNameLable()
-        
-        //获取待办事项的列表信息
-        getTodoDataList()
-        
-        self.todoIds = self.getTodoIdsFunction()
+        if isupdata{
+            
+            self.projectLabel.text = setUpProjectNameLable()
+            
+            //获取待办事项的列表信息
+            getTodoDataList()
+            
+            self.todoIds = self.getTodoIdsFunction()
+            
+        }
+
     }
     
     // MARK: - 获取待办事项的listdata
@@ -77,6 +89,7 @@ class YQReleaseJournalViewController: UIViewController {
         var paramet = [String : Any]()
         
         paramet["parkId"] = self.projectID
+        
         
         SVProgressHUD.show(withStatus: "正在加载中...")
         
@@ -153,9 +166,9 @@ class YQReleaseJournalViewController: UIViewController {
     
         if self.projectID == ""{
             
-            
             self.alert(message: "请选择项目!")
         }
+        
         //数据接口的请求
         /*调用日志新增的接口
          token
@@ -214,23 +227,23 @@ class YQReleaseJournalViewController: UIViewController {
     // MARK: - 获取待办事项的ID
     func getTodoIdsFunction() -> String {
     
-        if self.dataList == nil || (dataList?.count)! < 1 {
+        if self.dataList == nil || (dataList.count) < 1 {
             
             return ""
         }
         
         var str = ""
         
-        for index in 0 ..< (dataList?.count)! {
+        for index in 0 ..< (dataList.count) {
             
-            let model = dataList?[index]
+            let model = dataList[index]
             if index == 0 {
                 
-                str = "\( model!.todoId)"
+                str = "\( model.todoId)"
                 
             }else{
             
-                str = str + "," + "\( model!.todoId)"
+                str = str + "," + "\( model.todoId)"
             }
         }
         
@@ -242,7 +255,13 @@ class YQReleaseJournalViewController: UIViewController {
     
         let name = NSNotification.Name(rawValue: "workRecordToSuper")
         NotificationCenter.default.addObserver(self, selector: #selector(workRecordToWorkUNITID(notification:)), name: name, object: nil)
-    
+        
+        let string = NSNotification.Name(rawValue: "YQAddEventdata")
+        NotificationCenter.default.addObserver(self, selector: #selector(addEventForData(notification:)), name: string, object: nil)
+        
+        let string1 = NSNotification.Name(rawValue: "YQDelectEventdata")
+         NotificationCenter.default.addObserver(self, selector: #selector(delectEventForData), name: string1, object: nil)
+        
     }
     
     func workRecordToWorkUNITID(notification: Notification){
@@ -251,6 +270,43 @@ class YQReleaseJournalViewController: UIViewController {
         
         self.workunitIds = workUnit!
         
+    }
+    
+    func addEventForData(notification:Notification){
+        
+        isupdata = false
+        
+        let dataKey = notification.userInfo?["YQAddEventdataKey"] as? String
+        let dataValue = notification.userInfo?["YQAddEventdataValue"] as? String
+        var  dic = [String : Any]()
+        dic["title"] = dataValue
+        dic["todoId"] = Int64(dataKey!)
+
+        let model = YQToDoListModel(dic: dic)
+        
+//        let workID = dataString?["YQAddEventdataKey"] as? String
+//        model.todoId = workID.toInt()
+//        
+//        let workVlue = dataString?["YQAddEventdataValue"] as? String
+//        model.title = workVlue
+        
+        if selectIndex != nil {
+            
+            self.dataList.replaceSubrange((selectIndex?.row)! ... (selectIndex?.row)!, with: [model])
+            
+            
+        }else{
+            
+            self.dataList.insert(model, at: self.dataList.count)
+            
+        }
+        
+        
+    }
+    
+    func delectEventForData(){
+        
+        self.dataList.remove(at: (selectIndex?.row)!)
     }
     
     // MARK: - 添加默认的项目选择方法
@@ -289,7 +345,7 @@ class YQReleaseJournalViewController: UIViewController {
 extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataList?.count ?? 0
+        return self.dataList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -322,9 +378,9 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.numberOfLines = 0
-        let model = self.dataList?[indexPath.row]
+        let model = self.dataList[indexPath.row]
         
-        cell.textLabel?.text = "\(indexPath.row + 1)." + (model?.title)!
+        cell.textLabel?.text = "\(indexPath.row + 1)." + (model.title)!
         
         return cell
         
@@ -333,7 +389,10 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let model = self.dataList?[indexPath.row]{
+//        isupdata = true
+        self.selectIndex = indexPath
+        
+        if let model = self.dataList[indexPath.row] as? YQToDoListModel{
             
             //跳转到添加 详情的界面
             let addDetailVC = UIStoryboard.instantiateInitialViewController(name: "YQJournalAddEvent") as! YQJournalAddEventViewController
@@ -351,6 +410,9 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
 extension YQReleaseJournalViewController : YQReseaseJouranlFooterDeletage{
     
     func reseaseJouranlFooterButtonClick(releaseJournal: YQReleaseJournalFooterV) {
+        
+        selectIndex = nil
+        
         //跳转到添加 详情的界面
         let addDetailVC = UIStoryboard.instantiateInitialViewController(name: "YQJournalAddEvent")
         

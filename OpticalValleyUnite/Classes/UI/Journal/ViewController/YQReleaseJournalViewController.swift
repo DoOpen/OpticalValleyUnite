@@ -208,7 +208,8 @@ class YQReleaseJournalViewController: UIViewController {
     // MARK: - 获取待办事项的ID
     func getTodoIdsFunction() -> String {
     
-        if (dataList?.count)! < 1 {
+        if self.dataList == nil || (dataList?.count)! < 1 {
+            
             return ""
         }
         

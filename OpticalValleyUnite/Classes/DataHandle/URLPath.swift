@@ -13,6 +13,7 @@ import Foundation
 /*
  
  1.生产环境: http://portal.ovuems.com/
+ 
  2.演示环境: http://demo.ovuems.com/
  3.测试环境: http://test.ovuems.com/
  4.开发环境: http://dev.ovuems.com/
@@ -39,7 +40,7 @@ struct URLPath {
     static let updatepwd = "user/updatepwd.do"
     static let updateLocation = "position/loadPersonPosition.do"
     
-    //工单详情 <  <--接口有变动 --> >!!!
+    //工单详情 < <--接口有变动 --> >!!!
     static let getWorkDetail = "workunit/workunitDetailById.do"
     
     static let getWorkTypeList = "workunit/getWorkTypeList.do"
@@ -169,6 +170,8 @@ struct URLPath {
     static let getAddWorklog = "worklog/add.do"
     // list显示删除接口
     static let getDeleteWorklog = "worklog/delete.do"
+    // list日志查看的接口
+    static let getCheckWorklogDetail = "worklog/detail.do"
     
     
     // 待办事项接口

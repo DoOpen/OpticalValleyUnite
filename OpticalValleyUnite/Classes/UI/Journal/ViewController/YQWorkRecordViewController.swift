@@ -22,6 +22,13 @@ class YQWorkRecordViewController: UIViewController {
     //日志ID
     var workLogID = ""
     
+    //工单IDstring 列表
+    var workunitIds = ""
+    
+    //是否是添加事项
+    var isAddWorkLog : Bool?
+    
+    
 //    var currentData : [WorkOrderModel2]?{
 //        
 //        didSet{
@@ -126,6 +133,20 @@ class YQWorkRecordViewController: UIViewController {
             
             for dic in response["data"] as! Array<[String: Any]> {
                 let model = WorkOrderModel2(parmart: dic)
+                let workunitIds = model.id
+                
+                if self.workunitIds != ""{
+                    
+                    if self.workunitIds.contains(workunitIds) {
+                        //更改设置模型的属性的情况
+                        model.selected = true
+                    }
+                }
+                
+                if self.isAddWorkLog! {
+                
+                    model.selected = true
+                }
                 
                 temp.append(model)
             }
@@ -155,7 +176,7 @@ class YQWorkRecordViewController: UIViewController {
             
         }) { (error) in
             
-            
+            SVProgressHUD.showError(withStatus: "数据加载失败,请重试!")
         }
         
     }

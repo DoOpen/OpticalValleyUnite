@@ -32,6 +32,7 @@ class YQJournalViewController: UIViewController {
         in
         
         return NSMutableDictionary()
+        
     }()
     
     
@@ -60,8 +61,8 @@ class YQJournalViewController: UIViewController {
         //4.设置添加上下拉刷新
         addRefirsh()
         
-        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -71,6 +72,8 @@ class YQJournalViewController: UIViewController {
         getWorklogDataList()
         
     }
+    
+    
     
     // MARK: - 获取日志数据列表
     // 不是参数的,默认是可传可 不传的情况
@@ -243,7 +246,7 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
         let detailVC = UIStoryboard.instantiateInitialViewController(name: "YQJournalDetail") as? YQJournalDetailViewController
         
         let model = self.dataArray?[indexPath.row]
-        detailVC?.detailList = model?.todoList
+//        detailVC?.detailList = model?.todoList
         detailVC?.workIDid = (model?.worklogId)!
         
         //跳转

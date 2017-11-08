@@ -14,10 +14,20 @@ class YQReleaseJournalViewController: UIViewController {
     // MARK: - 属性加载情况
     @IBOutlet weak var detailTableView: UITableView!
     
+    @IBOutlet weak var projectLabel: UILabel!
+    
+    
     // 所有的工单ID
     var workunitIds : String = ""
-    // 所有的日志ID
+    
+    // 所有的待办事项ID
     var todoIds : String = ""
+    
+    //项目ID(这个是必填的 选项)
+    var projectID : String  = ""
+    
+    //日志ID
+    var worklogId : Int64 = -1
     
     
     var dataList : [YQToDoListModel]?{
@@ -34,28 +44,46 @@ class YQReleaseJournalViewController: UIViewController {
         super.viewDidLoad()
         //添加通知
         addNotes()
+        
+        //添加全局的项目选择的信息
+        self.projectLabel.text = setUpProjectNameLable()
+        
+        if self.projectID == "" {
+            
+            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+            navigationController?.pushViewController(project, animated: true)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.projectLabel.text = setUpProjectNameLable()
+        
         //获取待办事项的列表信息
         getTodoDataList()
+        
+        self.todoIds = self.getTodoIdsFunction()
     }
     
     // MARK: - 获取待办事项的listdata
     func getTodoDataList(){
         
-        let paramet = [String : Any]()
+        var paramet = [String : Any]()
+        
+        paramet["parkId"] = self.projectID
         
         SVProgressHUD.show(withStatus: "正在加载中...")
-        HttpClient.instance.get(path: URLPath.getTodoWorklogList, parameters: paramet, success: { (respose) in
+        
+        HttpClient.instance.get(path: URLPath.getCheckWorklogDetail, parameters: paramet, success: { (response) in
             
             SVProgressHUD.dismiss()
+            
             //获取数据,字典转模型
             var tempModel = [YQToDoListModel]()
             
-            if let array = respose["todoList"] as? NSArray{
+            if let array = response["todoList"] as? NSArray{
                 
                 for temp in array {
                     
@@ -65,19 +93,41 @@ class YQReleaseJournalViewController: UIViewController {
                 self.dataList = tempModel
             }
             
+            if let workunitIds = response["workunitIds"] as? String  {
+                
+                self.workunitIds = workunitIds
+                
+            }
+            
+            if let worklogid = response["worklogId"] as? Int64{
+                
+                self.worklogId =  worklogid
+            }
+            
         }) { (error) in
             
             self.alert(message: error.debugDescription)
+            
         }
+    }
+    
+    // MARK: - 全局项目选择tap点击,界面跳转
+    @IBAction func allProjectSelectClick(_ sender: Any) {
+        
+        let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+        navigationController?.pushViewController(project, animated: true)
+        
     }
     
     // MARK: - 工作记录View的点击,界面跳转
     @IBAction func tapClickWithWorkRecord(_ sender: Any) {
         
         //发布界面 没有workLogID传递的值
-        let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord")
+        let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord") as? YQWorkRecordViewController
         
-        self.navigationController?.pushViewController(workRecord, animated: true)
+        workRecord?.isAddWorkLog = true
+        
+        self.navigationController?.pushViewController(workRecord!, animated: true)
         
     }
     
@@ -94,6 +144,12 @@ class YQReleaseJournalViewController: UIViewController {
     // MARK: - 提交rightBarButtonClick
     @IBAction func submitButtonClick(_ sender: Any) {
         
+    
+        if self.projectID == ""{
+            
+            
+            self.alert(message: "请选择项目!")
+        }
         //数据接口的请求
         /*调用日志新增的接口
          token
@@ -104,7 +160,20 @@ class YQReleaseJournalViewController: UIViewController {
         
         //全部的id 的字段都是要求string 来进行拼接
         parameter["workunitIds"] = self.workunitIds
-        parameter["todoIds"] = self.getTodoIdsFunction()
+        parameter["todoIds"] = self.todoIds
+        parameter["parkId"] = self.projectID
+        
+        if self.worklogId != -1{
+            
+            parameter["worklogId"] = self.worklogId
+        }
+        
+        if self.todoIds == "" && self.worklogId == -1 {
+            
+            self.alert(message: "请选择工作记录")
+            
+            return
+        }
         
 //        if self.workunitIds == ""{
 //            
@@ -176,6 +245,29 @@ class YQReleaseJournalViewController: UIViewController {
         self.workunitIds = workUnit!
         
     }
+    
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            
+            projectName = dic?["PARK_NAME"] as! String
+            self.projectID = dic?["ID"] as! String
+            
+            
+        }else{
+            
+            projectName = "请选择默认项目"
+        }
+        
+        return projectName
+        
+    }
+
     
     // MARK: - dealloc方法
     deinit {

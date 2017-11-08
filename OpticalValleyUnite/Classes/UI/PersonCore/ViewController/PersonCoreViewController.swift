@@ -78,7 +78,6 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         return projectName
         
-        
     }
     
     // MARK: - 修改密码按钮点击功能实现

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YQJournalDetailViewController: UIViewController {
 
@@ -17,25 +18,83 @@ class YQJournalDetailViewController: UIViewController {
     var workIDid : Int64 = -1
     
     //detailList
-    var detailList : NSArray?
+    var detailList : NSArray?{
+        didSet{
+        
+            //刷新数据列表
+            self.detailTableView.reloadData()
+
+        }
+    
+    }
+    
+    //项目ID
+    var parkId : String = ""
+    
+    // workunitIds
+    var workunitIds : String = ""
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        //刷新数据列表
-        self.detailTableView.reloadData()
-     
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getDetailDataList()
+        
+    }
+    
+    // MARK: - 查看detail 界面的详情的数据
+    func getDetailDataList(){
+        
+        var parameter = [String : Any]()
+        parameter["parkId"] = parkId
+        parameter["worklogId"] = workIDid
+        
+        SVProgressHUD.show(withStatus: "加载中...")
+        
+        HttpClient.instance.get(path: URLPath.getCheckWorklogDetail, parameters: parameter, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            
+            //模型取值
+            let array = response["todoList"] as? NSArray
+            self.detailList = array
+            
+            if let worklogid = response["worklogId"] as? Int64{
+            
+                self.workIDid =  worklogid
+                
+            }
+            
+            if let workunitIds = response["workunitIds"] as? String  {
+                
+                self.workunitIds = workunitIds
+            }
+            
+            
+        }) { (error) in
+            
+            //数据加载失败!
+            SVProgressHUD.showError(withStatus: error.description)
+        }
+    
+    }
+    
     
     // MARK: - 工作记录
     @IBAction func workRecordButtonClick(_ sender: Any) {
         
         let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord") as? YQWorkRecordViewController
         workRecord?.workLogID = "\(self.workIDid)"
+        workRecord?.workunitIds = workunitIds
         
         self.navigationController?.pushViewController(workRecord!, animated: true)
-        
         
     }
     

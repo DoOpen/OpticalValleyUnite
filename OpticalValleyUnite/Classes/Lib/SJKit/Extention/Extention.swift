@@ -236,10 +236,12 @@ extension UIViewController{
     }
     
     func alert(message: String, doneBlock: @escaping ((UIAlertAction)->())) {
+        
         let alc = UIAlertController(title: message, message: nil, preferredStyle: UIAlertControllerStyle.alert)
         alc.addAction(UIAlertAction(title: "取消", style: UIAlertActionStyle.default, handler: nil))
         alc.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.cancel, handler: doneBlock))
         self.present(alc, animated: true, completion: nil)
+        
     }
     
     func alert(message: String, doneBlock: @escaping ((UIAlertAction)->()),cancleBlock: @escaping ((UIAlertAction)->())) {

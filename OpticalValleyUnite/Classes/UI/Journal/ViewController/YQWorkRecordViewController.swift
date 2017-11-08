@@ -26,7 +26,7 @@ class YQWorkRecordViewController: UIViewController {
     var workunitIds = ""
     
     //是否是添加事项
-    var isAddWorkLog : Bool?
+    var isAddWorkLog : Bool? = false
     
     
 //    var currentData : [WorkOrderModel2]?{
@@ -143,12 +143,19 @@ class YQWorkRecordViewController: UIViewController {
                     }
                 }
                 
-                if self.isAddWorkLog! {
                 
+                if self.isAddWorkLog! {
+                    
                     model.selected = true
+                    
+                }else{
+                    
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem()
+                    
                 }
                 
                 temp.append(model)
+                
             }
             
             if indexPage == 0{
@@ -271,13 +278,18 @@ extension YQWorkRecordViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        //直接编辑模型 设置数据
-        let model = self.currentDatas[indexPath.row]
         
-        model.selected = !model.selected
-        //tableV 重刷数据
-        self.tableView.reloadRows(at: [indexPath], with: .none)
+        if isAddWorkLog! {
+            
+            //直接编辑模型 设置数据
+            let model = self.currentDatas[indexPath.row]
+            
+            model.selected = !model.selected
+            //tableV 重刷数据
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+            
+        }
+
         
     }
     

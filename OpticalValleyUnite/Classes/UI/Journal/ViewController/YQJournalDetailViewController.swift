@@ -103,7 +103,7 @@ class YQJournalDetailViewController: UIViewController {
         
         let workComplete = UIStoryboard.instantiateInitialViewController(name: "YQWorkOderComplete") as? YQWorkOrderCompleteVC
         
-        workComplete?.workLogID = "\(self.workIDid)"
+//        workComplete?.workLogID = "\(self.workIDid)"
         
         self.navigationController?.pushViewController(workComplete!, animated: true)
 

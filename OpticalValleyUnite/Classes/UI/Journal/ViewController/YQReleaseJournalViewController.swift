@@ -50,6 +50,10 @@ class YQReleaseJournalViewController: UIViewController {
         
         if self.projectID == "" {
             
+//            self.alert(message: "请先选择项目!", doneBlock: { (UIAlertAction) in
+//                <#code#>
+//            })
+            
             let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
             navigationController?.pushViewController(project, animated: true)
         }
@@ -136,6 +140,8 @@ class YQReleaseJournalViewController: UIViewController {
         //直接的跳转到 工单的完成情况界面
         //发布界面 没有workLogID的值传递
         let workComplete = UIStoryboard.instantiateInitialViewController(name: "YQWorkOderComplete")
+        
+//        workComplete?.workLogID = "\(self.workIDid)"
         
         self.navigationController?.pushViewController(workComplete, animated: true)
 

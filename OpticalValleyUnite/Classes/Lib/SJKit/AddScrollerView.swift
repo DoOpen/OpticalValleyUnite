@@ -73,9 +73,12 @@ class AddScrollerView: UIView {
                 view1.setTitle(model.name, for: .normal)
                 
 //                view1.kf.setImage(with: URL(string: model.icon), for: .normal)
+                
                 if let url = URL(string: model.icon){
+                    
                     view1.kf.setImage(with: url, for: .normal)
                 }else{
+                    
                     view1.setImage(UIImage.normalImageIcon(), for: .normal)
                 }
                 

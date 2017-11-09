@@ -49,12 +49,22 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             if let url = user.avatar,url != ""{
                 
-                let basicPath = URLPath.basicPath
-                let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                if url.contains("http") {
+                    
+                    photoImageView.kf.setImage(with: URL(string: url))
+
+                }else{
                 
-                photoImageView.kf.setImage(with: URL(string: imageValue))
+                    let basicPath = URLPath.basicPath
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                    
+                    photoImageView.kf.setImage(with: URL(string: imageValue))
+                
+                }
+                
                 
             }
+            
             
         }
 

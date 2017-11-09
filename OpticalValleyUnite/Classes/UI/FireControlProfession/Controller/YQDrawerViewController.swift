@@ -40,10 +40,19 @@ class YQDrawerViewController: UIViewController {
     
             if let url = user.avatar,url != ""{
                 
-                let basicPath = URLPath.basicPath
-                let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                if url.contains("http"){
                 
-                userImageView.kf.setImage(with: URL(string: imageValue))
+                    userImageView.kf.setImage(with: URL(string: url))
+
+                }else{
+                
+                    let basicPath = URLPath.basicPath
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                    
+                    userImageView.kf.setImage(with: URL(string: imageValue))
+                
+                }
+                
             }
         }
         

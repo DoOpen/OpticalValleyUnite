@@ -86,6 +86,7 @@ class YQFalsePositivesVC: UIViewController {
                         
                             //setImage
                             let url = URL(string : dataList["imgPaths"] as! String)
+                            
                             self.proveImageV.kf.setImage(with: url, placeholder: UIImage(named: "avatar"), options: nil, progressBlock: nil, completionHandler: nil)
 
                         }

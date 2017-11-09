@@ -71,7 +71,9 @@ class CoverView: UIView {
         coverView.bounds = CGRect(x: 0, y: 0, width: SJScreeW, height: SJScreeH)
         coverView.center = SJKeyWindow!.center
         coverView.imageView.frame = frame
+        
         let url = URL(string: urlStr)
+        
         coverView.imageView.kf.setImage(with: url)
         UIView.transition(with: SJKeyWindow!, duration: 0.5, options:.curveEaseIn, animations:
             {SJKeyWindow?.addSubview(coverView)}, completion: nil)

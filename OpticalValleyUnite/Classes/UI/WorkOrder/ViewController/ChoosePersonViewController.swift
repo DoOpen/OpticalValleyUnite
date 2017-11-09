@@ -116,6 +116,7 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
             execPeopleBtn.setTitle(models.first?.name, for: .normal)
             
             if let url = URL(string: (models.first?.icon)!){
+                
                 execPeopleBtn.kf.setImage(with: url, for: .normal)
                 
             }else{

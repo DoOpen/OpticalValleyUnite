@@ -67,15 +67,17 @@ class YQSystemSelectionVC: UIViewController {
                     
                     let pictureName = data["logo_url"] as! String
                     
-                    let url = URL(string: URLPath.systemSelectionURL + pictureName)
+                    var url = URL(string: "")
                     
                     //图片的逻辑的判断,需要的是全局的更改
+                    //所有的获取图片信息逻辑判断
                     if pictureName.contains("http"){
                         
+                        url = URL(string : pictureName)
                         
                     }else{
                         
-                        
+                        url = URL(string : URLPath.systemSelectionURL + pictureName)
                     }
                     
                     
@@ -104,6 +106,7 @@ class YQSystemSelectionVC: UIViewController {
 
             
             }else{ // 直接跳转到home界面, 传递数据情况,(没有数据的逻辑处理)
+                
                 //数据都需要保存下来,归档解档,plist文件
                 let tabVc = UITabBarController()
                 

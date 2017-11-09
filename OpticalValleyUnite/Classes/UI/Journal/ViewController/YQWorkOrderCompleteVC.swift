@@ -26,6 +26,9 @@ class YQWorkOrderCompleteVC: UIViewController {
     // 日志ID
     var workLogID = ""
     
+    // 项目ID
+    var parkID : String = ""
+    
     var currentDatas = [WorkOrderModel2]()
     
     var currentIndex = 0{

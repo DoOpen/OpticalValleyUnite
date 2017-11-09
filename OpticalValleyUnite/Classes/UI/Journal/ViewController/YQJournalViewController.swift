@@ -17,6 +17,11 @@ class YQJournalViewController: UIViewController {
     
     var pageNo : Int = 0
     
+    var parkId : String = ""
+    
+    var projectName : String = ""
+    
+    
     var dataArray : [YQWorkLogListModel]?{
         didSet{
             
@@ -68,6 +73,9 @@ class YQJournalViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
+        //1.获取全局的项目的parkID
+        self.projectName = setUpProjectNameLable()
+        
         //3.日志列表的数据
         getWorklogDataList()
         
@@ -81,6 +89,7 @@ class YQJournalViewController: UIViewController {
         
         var paramerters = [String : Any]()
         paramerters["pageIndex"] = indexPage
+        paramerters["parkId"] = parkId
         
         SVProgressHUD.show(withStatus: "数据加载中...")
         HttpClient.instance.get(path: URLPath.getWorklogList, parameters: paramerters, success: { (response) in
@@ -111,6 +120,29 @@ class YQJournalViewController: UIViewController {
         tableView.mj_footer.endRefreshing()
     
     }
+    
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            
+            projectName = dic?["PARK_NAME"] as! String
+            self.parkId = dic?["ID"] as! String
+            
+            
+        }else{
+            
+            projectName = "请选择默认项目"
+        }
+        
+        return projectName
+        
+    }
+
     
     // MARK: - 上下拉的刷新的界面情况
     func addRefirsh(){

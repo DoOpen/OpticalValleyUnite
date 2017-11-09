@@ -113,6 +113,7 @@ class YQJournalDetailViewController: UIViewController {
         let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord") as? YQWorkRecordViewController
         workRecord?.workLogID = "\(self.workIDid)"
         workRecord?.workunitIds = workunitIds
+        workRecord?.parkID = parkId
         
         self.navigationController?.pushViewController(workRecord!, animated: true)
         
@@ -124,6 +125,7 @@ class YQJournalDetailViewController: UIViewController {
         let workComplete = UIStoryboard.instantiateInitialViewController(name: "YQWorkOderComplete") as? YQWorkOrderCompleteVC
         
 //        workComplete?.workLogID = "\(self.workIDid)"
+        workComplete?.parkID = parkId
         
         self.navigationController?.pushViewController(workComplete!, animated: true)
 

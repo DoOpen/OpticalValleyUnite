@@ -28,6 +28,9 @@ class YQWorkRecordViewController: UIViewController {
     //是否是添加事项
     var isAddWorkLog : Bool? = false
     
+    //项目id
+    var parkID : String = ""
+    
     
 //    var currentData : [WorkOrderModel2]?{
 //        

@@ -160,6 +160,7 @@ class YQReleaseJournalViewController: UIViewController {
         let workRecord = UIStoryboard.instantiateInitialViewController(name: "YQWorkRecord") as? YQWorkRecordViewController
         
         workRecord?.isAddWorkLog = true
+        workRecord?.parkID = self.projectID
         
         self.navigationController?.pushViewController(workRecord!, animated: true)
         
@@ -169,18 +170,18 @@ class YQReleaseJournalViewController: UIViewController {
     @IBAction func workorderCompleteClick(_ sender: Any) {
         //直接的跳转到 工单的完成情况界面
         //发布界面 没有workLogID的值传递
-        let workComplete = UIStoryboard.instantiateInitialViewController(name: "YQWorkOderComplete")
+        let workComplete = UIStoryboard.instantiateInitialViewController(name: "YQWorkOderComplete") as? YQWorkOrderCompleteVC
         
 //        workComplete?.workLogID = "\(self.workIDid)"
+        workComplete?.parkID = self.projectID
         
-        self.navigationController?.pushViewController(workComplete, animated: true)
+        self.navigationController?.pushViewController(workComplete!, animated: true)
 
     }
     
     // MARK: - 提交rightBarButtonClick
     @IBAction func submitButtonClick(_ sender: Any) {
         
-    
         if self.projectID == ""{
             
             self.alert(message: "请选择项目!")

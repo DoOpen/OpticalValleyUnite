@@ -66,7 +66,18 @@ class YQSystemSelectionVC: UIViewController {
                     let dataV = viewArray[index]
                     
                     let pictureName = data["logo_url"] as! String
+                    
                     let url = URL(string: URLPath.systemSelectionURL + pictureName)
+                    
+                    //图片的逻辑的判断,需要的是全局的更改
+                    if pictureName.contains("http"){
+                        
+                        
+                    }else{
+                        
+                        
+                    }
+                    
                     
                     dataV.logoImageView.kf.setImage(with: url, placeholder: UIImage(named: "login_icon_null"), options: nil, progressBlock: nil, completionHandler: nil)
                     
@@ -75,7 +86,6 @@ class YQSystemSelectionVC: UIViewController {
                     if dataV.logoTitileLabel.text == "智慧消防"{
                         
                         fireindex = index
-                        
                     }
 //                    print(data)
                 }

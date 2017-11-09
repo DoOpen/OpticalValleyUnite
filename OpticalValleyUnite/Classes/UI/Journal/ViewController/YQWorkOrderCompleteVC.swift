@@ -90,6 +90,7 @@ class YQWorkOrderCompleteVC: UIViewController {
         var parmat = [String: Any]()
         
         parmat["pageIndex"] = indexPage
+        parmat["PARK_ID"] = self.parkID
         
         for (key,value) in dic{
             parmat[key] = value

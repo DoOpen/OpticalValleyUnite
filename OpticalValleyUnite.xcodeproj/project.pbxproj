@@ -660,6 +660,37 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		2F399F021FB4571700AA3BEC /* Pedometer */ = {
+			isa = PBXGroup;
+			children = (
+				2F399F031FB4571700AA3BEC /* Controller */,
+				2F399F041FB4571700AA3BEC /* Model */,
+				2F399F051FB4571700AA3BEC /* View */,
+			);
+			path = Pedometer;
+			sourceTree = "<group>";
+		};
+		2F399F031FB4571700AA3BEC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2F399F041FB4571700AA3BEC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2F399F051FB4571700AA3BEC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2F5D27691F998D940022F7D6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1022,6 +1053,7 @@
 		4BD4B9221E272EA600AE2BC9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2F399F021FB4571700AA3BEC /* Pedometer */,
 				2F2F95711F8DACB800870DC8 /* Journal */,
 				2F6A43891F6A33A0003E10C9 /* FireControlProfession */,
 				4BD4B9231E272EA600AE2BC9 /* Home */,

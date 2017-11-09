@@ -482,7 +482,7 @@
                 <outlet property="workIdLabel" destination="RnW-2E-hzq" id="JN9-i4-G6f"/>
                 <outlet property="workOrderNameLabel" destination="Bto-VT-f6y" id="c9z-rK-gvy"/>
             </connections>
-            <point key="canvasLocation" x="32.5" y="95.5"/>
+            <point key="canvasLocation" x="-20" y="74"/>
         </tableViewCell>
     </objects>
 </document>

@@ -84,7 +84,7 @@ class YQReleaseJournalViewController: UIViewController {
             
         }
         
-        self.selectWorkunitIds.text = workunitIds
+        self.selectWorkunitIds.text = self.workunitIds
         
         
         if self.selectWorkunitIds.text == "" {
@@ -202,6 +202,7 @@ class YQReleaseJournalViewController: UIViewController {
         
         //全部的id 的字段都是要求string 来进行拼接
         parameter["workunitIds"] = self.workunitIds
+        
         parameter["todoIds"] = self.todoIds
         parameter["parkId"] = self.projectID
         
@@ -293,10 +294,10 @@ class YQReleaseJournalViewController: UIViewController {
         
         let workUnit = notification.userInfo?["YQWorkRecordTo"] as? String
         
-        self.workunitIds = workUnit!
-        self.selectWorkunitIds.text = self.workunitIds
-        
         self.isupdata = false
+        
+        self.workunitIds = workUnit!
+//        self.selectWorkunitIds.text = self.workunitIds
         
     }
     
@@ -328,9 +329,9 @@ class YQReleaseJournalViewController: UIViewController {
             self.dataList.insert(model, at: self.dataList.count)
             
         }
-        
-        
+    
     }
+    
     
     func delectEventForData(){
         

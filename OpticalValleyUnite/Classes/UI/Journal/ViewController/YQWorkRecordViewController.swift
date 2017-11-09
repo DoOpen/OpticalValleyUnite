@@ -120,6 +120,7 @@ class YQWorkRecordViewController: UIViewController {
         var parmat = [String: Any]()
         
         parmat["pageIndex"] = indexPage
+        parmat["PARK_ID"] = self.parkID
         
         for (key,value) in dic{
             parmat[key] = value
@@ -135,15 +136,19 @@ class YQWorkRecordViewController: UIViewController {
             var temp = [WorkOrderModel2]()
             
             for dic in response["data"] as! Array<[String: Any]> {
+                
                 let model = WorkOrderModel2(parmart: dic)
                 let workunitIds = model.id
                 
+                
                 if self.workunitIds != ""{
+                    
                     
                     if self.workunitIds.contains(workunitIds) {
                         //更改设置模型的属性的情况
                         model.selected = true
                     }
+                    
                 }
                 
                 
@@ -225,6 +230,7 @@ class YQWorkRecordViewController: UIViewController {
     func getAllWorkunitIdsFunction() -> String{
         
         if self.currentDatas.count < 1 {
+            
             return ""
         }
         
@@ -236,15 +242,17 @@ class YQWorkRecordViewController: UIViewController {
                 
                 selectCurrentDatas.append(select)
             }
-            
-            
+
         }
+        
         
         var str = ""
         
+        
         for team in 0 ..< selectCurrentDatas.count{
             
-            let model = self.currentDatas[team]
+            let model = selectCurrentDatas[team]
+            
             if team == 0 {
                 
                 str = model.workOrderId
@@ -254,6 +262,8 @@ class YQWorkRecordViewController: UIViewController {
             }
         
         }
+        
+        
         
         return str
     }
@@ -294,6 +304,7 @@ extension YQWorkRecordViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
         if isAddWorkLog! {
             
             //直接编辑模型 设置数据
@@ -302,6 +313,10 @@ extension YQWorkRecordViewController: UITableViewDataSource,UITableViewDelegate{
             model.selected = !model.selected
             //tableV 重刷数据
             self.tableView.reloadRows(at: [indexPath], with: .none)
+            
+            self.currentDatas.replaceSubrange((indexPath.row)...(indexPath.row), with: [model])
+            
+            
             
         }
 

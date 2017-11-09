@@ -34,6 +34,9 @@ class YQReleaseJournalViewController: UIViewController {
     
     var selectIndex : IndexPath?
     
+    @IBOutlet weak var selectWorkunitIds: UILabel!
+    
+    
     
     var dataList = [YQToDoListModel](){
         
@@ -80,6 +83,20 @@ class YQReleaseJournalViewController: UIViewController {
             self.todoIds = self.getTodoIdsFunction()
             
         }
+        
+        self.selectWorkunitIds.text = workunitIds
+        
+        
+        if self.selectWorkunitIds.text == "" {
+            
+            self.selectWorkunitIds.text = "未选"
+            
+        }else{
+            
+            self.selectWorkunitIds.text = "已选"
+        
+        }
+        
 
     }
     
@@ -89,8 +106,7 @@ class YQReleaseJournalViewController: UIViewController {
         var paramet = [String : Any]()
         
         paramet["parkId"] = self.projectID
-        
-        
+    
         SVProgressHUD.show(withStatus: "正在加载中...")
         
         HttpClient.instance.get(path: URLPath.getCheckWorklogDetail, parameters: paramet, success: { (response) in
@@ -113,6 +129,7 @@ class YQReleaseJournalViewController: UIViewController {
             if let workunitIds = response["workunitIds"] as? String  {
                 
                 self.workunitIds = workunitIds
+                self.selectWorkunitIds.text = "已选"
                 
             }
             
@@ -167,6 +184,8 @@ class YQReleaseJournalViewController: UIViewController {
         if self.projectID == ""{
             
             self.alert(message: "请选择项目!")
+            
+            return
         }
         
         //数据接口的请求
@@ -175,6 +194,9 @@ class YQReleaseJournalViewController: UIViewController {
          workunitIds
          todoIds
          */
+        
+        self.todoIds = self.getTodoIdsFunction()
+        
         var parameter = [String : Any]()
         
         //全部的id 的字段都是要求string 来进行拼接
@@ -187,7 +209,8 @@ class YQReleaseJournalViewController: UIViewController {
             parameter["worklogId"] = self.worklogId
         }
         
-        if self.todoIds == "" && self.worklogId == -1 {
+        // || self.worklogId == -1
+        if self.workunitIds == ""  {
             
             self.alert(message: "请选择工作记录")
             
@@ -227,7 +250,7 @@ class YQReleaseJournalViewController: UIViewController {
     // MARK: - 获取待办事项的ID
     func getTodoIdsFunction() -> String {
     
-        if self.dataList == nil || (dataList.count) < 1 {
+        if  (dataList.count) < 1 {
             
             return ""
         }
@@ -250,6 +273,7 @@ class YQReleaseJournalViewController: UIViewController {
         return str
     }
     
+    
     // MARK: - 接受通知方法
     func addNotes(){
     
@@ -269,6 +293,9 @@ class YQReleaseJournalViewController: UIViewController {
         let workUnit = notification.userInfo?["YQWorkRecordTo"] as? String
         
         self.workunitIds = workUnit!
+        self.selectWorkunitIds.text = self.workunitIds
+        
+        self.isupdata = false
         
     }
     
@@ -345,7 +372,8 @@ class YQReleaseJournalViewController: UIViewController {
 extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataList.count ?? 0
+        
+        return self.dataList.count 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

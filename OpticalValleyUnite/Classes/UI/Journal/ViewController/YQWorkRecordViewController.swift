@@ -208,14 +208,14 @@ class YQWorkRecordViewController: UIViewController {
     func completeButtonClick(){
         //获取调用
         let strID = self.getAllWorkunitIdsFunction()
-        //传参调接口,发送通知到super
-        let center = NotificationCenter.default
-        let name = NSNotification.Name(rawValue: "workRecordToSuper")
-        center.post(name: name, object: nil, userInfo: ["YQWorkRecordTo" : strID ])
         
         //控制器的释放
         self.navigationController?.popViewController(animated: true)
     
+        //传参调接口,发送通知到super
+        let center = NotificationCenter.default
+        let name = NSNotification.Name(rawValue: "workRecordToSuper")
+        center.post(name: name, object: nil, userInfo: ["YQWorkRecordTo" : strID ])
     }
     
     // MARK: - 获取调用所有的workunitIds
@@ -225,9 +225,21 @@ class YQWorkRecordViewController: UIViewController {
             return ""
         }
         
+        var selectCurrentDatas = [WorkOrderModel2]()
+        
+        for select in self.currentDatas{
+            
+            if select.selected {
+                
+                selectCurrentDatas.append(select)
+            }
+            
+            
+        }
+        
         var str = ""
         
-        for team in 0 ..< self.currentDatas.count{
+        for team in 0 ..< selectCurrentDatas.count{
             
             let model = self.currentDatas[team]
             if team == 0 {

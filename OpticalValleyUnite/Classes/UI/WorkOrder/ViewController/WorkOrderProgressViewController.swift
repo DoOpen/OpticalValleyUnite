@@ -555,6 +555,7 @@ class WorkOrderProgressViewController: UIViewController {
     }
     //处理
     func processingBtnClick(){
+        
         var parmat = [String: Any]()
         parmat["WORKUNIT_ID"] = parmate?["WORKUNIT_ID"] as! String
         parmat["UNIT_STATUS"] = 6
@@ -698,6 +699,7 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
         tableView.deselectRow(at: indexPath, animated: true)
         
         let cell = tableView.cellForRow(at: indexPath)
+        
         if let cell = cell as? WorkOrderStutasCell{
             
             if cell.model?.status == 7{

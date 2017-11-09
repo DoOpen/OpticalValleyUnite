@@ -222,7 +222,10 @@ class LoginViewController: UIViewController {
                 break
             case .failure(let error):
                 
+                SVProgressHUD.showError(withStatus: "网络连接失败,请重试!")
+                
                 debugPrint(error)
+                
                 break
             }
         }

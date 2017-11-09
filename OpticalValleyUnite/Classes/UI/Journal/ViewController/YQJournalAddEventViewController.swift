@@ -95,6 +95,8 @@ class YQJournalAddEventViewController: UIViewController {
         if todoId == -1 {
             return
         }
+        self.deleteEvent.isUserInteractionEnabled = false
+        
         //调用接口,popVC
         var par = [String : Any]()
         par["todoId"] = todoId
@@ -107,9 +109,12 @@ class YQJournalAddEventViewController: UIViewController {
             
             self.navigationController?.popViewController(animated: true)
             
+             self.deleteEvent.isUserInteractionEnabled = false
+            
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "删除失败!")
+            self.deleteEvent.isUserInteractionEnabled = true
         }
         
         

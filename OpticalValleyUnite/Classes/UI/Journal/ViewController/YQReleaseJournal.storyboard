@@ -82,6 +82,12 @@
                                             <constraint firstAttribute="width" constant="25" id="pl7-Mc-O7x"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未选" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87e-Qr-XjC">
+                                        <rect key="frame" x="280" y="17" width="35" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -91,7 +97,9 @@
                                     <constraint firstItem="D6z-I0-Ynj" firstAttribute="leading" secondItem="WUu-RJ-orG" secondAttribute="leading" constant="5" id="PrF-gs-Nd6"/>
                                     <constraint firstAttribute="height" constant="55" id="XZ7-pX-kCy"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="fhb-Rz-71L"/>
+                                    <constraint firstItem="YkR-Fu-YxR" firstAttribute="leading" secondItem="87e-Qr-XjC" secondAttribute="trailing" constant="5" id="vHC-rE-c5m"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="55" id="wrb-Xp-0jb"/>
+                                    <constraint firstItem="87e-Qr-XjC" firstAttribute="centerY" secondItem="YkR-Fu-YxR" secondAttribute="centerY" id="yb3-XJ-Iqn"/>
                                     <constraint firstItem="YkR-Fu-YxR" firstAttribute="centerY" secondItem="WUu-RJ-orG" secondAttribute="centerY" id="zdj-AC-PcN"/>
                                 </constraints>
                                 <connections>
@@ -193,6 +201,7 @@
                     <connections>
                         <outlet property="detailTableView" destination="LBG-V2-yRD" id="JIU-yg-eDJ"/>
                         <outlet property="projectLabel" destination="YEq-CD-Uwg" id="tU0-Td-HlU"/>
+                        <outlet property="selectWorkunitIds" destination="87e-Qr-XjC" id="0Bg-UX-GsD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9R-ub-8bt" userLabel="First Responder" sceneMemberID="firstResponder"/>

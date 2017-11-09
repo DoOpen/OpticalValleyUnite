@@ -160,9 +160,9 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
 //
             
             
-                        self?.tableViewHeightConstaint.constant = (self?.tabHeight)!
+            self?.tableViewHeightConstaint.constant = (self?.tabHeight)!
 
-                        self?.superTableView?.reloadData()
+            self?.superTableView?.reloadData()
             
     
 

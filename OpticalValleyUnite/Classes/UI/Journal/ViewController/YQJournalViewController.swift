@@ -109,6 +109,10 @@ class YQJournalViewController: UIViewController {
                 //成功的模型转入
                 self.dataArray = modelArray
                 
+            }else if(response["pageIndex"] as? Int64 == 0){
+                
+                self.dataArray = nil
+                
             }
             
         }) { (error) in

@@ -73,10 +73,11 @@ class YQReleaseJournalViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
+        //1.获取全局的项目
+        self.projectLabel.text = setUpProjectNameLable()
+        
         if isupdata{
-            
-            self.projectLabel.text = setUpProjectNameLable()
-            
+        
             //获取待办事项的列表信息
             getTodoDataList()
             
@@ -347,7 +348,16 @@ class YQReleaseJournalViewController: UIViewController {
         
         if dic != nil {
             
+            
             projectName = dic?["PARK_NAME"] as! String
+            
+            if self.projectLabel.text != projectName {
+                
+                self.workunitIds = ""
+                self.selectWorkunitIds.text = ""
+                self.worklogId = -1
+            }
+            
             self.projectID = dic?["ID"] as! String
             
             

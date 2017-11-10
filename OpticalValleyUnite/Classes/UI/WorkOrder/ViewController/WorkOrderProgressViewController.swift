@@ -503,6 +503,7 @@ class WorkOrderProgressViewController: UIViewController {
     //MARK: - 操作按钮点击
     //派单按钮点击
     func choosePeopleBtnClick(){
+        
         let vc = ChoosePersonViewController.loadFromStoryboard(name: "WorkOrder") as! ChoosePersonViewController
         vc.workId = parmate?["WORKUNIT_ID"] as! String
         vc.parkId = (workOrderDetalModel?.PARK_ID)!

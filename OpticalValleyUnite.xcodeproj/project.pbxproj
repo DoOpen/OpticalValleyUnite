@@ -39,6 +39,12 @@
 		2F3C093F1F72623000036547 /* YQImplementDetailHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C093E1F72623000036547 /* YQImplementDetailHeadView.swift */; };
 		2F3C09411F7262C200036547 /* YQImplementDetailHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3C09401F7262C200036547 /* YQImplementDetailHead.xib */; };
 		2F3C09431F7273CE00036547 /* YQImplementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C09421F7273CE00036547 /* YQImplementView.swift */; };
+		2F40D98C1FB93A39007971D1 /* YQStepScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D98B1FB93A39007971D1 /* YQStepScreenViewController.swift */; };
+		2F40D98E1FB93AEA007971D1 /* YQStepScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F40D98D1FB93AEA007971D1 /* YQStepScreen.storyboard */; };
+		2F40D9901FB94253007971D1 /* YQStepStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D98F1FB94253007971D1 /* YQStepStatisticsView.swift */; };
+		2F40D9921FB942A4007971D1 /* YQStepStatistics.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F40D9911FB942A4007971D1 /* YQStepStatistics.xib */; };
+		2F40D9941FB9A802007971D1 /* YQStepHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D9931FB9A802007971D1 /* YQStepHeadView.swift */; };
+		2F40D9961FB9A820007971D1 /* YQStepHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F40D9951FB9A820007971D1 /* YQStepHead.xib */; };
 		2F4A658C1F945A9700F4C72A /* YQJournalAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A658B1F945A9700F4C72A /* YQJournalAddEventViewController.swift */; };
 		2F4A658E1F945AC300F4C72A /* YQJournalAddEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F4A658D1F945AC300F4C72A /* YQJournalAddEvent.storyboard */; };
 		2F4A65901F9462CF00F4C72A /* YQWorkRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A658F1F9462CF00F4C72A /* YQWorkRecordViewController.swift */; };
@@ -295,6 +301,12 @@
 		2F3C093E1F72623000036547 /* YQImplementDetailHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQImplementDetailHeadView.swift; sourceTree = "<group>"; };
 		2F3C09401F7262C200036547 /* YQImplementDetailHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQImplementDetailHead.xib; sourceTree = "<group>"; };
 		2F3C09421F7273CE00036547 /* YQImplementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQImplementView.swift; sourceTree = "<group>"; };
+		2F40D98B1FB93A39007971D1 /* YQStepScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStepScreenViewController.swift; sourceTree = "<group>"; };
+		2F40D98D1FB93AEA007971D1 /* YQStepScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQStepScreen.storyboard; sourceTree = "<group>"; };
+		2F40D98F1FB94253007971D1 /* YQStepStatisticsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStepStatisticsView.swift; sourceTree = "<group>"; };
+		2F40D9911FB942A4007971D1 /* YQStepStatistics.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQStepStatistics.xib; sourceTree = "<group>"; };
+		2F40D9931FB9A802007971D1 /* YQStepHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStepHeadView.swift; sourceTree = "<group>"; };
+		2F40D9951FB9A820007971D1 /* YQStepHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQStepHead.xib; sourceTree = "<group>"; };
 		2F4A658B1F945A9700F4C72A /* YQJournalAddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalAddEventViewController.swift; sourceTree = "<group>"; };
 		2F4A658D1F945AC300F4C72A /* YQJournalAddEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJournalAddEvent.storyboard; sourceTree = "<group>"; };
 		2F4A658F1F9462CF00F4C72A /* YQWorkRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkRecordViewController.swift; sourceTree = "<group>"; };
@@ -679,6 +691,8 @@
 			children = (
 				2F7E0AA41FB5956000344D4E /* YQPedometerViewController.swift */,
 				2F7E0AA61FB595BF00344D4E /* YQPedometerVC.storyboard */,
+				2F40D98B1FB93A39007971D1 /* YQStepScreenViewController.swift */,
+				2F40D98D1FB93AEA007971D1 /* YQStepScreen.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -693,6 +707,10 @@
 		2F399F051FB4571700AA3BEC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F40D98F1FB94253007971D1 /* YQStepStatisticsView.swift */,
+				2F40D9911FB942A4007971D1 /* YQStepStatistics.xib */,
+				2F40D9931FB9A802007971D1 /* YQStepHeadView.swift */,
+				2F40D9951FB9A820007971D1 /* YQStepHead.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1447,6 +1465,7 @@
 				2F5E8C561F595F7000007717 /* YQPartDataAll.xib in Resources */,
 				4B5E43C11F2ECEE000DCE5AC /* SiginCellView.xib in Resources */,
 				2F0223BC1FA9C2330090822F /* YQWorkOderComplete.storyboard in Resources */,
+				2F40D98E1FB93AEA007971D1 /* YQStepScreen.storyboard in Resources */,
 				4B3951ED1E28718200E2642F /* ReportMaster.storyboard in Resources */,
 				4BD4B90B1E272E0C00AE2BC9 /* LaunchScreen.storyboard in Resources */,
 				2F94A2811F73A5F500455162 /* YQFireMapDetail.storyboard in Resources */,
@@ -1465,12 +1484,14 @@
 				4BFD07CC1E5D3ACC004AF998 /* ExecutingSectionView.xib in Resources */,
 				2F3B96051F6BC17E0008AFEB /* YQJoinTotall.storyboard in Resources */,
 				2FC167491F905F5A001CEACD /* YQJournalDetail.storyboard in Resources */,
+				2F40D9961FB9A820007971D1 /* YQStepHead.xib in Resources */,
 				2F5E8C521F59598400007717 /* YQSystemSelectionVC.xib in Resources */,
 				2FAA64231FB04B7F00A34311 /* YQDeviceCell2.xib in Resources */,
 				2F7550FF1FA7313200A5E242 /* YQWorkRecord.xib in Resources */,
 				4BBBEC971E2CAAE200F60313 /* BoPhotoPicker.bundle in Resources */,
 				2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */,
 				2FC1674B1F906BA4001CEACD /* YQJournalDetailHead.xib in Resources */,
+				2F40D9921FB942A4007971D1 /* YQStepStatistics.xib in Resources */,
 				2F648DB11F57C063006D51D3 /* YQPartDataCell.xib in Resources */,
 				4BD4B9061E272E0C00AE2BC9 /* Main.storyboard in Resources */,
 				4B8EE7771F17047400A59F8D /* WorkOrder2Cell.xib in Resources */,
@@ -1592,6 +1613,7 @@
 				2F94A28B1F73BA0000455162 /* YQResolvedView.swift in Sources */,
 				4BBBEC981E2CAAE200F60313 /* BoPhotoPickerViewController.m in Sources */,
 				4B6E64FB1EEAEFCF00BA23E4 /* PhotoCell.swift in Sources */,
+				2F40D9901FB94253007971D1 /* YQStepStatisticsView.swift in Sources */,
 				4B751BD31E5B301C00C0CEC0 /* AddScrollerView.swift in Sources */,
 				2F3B96001F6B68BE0008AFEB /* YQDrawerViewController.swift in Sources */,
 				4BFD07CA1E5D3ABC004AF998 /* ExecutingSectionView.swift in Sources */,
@@ -1612,6 +1634,7 @@
 				2FEB0E841F6E70900002DEE8 /* YQFireAlarmDetailViewController.swift in Sources */,
 				4B7A59C31E35DB27002E96B6 /* URLPath.swift in Sources */,
 				4BD4B9501E272EA600AE2BC9 /* SignInViewController.swift in Sources */,
+				2F40D9941FB9A802007971D1 /* YQStepHeadView.swift in Sources */,
 				4B3951CE1E277D8600E2642F /* RKTagsView.m in Sources */,
 				2F2F95761F8DAE9000870DC8 /* YQJournalViewController.swift in Sources */,
 				4BE9225F1EE6DB7C00FDEFE1 /* CallBackCell.swift in Sources */,
@@ -1638,6 +1661,7 @@
 				2F2A2BB41F989E1D003015E9 /* YQAllProjectSelectVC.swift in Sources */,
 				4BBBEC931E2CAAE200F60313 /* BoPhotoGroupCell.m in Sources */,
 				2F0223B21FA99E620090822F /* YQFilterParkModel.swift in Sources */,
+				2F40D98C1FB93A39007971D1 /* YQStepScreenViewController.swift in Sources */,
 				2F2DF4381F7365B300ADA588 /* YQStateListModel.swift in Sources */,
 				2FEB0E7F1F6E5EA10002DEE8 /* YQViewController.swift in Sources */,
 				4B429B081F4AC3A000381F3F /* ShowImagesView.swift in Sources */,

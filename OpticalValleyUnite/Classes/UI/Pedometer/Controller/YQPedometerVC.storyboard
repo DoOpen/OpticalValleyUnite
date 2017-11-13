@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-1562" y="137"/>
         </scene>
-        <!--Pedometer View Controller-->
+        <!--我的运动-->
         <scene sceneID="Joj-0G-egg">
             <objects>
                 <viewController id="D6u-bk-GSU" customClass="YQPedometerViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,13 +36,41 @@
                     <view key="view" contentMode="scaleToFill" id="4q0-4i-uRr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fa0-HG-ivD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Op-ly-kcj">
+                                <rect key="frame" x="0.0" y="364" width="375" height="303"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cv4-FQ-OF4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="3jj-M3-0em"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fa0-HG-ivD" secondAttribute="trailing" id="9yA-OR-d95"/>
+                            <constraint firstItem="Cv4-FQ-OF4" firstAttribute="leading" secondItem="4q0-4i-uRr" secondAttribute="leading" id="Cug-ij-Dmd"/>
+                            <constraint firstItem="kbr-Fm-Gg3" firstAttribute="top" secondItem="fa0-HG-ivD" secondAttribute="bottom" id="G8A-te-1Ft"/>
+                            <constraint firstItem="kbr-Fm-Gg3" firstAttribute="top" secondItem="4Op-ly-kcj" secondAttribute="bottom" id="GdK-cZ-ZUJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Cv4-FQ-OF4" secondAttribute="trailing" id="LzX-kA-OdI"/>
+                            <constraint firstAttribute="trailing" secondItem="4Op-ly-kcj" secondAttribute="trailing" id="NAB-3D-JlA"/>
+                            <constraint firstItem="fa0-HG-ivD" firstAttribute="top" secondItem="4q0-4i-uRr" secondAttribute="top" id="WoN-DC-6wC"/>
+                            <constraint firstItem="4Op-ly-kcj" firstAttribute="top" secondItem="Cv4-FQ-OF4" secondAttribute="bottom" id="Z0U-cy-LZb"/>
+                            <constraint firstItem="4Op-ly-kcj" firstAttribute="leading" secondItem="4q0-4i-uRr" secondAttribute="leading" id="Zer-E4-bPR"/>
+                            <constraint firstItem="Cv4-FQ-OF4" firstAttribute="top" secondItem="OC7-Na-hWu" secondAttribute="bottom" id="s7U-Uc-Fx3"/>
+                            <constraint firstItem="fa0-HG-ivD" firstAttribute="leading" secondItem="4q0-4i-uRr" secondAttribute="leading" id="zJS-Rz-win"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ytf-OW-Zn8"/>
+                    <navigationItem key="navigationItem" title="我的运动" id="ytf-OW-Zn8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPh-hD-vik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-758" y="136"/>
+            <point key="canvasLocation" x="-759.20000000000005" y="135.38230884557723"/>
         </scene>
     </scenes>
 </document>

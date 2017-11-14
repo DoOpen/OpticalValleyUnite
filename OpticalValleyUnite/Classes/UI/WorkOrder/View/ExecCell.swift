@@ -21,35 +21,47 @@ class ExecCell: UITableViewCell {
     
     var model: ExecChild?{
         didSet{
+            
             titleLabel.text = model?.name
             
-           
-               
-
-                
                 if model?.type == "1"{
+                    
                     addPhotoView.isHidden = false
                     textView.isHidden = true
                     addPhotoView.addButton.isEnabled = true
+                    
+                    //注意的是:这里的图片进行的复用的bug
                     if let url = model?.imageValue,url != ""{
-                        let basicPath = URLPath.basicPath
-                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                        //图片的缓存处理的逻辑
+                        var imageValue = ""
+                        
+                        if url.contains("http"){
+                            
+                            imageValue = url
+                            
+                        }else{
+                            
+                            let basicPath = URLPath.basicPath
+                            imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                        }
                         
                         addPhotoView.addButton.kf.setBackgroundImage(with: URL(string: imageValue), for: .normal)
+                        
                     }else{
                         addPhotoView.addButton.setBackgroundImage(UIImage(named:"btn_addphoto"), for: .normal)
                     }
                     
                     
                 }else if model?.type == "2" || model?.type == "4" {
+                    
                     addPhotoView.isHidden = true
                     textView.isHidden = false
                     
-           
-                        textView.keyboardType = .default
+                    textView.keyboardType = .default
                     
 //                    textView.isEditable = false
                     textView.text = model?.value ?? ""
+                    
                 }
                 
 //            }else{

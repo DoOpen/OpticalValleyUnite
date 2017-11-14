@@ -574,12 +574,16 @@ class ExecutingViewConttroller: UIViewController {
 extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return models.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         let model = models[section]
+        
         if model.isOpen{
+            
             return model.childs.count
         }
         return 0
@@ -604,8 +608,11 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             if isToSee{
                 cell.isUserInteractionEnabled = false
             }
+            
             return cell
+            
         }else{
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ExecCell
             
             
@@ -617,12 +624,12 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             return cell
         }
         
-
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 64
     }
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -634,6 +641,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
         view.titleLabel.text = "任务\(section + 1): " + model.name
         
         if model.isOpen{
+            
             view.iconBtn.transform =  CGAffineTransform(rotationAngle: CGFloat.pi / 2 )
             view.openBtn.setTitle("收起", for: .normal)
             self.hideTableViewHeightConstraint.constant = 300
@@ -645,7 +653,6 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             view.openBtn.setTitle("展开", for: .normal)
             self.hideTableViewHeightConstraint.constant = 80
             
-           
         }
         
 //        self.view.setNeedsDisplay()

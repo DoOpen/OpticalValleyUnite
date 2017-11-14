@@ -193,4 +193,17 @@ struct URLPath {
     //日志工单
     static let getWorkunitList2 = "workunit/workunitList2.do"
     
+    
+    // MARK: - 计步器的功能接口
+    //保存数据
+    static let getSavePedometerData = "pedometer/save"
+    //排行榜
+    static let getRankPedometer = "pedometer/rank"
+    //我的步数
+    static let getMinePedometer = "pedometer/mysteps"
+    //我的历史步数
+    static let getHistorysteps = "pedometer/historysteps"
+    
+    
+    
 }

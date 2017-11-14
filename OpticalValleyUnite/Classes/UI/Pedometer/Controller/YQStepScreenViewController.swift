@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YQStepScreenViewController: UIViewController {
     
@@ -54,6 +55,31 @@ class YQStepScreenViewController: UIViewController {
         }
     }
     
+    // MARK: - 获取list的数据,整体的列表的数据刷新
+    func getRankForAllData(currentIndex : Int , date : String, dic : [String : Any]){
+        
+        var parmat = [String: Any]()
+        
+        parmat["pagesize"] = 10
+        parmat["pageno"] = currentIndex
+        
+        parmat["date"] = date
+        
+        for (key,value) in dic{
+            parmat[key] = value
+        }
+        
+        HttpClient.instance.post(path: URLPath.getRankPedometer, parameters: parmat, success: { (respose) in
+            //字典转模型,读取相应的数据
+            
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: error.description)
+            
+        }
+
     
+    }
     
 }

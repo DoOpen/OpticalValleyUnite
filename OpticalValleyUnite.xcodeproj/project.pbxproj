@@ -79,6 +79,7 @@
 		2F7550FF1FA7313200A5E242 /* YQWorkRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */; };
 		2F7E0AA51FB5956000344D4E /* YQPedometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E0AA41FB5956000344D4E /* YQPedometerViewController.swift */; };
 		2F7E0AA71FB595BF00344D4E /* YQPedometerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E0AA61FB595BF00344D4E /* YQPedometerVC.storyboard */; };
+		2F92B2601FBB03D500168FC6 /* YQStepShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92B25F1FBB03D500168FC6 /* YQStepShowModel.swift */; };
 		2F94A27F1F73A5C500455162 /* YQFireMapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */; };
 		2F94A2811F73A5F500455162 /* YQFireMapDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */; };
 		2F94A2831F73B46B00455162 /* YQImplementFeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A2821F73B46B00455162 /* YQImplementFeedbackVC.swift */; };
@@ -343,6 +344,7 @@
 		2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWorkRecord.xib; sourceTree = "<group>"; };
 		2F7E0AA41FB5956000344D4E /* YQPedometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPedometerViewController.swift; sourceTree = "<group>"; };
 		2F7E0AA61FB595BF00344D4E /* YQPedometerVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPedometerVC.storyboard; sourceTree = "<group>"; };
+		2F92B25F1FBB03D500168FC6 /* YQStepShowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStepShowModel.swift; sourceTree = "<group>"; };
 		2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireMapDetailViewController.swift; sourceTree = "<group>"; };
 		2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireMapDetail.storyboard; sourceTree = "<group>"; };
 		2F94A2821F73B46B00455162 /* YQImplementFeedbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQImplementFeedbackVC.swift; sourceTree = "<group>"; };
@@ -700,6 +702,7 @@
 		2F399F041FB4571700AA3BEC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2F92B25F1FBB03D500168FC6 /* YQStepShowModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1752,6 +1755,7 @@
 				4B50D62F1EBB1B3900BB480F /* AllViewController.swift in Sources */,
 				4B8A9FD01E2C7C440009F757 /* AppraisalViewController.swift in Sources */,
 				2FC167471F905F34001CEACD /* YQJournalDetailViewController.swift in Sources */,
+				2F92B2601FBB03D500168FC6 /* YQStepShowModel.swift in Sources */,
 				2F0223BA1FA9C2030090822F /* YQWorkOrderCompleteVC.swift in Sources */,
 				2F73073A1FA85DFA0067BC4D /* YQWorkLogListModel.swift in Sources */,
 				4B6E64FA1EEAEFCF00BA23E4 /* PhotoBrowser.swift in Sources */,

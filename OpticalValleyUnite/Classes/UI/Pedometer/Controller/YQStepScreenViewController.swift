@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import MJRefresh
 
 class YQStepScreenViewController: UIViewController {
     
@@ -20,12 +21,16 @@ class YQStepScreenViewController: UIViewController {
     
     @IBOutlet weak var buttonView: UIView!
     
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         //1.默认选择第一个button
         self.selectButtonClicked(groupButton)
-
+        
+        //2.添加上拉下拉刷新
+        addRefirsh()
     
     }
     
@@ -78,8 +83,25 @@ class YQStepScreenViewController: UIViewController {
             SVProgressHUD.showError(withStatus: error.description)
             
         }
-
-    
+        
     }
+    
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+//            self.getWorklogDataList()
+            
+        })
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+//            self.getWorklogDataList(indexPage: self.pageNo + 1)
+        })
+        
+        
+    }
+
     
 }

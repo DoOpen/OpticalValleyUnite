@@ -102,6 +102,7 @@
                         <outlet property="department" destination="2nU-NH-5Sl" id="oCG-gp-Ek0"/>
                         <outlet property="groupButton" destination="Zb3-rw-9e0" id="VPw-dE-gOz"/>
                         <outlet property="projectButton" destination="9Q5-cb-T4Y" id="r0E-80-wri"/>
+                        <outlet property="tableView" destination="2aY-w3-0Hh" id="GEB-TM-glN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUw-I0-xNR" userLabel="First Responder" sceneMemberID="firstResponder"/>

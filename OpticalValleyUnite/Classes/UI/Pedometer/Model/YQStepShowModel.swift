@@ -10,13 +10,20 @@ import UIKit
 
 class YQStepShowModel: NSObject {
     
+    //姓名
     var name : String = ""
-    
+    //部门
     var department : String = ""
-    
-    var steps : String = ""
-    
-    var rankno : String = ""
+    //步数
+    var steps : Int = -1
+    //排名
+    var rankno : Int = -1
+    //头像
+    var avatar : String = ""
+    //项目
+    var project : String = ""
+    //职位
+    var position : String = ""
     
     
     init(dict : [String : Any]){

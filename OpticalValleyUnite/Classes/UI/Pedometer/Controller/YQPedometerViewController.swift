@@ -29,11 +29,11 @@ class YQPedometerViewController: UIViewController {
     @IBOutlet weak var departmentRankingButton: UIButton!
     
     //设置注册 计步设备的
-    lazy var counter = {() -> CMStepCounter
+    lazy var counter = {() -> CMPedometer
         
         in
         
-        return CMStepCounter()
+        return CMPedometer()
     }()
 
     
@@ -64,25 +64,78 @@ class YQPedometerViewController: UIViewController {
     // MARK: - 计步功能的模块实现
     func stepFunctionDidStart() {
         
-        if !CMStepCounter.isStepCountingAvailable() {
+        //获取昨天 和 前天的时间数据
+//        let date = NSDate()
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        
+//        var dateString = formatter.string(from: date as Date)
+//        
+////        let index =  dateString.index( (dateString.startIndex)!, offsetBy: 10)
+////        dateString.remove(at: dateString.index(after: 8))
+//
+////        let replaceRangeAll = dateString.index(after: " ")...dateString.index(before:dateString.endIndex)
+////
+////        dateString.replaceSubrange(replaceRangeAll, with: "08:00:00")
+//        
+//        let dateNow = formatter.date(from: dateString)
+//        
+//        //            let yesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
+//        let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: dateNow!)
+        
+        
+    
+        if !CMPedometer.isStepCountingAvailable() {
             
             self.alert(message: "设备不可用! 支持5s及以上的机型")
             
         }else{
             
             //计步器的对象 就是在这个主队列中进行更新完成的
-            self.counter.startStepCountingUpdates(to: OperationQueue.main, updateOn: 5, withHandler: { (Steps, timestamp, Error) in
+//            self.counter.startStepCountingUpdates(to: OperationQueue.main, updateOn: 5, withHandler: { (Steps, timestamp, Error) in
+//                
+//                if (Error != nil) {
+//                    
+//                    return
+//                }
+//                
+//                print("实际走的数量的情况" + "\(Steps)")
+//                
+//                self.testLabel.text = "测试显示的步数" + "\(Steps)"
+//                
+//            })
+            
+            //获取昨天 和 前天的时间数据
+            let date = NSDate()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            let dateString = formatter.string(from: date as Date)
+            
+            _ = formatter.date(from: dateString)
+            
+//            let yesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
+            let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
+            
+//            print(yesterday)
+//            print(byesterday)
+            
+            //直接应用的是 CMPedometer 获取系统的健康的应用
+            self.counter.queryPedometerData(from: byesterday as Date, to: date as Date , withHandler: { (pedometerData, error) in
                 
-                if (Error != nil) {
+                let num = pedometerData?.numberOfSteps ?? 0
+                let distance = pedometerData?.distance ?? 0
+                
+                DispatchQueue.main.async {
                     
-                    return
+                    self.testLabel.text = "测试显示的步数" + "\(num)"
                 }
                 
-                print("实际走的数量的情况" + "\(Steps)")
                 
-                self.testLabel.text = "测试显示的步数" + "\(Steps)"
+                print("运动的距离是" + "\(distance)")
                 
             })
+            
         }
     }
 

@@ -34,18 +34,18 @@ class LoginViewController: UIViewController {
         return CMPedometer()
     }()
     
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        self.stepFunctionDidStart()
+        
     }
     
 
     // MARK: - 登录界面的按钮的点击
     @IBAction func loginBtnClick() {
         
-        //计步器的数据存储
         stepFunctionDidStart()
         
         let user = userNameTextField.text
@@ -162,6 +162,7 @@ class LoginViewController: UIViewController {
             
             self.alert(message: "设备不可用! 支持5s及以上的机型")
             
+            
         }else{
             
             //获取昨天 和 前天的时间数据
@@ -182,15 +183,20 @@ class LoginViewController: UIViewController {
                 let num = pedometerData?.numberOfSteps ?? 0
 //                let distance = pedometerData?.distance ?? 0
                 //上传前一天的步数
-                var parameter = [String : Any]()
-                parameter["date"] = formatter.string(from: byesterday as Date)
-                parameter["steps"] = num
-                
-                HttpClient.instance.post(path: URLPath.getSavePedometerData, parameters: parameter, success: { (respose) in
+            
+                DispatchQueue.main.async {
                     
-                }, failure: { (error) in
+                    var parameter = [String : Any]()
+                    parameter["date"] = formatter.string(from: byesterday as Date)
+                    parameter["steps"] = num
                     
-                })
+                    HttpClient.instance.post(path: URLPath.getSavePedometerData, parameters: parameter, success: { (respose) in
+                        
+                        
+                    }, failure: { (error) in
+                        
+                    })
+                }
                 
             })
         }

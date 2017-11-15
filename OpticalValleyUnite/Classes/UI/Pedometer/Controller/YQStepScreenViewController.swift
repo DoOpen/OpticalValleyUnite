@@ -23,11 +23,53 @@ class YQStepScreenViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    
+    var cellID = "stepsCell"
+    var currentIndex  = 0
+    var type = -1
+    
+    lazy var yesterday : String = { () -> String
+        in
+        
+        let date = NSDate()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
+        
+        let yes = formatter.string(from: byesterday as Date)
+
+        return yes
+        
+    }()
+    
+    
+    var rankData = [YQStepShowModel](){
+        
+        didSet{
+        
+            self.tableView.reloadData()
+        }
+        
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         //1.默认选择第一个button
-        self.selectButtonClicked(groupButton)
+        switch type {
+        case 2:
+            self.selectButtonClicked(projectButton)
+           
+        case 3:
+            self.selectButtonClicked(department)
+            
+        default:
+            
+            break
+        }
         
         //2.添加上拉下拉刷新
         addRefirsh()
@@ -37,9 +79,9 @@ class YQStepScreenViewController: UIViewController {
     
     @IBAction func selectButtonClicked(_ sender: UIButton) {
         
-        let tag = sender.tag
+        type = sender.tag
         
-        allButtonHideAndShow(selectTag: tag)
+        allButtonHideAndShow(selectTag: type)
     }
     
     
@@ -58,14 +100,20 @@ class YQStepScreenViewController: UIViewController {
             
             }
         }
+        
+        var par = [String : Any]()
+        par["type"] = selectTag
+        
+        getRankForAllData( date: yesterday, dic: par)
+        
     }
     
     // MARK: - 获取list的数据,整体的列表的数据刷新
-    func getRankForAllData(currentIndex : Int , date : String, dic : [String : Any]){
+    func getRankForAllData(indexPage : Int = 0 , date : String = "", dic : [String : Any]  = [String: Any]()){
         
         var parmat = [String: Any]()
         
-        parmat["pagesize"] = 10
+        parmat["pagesize"] = 20
         parmat["pageno"] = currentIndex
         
         parmat["date"] = date
@@ -74,13 +122,50 @@ class YQStepScreenViewController: UIViewController {
             parmat[key] = value
         }
         
+        SVProgressHUD.show(withStatus: "加载中...")
+        
         HttpClient.instance.post(path: URLPath.getRankPedometer, parameters: parmat, success: { (respose) in
+            
+            SVProgressHUD.dismiss()
+            
             //字典转模型,读取相应的数据
+            var temp = [YQStepShowModel]()
+            
+            for dic in respose as! NSArray {
+                
+                temp.append(YQStepShowModel.init(dict: dic as! [String : Any]))
+                
+            }
+            
+            if indexPage == 0{
+                
+                self.currentIndex = 0
+                self.rankData = temp
+                
+                self.tableView.mj_header.endRefreshing()
+                
+            }else{
+                
+                if temp.count > 0{
+                    self.currentIndex = indexPage + 1
+                    
+                    self.rankData.append(contentsOf: temp)
+                    self.tableView.mj_footer.endRefreshing()
+                    
+                }else{
+                    
+                    self.tableView.mj_footer.endRefreshing()
+                }
+            }
             
             
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: error.description)
+            
+            self.tableView.mj_header.endRefreshing()
+
+            self.tableView.mj_footer.endRefreshing()
             
         }
         
@@ -91,17 +176,50 @@ class YQStepScreenViewController: UIViewController {
         
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             
-//            self.getWorklogDataList()
+            var par = [String : Any]()
+            par["type"] = self.type
+            par["date"] = self.yesterday
+            
+            self.getRankForAllData(dic : par)
             
         })
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
-//            self.getWorklogDataList(indexPage: self.pageNo + 1)
+            var par = [String : Any]()
+            par["type"] = self.type
+            par["date"] = self.yesterday
+
+            self.getRankForAllData(indexPage: self.currentIndex + 1,dic : par)
         })
-        
-        
+    
     }
 
     
+}
+
+extension YQStepScreenViewController : UITableViewDataSource,UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.rankData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? YQStepStatisticsView
+        if cell == nil {
+            
+            cell = Bundle.main.loadNibNamed("YQStepStatistics", owner: nil, options: nil)?[0] as? YQStepStatisticsView
+            
+        }
+        
+        cell?.backgroundColor =  UIColor.clear
+        cell?.type = self.type
+        
+        cell?.model = self.rankData[indexPath.row]
+        
+        return cell!
+    }
+
 }

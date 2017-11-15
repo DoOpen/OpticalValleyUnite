@@ -25,7 +25,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     var systemSelection : NSDictionary = {return NSDictionary() }()
     
     
-    
 /// 模型的数据解析model.swift中的类
     var datas = [SystemMessageModel]()
     
@@ -52,7 +51,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     var downPermissionModels = [PermissionModel]()
     
     
-/// tabelView的拖线的指针
+    /// tabelView的拖线的指针
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -283,7 +282,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
 
     func settopArry(topArry:[PermissionModel],donwArry: [PermissionModel]){
-        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"报事","日志":"日志"]
+        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"报事","日志":"日志","计步器":"step"]
         for (index,model) in topArry.enumerated(){
             
             if index >= 4{
@@ -410,6 +409,14 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
 //            navigationController?.pushViewController(journa, animated: true)
             self.present(journa, animated: true, completion: nil)
+            
+        case "计步器":
+            
+            let step = UIStoryboard.instantiateInitialViewController(name: "YQPedometerVC")
+            
+            //            navigationController?.pushViewController(journa, animated: true)
+            self.present(step, animated: true, completion: nil)
+
             
         default: break
             

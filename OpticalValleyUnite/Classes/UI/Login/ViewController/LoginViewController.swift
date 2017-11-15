@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import Alamofire
+import CoreMotion
 
 class LoginViewController: UIViewController {
 
@@ -24,14 +25,28 @@ class LoginViewController: UIViewController {
         
     }
     
+    ///计步器的功能模块属性
+    //设置注册 计步设备的
+    lazy var counter = { () -> CMPedometer
+        
+        in
+        
+        return CMPedometer()
+    }()
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        self.stepFunctionDidStart()
     }
+    
 
     // MARK: - 登录界面的按钮的点击
     @IBAction func loginBtnClick() {
+        
+        //计步器的数据存储
+        stepFunctionDidStart()
         
         let user = userNameTextField.text
         let password = passwordTextField.text
@@ -117,6 +132,69 @@ class LoginViewController: UIViewController {
         //忘记密码的功能接口的
         
     
+    }
+    
+    // MARK: - 计步功能的模块实现
+    func stepFunctionDidStart() {
+        
+        //获取昨天 和 前天的时间数据
+        //        let date = NSDate()
+        //        let formatter = DateFormatter()
+        //        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        //
+        //        var dateString = formatter.string(from: date as Date)
+        //
+        ////        let index =  dateString.index( (dateString.startIndex)!, offsetBy: 10)
+        ////        dateString.remove(at: dateString.index(after: 8))
+        //
+        ////        let replaceRangeAll = dateString.index(after: " ")...dateString.index(before:dateString.endIndex)
+        ////
+        ////        dateString.replaceSubrange(replaceRangeAll, with: "08:00:00")
+        //
+        //        let dateNow = formatter.date(from: dateString)
+        //
+        //        //            let yesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
+        //        let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: dateNow!)
+        
+        
+        
+        if !CMPedometer.isStepCountingAvailable() {
+            
+            self.alert(message: "设备不可用! 支持5s及以上的机型")
+            
+        }else{
+            
+            //获取昨天 和 前天的时间数据
+            let date = NSDate()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            
+            let dateString = formatter.string(from: date as Date)
+            
+            _ = formatter.date(from: dateString)
+            
+            //            let yesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
+            let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
+            
+            //直接应用的是 CMPedometer 获取系统的健康的应用
+            self.counter.queryPedometerData(from: byesterday as Date, to: date as Date , withHandler: { (pedometerData, error) in
+                
+                let num = pedometerData?.numberOfSteps ?? 0
+//                let distance = pedometerData?.distance ?? 0
+                //上传前一天的步数
+                var parameter = [String : Any]()
+                parameter["date"] = formatter.string(from: byesterday as Date)
+                parameter["steps"] = num
+                
+                HttpClient.instance.post(path: URLPath.getSavePedometerData, parameters: parameter, success: { (respose) in
+                    
+                }, failure: { (error) in
+                    
+                })
+                
+            })
+        }
+        
     }
   
     

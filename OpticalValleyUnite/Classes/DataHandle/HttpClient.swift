@@ -59,16 +59,25 @@ extension HttpClient {
                     }
                     
                     
-                    guard value["CODE"] as! String == "0" else{
-                        let message = (value["MSG"] as? String) ?? ""
-                        let status = Int(value["CODE"] as! String) ?? 1111
-                        SVProgressHUD.showError(withStatus: message)
-                        failure(NSError(domain: message, code: status, userInfo: nil))
+                    guard value["CODE"] as? String == "0" else{
+                        
+                        if value["CODE"] != nil {
+                            
+                            let message = (value["MSG"] as? String) ?? ""
+                            let status = Int(value["CODE"] as! String) ?? 1111
+                            SVProgressHUD.showError(withStatus: message)
+                            failure(NSError(domain: message, code: status, userInfo: nil))
+                            
+                        }
+                        
                         return
                     }
+                    
                     success(value["data"]  as AnyObject)
+                    
                     break
                 }
+                
                 break
             case .failure(let error):
                 failure(error as NSError)

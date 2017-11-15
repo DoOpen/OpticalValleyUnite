@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import CoreMotion
+import MJRefresh
 
 class YQPedometerViewController: UIViewController {
     
@@ -28,13 +29,42 @@ class YQPedometerViewController: UIViewController {
     
     @IBOutlet weak var departmentRankingButton: UIButton!
     
-    //设置注册 计步设备的
-    lazy var counter = {() -> CMPedometer
+    var cellID = "stepsCell"
+    var currentIndex  = 0
+    var type = 1
+    
+    /// rank模型的数据
+    var rankData = [YQStepShowModel](){
         
+        didSet{
+            
+            self.tableView.reloadData()
+        }
+    
+    }
+    
+    //设置注册 计步设备的
+//    lazy var counter = { () -> CMPedometer
+//        
+//        in
+//        
+//        return CMPedometer()
+//    }()
+    
+    lazy var yesterday : String = { () -> String
         in
         
-        return CMPedometer()
+        let date = NSDate()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
+        
+        let yes = formatter.string(from: byesterday as Date)
+        
+        return yes
+        
     }()
+
 
     
     override func viewDidLoad() {
@@ -52,12 +82,23 @@ class YQPedometerViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = leftBar
         
-        //2.添加开启计步器
-        self.stepFunctionDidStart()
+        //2.获取计步的数据内容(登录界面进行的存取 计步器的内容,拿去数据)
+        getStepDataForService()
         
-        //3.获取计步的数据内容
+        stepFunctionDidStart()
         
+        //3.添加刷新的情况
+        addRefirsh()
         
+    }
+    
+    // MARK: - 项目,部门排序详情界面的跳转
+    @IBAction func rankDetailJumpClick(_ sender: UIButton) {
+        
+        let rankDetail = UIStoryboard.instantiateInitialViewController(name: "YQStepScreen") as? YQStepScreenViewController
+        rankDetail?.type = sender.tag
+        
+        navigationController?.pushViewController(rankDetail!, animated: true)
     }
     
     
@@ -89,67 +130,79 @@ class YQPedometerViewController: UIViewController {
             
             self.alert(message: "设备不可用! 支持5s及以上的机型")
             
-        }else{
-            
-            //计步器的对象 就是在这个主队列中进行更新完成的
-//            self.counter.startStepCountingUpdates(to: OperationQueue.main, updateOn: 5, withHandler: { (Steps, timestamp, Error) in
+        }
+        
+        
+//        else{
+//            
+//            //计步器的对象 就是在这个主队列中进行更新完成的
+////            self.counter.startStepCountingUpdates(to: OperationQueue.main, updateOn: 5, withHandler: { (Steps, timestamp, Error) in
+////                
+////                if (Error != nil) {
+////                    
+////                    return
+////                }
+////                
+////                print("实际走的数量的情况" + "\(Steps)")
+////                
+////                self.testLabel.text = "测试显示的步数" + "\(Steps)"
+////                
+////            })
+//            
+//            //获取昨天 和 前天的时间数据
+//            let date = NSDate()
+//            let formatter = DateFormatter()
+//            formatter.dateFormat = "yyyy-MM-dd"
+//            
+//            let dateString = formatter.string(from: date as Date)
+//            
+//            _ = formatter.date(from: dateString)
+//            
+////            let yesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
+//            let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
+//            
+////            print(yesterday)
+////            print(byesterday)
+//            
+//            //直接应用的是 CMPedometer 获取系统的健康的应用
+//            self.counter.queryPedometerData(from: byesterday as Date, to: date as Date , withHandler: { (pedometerData, error) in
 //                
-//                if (Error != nil) {
+//                let num = pedometerData?.numberOfSteps ?? 0
+//                let distance = pedometerData?.distance ?? 0
+//                
+//                DispatchQueue.main.async {
 //                    
-//                    return
+//                    self.testLabel.text = "测试显示的步数" + "\(num)"
 //                }
 //                
-//                print("实际走的数量的情况" + "\(Steps)")
 //                
-//                self.testLabel.text = "测试显示的步数" + "\(Steps)"
+//                print("运动的距离是" + "\(distance)")
 //                
 //            })
-            
-            //获取昨天 和 前天的时间数据
-            let date = NSDate()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            
-            let dateString = formatter.string(from: date as Date)
-            
-            _ = formatter.date(from: dateString)
-            
-//            let yesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
-            let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
-            
-//            print(yesterday)
-//            print(byesterday)
-            
-            //直接应用的是 CMPedometer 获取系统的健康的应用
-            self.counter.queryPedometerData(from: byesterday as Date, to: date as Date , withHandler: { (pedometerData, error) in
-                
-                let num = pedometerData?.numberOfSteps ?? 0
-                let distance = pedometerData?.distance ?? 0
-                
-                DispatchQueue.main.async {
-                    
-                    self.testLabel.text = "测试显示的步数" + "\(num)"
-                }
-                
-                
-                print("运动的距离是" + "\(distance)")
-                
-            })
-            
-        }
+//            
+//        }
+        
     }
+    
+    
 
     // MARK: - 获取运动的当前步数的方法
     func getStepDataForService(){
         
         //1.获取数据库的上一条的数据来进行的显示
-        
         var parameters = [String : Any]()
-        parameters["date"] = ""
+        parameters["date"] = yesterday
         
         HttpClient.instance.post(path: URLPath.getMinePedometer, parameters: parameters, success: { (reponse) in
             //读取数据,字典转模型
-            
+            DispatchQueue.main.async {
+                //设置项目排名
+                let project = "第" + "\(reponse["projectRankno"])"  + "名"
+                let depart = "第" + "\(reponse["departmentRankno"])" + "名"
+                self.projectRankingButton.setTitle(project, for: .normal)
+                self.departmentRankingButton.setTitle(depart, for: .normal)
+                self.stepLabel.text = "\(reponse["steps"])"
+            }
             
             
         }) { (error) in
@@ -158,6 +211,12 @@ class YQPedometerViewController: UIViewController {
 
         }
         
+        //获取list 这个项目版的数据的渲染
+        parameters["type"] = type //默认的显示的是集团版项目的筛选\
+        parameters["pagesize"] = 20
+        parameters["pageno"] = currentIndex
+        
+        getRankForAllData(dic: parameters)
         
     }
     
@@ -182,15 +241,86 @@ class YQPedometerViewController: UIViewController {
         
     }
     
+    // MARK: - 获取list的数据,整体的列表的数据刷新
+    func getRankForAllData(indexPage : Int = 0 , date : String = "", dic : [String : Any]  = [String: Any]()){
+        
+        var parmat = [String: Any]()
+        
+        parmat["pagesize"] = 20
+        parmat["pageno"] = currentIndex
+        
+        parmat["date"] = date
+        
+        for (key,value) in dic{
+            parmat[key] = value
+        }
+        
+        HttpClient.instance.post(path: URLPath.getRankPedometer, parameters: parmat, success: { (respose) in
+            //字典转模型,读取相应的数据
+            var temp = [YQStepShowModel]()
+            
+            for dic in respose as! NSArray {
+                
+                temp.append(YQStepShowModel.init(dict: dic as! [String : Any]))
+            
+            }
+            
+            if indexPage == 0{
+                
+                self.currentIndex = 0
+                self.rankData = temp
+                self.tableView.mj_header.endRefreshing()
+                
+            }else{
+                
+                if temp.count > 0{
+                    self.currentIndex = indexPage + 1
+                    
+                    self.rankData.append(contentsOf: temp)
+                    self.tableView.mj_footer.endRefreshing()
+                    
+                }else{
+
+                    self.tableView.mj_footer.endRefreshing()
+                }
+            }
+
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: error.description)
+            
+            self.tableView.mj_footer.endRefreshing()
+
+        }
+        
+    }
+
+    
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+            var par = [String : Any]()
+            par["type"] = self.type
+            par["date"] = self.yesterday
+
+            
+            self.getRankForAllData(indexPage: self.currentIndex + 1)
+        })
+        
+    }
+
     
 
 }
+
 
 extension YQPedometerViewController : UITableViewDelegate,UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return self.rankData.count 
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -202,15 +332,25 @@ extension YQPedometerViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return 44
+        return 50
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
-        cell.backgroundColor =  UIColor.clear
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? YQStepStatisticsView
+        if cell == nil {
+            
+            cell = Bundle.main.loadNibNamed("YQStepStatistics", owner: nil, options: nil)?[0] as? YQStepStatisticsView
+            
+        }
         
-        return cell
+        cell?.backgroundColor =  UIColor.clear
+        
+        cell?.type = self.type
+        cell?.model = self.rankData[indexPath.row]
+        
+        
+        return cell!
     }
     
     

@@ -37,9 +37,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fa0-HG-ivD">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4back" translatesAutoresizingMaskIntoConstraints="NO" id="fa0-HG-ivD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.6044335461" green="0.88395986120000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Op-ly-kcj">
                                 <rect key="frame" x="0.0" y="364" width="375" height="303"/>
@@ -52,8 +51,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cv4-FQ-OF4">
                                 <rect key="frame" x="0.0" y="64" width="375" height="300"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="测试的显示步数: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCy-ow-dsM">
-                                        <rect key="frame" x="122" y="144.5" width="131" height="21"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feidu" translatesAutoresizingMaskIntoConstraints="NO" id="fMM-oI-Zf5">
+                                        <rect key="frame" x="87" y="50" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="msu-tc-eQe"/>
+                                            <constraint firstAttribute="width" constant="200" id="nCQ-pD-MsA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日步数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCy-ow-dsM">
+                                        <rect key="frame" x="153" y="144.5" width="69.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -67,19 +73,25 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afI-4t-XNC">
                                         <rect key="frame" x="0.0" y="250" width="375" height="45"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-Kf-xUU">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-Kf-xUU">
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="第x名">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="rankDetailJumpClick:" destination="D6u-bk-GSU" eventType="touchUpInside" id="VYx-bq-UNc"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaC-rd-whP">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaC-rd-whP">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="第x名">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="rankDetailJumpClick:" destination="D6u-bk-GSU" eventType="touchUpInside" id="fEt-4Q-4y6"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l5I-7u-yzp">
                                                 <rect key="frame" x="187" y="5" width="1" height="35"/>
@@ -125,8 +137,10 @@
                                     <constraint firstItem="vCy-ow-dsM" firstAttribute="top" secondItem="ccf-OU-N7l" secondAttribute="bottom" constant="5" id="1Ur-1R-D4J"/>
                                     <constraint firstAttribute="height" constant="300" id="3jj-M3-0em"/>
                                     <constraint firstItem="vCy-ow-dsM" firstAttribute="centerX" secondItem="Cv4-FQ-OF4" secondAttribute="centerX" id="AY5-1z-Cjt"/>
+                                    <constraint firstItem="fMM-oI-Zf5" firstAttribute="centerX" secondItem="Cv4-FQ-OF4" secondAttribute="centerX" id="GA2-3t-QUW"/>
                                     <constraint firstItem="vCy-ow-dsM" firstAttribute="centerY" secondItem="Cv4-FQ-OF4" secondAttribute="centerY" constant="5" id="Ubn-bg-PcU"/>
                                     <constraint firstItem="afI-4t-XNC" firstAttribute="leading" secondItem="Cv4-FQ-OF4" secondAttribute="leading" id="YST-SR-56d"/>
+                                    <constraint firstItem="fMM-oI-Zf5" firstAttribute="centerY" secondItem="Cv4-FQ-OF4" secondAttribute="centerY" id="d8F-9U-1tb"/>
                                     <constraint firstAttribute="trailing" secondItem="afI-4t-XNC" secondAttribute="trailing" id="k63-qY-ZgV"/>
                                     <constraint firstAttribute="bottom" secondItem="afI-4t-XNC" secondAttribute="bottom" constant="5" id="oPd-rN-qKK"/>
                                     <constraint firstItem="ccf-OU-N7l" firstAttribute="centerX" secondItem="Cv4-FQ-OF4" secondAttribute="centerX" id="s0k-Q9-HLU"/>
@@ -164,4 +178,8 @@
             <point key="canvasLocation" x="-759.20000000000005" y="135.38230884557723"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="4back" width="375" height="667"/>
+        <image name="feidu" width="245" height="245"/>
+    </resources>
 </document>

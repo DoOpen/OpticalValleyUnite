@@ -221,12 +221,12 @@ class YQSystemSelectionVC: UIViewController {
         if tap.tapIndex >= dataArray.count {
             
             //最后一个是显示的图标
-//            return
+            return
             
-            //调试计步的功能
-            let step = UIStoryboard.instantiateInitialViewController(name: "YQPedometerVC")
-            
-            SJKeyWindow?.rootViewController = step
+//          调试计步的功能
+//            let step = UIStoryboard.instantiateInitialViewController(name: "YQPedometerVC")
+//            
+//            SJKeyWindow?.rootViewController = step
             
             
         }else if tap.tapIndex == fireindex {

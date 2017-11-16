@@ -160,7 +160,8 @@ class LoginViewController: UIViewController {
         
         if !CMPedometer.isStepCountingAvailable() {
             
-            self.alert(message: "设备不可用! 支持5s及以上的机型")
+            //设备不可用的情况下是在登录界面,不需要提示的
+//            self.alert(message: "设备不可用! 支持5s及以上的机型")
             
             
         }else{

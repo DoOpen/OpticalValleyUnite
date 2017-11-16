@@ -31,7 +31,7 @@ class AllViewController: UIViewController {
         }
         
         let count = [models.count, 12].min()!
-        let imageDic = ["报事": "baoshi2","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"baoshi2","日志":"日志"]
+        let imageDic = ["报事": "baoshi2","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"baoshi2","日志":"日志","计步器":"step"]
         for index in 0..<count{
             
             let imageName = imageDic[models[index].aPPMODULENAME] ?? ""
@@ -88,6 +88,12 @@ class AllViewController: UIViewController {
             
             self.present(journa, animated: true, completion: nil)
             
+        case "计步器":
+            
+            let step = UIStoryboard.instantiateInitialViewController(name: "YQPedometerVC")
+            
+            self.present(step, animated: true, completion: nil)
+
         default: break
             
         }

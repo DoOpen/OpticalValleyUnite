@@ -9,7 +9,8 @@
 import UIKit
 import SVProgressHUD
 import Alamofire
-import CoreMotion
+
+
 
 class LoginViewController: UIViewController {
 
@@ -25,16 +26,9 @@ class LoginViewController: UIViewController {
         
     }
     
-    ///计步器的功能模块属性
-    //设置注册 计步设备的
-    lazy var counter = { () -> CMPedometer
-        
-        in
-        
-        return CMPedometer()
-    }()
     
-    
+        
+    // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -45,8 +39,6 @@ class LoginViewController: UIViewController {
 
     // MARK: - 登录界面的按钮的点击
     @IBAction func loginBtnClick() {
-        
-        stepFunctionDidStart()
         
         let user = userNameTextField.text
         let password = passwordTextField.text
@@ -131,80 +123,10 @@ class LoginViewController: UIViewController {
     @IBAction func forgotPasswordBtnClick(_ sender: Any) {
         //忘记密码的功能接口的
         
-    
     }
     
-    // MARK: - 计步功能的模块实现
-    func stepFunctionDidStart() {
-        
-        //获取昨天 和 前天的时间数据
-        //        let date = NSDate()
-        //        let formatter = DateFormatter()
-        //        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        //
-        //        var dateString = formatter.string(from: date as Date)
-        //
-        ////        let index =  dateString.index( (dateString.startIndex)!, offsetBy: 10)
-        ////        dateString.remove(at: dateString.index(after: 8))
-        //
-        ////        let replaceRangeAll = dateString.index(after: " ")...dateString.index(before:dateString.endIndex)
-        ////
-        ////        dateString.replaceSubrange(replaceRangeAll, with: "08:00:00")
-        //
-        //        let dateNow = formatter.date(from: dateString)
-        //
-        //        //            let yesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
-        //        let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: dateNow!)
-        
-        
-        
-        if !CMPedometer.isStepCountingAvailable() {
-            
-            //设备不可用的情况下是在登录界面,不需要提示的
-//            self.alert(message: "设备不可用! 支持5s及以上的机型")
-            
-            
-        }else{
-            
-            //获取昨天 和 前天的时间数据
-            let date = NSDate()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
-            
-            let dateString = formatter.string(from: date as Date)
-            
-            _ = formatter.date(from: dateString)
-            
-            //            let yesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
-            let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
-            
-            //直接应用的是 CMPedometer 获取系统的健康的应用
-            self.counter.queryPedometerData(from: byesterday as Date, to: date as Date , withHandler: { (pedometerData, error) in
-                
-                let num = pedometerData?.numberOfSteps ?? 0
-//                let distance = pedometerData?.distance ?? 0
-                //上传前一天的步数
-            
-                DispatchQueue.main.async {
-                    
-                    var parameter = [String : Any]()
-                    parameter["date"] = formatter.string(from: byesterday as Date)
-                    parameter["steps"] = num
-                    
-                    HttpClient.instance.post(path: URLPath.getSavePedometerData, parameters: parameter, success: { (respose) in
-                        
-                        
-                    }, failure: { (error) in
-                        
-                    })
-                }
-                
-            })
-        }
-        
-    }
-  
     
+
     private func getDate(){
         
         HttpClient.instance.get(path: URLPath.getPersonInfo, parameters: nil, success: { (response) in
@@ -226,8 +148,7 @@ class LoginViewController: UIViewController {
     // MARK: - 跳转到子界面选择的
     func pushToSystemSelectionVC(){
         //添加整体的逻辑处理(重复调用一下接口,如果是有值的话替换 缓存)
-        
-        
+    
         if  self.systemDataArray.count == 0{
             //显示登录失败
             SVProgressHUD.showError(withStatus: "登录失败,请检查!")
@@ -261,16 +182,14 @@ class LoginViewController: UIViewController {
         let journa = UIStoryboard.instantiateInitialViewController(name: "YQJournal")
         
         SJKeyWindow!.rootViewController = journa
-
-    
+        
     }
     
-
+    
     // MARK: - 子系统的选择的接口调用
     func systemSelectionNetworkInterface(){
         
         var parameters = [String : Any]()
-        
         
         let token = UserDefaults.standard.object(forKey: Const.SJToken)
         parameters["token"] = token
@@ -315,10 +234,14 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
 
+
+    // MARK: - 免登陆的界面的情况
     class func chooseRootViewController(){
         
         if  ((UserDefaults.standard.value(forKey: Const.SJToken) as? String) != nil){
+            
             
             let tabVc = UITabBarController()
             let vc1 = UIStoryboard.instantiateInitialViewController(name: "Home")

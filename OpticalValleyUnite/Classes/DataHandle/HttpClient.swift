@@ -58,7 +58,6 @@ extension HttpClient {
                         return
                     }
                     
-                    
                     guard value["CODE"] as? String == "0" else{
                         
                         if value["CODE"] != nil {

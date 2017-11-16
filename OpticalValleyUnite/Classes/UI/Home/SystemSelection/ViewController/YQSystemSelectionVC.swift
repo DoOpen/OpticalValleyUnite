@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import KYDrawerController
-
+import CoreMotion
 
 
 class YQSystemSelectionVC: UIViewController {
@@ -32,10 +32,23 @@ class YQSystemSelectionVC: UIViewController {
     ///保存消防的index
     var fireindex : Int = -1
     
+    ///计步器的功能模块属性
+    //设置注册 计步设备的
+    lazy var counter = { () -> CMPedometer
+        
+        in
+        
+        return CMPedometer()
+    }()
+
+    
     
     var dataArray:NSArray = { return NSArray() }(){
         
         didSet{
+            
+            //调用写入计步数据的接口
+            stepFunctionDidStart()
             
             if dataArray.count > 1 {//注意的是,这里的大于1的情况,就是默认的一张图片不会显示的直接登录
                 
@@ -210,6 +223,56 @@ class YQSystemSelectionVC: UIViewController {
                 break
             }
         }
+    }
+    
+    
+    // MARK: - 计步功能的模块实现
+    func stepFunctionDidStart() {
+        
+        if !CMPedometer.isStepCountingAvailable() {
+            
+            //设备不可用的情况下是在登录界面,不需要提示的
+            //            self.alert(message: "设备不可用! 支持5s及以上的机型")
+            return
+            
+        }else{
+        
+            //获取昨天 和 前天的时间数据
+            let date = NSDate()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+            let formatter1 = DateFormatter()
+            formatter1.dateFormat = "yyyy-MM-dd"
+            let temp = formatter1.string(from: date as Date)
+            let tempstring = temp.appending(" 00:00:00")
+        
+            let nowdate = formatter.date(from: tempstring)
+        
+            //直接应用的是 CMPedometer 获取系统的健康的应用
+            self.counter.queryPedometerData(from: nowdate!, to: date as Date , withHandler: { (pedometerData, error) in
+                
+                let num = pedometerData?.numberOfSteps ?? 0
+                //上传前一天的步数
+                
+                DispatchQueue.main.async {
+                    
+                    var parameter = [String : Any]()
+                    parameter["date"] = temp
+                    
+                    parameter["steps"] = num
+                    
+                    HttpClient.instance.post(path: URLPath.getSavePedometerData, parameters: parameter, success: { (respose) in
+                        
+                        
+                    }, failure: { (error) in
+                        
+                    })
+                }
+                
+            })
+        }
+        
     }
     
     

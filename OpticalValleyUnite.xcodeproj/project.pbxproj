@@ -17,6 +17,8 @@
 		2F0F877D1F56D23F0030A6DB /* YQPartsLibaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F877B1F56D23F0030A6DB /* YQPartsLibaryViewController.swift */; };
 		2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */; };
 		2F0F87811F56DFFE0030A6DB /* YQPartShowHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F877F1F56DFFE0030A6DB /* YQPartShowHeadView.swift */; };
+		2F2141961FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2141951FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift */; };
+		2F2141981FBD409A00EFFD36 /* YQPedometerHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2141971FBD409A00EFFD36 /* YQPedometerHistory.storyboard */; };
 		2F236B701F6FADF700F1B0DF /* YQPersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */; };
 		2F236B721F6FE40300F1B0DF /* YQfireMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */; };
 		2F236B741F6FEA1B00F1B0DF /* YQFireDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */; };
@@ -279,6 +281,8 @@
 		2F0F877B1F56D23F0030A6DB /* YQPartsLibaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartsLibaryViewController.swift; sourceTree = "<group>"; };
 		2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartHeadView.xib; sourceTree = "<group>"; };
 		2F0F877F1F56DFFE0030A6DB /* YQPartShowHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartShowHeadView.swift; sourceTree = "<group>"; };
+		2F2141951FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPedometerHistoryViewController.swift; sourceTree = "<group>"; };
+		2F2141971FBD409A00EFFD36 /* YQPedometerHistory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPedometerHistory.storyboard; sourceTree = "<group>"; };
 		2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPersonDetail.storyboard; sourceTree = "<group>"; };
 		2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQfireMessage.swift; sourceTree = "<group>"; };
 		2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireDetailCell.swift; sourceTree = "<group>"; };
@@ -695,6 +699,8 @@
 				2F7E0AA61FB595BF00344D4E /* YQPedometerVC.storyboard */,
 				2F40D98B1FB93A39007971D1 /* YQStepScreenViewController.swift */,
 				2F40D98D1FB93AEA007971D1 /* YQStepScreen.storyboard */,
+				2F2141951FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift */,
+				2F2141971FBD409A00EFFD36 /* YQPedometerHistory.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1450,6 +1456,7 @@
 				2F4A65921F9462FE00F4C72A /* YQWorkRecord.storyboard in Resources */,
 				4BD4B9611E2763D500AE2BC9 /* DateView.xib in Resources */,
 				2F5D276E1F998E0C0022F7D6 /* YQProjectSelectFooter.xib in Resources */,
+				2F2141981FBD409A00EFFD36 /* YQPedometerHistory.storyboard in Resources */,
 				4BF005271F03586900A5764B /* WorkOrderDetailsCell.xib in Resources */,
 				2FC167591F90B4BE001CEACD /* YQReseaseJournalFooter.xib in Resources */,
 				2F3B96091F6BCD0E0008AFEB /* YQJoinTotallHead.xib in Resources */,
@@ -1720,6 +1727,7 @@
 				2F648DAD1F57A2DC006D51D3 /* PartsModel.swift in Sources */,
 				4B1DEC5A1E31B646000917D2 /* SGAlertView.m in Sources */,
 				4B751BD11E5AF1DE00C0CEC0 /* PersonCell.swift in Sources */,
+				2F2141961FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift in Sources */,
 				4B3952031E29C89400E2642F /* SJPickerView.m in Sources */,
 				4BA520381E8F4C2100398F34 /* DubanCell.swift in Sources */,
 				4B19ACE41E7A3D26008A8166 /* User.swift in Sources */,

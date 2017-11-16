@@ -44,12 +44,13 @@ class YQPedometerViewController: UIViewController {
     }
     
     //设置注册 计步设备的
-//    lazy var counter = { () -> CMPedometer
-//        
-//        in
-//        
-//        return CMPedometer()
-//    }()
+    lazy var counter = { () -> CMPedometer
+        
+        in
+        
+        return CMPedometer()
+    }()
+    
     
     lazy var yesterday : String = { () -> String
         in
@@ -57,9 +58,8 @@ class YQPedometerViewController: UIViewController {
         let date = NSDate()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
         
-        let yes = formatter.string(from: byesterday as Date)
+        let yes = formatter.string(from: date as Date)
         
         return yes
         
@@ -82,10 +82,14 @@ class YQPedometerViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = leftBar
         
+        //1.2 隐藏nav导航栏背景
+        
+        //1.3 先保存上传计步数据
+        stepFunctionDidStart()
+        
         //2.获取计步的数据内容(登录界面进行的存取 计步器的内容,拿去数据)
         getStepDataForService()
         
-        stepFunctionDidStart()
         
         //3.添加刷新的情况
         addRefirsh()
@@ -105,87 +109,54 @@ class YQPedometerViewController: UIViewController {
     // MARK: - 计步功能的模块实现
     func stepFunctionDidStart() {
         
-        //获取昨天 和 前天的时间数据
-//        let date = NSDate()
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        
-//        var dateString = formatter.string(from: date as Date)
-//        
-////        let index =  dateString.index( (dateString.startIndex)!, offsetBy: 10)
-////        dateString.remove(at: dateString.index(after: 8))
-//
-////        let replaceRangeAll = dateString.index(after: " ")...dateString.index(before:dateString.endIndex)
-////
-////        dateString.replaceSubrange(replaceRangeAll, with: "08:00:00")
-//        
-//        let dateNow = formatter.date(from: dateString)
-//        
-//        //            let yesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
-//        let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: dateNow!)
-        
-        
-    
         if !CMPedometer.isStepCountingAvailable() {
             
             self.alert(message: "设备不可用! 支持5s及以上的机型")
+            return
             
+        }else{
+            
+            //获取昨天 和 前天的时间数据
+            let date = NSDate()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            let formatter1 = DateFormatter()
+            formatter1.dateFormat = "yyyy-MM-dd"
+            let temp = formatter1.string(from: date as Date)
+            let tempstring = temp.appending(" 00:00:00")
+            
+            let nowdate = formatter.date(from: tempstring)
+            
+            //直接应用的是 CMPedometer 获取系统的健康的应用
+            self.counter.queryPedometerData(from: nowdate!, to: date as Date , withHandler: { (pedometerData, error) in
+                
+                let num = pedometerData?.numberOfSteps ?? 0
+                //上传前一天的步数
+                
+                DispatchQueue.main.async {
+                    
+                    var parameter = [String : Any]()
+                    parameter["date"] = temp
+                    
+                    parameter["steps"] = num
+                    
+                    self.stepLabel.text = "\(num)"
+                    
+                    HttpClient.instance.post(path: URLPath.getSavePedometerData, parameters: parameter, success: { (respose) in
+                        
+                        
+                    }, failure: { (error) in
+                        
+                    })
+                }
+                
+            })
         }
-        
-        
-//        else{
-//            
-//            //计步器的对象 就是在这个主队列中进行更新完成的
-////            self.counter.startStepCountingUpdates(to: OperationQueue.main, updateOn: 5, withHandler: { (Steps, timestamp, Error) in
-////                
-////                if (Error != nil) {
-////                    
-////                    return
-////                }
-////                
-////                print("实际走的数量的情况" + "\(Steps)")
-////                
-////                self.testLabel.text = "测试显示的步数" + "\(Steps)"
-////                
-////            })
-//            
-//            //获取昨天 和 前天的时间数据
-//            let date = NSDate()
-//            let formatter = DateFormatter()
-//            formatter.dateFormat = "yyyy-MM-dd"
-//            
-//            let dateString = formatter.string(from: date as Date)
-//            
-//            _ = formatter.date(from: dateString)
-//            
-////            let yesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
-//            let byesterday = NSDate.init(timeInterval: -60*60*24*1, since: date as Date)
-//            
-////            print(yesterday)
-////            print(byesterday)
-//            
-//            //直接应用的是 CMPedometer 获取系统的健康的应用
-//            self.counter.queryPedometerData(from: byesterday as Date, to: date as Date , withHandler: { (pedometerData, error) in
-//                
-//                let num = pedometerData?.numberOfSteps ?? 0
-//                let distance = pedometerData?.distance ?? 0
-//                
-//                DispatchQueue.main.async {
-//                    
-//                    self.testLabel.text = "测试显示的步数" + "\(num)"
-//                }
-//                
-//                
-//                print("运动的距离是" + "\(distance)")
-//                
-//            })
-//            
-//        }
         
     }
     
     
-
     // MARK: - 获取运动的当前步数的方法
     func getStepDataForService(){
         
@@ -201,7 +172,7 @@ class YQPedometerViewController: UIViewController {
                 let depart = "第" + "\(reponse["departmentRankno"])" + "名"
                 self.projectRankingButton.setTitle(project, for: .normal)
                 self.departmentRankingButton.setTitle(depart, for: .normal)
-                self.stepLabel.text = "\(reponse["steps"])"
+                
             }
             
             
@@ -291,7 +262,7 @@ class YQPedometerViewController: UIViewController {
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: error.description)
-            
+            self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
 
         }
@@ -301,6 +272,20 @@ class YQPedometerViewController: UIViewController {
     
     // MARK: - 上下拉的刷新的界面情况
     func addRefirsh(){
+        
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            var par = [String : Any]()
+            par["type"] = self.type
+            par["date"] = self.yesterday
+            self.stepFunctionDidStart()
+            self.getStepDataForService()
+            
+            self.getRankForAllData(dic : par)
+            
+        })
+
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             

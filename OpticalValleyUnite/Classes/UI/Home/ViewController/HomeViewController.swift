@@ -11,6 +11,7 @@ import AVFoundation
 import Photos
 import Alamofire
 import SnapKit
+import CoreMotion
 
 let KDistence = 50.0
 
@@ -55,6 +56,16 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     @IBOutlet weak var tableView: UITableView!
     
     
+    ///计步器的功能模块属性
+    //设置注册 计步设备的
+    lazy var counter = { () -> CMPedometer
+        
+        in
+        
+        return CMPedometer()
+    }()
+
+    
     // MARK: - 视图生命周期方法
     override func viewDidLoad() {
         
@@ -80,6 +91,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         //获取app版本号的方法
         checkNewBundleVersion(isBlack: true)
+        
+        //再次获取计步数据
+        stepFunctionDidStart()
         
     }
 
@@ -235,6 +249,56 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
 
     }
     
+    
+    // MARK: - 计步功能的模块实现
+    func stepFunctionDidStart() {
+        
+        if !CMPedometer.isStepCountingAvailable() {
+            
+            
+            return
+            
+        }else{
+            
+            //获取昨天 和 前天的时间数据
+            let date = NSDate()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            let formatter1 = DateFormatter()
+            formatter1.dateFormat = "yyyy-MM-dd"
+            let temp = formatter1.string(from: date as Date)
+            let tempstring = temp.appending(" 00:00:00")
+            
+            let nowdate = formatter.date(from: tempstring)
+            
+            //直接应用的是 CMPedometer 获取系统的健康的应用
+            self.counter.queryPedometerData(from: nowdate!, to: date as Date , withHandler: { (pedometerData, error) in
+                
+                let num = pedometerData?.numberOfSteps ?? 0
+                //上传前一天的步数
+                
+                DispatchQueue.main.async {
+                    
+                    var parameter = [String : Any]()
+                    parameter["date"] = temp
+                    
+                    parameter["steps"] = num
+                    
+                    HttpClient.instance.post(path: URLPath.getSavePedometerData, parameters: parameter, success: { (respose) in
+                        
+                        
+                    }, failure: { (error) in
+                        
+                    })
+                }
+                
+            })
+        }
+        
+    }
+    
+
     // MARK: - 接受系统的通知
     func receiveNotes(){
         

@@ -10,7 +10,11 @@ import UIKit
 
 class YQStepHeadView: UIView {
 
-
+    override func awakeFromNib() {
+        
+        self.backgroundColor = UIColor.init(red: 40/255.0, green: 176/255.0, blue: 255/255.0, alpha: 1.0)
+        
+    }
     
     
     

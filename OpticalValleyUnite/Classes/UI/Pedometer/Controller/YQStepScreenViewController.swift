@@ -25,7 +25,7 @@ class YQStepScreenViewController: UIViewController {
     
     
     var cellID = "stepsCell"
-    var currentIndex  = 0
+    var currentIndex  = 1
     var type = -1
     
     lazy var yesterday : String = { () -> String
@@ -58,8 +58,10 @@ class YQStepScreenViewController: UIViewController {
         
         self.automaticallyAdjustsScrollViewInsets = false
         
+        
         //1.默认选择第一个button
         switch type {
+            
         case 2:
             self.selectButtonClicked(projectButton)
            
@@ -109,12 +111,12 @@ class YQStepScreenViewController: UIViewController {
     }
     
     // MARK: - 获取list的数据,整体的列表的数据刷新
-    func getRankForAllData(indexPage : Int = 0 , date : String = "", dic : [String : Any]  = [String: Any]()){
+    func getRankForAllData(indexPage : Int = 1 , date : String = "", dic : [String : Any]  = [String: Any]()){
         
         var parmat = [String: Any]()
         
         parmat["pagesize"] = 20
-        parmat["pageno"] = currentIndex
+        parmat["pageno"] = indexPage
         
         parmat["date"] = date
         
@@ -137,16 +139,18 @@ class YQStepScreenViewController: UIViewController {
                 
             }
             
-            if indexPage == 0{
+            if indexPage == 1{
                 
-                self.currentIndex = 0
+                self.currentIndex = 1
                 self.rankData = temp
                 
                 self.tableView.mj_header.endRefreshing()
                 
             }else{
                 
+                
                 if temp.count > 0{
+                    
                     self.currentIndex = indexPage + 1
                     
                     self.rankData.append(contentsOf: temp)
@@ -220,6 +224,11 @@ extension YQStepScreenViewController : UITableViewDataSource,UITableViewDelegate
         cell?.model = self.rankData[indexPath.row]
         
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 60
     }
 
 }

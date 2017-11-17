@@ -30,7 +30,7 @@ class YQPedometerViewController: UIViewController {
     @IBOutlet weak var departmentRankingButton: UIButton!
     
     var cellID = "stepsCell"
-    var currentIndex  = 0
+    var currentIndex  = 1
     var type = 1
     
     /// rank模型的数据
@@ -70,11 +70,23 @@ class YQPedometerViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        //1.设置leftbar的返回界面
+        //0.0获取集团版项目版的数据属性
+        //获取集团和 项目版的参数
+        let isgroup = UserDefaults.standard.object(forKey: Const.YQIs_Group) as? Int ?? -1
+        if isgroup == 2 || isgroup == -1 {//集团版
+            type = 1
+            
+        }else{//项目版
+            
+            type = 2
+        }
+
+        
+        //1.0设置leftbar的返回界面
         let btn = UIButton()
         btn.frame = CGRect(x: 0, y: 0, width: 40, height: 40 )
         
-        btn.setImage(UIImage(named: "icon_fire_return"), for: .normal)
+        btn.setImage(UIImage(named: "return"), for: .normal)
         btn.addTarget(self, action: #selector(leftBarItemButtonClick), for: .touchUpInside)
         
         let leftBar = UIBarButtonItem()
@@ -82,7 +94,24 @@ class YQPedometerViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = leftBar
         
-        //1.2 隐藏nav导航栏背景
+        //1.1设置rightBar的历史点击事件
+        let rightBtn = UIButton()
+        rightBtn.frame = CGRect(x: 0,y : 0, width: 40, height: 40)
+        
+        rightBtn.setTitle("历史", for: .normal)
+        rightBtn.addTarget(self, action: #selector(rightBarItemButtonClick), for: .touchUpInside)
+        
+        let rightBar = UIBarButtonItem()
+        rightBar.customView = rightBtn
+        
+        self.navigationItem.rightBarButtonItem = rightBar
+        
+        //1.2 隐藏nav导航栏背景,去线的功能,设置navtitle的富文本的属性
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let attr: NSMutableDictionary! = [NSForegroundColorAttributeName: UIColor.white]
+         UINavigationBar.appearance().titleTextAttributes = attr as? [String : Any]
         
         //1.3 先保存上传计步数据
         stepFunctionDidStart()
@@ -165,11 +194,14 @@ class YQPedometerViewController: UIViewController {
         parameters["date"] = yesterday
         
         HttpClient.instance.post(path: URLPath.getMinePedometer, parameters: parameters, success: { (reponse) in
+            
+            let num1 = (reponse["projectRankno"])!
+            let num2 = (reponse["departmentRankno"])!
             //读取数据,字典转模型
             DispatchQueue.main.async {
                 //设置项目排名
-                let project = "第" + "\(reponse["projectRankno"])"  + "名"
-                let depart = "第" + "\(reponse["departmentRankno"])" + "名"
+                let project = "第" + "\(num1!)"  + "名"
+                let depart = "第" + "\(num2!)" + "名"
                 self.projectRankingButton.setTitle(project, for: .normal)
                 self.departmentRankingButton.setTitle(depart, for: .normal)
                 
@@ -215,13 +247,21 @@ class YQPedometerViewController: UIViewController {
         
     }
     
+    // MARK: - rightBarItemButtonClick的方法
+    func rightBarItemButtonClick(){
+        
+        //
+    
+    
+    }
+    
     // MARK: - 获取list的数据,整体的列表的数据刷新
-    func getRankForAllData(indexPage : Int = 0 , date : String = "", dic : [String : Any]  = [String: Any]()){
+    func getRankForAllData(indexPage : Int = 1 , date : String = "", dic : [String : Any]  = [String: Any]()){
         
         var parmat = [String: Any]()
         
         parmat["pagesize"] = 20
-        parmat["pageno"] = currentIndex
+        parmat["pageno"] = indexPage
         
         parmat["date"] = date
         
@@ -239,9 +279,9 @@ class YQPedometerViewController: UIViewController {
             
             }
             
-            if indexPage == 0{
+            if indexPage == 1{
                 
-                self.currentIndex = 0
+                self.currentIndex = 1
                 self.rankData = temp
                 self.tableView.mj_header.endRefreshing()
                 
@@ -293,11 +333,13 @@ class YQPedometerViewController: UIViewController {
             par["type"] = self.type
             par["date"] = self.yesterday
 
-            
             self.getRankForAllData(indexPage: self.currentIndex + 1)
+            
         })
         
     }
+    
+    
 
     
 
@@ -323,6 +365,11 @@ extension YQPedometerViewController : UITableViewDelegate,UITableViewDataSource{
         return 50
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? YQStepStatisticsView
@@ -333,7 +380,7 @@ extension YQPedometerViewController : UITableViewDelegate,UITableViewDataSource{
         }
         
         cell?.backgroundColor =  UIColor.clear
-        
+        cell?.indexHeadImageHidde = true
         cell?.type = self.type
         cell?.model = self.rankData[indexPath.row]
         

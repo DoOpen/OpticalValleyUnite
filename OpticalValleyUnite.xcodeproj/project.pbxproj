@@ -22,6 +22,8 @@
 		2F236B701F6FADF700F1B0DF /* YQPersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */; };
 		2F236B721F6FE40300F1B0DF /* YQfireMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */; };
 		2F236B741F6FEA1B00F1B0DF /* YQFireDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */; };
+		2F24CEBC1FBE7EB900EC6AF7 /* YQHistoryStepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24CEBB1FBE7EB900EC6AF7 /* YQHistoryStepModel.swift */; };
+		2F24CEBE1FBE89A000EC6AF7 /* YQHomeStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24CEBD1FBE89A000EC6AF7 /* YQHomeStepView.swift */; };
 		2F2A2BB41F989E1D003015E9 /* YQAllProjectSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A2BB31F989E1C003015E9 /* YQAllProjectSelectVC.swift */; };
 		2F2A2BB61F989E46003015E9 /* YQAllProjectSelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2A2BB51F989E46003015E9 /* YQAllProjectSelect.storyboard */; };
 		2F2DF4361F735BF200ADA588 /* YQPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2DF4351F735BF200ADA588 /* YQPointAnnotation.swift */; };
@@ -286,6 +288,8 @@
 		2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPersonDetail.storyboard; sourceTree = "<group>"; };
 		2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQfireMessage.swift; sourceTree = "<group>"; };
 		2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireDetailCell.swift; sourceTree = "<group>"; };
+		2F24CEBB1FBE7EB900EC6AF7 /* YQHistoryStepModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHistoryStepModel.swift; sourceTree = "<group>"; };
+		2F24CEBD1FBE89A000EC6AF7 /* YQHomeStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHomeStepView.swift; sourceTree = "<group>"; };
 		2F2892321F70FDC1000F879A /* Development-3.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Development-3.mobileprovision"; sourceTree = "<group>"; };
 		2F2A2BB31F989E1C003015E9 /* YQAllProjectSelectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YQAllProjectSelectVC.swift; path = ../../Home/ViewController/YQAllProjectSelectVC.swift; sourceTree = "<group>"; };
 		2F2A2BB51F989E46003015E9 /* YQAllProjectSelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = YQAllProjectSelect.storyboard; path = ../../Home/ViewController/YQAllProjectSelect.storyboard; sourceTree = "<group>"; };
@@ -709,6 +713,7 @@
 			isa = PBXGroup;
 			children = (
 				2F92B25F1FBB03D500168FC6 /* YQStepShowModel.swift */,
+				2F24CEBB1FBE7EB900EC6AF7 /* YQHistoryStepModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -720,6 +725,7 @@
 				2F40D9911FB942A4007971D1 /* YQStepStatistics.xib */,
 				2F40D9931FB9A802007971D1 /* YQStepHeadView.swift */,
 				2F40D9951FB9A820007971D1 /* YQStepHead.xib */,
+				2F24CEBD1FBE89A000EC6AF7 /* YQHomeStepView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1610,6 +1616,7 @@
 				4BB53FF01F14D9CA0061190F /* DeviceCell.swift in Sources */,
 				4B7A59C91E35E1AD002E96B6 /* Model.swift in Sources */,
 				4B3952061E29CE1F00E2642F /* WorkOrderOprationCell.swift in Sources */,
+				2F24CEBC1FBE7EB900EC6AF7 /* YQHistoryStepModel.swift in Sources */,
 				4B30780F1E29FBF500FB4007 /* ChooseHouseViewController.swift in Sources */,
 				4B1DEC5C1E31B646000917D2 /* SGQRCodeTool.m in Sources */,
 				2F236B721F6FE40300F1B0DF /* YQfireMessage.swift in Sources */,
@@ -1690,6 +1697,7 @@
 				2FC167571F90B45B001CEACD /* YQReleaseJournalFooterV.swift in Sources */,
 				4BD4B9421E272EA600AE2BC9 /* Const.swift in Sources */,
 				2F7E0AA51FB5956000344D4E /* YQPedometerViewController.swift in Sources */,
+				2F24CEBE1FBE89A000EC6AF7 /* YQHomeStepView.swift in Sources */,
 				2FDF329B1F79276B008EDEB4 /* MANaviAnnotation.m in Sources */,
 				2F5E8C511F59598400007717 /* YQSystemSelectionVC.swift in Sources */,
 				4BBBEC831E2CA76900F60313 /* SJComposePhotoView.m in Sources */,

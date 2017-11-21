@@ -17,8 +17,10 @@ protocol YQPartDataSelectFooterCellButtonDelegate : class{
 class YQPartDataSelectCell: UITableViewCell {
 
     override func awakeFromNib() {
+        
         super.awakeFromNib()
-        // Initialization code
+
+    
     }
     
     /// 定义代理

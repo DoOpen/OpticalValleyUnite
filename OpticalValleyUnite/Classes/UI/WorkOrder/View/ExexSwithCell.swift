@@ -61,4 +61,7 @@ class ExexSwithCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
     }
+    
+    
+    
 }

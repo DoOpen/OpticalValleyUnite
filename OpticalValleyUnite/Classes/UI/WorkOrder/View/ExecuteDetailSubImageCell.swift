@@ -28,7 +28,9 @@ class ExecuteDetailSubImageCell: UITableViewCell {
     
     var model: ExecChild?{
         didSet{
+            
             if let model = model{
+                
                 titleLabel.text = "\(index))" + model.name
                 if model.imageValue != "" {
                     

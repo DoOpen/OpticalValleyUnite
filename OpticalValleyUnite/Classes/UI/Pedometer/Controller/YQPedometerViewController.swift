@@ -85,7 +85,6 @@ class YQPedometerViewController: UIViewController {
         //1.0设置leftbar的返回界面
         let btn = UIButton()
         btn.frame = CGRect(x: 0, y: 0, width: 40, height: 40 )
-        
         btn.setImage(UIImage(named: "return"), for: .normal)
         btn.addTarget(self, action: #selector(leftBarItemButtonClick), for: .touchUpInside)
         
@@ -94,17 +93,18 @@ class YQPedometerViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = leftBar
         
-        //1.1设置rightBar的历史点击事件
-        let rightBtn = UIButton()
-        rightBtn.frame = CGRect(x: 0,y : 0, width: 40, height: 40)
+//        //1.1设置rightBar的历史点击事件
+//        let rightBtn = UIButton()
+//        rightBtn.frame = CGRect(x: 0,y : 0, width: 40, height: 40)
+//        
+//        rightBtn.setTitle("历史", for: .normal)
+//        rightBtn.addTarget(self, action: #selector(rightBarItemButtonClick), for: .touchUpInside)
+//        
+//        let rightBar = UIBarButtonItem()
+//        rightBar.customView = rightBtn
+//        
+//        self.navigationItem.rightBarButtonItem = rightBar
         
-        rightBtn.setTitle("历史", for: .normal)
-        rightBtn.addTarget(self, action: #selector(rightBarItemButtonClick), for: .touchUpInside)
-        
-        let rightBar = UIBarButtonItem()
-        rightBar.customView = rightBtn
-        
-        self.navigationItem.rightBarButtonItem = rightBar
         
         //1.2 隐藏nav导航栏背景,去线的功能,设置navtitle的富文本的属性
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -115,6 +115,7 @@ class YQPedometerViewController: UIViewController {
         
         //1.3 先保存上传计步数据
         stepFunctionDidStart()
+        
         
         //2.获取计步的数据内容(登录界面进行的存取 计步器的内容,拿去数据)
         getStepDataForService()

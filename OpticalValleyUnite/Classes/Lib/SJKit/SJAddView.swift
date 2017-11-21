@@ -18,17 +18,31 @@ class SJAddView: UIView {
 
     var maxCount = 3
     
-    var photos = [ImageProtocol]()
+    var photos = [ImageProtocol](){
+        
+        didSet{
+            
+           
+        
+        }
+    
+    }
+    
+    var PhotpView : SJPhotpView?
+    
     
     lazy var addButton: UIButton = {
+        
         let btn = UIButton()
         btn.setBackgroundImage(UIImage(named:"btn_addphoto"), for: .normal)
         btn.addTarget(self, action: #selector(SJAddView.addBtnClick), for: .touchUpInside)
         return btn
     }()
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         addSubview(addButton)
     }
     
@@ -40,23 +54,36 @@ class SJAddView: UIView {
     
     func addImage(_ image :ImageProtocol){
         
+        
         if photos.count > maxCount {
+            
             return
+            
         }else{
-            let btn = SJPhotpView.photoView(image: image.image, deletBtnClickBlock: { 
+            
+            self.PhotpView = SJPhotpView.photoView(image: image.image, deletBtnClickBlock: {
+                
                 self.layoutIfNeeded()
+                
                 let index = self.photos.index(where: {photo in
                     photo.image == image.image
                     }) ?? 0
                 self.photos.remove(at: index)
+                
             })
 
             photos.append(image)
-            insertSubview(btn, belowSubview: addButton)
+            
+            insertSubview(self.PhotpView!, belowSubview: addButton)
+            
             if photos.count == maxCount {
+                
                 addButton.removeFromSuperview()
             }
         }
+        
+        layoutSubviews()
+        
     }
     
     
@@ -93,15 +120,26 @@ class SJAddView: UIView {
         
         
     }
+    
+    deinit {
+        
+        self.PhotpView?.removeFromSuperview()
+        self.PhotpView = nil
+        print("sjaddview 挂了吗")
+        
+    }
 
 }
 
 
 
 class SJPhotpView: UIView {
+    
     var imageView = UIImageView()
     var deleteBlock: (()->())?
+    
     lazy var deleteBtn: UIButton = {
+        
         let btn = UIButton()
         btn.setBackgroundImage(UIImage(named:"exit"), for: .normal)
         btn.addTarget(self, action: #selector(SJPhotpView.deleteBtnClick), for: .touchUpInside)
@@ -109,38 +147,51 @@ class SJPhotpView: UIView {
 
     }()
     
+    
     deinit {
         print(NSStringFromClass(self.classForCoder) + "销毁" + #function)
     }
     
     static func photoView(image: UIImage, deletBtnClickBlock:@escaping (() -> ())) -> SJPhotpView{
+        
         let view = SJPhotpView()
         view.imageView.image = image
         view.addSubview(view.imageView)
         view.addSubview(view.deleteBtn)
         view.deleteBlock = deletBtnClickBlock
+        
         return view
+        
     }
     
     func deleteBtnClick(){
+        
         self.removeFromSuperview()
+        
         if let deleteBlock = deleteBlock {
+            
             deleteBlock();
             
         }
+        
         deleteBlock = nil
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         let kDeletBtnWH: CGFloat = 15.0
         imageView.frame = bounds
         deleteBtn.frame = CGRect(x: width - kDeletBtnWH, y: 0, width: kDeletBtnWH, height: kDeletBtnWH)
     }
+    
+    
 }
 
 struct AddViewModel: ImageProtocol {
     internal var image: UIImage
+    
+    
 }
 
 

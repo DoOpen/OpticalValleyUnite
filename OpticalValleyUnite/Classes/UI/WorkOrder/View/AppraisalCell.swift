@@ -75,6 +75,7 @@ class AppraisalCell: UITableViewCell {
                 }
                 
                 for i in 0...(model.source - 1){
+                    
                     let star = starsViews.subviews[i] as! UIButton
                     star.isSelected = true
                 }
@@ -99,6 +100,7 @@ class AppraisalCell: UITableViewCell {
             }
             
             setNeedsLayout()
+            
             setNeedsDisplay()
             
         }

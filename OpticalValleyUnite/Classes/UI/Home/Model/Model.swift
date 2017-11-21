@@ -763,29 +763,53 @@ class ExecSectionModel: Object{
             }
             
             for dic in arry{
+                
+                
                 let model = ExecChild(parmart: dic)
                 model.taskId = id
+                
                 if let arry3 = arry3,arry3.count > 0{
+                    
                     if arry3.count > index{
+                        
                         if let array = arry3[index]["photos"] as? [String]{
-                            if  let path = array.first{
+                            
+                            if let path = array.first{
+                                
                                 model.value = path
+                                
+                                for stringIndex in 0..<array.count {
+                                    
+                                    if stringIndex > 0 {
+                                        
+                                        
+                                        model.value = model.value + ",/" + array[stringIndex]
+                                        
+                                    }
+                                    
+                                }
+                            
                             }else{
+                                
                                 if let text = arry3[index]["value"] as? String{
+                                    
                                     model.value = text
                                 }
+                                
                             }
                             
-                        }else if let text = arry3[index]["value"] as? String{
+                    }else if let text = arry3[index]["value"] as? String{
                             model.value = text
                         }
                         
+                    
                     }
-                }
                 
+                }
                 temp.append(model)
                 index += 1
             }
+            
             childs = temp
         }
     }
@@ -819,6 +843,7 @@ class ExecSectionModel: Object{
                 print(JSONString)
                 taskDic["DESCRIPTION"] = JSONString
             }
+            
         } catch  {
             print("转换错误 ")
         }
@@ -827,7 +852,9 @@ class ExecSectionModel: Object{
     }
 }
 
+
 class ExecChild: Object{
+    
     dynamic var name = ""
     dynamic var id = ""
     dynamic var isDone = false
@@ -836,15 +863,24 @@ class ExecChild: Object{
     
     dynamic var value = "" {
         didSet{
+            
+//            for string in value {
             if value.contains("ovu-pcos"){
+                
+                
                 let basicPath = URLPath.basicPath
                 imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + value
+                
             }else{
+                
                 imageValue = value
             }
             
+//            }
+        
         }
     }
+    
    dynamic var imageValue = ""
 //    dynamic var image: UIImage?
 //    dynamic var OPTIONS_LIST:[String] = []
@@ -862,6 +898,7 @@ class ExecChild: Object{
     override static func ignoredProperties() -> [String] {
         return ["OPTIONS_LIST"]
     }
+    
     convenience init(parmart: [String: Any]) {
         self.init()
         id = parmart["WORKSTEP_ID"] as? String ?? ""
@@ -881,6 +918,7 @@ class ExecChild: Object{
     }
     
     func toDic() -> [String: Any]{
+        
         var dic = [String: Any]()
         dic["id"] = id
 //        dic["taskId"] = taskId
@@ -896,7 +934,10 @@ class ExecChild: Object{
         
         return dic
     }
+    
 }
+
+
 
 class RealmString: Object {
     dynamic var stringValue = ""

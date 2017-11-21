@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import Kingfisher
+import SnapKit
 
 class ExecCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
@@ -17,9 +18,12 @@ class ExecCell: UITableViewCell {
     @IBOutlet weak var addPhotoView: SJAddView!
     @IBOutlet weak var textView: UITextView!
     
+    var newAddPhotoView = SJAddView()
+    
     var doneBtnClickHandle: (([UIImage]?,String?) -> ())?
     
     var model: ExecChild?{
+        
         didSet{
             
             titleLabel.text = model?.name
@@ -28,7 +32,16 @@ class ExecCell: UITableViewCell {
                     
                     addPhotoView.isHidden = false
                     textView.isHidden = true
-                    addPhotoView.addButton.isEnabled = true
+                    
+//                    self.newAddPhotoView.photos.removeAll()
+//                    self.newAddPhotoView.layoutSubviews()
+                    
+//                    print(self.newAddPhotoView)
+//                    print(self.newAddPhotoView.subviews)
+                    
+//                    let newaddView = SJAddView()
+                    
+                    
                     
                     //注意的是:这里的图片进行的复用的bug
                     if let url = model?.imageValue,url != ""{
@@ -45,11 +58,38 @@ class ExecCell: UITableViewCell {
                             imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
                         }
                         
-                        addPhotoView.addButton.kf.setBackgroundImage(with: URL(string: imageValue), for: .normal)
+//                        addPhotoView.addButton.kf.setBackgroundImage(with: URL(string: imageValue), for: .normal)
                         
-                    }else{
-                        addPhotoView.addButton.setBackgroundImage(UIImage(named:"btn_addphoto"), for: .normal)
+//                        let imageView = UIImageView()
+//                        
+//                        imageView.kf.setImage(with: URL(string: imageValue))
+//                        
+//                        var _ : NSData = NSData(contentsOf:URL(string: imageValue)!)
+                        
+                        DispatchQueue.global().async {
+                            
+                            if let data = NSData.init(contentsOf: URL(string: imageValue)!) {
+                                
+                                DispatchQueue.main.async {
+                                    
+                                    if let image = UIImage.init(data: data as Data){
+                                        
+                                        self.newAddPhotoView.addImage(AddViewModel(image: image))
+//                                        self.newAddPhotoView = newaddView
+                                        
+                                    }
+                                }
+                                
+                            }
+                            
+                        }
+                        
                     }
+                    
+//                    else{
+//                        
+//                        addPhotoView.addButton.setBackgroundImage(UIImage(named:"btn_addphoto"), for: .normal)
+//                    }
                     
                     
                 }else if model?.type == "2" || model?.type == "4" {
@@ -63,7 +103,16 @@ class ExecCell: UITableViewCell {
                     textView.text = model?.value ?? ""
                     
                 }
-                
+            
+//            addPhotoView.setNeedsDisplay()
+//            addPhotoView.setNeedsLayout()
+//            addPhotoView.layoutSubviews()
+            
+            layoutIfNeeded()
+            setNeedsDisplay()
+            setNeedsLayout()
+            
+            
 //            }else{
 //                
 //                if model?.type == "1"{
@@ -99,7 +148,15 @@ class ExecCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        addPhotoView.maxCount = 3
+        newAddPhotoView.maxCount = 3
+        self.contentView.addSubview(newAddPhotoView)
+        newAddPhotoView.snp.makeConstraints { (make) in
+            
+            make.top.left.right.equalTo(self.textView)
+            make.bottom.equalTo(self)
+            
+        }
+        
         selectionStyle = .none
         textView.delegate = self
     }

@@ -105,20 +105,20 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
         let model = models[indexPath.section].childs[indexPath.row]
         
         if model.type == "1"{
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "ExecuteDetailSubImageCell", for: indexPath) as! ExecuteDetailSubImageCell
             cell.index = indexPath.row + 1
             cell.model = model
             return cell
+            
         }else{
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "ExecuteDetailSubCell", for: indexPath) as! ExecuteDetailSubCell
             cell.index = indexPath.row + 1
             cell.model = model
-            
             return cell
+            
         }
-        
-
         
     }
     
@@ -127,6 +127,7 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let view = ExecutingSectionView.loadFromXib() as! ExecutingSectionView
         
         let model = models[section]
@@ -134,9 +135,11 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
         view.titleLabel.text = "任务\(section + 1): " + model.name
         
         if model.isOpen{
+            
             view.iconBtn.transform =  CGAffineTransform(rotationAngle: CGFloat.pi / 2 )
             view.openBtn.setTitle("收起", for: .normal)
         }else{
+            
             view.iconBtn.transform = .identity
             view.openBtn.setTitle("展开", for: .normal)
         }
@@ -157,22 +160,22 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
                 let indexPath = IndexPath(row: (self?.models[section].childs.count)! - 1, section: section)
                 self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
             }
-//
-            
-            
+
             self?.tableViewHeightConstaint.constant = (self?.tabHeight)!
 
             self?.superTableView?.reloadData()
             
-    
-
         }
+        
         
         return view
     }
     
+    
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
     }
+    
+    
 }
 

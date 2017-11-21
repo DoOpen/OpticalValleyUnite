@@ -521,6 +521,7 @@ class WorkOrderProgressViewController: UIViewController {
             _ = self?.navigationController?.popViewController(animated: true)
         })
     }
+    
     //接单按钮点击
     func meetsList(){
         
@@ -532,6 +533,7 @@ class WorkOrderProgressViewController: UIViewController {
             self.getWorkDetail()
         })
     }
+    
     //工单退回
     func meetsListClose(){
 
@@ -631,12 +633,13 @@ class WorkOrderProgressViewController: UIViewController {
 }
 
 extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if models.count >= 0{
             
             return models.count + 1
 
-            
         }else{
             return 0
         }
@@ -650,6 +653,7 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
             var cell = UITableViewCell()
             
             if indexPath.row == 0{
+                
                 //显示设备详情的cell 就是第一行的 所有的数据和逻辑
                 let DetailsCell = tableView.dequeueReusableCell(withIdentifier: "xiangqing") as! WorkOrderDetailsCell
                 DetailsCell.model = self.workOrderDetalModel
@@ -694,7 +698,6 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
     }
     
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -714,4 +717,6 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
             }
         }
     }
+    
+    
 }

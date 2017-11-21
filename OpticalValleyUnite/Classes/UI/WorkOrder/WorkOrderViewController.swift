@@ -204,7 +204,6 @@ class WorkOrderViewController: UIViewController {
         //添加默认的选择项目 筛选条件
         parmat["PARK_ID"] = getUserDefaultsProject()
         
-        
         SVProgressHUD.show(withStatus: "加载中...")
         
         HttpClient.instance.get(path: URLPath.getWorkunitList, parameters: parmat, success: { (response) in
@@ -288,10 +287,10 @@ class WorkOrderViewController: UIViewController {
     
     
     func addRefirsh(){
+        
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.getWorkOrder(type: self.currentIndex )
         })
-        
         
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
@@ -305,6 +304,7 @@ class WorkOrderViewController: UIViewController {
 
 
 extension WorkOrderViewController: UITableViewDataSource, UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentDatas.count
     }

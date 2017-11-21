@@ -71,6 +71,19 @@ class ExecutingViewConttroller: UIViewController {
     //设置scrollcontent属性
     @IBOutlet weak var scrollContent: NSLayoutConstraint!
     
+    //photo的图片缓存数组
+    lazy var photoArray : NSDictionary = {
+    
+        return NSDictionary()
+        
+    }()
+    
+    //行高的缓存数组
+    lazy var cellHightArray: NSMutableDictionary = {
+    
+        return NSMutableDictionary()
+        
+    }()
     
     
     // MARK: - 视图生命周期的方法
@@ -83,8 +96,8 @@ class ExecutingViewConttroller: UIViewController {
         workOrderContent.text = workOrderDetalModel?.content
         timeLabel.text = workOrderDetalModel?.time
         
-        tableView.estimatedRowHeight = 100.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 100.0
+//        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
         
         self.automaticallyAdjustsScrollViewInsets = false
@@ -594,6 +607,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
         
         let model = models[indexPath.section].childs[indexPath.row]
         
+        
         if model.type == "3"{
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectSell", for: indexPath) as! ExexSwithCell
@@ -606,6 +620,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
 //                self?.cellDoneBtnClick(model: model, isDone: isDone)
 //            }
             if isToSee{
+                
                 cell.isUserInteractionEnabled = false
             }
             
@@ -613,23 +628,53 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             
         }else{
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ExecCell
+            var cell = tableView.dequeueReusableCell(withIdentifier: "ExecNewCell") as? YQExecNewCell
             
-            
-            cell.model = model
-            currentSelectIndexPath = indexPath
-            if isToSee{
-                cell.isUserInteractionEnabled = false
+            if cell == nil {
+                
+                cell = Bundle.main.loadNibNamed("YQExecNew", owner: nil, options: nil)?[0] as? YQExecNewCell
             }
-            return cell
+            cell?.delegate = self
+            
+            //添加图片缓存数组
+            cell?.currentIndex = indexPath.row
+            
+            cell?.model = model
+            currentSelectIndexPath = indexPath
+            
+            cell?.layoutIfNeeded()
+            
+            //缓存 行高
+            //要求的定义的是 一个可变的字典的类型的来赋值
+            cellHightArray["\(indexPath.row)"] = cell?.cellForHeight()
+
+            
+            if isToSee{
+                
+                cell?.isUserInteractionEnabled = false
+            }
+            
+            return cell!
         }
         
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
         return 64
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let height =  self.cellHightArray["\(indexPath.row)"] as? CGFloat
+        return height!
+        
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 100
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -669,3 +714,18 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
         return view
     }
 }
+
+extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
+    
+    func ExecNewCellMakePhotoFunction(view: UITableViewCell, currentRow: Int) {
+        
+        
+    }
+    
+    func ExecNewCellDeleteSuperModelFunction(view: UITableViewCell, currentRow: Int, buttonTag: Int) {
+        
+        
+    }
+    
+}
+

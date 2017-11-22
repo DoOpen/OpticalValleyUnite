@@ -770,7 +770,7 @@ class ExecSectionModel: Object{
                 
                 if let arry3 = arry3,arry3.count > 0{
                     
-                    if arry3.count > index{
+                    if arry3.count > index {
                         
                         if let array = arry3[index]["photos"] as? [String]{
                             
@@ -784,9 +784,7 @@ class ExecSectionModel: Object{
                                         
                                         
                                         model.value = model.value + ",/" + array[stringIndex]
-                                        
                                     }
-                                    
                                 }
                             
                             }else{
@@ -804,8 +802,8 @@ class ExecSectionModel: Object{
                         
                     
                     }
-                
                 }
+                
                 temp.append(model)
                 index += 1
             }
@@ -860,6 +858,12 @@ class ExecChild: Object{
     dynamic var isDone = false
     dynamic var type = "-1"
     dynamic var taskId = ""
+    //图片缓存数组
+//    dynamic var imageArray = Array<[UIImage]>()
+    
+//    var dicc = [String: Any]()
+
+//    dynamic var DESCRIPTI = Array<[String: Any]>()
     
     dynamic var value = "" {
         didSet{

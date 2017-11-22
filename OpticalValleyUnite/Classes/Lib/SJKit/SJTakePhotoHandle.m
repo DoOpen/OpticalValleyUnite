@@ -30,6 +30,7 @@ UIImagePickerControllerDelegate
 }
 
 + (void)takePhotoWithImageBlock:(void (^)(UIImage *))selectedImageBlock ViewController:(UIViewController *)vc{
+    
     //不让自己被释放了
     UIWindow *SJKeyWindow = [UIApplication sharedApplication].keyWindow;
     SJTakePhotoHandle *view = [self new];
@@ -49,6 +50,7 @@ UIImagePickerControllerDelegate
     }];
     
     [view.rootVc presentViewController:picker animated:YES completion:nil];
+    
 }
 
 

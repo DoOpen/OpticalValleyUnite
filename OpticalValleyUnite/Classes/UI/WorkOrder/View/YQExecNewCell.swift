@@ -11,10 +11,10 @@ import UIKit
 protocol YQExecNewCellClickDelegate : class {
     
     //删除模型数据的方法
-    func ExecNewCellDeleteSuperModelFunction(view : UITableViewCell,currentRow : Int ,buttonTag : Int)
+    func ExecNewCellDeleteSuperModelFunction(view : YQExecNewCell,currentRow : IndexPath ,buttonTag : Int)
     
     //获取本地的相机的图片代理方法
-    func ExecNewCellMakePhotoFunction(view : UITableViewCell,currentRow : Int )
+    func ExecNewCellMakePhotoFunction(view : YQExecNewCell,currentRow : IndexPath, image : UIImage)
 
 }
 
@@ -31,10 +31,11 @@ class YQExecNewCell: UITableViewCell {
 
     @IBOutlet weak var addButton: UIButton!
     
-    var currentIndex = -1
+    var currentIndex : IndexPath?
     
     weak var  delegate : YQExecNewCellClickDelegate?
     
+    var addPhotoView = SJAddView()
     
     //数据模型
     var model : ExecChild?{
@@ -47,7 +48,7 @@ class YQExecNewCell: UITableViewCell {
             //图片的数据显示信息,需要的进行的显示判断的情况,有","分隔的是有多张图片
             let pictureName = model?.imageValue
             
-            if pictureName == nil{
+            if pictureName == nil {
                 
                 return
             }
@@ -57,6 +58,7 @@ class YQExecNewCell: UITableViewCell {
                 imageVV.image = UIImage.init(named: "")
                 
             }
+            
             
             
             if let url = model?.imageValue,url != ""{
@@ -81,36 +83,51 @@ class YQExecNewCell: UITableViewCell {
                         
                         let string = stringArray[stringIndex]
                         
-                        
-                        if string.contains("http"){
+                        if !string.contains("相册图片") {
                             
-                            imageValue = string
+                            if string.contains("http"){
+                                
+                                imageValue = string
+                                
+                            }else{
+                                
+                                let basicPath = URLPath.basicPath
+                                imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + string
+                            }
+                            
+                            imageV.kf.setImage(with: URL(string: imageValue))
                             
                         }else{
-                            
-                            let basicPath = URLPath.basicPath
-                            imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + string
-                        }
-
                         
-                        imageV.kf.setImage(with: URL(string: imageValue))
+                            imageV.image = self.imageForString(fullPath: string)
+                        
+                        }
+                        
                         
                     }
                     
                 }else{//只有一张图片
                     
-                    if url.contains("http"){
+                    if !url.contains("相册图片") {
                         
-                        imageValue = url
+                        if url.contains("http"){
+                            
+                            imageValue = url
+                            
+                        }else{
+                            
+                            let basicPath = URLPath.basicPath
+                            imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                        }
+                        
+                        self.imageViewOne.kf.setImage(with: URL(string: imageValue))
                         
                     }else{
-                        
-                        let basicPath = URLPath.basicPath
-                        imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
-                    }
-
-                    self.imageViewOne.kf.setImage(with: URL(string: imageValue))
+                    
+                         self.imageViewOne.image = self.imageForString(fullPath: url)
                 
+                    }
+                    
                 }
             }
         }
@@ -134,20 +151,36 @@ class YQExecNewCell: UITableViewCell {
 
     // MARK: - 点击添加图片的回调的接口
     @IBAction func addTapButtonClick(_ sender: Any) {
-        //打印的是,第几行的cell 的button 点击了
-//        print("\(currentIndex)" + "行的button被点击了")
         
-        self.delegate?.ExecNewCellMakePhotoFunction(view: self, currentRow: currentIndex)
-        
+        //点击获取相机相册的图片方法
+        SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
+            
+            //            self.addImage(AddViewModel(image: image!))
+            //设置图片,进行的添加
+//            self.addPhotoView.addImage(AddViewModel(image: image!))
+            
+            self.delegate?.ExecNewCellMakePhotoFunction(view: self, currentRow: (self.currentIndex)! ,image : image!)
+            
+        }, viewController: (SJKeyWindow?.rootViewController ))
+
     }
     
     // MARK: - 删除按钮的点击完成的情况
     @IBAction func deleteBtnClick(_ sender: UIButton) {
         
         //通过第几行的,button的tag 来进行的判断点击的事件
-        self.delegate?.ExecNewCellDeleteSuperModelFunction(view: self, currentRow: currentIndex, buttonTag: sender.tag)
+        self.delegate?.ExecNewCellDeleteSuperModelFunction(view: self, currentRow: currentIndex!, buttonTag: sender.tag)
         
     }
     
+    
+    // MARK: - nsstring 转化为图片的方法
+    func imageForString(fullPath : String ) -> UIImage{
+        
+        let image2 = UIImage(contentsOfFile: fullPath)
+
+        return image2!
+    
+    }
     
 }

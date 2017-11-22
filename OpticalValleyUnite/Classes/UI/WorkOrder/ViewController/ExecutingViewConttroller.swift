@@ -268,19 +268,56 @@ class ExecutingViewConttroller: UIViewController {
                 
                 if model2.type == "1"{
                     
-                    let cell = tableView.cellForRow(at: IndexPath(row: index2, section: index1)) as? ExecCell
+                    // 保存上传当前的图片 cell里面的图片情况
+                    let cell = tableView.cellForRow(at: IndexPath(row: index2, section: index1)) as? YQExecNewCell
                     
                     if cell == nil{
                         continue
                     }
                     
-                    
-                    if cell!.addPhotoView.photos.count > 0 {
+                    //保存上传图片显示
+                    if let url = cell?.model?.imageValue,url != "" {
                         
-                        let images = cell!.addPhotoView.photos.map{return $0.image}
+                        //实现的思路,要求拿到的是一个image数组来进行的上传
+                        var imageArray = [UIImage]()
+//                        imageArray.append(<#T##newElement: UIImage##UIImage#>)
+                        let stringArray = url.components(separatedBy: ",")
+                        
+                        for string in stringArray {
+                            
+                            if string.contains("相册图片") {
+                                
+                                let image = UIImage(contentsOfFile: string)
+                                imageArray.append(image!)
+                            
+                            }else{
+                                
+                                var newString = ""
+                                if string.contains("http"){
+                                    
+                                    newString = string
+                                    
+                                }else{
+                                    
+                                    let basicPath = URLPath.basicPath
+                                    newString = basicPath.replacingOccurrences(of: "/api/", with: "") + string
+                                }
+
+                                
+                                let data = NSData.init(contentsOf: URL.init(string: newString)!)
+                                
+                                let image2 = UIImage.init(data: data! as Data)
+                                imageArray.append(image2!)
+                            
+                            }
+                            
+                        }
+                        
+//                        let images = cell!.addPhotoView.photos.map{return $0.image}
                         
                         group.enter()
-                        upDataImage(images, complit: { (url) in
+                        
+                        upDataImage(imageArray, complit: { (url) in
                             
                             model2.value = url
                             group.leave()
@@ -342,7 +379,9 @@ class ExecutingViewConttroller: UIViewController {
     func upDataImage(_ images: [UIImage], complit: @escaping ((String) -> ()),errorHandle: (() -> ())? = nil){
         
         SVProgressHUD.show(withStatus: "上传图片中...")
+        
         HttpClient.instance.upLoadImages(images, succses: { (url) in
+            
             SVProgressHUD.dismiss()
             
             complit(url!)
@@ -604,9 +643,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         let model = models[indexPath.section].childs[indexPath.row]
-        
         
         if model.type == "3"{
 
@@ -637,7 +674,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             cell?.delegate = self
             
             //添加图片缓存数组
-            cell?.currentIndex = indexPath.row
+            cell?.currentIndex = indexPath
             
             cell?.model = model
             currentSelectIndexPath = indexPath
@@ -717,13 +754,95 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
 
 extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
     
-    func ExecNewCellMakePhotoFunction(view: UITableViewCell, currentRow: Int) {
+    func ExecNewCellMakePhotoFunction(view: YQExecNewCell, currentRow: IndexPath,image : UIImage) {
         
+        let model = models[(currentRow.section)].childs[currentRow.row]
         
+        //缓存图片数组
+        // 将图片转化成Data
+        let imageData = UIImageJPEGRepresentation(image, 1)! as NSData
+        var fullPath = ""
+        
+        if model.imageValue == "" {
+            
+            view.pictureArray[0].image = image
+            
+            fullPath = NSHomeDirectory().appending("/Documents/").appending("相册图片" + "\(currentRow.row)" + "-" + "0")
+            
+            //传递image 刷新列表
+            model.imageValue =  fullPath
+            
+        }else{
+            
+            let tempArray =  model.imageValue.components(separatedBy: ",")
+            view.pictureArray[tempArray.count].image = image
+            
+            fullPath = NSHomeDirectory().appending("/Documents/").appending("相册图片" + "\(currentRow.row)" + "-" + "\(tempArray.count)")
+            
+            
+            //传递image 刷新列表
+            model.imageValue = model.imageValue + "," + fullPath
+        }
+        
+        imageData.write(toFile: fullPath, atomically: true)
+        
+        //重新的逻辑替换
+        models[(currentSelectIndexPath?.section)!].childs.replace(index: currentRow.row, object: model)
+        
+        //单行刷新列表
+        self.tableView.reloadRows(at: [currentRow], with: .automatic)
+
     }
     
-    func ExecNewCellDeleteSuperModelFunction(view: UITableViewCell, currentRow: Int, buttonTag: Int) {
+    
+    func ExecNewCellDeleteSuperModelFunction(view: YQExecNewCell, currentRow: IndexPath, buttonTag: Int) {
         
+        
+        //移除相应的模型数据, tableView的单行数据刷新
+        let model = models[(currentRow.section)].childs[currentRow.row]
+        
+        var tempArray =  model.imageValue.components(separatedBy: ",")
+        
+        //补充逻辑
+        if buttonTag >= tempArray.count {
+            
+//            if model.imageArray.count <= 0 {
+//                
+//                return
+//                
+//            }else{
+//                //移除本地图片
+////                model.imageArray.removeObject(at: buttonTag - tempArray.count)
+//            }
+        
+        }else{
+            //移除网络图片
+            tempArray.remove(at: buttonTag)
+            
+            var newimageValue = ""
+            
+            for temp in 0..<tempArray.count {
+                
+                if temp == 0 {
+                    
+                    newimageValue = tempArray[temp]
+                    
+                }else{
+                    
+                    newimageValue = newimageValue + "," + tempArray[temp]
+                }
+            }
+            
+            model.imageValue = newimageValue
+        
+        }
+        
+        
+        //重新的逻辑替换
+        models[(currentSelectIndexPath?.section)!].childs.replace(index: currentRow.row, object: model)
+        
+        //单行刷新列表
+        self.tableView.reloadRows(at: [currentRow], with: .automatic)
         
     }
     

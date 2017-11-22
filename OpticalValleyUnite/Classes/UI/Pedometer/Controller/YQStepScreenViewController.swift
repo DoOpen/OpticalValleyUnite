@@ -218,6 +218,7 @@ extension YQStepScreenViewController : UITableViewDataSource,UITableViewDelegate
             
         }
         
+        cell?.indepathrow = indexPath.row
         cell?.backgroundColor =  UIColor.clear
         cell?.type = self.type
         

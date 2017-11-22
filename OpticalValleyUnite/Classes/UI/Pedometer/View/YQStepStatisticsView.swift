@@ -29,31 +29,39 @@ class YQStepStatisticsView: UITableViewCell {
     
     var type = -1
     
+    var indepathrow = -1
+    
     var model : YQStepShowModel?{
         
         didSet{
             
-            self.indexLabel.text = "\((model?.rankno)!)"
+            self.indexHeadImageV.isHidden = indexHeadImageHidde
             
-            switch model!.rankno {
+            self.indexLabel.text = "\((indepathrow + 1))"
+            
+            
+            switch indepathrow {
                 
-                case 1:
-                    indexHeadImageHidde = false
+                case 0:
+                    
+                    self.indexHeadImageV.isHidden = false
                     self.indexHeadImageV.image = UIImage(named: "1_one")
                 
-                case 2:
-                    indexHeadImageHidde = false
+                case 1:
+                    
+                    self.indexHeadImageV.isHidden = false
                     self.indexHeadImageV.image = UIImage(named: "2_one")
                 
-                case 3:
-                    indexHeadImageHidde = false
+                case 2:
+                    
+                    self.indexHeadImageV.isHidden = false
                     self.indexHeadImageV.image = UIImage(named: "3_one")
                 
                 default:
                     break
             }
             
-            self.indexHeadImageV.isHidden = indexHeadImageHidde
+            
             
             //要求的imageView裁剪成为圆形
             let url = URL(string: (model?.avatar)!)

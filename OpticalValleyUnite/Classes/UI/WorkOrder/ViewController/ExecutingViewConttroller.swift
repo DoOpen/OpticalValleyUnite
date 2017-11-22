@@ -703,8 +703,8 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let height =  self.cellHightArray["\(indexPath.row)"] as? CGFloat
-        return height!
+        _ =  self.cellHightArray["\(indexPath.row)"] as? CGFloat
+        return 100
         
     }
 

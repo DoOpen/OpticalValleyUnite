@@ -289,6 +289,7 @@ class YQPedometerViewController: UIViewController {
             }else{
                 
                 if temp.count > 0{
+                    
                     self.currentIndex = indexPage + 1
                     
                     self.rankData.append(contentsOf: temp)
@@ -381,6 +382,8 @@ extension YQPedometerViewController : UITableViewDelegate,UITableViewDataSource{
         }
         
         cell?.backgroundColor =  UIColor.clear
+        
+        cell?.indepathrow = indexPath.row
         cell?.indexHeadImageHidde = true
         cell?.type = self.type
         cell?.model = self.rankData[indexPath.row]

@@ -36,6 +36,7 @@
                                 <rect key="frame" x="12" y="40" width="85" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="NTS-k4-wbd"/>
+                                    <constraint firstAttribute="width" constant="85" id="oXM-Yr-0Vy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -106,34 +107,28 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-11-11     16:48:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdU-so-wAm">
-                                <rect key="frame" x="12" y="162" width="130" height="129.5"/>
+                                <rect key="frame" x="12" y="277" width="130" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评价理由: 修理完成后线程灯泡随手扔地上了" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tml-sT-fA8">
                                 <rect key="frame" x="12" y="70" width="336" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="zDc-tJ-4Th"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="管理人: 贺思佳" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lmg-M9-CbB">
-                                <rect key="frame" x="229" y="40" width="101" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="o4n-lC-pFS"/>
-                                </constraints>
+                                <rect key="frame" x="229" y="40" width="126" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFe-7Z-O1m" customClass="ShowImageView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                <rect key="frame" x="12" y="100" width="336" height="50"/>
+                                <rect key="frame" x="12" y="100" width="336" height="165"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="eXd-hk-wSh"/>
+                                    <constraint firstAttribute="height" constant="165" id="Uk2-4S-wEL"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -149,6 +144,7 @@
                             <constraint firstItem="evc-hm-Zr8" firstAttribute="leading" secondItem="MRn-Tq-0Lp" secondAttribute="trailing" id="K0W-Bm-7DA"/>
                             <constraint firstItem="aFe-7Z-O1m" firstAttribute="leading" secondItem="V8u-ua-kes" secondAttribute="leading" id="OyV-UV-7zQ"/>
                             <constraint firstItem="V8u-ua-kes" firstAttribute="top" secondItem="a0i-rt-N6C" secondAttribute="top" constant="10" id="P03-4a-HhD"/>
+                            <constraint firstAttribute="trailing" secondItem="Lmg-M9-CbB" secondAttribute="trailing" constant="5" id="Q25-ci-e6m"/>
                             <constraint firstItem="RdU-so-wAm" firstAttribute="top" secondItem="aFe-7Z-O1m" secondAttribute="bottom" constant="12" id="QNQ-HE-LcJ"/>
                             <constraint firstAttribute="trailing" secondItem="tml-sT-fA8" secondAttribute="trailing" constant="12" id="TKY-jw-sBa"/>
                             <constraint firstAttribute="trailing" secondItem="aFe-7Z-O1m" secondAttribute="trailing" constant="12" id="fMa-SQ-qng"/>
@@ -199,7 +195,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="contentLabel" destination="tml-sT-fA8" id="Uqx-tG-wOp"/>
-                <outlet property="heightConstraint" destination="eXd-hk-wSh" id="pIh-Yh-E2e"/>
+                <outlet property="heightConstraint" destination="Uk2-4S-wEL" id="Wpz-iD-Us3"/>
                 <outlet property="nameLabel" destination="Lmg-M9-CbB" id="h5i-Cd-oef"/>
                 <outlet property="photoView" destination="aFe-7Z-O1m" id="1By-hz-KjT"/>
                 <outlet property="sourceLabel" destination="MRn-Tq-0Lp" id="4zw-r2-lv2"/>

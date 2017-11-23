@@ -74,6 +74,7 @@ class AppraisalViewController: UIViewController {
 //            return
 //        }     
         
+        //添加设置断点续传的功能!!
         let images = addPhotoView.photos.map{$0.image}
         
         if images.count > 0 {

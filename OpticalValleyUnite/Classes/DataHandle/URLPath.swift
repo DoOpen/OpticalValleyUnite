@@ -20,13 +20,15 @@ import Foundation
  
  5.新版的测试环境: http://beta.ovuems.com/
  
+ 6.新版的测试库环境: http://172.16.19.98:4399/
+ 
  */
 
 
 struct URLPath {
 //    static let basicPath = "http://112.74.80.111:8888/ovu-pcos/api/"
     ///主机地址
-    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
+    static let basicPath = "http://172.16.19.98:4399/ovu-pcos/api/"
     //服务器的basic 地址:
 //    static let basicPath = "http://192.168.0.18:8080/ovu-pcos/api/"
 
@@ -46,7 +48,7 @@ struct URLPath {
     static let getWorkTypeList = "workunit/getWorkTypeList.do"
     
     //子系统选择图片服务器的地址
-    static let systemSelectionURL = "http://portal.ovuems.com/ovu-pcos/"
+    static let systemSelectionURL = "http://172.16.19.98:4399/ovu-pcos/"
     
     //获取配件库主页数据接口
     static let getPartsHome = "parts/list.do"

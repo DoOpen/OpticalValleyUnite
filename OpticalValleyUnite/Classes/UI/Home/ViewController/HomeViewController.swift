@@ -199,10 +199,16 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                     
                     if SORT == 9 {
                         
-                        SORT = 6 //重新对sort进行赋值的操作
+                        SORT = array.count - 2 //计步器的功能数组
+                    }
+                    
+                    if SORT == 10 {
+                        
+                        SORT = array.count - 1 //重新对sort进行赋值的操作
                     }
                     
                     if xxxx == SORT {
+                        
                         //前台的数据重写逻辑!
                         sortArray.add(temp)
                         
@@ -492,6 +498,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     func uploadLocation(parmat: [String: Any]){
 //        if lastUpdateTime.timeIntervalSinceNow < -3.0 * 60{
             lastUpdateTime = Date()
+        
             HttpClient.instance.post(path: URLPath.updateLocation, parameters: parmat, success: { (response) in
                 print("上传位置成功")
                 

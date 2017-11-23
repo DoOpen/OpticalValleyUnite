@@ -64,7 +64,20 @@ class YQStepStatisticsView: UITableViewCell {
             
             
             //要求的imageView裁剪成为圆形
-            let url = URL(string: (model?.avatar)!)
+            let string = model?.avatar
+            var url = URL(string: "")
+            
+            if (string?.contains("http"))!{
+                
+                 url = URL(string: (model?.avatar)!)
+                
+            }else{
+            
+                let basicPath = URLPath.basicPath
+                let newString = basicPath.replacingOccurrences(of: "/api/", with: "") + string!
+                
+                url = URL(string: newString)
+            }
             
             self.userHeadImageV.layer.masksToBounds = true
             self.userHeadImageV.layer.cornerRadius = 25

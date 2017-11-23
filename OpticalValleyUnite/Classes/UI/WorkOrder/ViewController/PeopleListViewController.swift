@@ -58,27 +58,34 @@ class PeopleListViewController: UIViewController {
     func addRefirsh(){
         
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
-            self.getPeople()
+            
+            self.getPeople(indexPage: 0)
+            
         })
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
-            self.getPeople(indexPage: self.pageNo + 1)
+            self.getPeople(indexPage: self.pageNo + 1 )
         })
     }
+    
+    
     
     func getPeople(indexPage: Int = 0,name: String = ""){
         
         SVProgressHUD.show(withStatus: "加载中...")
         var parmat = [String: Any]()
+        
         parmat["pageIndex"] = indexPage
         
         if name != ""{
+            
             parmat["NAME"] = name
         }
         
         //获取集团和 项目版的参数
         let isgroup = UserDefaults.standard.object(forKey: Const.YQIs_Group) as? Int ?? -1
+        
         if isgroup == 2 {//集团版
             
         }else{//项目版
@@ -100,19 +107,22 @@ class PeopleListViewController: UIViewController {
             }
             
             if indexPage == 0{
+                
                 self.pageNo = 0
                 self.models = temp
                 self.tableView.mj_header.endRefreshing()
+                
+                
             }else{
                 
                 if temp.count > 0{
-                    self.pageNo = indexPage + 1
-                    self.models.append(contentsOf: temp)
-                    self.tableView.mj_footer.endRefreshing()
-                }else{
                     
-                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    self.pageNo = indexPage
+                    self.models.append(contentsOf: temp)
+                    
                 }
+            
+                self.tableView.mj_footer.endRefreshing()
             }
             
             self.tableView.reloadData()
@@ -122,6 +132,7 @@ class PeopleListViewController: UIViewController {
         }
         
     }
+    
     
     
     @IBAction func doneBtnClick(_ sender: UIBarButtonItem) {

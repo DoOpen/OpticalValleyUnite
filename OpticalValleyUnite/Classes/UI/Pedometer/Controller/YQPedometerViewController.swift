@@ -290,15 +290,13 @@ class YQPedometerViewController: UIViewController {
                 
                 if temp.count > 0{
                     
-                    self.currentIndex = indexPage + 1
+                    self.currentIndex = indexPage
                     
                     self.rankData.append(contentsOf: temp)
-                    self.tableView.mj_footer.endRefreshing()
                     
-                }else{
-
-                    self.tableView.mj_footer.endRefreshing()
                 }
+            
+                self.tableView.mj_footer.endRefreshing()
             }
 
         }) { (error) in
@@ -324,7 +322,7 @@ class YQPedometerViewController: UIViewController {
             self.stepFunctionDidStart()
             self.getStepDataForService()
             
-            self.getRankForAllData(dic : par)
+            self.getRankForAllData(indexPage: 1 ,dic : par)
             
         })
 
@@ -335,7 +333,7 @@ class YQPedometerViewController: UIViewController {
             par["type"] = self.type
             par["date"] = self.yesterday
 
-            self.getRankForAllData(indexPage: self.currentIndex + 1)
+            self.getRankForAllData(indexPage: self.currentIndex + 1 ,dic : par)
             
         })
         

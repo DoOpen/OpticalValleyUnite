@@ -79,7 +79,8 @@ class AppraisalViewController: UIViewController {
         
         if images.count > 0 {
             
-            HttpClient.instance.upDataImage(images.first!, complit: { (url) in
+            HttpClient.instance.upDataImages(images, complit: { (url) in
+                
                 parmat["PICTURE"] = url
                 
                 HttpClient.instance.post(path: URLPath.evaluateSave, parameters: parmat, success: { (response) in
@@ -90,6 +91,7 @@ class AppraisalViewController: UIViewController {
                 }) { (error) in
                     
                 }
+                
             })
             
             return

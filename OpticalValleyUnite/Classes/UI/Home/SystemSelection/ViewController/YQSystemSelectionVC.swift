@@ -29,6 +29,12 @@ class YQSystemSelectionVC: UIViewController {
     
     @IBOutlet weak var sixthView: YQSystemView!
     
+    @IBOutlet weak var sevenView: YQSystemView!
+    
+    @IBOutlet weak var eightView: YQSystemView!
+    
+    @IBOutlet weak var nineView: YQSystemView!
+    
     ///保存消防的index
     var fireindex : Int = -1
     
@@ -50,7 +56,7 @@ class YQSystemSelectionVC: UIViewController {
             //调用写入计步数据的接口
             stepFunctionDidStart()
             
-            if dataArray.count > 1 {//注意的是,这里的大于1的情况,就是默认的一张图片不会显示的直接登录
+            if dataArray.count > 1 && dataArray.count <= viewArray.count {//注意的是,这里的大于1的情况,就是默认的一张图片不会显示的直接登录
                 
                 //通过数据遍历来进行设置隐藏
                 for index in dataArray.count ..< viewArray.count {
@@ -118,7 +124,7 @@ class YQSystemSelectionVC: UIViewController {
                 SJKeyWindow?.rootViewController = tabVc
 
             
-            }else{ // 直接跳转到home界面, 传递数据情况,(没有数据的逻辑处理)
+            }  else { // 直接跳转到home界面, 传递数据情况,(没有数据的逻辑处理)
                 
                 //数据都需要保存下来,归档解档,plist文件
                 let tabVc = UITabBarController()
@@ -139,7 +145,7 @@ class YQSystemSelectionVC: UIViewController {
         () ->[YQSystemView]
         in
         
-        return[self.firstView,self.SecondView,self.thridView,self.fourVIEW,self.fiveView]
+        return[self.firstView,self.SecondView,self.thridView,self.fourVIEW,self.fiveView,self.sixthView,self.sevenView,self.eightView,self.nineView]
         
     }()
     
@@ -272,7 +278,6 @@ class YQSystemSelectionVC: UIViewController {
                 
             })
         }
-        
     }
     
     

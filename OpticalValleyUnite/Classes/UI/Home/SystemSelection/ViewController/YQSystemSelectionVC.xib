@@ -12,9 +12,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQSystemSelectionVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
                 <outlet property="SecondView" destination="lAD-4L-nfb" id="Ii7-Vu-wnd"/>
+                <outlet property="eightView" destination="rlI-dy-5ig" id="OcO-kP-hU0"/>
                 <outlet property="firstView" destination="yo6-gH-MBQ" id="i6d-bX-b9h"/>
                 <outlet property="fiveView" destination="4PL-4r-Cek" id="f3A-Ex-D3g"/>
                 <outlet property="fourVIEW" destination="a7J-NL-baW" id="bsK-iX-kDO"/>
+                <outlet property="nineView" destination="eV0-e2-aQp" id="so3-NJ-COS"/>
+                <outlet property="sevenView" destination="HXQ-UN-1Kg" id="KH1-Ku-wnX"/>
                 <outlet property="sixthView" destination="UmP-29-bpJ" id="FUE-jN-RDn"/>
                 <outlet property="thridView" destination="DAg-Us-bGj" id="Pvs-sH-DKO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -72,15 +75,28 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                 </view>
-                <view hidden="YES" tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UmP-29-bpJ" customClass="YQSystemView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UmP-29-bpJ" customClass="YQSystemView" customModule="OpticalValleyUnite" customModuleProvider="target">
                     <rect key="frame" x="306" y="354" width="141.5" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXQ-UN-1Kg" userLabel="Seven View" customClass="YQSystemView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                    <rect key="frame" x="14" y="487.5" width="141.5" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlI-dy-5ig" userLabel="Eight View" customClass="YQSystemView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                    <rect key="frame" x="160.5" y="487.5" width="141" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eV0-e2-aQp" userLabel="Nine View" customClass="YQSystemView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                    <rect key="frame" x="306.5" y="487.5" width="141.5" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="hrn-zv-f4R" firstAttribute="centerY" secondItem="Jh8-sf-fnL" secondAttribute="centerY" id="2SW-ZO-fSV"/>
+                <constraint firstItem="rlI-dy-5ig" firstAttribute="top" secondItem="HXQ-UN-1Kg" secondAttribute="top" id="5KA-jc-f6X"/>
                 <constraint firstItem="DAg-Us-bGj" firstAttribute="width" secondItem="yo6-gH-MBQ" secondAttribute="width" id="6FM-Ss-g0T"/>
                 <constraint firstItem="4PL-4r-Cek" firstAttribute="top" secondItem="a7J-NL-baW" secondAttribute="top" id="9wb-nP-ghP"/>
                 <constraint firstItem="4PL-4r-Cek" firstAttribute="leading" secondItem="a7J-NL-baW" secondAttribute="trailing" constant="5" id="AiA-Qc-fb0"/>
@@ -91,22 +107,33 @@
                 <constraint firstItem="4PL-4r-Cek" firstAttribute="height" secondItem="a7J-NL-baW" secondAttribute="height" id="Edt-gS-O16"/>
                 <constraint firstItem="F0Z-vm-IjV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HFR-S2-C5y"/>
                 <constraint firstItem="UmP-29-bpJ" firstAttribute="height" secondItem="a7J-NL-baW" secondAttribute="height" id="IU6-cM-eJh"/>
+                <constraint firstItem="HXQ-UN-1Kg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="Isz-2c-nH0"/>
+                <constraint firstItem="eV0-e2-aQp" firstAttribute="height" secondItem="HXQ-UN-1Kg" secondAttribute="height" id="Ju6-r1-AYt"/>
                 <constraint firstItem="a7J-NL-baW" firstAttribute="height" secondItem="yo6-gH-MBQ" secondAttribute="height" id="Lgn-7h-n8m"/>
                 <constraint firstItem="UmP-29-bpJ" firstAttribute="leading" secondItem="4PL-4r-Cek" secondAttribute="trailing" constant="5" id="OSW-So-PFQ"/>
                 <constraint firstAttribute="trailing" secondItem="Jh8-sf-fnL" secondAttribute="trailing" id="PwF-CJ-LG5"/>
                 <constraint firstItem="lAD-4L-nfb" firstAttribute="top" secondItem="F0Z-vm-IjV" secondAttribute="bottom" constant="25" id="V6O-y0-rCh"/>
                 <constraint firstItem="yo6-gH-MBQ" firstAttribute="top" secondItem="lAD-4L-nfb" secondAttribute="top" id="VMo-L4-niE"/>
+                <constraint firstItem="HXQ-UN-1Kg" firstAttribute="height" secondItem="yo6-gH-MBQ" secondAttribute="height" id="Vlu-6X-uVN"/>
+                <constraint firstAttribute="trailing" secondItem="eV0-e2-aQp" secondAttribute="trailing" constant="14" id="W3u-cH-Tao"/>
                 <constraint firstItem="UmP-29-bpJ" firstAttribute="top" secondItem="a7J-NL-baW" secondAttribute="top" id="Xq7-cq-0a3"/>
                 <constraint firstAttribute="trailing" secondItem="UmP-29-bpJ" secondAttribute="trailing" constant="14" id="ZqV-jF-kpM"/>
                 <constraint firstItem="lAD-4L-nfb" firstAttribute="leading" secondItem="yo6-gH-MBQ" secondAttribute="trailing" constant="5" id="a5r-yw-jEM"/>
                 <constraint firstItem="DAg-Us-bGj" firstAttribute="top" secondItem="lAD-4L-nfb" secondAttribute="top" id="bJW-yk-YvE"/>
                 <constraint firstItem="lAD-4L-nfb" firstAttribute="width" secondItem="yo6-gH-MBQ" secondAttribute="width" id="cBm-sB-aSo"/>
                 <constraint firstAttribute="trailing" secondItem="DAg-Us-bGj" secondAttribute="trailing" constant="14" id="dGN-sJ-q0N"/>
+                <constraint firstItem="HXQ-UN-1Kg" firstAttribute="top" secondItem="a7J-NL-baW" secondAttribute="bottom" constant="5" id="dy4-Kg-v04"/>
                 <constraint firstItem="lAD-4L-nfb" firstAttribute="height" secondItem="yo6-gH-MBQ" secondAttribute="height" id="hrc-8O-KEP"/>
+                <constraint firstItem="rlI-dy-5ig" firstAttribute="leading" secondItem="HXQ-UN-1Kg" secondAttribute="trailing" constant="5" id="kFp-58-NBS"/>
+                <constraint firstItem="eV0-e2-aQp" firstAttribute="top" secondItem="HXQ-UN-1Kg" secondAttribute="top" id="l67-YP-fdh"/>
+                <constraint firstItem="rlI-dy-5ig" firstAttribute="width" secondItem="HXQ-UN-1Kg" secondAttribute="width" id="lKv-mT-KNp"/>
+                <constraint firstItem="eV0-e2-aQp" firstAttribute="leading" secondItem="rlI-dy-5ig" secondAttribute="trailing" constant="5" id="mdf-Ch-8dR"/>
                 <constraint firstItem="a7J-NL-baW" firstAttribute="top" secondItem="yo6-gH-MBQ" secondAttribute="bottom" constant="5" id="nI7-fF-x4M"/>
                 <constraint firstItem="Jh8-sf-fnL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qaj-eN-M02"/>
                 <constraint firstItem="UmP-29-bpJ" firstAttribute="width" secondItem="a7J-NL-baW" secondAttribute="width" id="sOY-jt-z9R"/>
                 <constraint firstItem="hrn-zv-f4R" firstAttribute="centerX" secondItem="Jh8-sf-fnL" secondAttribute="centerX" id="saf-qp-DlF"/>
+                <constraint firstItem="rlI-dy-5ig" firstAttribute="height" secondItem="HXQ-UN-1Kg" secondAttribute="height" id="ufT-1q-JOh"/>
+                <constraint firstItem="eV0-e2-aQp" firstAttribute="width" secondItem="HXQ-UN-1Kg" secondAttribute="width" id="wa9-s5-qAJ"/>
                 <constraint firstItem="a7J-NL-baW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="y1o-X0-wv9"/>
                 <constraint firstItem="DAg-Us-bGj" firstAttribute="height" secondItem="lAD-4L-nfb" secondAttribute="height" id="yLB-7w-sqr"/>
                 <constraint firstItem="DAg-Us-bGj" firstAttribute="leading" secondItem="lAD-4L-nfb" secondAttribute="trailing" constant="5" id="yjX-SZ-cgn"/>

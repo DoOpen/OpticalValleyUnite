@@ -150,6 +150,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         self.allPermissionModels.removeAll()
         var topArry = [PermissionModel]()
         var downArry = [PermissionModel]()
+        
         for dic in arry{
             let model = PermissionModel(json:dic)
             if model?.iSTOP == 0{
@@ -159,6 +160,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             }
             
         }
+        
         downPermissionModels = downArry
         self.allPermissionModels.append(contentsOf: topArry)
         self.allPermissionModels.append(contentsOf: downArry)

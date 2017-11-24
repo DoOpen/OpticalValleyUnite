@@ -575,6 +575,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 navigationController?.pushViewController(vc, animated: true)
                 
             }else if status == .notDetermined{
+                
                 PHPhotoLibrary.requestAuthorization({ (authorizationStatus) in
                     
                 })

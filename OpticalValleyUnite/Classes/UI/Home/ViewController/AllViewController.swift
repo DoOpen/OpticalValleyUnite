@@ -110,9 +110,13 @@ class AllViewController: UIViewController {
         
         let device = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
         if device != nil {
+            
+            
             let status = PHPhotoLibrary.authorizationStatus()
             if status == .authorized{
                 let vc = SGScanningQRCodeVC()
+                //设置代理
+                vc.delegate = self
                 navigationController?.pushViewController(vc, animated: true)
             }else if status == .notDetermined{
                 PHPhotoLibrary.requestAuthorization({ (authorizationStatus) in
@@ -129,6 +133,15 @@ class AllViewController: UIViewController {
         let vc = SurveillanceWorkOrderViewController.loadFromStoryboard(name: "WorkOrder")
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    // MARK: - 跳转到二维码的扫描的界面
+    fileprivate func pushToDeviceViewController(equipmentId: String){
+        
+        let vc = DeviceViewController.loadFromStoryboard(name: "Home") as! DeviceViewController
+        vc.equipmentId = equipmentId
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
 
 }
 
@@ -151,3 +164,29 @@ extension UIView{
         return nil
     }
 }
+
+extension AllViewController :SGScanningQRCodeVCDelegate{
+    
+    
+    func didScanningText(_ text: String!) {
+        
+        if text.contains("设备"){//区分是否是自己的二维码的情况
+            
+            let str = text.components(separatedBy: ":").last
+            if let str = str{
+                
+                self.navigationController?.popViewController(animated: false)
+                pushToDeviceViewController(equipmentId: str)
+                
+            }
+            
+        }else{
+            
+            self.alert(message: "非可识别二维码!")
+            
+        }
+    }
+    
+    
+}
+

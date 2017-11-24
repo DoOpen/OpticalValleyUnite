@@ -138,7 +138,7 @@ class DeviceViewController: UIViewController {
             
              self.scrollViewHeightConstraint.constant = UIScreen.main.bounds.size.height
                 
-            self.scrollViewHeight.constant = self.mark.maxY + 200
+            self.scrollViewHeight.constant = self.mark.maxY + 300
             
             openButton.setTitle("收起", for: .normal)
         }

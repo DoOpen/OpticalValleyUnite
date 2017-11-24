@@ -108,9 +108,9 @@ class YQJournalCellView: UITableViewCell{
     func cellForHeight() -> CGFloat {
         // detailLabel.frame.maxY + detailLabel.frame.width + 10
         
-        print(detailLabel.frame.maxY + 15)
+//        print(detailLabel.frame.maxY + 15)
         
-        return detailLabel.frame.maxY + 15
+        return detailLabel.frame.maxY + 25
     }
 
     

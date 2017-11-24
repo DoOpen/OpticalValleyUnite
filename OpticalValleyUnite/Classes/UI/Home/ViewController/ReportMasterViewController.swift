@@ -519,6 +519,7 @@ class ReportMasterViewController: UIViewController {
             SVProgressHUD.showError(withStatus: "请选择一个项目")
             return
         }
+        
         if selectWorkType == nil {
             SVProgressHUD.showError(withStatus: "请选择一个工单类型")
             return
@@ -555,6 +556,7 @@ class ReportMasterViewController: UIViewController {
             parmarReport["HOUSE_ID"] = selectParkInfo?.id ?? ""
 
         }else{
+            
             parmarReport["STAGE_ID"] = selectParkInfo?.STAGE_ID ?? ""
             parmarReport["FLOOR_ID"] = selectParkInfo?.id ?? ""
             parmarReport["HOUSE_ID"] = ""
@@ -564,6 +566,8 @@ class ReportMasterViewController: UIViewController {
         parmarReport["IMPORTENT_LEVEL"] = level
         parmarReport["EVENT_ADDR"] = address2Label.text ?? ""
         parmarReport["DESCRIPTION"] = textView.text
+        
+        //设备id
         parmarReport["equipment_id"] = deviceModel?.id
         
         //新添加逻辑代码:如果是contentView存在,约束不为0的话:
@@ -670,12 +674,12 @@ class ReportMasterViewController: UIViewController {
         
         HttpClient.instance.post(path: URLPath.reportMaster, parameters: parmarReport, success: { (response) in
             
-            
             SVProgressHUD.showSuccess(withStatus: "提交成功")
             _ = self.navigationController?.popViewController(animated: true)
             
             //主线程设置 button可用
             DispatchQueue.main.async {
+                
                 self.SubmitBtn.isUserInteractionEnabled = true
                 self.view .layoutIfNeeded()
             }
@@ -694,6 +698,7 @@ class ReportMasterViewController: UIViewController {
         
     }
     
+    
     // MARK: - 电梯报事和报事hide方法
     /// 电梯报事
     func elevatorReportHide(){
@@ -706,6 +711,7 @@ class ReportMasterViewController: UIViewController {
         contenView.layoutIfNeeded()
         
     }
+    
     /// 报事
     func reportHide(){
         telReportMaster.isHidden = true
@@ -737,6 +743,7 @@ extension ReportMasterViewController: SGScanningQRCodeVCDelegate{
         HttpClient.instance.get(path: URLPath.getEquipmentDetail, parameters: parmate, success: { (response) in
             
             if let dic = response as? [String: Any]{
+                
                 let model = Equipment(parmart: dic)
                 
                 self.deviceModel = model

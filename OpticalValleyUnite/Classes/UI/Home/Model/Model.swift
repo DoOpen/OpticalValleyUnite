@@ -1035,6 +1035,7 @@ class PersonInfo {
 }
 
 class Equipment {
+    
     var equip_code = ""
     var type_name = ""
     var model_name = ""
@@ -1045,7 +1046,8 @@ class Equipment {
     var unit_num = ""
     var ground_num = ""
     var address = ""
-    var id = 0
+    var id : Int64 = -1
+    
     convenience init(parmart: [String: Any]) {
         self.init()
         equip_code = parmart["equip_code"] as? String ?? ""
@@ -1062,6 +1064,6 @@ class Equipment {
             floor_name = String(num) + "层"
         }
         address = stage_name + floor_name + unit_num + ground_num
-        id = parmart["id"] as? Int ?? -1
+        id = parmart["id"] as? Int64 ?? -1
     }
 }

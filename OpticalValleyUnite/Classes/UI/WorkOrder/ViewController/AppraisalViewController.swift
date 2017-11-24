@@ -59,7 +59,9 @@ class AppraisalViewController: UIViewController {
         parmat["EVALUATE_TEXT"] = textView.text
         
         if let btn = selectStatBtn {
+            
             parmat["EVALUATE_SCORE"] = (btn.tag + 1)
+            
         }else{
             //代码修改,逻辑调整, 不打分也能提交评价
 //            SVProgressHUD.showError(withStatus: "请先打分...")

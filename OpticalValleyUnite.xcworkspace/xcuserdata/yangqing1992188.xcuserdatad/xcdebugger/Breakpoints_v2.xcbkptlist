@@ -97,22 +97,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/Home/ViewController/ReportMasterViewController.swift"
-            timestampString = "530777072.755134"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "628"
-            endingLineNumber = "628"
-            landmarkName = "doneBtnClick()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ChoosePersonViewController.swift"
             timestampString = "529226630.900344"
             startingColumnNumber = "9223372036854775807"
@@ -150,16 +134,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ExecutingViewConttroller.swift"
-            timestampString = "533036180.871969"
+            filePath = "OpticalValleyUnite/Classes/UI/Home/ViewController/ReportMasterViewController.swift"
+            timestampString = "533181992.774447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "647"
-            endingLineNumber = "647"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "746"
+            endingLineNumber = "746"
+            landmarkName = "getEquipment(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

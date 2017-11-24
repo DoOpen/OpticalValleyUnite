@@ -31,6 +31,7 @@ class ShowImageView: UIView {
         
         for (index,imageView) in subviews.enumerated(){
             if let imageView = imageView as? UIButton{
+                
                 let url = URL(string: urls[index])
                 imageView.kf.setBackgroundImage(with: url, for: .normal)
             }
@@ -39,6 +40,7 @@ class ShowImageView: UIView {
     }
     
     private func addView(count: Int){
+        
         for i in 0...count - 1{
             let btn = UIButton()
             btn.tag = i

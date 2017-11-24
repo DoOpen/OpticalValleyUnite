@@ -275,6 +275,8 @@ class ExecutingViewConttroller: UIViewController {
                         continue
                     }
                     
+                    
+                    
                     //保存上传图片显示
                     if let url = cell?.model?.imageValue,url != "" {
                         
@@ -313,30 +315,32 @@ class ExecutingViewConttroller: UIViewController {
                             
                         }
                         
-//                        let images = cell!.addPhotoView.photos.map{return $0.image}
                         
                         group.enter()
                         
                         upDataImage(imageArray, complit: { (url) in
                             
                             model2.value = url
+                            
                             group.leave()
                             
                         },errorHandle: {
                             
+//                            SVProgressHUD.showError(withStatus: "请检查网络,保存失败!")
+//                            return
+                            
                             group.leave()
+//                            
                         })
                     }
-                    
                 }
             }
         }
         
+        
         group.notify(queue: DispatchQueue.main) {
             
-            print("complete!")
             //完成成功的时候,需要的添加那个配件库的功能json的功能
-            
             SVProgressHUD.dismiss()
             
             var arry = Array<[String: Any]>()
@@ -387,7 +391,9 @@ class ExecutingViewConttroller: UIViewController {
             complit(url!)
             
         }) { (error) in
+            
             SVProgressHUD.dismiss()
+            
             if let errorHandle = errorHandle{
                 errorHandle()
             }
@@ -554,6 +560,9 @@ class ExecutingViewConttroller: UIViewController {
         
         //移除通知监听
         NotificationCenter.default.removeObserver(self)
+        
+        //清空沙盒缓存
+        
         
     }
 

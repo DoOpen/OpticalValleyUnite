@@ -100,6 +100,7 @@ class YQExecNewCell: UITableViewCell {
                         }else{
                         
                             imageV.image = self.imageForString(fullPath: string)
+//                            imageV.kf.setImage(with: URL(string: string))
                         
                         }
                         
@@ -125,7 +126,7 @@ class YQExecNewCell: UITableViewCell {
                     }else{
                     
                          self.imageViewOne.image = self.imageForString(fullPath: url)
-                
+//                           self.imageViewOne.kf.setImage(with: URL(string: url))
                     }
                     
                 }

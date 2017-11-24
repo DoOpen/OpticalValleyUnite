@@ -85,8 +85,6 @@ class YQJournalCellView: UITableViewCell{
             
             detailAarry = model?.todoList
             
-            setNeedsLayout()
-            setNeedsDisplay()
         }
     }
     

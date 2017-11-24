@@ -85,7 +85,7 @@ class YQJournalViewController: UIViewController {
     
     // MARK: - 获取日志数据列表
     // 不是参数的,默认是可传可 不传的情况
-     func getWorklogDataList(indexPage: Int = 0){
+    func getWorklogDataList(indexPage: Int = 0){
         
         var paramerters = [String : Any]()
         paramerters["pageIndex"] = indexPage
@@ -300,7 +300,7 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 200
+        return 600
     }
     
 }

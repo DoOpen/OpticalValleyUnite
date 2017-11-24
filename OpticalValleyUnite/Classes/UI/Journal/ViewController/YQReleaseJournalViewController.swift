@@ -36,7 +36,16 @@ class YQReleaseJournalViewController: UIViewController {
     
     @IBOutlet weak var selectWorkunitIds: UILabel!
     
-    
+    // MARK: - swift懒加载方法
+    lazy var heightDic = {
+        () -> NSMutableDictionary
+        
+        in
+        
+        return NSMutableDictionary()
+        
+    }()
+
     
     var dataList = [YQToDoListModel](){
         
@@ -348,7 +357,6 @@ class YQReleaseJournalViewController: UIViewController {
         
         if dic != nil {
             
-            
             projectName = dic?["PARK_NAME"] as! String
             
             if self.projectLabel.text != projectName {
@@ -416,13 +424,37 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.numberOfLines = 0
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? YQReleaseDetailTableViewCell
+        
+        if cell == nil {
+            
+            cell = YQReleaseDetailTableViewCell()
+        }
+        
         let model = self.dataList[indexPath.row]
         
-        cell.textLabel?.text = "\(indexPath.row + 1)." + (model.title)!
+        cell?.detailLabel?.text = "\(indexPath.row + 1)." + (model.title)!
         
-        return cell
+        //cell的更新
+        cell?.layoutIfNeeded()
+        
+        self.heightDic["\(indexPath.row)"] = cell?.cellForHeight()
+        
+        return cell!
+    }
+    
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 200
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let  height = self.heightDic["\(indexPath.row)"] as! CGFloat
+        
+        return height
         
     }
     
@@ -442,8 +474,10 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
             self.navigationController?.pushViewController(addDetailVC, animated: true)
 
         }
-        
     }
+    
+    
+    
 }
 
 

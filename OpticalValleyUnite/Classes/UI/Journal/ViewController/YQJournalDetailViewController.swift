@@ -42,6 +42,17 @@ class YQJournalDetailViewController: UIViewController {
         }
     }
     
+    // MARK: - swift懒加载方法
+    lazy var heightDic = {
+        () -> NSMutableDictionary
+        
+        in
+        
+        return NSMutableDictionary()
+        
+    }()
+
+    
     @IBOutlet weak var projectNAME: UILabel!
     
     override func viewDidLoad() {
@@ -154,7 +165,7 @@ extension YQJournalDetailViewController : UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as? YQJournalDetailTVCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "detailCell") as? YQJournalDetailTVCell
         
         if cell == nil{
             
@@ -165,7 +176,25 @@ extension YQJournalDetailViewController : UITableViewDelegate, UITableViewDataSo
         let text =  dic?["title"] as? String
         cell?.contentLabel.text = "\(indexPath.row + 1)." + text!
         
+        cell?.layoutIfNeeded()
+        
+        self.heightDic["\(indexPath.row)"] = cell?.cellForHeight()
+        
         return cell!
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let height = self.heightDic["\(indexPath.row)"] as! CGFloat
+        
+        return height
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 300
+        
     }
 
 

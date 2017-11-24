@@ -118,14 +118,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfw-zR-qOk">
-                                                    <rect key="frame" x="15" y="15.5" width="345" height="18"/>
+                                                    <rect key="frame" x="15" y="10" width="345" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="pfw-zR-qOk" firstAttribute="centerY" secondItem="mP4-kk-r3K" secondAttribute="centerY" id="UZI-Xo-NTU"/>
+                                                <constraint firstItem="pfw-zR-qOk" firstAttribute="top" secondItem="mP4-kk-r3K" secondAttribute="top" constant="10" id="azv-87-8rw"/>
                                                 <constraint firstAttribute="trailing" secondItem="pfw-zR-qOk" secondAttribute="trailing" constant="15" id="f3b-qg-uJl"/>
                                                 <constraint firstItem="pfw-zR-qOk" firstAttribute="leading" secondItem="mP4-kk-r3K" secondAttribute="leading" constant="15" id="fov-Ll-Cjf"/>
                                             </constraints>

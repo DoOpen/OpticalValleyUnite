@@ -18,12 +18,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="v5g-Nr-XYd" kind="relationship" relationship="rootViewController" id="PEV-XO-N4B"/>
+                        <segue destination="v5g-Nr-XYd" kind="relationship" relationship="rootViewController" id="dGV-Ku-fJE"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ts-IS-F6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="-56"/>
+            <point key="canvasLocation" x="138" y="-56"/>
         </scene>
         <!--日志-->
         <scene sceneID="nAq-GR-bnJ">
@@ -61,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRe-G4-kId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="-56"/>
+            <point key="canvasLocation" x="870" y="-56"/>
         </scene>
     </scenes>
 </document>

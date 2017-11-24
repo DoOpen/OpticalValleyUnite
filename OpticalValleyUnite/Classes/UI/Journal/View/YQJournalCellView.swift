@@ -85,6 +85,9 @@ class YQJournalCellView: UITableViewCell{
             
             detailAarry = model?.todoList
             
+            setNeedsLayout()
+            setNeedsDisplay()
+            
         }
     }
     
@@ -105,7 +108,9 @@ class YQJournalCellView: UITableViewCell{
     func cellForHeight() -> CGFloat {
         // detailLabel.frame.maxY + detailLabel.frame.width + 10
         
-        return bottomimageV.frame.maxY + 5
+        print(detailLabel.frame.maxY + 15)
+        
+        return detailLabel.frame.maxY + 15
     }
 
     

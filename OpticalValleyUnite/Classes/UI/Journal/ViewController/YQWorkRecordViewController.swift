@@ -121,6 +121,8 @@ class YQWorkRecordViewController: UIViewController {
         
         parmat["pageIndex"] = indexPage
         parmat["PARK_ID"] = self.parkID
+        parmat["pageSize"] = 20
+        
         
         for (key,value) in dic{
             parmat[key] = value
@@ -176,7 +178,7 @@ class YQWorkRecordViewController: UIViewController {
                 
                 if temp.count > 0{
                     
-                    self.pageNo = indexPage + 1
+                    self.pageNo = indexPage
                     self.currentDatas.append(contentsOf: temp)
                     self.tableView.mj_footer.endRefreshing()
                     

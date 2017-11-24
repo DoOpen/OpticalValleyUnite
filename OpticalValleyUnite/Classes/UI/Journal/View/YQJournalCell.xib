@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="journalCell" rowHeight="198" id="TbD-YA-slr" customClass="YQJournalCellView" customModule="OpticalValleyUnite" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="501" height="198"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="journalCell" rowHeight="177" id="TbD-YA-slr" customClass="YQJournalCellView" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="564" height="177"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TbD-YA-slr" id="5T3-J9-HMA">
-                <rect key="frame" x="0.0" y="0.0" width="501" height="197.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="564" height="176.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y85-9q-5KH">
@@ -32,42 +32,47 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgC-rz-DgT">
-                        <rect key="frame" x="458.5" y="12" width="37.5" height="18"/>
+                        <rect key="frame" x="521.5" y="12" width="37.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工程班长" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6N-TS-vna">
-                        <rect key="frame" x="69" y="38" width="427" height="16"/>
+                        <rect key="frame" x="69" y="38" width="490" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-9-15工作日志" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YdF-GY-vdK">
                         <rect key="frame" x="12" y="77" width="117" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="enH-Jv-uqG"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.每日至少巡查一次,特殊情况时需要增加巡查次数" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3c-Mn-bkw">
-                        <rect key="frame" x="12" y="102" width="484" height="20.5"/>
+                        <rect key="frame" x="12" y="103" width="542" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vls-jt-cG2">
-                        <rect key="frame" x="12" y="132.5" width="232" height="15"/>
+                        <rect key="frame" x="12" y="133.5" width="232" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15" id="0cJ-ca-iyp"/>
+                            <constraint firstAttribute="height" constant="15" id="XpM-oz-Tsz"/>
                             <constraint firstAttribute="width" constant="232" id="jhf-SF-C4j"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="a3c-Mn-bkw" secondAttribute="trailing" constant="5" id="2Jr-fT-MlH"/>
+                    <constraint firstAttribute="trailing" secondItem="a3c-Mn-bkw" secondAttribute="trailing" constant="10" id="2Jr-fT-MlH"/>
                     <constraint firstAttribute="trailing" secondItem="sgC-rz-DgT" secondAttribute="trailing" constant="5" id="4Zf-uP-bKy"/>
                     <constraint firstAttribute="trailing" secondItem="D6N-TS-vna" secondAttribute="trailing" constant="5" id="DPA-AX-CXZ"/>
+                    <constraint firstItem="a3c-Mn-bkw" firstAttribute="top" secondItem="YdF-GY-vdK" secondAttribute="bottom" constant="10" id="H9S-cx-6GG"/>
                     <constraint firstItem="Vls-jt-cG2" firstAttribute="leading" secondItem="5T3-J9-HMA" secondAttribute="leading" constant="12" id="K24-3I-qKJ"/>
+                    <constraint firstItem="YdF-GY-vdK" firstAttribute="top" secondItem="y85-9q-5KH" secondAttribute="bottom" constant="15" id="PQe-LI-JKf"/>
                     <constraint firstItem="y85-9q-5KH" firstAttribute="top" secondItem="5T3-J9-HMA" secondAttribute="top" constant="12" id="Q6t-2g-SmF"/>
                     <constraint firstItem="D6N-TS-vna" firstAttribute="leading" secondItem="bq4-fP-JI2" secondAttribute="leading" id="QXr-A5-5J2"/>
                     <constraint firstItem="sgC-rz-DgT" firstAttribute="top" secondItem="y85-9q-5KH" secondAttribute="top" id="RXf-3G-cDT"/>
@@ -77,9 +82,7 @@
                     <constraint firstItem="a3c-Mn-bkw" firstAttribute="leading" secondItem="5T3-J9-HMA" secondAttribute="leading" constant="12" id="f6c-kJ-U9G"/>
                     <constraint firstItem="D6N-TS-vna" firstAttribute="top" secondItem="bq4-fP-JI2" secondAttribute="bottom" constant="5" id="kmo-9P-tNQ"/>
                     <constraint firstItem="YdF-GY-vdK" firstAttribute="leading" secondItem="y85-9q-5KH" secondAttribute="leading" id="m3e-yP-XWv"/>
-                    <constraint firstItem="YdF-GY-vdK" firstAttribute="top" secondItem="y85-9q-5KH" secondAttribute="bottom" constant="15" id="n1k-yr-gCJ"/>
                     <constraint firstItem="Vls-jt-cG2" firstAttribute="top" secondItem="a3c-Mn-bkw" secondAttribute="bottom" constant="10" id="oIj-d9-Nis"/>
-                    <constraint firstItem="a3c-Mn-bkw" firstAttribute="top" secondItem="y85-9q-5KH" secondAttribute="bottom" constant="40" id="p8z-4g-C9o"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -91,7 +94,7 @@
                 <outlet property="tempTimeLabel" destination="YdF-GY-vdK" id="gou-hc-Okd"/>
                 <outlet property="timeLabel" destination="sgC-rz-DgT" id="uSK-CN-atw"/>
             </connections>
-            <point key="canvasLocation" x="-377" y="-162"/>
+            <point key="canvasLocation" x="-622" y="-152.5"/>
         </tableViewCell>
     </objects>
 </document>

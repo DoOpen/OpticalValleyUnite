@@ -413,6 +413,7 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
         return header
     }
     
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         let footer = Bundle.main.loadNibNamed("YQReseaseJournalFooter", owner: nil, options: nil)?[0] as? YQReleaseJournalFooterV
@@ -472,8 +473,8 @@ extension YQReleaseJournalViewController : UITableViewDelegate, UITableViewDataS
             addDetailVC.text = model.title!
             
             self.navigationController?.pushViewController(addDetailVC, animated: true)
-
         }
+        
     }
     
     

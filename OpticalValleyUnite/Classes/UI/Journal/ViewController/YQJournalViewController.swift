@@ -22,7 +22,7 @@ class YQJournalViewController: UIViewController {
     var projectName : String = ""
     
     
-    var dataArray : [YQWorkLogListModel]?{
+    var dataArray = [YQWorkLogListModel](){
         didSet{
             
             self.tableView.reloadData()
@@ -56,12 +56,12 @@ class YQJournalViewController: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         
         //3.注册原型cell
-//        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableViewAutomaticDimension
 //        tableView.estimatedRowHeight = 100
 //        
 //        let nib = UINib.init(nibName: "YQJournalCell", bundle: nil)
 //        tableView.register(nib, forCellReuseIdentifier: cellID)
-        
+
       
         //4.设置添加上下拉刷新
         addRefirsh()
@@ -90,6 +90,7 @@ class YQJournalViewController: UIViewController {
         var paramerters = [String : Any]()
         paramerters["pageIndex"] = indexPage
         paramerters["parkId"] = parkId
+        paramerters["pageSize"] = 20
         
         SVProgressHUD.show(withStatus: "数据加载中...")
         HttpClient.instance.get(path: URLPath.getWorklogList, parameters: paramerters, success: { (response) in
@@ -106,24 +107,48 @@ class YQJournalViewController: UIViewController {
                     modelArray.append(YQWorkLogListModel.init(dic: temp as! [String : Any]))
                 }
                 
-                //成功的模型转入
-                self.dataArray = modelArray
+                
+                
+                if indexPage == 0{
+                    
+                    self.pageNo = 0
+                    //成功的模型转入
+                    self.dataArray = modelArray
+                    
+                    self.tableView.mj_header.endRefreshing()
+                    
+                }else{
+                    
+                    if modelArray.count > 0{
+                        
+                        self.pageNo = indexPage
+                        
+                        self.dataArray.append(contentsOf: modelArray)
+                        
+                    }
+                    
+                    self.tableView.mj_footer.endRefreshing()
+                }
+
                 
             }else if(response["pageIndex"] as? Int64 == 0){
                 
-                self.dataArray = nil
-                
+//                self.dataArray = nil
             }
+            
             
         }) { (error) in
             
             self.alert(message: error.debugDescription)
+            
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
+            
         }
         
-        tableView.mj_header.endRefreshing()
-        tableView.mj_footer.endRefreshing()
     
     }
+    
     
     // MARK: - 添加默认的项目选择方法
     func setUpProjectNameLable() -> String{
@@ -250,7 +275,7 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return (self.dataArray?.count ?? 0)!
+        return self.dataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -261,15 +286,17 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
             
 //            let nib = UINib.init(nibName: "YQJournalCell", bundle: nil)
             cell = Bundle.main.loadNibNamed("YQJournalCell", owner: nil, options: nil)?[0] as? YQJournalCellView
+            
         }
         
-        cell?.model = self.dataArray?[indexPath.row]
+        cell?.model = self.dataArray[indexPath.row]
         //强制更新cell的布局高度
         cell?.layoutIfNeeded()
         
         //缓存 行高
         //要求的定义的是 一个可变的字典的类型的来赋值
         heightDic["\(indexPath.row)"] = cell?.cellForHeight()
+        
         
         return cell!
     }
@@ -281,9 +308,9 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
         //传递数据数组 和 ID 
         let detailVC = UIStoryboard.instantiateInitialViewController(name: "YQJournalDetail") as? YQJournalDetailViewController
         
-        let model = self.dataArray?[indexPath.row]
+        let model = self.dataArray[indexPath.row]
 //        detailVC?.detailList = model?.todoList
-        detailVC?.workIDid = (model?.worklogId)!
+        detailVC?.workIDid = (model.worklogId)
         
         //跳转
         self.navigationController?.pushViewController(detailVC!, animated: true)
@@ -300,7 +327,7 @@ extension YQJournalViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 600
+        return 300
     }
     
 }

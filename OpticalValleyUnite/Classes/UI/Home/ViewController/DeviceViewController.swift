@@ -202,13 +202,13 @@ class DeviceViewController: UIViewController {
                 
             }
             
-            
         }) { (error) in
             
             print(error)
         }
         
     }
+    
     
     private func getEquipment(_ equipment: String){
         
@@ -274,6 +274,7 @@ class DeviceViewController: UIViewController {
     }
 }
 
+
 extension DeviceViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -296,9 +297,9 @@ extension DeviceViewController: UITableViewDelegate,UITableViewDataSource{
         //添加模型的数据内容
         heightDic["\(indexPath.row)"] = cell?.cellForHeight()
         
-        
         return cell!
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -306,6 +307,7 @@ extension DeviceViewController: UITableViewDelegate,UITableViewDataSource{
         
         return height
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //传递数据模型, 判断来进行可执行与否

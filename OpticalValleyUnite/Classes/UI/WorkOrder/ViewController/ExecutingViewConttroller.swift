@@ -65,6 +65,9 @@ class ExecutingViewConttroller: UIViewController {
     var url: String?
     var image: UIImage?
     
+    var savefalse = true
+    
+    
     //创建配件库数据数组
     var partData : NSArray = {return NSArray()}()
     
@@ -84,7 +87,7 @@ class ExecutingViewConttroller: UIViewController {
         return NSMutableDictionary()
         
     }()
-    
+
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
@@ -243,11 +246,23 @@ class ExecutingViewConttroller: UIViewController {
          */
         
         SVProgressHUD.show(withStatus: "上传中")
+        
         //调用了 相应的接口workunitOpera
         HttpClient.instance.post(path: URLPath.workunitOpera, parameters: parmat, success: { (response) in
+            
             SVProgressHUD.dismiss()
             SVProgressHUD.showSuccess(withStatus: "保存成功")
+            DispatchQueue.main.async {
+                
+                self.saveBtn.isSelected = false
+                self.saveBtn.isUserInteractionEnabled = true
+                
+            }
+
+            
+            
         }) { (error) in
+            
             print(error)
         }
         
@@ -257,91 +272,134 @@ class ExecutingViewConttroller: UIViewController {
     // MARK: - 保存按钮的点击的实现逻辑
     @IBAction func saveBtnClick() {
         
+        /*重新梳理逻辑: 
+         应用线程加锁的 等待的情况来实现先下载,然后上传图片
+         1.先放到 同步的下载
+         2.拿到字面量,异步上传
+         
+         */
         //注意的是:这里通过异步的方式来进行的实现,模型嵌套模型来实现功能的
         let group = DispatchGroup()
         
+        let dequeue = DispatchQueue.init(label: "grounpQueue")
+        
         SVProgressHUD.show(withStatus: "上传中")
         
-        for (index1,model) in models.enumerated(){
-           
-            for (index2,model2) in model.childs.enumerated(){
+        saveBtn.isSelected = true
+        saveBtn.isUserInteractionEnabled = false
+        
+//        group.enter()
+        
+        dequeue.async(group: group, qos: .default, flags: [], execute: {
+            
+            for (index1,model) in self.models.enumerated(){
                 
-                if model2.type == "1"{
-                    
-                    // 保存上传当前的图片 cell里面的图片情况
-                    let cell = tableView.cellForRow(at: IndexPath(row: index2, section: index1)) as? YQExecNewCell
-                    
-                    if cell == nil{
-                        continue
-                    }
+                
+                for (index2,model2) in model.childs.enumerated(){
                     
                     
-                    
-                    //保存上传图片显示
-                    if let url = cell?.model?.imageValue,url != "" {
+                    if model2.type == "1"{
                         
-                        //实现的思路,要求拿到的是一个image数组来进行的上传
-                        var imageArray = [UIImage]()
-//                        imageArray.append(<#T##newElement: UIImage##UIImage#>)
-                        let stringArray = url.components(separatedBy: ",")
+                        // 保存上传当前的图片 cell里面的图片情况
+                        let cell = self.tableView.cellForRow(at: IndexPath(row: index2, section: index1)) as? YQExecNewCell
                         
-                        for string in stringArray {
-                            
-                            if string.contains("相册图片") {
-                                
-                                let image = UIImage(contentsOfFile: string)
-                                imageArray.append(image!)
-                            
-                            }else{
-                                
-                                var newString = ""
-                                if string.contains("http"){
-                                    
-                                    newString = string
-                                    
-                                }else{
-                                    
-                                    let basicPath = URLPath.basicPath
-                                    newString = basicPath.replacingOccurrences(of: "/api/", with: "") + string
-                                }
-
-                                
-                                let data = NSData.init(contentsOf: URL.init(string: newString)!)
-                                
-                                let image2 = UIImage.init(data: data! as Data)
-                                imageArray.append(image2!)
-                            
-                            }
-                            
+                        if cell == nil{
+                            continue
                         }
                         
                         
-                        group.enter()
-                        
-                        upDataImage(imageArray, complit: { (url) in
+                        //保存上传图片显示
+                        if let url = cell?.model?.imageValue,url != "" {
                             
-                            model2.value = url
+                            //实现的思路,要求拿到的是一个image数组来进行的上传
+                            var imageArray = [UIImage]()
+                            //                        imageArray.append(<#T##newElement: UIImage##UIImage#>)
+                            let stringArray = url.components(separatedBy: ",")
                             
-                            group.leave()
+                            for string in stringArray {
+                                
+                                if string.contains("相册图片") {
+                                    
+                                    let image = UIImage(contentsOfFile: string)
+                                    imageArray.append(image!)
+                                    
+                                }else{
+                                    
+                                    var newString = ""
+                                    if string.contains("http"){
+                                        
+                                        newString = string
+                                        
+                                    }else{
+                                        
+                                        let basicPath = URLPath.basicPath
+                                        newString = basicPath.replacingOccurrences(of: "/api/", with: "") + string
+                                    }
+                                    
+                                    
+                                    let data = NSData.init(contentsOf: URL.init(string: newString)!)
+                                    
+                                    if data == nil {
+                                        
+                                        SVProgressHUD.showError(withStatus: "网络不给力,上传图片失败!")
+//                                        group.leave()
+                                        continue
+                                    }
+                                    
+                                    
+                                    let image2 = UIImage.init(data: data! as Data)
+                                    imageArray.append(image2!)
+//                                    group.leave()
+                                    
+                                }
+                                
+                            }
                             
-                        },errorHandle: {
                             
-//                            SVProgressHUD.showError(withStatus: "请检查网络,保存失败!")
-//                            return
+                            group.enter()
                             
-                            group.leave()
-//                            
-                        })
+                            self.upDataImage(imageArray, complit: { (url) in
+                                
+                                model2.value = url
+                                group.leave()
+                                
+                                
+                            },errorHandle: {
+                                
+                                
+                                self.savefalse = false
+                                group.leave()
+                                
+                            })
+                            
+                            
+                            //打印线程:
+                            //                        print(NSTread.currentthread)
+                            //                        group.enter()
+                            
+                            
+                            
+                        }
                     }
                 }
             }
-        }
-        
+            
+         })
         
         group.notify(queue: DispatchQueue.main) {
+        
+            
+            if !self.savefalse {
+            
+                SVProgressHUD.showError(withStatus: "请检查网络,保存失败!")
+                
+                SVProgressHUD.dismiss()
+                
+                return
+            }
             
             //完成成功的时候,需要的添加那个配件库的功能json的功能
-            SVProgressHUD.dismiss()
+             SVProgressHUD.dismiss()
             
             var arry = Array<[String: Any]>()
             
@@ -354,8 +412,8 @@ class ExecutingViewConttroller: UIViewController {
                 arry.append(taskDic)
                 
             }
-            
             do {
+                
                 //Convert to Data
                 
                 //let jsonData = try JSONSerialization.data(withJSONObject: arry, options: JSONSerialization.WritingOptions.prettyPrinted)
@@ -375,7 +433,11 @@ class ExecutingViewConttroller: UIViewController {
                 
                 print("转换错误 ")
             }
+        
         }
+        
+        
+        
     }
     
     
@@ -395,6 +457,7 @@ class ExecutingViewConttroller: UIViewController {
             SVProgressHUD.dismiss()
             
             if let errorHandle = errorHandle{
+                
                 errorHandle()
             }
         }
@@ -421,6 +484,7 @@ class ExecutingViewConttroller: UIViewController {
         }else if workOrderDetalModel?.orderType == "应急工单"{
             
             let images = addPhoneView.photos.map { (image) -> UIImage in
+                
                 return image.image
             }
             
@@ -444,6 +508,7 @@ class ExecutingViewConttroller: UIViewController {
                     self.upload(parmat)
 //                    }
                 })
+                
             }else{
                 
                 var parmat = [String: Any]()
@@ -473,6 +538,14 @@ class ExecutingViewConttroller: UIViewController {
             
             SVProgressHUD.dismiss()
             SVProgressHUD.showSuccess(withStatus: "操作成功")
+            
+            DispatchQueue.main.async {
+                
+                self.saveBtn.isSelected = false
+                self.saveBtn.isUserInteractionEnabled = true
+
+            }
+            
             self.ProgressVC?.reloadStatus(status: 7)
             _ = self.navigationController?.popViewController(animated: true)
             

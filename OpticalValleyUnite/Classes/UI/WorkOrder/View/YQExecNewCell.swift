@@ -60,13 +60,13 @@ class YQExecNewCell: UITableViewCell {
             }
             
             
-            
             if let url = model?.imageValue,url != ""{
                 
                 var imageValue = ""
                 
                 //通过逗号来进行的判断调整
                 if url.contains(","){
+                    
                     //至少有两张图片,数组的循环的取值赋值
                     let stringArray = url.components(separatedBy: ",")
                     
@@ -95,7 +95,8 @@ class YQExecNewCell: UITableViewCell {
                                 imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + string
                             }
                             
-                            imageV.kf.setImage(with: URL(string: imageValue))
+//                            imageV.kf.setImage(with: URL(string: imageValue))
+                            imageV.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
                             
                         }else{
                         
@@ -103,7 +104,6 @@ class YQExecNewCell: UITableViewCell {
 //                            imageV.kf.setImage(with: URL(string: string))
                         
                         }
-                        
                         
                     }
                     
@@ -121,14 +121,13 @@ class YQExecNewCell: UITableViewCell {
                             imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
                         }
                         
-                        self.imageViewOne.kf.setImage(with: URL(string: imageValue))
+                        self.imageViewOne.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
                         
                     }else{
                     
                          self.imageViewOne.image = self.imageForString(fullPath: url)
 //                           self.imageViewOne.kf.setImage(with: URL(string: url))
                     }
-                    
                 }
             }
         }

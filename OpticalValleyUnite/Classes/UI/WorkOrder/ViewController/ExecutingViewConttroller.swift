@@ -77,9 +77,9 @@ class ExecutingViewConttroller: UIViewController {
     @IBOutlet weak var scrollContent: NSLayoutConstraint!
     
     //photo的图片缓存数组
-    lazy var photoArray : NSDictionary = {
+    lazy var photoArray : NSMutableDictionary = {
     
-        return NSDictionary()
+        return NSMutableDictionary()
         
     }()
     
@@ -342,9 +342,11 @@ class ExecutingViewConttroller: UIViewController {
                             
                             for string in stringArray {
                                 
-                                if string.contains("相册图片") {
+                                if string.contains("缓存相册图片") {
                                     
-                                    let image = UIImage(contentsOfFile: string)
+//                                    let image = UIImage(contentsOfFile: string)
+                                    let image = self.photoArray[string] as? UIImage
+                                    
                                     imageArray.append(image!)
                                     
                                 }else{
@@ -361,9 +363,10 @@ class ExecutingViewConttroller: UIViewController {
                                     }
                                     
                                     
-                                    let data = NSData.init(contentsOf: URL.init(string: newString)!)
+//                                    let data = NSData.init(contentsOf: URL.init(string: newString)!)
+                                    let image2 = self.photoArray[newString] as? UIImage
                                     
-                                    if data == nil {
+                                    if image2 == nil {
                                         
                                         SVProgressHUD.showError(withStatus: "网络不给力,上传图片失败!")
 //                                        group.leave()
@@ -371,7 +374,7 @@ class ExecutingViewConttroller: UIViewController {
                                     }
                                     
                                     
-                                    let image2 = UIImage.init(data: data! as Data)
+//                                    let image2 = UIImage.init(data: data! as Data)
                                     imageArray.append(image2!)
 //                                    group.leave()
                                     
@@ -774,6 +777,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             cell?.delegate = self as YQExecTextCellDelegate
             cell?.indexpath = indexPath
             
+            
             cell?.model =  model
             
             return cell!
@@ -790,6 +794,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             
             //添加图片缓存数组
             cell?.currentIndex = indexPath
+            cell?.photoDict = self.photoArray
             
             cell?.model = model
             currentSelectIndexPath = indexPath
@@ -875,37 +880,52 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
 
 extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
     
+    func ExecNewCellSetSuperDict(view: YQExecNewCell, dict: NSMutableDictionary) {
+        
+        self.photoArray =  dict
+        
+    }
+    
     func ExecNewCellMakePhotoFunction(view: YQExecNewCell, currentRow: IndexPath,image : UIImage) {
         
         let model = models[(currentRow.section)].childs[currentRow.row]
         
         //缓存图片数组
         // 将图片转化成Data
-        let imageData = UIImageJPEGRepresentation(image, 1)! as NSData
-        var fullPath = ""
+//        let imageData = UIImageJPEGRepresentation(image, 1)! as NSData
+//        var fullPath = ""
+        var fullPath1 = ""
         
         if model.imageValue == "" {
             
             view.pictureArray[0].image = image
             
-            fullPath = NSHomeDirectory().appending("/Documents/").appending("相册图片" + "\(currentRow.row)" + "-" + "0")
+//            fullPath = NSHomeDirectory().appending("/Documents/").appending("相册图片" + "\(currentRow.row)" + "-" + "0")
+            //设置内存_缓存文件
+            fullPath1 = "第" + "\(currentRow.section)" + "组_" + "第" + "\(currentRow.row)" + "行_" + "缓存相册图片" + "-" + "0"
+            
             
             //传递image 刷新列表
-            model.imageValue =  fullPath
+            model.imageValue =  fullPath1
             
         }else{
             
             let tempArray =  model.imageValue.components(separatedBy: ",")
             view.pictureArray[tempArray.count].image = image
             
-            fullPath = NSHomeDirectory().appending("/Documents/").appending("相册图片" + "\(currentRow.row)" + "-" + "\(tempArray.count)")
+//            fullPath = NSHomeDirectory().appending("/Documents/").appending("相册图片" + "\(currentRow.row)" + "-" + "\(tempArray.count)")
             
+            fullPath1 = "第" + "\(currentRow.section)" + "组_" + "第" + "\(currentRow.row)" + "行_" + "缓存相册图片" + "-" + "\(tempArray.count)"
             
             //传递image 刷新列表
-            model.imageValue = model.imageValue + "," + fullPath
+            model.imageValue = model.imageValue + "," + fullPath1
+            
         }
         
-        imageData.write(toFile: fullPath, atomically: true)
+        
+        self.photoArray[fullPath1] = image
+            
+//        imageData.write(toFile: fullPath, atomically: true)
         
         //重新的逻辑替换
         models[(currentSelectIndexPath?.section)!].childs.replace(index: currentRow.row, object: model)

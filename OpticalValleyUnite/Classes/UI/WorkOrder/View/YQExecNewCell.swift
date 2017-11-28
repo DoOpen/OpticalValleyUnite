@@ -15,6 +15,9 @@ protocol YQExecNewCellClickDelegate : class {
     
     //获取本地的相机的图片代理方法
     func ExecNewCellMakePhotoFunction(view : YQExecNewCell,currentRow : IndexPath, image : UIImage)
+    
+    //父类的字典属性的赋值
+    func ExecNewCellSetSuperDict(view : YQExecNewCell, dict : NSMutableDictionary)
 
 }
 
@@ -36,6 +39,15 @@ class YQExecNewCell: UITableViewCell {
     weak var  delegate : YQExecNewCellClickDelegate?
     
     var addPhotoView = SJAddView()
+    
+    var photoDict : NSMutableDictionary?{
+        didSet{
+            
+            self.delegate?.ExecNewCellSetSuperDict(view: self, dict: photoDict!)
+        
+        }
+    
+    }
     
     //数据模型
     var model : ExecChild?{
@@ -84,7 +96,7 @@ class YQExecNewCell: UITableViewCell {
                         
                         let string = stringArray[stringIndex]
                         
-                        if !string.contains("相册图片") {
+                        if !string.contains("缓存相册图片") {
                             
                             if string.contains("http"){
                                 
@@ -97,12 +109,20 @@ class YQExecNewCell: UITableViewCell {
                             }
                             
 //                            imageV.kf.setImage(with: URL(string: imageValue))
-                            imageV.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
+//                            let myCache = ImageCache(name:"my_cache")
+                            
+                            imageV.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: { (image, error, cacetype, url) in
+                                
+                                self.photoDict?[imageValue] = image
+                                
+                            })
+
                             
                         }else{
                         
-                            imageV.image = self.imageForString(fullPath: string)
+//                            imageV.image = self.imageForString(fullPath: string)
 //                            imageV.kf.setImage(with: URL(string: string))
+                            imageV.image = self.photoDict?[string] as? UIImage
                         
                         }
                         
@@ -110,7 +130,7 @@ class YQExecNewCell: UITableViewCell {
                     
                 }else{//只有一张图片
                     
-                    if !url.contains("相册图片") {
+                    if !url.contains("缓存相册图片") {
                         
                         if url.contains("http"){
                             
@@ -122,12 +142,20 @@ class YQExecNewCell: UITableViewCell {
                             imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
                         }
                         
-                        self.imageViewOne.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
+//                        self.imageViewOne.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
+//                        
+                        self.imageViewOne.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: { (image, error, cacetype, url) in
+                            
+                            self.photoDict?[imageValue] = image
+                            
+                        })
                         
                     }else{
                     
-                         self.imageViewOne.image = self.imageForString(fullPath: url)
+//                         self.imageViewOne.image = self.imageForString(fullPath: url)
 //                           self.imageViewOne.kf.setImage(with: URL(string: url))
+                        
+                        self.imageViewOne.image = self.photoDict?[url] as? UIImage
                     }
                 }
             }

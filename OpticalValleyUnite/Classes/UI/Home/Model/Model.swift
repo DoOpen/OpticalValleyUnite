@@ -746,33 +746,42 @@ class ExecSectionModel: Object{
     dynamic var TASK_DESCRIPTION = ""
     
     convenience init(parmart: [String: Any]) {
+        
         self.init()
+        
         id = parmart["WORKTASK_ID"] as? String ?? ""
         TASK_DESCRIPTION = parmart["TASK_DESCRIPTION"] as? String ?? ""
         name = parmart["WORKTASK_NAME"] as? String ?? ""
         DESCRIPTION_ID = parmart["DESCRIPTION_ID"] as? String ?? ""
+        
         if let arry = parmart["stepChild"] as? Array<[String: Any]>{
+            
             let temp = List<ExecChild>()
+            
             var index = 0
             
             var arry3:Array<[String: Any]>? = nil
+            
             if let arry2 =  parmart["DESCRIPTION"] as? String{
+                
                 let data = arry2.data(using: .utf8)!
                 let json = try? JSONSerialization.jsonObject(with: data)
                 arry3 = json as? Array<[String: Any]>
+                
             }
             
-            for dic in arry{
-                
+            
+            for dic in arry {
                 
                 let model = ExecChild(parmart: dic)
+                
                 model.taskId = id
                 
                 if let arry3 = arry3,arry3.count > 0{
                     
                     if arry3.count > index {
                         
-                        if let array = arry3[index]["photos"] as? [String]{
+                        if let array = arry3[index]["photos"] as? [String]{//图片url的数据
                             
                             if let path = array.first{
                                 
@@ -789,22 +798,25 @@ class ExecSectionModel: Object{
                             
                             }else{
                                 
-                                if let text = arry3[index]["value"] as? String{
-                                    
+                                if let text = arry3[index]["value"] as? String{//文本text的数据
                                     model.value = text
+                                    
+                                    
                                 }
                                 
                             }
                             
-                    }else if let text = arry3[index]["value"] as? String{
+                    }else if let text = arry3[index]["value"] as? String{//测试文本项的情况
+                            
+                            
                             model.value = text
                         }
                         
-                    
                     }
                 }
                 
                 temp.append(model)
+                
                 index += 1
             }
             
@@ -838,7 +850,8 @@ class ExecSectionModel: Object{
             
             //Do this for print data only otherwise skip
             if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
-                print(JSONString)
+                
+//                print(JSONString)
                 taskDic["DESCRIPTION"] = JSONString
             }
             
@@ -921,18 +934,21 @@ class ExecChild: Object{
         }
     }
     
-    func toDic() -> [String: Any]{
+    func toDic() -> [String: Any] {
         
         var dic = [String: Any]()
         dic["id"] = id
 //        dic["taskId"] = taskId
 //        dic["filename"] = ""
-        if type == "1"{
-            dic["photos"] = [value]
-//            dic["value"] = ""
-        }else if type == "3"{
+        
+        if type == "1"{//图片的list
+            dic["photos"] = [imageValue]
+            
+        }else if type == "3"{//选择项的list
+            
             dic["value"] = value
-        }else{
+            
+        }else{//type == "2" 文本框的内容情况
             dic["value"] = value
         }
         

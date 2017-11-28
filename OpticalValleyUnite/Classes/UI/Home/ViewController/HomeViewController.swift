@@ -13,7 +13,7 @@ import Alamofire
 import SnapKit
 import CoreMotion
 
-let KDistence = 50.0
+let KDistence = 100.0
 
 class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
@@ -79,8 +79,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         //接受服务消息通知
         getNotice()
         
-        //设置定位
-        setUpLocation()
+        
         
         //接受新的数据来显示
         getPermission()
@@ -96,7 +95,13 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         stepFunctionDidStart()
         
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        //设置定位
+        setUpLocation()
+        
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -262,7 +267,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     func stepFunctionDidStart() {
         
         if !CMPedometer.isStepCountingAvailable() {
-            
             
             return
             
@@ -709,10 +713,12 @@ extension HomeViewController: AMapLocationManagerDelegate{
         parmet["MAP_LNG"] = location.coordinate.longitude
         
         if !User.isLogin(){
+            
             return
         }
         
         if let latitude = UserDefaults.standard.object(forKey: "SJlatitude") as? CLLocationDegrees,let longitude = UserDefaults.standard.object(forKey: "SJlongitude") as? CLLocationDegrees{
+            
             let lastCLLocation = CLLocation(latitude: latitude, longitude: longitude)
             let nowCLLocation = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let distance = lastCLLocation.distance(from: nowCLLocation)
@@ -722,6 +728,7 @@ extension HomeViewController: AMapLocationManagerDelegate{
             }
             
         }else{
+            
             UserDefaults.standard.set(location.coordinate.latitude, forKey: "SJlatitude")
             UserDefaults.standard.set(location.coordinate.longitude, forKey: "SJlongitude")
         }
@@ -731,9 +738,12 @@ extension HomeViewController: AMapLocationManagerDelegate{
         {
             parmet["RESERVER"] = reGeocode.formattedAddress
             uploadLocation(parmat: parmet)
+            
         }else{
+            
             HttpClient.instance.getAddress(lat: location.coordinate.latitude, lon: location.coordinate.longitude, succses: { (address) in
                 if let address = address{
+                    
                     parmet["RESERVER"] = address
                     self.uploadLocation(parmat: parmet)
                 }
@@ -744,7 +754,6 @@ extension HomeViewController: AMapLocationManagerDelegate{
 
 
 extension HomeViewController:SGScanningQRCodeVCDelegate{
-
     
     func didScanningText(_ text: String!) {
         

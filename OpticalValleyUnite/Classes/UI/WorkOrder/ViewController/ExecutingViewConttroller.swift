@@ -61,6 +61,8 @@ class ExecutingViewConttroller: UIViewController {
     // 计划工单的备注textView
     @IBOutlet weak var RemarksTextView: SJTextView!
     
+    
+    
 
     var url: String?
     var image: UIImage?
@@ -106,6 +108,8 @@ class ExecutingViewConttroller: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         self.scrollContent.constant = self.view.bounds.height - 80
         
+        RemarksTextView.placeHolder = "请输入备注内容"
+        textView.placeHolder = "请输入备注内容"
         
         if isToSee{
             
@@ -114,6 +118,7 @@ class ExecutingViewConttroller: UIViewController {
         
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单,是有配件库的选择功能的
             emergencyView.isHidden = true
+//            self.textView.isHidden = true
             
             getData()
             
@@ -122,6 +127,7 @@ class ExecutingViewConttroller: UIViewController {
         }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单,里面没有配件的功能
             emergencyView.isHidden = false
             saveBtn.isHidden = true
+//            self.RemarksTextView.isHidden = true
             
             //隐藏应急工单 里面的 报事模块 内容,区分计划工单和应急工单的区别
             reportFunctionHiden()
@@ -143,7 +149,7 @@ class ExecutingViewConttroller: UIViewController {
             }
         }
         
-        RemarksTextView.placeHolder = "请输入备注内容"
+        
         
         // 接受通知
         receiveNotes()
@@ -161,7 +167,24 @@ class ExecutingViewConttroller: UIViewController {
         
         SVProgressHUD.show(withStatus: "加载任务中")
         HttpClient.instance.get(path: URLPath.getTaskList, parameters: parmat, success: { (response) in
+            
             SVProgressHUD.dismiss()
+            
+            let text = response["remark"] as? String
+        
+            
+            DispatchQueue.main.async {
+                
+                if text != nil {
+                
+                    self.RemarksTextView.placeHolder = ""
+                    self.textView.placeHolder = ""
+                
+                }
+                self.RemarksTextView.text = text
+                self.textView.text = text
+                
+            }
             
             var temp = [ExecSectionModel]()
             
@@ -172,10 +195,12 @@ class ExecutingViewConttroller: UIViewController {
 
                 temp.append(model)
 //            }
+            
             if temp.count == 0{
                 SVProgressHUD.showSuccess(withStatus: "没有待执行任务")
             }
             self.models = temp
+            
             self.tableView.reloadData()
             
 //            let realm = try! Realm()
@@ -240,6 +265,7 @@ class ExecutingViewConttroller: UIViewController {
         parmat["UNIT_STATUS"] = json0["UNIT_STATUS"]
         parmat["ID"] = json0["ID"]
         parmat["DESCRIPTION"] = json0["DESCRIPTION"]
+        parmat["SUCCESS_TEXT"] = self.RemarksTextView.text
         
         /*
          注意的是:这里的接口的变动的是 以前的是直接传递一个 data 的json 序列化的列表,现在是要求分开来传递,一共是5个参数
@@ -294,11 +320,9 @@ class ExecutingViewConttroller: UIViewController {
             
             for (index1,model) in self.models.enumerated(){
                 
-                
                 for (index2,model2) in model.childs.enumerated(){
                     
-                    
-                    if model2.type == "1"{
+                    if model2.type == "1"{//图片list选项
                         
                         // 保存上传当前的图片 cell里面的图片情况
                         let cell = self.tableView.cellForRow(at: IndexPath(row: index2, section: index1)) as? YQExecNewCell
@@ -372,14 +396,8 @@ class ExecutingViewConttroller: UIViewController {
                                 
                             })
                             
-                            
-                            //打印线程:
-                            //                        print(NSTread.currentthread)
-                            //                        group.enter()
-                            
-                            
-                            
                         }
+                        
                     }
                 }
             }
@@ -388,7 +406,6 @@ class ExecutingViewConttroller: UIViewController {
         
         group.notify(queue: DispatchQueue.main) {
         
-            
             if !self.savefalse {
             
                 SVProgressHUD.showError(withStatus: "请检查网络,保存失败!")
@@ -399,7 +416,7 @@ class ExecutingViewConttroller: UIViewController {
             }
             
             //完成成功的时候,需要的添加那个配件库的功能json的功能
-             SVProgressHUD.dismiss()
+            SVProgressHUD.dismiss()
             
             var arry = Array<[String: Any]>()
             
@@ -436,8 +453,6 @@ class ExecutingViewConttroller: UIViewController {
         
         }
         
-        
-        
     }
     
     
@@ -472,6 +487,8 @@ class ExecutingViewConttroller: UIViewController {
             var parmat = [String: Any]()
             parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
             parmat["UNIT_STATUS"] = 7
+            parmat["SUCCESS_TEXT"] = self.RemarksTextView.text
+            
             //设置添加配件库的模型数据进来
             
             self.alert(message: "整个工单已经完成?完成工单之前必须先点击保存按钮提交内容?") { (action) in
@@ -481,7 +498,7 @@ class ExecutingViewConttroller: UIViewController {
                 self.upload(parmat)
             }
             
-        }else if workOrderDetalModel?.orderType == "应急工单"{
+        }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单的保存,保存实现原理不同
             
             let images = addPhoneView.photos.map { (image) -> UIImage in
                 
@@ -517,7 +534,6 @@ class ExecutingViewConttroller: UIViewController {
                 parmat["SUCCESS_TEXT"] = self.textView.text
                 //设置添加配件库的模型数据进来
 
-                
                 self.alert(message: "整个工单已经完成?") { (action) in
                     
                     //数据保存的接口调用
@@ -727,17 +743,19 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
         
         let model = models[indexPath.section].childs[indexPath.row]
         
-        if model.type == "3"{
+        if model.type == "3"{//选择事项 cell
+            
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectSell", for: indexPath) as! ExexSwithCell
             
-            
             cell.model = model
             currentSelectIndexPath = indexPath
+            
 //            cell.doneBtnClickHandle = { [weak self] (isDone) in
 //                self?.currentSelectIndexPath = indexPath
 //                self?.cellDoneBtnClick(model: model, isDone: isDone)
 //            }
+            
             if isToSee{
                 
                 cell.isUserInteractionEnabled = false
@@ -745,7 +763,22 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             
             return cell
             
-        }else{
+        }else if model.type == "2" {//文本 编辑cell
+            
+            var cell = tableView.dequeueReusableCell(withIdentifier: "ExecTextCell") as? YQExecTextCell
+            if cell == nil {
+                
+                cell = Bundle.main.loadNibNamed("YQExecTextCell", owner: nil, options: nil)?[0] as? YQExecTextCell
+            }
+            //
+            cell?.delegate = self as YQExecTextCellDelegate
+            cell?.indexpath = indexPath
+            
+            cell?.model =  model
+            
+            return cell!
+        
+        } else {//图片
             
             var cell = tableView.dequeueReusableCell(withIdentifier: "ExecNewCell") as? YQExecNewCell
             
@@ -776,7 +809,11 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             return cell!
         }
         
+//        return UITableViewCell()
+        
     }
+    
+    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
@@ -797,7 +834,6 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        
         let view = ExecutingSectionView.loadFromXib() as! ExecutingSectionView
         
         let model = models[section]
@@ -808,8 +844,8 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             
             view.iconBtn.transform =  CGAffineTransform(rotationAngle: CGFloat.pi / 2 )
             view.openBtn.setTitle("收起", for: .normal)
-            self.hideTableViewHeightConstraint.constant = 300
-            self.scrollContent.constant = self.view.bounds.height + 180
+            self.hideTableViewHeightConstraint.constant = 450
+            self.scrollContent.constant = self.view.bounds.height + 150
             
         }else{
             
@@ -817,6 +853,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             view.openBtn.setTitle("展开", for: .normal)
             self.hideTableViewHeightConstraint.constant = 80
             
+            self.scrollContent.constant = self.view.bounds.height + 100
         }
         
 //        self.view.setNeedsDisplay()
@@ -832,6 +869,8 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
 
         return view
     }
+    
+    
 }
 
 extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
@@ -921,12 +960,32 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
         
         
         //重新的逻辑替换
-        models[(currentSelectIndexPath?.section)!].childs.replace(index: currentRow.row, object: model)
+        models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
         
         //单行刷新列表
         self.tableView.reloadRows(at: [currentRow], with: .automatic)
         
     }
     
+}
+
+
+extension ExecutingViewConttroller : YQExecTextCellDelegate{
+
+    func ExecTextCellEndTextEidtingDelegate(ExecTextCell: UITableViewCell, textString: String, indexPath: IndexPath) {
+        //传递重改模型,刷新当前的cell
+        let model = models[(indexPath.section)].childs[indexPath.row]
+        
+        model.value = textString
+        
+        //重新的逻辑替换
+        models[(indexPath.section)].childs.replace(index: indexPath.row, object: model)
+        
+        //单行刷新列表
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+
+        
+    }
+
 }
 

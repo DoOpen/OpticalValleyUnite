@@ -45,6 +45,7 @@ class YQExecNewCell: UITableViewCell {
             self.addButton.isHidden = false
             
             titleLabel.text = model?.name
+            
             //图片的数据显示信息,需要的进行的显示判断的情况,有","分隔的是有多张图片
             let pictureName = model?.imageValue
             
@@ -178,8 +179,14 @@ class YQExecNewCell: UITableViewCell {
     func imageForString(fullPath : String ) -> UIImage{
         
         let image2 = UIImage(contentsOfFile: fullPath)
-
-        return image2!
+        if image2 != nil {
+        
+            return image2!
+            
+        }else{
+            
+            return UIImage()
+        }
     
     }
     

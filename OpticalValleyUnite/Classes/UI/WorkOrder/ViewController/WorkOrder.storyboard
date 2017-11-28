@@ -3171,7 +3171,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. 清洗厨房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qro-Bi-W8w">
-                                                                    <rect key="frame" x="28" y="12" width="358" height="25"/>
+                                                                    <rect key="frame" x="10" y="12" width="394" height="25"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -3184,7 +3184,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择一项" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLR-k1-1cy">
-                                                                    <rect key="frame" x="28" y="66" width="87" height="21"/>
+                                                                    <rect key="frame" x="10" y="66" width="87" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="irZ-8m-zve"/>
                                                                     </constraints>
@@ -3193,7 +3193,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsH-0V-yIN">
-                                                                    <rect key="frame" x="135" y="62" width="259" height="30"/>
+                                                                    <rect key="frame" x="117" y="62" width="277" height="30"/>
                                                                     <state key="normal" title="请选择"/>
                                                                     <connections>
                                                                         <action selector="selectBtnClick:" destination="HHs-4Q-6oU" eventType="touchUpInside" id="Q09-ON-iG8"/>
@@ -3206,7 +3206,7 @@
                                                                 <constraint firstItem="cnM-01-kVS" firstAttribute="leading" secondItem="P8S-Mo-34W" secondAttribute="leading" id="Mc3-S7-aGg"/>
                                                                 <constraint firstItem="cnM-01-kVS" firstAttribute="top" secondItem="Qro-Bi-W8w" secondAttribute="bottom" constant="12" id="PUF-Ms-q4J"/>
                                                                 <constraint firstItem="sLR-k1-1cy" firstAttribute="top" secondItem="cnM-01-kVS" secondAttribute="bottom" constant="16" id="PeN-b9-0um"/>
-                                                                <constraint firstItem="Qro-Bi-W8w" firstAttribute="leading" secondItem="P8S-Mo-34W" secondAttribute="leading" constant="28" id="Snl-DK-5hO"/>
+                                                                <constraint firstItem="Qro-Bi-W8w" firstAttribute="leading" secondItem="P8S-Mo-34W" secondAttribute="leading" constant="10" id="Snl-DK-5hO"/>
                                                                 <constraint firstItem="nsH-0V-yIN" firstAttribute="centerY" secondItem="sLR-k1-1cy" secondAttribute="centerY" id="Uog-Nm-KTG"/>
                                                                 <constraint firstAttribute="bottom" secondItem="sLR-k1-1cy" secondAttribute="bottom" constant="17.5" id="Xs3-be-S0k"/>
                                                                 <constraint firstItem="Qro-Bi-W8w" firstAttribute="top" secondItem="P8S-Mo-34W" secondAttribute="top" constant="12" id="aP2-Vu-ZOP"/>

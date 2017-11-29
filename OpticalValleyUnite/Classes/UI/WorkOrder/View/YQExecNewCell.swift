@@ -68,7 +68,7 @@ class YQExecNewCell: UITableViewCell {
             
             for imageVV  in self.pictureArray {
                 
-                imageVV.image = UIImage.init(named: "")
+                imageVV.image = nil
                 
             }
             
@@ -105,24 +105,16 @@ class YQExecNewCell: UITableViewCell {
                             }else{
                                 
                                 let basicPath = URLPath.basicPath
-                                imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + string
+                                imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + string
                             }
-                            
-//                            imageV.kf.setImage(with: URL(string: imageValue))
-//                            let myCache = ImageCache(name:"my_cache")
-                            
-                            imageV.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: { (image, error, cacetype, url) in
-                                
-                                self.photoDict?[imageValue] = image
-                                
-                            })
-
-                            
-                        }else{
                         
-//                            imageV.image = self.imageForString(fullPath: string)
-//                            imageV.kf.setImage(with: URL(string: string))
-                            imageV.image = self.photoDict?[string] as? UIImage
+                            
+//                            DispatchQueue.global().async {
+                            
+//                                imageV.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options:KingfisherOptionsInfo.forceRefresh, progressBlock: nil, completionHandler: nil)
+                                imageV.kf.setImage(with: URL(string: imageValue), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                                
+//                            }
                         
                         }
                         
@@ -130,8 +122,8 @@ class YQExecNewCell: UITableViewCell {
                     
                 }else{//只有一张图片
                     
-                    if !url.contains("缓存相册图片") {
-                        
+//                    if !url.contains("缓存相册图片") {
+                    
                         if url.contains("http"){
                             
                             imageValue = url
@@ -139,24 +131,15 @@ class YQExecNewCell: UITableViewCell {
                         }else{
                             
                             let basicPath = URLPath.basicPath
-                            imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                            imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                         }
                         
 //                        self.imageViewOne.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
-//                        
-                        self.imageViewOne.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: { (image, error, cacetype, url) in
-                            
-                            self.photoDict?[imageValue] = image
-                            
-                        })
-                        
-                    }else{
+//                      
+//                        DispatchQueue.global().async {
                     
-//                         self.imageViewOne.image = self.imageForString(fullPath: url)
-//                           self.imageViewOne.kf.setImage(with: URL(string: url))
-                        
-                        self.imageViewOne.image = self.photoDict?[url] as? UIImage
-                    }
+                            self.imageViewOne.kf.setImage(with: URL(string: imageValue), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+//                    }
                 }
             }
         }
@@ -186,9 +169,13 @@ class YQExecNewCell: UITableViewCell {
             
             //            self.addImage(AddViewModel(image: image!))
             //设置图片,进行的添加
-//            self.addPhotoView.addImage(AddViewModel(image: image!))
+            //            self.addPhotoView.addImage(AddViewModel(image: image!))
             
-            self.delegate?.ExecNewCellMakePhotoFunction(view: self, currentRow: (self.currentIndex)! ,image : image!)
+            DispatchQueue.main.async {
+                
+                self.delegate?.ExecNewCellMakePhotoFunction(view: self, currentRow: (self.currentIndex)! ,image : image!)
+            }
+            
             
         }, viewController: (SJKeyWindow?.rootViewController ))
 

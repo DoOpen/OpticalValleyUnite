@@ -948,7 +948,7 @@ class ExecChild: Object{
             
             dic["value"] = value
             
-        }else{//type == "2" 文本框的内容情况
+        }else if type == "2"{//type == "2" 文本框的内容情况
             dic["value"] = value
         }
         

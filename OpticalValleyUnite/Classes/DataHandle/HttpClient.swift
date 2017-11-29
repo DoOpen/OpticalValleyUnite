@@ -260,10 +260,12 @@ extension HttpClient {
         
         var url = URLPath.basicPath + URLPath.uploadImage
         if let token = UserDefaults.standard.object(forKey: Const.SJToken) as? String{
+            
             url = url + "?token=\(token)"
         }
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
+            
             var count = 0
             for image in images{
                 let frame = CGRect(x: image.size.width - 400, y: image.size.height - 80, width: 400, height: 40)
@@ -277,6 +279,7 @@ extension HttpClient {
         }, to: url) { (response) in
             
             switch response {
+                
             case .success(let upload, _, _):
                 upload.responseJSON(completionHandler: { (resposen) in
                     switch resposen.result {

@@ -199,6 +199,7 @@ class ExecutingViewConttroller: UIViewController {
             if temp.count == 0{
                 SVProgressHUD.showSuccess(withStatus: "没有待执行任务")
             }
+            
             self.models = temp
             
             self.tableView.reloadData()
@@ -283,6 +284,12 @@ class ExecutingViewConttroller: UIViewController {
                 self.saveBtn.isSelected = false
                 self.saveBtn.isUserInteractionEnabled = true
                 
+                self.tableView.reloadData()
+                self.photoArray.removeAllObjects()
+                
+                //查看模型的转变的情况!
+                
+        
             }
 
             
@@ -305,10 +312,10 @@ class ExecutingViewConttroller: UIViewController {
          
          */
         //注意的是:这里通过异步的方式来进行的实现,模型嵌套模型来实现功能的
-        let group = DispatchGroup()
-        
-        let dequeue = DispatchQueue.init(label: "grounpQueue")
-        
+//        let group = DispatchGroup()
+//        
+//        let dequeue = DispatchQueue.init(label: "grounpQueue")
+//        
         SVProgressHUD.show(withStatus: "上传中")
         
         saveBtn.isSelected = true
@@ -316,111 +323,119 @@ class ExecutingViewConttroller: UIViewController {
         
 //        group.enter()
         
-        dequeue.async(group: group, qos: .default, flags: [], execute: {
-            
-            for (index1,model) in self.models.enumerated(){
-                
-                for (index2,model2) in model.childs.enumerated(){
-                    
-                    if model2.type == "1"{//图片list选项
-                        
-                        // 保存上传当前的图片 cell里面的图片情况
-                        let cell = self.tableView.cellForRow(at: IndexPath(row: index2, section: index1)) as? YQExecNewCell
-                        
-                        if cell == nil{
-                            continue
-                        }
-                        
-                        
-                        //保存上传图片显示
-                        if let url = cell?.model?.imageValue,url != "" {
-                            
-                            //实现的思路,要求拿到的是一个image数组来进行的上传
-                            var imageArray = [UIImage]()
-                            //                        imageArray.append(<#T##newElement: UIImage##UIImage#>)
-                            let stringArray = url.components(separatedBy: ",")
-                            
-                            for string in stringArray {
-                                
-                                if string.contains("缓存相册图片") {
-                                    
-//                                    let image = UIImage(contentsOfFile: string)
-                                    let image = self.photoArray[string] as? UIImage
-                                    
-                                    imageArray.append(image!)
-                                    
-                                }else{
-                                    
-                                    var newString = ""
-                                    if string.contains("http"){
-                                        
-                                        newString = string
-                                        
-                                    }else{
-                                        
-                                        let basicPath = URLPath.basicPath
-                                        newString = basicPath.replacingOccurrences(of: "/api/", with: "") + string
-                                    }
-                                    
-                                    
-//                                    let data = NSData.init(contentsOf: URL.init(string: newString)!)
-                                    let image2 = self.photoArray[newString] as? UIImage
-                                    
-                                    if image2 == nil {
-                                        
-                                        SVProgressHUD.showError(withStatus: "网络不给力,上传图片失败!")
-//                                        group.leave()
-                                        continue
-                                    }
-                                    
-                                    
-//                                    let image2 = UIImage.init(data: data! as Data)
-                                    imageArray.append(image2!)
-//                                    group.leave()
-                                    
-                                }
-                                
-                            }
-                            
-                            
-                            group.enter()
-                            
-                            self.upDataImage(imageArray, complit: { (url) in
-                                
-                                model2.value = url
-                                group.leave()
-                                
-                                
-                            },errorHandle: {
-                                
-                                
-                                self.savefalse = false
-                                group.leave()
-                                
-                            })
-                            
-                        }
-                        
-                    }
-                }
-            }
-            
-         })
+//        dequeue.async(group: group, qos: .default, flags: [], execute: {
+//            
+//            for (index1,model) in self.models.enumerated(){
+//                
+//                for (index2,model2) in model.childs.enumerated(){
+//                    
+//                    if model2.type == "1"{//图片list选项
+//                        
+//                        // 保存上传当前的图片 cell里面的图片情况
+//                        let cell = self.tableView.cellForRow(at: IndexPath(row: index2, section: index1)) as? YQExecNewCell
+//                        
+//                        if cell == nil{
+//                            continue
+//                        }
+//                        
+//                        
+//                        //保存上传图片显示
+//                        if let url = cell?.model?.imageValue,url != "" {
+//                            
+//                            //实现的思路,要求拿到的是一个image数组来进行的上传
+//                            var imageArray = [UIImage]()
+//                            //                        imageArray.append(<#T##newElement: UIImage##UIImage#>)
+//                            let stringArray = url.components(separatedBy: ",")
+//                            
+//                            for string in stringArray {
+//                                
+//                                if string.contains("缓存相册图片") {
+//                                    
+////                                    let image = UIImage(contentsOfFile: string)
+//                                    let image = self.photoArray[string] as? UIImage
+//                                    
+//                                    imageArray.append(image!)
+//                                    
+//                                }else{
+//                                    
+//                                    var newString = ""
+//                                    if string.contains("http"){
+//                                        
+//                                        newString = string
+//                                        
+//                                    }else{
+//                                        
+//                                        let basicPath = URLPath.basicPath
+//                                        newString = basicPath.replacingOccurrences(of: "/api/", with: "") + string
+//                                    }
+//                                    
+//                                    
+////                                    let data = NSData.init(contentsOf: URL.init(string: newString)!)
+//                                    let image2 = self.photoArray[newString] as? UIImage
+//                                    
+//                                    if image2 == nil {
+//                                        
+//                                        SVProgressHUD.showError(withStatus: "网络不给力,上传图片失败!")
+////                                        group.leave()
+//                                        continue
+//                                    }
+//                                    
+//                                    
+////                                    let image2 = UIImage.init(data: data! as Data)
+//                                    imageArray.append(image2!)
+////                                    group.leave()
+//                                    
+//                                }
+//                                
+//                            }
+//                            
+//                            
+//                            group.enter()
+//                            
+//                            self.upDataImage(imageArray, complit: { (url) in
+//                                
+//                                model2.imageValue = ""
+//                                
+//                                if model2.imageValue != "" {
+//                                    
+//                                    model2.imageValue =  model2.imageValue + "," + url
+//                                    
+//                                }else{
+//                                    
+//                                    model2.imageValue = url
+//                                }
+//                                
+//                                group.leave()
+//                                
+//                                
+//                            },errorHandle: {
+//                                
+//                                
+//                                self.savefalse = false
+//                                group.leave()
+//                                
+//                            })
+//                        }
+//                    }
+//                }
+//            }
+//            
+//         })
         
-        group.notify(queue: DispatchQueue.main) {
+//        group.notify(queue: DispatchQueue.main) {
+//        
+//            if !self.savefalse {
+//            
+//                SVProgressHUD.showError(withStatus: "请检查网络,保存失败!")
+//                
+//                SVProgressHUD.dismiss()
+//                
+//                return
+//            }
         
-            if !self.savefalse {
-            
-                SVProgressHUD.showError(withStatus: "请检查网络,保存失败!")
-                
-                SVProgressHUD.dismiss()
-                
-                return
-            }
-            
             //完成成功的时候,需要的添加那个配件库的功能json的功能
-            SVProgressHUD.dismiss()
-            
+//            SVProgressHUD.dismiss()
+        
             var arry = Array<[String: Any]>()
             
             for model in self.models{
@@ -454,7 +469,7 @@ class ExecutingViewConttroller: UIViewController {
                 print("转换错误 ")
             }
         
-        }
+//        }
         
     }
     
@@ -794,7 +809,6 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             
             //添加图片缓存数组
             cell?.currentIndex = indexPath
-            cell?.photoDict = self.photoArray
             
             cell?.model = model
             currentSelectIndexPath = indexPath
@@ -814,7 +828,6 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             return cell!
         }
         
-//        return UITableViewCell()
         
     }
     
@@ -850,7 +863,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             view.iconBtn.transform =  CGAffineTransform(rotationAngle: CGFloat.pi / 2 )
             view.openBtn.setTitle("收起", for: .normal)
             self.hideTableViewHeightConstraint.constant = 450
-            self.scrollContent.constant = self.view.bounds.height + 150
+            self.scrollContent.constant = self.view.bounds.height + 350
             
         }else{
             
@@ -890,48 +903,44 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
         
         let model = models[(currentRow.section)].childs[currentRow.row]
         
-        //缓存图片数组
-        // 将图片转化成Data
-//        let imageData = UIImageJPEGRepresentation(image, 1)! as NSData
-//        var fullPath = ""
-        var fullPath1 = ""
+        let imageArray = [image]
         
-        if model.imageValue == "" {
+        self.upDataImage(imageArray, complit: { (url) in
             
-            view.pictureArray[0].image = image
+            var nowUrl =  url
             
-//            fullPath = NSHomeDirectory().appending("/Documents/").appending("相册图片" + "\(currentRow.row)" + "-" + "0")
-            //设置内存_缓存文件
-            fullPath1 = "第" + "\(currentRow.section)" + "组_" + "第" + "\(currentRow.row)" + "行_" + "缓存相册图片" + "-" + "0"
+            nowUrl.remove(at: nowUrl.startIndex)
+            
+            DispatchQueue.main.async {
+                
+                if model.imageValue == "" {
+                    
+                    
+                    //传递image 刷新列表
+                    model.imageValue =  nowUrl
+                    
+                }else{
+                    
+                    
+                    //传递image 刷新列表
+                    model.imageValue = model.imageValue + "," + nowUrl
+                    
+                }
+                
+                //重新的逻辑替换
+                self.models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
+                
+                //单行刷新列表
+                self.tableView.reloadRows(at: [currentRow], with: .automatic)
+
+            }
             
             
-            //传递image 刷新列表
-            model.imageValue =  fullPath1
+        },errorHandle: {
             
-        }else{
-            
-            let tempArray =  model.imageValue.components(separatedBy: ",")
-            view.pictureArray[tempArray.count].image = image
-            
-//            fullPath = NSHomeDirectory().appending("/Documents/").appending("相册图片" + "\(currentRow.row)" + "-" + "\(tempArray.count)")
-            
-            fullPath1 = "第" + "\(currentRow.section)" + "组_" + "第" + "\(currentRow.row)" + "行_" + "缓存相册图片" + "-" + "\(tempArray.count)"
-            
-            //传递image 刷新列表
-            model.imageValue = model.imageValue + "," + fullPath1
-            
-        }
-        
-        
-        self.photoArray[fullPath1] = image
-            
-//        imageData.write(toFile: fullPath, atomically: true)
-        
-        //重新的逻辑替换
-        models[(currentSelectIndexPath?.section)!].childs.replace(index: currentRow.row, object: model)
-        
-        //单行刷新列表
-        self.tableView.reloadRows(at: [currentRow], with: .automatic)
+            SVProgressHUD.showError(withStatus: "网络超时,请重试!")
+          
+        })
 
     }
     

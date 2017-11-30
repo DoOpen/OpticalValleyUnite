@@ -208,11 +208,15 @@ class WorkOrderDetailsCell: UITableViewCell {
     @IBAction func seephotoBtnClick() {
         if let model = model{
             if model.picture != ""{
+                
                 var photos = [Photo]()
+                
                 let arry = model.picture.components(separatedBy: ",")
+                
                 for str in arry{
                     let basicPath = URLPath.basicPath
-                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + str
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + str
+                    
                     let photo = Photo(urlString: imageValue)
                     photos.append(photo)
                 }

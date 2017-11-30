@@ -20,18 +20,48 @@ class PhotoCell: UICollectionViewCell {
                 
                 imageView.image = image
                 layoutImageView()
+                
             }else {
                 
                 activityIndicatorView.startAnimating()
-                imageView.kf.setImage(with: photo?.url, placeholder: photo?.placeholderImage, progressBlock: { (receivedSize, totalSize) in
+                
+//                imageView.kf.setImage(with: photo?.url, placeholder: photo?.placeholderImage, progressBlock: { (receivedSize, totalSize) in
+//                    
+//                    
+//                    
+//                }) { (_, _, _, _) in
+//                    
+//                    self.activityIndicatorView.stopAnimating()
+//                    self.layoutImageView()
+//                    
+//                }
+                /*
+                 , completionHandler: { (image, error, calce, url) in
+                 
+                 print(image)
+                 
+                 }
+                 
+                 imageView.kf.setBackgroundImage(with: url, for: .normal)
+                 */
+                
+                
+                imageView.kf.setImage(with: photo?.url, placeholder: photo?.placeholderImage, options: nil, progressBlock: { (receivedSize, totalSize) in
                     
-                }) { (_, _, _, _) in
+                }) { (image, error, calce, url) in
+                    if (error != nil) {
+
+                        let data = NSData.init(contentsOf: (self.photo?.url)!)
+                        
+                        self.imageView.image = UIImage.init(data: data! as Data)
+                        
+                    }
                     
                     self.activityIndicatorView.stopAnimating()
                     self.layoutImageView()
                     
                 }
-                
+
             }
             
         }
@@ -146,7 +176,6 @@ extension PhotoCell: UIScrollViewDelegate {
         
         scrollView.contentInset = UIEdgeInsets(top: insetV, left: insetH, bottom: insetV, right: insetH)
 
-        
     }
     
 }

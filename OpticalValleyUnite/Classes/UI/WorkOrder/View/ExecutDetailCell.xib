@@ -22,7 +22,7 @@
                         <rect key="frame" x="40" y="74" width="280" height="125.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="125.5" id="UVU-GF-lGw"/>
+                            <constraint firstAttribute="height" constant="50" id="UVU-GF-lGw"/>
                         </constraints>
                         <connections>
                             <outlet property="dataSource" destination="KGk-i7-Jjw" id="tGr-v1-1zY"/>
@@ -90,7 +90,7 @@
                 <outlet property="tableView" destination="leV-G1-6P1" id="Rx6-EX-5Yi"/>
                 <outlet property="tableViewHeightConstaint" destination="UVU-GF-lGw" id="r5E-qW-XQt"/>
             </connections>
-            <point key="canvasLocation" x="-223" y="108"/>
+            <point key="canvasLocation" x="-350" y="54"/>
         </tableViewCell>
     </objects>
 </document>

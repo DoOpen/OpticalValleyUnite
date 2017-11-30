@@ -886,7 +886,7 @@ class ExecChild: Object{
                 
                 
                 let basicPath = URLPath.basicPath
-                imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + value
+                imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + value
                 
             }else{
                 

@@ -33,11 +33,13 @@ class ExecutDetailCell: UITableViewCell {
 //        tableView.register(nib2, forCellReuseIdentifier: "ExecuteDetailSubImageCell")
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100.0
+        tableView.estimatedRowHeight = 80.0
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
         
-        tableView.tableFooterView = UIView()
+//        tableView.tableFooterView = UIView()
+        
+        self.remarkTextView.placeHolder = "备注:"
         
     }
     
@@ -50,7 +52,6 @@ class ExecutDetailCell: UITableViewCell {
 //        }
 //    }
     
-//    did
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "contentSize"{
@@ -165,7 +166,7 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
                 self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
             }
 
-            self?.tableViewHeightConstaint.constant = (self?.tabHeight)! + 80
+            self?.tableViewHeightConstaint.constant = (self?.tabHeight)! + 120
 
             self?.superTableView?.reloadData()
             

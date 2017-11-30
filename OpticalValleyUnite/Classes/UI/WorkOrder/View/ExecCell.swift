@@ -55,7 +55,7 @@ class ExecCell: UITableViewCell {
                         }else{
                             
                             let basicPath = URLPath.basicPath
-                            imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                            imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/"  + url
                         }
                         
 //                        addPhotoView.addButton.kf.setBackgroundImage(with: URL(string: imageValue), for: .normal)

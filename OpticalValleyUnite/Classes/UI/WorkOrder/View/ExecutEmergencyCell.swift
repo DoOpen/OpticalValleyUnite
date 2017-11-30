@@ -39,7 +39,7 @@ class ExecutEmergencyCell: UITableViewCell {
                     }
                     
                     let basicPath = URLPath.basicPath
-                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                     temp.append(imageValue)
                 }
                 

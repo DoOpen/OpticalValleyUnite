@@ -67,7 +67,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
                 }else{
                 
                     let basicPath = URLPath.basicPath
-                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                     
                     photoImageView.kf.setImage(with: URL(string: imageValue))
                 

@@ -17,6 +17,8 @@
 		2F0F877D1F56D23F0030A6DB /* YQPartsLibaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F877B1F56D23F0030A6DB /* YQPartsLibaryViewController.swift */; };
 		2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */; };
 		2F0F87811F56DFFE0030A6DB /* YQPartShowHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F877F1F56DFFE0030A6DB /* YQPartShowHeadView.swift */; };
+		2F1764D51FD01BE500C816A8 /* YQExecScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1764D31FD01BE500C816A8 /* YQExecScanCell.swift */; };
+		2F1764D61FD01BE500C816A8 /* YQExecScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1764D41FD01BE500C816A8 /* YQExecScanCell.xib */; };
 		2F2141961FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2141951FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift */; };
 		2F2141981FBD409A00EFFD36 /* YQPedometerHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2141971FBD409A00EFFD36 /* YQPedometerHistory.storyboard */; };
 		2F236B701F6FADF700F1B0DF /* YQPersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */; };
@@ -288,6 +290,8 @@
 		2F0F877B1F56D23F0030A6DB /* YQPartsLibaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartsLibaryViewController.swift; sourceTree = "<group>"; };
 		2F0F877E1F56DFFE0030A6DB /* YQPartHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartHeadView.xib; sourceTree = "<group>"; };
 		2F0F877F1F56DFFE0030A6DB /* YQPartShowHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartShowHeadView.swift; sourceTree = "<group>"; };
+		2F1764D31FD01BE500C816A8 /* YQExecScanCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQExecScanCell.swift; sourceTree = "<group>"; };
+		2F1764D41FD01BE500C816A8 /* YQExecScanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQExecScanCell.xib; sourceTree = "<group>"; };
 		2F2141951FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPedometerHistoryViewController.swift; sourceTree = "<group>"; };
 		2F2141971FBD409A00EFFD36 /* YQPedometerHistory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPedometerHistory.storyboard; sourceTree = "<group>"; };
 		2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPersonDetail.storyboard; sourceTree = "<group>"; };
@@ -1320,6 +1324,8 @@
 				2F4BB4221FC3CB960007BD08 /* YQExecNew.xib */,
 				2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */,
 				2F54BF0A1FCBF7C7006B4DCF /* YQExecTextCell.xib */,
+				2F1764D31FD01BE500C816A8 /* YQExecScanCell.swift */,
+				2F1764D41FD01BE500C816A8 /* YQExecScanCell.xib */,
 				4BA520371E8F4C2100398F34 /* DubanCell.swift */,
 				4B5854E61EB072160087CFF0 /* ProcessingCell.swift */,
 				4B5854E71EB072160087CFF0 /* ProcessingCell.xib */,
@@ -1496,6 +1502,7 @@
 				2F94A2851F73B49C00455162 /* YQImplementFeedback.storyboard in Resources */,
 				4BE88A611E88D242003D9179 /* SigninCell.xib in Resources */,
 				2F5E8C561F595F7000007717 /* YQPartDataAll.xib in Resources */,
+				2F1764D61FD01BE500C816A8 /* YQExecScanCell.xib in Resources */,
 				4B5E43C11F2ECEE000DCE5AC /* SiginCellView.xib in Resources */,
 				2F0223BC1FA9C2330090822F /* YQWorkOderComplete.storyboard in Resources */,
 				2F40D98E1FB93AEA007971D1 /* YQStepScreen.storyboard in Resources */,
@@ -1750,6 +1757,7 @@
 				2F0223B81FA9A3E60090822F /* YQParkTableViewCell.swift in Sources */,
 				4B5AF6471E36F14700844F3D /* SystemMessageViewController.swift in Sources */,
 				4B814A811F1DAC3400CDCA9B /* WorkOrderSiftViewController.swift in Sources */,
+				2F1764D51FD01BE500C816A8 /* YQExecScanCell.swift in Sources */,
 				4B3951D21E278F5300E2642F /* APPHandle.swift in Sources */,
 				2F63436F1F9F4963005F930A /* AnimatedAnnotationView.m in Sources */,
 				2F648DAD1F57A2DC006D51D3 /* PartsModel.swift in Sources */,

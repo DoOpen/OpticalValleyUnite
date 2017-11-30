@@ -796,7 +796,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             
             return cell!
         
-        } else {//图片
+        } else if model.type == "1" {//图片
             
             var cell = tableView.dequeueReusableCell(withIdentifier: "ExecNewCell") as? YQExecNewCell
             
@@ -824,7 +824,21 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             }
             
             return cell!
+            
+        }else { //扫描,扫码的界面cell
+        
+            var cell = tableView.dequeueReusableCell(withIdentifier: "scanCell")
+            
+            if cell == nil {
+                
+                cell = Bundle.main.loadNibNamed("YQExecScanCell", owner: nil, options: nil)?[0] as? YQExecScanCell
+                
+            }
+        
+            return cell!
         }
+        
+        
         
     }
     

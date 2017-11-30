@@ -19,17 +19,18 @@ class ExecutDetailCell: UITableViewCell {
     }
     @IBOutlet weak var tableViewHeightConstaint: NSLayoutConstraint!
     
+    @IBOutlet weak var remarkTextView: SJTextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         let nib1 = UINib(nibName: "ExecuteDetailSubCell", bundle: nil)
-        let nib2 = UINib(nibName: "ExecuteDetailSubImageCell", bundle: nil)
+//        let nib2 = UINib(nibName: "ExecuteDetailSubImageCell", bundle: nil)
         
         tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
         tableView.register(nib1, forCellReuseIdentifier: "ExecuteDetailSubCell")
-        tableView.register(nib2, forCellReuseIdentifier: "ExecuteDetailSubImageCell")
+//        tableView.register(nib2, forCellReuseIdentifier: "ExecuteDetailSubImageCell")
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
@@ -104,12 +105,15 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
         
         let model = models[indexPath.section].childs[indexPath.row]
         
-        if model.type == "1"{
+        if model.type == "1"{//有图片的框架
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ExecuteDetailSubImageCell", for: indexPath) as! ExecuteDetailSubImageCell
-            cell.index = indexPath.row + 1
-            cell.model = model
-            return cell
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "ExecuteDetailSubImageCell", for: indexPath) as! ExecuteDetailSubImageCell
+            let cell = Bundle.main.loadNibNamed("ExecuteDetailSubImageCell", owner: nil, options: nil)?[0] as? ExecuteDetailSubImageCell
+            
+            
+            cell?.index = indexPath.row + 1
+            cell?.model = model
+            return cell!
             
         }else{
 
@@ -161,7 +165,7 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
                 self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
             }
 
-            self?.tableViewHeightConstaint.constant = (self?.tabHeight)!
+            self?.tableViewHeightConstaint.constant = (self?.tabHeight)! + 80
 
             self?.superTableView?.reloadData()
             

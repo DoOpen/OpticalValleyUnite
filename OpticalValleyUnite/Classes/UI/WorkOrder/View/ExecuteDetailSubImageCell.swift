@@ -32,6 +32,7 @@ class ExecuteDetailSubImageCell: UITableViewCell {
             if let model = model{
                 
                 titleLabel.text = "\(index))" + model.name
+                
                 if model.imageValue != "" {
                     
                     let arry = model.imageValue.components(separatedBy: ",")
@@ -40,22 +41,28 @@ class ExecuteDetailSubImageCell: UITableViewCell {
                         let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + url
                         return imageValue
                     }
-                    if arry.isEmpty{
+                    
+                    if arry.isEmpty {//数组为 空的情况
                         let basicPath = URLPath.basicPath
                         let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + model.imageValue
                         showImageView.showImageUrls([imageValue])
-                    }else{
+                        
+                    }else{// 数组不为 空的情况
+                        
                         showImageView.showImageUrls(imagesUrls)
                     }
+                    
+                    
                     showImageView.didClickHandle = { _,image in
                         CoverView.show(image: image)
                         
                     }
                     
-                    
 //                    pictureView.kf.setImage(with: URL(string: imageValue))
                     imageHeightConstrait.constant = 76.0
+                    
                 }else{
+                    
                     imageHeightConstrait.constant = 0.0
                 }
                 
@@ -67,6 +74,7 @@ class ExecuteDetailSubImageCell: UITableViewCell {
     
     
     func imageViewClick() {
+        
         if let image = pictureView.image{
             CoverView.show(image: image)
         }

@@ -285,8 +285,6 @@ class ExecutingViewConttroller: UIViewController {
                 self.saveBtn.isUserInteractionEnabled = true
                 
                 self.tableView.reloadData()
-                self.photoArray.removeAllObjects()
-                
                 //查看模型的转变的情况!
                 
         
@@ -311,6 +309,7 @@ class ExecutingViewConttroller: UIViewController {
          2.拿到字面量,异步上传
          
          */
+        
         //注意的是:这里通过异步的方式来进行的实现,模型嵌套模型来实现功能的
 //        let group = DispatchGroup()
 //        
@@ -581,7 +580,8 @@ class ExecutingViewConttroller: UIViewController {
             }
             
             self.ProgressVC?.reloadStatus(status: 7)
-            _ = self.navigationController?.popViewController(animated: true)
+            
+            self.navigationController?.popViewController(animated: true)
             
         }) { (error) in
             
@@ -763,7 +763,6 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
         
         if model.type == "3"{//选择事项 cell
             
-
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectSell", for: indexPath) as! ExexSwithCell
             
             cell.model = model
@@ -819,7 +818,6 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             //要求的定义的是 一个可变的字典的类型的来赋值
             cellHightArray["\(indexPath.row)"] = cell?.cellForHeight()
 
-            
             if isToSee{
                 
                 cell?.isUserInteractionEnabled = false
@@ -827,7 +825,6 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             
             return cell!
         }
-        
         
     }
     
@@ -907,23 +904,18 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
         
         self.upDataImage(imageArray, complit: { (url) in
             
-            var nowUrl =  url
-            
-            nowUrl.remove(at: nowUrl.startIndex)
-            
             DispatchQueue.main.async {
                 
                 if model.imageValue == "" {
                     
-                    
                     //传递image 刷新列表
-                    model.imageValue =  nowUrl
+                    model.imageValue =  url
                     
                 }else{
                     
                     
                     //传递image 刷新列表
-                    model.imageValue = model.imageValue + "," + nowUrl
+                    model.imageValue = model.imageValue + "," + url
                     
                 }
                 

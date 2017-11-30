@@ -32,10 +32,18 @@ class ShowImageView: UIView {
         for (index,imageView) in subviews.enumerated(){
             if let imageView = imageView as? UIButton{
                 
-                let url = URL(string: urls[index])
+//                var nowindex = index
+//                
+//                let count = urls.count
+//                if index >= count {
+//                    
+//                    nowindex = count - 1
+//                }
+                let imageString = urls[index] 
+                
+                let url = URL(string: imageString)
                 imageView.kf.setBackgroundImage(with: url, for: .normal)
             }
-            
         }
     }
     

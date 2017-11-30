@@ -108,21 +108,13 @@ class YQExecNewCell: UITableViewCell {
                                 imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + string
                             }
                         
-                            
-//                            DispatchQueue.global().async {
-                            
-//                                imageV.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options:KingfisherOptionsInfo.forceRefresh, progressBlock: nil, completionHandler: nil)
                                 imageV.kf.setImage(with: URL(string: imageValue), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-                                
-//                            }
-                        
+
                         }
                         
                     }
                     
                 }else{//只有一张图片
-                    
-//                    if !url.contains("缓存相册图片") {
                     
                         if url.contains("http"){
                             
@@ -133,13 +125,8 @@ class YQExecNewCell: UITableViewCell {
                             let basicPath = URLPath.basicPath
                             imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                         }
-                        
-//                        self.imageViewOne.kf.setImage(with: URL(string: imageValue), placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
-//                      
-//                        DispatchQueue.global().async {
-                    
+
                             self.imageViewOne.kf.setImage(with: URL(string: imageValue), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-//                    }
                 }
             }
         }
@@ -166,10 +153,6 @@ class YQExecNewCell: UITableViewCell {
         
         //点击获取相机相册的图片方法
         SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
-            
-            //            self.addImage(AddViewModel(image: image!))
-            //设置图片,进行的添加
-            //            self.addPhotoView.addImage(AddViewModel(image: image!))
             
             DispatchQueue.main.async {
                 

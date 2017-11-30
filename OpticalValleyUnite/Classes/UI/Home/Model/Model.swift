@@ -942,13 +942,17 @@ class ExecChild: Object{
 //        dic["filename"] = ""
         
         if type == "1"{//图片的list
-            dic["photos"] = [imageValue]
+            //图片的数组要求的是转化成 数组
+            let imageArray = imageValue.components(separatedBy: ",")
+            
+            dic["photos"] = imageArray
             
         }else if type == "3"{//选择项的list
             
             dic["value"] = value
             
         }else if type == "2"{//type == "2" 文本框的内容情况
+            
             dic["value"] = value
         }
         

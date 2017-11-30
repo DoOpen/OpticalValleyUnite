@@ -268,12 +268,14 @@ extension HttpClient {
             
             var count = 0
             for image in images{
+                
                 let frame = CGRect(x: image.size.width - 400, y: image.size.height - 80, width: 400, height: 40)
                 let str = NSDate().dateStr(withFormat: "YYYY-MM-dd HH:mm")
                 let newImage = image.addContent(content: str!, frame: frame)
                 let data = UIImageJPEGRepresentation(newImage, 0.4)
                 multipartFormData.append(data!, withName: "file\(count)",fileName:"file\(count).jpg", mimeType: "image/jpeg")
                 count += 1
+                
             }
     
         }, to: url) { (response) in

@@ -17,6 +17,18 @@ class ExecutDetailCell: UITableViewCell {
             tableView.reloadData()
         }
     }
+    
+    var remarkTest : String? {
+        
+        didSet{
+            self.remarkTextView.placeHolder = ""
+            self.remarkTextView.text = "备注:" + remarkTest!
+            
+        }
+        
+    }
+    
+    
     @IBOutlet weak var tableViewHeightConstaint: NSLayoutConstraint!
     
     @IBOutlet weak var remarkTextView: SJTextView!
@@ -36,10 +48,18 @@ class ExecutDetailCell: UITableViewCell {
         tableView.estimatedRowHeight = 80.0
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
+        tableViewHeightConstaint.constant = 80
         
 //        tableView.tableFooterView = UIView()
         
-        self.remarkTextView.placeHolder = "备注:"
+        if self.remarkTextView.text == "" {
+            
+            self.remarkTextView.placeHolder = "备注:"
+            
+        }
+        
+        self.remarkTextView.isEditable = false
+        
         
     }
     
@@ -128,7 +148,7 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        return 80
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -162,11 +182,13 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
            
             
             if model.isOpen{
+                
                 let indexPath = IndexPath(row: (self?.models[section].childs.count)! - 1, section: section)
+                
                 self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
             }
 
-            self?.tableViewHeightConstaint.constant = (self?.tabHeight)! + 120
+            self?.tableViewHeightConstaint.constant = (self?.tabHeight)!
 
             self?.superTableView?.reloadData()
             

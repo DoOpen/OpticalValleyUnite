@@ -33,6 +33,10 @@ class WorkOrderProgressViewController: UIViewController {
     var hasDuban = 0
     
     var taskCell: ExecutDetailCell?
+    //缓存taskRemark的信息
+    var taskRemarkText : String?
+    
+    
     @IBOutlet weak var dubanBtn: UIButton!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
@@ -198,6 +202,9 @@ class WorkOrderProgressViewController: UIViewController {
     
     // MARK: - left,rightButton的点击
     @IBAction func leftBtnClick() {
+        
+        
+        
         switch type {
             
         //待派发
@@ -410,9 +417,11 @@ class WorkOrderProgressViewController: UIViewController {
 //                SVProgressHUD.showSuccess(withStatus: "没有待执行任务")
             }
             self.taskModels = temp
+            self.taskRemarkText = response["remark"] as? String
             
             if let cell = self.taskCell{
                 cell.models = temp
+                cell.remarkTextView.text = response["remark"] as? String
                 
             }
             
@@ -468,8 +477,11 @@ class WorkOrderProgressViewController: UIViewController {
             }else{//计划工单的原型cell
                 
                 let cell2 = tableView.dequeueReusableCell(withIdentifier: "ExecutDetailCell") as! ExecutDetailCell
-                
+                //传递备注的信息
+                cell2.remarkTest = self.taskRemarkText
                 cell2.models = self.taskModels
+                
+                
                 taskCell = cell2
                 cell2.superTableView = tableView
                 

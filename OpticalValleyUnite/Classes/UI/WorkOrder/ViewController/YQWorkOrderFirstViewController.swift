@@ -89,6 +89,16 @@ class YQWorkOrderFirstViewController: UIViewController {
     }
     
     
+    @IBAction func leftBarItemClick(_ sender: Any) {
+        
+        SVProgressHUD.dismiss()
+        
+        navigationController?.popViewController(animated: true)
+        
+        
+    }
+  
+    
 
     // MARK: - 获取工单详情的数据 调用方法
     func getWorkOrder(type:Int, indexPage: Int = 0,dic: [String: Any] = [String: Any]() ){

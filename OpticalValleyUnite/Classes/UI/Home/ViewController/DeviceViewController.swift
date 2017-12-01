@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import MJRefresh
 
 class DeviceViewController: UIViewController {
     /// 新增设备的属性
@@ -69,11 +70,23 @@ class DeviceViewController: UIViewController {
     @IBOutlet weak var parkAddress: UILabel!
     @IBOutlet weak var mark: UILabel!
     
+    ///设备工单的详情 列表cell数据
     var detailModels = [WorkOrderDetailModel](){
         didSet{
             tableView.reloadData()
         }
     }
+    
+    
+    ///已处理的设备工单详情
+    var temp = [WorkOrderDetailModel]()
+    ///待处理的设备的工单详情
+    var DCLTemp = [WorkOrderDetailModel]()
+
+    ///分页页数
+    var pageIndex : Int = 0
+    var pageSize : Int = 20
+    
     
     var cellID = "deviceCell2"
     
@@ -108,6 +121,8 @@ class DeviceViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
         
+        //添加上拉,下拉刷新
+        addRefirsh()
         
     }
     
@@ -165,9 +180,12 @@ class DeviceViewController: UIViewController {
     }
 
     
-    private func getData(){
+    private func getData(pageIndex : Int = 0){
         
-        let parmate = ["equipmentId": equipmentId!]
+        var parmate = [String : Any]()
+        parmate["equipmentId"] = equipmentId!
+        parmate["pageSize"] = self.pageSize
+        parmate["pageIndex"] = pageIndex
         
         SVProgressHUD.show(withStatus: "加载中...")
         
@@ -177,34 +195,80 @@ class DeviceViewController: UIViewController {
             
             if let arry = response["data"] as? Array<[String: Any]>{
                 
-                var temp = [WorkOrderDetailModel]()
                 
-                var DCLTemp = [WorkOrderDetailModel]()
                 
-                for dic in arry{
+                if pageIndex == 0 {
+                    //数据重新赋值,
+//                    var tempDCLTemp = [WorkOrderDetailModel]()
+//                    var temptemp = [WorkOrderDetailModel]()
+                    self.temp.removeAll()
+                    self.DCLTemp.removeAll()
+                    self.pageIndex = 0
                     
-                    let model = WorkOrderDetailModel(parmart: dic)
                     
-                    if model.DCL == 1{
+                    for dic in arry{
                         
-                        DCLTemp.append(model)
+                        let model = WorkOrderDetailModel(parmart: dic)
                         
-                    }else if model.DCL == 0{
-                    
-                        temp.append(model)
+                        if model.DCL == 1{
+                            
+                            self.DCLTemp.append(model)
+                            
+                        }else if model.DCL == 0{
+                            
+                            self.temp.append(model)
+                        }
+                        
                     }
-    
-                }
+                    
+                    //分别分两次来进行的添加的操作
+                    self.detailModels = self.DCLTemp
+                    self.detailModels.append(contentsOf:self.temp)
+                    
+                    
+                    //结束上拉
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.resetNoMoreData()
                 
-                //分别分两次来进行的添加的操作
-                self.detailModels = DCLTemp
-                self.detailModels.append(contentsOf: temp)
+                }else{//index > 0 的情况是数据的拼接
+                    
+                    self.pageIndex = pageIndex
+                    
+                    if arry.isEmpty {
+                    
+                        //没有更多的下拉数据
+                        self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    
+                    }else{
+                    
+                        for dic in arry{
+                            
+                            let model = WorkOrderDetailModel(parmart: dic)
+                            
+                            if model.DCL == 1{
+                                
+                                self.DCLTemp.append(model)
+                                
+                            }else if model.DCL == 0{
+                                
+                                self.temp.append(model)
+                            }
+                            
+                        }
+                        
+                        //分别分两次来进行的添加的操作
+                        self.detailModels = self.DCLTemp
+                        self.detailModels.append(contentsOf: self.temp)
+                        //结束下拉
+                        self.tableView.mj_footer.endRefreshing()
+                    }
+                }
                 
             }
             
         }) { (error) in
             
-            print(error)
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
         
     }
@@ -226,6 +290,7 @@ class DeviceViewController: UIViewController {
         }) { (error) in
             
         }
+        
     }
 
     
@@ -272,6 +337,25 @@ class DeviceViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            self.getData()
+        })
+        
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+            self.getData(pageIndex: self.pageIndex + 1)
+            
+        })
+        
+    }
+
+    
 }
 
 

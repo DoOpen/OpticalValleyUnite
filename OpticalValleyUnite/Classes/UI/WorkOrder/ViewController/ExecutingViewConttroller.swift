@@ -62,11 +62,8 @@ class ExecutingViewConttroller: UIViewController {
     @IBOutlet weak var RemarksTextView: SJTextView!
     
     
-    
-
     var url: String?
     var image: UIImage?
-    
     var savefalse = true
     
     
@@ -122,6 +119,7 @@ class ExecutingViewConttroller: UIViewController {
             
             getData()
             
+            //只有的是 电梯报事中才又配件库的选择功能
             hiddenReportFromWorkOrder()
             
         }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单,里面没有配件的功能
@@ -148,7 +146,6 @@ class ExecutingViewConttroller: UIViewController {
                 
             }
         }
-        
         
         
         // 接受通知
@@ -268,6 +265,22 @@ class ExecutingViewConttroller: UIViewController {
         parmat["DESCRIPTION"] = json0["DESCRIPTION"]
         parmat["SUCCESS_TEXT"] = self.RemarksTextView.text
         
+        //实现的思路是: 如果是有配件库的情况下,保存上传配件库的操作! 直接是模型的数组!
+        if self.partData.count > 1{
+        
+            for(indexxxxx, partModel)in self.partData.enumerated(){
+                
+                let tempModel = partModel as! PartsModel
+                
+                parmat["partsList[" + "\(indexxxxx)" + "].partsId"] = tempModel.partsId
+            
+                parmat["partsList[" + "\(indexxxxx)" + "].amount"] = tempModel.partNum
+            }
+        
+        
+        }
+        
+        
         /*
          注意的是:这里的接口的变动的是 以前的是直接传递一个 data 的json 序列化的列表,现在是要求分开来传递,一共是5个参数
          */
@@ -290,8 +303,6 @@ class ExecutingViewConttroller: UIViewController {
         
             }
 
-            
-            
         }) { (error) in
             
             print(error)

@@ -71,7 +71,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         super.viewDidLoad()
 
-//        navigationItem.title = "光谷联合"
+        
+        
         //分别设置两个(上下)按钮数组
         topBtnViewArray = [top1BtnView,top2BtnView,top3BtnView,top4BtnView]
         downBtnViewArray = [donw1BtnView,donw2BtnView,donw3BtnView]
@@ -97,6 +98,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        navigationItem.title = "光谷联合"
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         //设置定位
         setUpLocation()

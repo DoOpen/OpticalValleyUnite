@@ -30,7 +30,7 @@ class ReportMasterViewController: UIViewController {
     //维修
     @IBOutlet weak var maintenanceReportMaster: UIButton!
     
-    //其他
+    //其他 改为 自发 的电梯的报事
     @IBOutlet weak var otherReportMaster: UIButton!
     
     /// 提交按钮button
@@ -626,7 +626,8 @@ class ReportMasterViewController: UIViewController {
                 parmarReport["EVENT_TYPE"] = 3
                 
             }else{// 其他报事
-                parmarReport["EVENT_TYPE"] = 4
+//                parmarReport["EVENT_TYPE"] = 4  现在改其他 为 自发  的电梯报事
+                parmarReport["EVENT_TYPE"] = 9
             }
             
         }

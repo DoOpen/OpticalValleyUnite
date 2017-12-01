@@ -103,7 +103,7 @@ class ExecutingViewConttroller: UIViewController {
         tableView.tableFooterView = UIView()
         
         self.automaticallyAdjustsScrollViewInsets = false
-        self.scrollContent.constant = self.view.bounds.height - 80
+        self.scrollContent.constant = self.view.bounds.height + 100
         
         RemarksTextView.placeHolder = "请输入备注内容"
         textView.placeHolder = "请输入备注内容"

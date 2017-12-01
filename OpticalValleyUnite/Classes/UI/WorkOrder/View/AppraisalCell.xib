@@ -119,7 +119,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="管理人: 贺思佳" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lmg-M9-CbB">
-                                <rect key="frame" x="229" y="40" width="126" height="18"/>
+                                <rect key="frame" x="229" y="42" width="126" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -147,11 +147,11 @@
                             <constraint firstAttribute="trailing" secondItem="Lmg-M9-CbB" secondAttribute="trailing" constant="5" id="Q25-ci-e6m"/>
                             <constraint firstItem="RdU-so-wAm" firstAttribute="top" secondItem="aFe-7Z-O1m" secondAttribute="bottom" constant="12" id="QNQ-HE-LcJ"/>
                             <constraint firstAttribute="trailing" secondItem="tml-sT-fA8" secondAttribute="trailing" constant="12" id="TKY-jw-sBa"/>
+                            <constraint firstItem="tml-sT-fA8" firstAttribute="top" secondItem="Lmg-M9-CbB" secondAttribute="bottom" constant="10" id="ZDl-Rc-AC1"/>
                             <constraint firstAttribute="trailing" secondItem="aFe-7Z-O1m" secondAttribute="trailing" constant="12" id="fMa-SQ-qng"/>
                             <constraint firstItem="tml-sT-fA8" firstAttribute="top" secondItem="MRn-Tq-0Lp" secondAttribute="bottom" constant="12" id="lPy-eX-EWt"/>
                             <constraint firstItem="MRn-Tq-0Lp" firstAttribute="top" secondItem="V8u-ua-kes" secondAttribute="bottom" constant="12" id="pvy-Ln-ocq"/>
                             <constraint firstItem="V8u-ua-kes" firstAttribute="leading" secondItem="a0i-rt-N6C" secondAttribute="leading" constant="12" id="qgi-UX-dtu"/>
-                            <constraint firstItem="Lmg-M9-CbB" firstAttribute="centerY" secondItem="MRn-Tq-0Lp" secondAttribute="centerY" id="ueN-Di-A4T"/>
                             <constraint firstItem="tml-sT-fA8" firstAttribute="leading" secondItem="MRn-Tq-0Lp" secondAttribute="leading" id="zUh-9o-qE2"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

@@ -37,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vug-bc-x9b" customClass="ShowImageView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                <rect key="frame" x="12" y="89" width="346" height="168.5"/>
+                                <rect key="frame" x="12" y="89" width="346" height="172"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="hE7-Hc-wTP"/>
                                 </constraints>
@@ -58,7 +58,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gs-M0-rje">
-                                <rect key="frame" x="12" y="263" width="353" height="16"/>
+                                <rect key="frame" x="12" y="266.5" width="353" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -74,10 +74,10 @@
                             <constraint firstItem="VbS-Gq-acs" firstAttribute="leading" secondItem="w4B-bk-YD5" secondAttribute="leading" constant="12" id="DuJ-yI-W28"/>
                             <constraint firstItem="CoC-gk-c3v" firstAttribute="centerX" secondItem="w4B-bk-YD5" secondAttribute="centerX" id="F7d-cY-RbN"/>
                             <constraint firstAttribute="trailing" secondItem="Vug-bc-x9b" secondAttribute="trailing" constant="12" id="Mch-Yd-5xh"/>
+                            <constraint firstItem="9gs-M0-rje" firstAttribute="top" secondItem="Vug-bc-x9b" secondAttribute="bottom" constant="5" id="YAx-SF-noj"/>
+                            <constraint firstItem="uED-u5-yIH" firstAttribute="top" secondItem="9gs-M0-rje" secondAttribute="bottom" constant="5" id="bPX-FY-H9H"/>
                             <constraint firstItem="Ll4-gg-Esu" firstAttribute="top" secondItem="VbS-Gq-acs" secondAttribute="bottom" constant="12" id="icj-6i-0af"/>
                             <constraint firstItem="CoC-gk-c3v" firstAttribute="top" secondItem="Ll4-gg-Esu" secondAttribute="bottom" constant="10" id="jjq-RH-8mq"/>
-                            <constraint firstItem="uED-u5-yIH" firstAttribute="top" secondItem="Vug-bc-x9b" secondAttribute="bottom" constant="30" id="nHs-HT-ZnZ"/>
-                            <constraint firstItem="uED-u5-yIH" firstAttribute="top" secondItem="9gs-M0-rje" secondAttribute="bottom" constant="8.5" id="nLu-m9-agr"/>
                             <constraint firstItem="9gs-M0-rje" firstAttribute="leading" secondItem="Vug-bc-x9b" secondAttribute="leading" id="pIm-M9-jst"/>
                             <constraint firstItem="CoC-gk-c3v" firstAttribute="leading" secondItem="Ll4-gg-Esu" secondAttribute="leading" id="pSd-Be-wzA"/>
                             <constraint firstItem="Ll4-gg-Esu" firstAttribute="leading" secondItem="VbS-Gq-acs" secondAttribute="leading" id="zPH-cJ-d6M"/>

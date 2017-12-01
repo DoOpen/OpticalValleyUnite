@@ -158,15 +158,20 @@ class YQWorkOrderFirstViewController: UIViewController {
                 self.pageNo = 0
                 self.currentDatas = temp
                 self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.resetNoMoreData()
+                
             }else{
                 
                 if temp.count > 0{
-                    self.pageNo = indexPage + 1
+                    
+                    self.pageNo = indexPage
                     self.currentDatas.append(contentsOf: temp)
                     self.tableView.mj_footer.endRefreshing()
+                    
                 }else{
-                    //                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
-                    self.tableView.mj_footer.endRefreshing()
+                    
+                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    
                 }
             }
             

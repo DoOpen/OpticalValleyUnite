@@ -14,14 +14,25 @@ class ChooseHouseViewController: UIViewController {
     var currentLevel = 0{
         didSet{
             (tempView.subviews[currentLevel] as! UILabel).textColor = Const.SJThemeColor
+            
+//            let index = tableView.indexPath(for: currentSelectCell!)!.row
+//            
+//            if selectParkHandel != nil{
+//                
+//                selectParkHandel!(currentParkInfoModel[index])
+//            }
+
             tableView.reloadData()
         }
     }
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var nextBtnHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var nextButton: UIButton!
     
     
     var tempView = UIView()
@@ -37,7 +48,7 @@ class ChooseHouseViewController: UIViewController {
     var currentParkInfoModel = [ParkInfoModel]()
     
     var isDeviceChoose = false
-    var index = 0
+    var index = -1
     
     
     
@@ -63,23 +74,29 @@ class ChooseHouseViewController: UIViewController {
     }
 
     @IBAction func nextBtnClick() {
+        
         if let _ = currentSelectCell {
             
             if currentLevel + 1 != arry.count{
                 
                 if (currentParkInfoModel[index].child?.count)! > 0{
+                    
                     currentParkInfoModel = currentParkInfoModel[index].child!
+                    
                     currentLevel += 1
                     
                     if currentLevel + 1 == arry.count{
-                        nextBtnHeightConstraint.constant = 0
+
+                        self.nextButton.setTitle("已到最后一级", for: .normal)
+                        self.nextButton.isEnabled = false
+
                     }
+                    
                 }else{
+                    
                     self.alert(message: "没有数据")
                 }
                 
-                
-
             }
         }
     }
@@ -91,6 +108,7 @@ class ChooseHouseViewController: UIViewController {
         }
         
         let index = tableView.indexPath(for: currentSelectCell!)!.row
+        
         if selectParkHandel != nil{
             
             selectParkHandel!(currentParkInfoModel[index])
@@ -118,8 +136,11 @@ class ChooseHouseViewController: UIViewController {
         tempView.x = (SJScreeW - lastX) * 0.5
         topView.addSubview(tempView)
         currentLevel = 0
+        
     }
     
+    
+    // MARK: - 获取楼栋房屋的信息数据方法
     func getDataTool(){
         
         if parkId == nil {
@@ -145,7 +166,9 @@ class ChooseHouseViewController: UIViewController {
                 
                 self.currentParkInfoModel = temp
                 self.tableView.reloadData()
+                
             }else{
+                
                 SVProgressHUD.showSuccess(withStatus: "数据为空")
             }
             
@@ -175,8 +198,18 @@ extension ChooseHouseViewController: UITableViewDelegate, UITableViewDataSource{
         cell = tableView.dequeueReusableCell(withIdentifier: "houseCell")!
         
         if let cell = cell as? ChooseHouseCell{
+            
             cell.addressLabel.text = currentParkInfoModel[indexPath.row].name
-            cell.setSelectCellClick(false)
+            
+            if index == indexPath.row {
+                
+                cell.setSelectCellClick(true)
+                
+            }else{
+                
+                cell.setSelectCellClick(false)
+            }
+            
         }
 
         return cell
@@ -184,15 +217,21 @@ extension ChooseHouseViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         
         if currentLevel == 0 && parkInfoModels?[indexPath.row].child != nil && !isDeviceChoose{
             
-            currentLevel = 1
-            nextBtnHeightConstraint.constant = 54.0
-            
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(ChooseHouseViewController.rightBtnClick))
             
+            
+            let index = indexPath.row
+            if selectParkHandel != nil{
+                selectParkHandel!(currentParkInfoModel[index])
+            }
+
+            
             if parkInfoModels?[indexPath.row].child == nil{
+                
                 
             }else{
                 
@@ -200,19 +239,33 @@ extension ChooseHouseViewController: UITableViewDelegate, UITableViewDataSource{
                     currentParkInfoModel = (parkInfoModels?[indexPath.row].child)!
                 }
                 
+                let index = indexPath.row
+                if selectParkHandel != nil{
+                    selectParkHandel!(currentParkInfoModel[index])
+                }
+
+                
                 tableView.reloadData()
             }
+            
+            currentLevel += 1
+
             
         }else{
             
             currentSelectCell?.setSelectCellClick(false)
+            
             currentSelectCell = tableView.cellForRow(at: indexPath) as! ChooseHouseCell?
             
             currentSelectCell?.setSelectCellClick(true)
-            index = indexPath.row
             
+            if (currentSelectCell?.isSelected)! {
+                
+                nextBtnHeightConstraint.constant = 54.0
+            }
+            
+            index = indexPath.row
         }
-        
     }
     
     

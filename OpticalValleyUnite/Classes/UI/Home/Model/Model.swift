@@ -689,6 +689,7 @@ class WorkTypeModel{
 }
 
 class ParkInfoModel{
+    
     var id = ""
     var name = ""
     var child: [ParkInfoModel]?
@@ -697,12 +698,18 @@ class ParkInfoModel{
     var FLOOR_ID = ""
     var STAGE_Name = ""
     var FLOOR_Name = ""
+    var tempName = ""
+    
+    
     convenience init(parmart: [String: Any]) {
         self.init()
+        
         id = parmart["id"] as? String ?? ""
-        name = parmart["text"] as? String ?? ""
         STAGE_ID = parmart["app_need_stage"] as? String ?? ""
         FLOOR_ID = parmart["app_need_floor"] as? String ?? ""
+        tempName = parmart["text"] as? String ?? ""
+        name = tempName
+        
 //        STAGE_Name = name
         if let arry = parmart["floorChild"] as? Array<[String: Any]> {
             var temp = [ParkInfoModel]()

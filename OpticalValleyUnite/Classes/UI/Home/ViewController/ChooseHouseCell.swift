@@ -12,6 +12,7 @@ class ChooseHouseCell: UITableViewCell {
     @IBOutlet weak var selectImageView: UIImageView!
 
     @IBOutlet weak var addressLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +20,7 @@ class ChooseHouseCell: UITableViewCell {
 
     
     func setSelectCellClick(_ selected: Bool){
+        
         selectImageView.isHidden = !selected
     }
 

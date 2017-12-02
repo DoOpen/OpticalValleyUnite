@@ -488,6 +488,9 @@ class ReportMasterViewController: UIViewController {
     // MARK: - 选择报事位置的bnt 的点击事件
     @IBAction func chooseBtnClick() {
         
+        //重置
+        self.addressLabel.text = ""
+        
         if self.deriveChoose{
             
             let vc = ChooseDeviceViewController.loadFromStoryboard(name: "ReportMaster") as! ChooseDeviceViewController
@@ -502,11 +505,22 @@ class ReportMasterViewController: UIViewController {
         }else{
             
             let vc = ChooseHouseViewController.loadFromStoryboard(name: "ReportMaster") as! ChooseHouseViewController
+            
             vc.parkId = selectProject?.projectId
+            
             vc.selectParkHandel = {[weak self] parkInfoModel in
                 
                 self?.selectParkInfo = parkInfoModel
-                self?.addressLabel.text =  parkInfoModel.name
+                
+                if self?.addressLabel.text == "" {
+                    
+                    self?.addressLabel.text =  parkInfoModel.name
+                    
+                }else{
+                    
+                    self?.addressLabel.text = (self?.addressLabel.text)! + "-" + parkInfoModel.name
+                    
+                }
                 
             }
             

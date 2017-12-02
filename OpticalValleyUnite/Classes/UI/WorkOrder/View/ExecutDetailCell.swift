@@ -21,7 +21,12 @@ class ExecutDetailCell: UITableViewCell {
     var remarkTest : String? {
         
         didSet{
+            
             self.remarkTextView.placeHolder = ""
+            if remarkTest == nil {
+                
+                remarkTest = ""
+            }
             self.remarkTextView.text = "备注:" + remarkTest!
             
         }

@@ -9,36 +9,45 @@
 import UIKit
 
 class WorkOrderSiftViewController: UIViewController {
-
+    //项目选择框
     @IBOutlet weak var projectTagsView: RKTagsView!
     
+    //工作分类
     @IBOutlet weak var workTypeTagsView: RKTagsView!
     
-    //工作分类视图框(应急工单 和 计划工单的类型)
+    //工作分类视图框(应急工单 和 计划工单的类型)(干掉了,直接是传递到前面来 判断了)
     @IBOutlet weak var reportTypeTagsView: RKTagsView!
     
+    //是否是设备工单
     @IBOutlet weak var deviceTagsView: RKTagsView!
     
-    //工单状态是不要的!(["待派发","待接收","协助查看","待执行","待评价","已关闭"])
+    //工单状态是不要的!(["待派发","待接收","协助查看","待执行","待评价","已关闭"])(干掉了,直接通过的是,前面来,传值判断了)
     @IBOutlet weak var workStatusTagView: RKTagsView!
     
-    
+    ///工单来源tagsView
     @IBOutlet weak var sourceTagsView: RKTagsView!
     
+    ///输入的筛选的条件
+    //工单名称
     @IBOutlet weak var workOrderNameLabel: UITextField!
+    //工单生成人
     @IBOutlet weak var workOrderSourcePersonLabel: UITextField!
+    //工单编号
     @IBOutlet weak var workNumberLabel: UITextField!
     
+    //开始和结束的时间的限制显示
     @IBOutlet weak var startBtn: UIButton!
     @IBOutlet weak var endBtn: UIButton!
     
     // "待派发","待接收","协助查看","待执行","待评价","已关闭"
     let workStatus = [String : Any]() //暂时设置为nil,字面量的赋值取消
-    
 
     var startTime: String?
     var endTime: String?
     var status = ""
+    
+    /// 父级的筛选条件的
+    var siftParmat: [String: Any]?
     
     /// 项目选择的
     var projectData = [ProjectModel](){
@@ -49,6 +58,7 @@ class WorkOrderSiftViewController: UIViewController {
             let projectname = getUserDefaultsProject()
             
             var indexNum = -1
+            
             for index in 0 ..< projectData.count{
                 
                 let tag = projectData[index]
@@ -70,17 +80,45 @@ class WorkOrderSiftViewController: UIViewController {
             
                 self.projectTagsView.selectTag(at: indexNum)
             }
-        
         }
     }
     
+    
     var workTypeData = [WorkTypeModel](){
+        
         didSet{
-            for tag in workTypeData{
-                self.workTypeTagsView.addTag(tag.name)
+            
+            let WORKTYPE_ID = self.siftParmat?["WORKTYPE_ID"] as? String
+            
+            //通过参数来进行相应判断
+            if WORKTYPE_ID != ""{
+                
+                //获取的网络数据来进行的渲染的
+                for(index ,tag) in workTypeData.enumerated() {
+                    
+                    self.workTypeTagsView.addTag(tag.name)
+                    
+                    if WORKTYPE_ID == tag.id {
+                        
+                        self.workTypeTagsView.selectTag(at: index)
+                        
+                        
+                    }
+                }
+
+                
+            }else{
+            
+                //获取的网络数据来进行的渲染的
+                for tag in workTypeData{
+                    
+                    self.workTypeTagsView.addTag(tag.name)
+                    
+                }
             }
         }
     }
+    
     
     var doenBtnClickHandel: (([String: Any]) -> ())?
     
@@ -99,17 +137,73 @@ class WorkOrderSiftViewController: UIViewController {
 //        setTagsView(tagsView: reportTypeTagsView,tags: ["计划工单","应急工单"])
         setTagsView(tagsView: deviceTagsView,tags: ["是","否"])
         
+        let is_equip = self.siftParmat?["is_equip"] as? Int ?? -1
+        
+        if is_equip == 1 {
+            
+            deviceTagsView.selectTag(at: 0)
+            
+        }else if is_equip == 2 {
+            
+            deviceTagsView.selectTag(at: 1)
+        }
+        
+        
 // workStatus 的设置
 //        setTagsView(tagsView: workStatusTagView,tags: workStatus as! [String])
         
         setTagsView(tagsView: sourceTagsView,tags: ["系统后台","员工app","业主app"])
         
+        let sourse = self.siftParmat?["is_equip"] as? Int ?? -1
+        switch sourse {
+            case 1:
+                sourceTagsView.selectTag(at: 0)
+                break
+            case 2:
+                sourceTagsView.selectTag(at: 1)
+                break
+            case 3:
+                sourceTagsView.selectTag(at: 2)
+                break
+           
+        default:
+            break
+        }
+        
 //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
 //            let arry = ["丽岛2046","光谷软件园","创意天地"]
 //            
 //        }
+        
+        //补充选项,开始时间和结束时间
+        if let STARTime =  self.siftParmat?["STAR"] as? String {
+            
+            self.startTime = STARTime
+            startBtn.setTitle(STARTime, for: .normal)
+        }
+        
+        if let ENDTime =  self.siftParmat?["END"] as? String {
+            
+            self.endTime = ENDTime
+            endBtn.setTitle(ENDTime, for: .normal)
+        }
+        
+        //工单的查询和筛选的条件
+        if let text = self.siftParmat?["ID"] as? String,text != ""{
+            workNumberLabel.text = text
+        }
+        if let text = self.siftParmat?["NAME"] as? String,text != ""{
+            
+            workOrderNameLabel.text = text
+        }
+        if let text = self.siftParmat?["SOURCE_PERSON_NAME"] as? String,text != ""{
+            
+            workOrderSourcePersonLabel.text = text
+        }
+
        
     }
+    
     
     // MARK: - 获取默认的项目的值来显示
     func getUserDefaultsProject() -> String {
@@ -169,6 +263,7 @@ class WorkOrderSiftViewController: UIViewController {
 
     }
     
+    // MARK: - 获取项目的网络接口
     private func getProjectData(){
         
         HttpClient.instance.get(path: URLPath.getParkList, parameters: nil, success: { (response) in
@@ -187,6 +282,7 @@ class WorkOrderSiftViewController: UIViewController {
         }
     }
     
+    // MARK: - 获取工单类型的网络接口方法
     private func getWorkTypeData(){
         
         HttpClient.instance.get(path: URLPath.getWorkTypeList, parameters: nil, success: { (response) in
@@ -198,10 +294,10 @@ class WorkOrderSiftViewController: UIViewController {
             }
             self.workTypeData = temp
             
-            
         }) { (error) in
             print(error)
         }
+        
     }
     
     
@@ -212,7 +308,9 @@ class WorkOrderSiftViewController: UIViewController {
         
         let projectTagsViewIndex = projectTagsView.selectedTagIndexes.first?.intValue
         let workTypeTagsViewIndex = workTypeTagsView.selectedTagIndexes.first?.intValue
-        let reportTypeTagsViewIndex = reportTypeTagsView.selectedTagIndexes.first?.intValue
+        
+//        let reportTypeTagsViewIndex = reportTypeTagsView.selectedTagIndexes.first?.intValue
+        
         let deviceTagsViewIndex = deviceTagsView.selectedTagIndexes.first?.intValue
         let workStatusTagsViewIndex = workStatusTagView.selectedTagIndexes.first?.intValue
         let sourceTagsViewIndex = sourceTagsView.selectedTagIndexes.first?.intValue
@@ -234,11 +332,12 @@ class WorkOrderSiftViewController: UIViewController {
         }
         
         /*
-         要求实现的是 将工单类型的筛选条件也拿出来到最外层
+         要求实现的是 将工单类型的筛选条件也拿出来到最外层,这里是不显示,不传值的
         */
-        if let index = reportTypeTagsViewIndex{
-            paramert["WORKUNIT_TYPE"] = index + 1
-        }
+//        if let index = reportTypeTagsViewIndex{
+//            paramert["WORKUNIT_TYPE"] = index + 1
+//            
+//        }
         
         
         if let index = deviceTagsViewIndex{
@@ -264,6 +363,7 @@ class WorkOrderSiftViewController: UIViewController {
         if startTime != ""{
             paramert["STAR"] = startTime
         }
+        
         if endTime != ""{
             paramert["END"] = endTime
         }
@@ -278,10 +378,12 @@ class WorkOrderSiftViewController: UIViewController {
             paramert["SOURCE_PERSON_NAME"] = text
         }
         
+        
         if let block = doenBtnClickHandel{
             //通过的是block的回调来进行的传值,如果是需要保存的话,要求保存paramert 的参数
             block(paramert)
         }
+        
         doenBtnClickHandel = nil
         
     }

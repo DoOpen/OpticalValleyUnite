@@ -44,6 +44,8 @@ class WorkOrderViewController: UIViewController {
     
     var siftVc: WorkOrderSiftViewController?
     var siftParmat: [String: Any]?
+    var siftsiftParmat : [String : Any]?
+    
     
     var isFirstLoad = true
     var currentDatas = [WorkOrderModel2]()
@@ -74,6 +76,7 @@ class WorkOrderViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: "cell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
+        
     }
     
     
@@ -81,6 +84,9 @@ class WorkOrderViewController: UIViewController {
     @IBAction func rightBtnClick(_ sender: UIBarButtonItem) {
         
         let vc = WorkOrderSiftViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderSiftViewController
+        
+        //传递筛选条件,进行缓存和保存
+        vc.siftParmat = self.siftsiftParmat
         
         if currentIndex < 3 {
         
@@ -96,19 +102,26 @@ class WorkOrderViewController: UIViewController {
         subView?.frame = CGRect(x: 100, y: 0, width: SJScreeW - 100, height: SJScreeH)
         CoverView.show(view: subView!)
         
+        //点击筛选的完成的 block的回调的情况
+        /*
+         实现的思路是: 综合拼接响应的筛选的结果
+         */
         vc.doenBtnClickHandel = { parmat in
             
             self.isFirstLoad = true
             
-            if parmat.isEmpty{
-                self.siftParmat = parmat
+            if parmat.isEmpty{//为空的话
+                
+                //在闭包的 回调中 拿到了选择的参数, 进行重新的网络请求,数据的刷新
+                self.getWorkOrder(type: self.currentIndex,indexPage: 0,dic: self.siftParmat!)
+
             }else{
-                self.siftParmat = nil
+                
+                self.getWorkOrder(type: self.currentIndex,indexPage: 0,dic: parmat)
+                
+                self.siftsiftParmat = parmat
+                
             }
-            
-            //在闭包的 回调中 拿到了选择的参数, 进行重新的网络请求,数据的刷新
-            self.getWorkOrder(type: self.currentIndex,indexPage: 0,dic: parmat)
-            self.siftParmat = parmat
             
             subView?.superview?.removeFromSuperview()
             self.siftVc = nil
@@ -120,6 +133,7 @@ class WorkOrderViewController: UIViewController {
     
     
     func reload(){
+        
         getWorkOrder(type: currentIndex,indexPage: 0)
     }
     
@@ -185,11 +199,20 @@ class WorkOrderViewController: UIViewController {
            parmat[key] = value
         }
         
+        //父控件传递的筛选的条件
         if let dic = siftParmat{
             for (key,value) in dic{
                 parmat[key] = value
             }
         }
+        
+        //经过筛选项,筛选的条件
+        if let dic = siftsiftParmat{
+            for (key,value) in dic{
+                parmat[key] = value
+            }
+        }
+
         
         if type < array.count {
             
@@ -203,6 +226,8 @@ class WorkOrderViewController: UIViewController {
 
         //添加默认的选择项目 筛选条件
         parmat["PARK_ID"] = getUserDefaultsProject()
+        
+        
         
         SVProgressHUD.show(withStatus: "加载中...")
         

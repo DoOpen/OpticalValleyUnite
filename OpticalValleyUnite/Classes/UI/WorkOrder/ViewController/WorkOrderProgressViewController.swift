@@ -479,6 +479,7 @@ class WorkOrderProgressViewController: UIViewController {
                 let cell2 = tableView.dequeueReusableCell(withIdentifier: "ExecutDetailCell") as! ExecutDetailCell
                 //传递备注的信息
                 cell2.remarkTest = self.taskRemarkText
+                
                 cell2.models = self.taskModels
                 
                 

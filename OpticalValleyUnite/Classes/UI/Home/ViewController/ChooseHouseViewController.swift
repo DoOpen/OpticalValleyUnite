@@ -21,6 +21,9 @@ class ChooseHouseViewController: UIViewController {
     
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var nextBtnHeightConstraint: NSLayoutConstraint!
+    
+    
+    
     var tempView = UIView()
     var currentSelectCell: ChooseHouseCell?
     var arry = ["选择分期", "楼栋", "选择房屋"]
@@ -36,8 +39,11 @@ class ChooseHouseViewController: UIViewController {
     var isDeviceChoose = false
     var index = 0
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "请选择报事房屋"
         
         setupTopView()
@@ -50,7 +56,9 @@ class ChooseHouseViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
+        
         getDataTool()
     }
 
@@ -75,6 +83,7 @@ class ChooseHouseViewController: UIViewController {
             }
         }
     }
+    
     func rightBtnClick() {
         
         if currentSelectCell == nil{
@@ -118,16 +127,22 @@ class ChooseHouseViewController: UIViewController {
             return
         }
         
+        SVProgressHUD.show()
         
         HttpClient.instance.get(path: URLPath.getParkInfoById, parameters: ["PARK_ID": parkId!], success: { (response) in
             
+            SVProgressHUD.dismiss()
+            
             var temp = [ParkInfoModel]()
+            
             for dic in response as! Array<[String: Any]> {
                 temp.append(ParkInfoModel(parmart: dic))
             }
             
             self.parkInfoModels = temp
+            
             if temp.count > 0{
+                
                 self.currentParkInfoModel = temp
                 self.tableView.reloadData()
             }else{
@@ -136,8 +151,11 @@ class ChooseHouseViewController: UIViewController {
             
             
         }) { (error) in
-            print(error)
+            
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+            
         }
+        
     }
     
 }
@@ -146,45 +164,56 @@ extension ChooseHouseViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return currentParkInfoModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         var cell = UITableViewCell()
+        
+        cell = tableView.dequeueReusableCell(withIdentifier: "houseCell")!
+        
+        if let cell = cell as? ChooseHouseCell{
+            cell.addressLabel.text = currentParkInfoModel[indexPath.row].name
+            cell.setSelectCellClick(false)
+        }
 
-            cell = tableView.dequeueReusableCell(withIdentifier: "houseCell")!
-            if let cell = cell as? ChooseHouseCell{
-                cell.addressLabel.text = currentParkInfoModel[indexPath.row].name
-                cell.setSelectCellClick(false)
-            }
-            
-    
-        
-        
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if currentLevel == 0 && parkInfoModels?[indexPath.row].child != nil && !isDeviceChoose{
+            
             currentLevel = 1
             nextBtnHeightConstraint.constant = 54.0
+            
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(ChooseHouseViewController.rightBtnClick))
             
             if parkInfoModels?[indexPath.row].child == nil{
                 
             }else{
+                
                 if (parkInfoModels?[indexPath.row].child?.count)! > 0 {
                     currentParkInfoModel = (parkInfoModels?[indexPath.row].child)!
                 }
+                
                 tableView.reloadData()
             }
+            
         }else{
+            
             currentSelectCell?.setSelectCellClick(false)
             currentSelectCell = tableView.cellForRow(at: indexPath) as! ChooseHouseCell?
+            
             currentSelectCell?.setSelectCellClick(true)
             index = indexPath.row
             
         }
         
     }
+    
+    
 }

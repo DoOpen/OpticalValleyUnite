@@ -1179,10 +1179,10 @@
 				4B3951EC1E28718200E2642F /* ReportMaster.storyboard */,
 				4B3951F01E2899AE00E2642F /* WorkOrderTypeChooseViewController.swift */,
 				4B3951F21E28B38D00E2642F /* AddSignInViewController.swift */,
-				4B30780E1E29FBF500FB4007 /* ChooseHouseViewController.swift */,
 				4B5AF6461E36F14700844F3D /* SystemMessageViewController.swift */,
 				4B50D62E1EBB1B3900BB480F /* AllViewController.swift */,
 				4B01B08B1ED928AF002A61C9 /* ReportListViewController.swift */,
+				4B30780E1E29FBF500FB4007 /* ChooseHouseViewController.swift */,
 				4BF807021F0E28D00047E129 /* ChooseDeviceViewController.swift */,
 				4BB53FEC1F14B9C30061190F /* DeviceViewController.swift */,
 			);

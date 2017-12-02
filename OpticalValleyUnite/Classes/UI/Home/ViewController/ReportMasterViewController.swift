@@ -359,7 +359,7 @@ class ReportMasterViewController: UIViewController {
         deriveChoose = sender.isOn
         secanBtn.isHidden = !sender.isOn
         if deriveChoose{
-            deviceViewheightConstrnit.constant = 400.0
+            deviceViewheightConstrnit.constant = 500.0
             deviceView.isHidden = false
         }else{
             deviceViewheightConstrnit.constant = 290.0
@@ -485,10 +485,11 @@ class ReportMasterViewController: UIViewController {
         }
     }
     
-    
+    // MARK: - 选择报事位置的bnt 的点击事件
     @IBAction func chooseBtnClick() {
         
         if self.deriveChoose{
+            
             let vc = ChooseDeviceViewController.loadFromStoryboard(name: "ReportMaster") as! ChooseDeviceViewController
             vc.parkId = selectProject?.projectId
             vc.didSelectDeviceModelHandle = { model in
@@ -497,7 +498,9 @@ class ReportMasterViewController: UIViewController {
             }
             
             navigationController?.pushViewController(vc, animated: true)
+            
         }else{
+            
             let vc = ChooseHouseViewController.loadFromStoryboard(name: "ReportMaster") as! ChooseHouseViewController
             vc.parkId = selectProject?.projectId
             vc.selectParkHandel = {[weak self] parkInfoModel in

@@ -8,11 +8,14 @@
 
 import UIKit
 import MJRefresh
+import SVProgressHUD
 
 class ChooseDeviceViewController: UIViewController {
 
     @IBOutlet weak var chooseAddressLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    
     var parkId: String?
     var parkInfoModel: ParkInfoModel?
     
@@ -23,9 +26,14 @@ class ChooseDeviceViewController: UIViewController {
     var didSelectDeviceModelHandle: ((Equipment) ->())?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         title = "选择报事设备"
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+
         
         getData()
         
@@ -36,12 +44,15 @@ class ChooseDeviceViewController: UIViewController {
     }
     
     deinit {
+        
         print("ChooseDeviceViewController----deinit")
     }
     
     var models = [Equipment]()
 
     @IBAction func chooseHouseBtnClick() {
+        
+        
         let vc = ChooseHouseViewController.loadFromStoryboard(name: "ReportMaster") as! ChooseHouseViewController
         vc.parkId = parkId
         vc.arry = ["选择分期", "楼栋"]
@@ -68,9 +79,11 @@ class ChooseDeviceViewController: UIViewController {
     }
     
     private func addRefirsh(){
+        
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
             self.getData(stageId: self.parkInfoModel?.STAGE_ID, floorId: self.parkInfoModel?.FLOOR_ID)
-            self.cuurentPageNo = 0
+           
         })
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
@@ -80,7 +93,9 @@ class ChooseDeviceViewController: UIViewController {
         })
     }
     
+    
     @objc private func rightBtnClick(){
+        
         if let cell = cuurentSelectCell {
             
             if let block = didSelectDeviceModelHandle,let model = cell.model{
@@ -110,7 +125,12 @@ class ChooseDeviceViewController: UIViewController {
         paramet["floorId"] = floorId
         paramet["parkId"] = parkId
         paramet["pageIndex"] = indexPageNp
+        
+        SVProgressHUD.show()
+        
         HttpClient.instance.get(path: URLPath.getListEquipment, parameters: paramet, success: { (data) in
+            
+            SVProgressHUD.dismiss()
             
             if let arry = data["data"] as? Array<[String: Any]>{
                 var temp = [Equipment]()
@@ -121,23 +141,32 @@ class ChooseDeviceViewController: UIViewController {
                 }
                 
                 if indexPageNp == 0{
+                    
                     self.models = temp
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.resetNoMoreData()
+                    
                 }else{
+                    
+                    self.cuurentPageNo = indexPageNp
+                    
                     self.models.append(contentsOf: temp)
+                    
                     if temp.isEmpty{
+                        
                         self.tableView.mj_footer.endRefreshingWithNoMoreData()
                     }
+                    
+                    self.tableView.mj_footer.endRefreshing()
                 }
                 
-                
                 self.tableView.reloadData()
-                self.tableView.mj_header.endRefreshing()
-                self.tableView.mj_footer.endRefreshing()
                 
             }
             
         }) { (error) in
-            print(error)
+            
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
     }
 
@@ -145,11 +174,13 @@ class ChooseDeviceViewController: UIViewController {
 }
 
 extension ChooseDeviceViewController: UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! DeriveCell
         cell.model = models[indexPath.row]
         
@@ -158,8 +189,9 @@ extension ChooseDeviceViewController: UITableViewDelegate,UITableViewDataSource,
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         cuurentSelectCell?.select = false
-        cuurentSelectCell = tableView.cellForRow(at: indexPath) as! DeriveCell
+        cuurentSelectCell = tableView.cellForRow(at: indexPath) as? DeriveCell
         cuurentSelectCell?.select = true
     }
     

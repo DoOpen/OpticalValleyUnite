@@ -37,19 +37,27 @@ class DeviceView: UIView {
     }
     
     private func getLabel(tag: Int) -> UILabel{
+        
         let label = self.viewWithTag(tag) as! UILabel
         return label
     }
     
     var model: Equipment?{
+        
         didSet{
+            
             if let model = model{
+                
                 deriveCodeLabel.text = model.equip_code
                 deriveNameLabel.text = model.name
                 typeLabel.text = model.type_name
                 deriveModel.text = model.model_name
                 addressLabel.text = model.address
+                
+                setNeedsLayout()
+                setNeedsDisplay()
             }
+            
         }
     }
     

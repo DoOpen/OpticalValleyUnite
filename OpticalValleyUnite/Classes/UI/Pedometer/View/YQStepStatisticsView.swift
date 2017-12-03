@@ -9,6 +9,12 @@
 import UIKit
 import Kingfisher
 
+protocol YQStepStatisticsViewDelegate : class {
+    
+    func StepStatisticsViewHelpButtonClick(view : YQStepStatisticsView, indexPath : Int)
+    
+}
+
 class YQStepStatisticsView: UITableViewCell {
     
     // MARK: - step的cell属性
@@ -23,6 +29,12 @@ class YQStepStatisticsView: UITableViewCell {
     @IBOutlet weak var subTitleLabel: UILabel!
     
     @IBOutlet weak var stepTotallCountLabel: UILabel!
+    
+    @IBOutlet weak var helpButton: UIButton!
+    
+    @IBOutlet weak var helpLabel: UILabel!
+    
+    var delegate : YQStepStatisticsViewDelegate?
     
     // 显示开头排序图片的显示和隐藏
     var indexHeadImageHidde = true
@@ -105,6 +117,17 @@ class YQStepStatisticsView: UITableViewCell {
             
             self.stepTotallCountLabel.text = "\((model?.steps)!)"
         }
+        
+    }
+    
+    
+    
+    @IBAction func helpButtonClick(_ sender: Any) {
+        //点赞按钮点击的触发的事件, 注意的是还有一个重复点赞的情况
+        
+        self.delegate?.StepStatisticsViewHelpButtonClick(view: self
+            , indexPath: indepathrow)
+        
         
     }
     

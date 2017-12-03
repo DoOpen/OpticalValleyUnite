@@ -12,33 +12,99 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="xvv-5A-1MO" customClass="YQStepHeadView" customModule="OpticalValleyUnite" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="397" height="58"/>
+            <rect key="frame" x="0.0" y="0.0" width="437" height="82"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日排行版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjn-Q0-Qcw">
-                    <rect key="frame" x="30" y="5" width="87" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zZX-Qp-5dW">
-                    <rect key="frame" x="10" y="36" width="377" height="2"/>
+                    <rect key="frame" x="10" y="1" width="417" height="2"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1.5" id="83a-Gd-XCZ"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-p9-U3n">
+                    <rect key="frame" x="20" y="26" width="70" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="BH3-yq-QBM"/>
+                        <constraint firstAttribute="height" constant="30" id="b12-rn-OMN"/>
+                    </constraints>
+                    <state key="normal" title="本项目">
+                        <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="selectBtn"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="headAllButtonClick:" destination="xvv-5A-1MO" eventType="touchUpInside" id="Ldz-q6-110"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tce-on-NNs">
+                    <rect key="frame" x="347" y="26" width="70" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="9VB-aO-1Gs"/>
+                        <constraint firstAttribute="width" constant="70" id="TaV-Vt-o77"/>
+                    </constraints>
+                    <state key="normal" title="本集团">
+                        <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="selectBtn"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="headAllButtonClick:" destination="xvv-5A-1MO" eventType="touchUpInside" id="Kdi-pF-ZeJ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0q-cs-3rf">
+                    <rect key="frame" x="183" y="26" width="70" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="XP6-Zb-z9K"/>
+                        <constraint firstAttribute="width" constant="70" id="eRG-uG-Dma"/>
+                    </constraints>
+                    <state key="normal" title="本部门">
+                        <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="selectBtn"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="headAllButtonClick:" destination="xvv-5A-1MO" eventType="touchUpInside" id="9KS-xz-Yst"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="zZX-Qp-5dW" firstAttribute="top" secondItem="xvv-5A-1MO" secondAttribute="top" constant="1" id="0BI-Bo-boW"/>
+                <constraint firstItem="4cY-p9-U3n" firstAttribute="leading" secondItem="xvv-5A-1MO" secondAttribute="leading" constant="20" id="1YG-UV-CUp"/>
+                <constraint firstItem="a0q-cs-3rf" firstAttribute="centerY" secondItem="xvv-5A-1MO" secondAttribute="centerY" id="7pO-tr-dKL"/>
                 <constraint firstItem="zZX-Qp-5dW" firstAttribute="leading" secondItem="xvv-5A-1MO" secondAttribute="leading" constant="10" id="A3Z-ch-Udl"/>
-                <constraint firstItem="Gjn-Q0-Qcw" firstAttribute="top" secondItem="xvv-5A-1MO" secondAttribute="top" constant="5" id="GmZ-yw-l5E"/>
+                <constraint firstAttribute="trailing" secondItem="Tce-on-NNs" secondAttribute="trailing" constant="20" id="H5s-94-Dca"/>
                 <constraint firstAttribute="trailing" secondItem="zZX-Qp-5dW" secondAttribute="trailing" constant="10" id="V6W-es-ZDw"/>
-                <constraint firstItem="Gjn-Q0-Qcw" firstAttribute="leading" secondItem="xvv-5A-1MO" secondAttribute="leading" constant="30" id="aGf-Qd-h7R"/>
-                <constraint firstItem="zZX-Qp-5dW" firstAttribute="top" secondItem="Gjn-Q0-Qcw" secondAttribute="bottom" constant="10" id="udh-du-KV6"/>
+                <constraint firstItem="a0q-cs-3rf" firstAttribute="centerX" secondItem="xvv-5A-1MO" secondAttribute="centerX" id="ben-Gq-i8X"/>
+                <constraint firstItem="Tce-on-NNs" firstAttribute="centerY" secondItem="xvv-5A-1MO" secondAttribute="centerY" id="heg-jM-GCZ"/>
+                <constraint firstItem="4cY-p9-U3n" firstAttribute="centerY" secondItem="xvv-5A-1MO" secondAttribute="centerY" id="pi0-GR-QBw"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-64.5" y="-57"/>
+            <connections>
+                <outlet property="departmentButton" destination="a0q-cs-3rf" id="KWG-6u-Blt"/>
+                <outlet property="groupButton" destination="Tce-on-NNs" id="KtX-wB-gTI"/>
+                <outlet property="projectButton" destination="4cY-p9-U3n" id="Bub-jk-qqD"/>
+            </connections>
+            <point key="canvasLocation" x="-221" y="90"/>
         </view>
     </objects>
+    <resources>
+        <image name="selectBtn" width="136" height="42"/>
+    </resources>
 </document>

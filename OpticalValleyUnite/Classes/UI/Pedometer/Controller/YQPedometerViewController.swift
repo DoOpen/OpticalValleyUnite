@@ -29,6 +29,8 @@ class YQPedometerViewController: UIViewController {
     
     @IBOutlet weak var departmentRankingButton: UIButton!
     
+    @IBOutlet weak var groupRandingButton: UIButton!
+    
     var cellID = "stepsCell"
     var currentIndex  = 1
     var type = 1
@@ -198,14 +200,18 @@ class YQPedometerViewController: UIViewController {
             
             let num1 = (reponse["projectRankno"])!
             let num2 = (reponse["departmentRankno"])!
+            let num3 = (reponse["departmentRankno"])!
+            
             //读取数据,字典转模型
             DispatchQueue.main.async {
                 //设置项目排名
                 let project = "第" + "\(num1!)"  + "名"
                 let depart = "第" + "\(num2!)" + "名"
+                let group = "第" + "\(num3!)" + "名"
+                
                 self.projectRankingButton.setTitle(project, for: .normal)
                 self.departmentRankingButton.setTitle(depart, for: .normal)
-                
+                self.groupRandingButton.setTitle(group, for: .normal)
             }
             
             
@@ -338,10 +344,6 @@ class YQPedometerViewController: UIViewController {
         })
         
     }
-    
-    
-
-    
 
 }
 
@@ -356,6 +358,7 @@ extension YQPedometerViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view = Bundle.main.loadNibNamed("YQStepHead", owner: nil, options: nil)?[0] as? YQStepHeadView
+        view?.delegate = self
         
         return view
     }
@@ -378,6 +381,7 @@ extension YQPedometerViewController : UITableViewDelegate,UITableViewDataSource{
             cell = Bundle.main.loadNibNamed("YQStepStatistics", owner: nil, options: nil)?[0] as? YQStepStatisticsView
             
         }
+        cell?.delegate = self
         
         cell?.backgroundColor =  UIColor.clear
         
@@ -390,5 +394,43 @@ extension YQPedometerViewController : UITableViewDelegate,UITableViewDataSource{
         return cell!
     }
     
+}
+
+extension YQPedometerViewController : YQStepHeadViewDelegate {
+
+    func stepHeadViewAllButtonClick(view: YQStepHeadView, button: UIButton) {
+        
+        //分别的刷新数据
+        switch button.tag {
+        case 0:
+            //本项目的select
+            
+            
+            break
+            
+        case 1:
+            //本部门
+            
+            break
+            
+        case 2:
+            //本集团
+            
+            break
+            
+        default:
+            break
+        }
+        
+    }
+}
+
+extension YQPedometerViewController : YQStepStatisticsViewDelegate {
+    
+    func StepStatisticsViewHelpButtonClick(view: YQStepStatisticsView, indexPath : Int) {
+        //实现的思路是: 那一行进行了点赞的情况! 请求数据,刷新表格
+        
+        
+    }
     
 }

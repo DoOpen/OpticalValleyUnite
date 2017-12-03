@@ -61,6 +61,8 @@ class YQStepScreenViewController: UIViewController {
         
         //1.默认选择第一个button
         switch type {
+        case 1:
+            self.selectButtonClicked(groupButton)
             
         case 2:
             self.selectButtonClicked(projectButton)

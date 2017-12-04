@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFF-O8-935">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="w8q-wO-KU9">
+            <objects>
+                <navigationController id="vFF-O8-935" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZBZ-x7-35V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zwV-kS-qKi" kind="relationship" relationship="rootViewController" id="uEW-UY-OZ2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kkd-kw-o74" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1135" y="180"/>
+        </scene>
+        <!--巡查管理-->
+        <scene sceneID="hhU-U8-owu">
+            <objects>
+                <viewController id="zwV-kS-qKi" customClass="YQVideoPatrolViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HnN-3c-GhA"/>
+                        <viewControllerLayoutGuide type="bottom" id="nM0-PX-6aI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aTZ-Hw-g7u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7w-Gb-S17" customClass="MAMapView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="q7w-Gb-S17" secondAttribute="trailing" id="OGv-4l-WYN"/>
+                            <constraint firstItem="q7w-Gb-S17" firstAttribute="top" secondItem="HnN-3c-GhA" secondAttribute="bottom" id="Qta-c9-IC7"/>
+                            <constraint firstItem="nM0-PX-6aI" firstAttribute="top" secondItem="q7w-Gb-S17" secondAttribute="bottom" id="htw-VY-T2t"/>
+                            <constraint firstItem="q7w-Gb-S17" firstAttribute="leading" secondItem="aTZ-Hw-g7u" secondAttribute="leading" id="vlA-sf-9cW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="巡查管理" id="QXH-1M-GUS"/>
+                    <connections>
+                        <outlet property="mapView" destination="q7w-Gb-S17" id="uCq-tw-G6h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="puY-9V-ed2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-244" y="179"/>
+        </scene>
+    </scenes>
+</document>

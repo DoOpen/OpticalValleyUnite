@@ -204,4 +204,7 @@ struct URLPath {
     //我的历史步数
     static let getHistorysteps = "pedometer/historysteps"
     
+    // MARK: - 视频巡查的功能接口
+    static let getVideoPatrolMap = ""
+    
 }

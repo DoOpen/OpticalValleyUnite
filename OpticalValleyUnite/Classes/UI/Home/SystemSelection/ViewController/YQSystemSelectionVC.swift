@@ -289,15 +289,22 @@ class YQSystemSelectionVC: UIViewController {
         if tap.tapIndex >= dataArray.count {
             
             //最后一个是显示的图标
-            return
+            // return
             
-//          调试计步的功能
-//            let step = UIStoryboard.instantiateInitialViewController(name: "YQPedometerVC")
-//            
-//            SJKeyWindow?.rootViewController = step
+            // 调试视频巡查的内容
+            let Video = UIStoryboard.instantiateInitialViewController(name: "YQVideoPatrol")
+            let mainViewController   = Video
+            let drawerViewController = YQVideoDrawerViewController()
+            // 初始化drawer抽屉的情况
+            let drawerController     = KYDrawerController(drawerDirection: .right, drawerWidth: 300)
+            drawerController.mainViewController =  mainViewController
+            
+            drawerController.drawerViewController = drawerViewController
+            
+            SJKeyWindow?.rootViewController = drawerController
             
             
-        }else if tap.tapIndex == fireindex {
+        }else if tap.tapIndex == fireindex {//消防的界面的跳转的情况
             
             //跳进消防的界面功能
             let fireVC = UIStoryboard.instantiateInitialViewController(name: "YQFireControl")

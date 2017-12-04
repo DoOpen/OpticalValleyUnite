@@ -60,7 +60,6 @@ class YQFireControlViewController: UIViewController {
         }
     }
     
-    
     var stateListModel = [YQStateListModel](){
         didSet{
             
@@ -144,6 +143,7 @@ class YQFireControlViewController: UIViewController {
         //加载定位的 实时方法
         locationManager.requestLocation(withReGeocode: true, completionBlock:{
             [weak self]  location, regeocode,error in
+            
             if let error = error{
                 print(error.localizedDescription)
             }
@@ -153,7 +153,9 @@ class YQFireControlViewController: UIViewController {
                 
                 self?.fireMapView.setCenter((location?.coordinate)!, animated: true)
             }
+            
             })
+        
     }
     
     
@@ -161,6 +163,7 @@ class YQFireControlViewController: UIViewController {
     func leftBarButtonClick(){
         
         if let drawerController = navigationController?.parent as? KYDrawerController {
+            
             drawerController.setDrawerState(.opened, animated: true)
         }
 
@@ -197,6 +200,7 @@ class YQFireControlViewController: UIViewController {
     func drawerOpenClick(){
         
         if let drawerController = navigationController?.parent as? KYDrawerController {
+            
             drawerController.setDrawerState(.opened, animated: true)
         }
 
@@ -204,13 +208,14 @@ class YQFireControlViewController: UIViewController {
     
     // MARK: - 抽屉选择功能的实现
     func drawerSelectionFunction(info : NSNotification){
+        
         let infoName = info.userInfo?["notiesName"] as! String
         
         if let drawerController = navigationController?.parent as? KYDrawerController {
             drawerController.setDrawerState(.closed, animated: true)
         }
 
-       
+        
         switch infoName {
             
             case "signTap":
@@ -331,8 +336,8 @@ class YQFireControlViewController: UIViewController {
                     
                     break
                 }
-                
                 break
+                
             case .failure(let error):
                 
                 debugPrint(error)
@@ -341,6 +346,7 @@ class YQFireControlViewController: UIViewController {
             }
         }
     }
+    
     
     // MARK: - 高德添加 大头针,添加点击弹框视图的
     func addLocationAndMessageView(model : YQFireLocationModel) {
@@ -369,13 +375,13 @@ class YQFireControlViewController: UIViewController {
         // 没用的缓存
         // self.pointLocation = starPoint
         self.fireMapView.addAnnotation(starPoint)
-        
     }
     
     
     // MARK: - 生成implementView
     // 大头针的详情点击,添加网络的数据,判断网络数据来进行的设置显示UI的功能
     func implementViewDataAndDetailShow(pointAnnotation : YQPointAnnotation){
+        
         self.currentMapPointAnnotation = pointAnnotation
         
         self.implementView.isHidden = false
@@ -391,6 +397,7 @@ class YQFireControlViewController: UIViewController {
         Alamofire.request(URLPath.basicPath + URLPath.getFireState , method: .get, parameters: parameters).responseJSON { (response) in
             
             SVProgressHUD.dismiss()
+            
             switch response.result {
                 
             case .success(_):
@@ -437,8 +444,9 @@ class YQFireControlViewController: UIViewController {
     // MARK: - 设置implementFooterView
     // 设置implementFooter 的底部显示状态
     func setImplementFooterState(isExec : Bool){
-        //
+
         if isExec  {//已经有执行了
+            
             self.alreadyImplementBtn.isHidden = false
             
         }else{//没有执行

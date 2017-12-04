@@ -58,6 +58,11 @@
 		2F4A65921F9462FE00F4C72A /* YQWorkRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F4A65911F9462FE00F4C72A /* YQWorkRecord.storyboard */; };
 		2F4BB4211FC3CA040007BD08 /* YQExecNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4BB4201FC3CA040007BD08 /* YQExecNewCell.swift */; };
 		2F4BB4231FC3CB960007BD08 /* YQExecNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4BB4221FC3CB960007BD08 /* YQExecNew.xib */; };
+		2F4EB2941FD51AA00004A532 /* YQVideoPatrolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4EB2931FD51AA00004A532 /* YQVideoPatrolViewController.swift */; };
+		2F4EB2961FD51B070004A532 /* YQVideoPatrol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F4EB2951FD51B070004A532 /* YQVideoPatrol.storyboard */; };
+		2F4EB2991FD532590004A532 /* YQVideoDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4EB2971FD532590004A532 /* YQVideoDrawerViewController.swift */; };
+		2F4EB29A1FD532590004A532 /* YQVideoDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4EB2981FD532590004A532 /* YQVideoDrawerViewController.xib */; };
+		2F4EB29C1FD549340004A532 /* YQVideoMapPointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4EB29B1FD549340004A532 /* YQVideoMapPointModel.swift */; };
 		2F54BF0B1FCBF7C7006B4DCF /* YQExecTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */; };
 		2F54BF0C1FCBF7C7006B4DCF /* YQExecTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F54BF0A1FCBF7C7006B4DCF /* YQExecTextCell.xib */; };
 		2F5D276C1F998DE20022F7D6 /* YQProjectSelectFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D276B1F998DE20022F7D6 /* YQProjectSelectFooterView.swift */; };
@@ -332,6 +337,11 @@
 		2F4A65911F9462FE00F4C72A /* YQWorkRecord.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQWorkRecord.storyboard; sourceTree = "<group>"; };
 		2F4BB4201FC3CA040007BD08 /* YQExecNewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQExecNewCell.swift; sourceTree = "<group>"; };
 		2F4BB4221FC3CB960007BD08 /* YQExecNew.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQExecNew.xib; sourceTree = "<group>"; };
+		2F4EB2931FD51AA00004A532 /* YQVideoPatrolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQVideoPatrolViewController.swift; sourceTree = "<group>"; };
+		2F4EB2951FD51B070004A532 /* YQVideoPatrol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQVideoPatrol.storyboard; sourceTree = "<group>"; };
+		2F4EB2971FD532590004A532 /* YQVideoDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQVideoDrawerViewController.swift; sourceTree = "<group>"; };
+		2F4EB2981FD532590004A532 /* YQVideoDrawerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQVideoDrawerViewController.xib; sourceTree = "<group>"; };
+		2F4EB29B1FD549340004A532 /* YQVideoMapPointModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQVideoMapPointModel.swift; sourceTree = "<group>"; };
 		2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQExecTextCell.swift; sourceTree = "<group>"; };
 		2F54BF0A1FCBF7C7006B4DCF /* YQExecTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQExecTextCell.xib; sourceTree = "<group>"; };
 		2F5D276B1F998DE20022F7D6 /* YQProjectSelectFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQProjectSelectFooterView.swift; sourceTree = "<group>"; };
@@ -745,6 +755,42 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2F4EB28F1FD51A170004A532 /* VideoPatrol */ = {
+			isa = PBXGroup;
+			children = (
+				2F4EB2901FD51A170004A532 /* Model */,
+				2F4EB2911FD51A170004A532 /* View */,
+				2F4EB2921FD51A170004A532 /* ViewController */,
+			);
+			path = VideoPatrol;
+			sourceTree = "<group>";
+		};
+		2F4EB2901FD51A170004A532 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2F4EB29B1FD549340004A532 /* YQVideoMapPointModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2F4EB2911FD51A170004A532 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F4EB2921FD51A170004A532 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2F4EB2931FD51AA00004A532 /* YQVideoPatrolViewController.swift */,
+				2F4EB2951FD51B070004A532 /* YQVideoPatrol.storyboard */,
+				2F4EB2971FD532590004A532 /* YQVideoDrawerViewController.swift */,
+				2F4EB2981FD532590004A532 /* YQVideoDrawerViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		2F5D27691F998D940022F7D6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1107,6 +1153,7 @@
 		4BD4B9221E272EA600AE2BC9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2F4EB28F1FD51A170004A532 /* VideoPatrol */,
 				2F399F021FB4571700AA3BEC /* Pedometer */,
 				2F2F95711F8DACB800870DC8 /* Journal */,
 				2F6A43891F6A33A0003E10C9 /* FireControlProfession */,
@@ -1477,6 +1524,7 @@
 				4BD4B9541E272EA600AE2BC9 /* WorkOrder.storyboard in Resources */,
 				4B3FD0301E8B61AC005D5231 /* exportPlist.plist in Resources */,
 				4BD4B9511E272EA600AE2BC9 /* PersonCore.storyboard in Resources */,
+				2F4EB2961FD51B070004A532 /* YQVideoPatrol.storyboard in Resources */,
 				2F4A658E1F945AC300F4C72A /* YQJournalAddEvent.storyboard in Resources */,
 				2F2F957C1F8DF7C800870DC8 /* YQJournalCell.xib in Resources */,
 				4B3952001E28D2B900E2642F /* WorkOrderDistributionCell.xib in Resources */,
@@ -1493,6 +1541,7 @@
 				4B4BAFC31E5C62F500C9C549 /* OprationConfirmationView.xib in Resources */,
 				4B5AF64B1E36F73B00844F3D /* LoginViewController.xib in Resources */,
 				2FEB0E891F6E713F0002DEE8 /* YQFalsePositives.xib in Resources */,
+				2F4EB29A1FD532590004A532 /* YQVideoDrawerViewController.xib in Resources */,
 				2F7550F51FA6C19100A5E242 /* YQFilterDepartment.storyboard in Resources */,
 				4BB53FF11F14D9CA0061190F /* DeviceCell.xib in Resources */,
 				2F35356E1F95AE3300E8E77C /* YQWorkOrderFirst.storyboard in Resources */,
@@ -1656,6 +1705,7 @@
 				4BBBEC981E2CAAE200F60313 /* BoPhotoPickerViewController.m in Sources */,
 				4B6E64FB1EEAEFCF00BA23E4 /* PhotoCell.swift in Sources */,
 				2F40D9901FB94253007971D1 /* YQStepStatisticsView.swift in Sources */,
+				2F4EB2991FD532590004A532 /* YQVideoDrawerViewController.swift in Sources */,
 				4B751BD31E5B301C00C0CEC0 /* AddScrollerView.swift in Sources */,
 				2F3B96001F6B68BE0008AFEB /* YQDrawerViewController.swift in Sources */,
 				4BFD07CA1E5D3ABC004AF998 /* ExecutingSectionView.swift in Sources */,
@@ -1664,6 +1714,7 @@
 				4B1DEC661E31E504000917D2 /* ChoosePersonViewController.swift in Sources */,
 				4B3951FC1E28CF5000E2642F /* WorkOrderDetailsCell.swift in Sources */,
 				4B3951FA1E28CF1F00E2642F /* WorkOrderStutasCell.swift in Sources */,
+				2F4EB29C1FD549340004A532 /* YQVideoMapPointModel.swift in Sources */,
 				4BBBEC941E2CAAE200F60313 /* BoPhotoGroupView.m in Sources */,
 				4B3951F11E2899AE00E2642F /* WorkOrderTypeChooseViewController.swift in Sources */,
 				2F3DD6661FC7F36800C48D4D /* YQReleaseDetailTableViewCell.swift in Sources */,
@@ -1786,6 +1837,7 @@
 				4BE9226A1EE84CC000FDEFE1 /* ExecuteDetailSubImageCell.swift in Sources */,
 				4BD4B94E1E272EA600AE2BC9 /* HomeViewController.swift in Sources */,
 				2F0223B61FA99ECF0090822F /* YQFilterPersonModel.swift in Sources */,
+				2F4EB2941FD51AA00004A532 /* YQVideoPatrolViewController.swift in Sources */,
 				2F648DAF1F57C045006D51D3 /* YQPartDataCell.swift in Sources */,
 				4B5E43C31F2ECEFE00DCE5AC /* SiginCellView.swift in Sources */,
 				4B3951EB1E28715700E2642F /* ReportMasterViewController.swift in Sources */,

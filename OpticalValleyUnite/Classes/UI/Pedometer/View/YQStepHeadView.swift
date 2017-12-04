@@ -32,9 +32,7 @@ class YQStepHeadView: UIView {
         
         self.backgroundColor = UIColor.init(red: 41/255.0, green: 177/255.0, blue: 255/255.0, alpha: 1.0)
         
-        self.projectButton.isSelected = true
-        currentSelectButton = projectButton
-    
+        
     }
     
 
@@ -51,6 +49,39 @@ class YQStepHeadView: UIView {
         currentSelectButton?.isSelected = false
         sender.isSelected = true
         currentSelectButton = sender
+        
+        self.delegate?.stepHeadViewAllButtonClick(view: self, button: sender)
+        
+    }
+  
+    
+    func switchButtonIsSelect(type : Int)  {
+        switch type {
+            
+        case 1://集团版
+            self.groupButton.isSelected = true
+            currentSelectButton = groupButton
+
+            break
+        
+        case 2://项目版
+            self.projectButton.isSelected = true
+            currentSelectButton = projectButton
+            
+            break
+            
+        case 3://部门版
+            self.departmentButton.isSelected = true
+            currentSelectButton = departmentButton
+            
+            break
+
+
+        default:
+            break
+            
+        }
+        
         
     }
     

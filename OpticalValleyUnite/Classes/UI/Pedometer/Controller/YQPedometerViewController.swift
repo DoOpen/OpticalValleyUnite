@@ -33,7 +33,7 @@ class YQPedometerViewController: UIViewController {
     
     var cellID = "stepsCell"
     var currentIndex  = 1
-    var type = 1
+    var type = 1 //默认的是获取集团的 总体排名
     
     /// rank模型的数据
     var rankData = [YQStepShowModel](){
@@ -185,7 +185,6 @@ class YQPedometerViewController: UIViewController {
                 
             })
         }
-        
     }
     
     
@@ -200,10 +199,11 @@ class YQPedometerViewController: UIViewController {
             
             let num1 = (reponse["projectRankno"])!
             let num2 = (reponse["departmentRankno"])!
-            let num3 = (reponse["departmentRankno"])!
+            let num3 = (reponse["groupRankno"] )!
             
             //读取数据,字典转模型
             DispatchQueue.main.async {
+                
                 //设置项目排名
                 let project = "第" + "\(num1!)"  + "名"
                 let depart = "第" + "\(num2!)" + "名"
@@ -250,15 +250,12 @@ class YQPedometerViewController: UIViewController {
 //        }
         
         self.dismiss(animated: true, completion: nil)
-        
-        
+
     }
     
     // MARK: - rightBarItemButtonClick的方法
     func rightBarItemButtonClick(){
         
-        //
-    
     
     }
     
@@ -276,7 +273,10 @@ class YQPedometerViewController: UIViewController {
             parmat[key] = value
         }
         
+        SVProgressHUD.show()
         HttpClient.instance.post(path: URLPath.getRankPedometer, parameters: parmat, success: { (respose) in
+            
+            SVProgressHUD.dismiss()
             //字典转模型,读取相应的数据
             var temp = [YQStepShowModel]()
             
@@ -307,7 +307,7 @@ class YQPedometerViewController: UIViewController {
 
         }) { (error) in
             
-            SVProgressHUD.showError(withStatus: error.description)
+            SVProgressHUD.showError(withStatus: "数据加载失败,请重新检查网络!")
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
 
@@ -359,6 +359,7 @@ extension YQPedometerViewController : UITableViewDelegate,UITableViewDataSource{
         
         let view = Bundle.main.loadNibNamed("YQStepHead", owner: nil, options: nil)?[0] as? YQStepHeadView
         view?.delegate = self
+        view?.switchButtonIsSelect(type: self.type)
         
         return view
     }
@@ -400,29 +401,20 @@ extension YQPedometerViewController : YQStepHeadViewDelegate {
 
     func stepHeadViewAllButtonClick(view: YQStepHeadView, button: UIButton) {
         
-        //分别的刷新数据
-        switch button.tag {
-        case 0:
-            //本项目的select
-            
-            
-            break
-            
-        case 1:
-            //本部门
-            
-            break
-            
-        case 2:
-            //本集团
-            
-            break
-            
-        default:
-            break
-        }
+        //通过tag 来进行的传递type 来进行操作
+        self.type = button.tag
+        
+        var dict = [String : Any]()
+        dict["type"] = self.type
+        dict["pagesize"] = 20
+        dict["pageno"] = currentIndex
+        dict["date"] = yesterday
+        
+        self.getRankForAllData(dic: dict)
         
     }
+    
+    
 }
 
 extension YQPedometerViewController : YQStepStatisticsViewDelegate {

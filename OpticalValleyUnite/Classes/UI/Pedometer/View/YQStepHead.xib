@@ -22,7 +22,7 @@
                         <constraint firstAttribute="height" constant="1.5" id="83a-Gd-XCZ"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-p9-U3n">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-p9-U3n">
                     <rect key="frame" x="20" y="26" width="70" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -42,7 +42,7 @@
                         <action selector="headAllButtonClick:" destination="xvv-5A-1MO" eventType="touchUpInside" id="Ldz-q6-110"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tce-on-NNs">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tce-on-NNs">
                     <rect key="frame" x="347" y="26" width="70" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -62,7 +62,7 @@
                         <action selector="headAllButtonClick:" destination="xvv-5A-1MO" eventType="touchUpInside" id="Kdi-pF-ZeJ"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0q-cs-3rf">
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0q-cs-3rf">
                     <rect key="frame" x="183" y="26" width="70" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>

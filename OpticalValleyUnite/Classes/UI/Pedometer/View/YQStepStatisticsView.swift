@@ -11,7 +11,7 @@ import Kingfisher
 
 protocol YQStepStatisticsViewDelegate : class {
     
-    func StepStatisticsViewHelpButtonClick(view : YQStepStatisticsView, indexPath : Int)
+    func StepStatisticsViewHelpButtonClick(view : YQStepStatisticsView, indexPath : Int ,isZan : Bool)
     
 }
 
@@ -116,6 +116,18 @@ class YQStepStatisticsView: UITableViewCell {
             }
             
             self.stepTotallCountLabel.text = "\((model?.steps)!)"
+            
+            //点赞的功能,和逻辑的判断处理
+            if  self.model?.iszan == 1 { //已经点赞了,取消的操作
+                self.helpButton.isSelected = true
+                
+            }else{//没有点赞,点赞的操作
+                self.helpButton.isSelected = false
+            }
+            
+            self.helpLabel.text = "\((model?.zan)!)"
+
+            
         }
         
     }
@@ -124,10 +136,14 @@ class YQStepStatisticsView: UITableViewCell {
     
     @IBAction func helpButtonClick(_ sender: Any) {
         //点赞按钮点击的触发的事件, 注意的是还有一个重复点赞的情况
+        if self.model == nil {
+            return
+        }
+        
+        self.helpButton.isSelected = !self.helpButton.isSelected
         
         self.delegate?.StepStatisticsViewHelpButtonClick(view: self
-            , indexPath: indepathrow)
-        
+            , indexPath: indepathrow, isZan: self.helpButton.isSelected)
         
     }
     

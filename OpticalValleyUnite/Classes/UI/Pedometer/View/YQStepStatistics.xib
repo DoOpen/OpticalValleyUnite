@@ -76,6 +76,7 @@
                             <constraint firstAttribute="height" constant="35" id="fdf-V0-R8D"/>
                         </constraints>
                         <state key="normal" image="组4"/>
+                        <state key="selected" image="组5"/>
                         <connections>
                             <action selector="helpButtonClick:" destination="raW-Zh-pre" eventType="touchUpInside" id="xVb-eI-59a"/>
                         </connections>
@@ -124,5 +125,6 @@
     </objects>
     <resources>
         <image name="组4" width="13" height="16"/>
+        <image name="组5" width="13" height="16"/>
     </resources>
 </document>

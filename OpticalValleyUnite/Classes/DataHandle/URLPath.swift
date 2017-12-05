@@ -203,6 +203,9 @@ struct URLPath {
     static let getMinePedometer = "pedometer/mysteps"
     //我的历史步数
     static let getHistorysteps = "pedometer/historysteps"
+    //zan(点赞的接口)
+    static let getPedometerZan = "pedometer/zan"
+    
     
     // MARK: - 视频巡查的功能接口
     //获取楼栋的ID

@@ -419,8 +419,30 @@ extension YQPedometerViewController : YQStepHeadViewDelegate {
 
 extension YQPedometerViewController : YQStepStatisticsViewDelegate {
     
-    func StepStatisticsViewHelpButtonClick(view: YQStepStatisticsView, indexPath : Int) {
+    func StepStatisticsViewHelpButtonClick(view: YQStepStatisticsView, indexPath : Int, isZan : Bool) {
+        
         //实现的思路是: 那一行进行了点赞的情况! 请求数据,刷新表格
+        var par = [String : Any]()
+        
+        if isZan {//点赞
+            par["type"] = 1
+        }else{//取消点赞
+            par["type"] = 0
+        }
+        
+        par["date"] = yesterday
+        par["userid"] = self.rankData[indexPath].userid
+        
+        
+        //调用实现点赞的功能
+        HttpClient.instance.post(path: URLPath.getPedometerZan, parameters: par, success: { (respose) in
+            
+            //要求的是,重新的刷新所有的表格
+            self.getRankForAllData( date : self.yesterday)
+            
+        }) { (error) in
+            SVProgressHUD.showError(withStatus: "网络出错,点赞失败!")
+        }
         
         
     }

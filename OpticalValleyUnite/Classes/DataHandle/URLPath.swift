@@ -28,9 +28,9 @@ import Foundation
 struct URLPath {
 //    static let basicPath = "http://112.74.80.111:8888/ovu-pcos/api/"
     ///主机地址
-    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
+//    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
     //服务器的basic 地址:
-//    static let basicPath = "http://192.168.0.18:8080/ovu-pcos/api/"
+    static let basicPath = "http://172.16.11.61:8080/ovu-pcos/api/"
 
     
     static let login = "user/login.do"
@@ -205,6 +205,15 @@ struct URLPath {
     static let getHistorysteps = "pedometer/historysteps"
     
     // MARK: - 视频巡查的功能接口
-    static let getVideoPatrolMap = ""
+    //获取楼栋的ID
+    static let getVideoPatrolMap = "quality/humanins/getMap"
+    //获取室内点楼栋的层数
+    static let getVideoPatrolFloorNum = "quality/humanins/getFloorNum"
+    //获取室内点的执行点
+    static let getVideoPatrolPoint = "quality/insway/getPoint"
+    //获取开始点的判断
+    static let getVideoPatrolCheckBegin = "quality/humanins/checkBegin"
+    
+    
     
 }

@@ -395,7 +395,6 @@ class WorkOrderSiftViewController: UIViewController {
         tagsView.lineSpacing = 15
         tagsView.interitemSpacing = 15
         tagsView.allowsMultipleSelection = false
-//        projectTagsView.delegate = self
         
         if tags != nil{
             

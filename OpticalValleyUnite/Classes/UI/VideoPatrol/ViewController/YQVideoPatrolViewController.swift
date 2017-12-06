@@ -51,18 +51,18 @@ class YQVideoPatrolViewController: UIViewController {
             SJPickerView.show(withDataArry: indoorPickerArray) { (intIndex) in
                 
                 //取出响应的数据点模型
-                self.indoorVideoSelectModel = indoorVideoPointModel[intIndex]
+                self.indoorVideoSelectModel = self.indoorVideoPointModel[intIndex]
                 
+                self.CheckBeginDataStart()
             }
             
-            self.CheckBeginDataStart()
             
         }
     }
     
     var indoorVideoSelectModel : YQVideoIndoorPatorlModel?
     
-    
+    var videoAnnotationModel : YQVideoMapPointModel?
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
@@ -269,6 +269,8 @@ class YQVideoPatrolViewController: UIViewController {
                     par["insPointId"] = mapViewModel.insPointId
                     par["floorNum"] = floorIndex
                     
+                    
+                    
                     HttpClient.instance.post(path: URLPath.getVideoPatrolPoint, parameters: par, success: { (respose) in
                         
                         var tempArray = [YQVideoIndoorPatorlModel]()
@@ -288,16 +290,11 @@ class YQVideoPatrolViewController: UIViewController {
                          SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
                     })
                     
-                    
-                    
-                    
                 })
 
-                
             }, failure: { (error) in
                 
                 SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
-                
             })
             
         }else{//室外点,直接调用
@@ -307,16 +304,87 @@ class YQVideoPatrolViewController: UIViewController {
         
     }
     
+    
     // MARK: - CheckBegin开始巡查的接口调直接调用
     func CheckBeginDataStart(){
         
+        //只传token 不要什麽东西
         SVProgressHUD.show()
         
-        HttpClient.instance.post(path: URLPath.getVideoPatrolCheckBegin, parameters: parameter, success: { (respose) in
+        HttpClient.instance.post(path: URLPath.getVideoPatrolCheckBegin, parameters: nil, success: { (respose) in
             
             SVProgressHUD.dismiss()
+            //拿到的值分为两种情况. 有起始点的情况, 和没有起始点的情况,都需要保存和缓存
+            if (respose["insOrbit"]) != nil {
+                //展示巡查项的结果,跳选起始点的情况
+                let array = respose["status"] as? NSArray
+                var stringArray = [String]()
+                for temp  in array! {
+                    
+                    let temp1 = temp as? NSDictionary
+                    stringArray.append((temp1?["title"] as? String)!)
+                }
+                
+                SJPickerView.show(withDataArry: stringArray, didSlected: { (index) in
+                    
+                    //选择的情况:
+                    let selectDic = array?[index] as? NSDictionary
+                    //发送查询路线的规划的情况!路线的内容信息的保存添加
+                    //界面跳转,数据的参数的传递!(跳转到视频巡查的路线界面)
+                    
+                    
+                })
             
             
+            }else{//请求巡查路线
+                
+                var paramet = [String : Any]()
+                paramet["parkId"] = self.parkId
+                paramet["insPointId"] = self.videoAnnotationModel?.insPointId
+                
+                paramet["insPointName"] = self.videoAnnotationModel?.name
+                    
+                    
+                HttpClient.instance.post(path: URLPath.getVideoPatrolLoadWayName, parameters: paramet, success: { (result) in
+                    
+                    var stringArray = [String]()
+                    //展示中夜班,跳选 起始点
+                    //通过的是,展示的respose 的insWayId 的展示
+                    for temp in (result as? NSArray)! {
+                    
+                        let insWayDic = temp as? NSDictionary
+                        stringArray.append((insWayDic?["wayName"] as? String)!)
+                    }
+                    
+                    SJPickerView.show(withDataArry: stringArray, didSlected: { (index) in
+                        
+                        let result1 = result as? NSArray
+                        
+                        let selectLoadWay = result1?[index] as? NSDictionary //需要进行缓存的内容选项!
+                        
+                        
+                        //选择的班次和对应的id的情况
+                        let selectDic = respose["status"] as! NSArray
+                        let tempDic = selectDic[index] as? NSDictionary
+                        
+                        let array = [tempDic?["title"] as? String]
+                
+                        SJPickerView.show(withDataArry: array as! [String], didSlected: { (indexRow) in
+                            //执行的是界面的跳转的情况!
+                            //所有的选择,参数要求一起传递过来!(跳转到视频巡查的路线界面)
+                            
+                            
+                        })
+                        
+                    })
+                    
+                    
+                }, failure: { (error) in
+                    
+                    SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+                })
+        
+            }
             
             
         }, failure: { (error) in
@@ -416,13 +484,14 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
                 return
                 
             }else{
+                
                 //展示pickerView, 调用相应的数据接口
                 self.pickerViewImplementAndLoadData(mapViewModel : (clilckAnnotation?.videoModel)! )
+                //缓存整个项目中的点击AnnotationView的model
+                self.videoAnnotationModel = (clilckAnnotation?.videoModel)!
                 
             }
-
         }
-        
     }
 
 }

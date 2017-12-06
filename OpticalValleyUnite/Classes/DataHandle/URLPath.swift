@@ -213,9 +213,20 @@ struct URLPath {
     //获取室内点楼栋的层数
     static let getVideoPatrolFloorNum = "quality/humanins/getFloorNum"
     //获取室内点的执行点
-    static let getVideoPatrolPoint = "quality/insway/getPoint"
+    static let getVideoPatrolPoint = "quality/humanins/getInnerPointList"
     //获取开始点的判断
     static let getVideoPatrolCheckBegin = "quality/humanins/checkBegin"
+    //查询巡查路线名称
+    static let getVideoPatrolLoadWayName  = "quality/insway/loadWayName"
+    //查询所有巡查项类型
+    static let getVideoPatrolAllItemType = "quality/humanins/getAllItemType"
+    
+    //查询巡查路线条件(点击完成的情况)
+    static let getVideoPatrolMapByType = "quality/humanins/loadWayMapByType"
+    
+    
+    
+    
     
     
     

@@ -43,5 +43,101 @@
             continueAfterRunningActions = "No">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
+            timestampString = "534238713.805704"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
+            landmarkName = "CheckBeginDataStart()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpticalValleyUnite.YQVideoPatrolViewController.(CheckBeginDataStart () -&gt; ()).(closure #1).(closure #2).(closure #1)"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
+                  timestampString = "534247785.888563"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "377"
+                  endingLineNumber = "377"
+                  offsetFromSymbolStart = "3116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpticalValleyUnite.YQVideoPatrolViewController.(CheckBeginDataStart () -&gt; ()).(closure #1).(closure #2).(closure #1).(closure #1)"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
+                  timestampString = "534247785.891537"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "377"
+                  endingLineNumber = "377"
+                  offsetFromSymbolStart = "8">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
+            timestampString = "534238713.805704"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
+            landmarkName = "CheckBeginDataStart()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpticalValleyUnite.YQVideoPatrolViewController.(CheckBeginDataStart () -&gt; ()).(closure #1)"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
+                  timestampString = "534247785.899588"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "336"
+                  endingLineNumber = "336"
+                  offsetFromSymbolStart = "4828">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpticalValleyUnite.YQVideoPatrolViewController.(CheckBeginDataStart () -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
+                  timestampString = "534247785.902708"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "336"
+                  endingLineNumber = "336"
+                  offsetFromSymbolStart = "400">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -19,6 +19,10 @@ class YQVideoPatrolViewController: UIViewController {
     
     /// 项目parkID 的属性
     var parkId = ""
+    
+    /// 是否有室内点的情况
+    var isIndoorPoint : Bool?
+    
     // MAMap单例
     var locationManager = AMapLocationManager()
 
@@ -44,19 +48,27 @@ class YQVideoPatrolViewController: UIViewController {
             
             for indoorModel in indoorVideoPointModel {
                 
-                indoorPickerArray.append(indoorModel.name)
+                if indoorModel.name == "" {
+                    self.alert(message: "没有室内点!")
+                    return
+                }else{
+                
+                    indoorPickerArray.append(indoorModel.name)
+                }
+                
             }
             
-            //创建实现一个VideoIndoorPicker
-            SJPickerView.show(withDataArry: indoorPickerArray) { (intIndex) in
+            if !indoorPickerArray.isEmpty {
                 
-                //取出响应的数据点模型
-                self.indoorVideoSelectModel = self.indoorVideoPointModel[intIndex]
-                
-                self.CheckBeginDataStart()
+                //创建实现一个VideoIndoorPicker
+                SJPickerView.show(withDataArry: indoorPickerArray) { (intIndex) in
+                    
+                    //取出响应的数据点模型
+                    self.indoorVideoSelectModel = self.indoorVideoPointModel[intIndex]
+                    
+                    self.CheckBeginDataStart()
+                }
             }
-            
-            
         }
     }
     
@@ -73,6 +85,8 @@ class YQVideoPatrolViewController: UIViewController {
         mapViewSetup()
         makeMapLocationData()
         
+        //3.接受通知赋值
+        setupNoties()
     
     }
     
@@ -183,8 +197,8 @@ class YQVideoPatrolViewController: UIViewController {
         }
         
         return projectName
-        
     }
+    
     
     // MARK: - mapSet 地图显示的初始化设置
     func mapViewSetup(){
@@ -269,8 +283,7 @@ class YQVideoPatrolViewController: UIViewController {
                     par["insPointId"] = mapViewModel.insPointId
                     par["floorNum"] = floorIndex
                     
-                    
-                    
+                
                     HttpClient.instance.post(path: URLPath.getVideoPatrolPoint, parameters: par, success: { (respose) in
                         
                         var tempArray = [YQVideoIndoorPatorlModel]()
@@ -314,25 +327,49 @@ class YQVideoPatrolViewController: UIViewController {
         HttpClient.instance.post(path: URLPath.getVideoPatrolCheckBegin, parameters: nil, success: { (respose) in
             
             SVProgressHUD.dismiss()
+            
+            let test = respose["insOrbit"] as? NSDictionary
+            
             //拿到的值分为两种情况. 有起始点的情况, 和没有起始点的情况,都需要保存和缓存
-            if (respose["insOrbit"]) != nil {
+            if (test != nil ) {
                 //展示巡查项的结果,跳选起始点的情况
-                let array = respose["status"] as? NSArray
+                let array = respose["insOrbit"] as? NSDictionary
                 var stringArray = [String]()
-                for temp  in array! {
-                    
-                    let temp1 = temp as? NSDictionary
-                    stringArray.append((temp1?["title"] as? String)!)
-                }
+                
+//                for temp  in array! {
+//
+//                    let temp1 = temp as? NSDictionary
+//                    stringArray.append((temp1?["wayName"] as? String)!)
+//                }
+                
+                stringArray.append((array?["wayName"] as? String)!)
                 
                 SJPickerView.show(withDataArry: stringArray, didSlected: { (index) in
                     
                     //选择的情况:
-                    let selectDic = array?[index] as? NSDictionary
+                    let selectPatrolDic = array?[index] as? NSDictionary
+                    
+                    
+                    //遍历巡查的操作
+                    let selectDic = respose["status"] as! NSArray
+                    var array = [String]()
+                    for dic in selectDic {
+                        
+                        let tempDic = dic as? NSDictionary
+                        
+                        array.append((tempDic?["title"] as? String)!)
+                    }
+                    
                     //发送查询路线的规划的情况!路线的内容信息的保存添加
                     //界面跳转,数据的参数的传递!(跳转到视频巡查的路线界面)
-                    
-                    
+                    SJPickerView.show(withDataArry: array , didSlected: { (indexRow) in
+                        //执行的是界面的跳转的情况!
+                        //所有的选择,参数要求一起传递过来!(跳转到视频巡查的路线界面)
+                        
+                        
+                    })
+
+                
                 })
             
             
@@ -342,8 +379,8 @@ class YQVideoPatrolViewController: UIViewController {
                 paramet["parkId"] = self.parkId
                 paramet["insPointId"] = self.videoAnnotationModel?.insPointId
                 
-                paramet["insPointName"] = self.videoAnnotationModel?.name
-                    
+//                paramet["insPointName"] = self.videoAnnotationModel?.name
+                
                     
                 HttpClient.instance.post(path: URLPath.getVideoPatrolLoadWayName, parameters: paramet, success: { (result) in
                     
@@ -356,20 +393,24 @@ class YQVideoPatrolViewController: UIViewController {
                         stringArray.append((insWayDic?["wayName"] as? String)!)
                     }
                     
+                    
                     SJPickerView.show(withDataArry: stringArray, didSlected: { (index) in
                         
                         let result1 = result as? NSArray
-                        
                         let selectLoadWay = result1?[index] as? NSDictionary //需要进行缓存的内容选项!
-                        
                         
                         //选择的班次和对应的id的情况
                         let selectDic = respose["status"] as! NSArray
-                        let tempDic = selectDic[index] as? NSDictionary
+                        var array = [String]()
+                        for dic in selectDic {
                         
-                        let array = [tempDic?["title"] as? String]
+                            let tempDic = dic as? NSDictionary
+                            
+                             array.append((tempDic?["title"] as? String)!)
+                        }
+                        
                 
-                        SJPickerView.show(withDataArry: array as! [String], didSlected: { (indexRow) in
+                        SJPickerView.show(withDataArry: array , didSlected: { (indexRow) in
                             //执行的是界面的跳转的情况!
                             //所有的选择,参数要求一起传递过来!(跳转到视频巡查的路线界面)
                             
@@ -395,6 +436,59 @@ class YQVideoPatrolViewController: UIViewController {
 
     }
     
+    
+    // MARK: - 接受所有的通知类型
+    func setupNoties(){
+    
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "drawerVideoLoadWaysNoties")
+        center.addObserver(self, selector: #selector(videoLoadWaysNoties(noties :)), name: notiesName, object: nil)
+        
+    }
+    func videoLoadWaysNoties(noties : Notification){
+        //1.关闭弹窗
+        //回弹的方法接口
+        if let drawerController = self.navigationController?.parent as? KYDrawerController {
+            
+            drawerController.setDrawerState(.closed , animated: true)
+        }
+        
+        //2.获取数据重绘,多维的数组的情况
+        let loadWays = noties.userInfo?["VideoLoadWaysArray"] as? NSArray
+        
+        for array in loadWays! {
+            
+            var tempModel = [YQVideoMapPointModel]()
+            
+            //重绘轨迹线条的方法,(添加所有的)
+            var videoMapLayWays = [CLLocationCoordinate2D]()
+            
+            for dict in array as! NSArray{
+                
+                let d = dict as? NSDictionary
+                let longitude = d?["longitude"] as? String
+                let latitude = d?["latitude"] as? String
+                let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude!)!, CLLocationDegrees(longitude!)!)
+                videoMapLayWays.append(CLLocationCoordinate2D)
+                
+                tempModel.append(YQVideoMapPointModel.init(dict: dict as! [String : Any]))
+            }
+            
+            //只是重新的打点的情况
+            self.videoMapPointModel = tempModel
+            
+            //划线
+            let polyline: MAPolyline = MAPolyline(coordinates: &videoMapLayWays, count: UInt(videoMapLayWays.count))
+            mapView.add(polyline)
+            
+        }
+    }
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
+        
+    }
 
 }
 
@@ -437,15 +531,15 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
             //通过模型来进行的传递的 model
             switch (nowAnnotation?.videoModel?.type)! {
             case 1://室内点
-                annotationView?.image = UIImage.init(name: "室内")
+                annotationView?.image = UIImage.init(name: "内摄像头-关")
                 break
             case 2://室外点
                 if nowAnnotation?.videoModel?.videoConfigId != 0 {
                     
-                    annotationView?.image = UIImage.init(name: "室外摄像头")
+                    annotationView?.image = UIImage.init(name: "外摄像头—关")
                 }else{
                     
-                    annotationView?.image = UIImage.init(name: "室外")
+                    annotationView?.image = UIImage.init(name: "室外-关")
                 }
                 
                 break
@@ -493,5 +587,26 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
             }
         }
     }
+    
+    func mapView(_ mapView: MAMapView!, rendererFor overlay: MAOverlay!) -> MAOverlayRenderer! {
+        
+        //想要设置文理的方法是: 直接到这个方法中来进行添加的 设置相应的图片
+        /*
+            polylineRenderer.loadStrokeTextureImage(UIImage.init(named: "arrowTexture"))
+         */
+        
+        if overlay.isKind(of: MAPolyline.self) {
+            
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
+            renderer.lineWidth = 8.0
+//            renderer.strokeColor = UIColor.cyan
+            renderer.strokeImage = UIImage.init(named: "ic_line_red_3")
+            
+            return renderer
+        }
+        
+        return nil
+    }
+    
 
 }

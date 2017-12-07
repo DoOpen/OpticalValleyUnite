@@ -181,6 +181,15 @@ class YQVideoDrawerViewController: UIViewController {
         
         if self.type == "0"{
             
+            //重新的调用显示的- 地图所有点的情况!
+            
+            
+            //回弹的方法接口
+            if let drawerController = self.navigationController?.parent as? KYDrawerController {
+                
+                drawerController.setDrawerState(.closed , animated: true)
+            }
+            
             return
         }
         
@@ -234,17 +243,30 @@ class YQVideoDrawerViewController: UIViewController {
         SVProgressHUD.show()
         
         HttpClient.instance.post(path: URLPath.getVideoPatrolMapByType, parameters: par, success: { (response) in
-            //传递数据,重绘渲染
             
-            //回弹的方法接口
-            if let drawerController = self.navigationController?.parent as? KYDrawerController {
+            SVProgressHUD.dismiss()
+            
+            let allDrawArray = NSMutableArray()
+            
+            //传递数据,重绘渲染
+            for dict in response as! NSArray {
                 
-                drawerController.setDrawerState(.closed , animated: true)
+                let tempDict = dict as? NSDictionary
+                let drawAarray = tempDict?["pointList"] as! NSArray
+                allDrawArray.add(drawAarray)
+            
             }
+            
+            //发送通知进行传值
+            let center = NotificationCenter.default
+            let notiesName = NSNotification.Name(rawValue: "drawerVideoLoadWaysNoties")
+            center.post(name: notiesName, object: nil, userInfo: ["VideoLoadWaysArray": allDrawArray])
+            
             
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+            
         }
         
         
@@ -264,7 +286,7 @@ extension YQVideoDrawerViewController : RKTagsViewDelegate {
         }else{
             
             self.patrolItemTagsView.deselectAll()
-             self.type = "2"
+            self.type = "2"
         }
         
         return true

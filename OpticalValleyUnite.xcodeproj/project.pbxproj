@@ -54,10 +54,17 @@
 		2F40D9921FB942A4007971D1 /* YQStepStatistics.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F40D9911FB942A4007971D1 /* YQStepStatistics.xib */; };
 		2F40D9941FB9A802007971D1 /* YQStepHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D9931FB9A802007971D1 /* YQStepHeadView.swift */; };
 		2F40D9961FB9A820007971D1 /* YQStepHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F40D9951FB9A820007971D1 /* YQStepHead.xib */; };
+		2F4217321FDA793A00B42BB3 /* YQPatrolItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4217311FDA793A00B42BB3 /* YQPatrolItemModel.swift */; };
+		2F4217351FDA86F800B42BB3 /* YQPatrolItemScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4217331FDA86F800B42BB3 /* YQPatrolItemScoreViewController.swift */; };
+		2F4217361FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4217341FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib */; };
+		2F4217391FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4217371FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift */; };
+		2F42173A1FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4217381FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.xib */; };
 		2F4A658C1F945A9700F4C72A /* YQJournalAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A658B1F945A9700F4C72A /* YQJournalAddEventViewController.swift */; };
 		2F4A658E1F945AC300F4C72A /* YQJournalAddEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F4A658D1F945AC300F4C72A /* YQJournalAddEvent.storyboard */; };
 		2F4A65901F9462CF00F4C72A /* YQWorkRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A658F1F9462CF00F4C72A /* YQWorkRecordViewController.swift */; };
 		2F4A65921F9462FE00F4C72A /* YQWorkRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F4A65911F9462FE00F4C72A /* YQWorkRecord.storyboard */; };
+		2F4AAD7A1FD953E200697E51 /* YQVideoMonitorAndPatrolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4AAD791FD953E200697E51 /* YQVideoMonitorAndPatrolVC.swift */; };
+		2F4AAD7C1FD9543E00697E51 /* YQVideoMonitorAndPatrol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F4AAD7B1FD9543E00697E51 /* YQVideoMonitorAndPatrol.storyboard */; };
 		2F4BB4211FC3CA040007BD08 /* YQExecNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4BB4201FC3CA040007BD08 /* YQExecNewCell.swift */; };
 		2F4BB4231FC3CB960007BD08 /* YQExecNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4BB4221FC3CB960007BD08 /* YQExecNew.xib */; };
 		2F4EB2941FD51AA00004A532 /* YQVideoPatrolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4EB2931FD51AA00004A532 /* YQVideoPatrolViewController.swift */; };
@@ -335,10 +342,17 @@
 		2F40D9911FB942A4007971D1 /* YQStepStatistics.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQStepStatistics.xib; sourceTree = "<group>"; };
 		2F40D9931FB9A802007971D1 /* YQStepHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStepHeadView.swift; sourceTree = "<group>"; };
 		2F40D9951FB9A820007971D1 /* YQStepHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQStepHead.xib; sourceTree = "<group>"; };
+		2F4217311FDA793A00B42BB3 /* YQPatrolItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPatrolItemModel.swift; sourceTree = "<group>"; };
+		2F4217331FDA86F800B42BB3 /* YQPatrolItemScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPatrolItemScoreViewController.swift; sourceTree = "<group>"; };
+		2F4217341FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPatrolItemScoreViewController.xib; sourceTree = "<group>"; };
+		2F4217371FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPatrolItemWeatherViewController.swift; sourceTree = "<group>"; };
+		2F4217381FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPatrolItemWeatherViewController.xib; sourceTree = "<group>"; };
 		2F4A658B1F945A9700F4C72A /* YQJournalAddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalAddEventViewController.swift; sourceTree = "<group>"; };
 		2F4A658D1F945AC300F4C72A /* YQJournalAddEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJournalAddEvent.storyboard; sourceTree = "<group>"; };
 		2F4A658F1F9462CF00F4C72A /* YQWorkRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkRecordViewController.swift; sourceTree = "<group>"; };
 		2F4A65911F9462FE00F4C72A /* YQWorkRecord.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQWorkRecord.storyboard; sourceTree = "<group>"; };
+		2F4AAD791FD953E200697E51 /* YQVideoMonitorAndPatrolVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQVideoMonitorAndPatrolVC.swift; sourceTree = "<group>"; };
+		2F4AAD7B1FD9543E00697E51 /* YQVideoMonitorAndPatrol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQVideoMonitorAndPatrol.storyboard; sourceTree = "<group>"; };
 		2F4BB4201FC3CA040007BD08 /* YQExecNewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQExecNewCell.swift; sourceTree = "<group>"; };
 		2F4BB4221FC3CB960007BD08 /* YQExecNew.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQExecNew.xib; sourceTree = "<group>"; };
 		2F4EB2931FD51AA00004A532 /* YQVideoPatrolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQVideoPatrolViewController.swift; sourceTree = "<group>"; };
@@ -774,6 +788,7 @@
 			children = (
 				2F4EB29B1FD549340004A532 /* YQVideoMapPointModel.swift */,
 				2F3AC6A91FD6937D0029AEE3 /* YQVideoIndoorPatorlModel.swift */,
+				2F4217311FDA793A00B42BB3 /* YQPatrolItemModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -793,6 +808,12 @@
 				2F4EB2951FD51B070004A532 /* YQVideoPatrol.storyboard */,
 				2F4EB2971FD532590004A532 /* YQVideoDrawerViewController.swift */,
 				2F4EB2981FD532590004A532 /* YQVideoDrawerViewController.xib */,
+				2F4AAD791FD953E200697E51 /* YQVideoMonitorAndPatrolVC.swift */,
+				2F4AAD7B1FD9543E00697E51 /* YQVideoMonitorAndPatrol.storyboard */,
+				2F4217331FDA86F800B42BB3 /* YQPatrolItemScoreViewController.swift */,
+				2F4217341FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib */,
+				2F4217371FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift */,
+				2F4217381FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1511,6 +1532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BD4A0DB1EE24F4100F044C1 /* OrderReturningCell.xib in Resources */,
+				2F42173A1FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.xib in Resources */,
 				4B50D62D1EB9AB4A00BB480F /* HomeBtnView.xib in Resources */,
 				2FEB0E811F6E614A0002DEE8 /* YQUpdataPSW.storyboard in Resources */,
 				4B3951E71E27DE0A00E2642F /* AMap.bundle in Resources */,
@@ -1521,6 +1543,7 @@
 				4BD4B94D1E272EA600AE2BC9 /* Home.storyboard in Resources */,
 				2FC167531F90A977001CEACD /* YQFilterJournal.storyboard in Resources */,
 				2FEB0E851F6E70900002DEE8 /* YQFireAlarmDetailViewController.xib in Resources */,
+				2F4AAD7C1FD9543E00697E51 /* YQVideoMonitorAndPatrol.storyboard in Resources */,
 				2F0F877C1F56D23F0030A6DB /* YQPartsLibary.storyboard in Resources */,
 				4B3952071E29CE1F00E2642F /* WorkOrderOprationCell.xib in Resources */,
 				2F5E8C581F595FED00007717 /* YQPartDataSelect.xib in Resources */,
@@ -1587,6 +1610,7 @@
 				2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */,
 				2FC1674B1F906BA4001CEACD /* YQJournalDetailHead.xib in Resources */,
 				2F40D9921FB942A4007971D1 /* YQStepStatistics.xib in Resources */,
+				2F4217361FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib in Resources */,
 				2F648DB11F57C063006D51D3 /* YQPartDataCell.xib in Resources */,
 				4BD4B9061E272E0C00AE2BC9 /* Main.storyboard in Resources */,
 				4B8EE7771F17047400A59F8D /* WorkOrder2Cell.xib in Resources */,
@@ -1741,6 +1765,7 @@
 				4BE9225F1EE6DB7C00FDEFE1 /* CallBackCell.swift in Sources */,
 				4B3951F31E28B38D00E2642F /* AddSignInViewController.swift in Sources */,
 				4BA520361E8E0F8000398F34 /* ExexSwithCell.swift in Sources */,
+				2F4217321FDA793A00B42BB3 /* YQPatrolItemModel.swift in Sources */,
 				4BAA134A1E5D7F7800E54534 /* ExecCell.swift in Sources */,
 				2FDF32A11F79280E008EDEB4 /* MANaviPolyline.m in Sources */,
 				2F0223B41FA99EAB0090822F /* YQFilterDeptModel.swift in Sources */,
@@ -1770,6 +1795,7 @@
 				2FDF32A51F792975008EDEB4 /* CommonUtility.m in Sources */,
 				2FC1674D1F906BC2001CEACD /* YQJournalDetailHeadView.swift in Sources */,
 				4BBBEC9E1E2CB34500F60313 /* SJAddView.swift in Sources */,
+				2F4217351FDA86F800B42BB3 /* YQPatrolItemScoreViewController.swift in Sources */,
 				2F35356C1F95AE0C00E8E77C /* YQWorkOrderFirstViewController.swift in Sources */,
 				4B3951FF1E28D2B900E2642F /* WorkOrderDistributionCell.swift in Sources */,
 				4BD4B95B1E275BDB00AE2BC9 /* SignInListViewController.swift in Sources */,
@@ -1801,6 +1827,7 @@
 				4B6E64FC1EEAEFCF00BA23E4 /* PhotoExtension.swift in Sources */,
 				2F94A27F1F73A5C500455162 /* YQFireMapDetailViewController.swift in Sources */,
 				4BD4B9461E272EA600AE2BC9 /* UIView+AdjustFrame.m in Sources */,
+				2F4217391FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift in Sources */,
 				4B776E681E3857100021B5CA /* UpdataPSWViewController.swift in Sources */,
 				4B39520A1E29D25D00E2642F /* SJUpButton.m in Sources */,
 				4B1558AF1F131AA70023F14D /* DeviceView.swift in Sources */,
@@ -1819,6 +1846,7 @@
 				4B3951D21E278F5300E2642F /* APPHandle.swift in Sources */,
 				2F63436F1F9F4963005F930A /* AnimatedAnnotationView.m in Sources */,
 				2F648DAD1F57A2DC006D51D3 /* PartsModel.swift in Sources */,
+				2F4AAD7A1FD953E200697E51 /* YQVideoMonitorAndPatrolVC.swift in Sources */,
 				4B1DEC5A1E31B646000917D2 /* SGAlertView.m in Sources */,
 				4B751BD11E5AF1DE00C0CEC0 /* PersonCell.swift in Sources */,
 				2F2141961FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift in Sources */,

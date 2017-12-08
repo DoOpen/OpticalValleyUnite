@@ -224,10 +224,11 @@ struct URLPath {
     //查询巡查路线条件(点击完成的情况)
     static let getVideoPatrolMapByType = "quality/humanins/loadWayMapByType"
     
+    //获取直播地址的情况
+    static let getVideogetLive = "quality/humanins/getLive"
     
-    
-    
-    
+    //获取巡查点获取巡查项整体的内容
+    static let getVideoItemFormByPointId = "quality/humanins/getInsItemFormByPointId"
     
     
 }

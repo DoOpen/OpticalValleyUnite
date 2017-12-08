@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZR0-hQ-5PL">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Video Monitor And PatrolVC-->
+        <scene sceneID="1Pv-Ts-FkC">
+            <objects>
+                <viewController id="ZR0-hQ-5PL" customClass="YQVideoMonitorAndPatrolVC" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bU4-Mp-W1l"/>
+                        <viewControllerLayoutGuide type="bottom" id="y9k-01-CBl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UN1-go-d06">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZI-VU-Emw">
+                                <rect key="frame" x="0.0" y="20" width="375" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zar-24-ovr">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="64"/>
+                                        <state key="normal" title="视频监控">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="videoButtonClick:" destination="ZR0-hQ-5PL" eventType="touchUpInside" id="atY-ci-0kQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kJ-wv-RE5">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="64"/>
+                                        <state key="normal" title="巡查">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="patrolButtonClick:" destination="ZR0-hQ-5PL" eventType="touchUpInside" id="ft9-9h-IGY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="2kJ-wv-RE5" firstAttribute="width" secondItem="zar-24-ovr" secondAttribute="width" id="35E-8u-RBJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="2kJ-wv-RE5" secondAttribute="bottom" id="5CM-y3-NtX"/>
+                                    <constraint firstAttribute="trailing" secondItem="2kJ-wv-RE5" secondAttribute="trailing" id="GuM-WJ-JK2"/>
+                                    <constraint firstAttribute="height" constant="64" id="JUU-QH-nvo"/>
+                                    <constraint firstItem="zar-24-ovr" firstAttribute="leading" secondItem="cZI-VU-Emw" secondAttribute="leading" id="O2E-Ej-DLW"/>
+                                    <constraint firstItem="zar-24-ovr" firstAttribute="top" secondItem="cZI-VU-Emw" secondAttribute="top" id="ckh-3v-KDv"/>
+                                    <constraint firstItem="2kJ-wv-RE5" firstAttribute="top" secondItem="cZI-VU-Emw" secondAttribute="top" id="n2d-jJ-bIr"/>
+                                    <constraint firstAttribute="bottom" secondItem="zar-24-ovr" secondAttribute="bottom" id="nsi-UB-Avt"/>
+                                    <constraint firstItem="2kJ-wv-RE5" firstAttribute="leading" secondItem="zar-24-ovr" secondAttribute="trailing" id="o0r-kC-9o7"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ova-f5-M8c">
+                                <rect key="frame" x="0.0" y="84" width="375" height="583"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQd-lM-xDa" userLabel="VideoView">
+                                <rect key="frame" x="0.0" y="84" width="375" height="583"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a3D-qQ-dvw">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="a3D-qQ-dvw" secondAttribute="bottom" id="BnO-vY-PdW"/>
+                                    <constraint firstItem="a3D-qQ-dvw" firstAttribute="top" secondItem="mQd-lM-xDa" secondAttribute="top" id="Mzn-cL-MXP"/>
+                                    <constraint firstItem="a3D-qQ-dvw" firstAttribute="leading" secondItem="mQd-lM-xDa" secondAttribute="leading" id="NzN-Nd-G8u"/>
+                                    <constraint firstAttribute="trailing" secondItem="a3D-qQ-dvw" secondAttribute="trailing" id="lA1-7b-gCY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mQd-lM-xDa" firstAttribute="leading" secondItem="UN1-go-d06" secondAttribute="leading" id="0SK-HH-f5h"/>
+                            <constraint firstItem="Ova-f5-M8c" firstAttribute="top" secondItem="cZI-VU-Emw" secondAttribute="bottom" id="8KE-JS-dya"/>
+                            <constraint firstItem="Ova-f5-M8c" firstAttribute="leading" secondItem="UN1-go-d06" secondAttribute="leading" id="Cy9-QZ-l5d"/>
+                            <constraint firstAttribute="trailing" secondItem="Ova-f5-M8c" secondAttribute="trailing" id="L9A-GY-ovp"/>
+                            <constraint firstItem="y9k-01-CBl" firstAttribute="top" secondItem="Ova-f5-M8c" secondAttribute="bottom" id="LRB-Cv-yJ5"/>
+                            <constraint firstItem="y9k-01-CBl" firstAttribute="top" secondItem="mQd-lM-xDa" secondAttribute="bottom" id="V5Y-er-b75"/>
+                            <constraint firstItem="cZI-VU-Emw" firstAttribute="leading" secondItem="UN1-go-d06" secondAttribute="leading" id="bx6-7h-uHC"/>
+                            <constraint firstAttribute="trailing" secondItem="mQd-lM-xDa" secondAttribute="trailing" id="dM2-4O-jyi"/>
+                            <constraint firstItem="cZI-VU-Emw" firstAttribute="top" secondItem="bU4-Mp-W1l" secondAttribute="bottom" id="qzQ-MW-cQo"/>
+                            <constraint firstItem="mQd-lM-xDa" firstAttribute="top" secondItem="cZI-VU-Emw" secondAttribute="bottom" id="r4x-Ij-VWt"/>
+                            <constraint firstAttribute="trailing" secondItem="cZI-VU-Emw" secondAttribute="trailing" id="sBU-eY-fnf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backImageView" destination="a3D-qQ-dvw" id="8er-x5-FAI"/>
+                        <outlet property="contentScrollView" destination="Ova-f5-M8c" id="M6Z-IK-Yl6"/>
+                        <outlet property="patrolButton" destination="2kJ-wv-RE5" id="Fj3-qe-TRD"/>
+                        <outlet property="videoButton" destination="zar-24-ovr" id="tt1-Pi-fFt"/>
+                        <outlet property="videoView" destination="mQd-lM-xDa" id="96L-JV-g3h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SBr-Bm-oAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-44" y="257"/>
+        </scene>
+    </scenes>
+</document>

@@ -49,8 +49,10 @@ class YQVideoPatrolViewController: UIViewController {
             for indoorModel in indoorVideoPointModel {
                 
                 if indoorModel.name == "" {
+                    
                     self.alert(message: "没有室内点!")
                     return
+                    
                 }else{
                 
                     indoorPickerArray.append(indoorModel.name)
@@ -65,6 +67,12 @@ class YQVideoPatrolViewController: UIViewController {
                     
                     //取出响应的数据点模型
                     self.indoorVideoSelectModel = self.indoorVideoPointModel[intIndex]
+                    if  self.indoorVideoSelectModel?.videoConfigId != 0 {
+                        
+                        self.videoAllSelectParmeter["videoConfigId"] = self.indoorVideoSelectModel?.videoConfigId
+                    }
+                    
+                    self.videoAllSelectParmeter["insPointId"] = self.indoorVideoSelectModel?.insPointId
                     
                     self.CheckBeginDataStart()
                 }
@@ -74,7 +82,15 @@ class YQVideoPatrolViewController: UIViewController {
     
     var indoorVideoSelectModel : YQVideoIndoorPatorlModel?
     
+    //选择的mapPoint的缓存
     var videoAnnotationModel : YQVideoMapPointModel?
+    
+    ///懒加载传参属性字典
+    lazy var videoAllSelectParmeter = {
+    
+        return NSMutableDictionary()
+        
+    }()
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
@@ -256,9 +272,14 @@ class YQVideoPatrolViewController: UIViewController {
         
         var parameter = [String : Any]()
         parameter["insPointId"] = mapViewModel.insPointId
+        videoAllSelectParmeter["insPointId"] = mapViewModel.insPointId
+      
         
         if mapViewModel.type == 1 {//室内点,要求调用两个接口
+            
             SVProgressHUD.show()
+            
+            self.videoAllSelectParmeter["type"] = mapViewModel.type
             
             HttpClient.instance.post(path: URLPath.getVideoPatrolFloorNum, parameters: parameter, success: { (respose) in
                 
@@ -312,7 +333,14 @@ class YQVideoPatrolViewController: UIViewController {
             
         }else{//室外点,直接调用
             
-           self.CheckBeginDataStart()
+            if  mapViewModel.videoConfigId != 0 {
+                
+                videoAllSelectParmeter["videoConfigId"] = mapViewModel.videoConfigId
+            }
+
+            self.videoAllSelectParmeter["type"] = mapViewModel.type
+            
+            self.CheckBeginDataStart()
         }
         
     }
@@ -347,8 +375,10 @@ class YQVideoPatrolViewController: UIViewController {
                 SJPickerView.show(withDataArry: stringArray, didSlected: { (index) in
                     
                     //选择的情况:
-                    let selectPatrolDic = array?[index] as? NSDictionary
+                    _ = array?[index] as? NSDictionary
                     
+                    self.videoAllSelectParmeter["orbitId"] = array?["orbitId"]
+                    self.videoAllSelectParmeter["insWayId"] = array?["insWayId"]
                     
                     //遍历巡查的操作
                     let selectDic = respose["status"] as! NSArray
@@ -365,7 +395,7 @@ class YQVideoPatrolViewController: UIViewController {
                     SJPickerView.show(withDataArry: array , didSlected: { (indexRow) in
                         //执行的是界面的跳转的情况!
                         //所有的选择,参数要求一起传递过来!(跳转到视频巡查的路线界面)
-                        
+                        self.pushToVideoAndPatrolVC()
                         
                     })
 
@@ -399,24 +429,23 @@ class YQVideoPatrolViewController: UIViewController {
                         let result1 = result as? NSArray
                         let selectLoadWay = result1?[index] as? NSDictionary //需要进行缓存的内容选项!
                         
+                        self.videoAllSelectParmeter["insWayId"] = selectLoadWay?["insWayId"]
+                        
                         //选择的班次和对应的id的情况
                         let selectDic = respose["status"] as! NSArray
                         var array = [String]()
                         for dic in selectDic {
-                        
                             let tempDic = dic as? NSDictionary
                             
-                             array.append((tempDic?["title"] as? String)!)
+                            array.append((tempDic?["title"] as? String)!)
                         }
                         
-                
                         SJPickerView.show(withDataArry: array , didSlected: { (indexRow) in
                             //执行的是界面的跳转的情况!
                             //所有的选择,参数要求一起传递过来!(跳转到视频巡查的路线界面)
-                            
+                            self.pushToVideoAndPatrolVC()
                             
                         })
-                        
                     })
                     
                     
@@ -484,6 +513,18 @@ class YQVideoPatrolViewController: UIViewController {
         }
     }
     
+    // MARK: - 跳转到视频执行界面的操作
+    func pushToVideoAndPatrolVC(){
+        
+        let vc = UIStoryboard.instantiateInitialViewController(name: "YQVideoMonitorAndPatrol") as? YQVideoMonitorAndPatrolVC
+        //传递相应的参数值的情况
+        vc?.prameterDict = self.videoAllSelectParmeter
+        
+        navigationController?.pushViewController(vc! , animated: true)
+        
+    }
+    
+
     deinit {
         
         NotificationCenter.default.removeObserver(self)
@@ -600,7 +641,9 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
             let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
             renderer.lineWidth = 8.0
 //            renderer.strokeColor = UIColor.cyan
-            renderer.strokeImage = UIImage.init(named: "ic_line_red_3")
+            renderer.strokeImage = UIImage.init(named: "多边形-1")
+//            renderer.loadStrokeTextureImage(UIImage.init(named: "多边形1"))
+//            renderer.loadTexture(UIImage.init(named: "多边形1"))
             
             return renderer
         }

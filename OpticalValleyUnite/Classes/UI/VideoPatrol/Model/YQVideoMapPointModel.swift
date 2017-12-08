@@ -11,7 +11,7 @@ import UIKit
 class YQVideoMapPointModel: NSObject {
     
     //定位点id
-    var insPointId : Int64 = 0
+    var insPointId : Int = 0
     
     //定位点type(室内,室外类型  1,室内 2,室外)
     var type : Int = 0

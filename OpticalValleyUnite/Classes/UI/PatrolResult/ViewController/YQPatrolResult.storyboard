@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fwx-NF-XIj">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="ItJ-JK-2jS">
+            <objects>
+                <navigationController id="fwx-NF-XIj" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bsY-18-JBs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kZY-p0-Fe1" kind="relationship" relationship="rootViewController" id="lz6-jL-xxm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fsL-EF-K3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1289" y="196"/>
+        </scene>
+        <!--巡查结果-->
+        <scene sceneID="IRH-Qh-gDa">
+            <objects>
+                <viewController id="kZY-p0-Fe1" customClass="YQPatrolResultViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="leP-DS-vIa"/>
+                        <viewControllerLayoutGuide type="bottom" id="a3r-At-WKI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dQ6-li-e8o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fsF-Q7-zgJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="czA-aC-0rw"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6aA-tI-9Y8">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6aA-tI-9Y8" firstAttribute="top" secondItem="fsF-Q7-zgJ" secondAttribute="bottom" id="0R7-16-Q2d"/>
+                            <constraint firstAttribute="trailing" secondItem="fsF-Q7-zgJ" secondAttribute="trailing" id="Epc-k1-88v"/>
+                            <constraint firstItem="a3r-At-WKI" firstAttribute="top" secondItem="6aA-tI-9Y8" secondAttribute="bottom" id="OOq-il-SVd"/>
+                            <constraint firstItem="fsF-Q7-zgJ" firstAttribute="top" secondItem="leP-DS-vIa" secondAttribute="bottom" id="PG8-NE-pnh"/>
+                            <constraint firstAttribute="trailing" secondItem="6aA-tI-9Y8" secondAttribute="trailing" id="Q8u-z2-wWI"/>
+                            <constraint firstItem="fsF-Q7-zgJ" firstAttribute="leading" secondItem="dQ6-li-e8o" secondAttribute="leading" id="dD0-ur-UaT"/>
+                            <constraint firstItem="6aA-tI-9Y8" firstAttribute="leading" secondItem="dQ6-li-e8o" secondAttribute="leading" id="oyC-iP-bjT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="巡查结果" id="hQe-lC-fUt">
+                        <barButtonItem key="rightBarButtonItem" title="巡查轨迹" id="sHZ-hP-hyw"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VnF-5D-fJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-287" y="188"/>
+        </scene>
+    </scenes>
+</document>

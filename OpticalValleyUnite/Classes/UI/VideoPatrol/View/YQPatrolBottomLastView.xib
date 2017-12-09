@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="uwJ-cJ-fHu" customClass="YQPatrolBottomLastView" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="482" height="47"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdd-et-gfp">
+                    <rect key="frame" x="0.0" y="0.0" width="160.5" height="47"/>
+                    <state key="normal" title="上一项">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="lastViewUpward:" destination="uwJ-cJ-fHu" eventType="touchUpInside" id="jq9-wT-U6z"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AT7-Lr-R0Q">
+                    <rect key="frame" x="160.5" y="0.0" width="161" height="47"/>
+                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="提交"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="lastViewSubmit:" destination="uwJ-cJ-fHu" eventType="touchUpInside" id="rY2-5T-2eF"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wK6-28-agY">
+                    <rect key="frame" x="321.5" y="0.0" width="160.5" height="47"/>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="lastViewCancel:" destination="uwJ-cJ-fHu" eventType="touchUpInside" id="B7N-9k-Mpo"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="AT7-Lr-R0Q" firstAttribute="top" secondItem="uwJ-cJ-fHu" secondAttribute="top" id="4JC-y8-pYM"/>
+                <constraint firstAttribute="bottom" secondItem="AT7-Lr-R0Q" secondAttribute="bottom" id="7Gq-wc-esa"/>
+                <constraint firstItem="wK6-28-agY" firstAttribute="top" secondItem="uwJ-cJ-fHu" secondAttribute="top" id="Kd0-4h-0GO"/>
+                <constraint firstItem="AT7-Lr-R0Q" firstAttribute="leading" secondItem="Hdd-et-gfp" secondAttribute="trailing" id="SkA-CI-ltz"/>
+                <constraint firstAttribute="bottom" secondItem="Hdd-et-gfp" secondAttribute="bottom" id="TOE-pQ-P90"/>
+                <constraint firstAttribute="bottom" secondItem="wK6-28-agY" secondAttribute="bottom" id="UvK-lP-Hk5"/>
+                <constraint firstItem="wK6-28-agY" firstAttribute="width" secondItem="Hdd-et-gfp" secondAttribute="width" id="VoV-uJ-9jo"/>
+                <constraint firstItem="Hdd-et-gfp" firstAttribute="leading" secondItem="uwJ-cJ-fHu" secondAttribute="leading" id="gy2-h1-2ec"/>
+                <constraint firstItem="AT7-Lr-R0Q" firstAttribute="width" secondItem="Hdd-et-gfp" secondAttribute="width" id="pu6-0F-tB5"/>
+                <constraint firstItem="Hdd-et-gfp" firstAttribute="top" secondItem="uwJ-cJ-fHu" secondAttribute="top" id="tDP-A8-wm6"/>
+                <constraint firstItem="wK6-28-agY" firstAttribute="leading" secondItem="AT7-Lr-R0Q" secondAttribute="trailing" id="zFo-bk-p4V"/>
+                <constraint firstAttribute="trailing" secondItem="wK6-28-agY" secondAttribute="trailing" id="zpD-ZF-a9j"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="102" y="-191.5"/>
+        </view>
+    </objects>
+</document>

@@ -47,20 +47,58 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                 switch model.checkType {
                 case 1://是否达标
                     
-                    let vc = YQPatrolItemWeatherViewController.init(nibName: "YQPatrolItemWeatherViewController", bundle: nil)
+                    let vc = YQPatrolItemScoreViewController.init(nibName: "YQPatrolItemScoreViewController", bundle: nil)
+                    
+                    //添加bottomView和传递模型
+//                    if  indexN == count - 1 {
+//                        
+//                        let view = Bundle.main.loadNibNamed("YQPatrolBottomLastView", owner: nil, options: nil)?[0] as! YQPatrolBottomLastView
+////                        view.frame = vc.bottomView.bounds
+////                        vc.bottomView.addSubview(view)
+//                        
+//                    }else{
+//                        
+//                        let view = Bundle.main.loadNibNamed("YQPatrolBottomNextView", owner: nil, options: nil)?[0] as! YQPatrolBottomNextView
+////                        view.frame = vc.bottomView.bounds
+////                        vc.bottomView.addSubview(view)
+//                    
+//                    }
+                    
+                    //传递模型的数据
+//                    vc.model = model
                     
                     self.addChildViewController(vc)
                     vc.view.frame = CGRect.init(x: x, y: CGFloat(y), width: width, height: CGFloat(height))
+                    
                     contentScrollView.addSubview(vc.view)
+                    
                     break
                     
                 case 2://评分
                     
                     let vc = YQPatrolItemScoreViewController.init(nibName: "YQPatrolItemScoreViewController", bundle: nil)
                     
+                    //添加bottomView和传递模型
+//                    if  indexN == count - 1 {
+//                        let view = Bundle.main.loadNibNamed("YQPatrolBottomLastView", owner: nil, options: nil)?[0] as! YQPatrolBottomLastView
+//                        
+////                        view.frame = vc.bottomView.frame
+////                        
+////                        vc.bottomView.addSubview(view)
+//
+//                        
+//                    }else{
+//                        
+//                        let view = Bundle.main.loadNibNamed("YQPatrolBottomNextView", owner: nil, options: nil)?[0] as! YQPatrolBottomNextView
+////                        view.frame = vc.bottomView.frame
+////                        vc.bottomView.addSubview(view)
+//
+//                    }
+                    
+                    //传递模型的数据
+//                    vc.model = model
                     
                     self.addChildViewController(vc)
-                    
                     vc.view.frame = CGRect.init(x: x, y: CGFloat(y), width: width, height: CGFloat(height))
                     
                     contentScrollView.addSubview(vc.view)
@@ -77,6 +115,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.automaticallyAdjustsScrollViewInsets = false
@@ -108,7 +147,6 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
 //            playerViewController.player!.play()
 //            
 //        }
-//        
 //    }
     
     // MARK: - 网络获取相应的数据的情况
@@ -118,10 +156,10 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         if insPointId != 0{
         
             var par = [String : Any]()
-            
             par["videoConfigId"] = "\(insPointId)"
                 
             HttpClient.instance.post(path: URLPath.getVideogetLive, parameters: par, success: { (respose) in
+                
                 //获取视频地址,显示播放
                 let url = respose["interM3u8"] as? String
                 DispatchQueue.main.async {
@@ -129,9 +167,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                     
                 }
                 
-                    
             }) { (error) in
-                    
                 SVProgressHUD.showError(withStatus: "视频失败,请检查网络!")
             }
         
@@ -147,7 +183,6 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         let insPointId = self.prameterDict?["insPointId"] as? Int ?? 0
         
         var par = [String : Any]()
-        
         par["insPointId"] = "\(insPointId)"
     
         HttpClient.instance.post(path: URLPath.getVideoItemFormByPointId, parameters: par, success: { (response) in

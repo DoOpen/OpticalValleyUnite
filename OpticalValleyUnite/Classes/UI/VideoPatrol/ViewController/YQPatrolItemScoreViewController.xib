@@ -13,6 +13,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQPatrolItemScoreViewController" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="addImageView" destination="5Aa-Ww-Z7F" id="yiY-hh-wnL"/>
+                <outlet property="bottomView" destination="HPb-yk-XZT" id="U3u-l9-snt"/>
+                <outlet property="descriptionLabel" destination="fgE-V4-DCq" id="W4g-rX-2F2"/>
+                <outlet property="imageButton" destination="MPy-RI-zAb" id="XOo-Yv-1Ca"/>
+                <outlet property="itemNumLabel" destination="6pJ-y9-DnA" id="s9S-rz-DyJ"/>
+                <outlet property="patrolItemLabel" destination="uUy-Zq-275" id="cPa-H1-6Eh"/>
+                <outlet property="patrolTypeLabel" destination="Q7l-1i-cdk" id="4zx-Kv-lH9"/>
+                <outlet property="scoreLabel" destination="1j6-RL-fDk" id="dSi-xC-aSE"/>
+                <outlet property="starsView" destination="oZv-DS-bc6" id="8as-CE-ltU"/>
+                <outlet property="textView" destination="hXf-GD-V8Q" id="UWp-4X-H04"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -44,7 +54,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="保存" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pJ-y9-DnA">
-                            <rect key="frame" x="366" y="16.5" width="50" height="17"/>
+                            <rect key="frame" x="366" y="17" width="50" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="63x-Cm-zQr"/>
                             </constraints>
@@ -226,7 +236,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPb-yk-XZT">
                     <rect key="frame" x="0.0" y="615" width="421" height="60"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.6044335461" green="0.88395986120000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="Kc5-29-XCf"/>
                     </constraints>

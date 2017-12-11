@@ -47,25 +47,23 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                 switch model.checkType {
                 case 1://是否达标
                     
-                    let vc = YQPatrolItemScoreViewController.init(nibName: "YQPatrolItemScoreViewController", bundle: nil)
+                    let vc = YQPatrolItemWeatherViewController.init(nibName: "YQPatrolItemWeatherViewController", bundle: nil)
                     
                     //添加bottomView和传递模型
-//                    if  indexN == count - 1 {
-//                        
-//                        let view = Bundle.main.loadNibNamed("YQPatrolBottomLastView", owner: nil, options: nil)?[0] as! YQPatrolBottomLastView
-////                        view.frame = vc.bottomView.bounds
-////                        vc.bottomView.addSubview(view)
-//                        
-//                    }else{
-//                        
-//                        let view = Bundle.main.loadNibNamed("YQPatrolBottomNextView", owner: nil, options: nil)?[0] as! YQPatrolBottomNextView
-////                        view.frame = vc.bottomView.bounds
-////                        vc.bottomView.addSubview(view)
-//                    
-//                    }
+                    if  indexN == count - 1 {//最后项
+                        
+                        vc.bottomType = "last"
+                        
+                                              
+                    }else{//next项
+                        
+                        vc.bottomType = "next"
+                        
+                                           
+                    }
                     
                     //传递模型的数据
-//                    vc.model = model
+                    vc.model = model
                     
                     self.addChildViewController(vc)
                     vc.view.frame = CGRect.init(x: x, y: CGFloat(y), width: width, height: CGFloat(height))
@@ -79,24 +77,21 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                     let vc = YQPatrolItemScoreViewController.init(nibName: "YQPatrolItemScoreViewController", bundle: nil)
                     
                     //添加bottomView和传递模型
-//                    if  indexN == count - 1 {
-//                        let view = Bundle.main.loadNibNamed("YQPatrolBottomLastView", owner: nil, options: nil)?[0] as! YQPatrolBottomLastView
-//                        
-////                        view.frame = vc.bottomView.frame
-////                        
-////                        vc.bottomView.addSubview(view)
-//
-//                        
-//                    }else{
-//                        
-//                        let view = Bundle.main.loadNibNamed("YQPatrolBottomNextView", owner: nil, options: nil)?[0] as! YQPatrolBottomNextView
-////                        view.frame = vc.bottomView.frame
-////                        vc.bottomView.addSubview(view)
-//
-//                    }
+                    if  indexN == count - 1 {//最后项
+                        
+                        vc.bottomType = "last"
+                        
+                        
+                        
+                    }else{//next项
+                        
+                        vc.bottomType = "next"
+                        
+                     
+                    }
                     
                     //传递模型的数据
-//                    vc.model = model
+                    vc.model = model
                     
                     self.addChildViewController(vc)
                     vc.view.frame = CGRect.init(x: x, y: CGFloat(y), width: width, height: CGFloat(height))
@@ -119,6 +114,8 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         super.viewDidLoad()
         
         self.automaticallyAdjustsScrollViewInsets = false
+        self.contentScrollView.isDirectionalLockEnabled = true
+        
         
         //连续调用的两个接口
         getMediaPlayerData()

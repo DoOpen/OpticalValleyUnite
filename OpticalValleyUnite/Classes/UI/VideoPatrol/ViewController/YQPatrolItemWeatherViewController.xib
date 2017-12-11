@@ -20,6 +20,7 @@
                 <outlet property="patrolItemLabel" destination="B1z-Mx-Da9" id="3H7-Xw-26b"/>
                 <outlet property="patrolTypeLabel" destination="jGj-Ug-SNN" id="FtE-7c-M6s"/>
                 <outlet property="remarkView" destination="7B5-R8-qJr" id="MgH-yd-ZTW"/>
+                <outlet property="view" destination="IWs-2e-E8O" id="AzN-yE-x72"/>
                 <outlet property="yesButton" destination="MQb-B0-WK8" id="Kn6-lg-rGi"/>
             </connections>
         </placeholder>

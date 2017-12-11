@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQpatrolResultDrawerViewController" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="calendarLabel" destination="A4B-TR-PLx" id="4SO-qH-Va6"/>
+                <outlet property="selectWaysTagsV" destination="eqt-an-Ax1" id="lN0-js-11E"/>
+                <outlet property="trajectoryTagsV" destination="yC9-iv-qL4" id="xGu-xJ-5uf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,35 +23,38 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swS-Pk-uv4">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <rect key="frame" x="0.0" y="1" width="375" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4B-TR-PLx">
-                            <rect key="frame" x="20" y="20" width="305" height="21"/>
+                            <rect key="frame" x="20" y="39.5" width="305" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sq6-Lg-wF2">
-                            <rect key="frame" x="330" y="15" width="30" height="30"/>
+                            <rect key="frame" x="330" y="25" width="30" height="50"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="nH6-hk-FBw"/>
+                                <constraint firstAttribute="height" constant="50" id="nH6-hk-FBw"/>
                                 <constraint firstAttribute="width" constant="30" id="sjK-2M-Zde"/>
                             </constraints>
                             <state key="normal" image="darr"/>
+                            <connections>
+                                <action selector="datePickerClick:" destination="-1" eventType="touchUpInside" id="a00-ZV-7nR"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="QwD-0h-jql"/>
                         <constraint firstItem="A4B-TR-PLx" firstAttribute="leading" secondItem="swS-Pk-uv4" secondAttribute="leading" constant="20" id="bAf-qI-hk5"/>
-                        <constraint firstItem="A4B-TR-PLx" firstAttribute="centerY" secondItem="swS-Pk-uv4" secondAttribute="centerY" id="dL6-Zl-E2C"/>
-                        <constraint firstItem="sq6-Lg-wF2" firstAttribute="centerY" secondItem="swS-Pk-uv4" secondAttribute="centerY" id="dOO-FA-mHe"/>
+                        <constraint firstItem="A4B-TR-PLx" firstAttribute="centerY" secondItem="swS-Pk-uv4" secondAttribute="centerY" constant="20" id="dL6-Zl-E2C"/>
+                        <constraint firstItem="sq6-Lg-wF2" firstAttribute="centerY" secondItem="swS-Pk-uv4" secondAttribute="centerY" constant="20" id="dOO-FA-mHe"/>
                         <constraint firstItem="sq6-Lg-wF2" firstAttribute="leading" secondItem="A4B-TR-PLx" secondAttribute="trailing" constant="5" id="fB3-Eg-6lv"/>
                         <constraint firstAttribute="trailing" secondItem="sq6-Lg-wF2" secondAttribute="trailing" constant="15" id="k4T-v7-yer"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JsM-14-fvE">
-                    <rect key="frame" x="0.0" y="61" width="375" height="40"/>
+                    <rect key="frame" x="0.0" y="62" width="375" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="巡查路线选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbi-GA-EiF">
                             <rect key="frame" x="20" y="8.5" width="123" height="24"/>
@@ -65,9 +71,9 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ToB-v6-Hsp">
-                    <rect key="frame" x="0.0" y="303" width="375" height="40"/>
+                    <rect key="frame" x="0.0" y="304" width="375" height="40"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="巡查路线选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7X0-Hl-8hd">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="巡查轨迹选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7X0-Hl-8hd">
                             <rect key="frame" x="20" y="8.5" width="123" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
@@ -82,14 +88,14 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqt-an-Ax1" customClass="RKTagsView">
-                    <rect key="frame" x="0.0" y="102" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="103" width="375" height="200"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="0zO-9o-uC0"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yC9-iv-qL4" customClass="RKTagsView">
-                    <rect key="frame" x="0.0" y="344" width="375" height="263"/>
+                    <rect key="frame" x="0.0" y="345" width="375" height="262"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJk-D9-GjI" userLabel="bottomView">
@@ -102,6 +108,9 @@
                             <state key="normal" title="重置">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="resetButtonClick:" destination="-1" eventType="touchUpInside" id="zkz-DR-FHr"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYh-eq-zpZ">
                             <rect key="frame" x="187.5" y="0.0" width="187.5" height="60"/>
@@ -110,6 +119,9 @@
                             <state key="normal" title="完成">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="compeletButtonClick:" destination="-1" eventType="touchUpInside" id="9Wt-5H-XcO"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -129,7 +141,7 @@
             <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="bJk-D9-GjI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2pB-lC-9q2"/>
-                <constraint firstItem="swS-Pk-uv4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EFG-Hl-JTc"/>
+                <constraint firstItem="swS-Pk-uv4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="1" id="EFG-Hl-JTc"/>
                 <constraint firstAttribute="trailing" secondItem="yC9-iv-qL4" secondAttribute="trailing" id="Lr4-7L-il4"/>
                 <constraint firstAttribute="trailing" secondItem="swS-Pk-uv4" secondAttribute="trailing" id="ND7-wN-lA0"/>
                 <constraint firstItem="ToB-v6-Hsp" firstAttribute="top" secondItem="eqt-an-Ax1" secondAttribute="bottom" constant="1" id="QGo-ha-TTe"/>

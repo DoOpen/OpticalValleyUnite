@@ -230,5 +230,14 @@ struct URLPath {
     //获取巡查点获取巡查项整体的内容
     static let getVideoItemFormByPointId = "quality/humanins/getInsItemFormByPointId"
     
+    ///巡查结果展示所有的数据接口
+    //分页查看巡查结果
+    static let getResultList = "quality/insresult/list"
+    
+    //巡查结果详情
+    static let getResultDetail  = "quality/insresult/detail"
+    
+    //巡查轨迹
+    static let getResultInsOrbitList  = "quality/humanins/getInsOrbitList"
     
 }

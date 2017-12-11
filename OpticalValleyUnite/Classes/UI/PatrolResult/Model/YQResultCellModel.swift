@@ -10,4 +10,22 @@ import UIKit
 
 class YQResultCellModel: NSObject {
 
+    var insResultId : Int = 0
+    
+    var insPointName : String = ""
+    
+    var personName : String = ""
+    
+    init(dict : [String : Any] ) {
+        
+        super.init()
+        
+        setValuesForKeys(dict)
+        
+    }
+    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        
+    }
+    
 }

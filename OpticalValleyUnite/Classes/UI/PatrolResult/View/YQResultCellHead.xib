@@ -11,12 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="h2m-vO-udK">
+        <view contentMode="scaleToFill" id="h2m-vO-udK" customClass="YQResultCellHeadView" customModule="OpticalValleyUnite" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="400" height="81"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJw-5e-j2D">
-                    <rect key="frame" x="30" y="30" width="25" height="21"/>
+                    <rect key="frame" x="25" y="30" width="25" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="idq-sZ-O6d"/>
                     </constraints>
@@ -25,7 +25,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点位名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGQ-dD-Yac">
-                    <rect key="frame" x="105" y="30" width="70" height="21"/>
+                    <rect key="frame" x="110" y="30" width="70" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="lGg-Zt-PEN"/>
                     </constraints>
@@ -34,7 +34,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="巡查人员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n4-lJ-g4C">
-                    <rect key="frame" x="215" y="30" width="70" height="21"/>
+                    <rect key="frame" x="220" y="30" width="70" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -52,10 +52,10 @@
                 <constraint firstItem="QGQ-dD-Yac" firstAttribute="centerY" secondItem="h2m-vO-udK" secondAttribute="centerY" id="J5d-c1-jgz"/>
                 <constraint firstItem="PJw-5e-j2D" firstAttribute="centerY" secondItem="h2m-vO-udK" secondAttribute="centerY" id="Pew-G8-Esb"/>
                 <constraint firstItem="l4b-a0-awe" firstAttribute="centerY" secondItem="h2m-vO-udK" secondAttribute="centerY" id="Q92-sS-vDj"/>
-                <constraint firstItem="QGQ-dD-Yac" firstAttribute="leading" secondItem="PJw-5e-j2D" secondAttribute="trailing" constant="50" id="Qxo-rD-UnH"/>
                 <constraint firstItem="4n4-lJ-g4C" firstAttribute="centerY" secondItem="h2m-vO-udK" secondAttribute="centerY" id="SMl-OG-40H"/>
-                <constraint firstItem="l4b-a0-awe" firstAttribute="leading" secondItem="4n4-lJ-g4C" secondAttribute="trailing" constant="50" id="W99-BL-yDR"/>
-                <constraint firstItem="PJw-5e-j2D" firstAttribute="leading" secondItem="h2m-vO-udK" secondAttribute="leading" constant="30" id="f36-to-N0x"/>
+                <constraint firstItem="PJw-5e-j2D" firstAttribute="leading" secondItem="h2m-vO-udK" secondAttribute="leading" constant="25" id="f36-to-N0x"/>
+                <constraint firstItem="QGQ-dD-Yac" firstAttribute="centerX" secondItem="h2m-vO-udK" secondAttribute="centerX" constant="-55" id="mCG-Hc-B1Y"/>
+                <constraint firstItem="4n4-lJ-g4C" firstAttribute="centerX" secondItem="h2m-vO-udK" secondAttribute="centerX" constant="55" id="pee-hy-uJW"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="59" y="-329.5"/>

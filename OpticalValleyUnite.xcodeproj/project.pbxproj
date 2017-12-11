@@ -71,6 +71,7 @@
 		2F4217361FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4217341FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib */; };
 		2F4217391FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4217371FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift */; };
 		2F42173A1FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4217381FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.xib */; };
+		2F452E8B1FDE31EE0036DE7A /* YQResultViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F452E8A1FDE31EE0036DE7A /* YQResultViewCell.swift */; };
 		2F4A658C1F945A9700F4C72A /* YQJournalAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A658B1F945A9700F4C72A /* YQJournalAddEventViewController.swift */; };
 		2F4A658E1F945AC300F4C72A /* YQJournalAddEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F4A658D1F945AC300F4C72A /* YQJournalAddEvent.storyboard */; };
 		2F4A65901F9462CF00F4C72A /* YQWorkRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A658F1F9462CF00F4C72A /* YQWorkRecordViewController.swift */; };
@@ -374,6 +375,7 @@
 		2F4217341FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPatrolItemScoreViewController.xib; sourceTree = "<group>"; };
 		2F4217371FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPatrolItemWeatherViewController.swift; sourceTree = "<group>"; };
 		2F4217381FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPatrolItemWeatherViewController.xib; sourceTree = "<group>"; };
+		2F452E8A1FDE31EE0036DE7A /* YQResultViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQResultViewCell.swift; sourceTree = "<group>"; };
 		2F4A658B1F945A9700F4C72A /* YQJournalAddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalAddEventViewController.swift; sourceTree = "<group>"; };
 		2F4A658D1F945AC300F4C72A /* YQJournalAddEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJournalAddEvent.storyboard; sourceTree = "<group>"; };
 		2F4A658F1F9462CF00F4C72A /* YQWorkRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkRecordViewController.swift; sourceTree = "<group>"; };
@@ -717,6 +719,7 @@
 			children = (
 				2FF2169C1FDD694100978A56 /* YQResultCellHeadView.swift */,
 				2FF2169E1FDD697D00978A56 /* YQResultCellHead.xib */,
+				2F452E8A1FDE31EE0036DE7A /* YQResultViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1873,6 +1876,7 @@
 				4B3951F61E28B64A00E2642F /* UILabel+SJColor.m in Sources */,
 				2FF216A11FDD6BCE00978A56 /* YQResultCellModel.swift in Sources */,
 				4B4BAFC11E5C62E800C9C549 /* OprationConfirmationView.swift in Sources */,
+				2F452E8B1FDE31EE0036DE7A /* YQResultViewCell.swift in Sources */,
 				2F2A2BB41F989E1D003015E9 /* YQAllProjectSelectVC.swift in Sources */,
 				4BBBEC931E2CAAE200F60313 /* BoPhotoGroupCell.m in Sources */,
 				2F0223B21FA99E620090822F /* YQFilterParkModel.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gTC-38-O2U">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cTv-s0-H4s">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="Uez-Rq-ULY">
+            <objects>
+                <navigationController id="cTv-s0-H4s" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RIV-DJ-YKA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gTC-38-O2U" kind="relationship" relationship="rootViewController" id="Owz-PK-aG9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4sM-LD-0Jf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1143" y="55"/>
+        </scene>
+        <!--Result Map View Controller-->
         <scene sceneID="bOo-nn-ZT3">
             <objects>
-                <viewController id="gTC-38-O2U" sceneMemberID="viewController">
+                <viewController id="gTC-38-O2U" customClass="YQResultMapViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hvI-Ue-Gfn"/>
                         <viewControllerLayoutGuide type="bottom" id="M7A-um-hXO"/>
@@ -22,14 +38,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdC-kj-vOp">
-                                <rect key="frame" x="0.0" y="20" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="64"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="fO6-ih-ei0"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QP9-C7-7UW" customClass="MAMapView">
-                                <rect key="frame" x="0.0" y="84" width="375" height="583"/>
+                                <rect key="frame" x="0.0" y="128" width="375" height="539"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -44,10 +60,15 @@
                             <constraint firstItem="QP9-C7-7UW" firstAttribute="leading" secondItem="qPR-L2-vtd" secondAttribute="leading" id="win-bJ-Erg"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="cbB-SI-8ge"/>
+                    <connections>
+                        <outlet property="mapView" destination="QP9-C7-7UW" id="kpj-qo-j4C"/>
+                        <outlet property="timeView" destination="DdC-kj-vOp" id="Yqw-Pp-kjN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20z-Jz-mLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="145" y="124"/>
+            <point key="canvasLocation" x="-180" y="81"/>
         </scene>
     </scenes>
 </document>

@@ -29,6 +29,7 @@ class YQResultMapViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "巡查轨迹"
+        self.automaticallyAdjustsScrollViewInsets = false
         
         //地图定位
         mapViewSetup()

@@ -17,7 +17,7 @@ class YQScoreResult: UIView {
     
     @IBOutlet weak var pictureButton: UIButton!
 
-    @IBOutlet weak var itemPictureView: SJAddView!
+    @IBOutlet weak var itemPictureView: ShowImageView!
     
     @IBOutlet weak var remarkView: UITextView!
     
@@ -28,9 +28,23 @@ class YQScoreResult: UIView {
             
             self.patrolTypeLabel.text = model?.insItemTypeName
             self.describeLabel.text = model?.descriptionString
+            
             if model?.imgPath != ""{
                 
-                self.pictureButton.kf.setImage(with: URL.init(string: (model?.imgPath)!), for: .normal)
+                var imageValue = ""
+                
+                if (model?.imgPath.contains("http"))!{
+                    
+                    imageValue = (model?.imgPath)!
+                    
+                }else{
+                    
+                    let basicPath = URLPath.basicPath
+                    imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.imgPath)!
+                }
+
+                
+                self.pictureButton.kf.setImage(with: URL.init(string: imageValue), for: .normal)
             
             }
             
@@ -43,6 +57,29 @@ class YQScoreResult: UIView {
                 self.remarkView.text = "巡查意见:"
             }
             
+            //showimages组内容
+            if model?.itemImgPath != "" {
+                
+                let images = model?.itemImgPath.components(separatedBy: ",")
+                
+                var temp = [String]()
+                
+                for url in images!{
+                    
+                    let basicPath = URLPath.basicPath
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                    temp.append(imageValue)
+                }
+                
+                itemPictureView.showImageUrls(temp)
+                
+                itemPictureView.didClickHandle = { index, image in
+                    
+                    CoverView.show(image: image)
+                    
+                }
+                
+            }
             
         }
         

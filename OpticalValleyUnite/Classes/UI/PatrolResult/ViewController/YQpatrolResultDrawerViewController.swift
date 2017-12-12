@@ -56,6 +56,9 @@ class YQpatrolResultDrawerViewController: UIViewController {
         let stringDate = dateFormatter.string(from: Date())
         self.calendarLabel.text = stringDate
         
+        //4.接受通知刷新数据
+        addNoties()
+        
     }
 
     // MARK: - 添加默认的项目选择方法
@@ -207,6 +210,31 @@ class YQpatrolResultDrawerViewController: UIViewController {
     
     }
     
+    // MARK: - 添加通知的方法
+    func addNoties() {
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "drawerUpdateNoties")
+        
+        center.addObserver(self, selector: #selector(DrawerDateNoties(noties:)), name: notiesName, object: nil)
+
+    
+    }
+    func DrawerDateNoties(noties : Notification){
+        
+        let date  = noties.userInfo?["drawerdateString"] as? String
+        self.calendarLabel.text = date
+        
+        self.compeletButtonClick(UIButton())
+        
+    
+    }
+    
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
+        
+    }
 
 }
 

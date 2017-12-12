@@ -26,16 +26,16 @@
                     <rect key="frame" x="0.0" y="1" width="375" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4B-TR-PLx">
-                            <rect key="frame" x="20" y="39.5" width="305" height="21"/>
+                            <rect key="frame" x="20" y="29.5" width="285" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sq6-Lg-wF2">
-                            <rect key="frame" x="330" y="25" width="30" height="50"/>
+                            <rect key="frame" x="310" y="15" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="nH6-hk-FBw"/>
-                                <constraint firstAttribute="width" constant="30" id="sjK-2M-Zde"/>
+                                <constraint firstAttribute="width" constant="50" id="sjK-2M-Zde"/>
                             </constraints>
                             <state key="normal" image="darr"/>
                             <connections>
@@ -47,8 +47,8 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="QwD-0h-jql"/>
                         <constraint firstItem="A4B-TR-PLx" firstAttribute="leading" secondItem="swS-Pk-uv4" secondAttribute="leading" constant="20" id="bAf-qI-hk5"/>
-                        <constraint firstItem="A4B-TR-PLx" firstAttribute="centerY" secondItem="swS-Pk-uv4" secondAttribute="centerY" constant="20" id="dL6-Zl-E2C"/>
-                        <constraint firstItem="sq6-Lg-wF2" firstAttribute="centerY" secondItem="swS-Pk-uv4" secondAttribute="centerY" constant="20" id="dOO-FA-mHe"/>
+                        <constraint firstItem="A4B-TR-PLx" firstAttribute="centerY" secondItem="swS-Pk-uv4" secondAttribute="centerY" constant="10" id="dL6-Zl-E2C"/>
+                        <constraint firstItem="sq6-Lg-wF2" firstAttribute="centerY" secondItem="swS-Pk-uv4" secondAttribute="centerY" constant="10" id="dOO-FA-mHe"/>
                         <constraint firstItem="sq6-Lg-wF2" firstAttribute="leading" secondItem="A4B-TR-PLx" secondAttribute="trailing" constant="5" id="fB3-Eg-6lv"/>
                         <constraint firstAttribute="trailing" secondItem="sq6-Lg-wF2" secondAttribute="trailing" constant="15" id="k4T-v7-yer"/>
                     </constraints>

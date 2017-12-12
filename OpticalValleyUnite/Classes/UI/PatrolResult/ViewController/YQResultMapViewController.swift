@@ -14,16 +14,21 @@ import SVProgressHUD
 class YQResultMapViewController: UIViewController {
 
     ///属性列表
-    @IBOutlet weak var timeView: UIView!
+    @IBOutlet weak var timeView: DateChooseView!
+   
     
     @IBOutlet weak var mapView: MAMapView!
     
     // MAMap单例
     var locationManager = AMapLocationManager()
     
+    // lineType
+    var wayLineType = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "巡查轨迹"
         
         //地图定位
         mapViewSetup()
@@ -36,6 +41,17 @@ class YQResultMapViewController: UIViewController {
         //获取项目筛选的数据,接受通知
         receiveNotiesData()
         
+        //日历查询的方法
+        timeView.didSelectHandle = { [weak self] dateStr in
+            
+            self?.title = "巡查轨迹" + dateStr
+            //发送通知来进行切换筛选
+            let center = NotificationCenter.default
+            let notiesName = NSNotification.Name(rawValue: "drawerUpdateNoties")
+            center.post(name: notiesName, object: nil, userInfo: ["drawerdateString": dateStr])
+            
+        }
+
         
     }
     
@@ -124,13 +140,122 @@ class YQResultMapViewController: UIViewController {
     
     func resultDrawerLoadWaysNoties (noties : Notification){
         
+        if let drawerController = self.navigationController?.parent as? KYDrawerController {
+            
+            drawerController.setDrawerState(.closed , animated: true)
+        }
+
+        
         let dataArray = noties.userInfo?["VideoLoadWaysArray"] as? NSDictionary
         
         //赋值,划线,逻辑渲染
+        //1.实际执行的路线, 还是应用的是 红色 箭头来显示的  本地区分是 1
+        if let executeWay = dataArray?["executeWay"]  as? NSArray{
+            
+            for temp1 in executeWay {
+                
+                let  temp2 = temp1 as! NSDictionary
+                
+                if let pointA =  temp2["pointList"] as? NSArray {
+                    if pointA.count > 0  {
+                        
+                        self.wayLineType = 1
+                        var executeWayArray = [CLLocationCoordinate2D]()
+                        
+                        for dict in pointA {
+                            let temp = dict as? NSDictionary
+                            
+                            let longitude = temp?["longitude"] as? String
+                            let latitude = temp?["latitude"] as? String
+                            let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude!)!, CLLocationDegrees(longitude!)!)
+                            executeWayArray.append(CLLocationCoordinate2D)
+                            
+                        }
+                        
+                        //执行画线的方法
+                        //划线
+                        let polyline: MAPolyline = MAPolyline(coordinates: &executeWayArray, count: UInt(executeWayArray.count))
+                        mapView.add(polyline)
+                    }
+                }
+            }
+        }
         
-    
+        //设计路线  要求应用 蓝色来表示 本地区分是 2
+        if let designWay = dataArray?["designWay"] as? NSArray {
+            
+            
+            for temp in designWay {
+                
+                let temp1 = temp as! NSDictionary
+                
+                if let pointA = temp1["pointList"] as? NSArray {
+                    if pointA.count > 0  {
+                        
+                        self.wayLineType = 2
+                        var designWayArray = [CLLocationCoordinate2D]()
+                        
+                        for dict in pointA {
+                            let temp = dict as? NSDictionary
+                            
+                            let longitude = temp?["longitude"] as? String
+                            let latitude = temp?["latitude"] as? String
+                            let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude!)!, CLLocationDegrees(longitude!)!)
+                            designWayArray.append(CLLocationCoordinate2D)
+                            
+                        }
+                        
+                        //执行画线的方法
+                        //划线
+                        let polyline: MAPolyline = MAPolyline(coordinates: &designWayArray, count: UInt(designWayArray.count))
+                        mapView.add(polyline)
+                        
+                    }
+                }
+            }
+        }
+        
+        //真实路线  要求应用 绿色来表示绘制  本地区分是 3
+        if let realWay = dataArray?["realWay"] as? NSArray {
+            
+            for temp in realWay {
+                
+                let temp1 = temp as! NSDictionary
+                
+                if let pointA = temp1["pointList"] as? NSArray {
+                    
+                    if pointA.count > 0  {
+                        
+                        self.wayLineType = 3
+                        var realWayArray = [CLLocationCoordinate2D]()
+                        
+                        for dict in pointA {
+                            let temp = dict as? NSDictionary
+                            
+                            let longitude = temp?["longitude"] as? String
+                            let latitude = temp?["latitude"] as? String
+                            let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude!)!, CLLocationDegrees(longitude!)!)
+                            realWayArray.append(CLLocationCoordinate2D)
+                            
+                        }
+                        
+                        //执行画线的方法
+                        //划线
+                        let polyline: MAPolyline = MAPolyline(coordinates: &realWayArray, count: UInt(realWayArray.count))
+                        mapView.add(polyline)
+                        
+                    }
+                    
+                }
+                
+            }
+          
+        }
+        
     }
     
+    
+    // MARK: - vc销毁的方法
     deinit {
         
         NotificationCenter.default.removeObserver(self)
@@ -143,6 +268,47 @@ class YQResultMapViewController: UIViewController {
 
 extension YQResultMapViewController : MAMapViewDelegate {
 
+    func mapView(_ mapView: MAMapView!, rendererFor overlay: MAOverlay!) -> MAOverlayRenderer! {
+        
+        //想要设置文理的方法是: 直接到这个方法中来进行添加的 设置相应的图片
+        /*
+         polylineRenderer.loadStrokeTextureImage(UIImage.init(named: "arrowTexture"))
+         */
+        
+        if overlay.isKind(of: MAPolyline.self) {
+            
+            //switch 的来进行的判断各个type的线条颜色
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
+            renderer.lineWidth = 8.0
+            
+            switch self.wayLineType {
+            case 1://实际行走执行轨迹
+                renderer.strokeImage = UIImage.init(named: "多边形-1")
+                
+                break
+                
+            case 2://设计轨迹,蓝色来 渲染
+                renderer.strokeColor = UIColor.blue
+                renderer.lineCapType = kMALineCapArrow //设置画箭头的属性情况
+                
+                break
+                
+            case 3://真实路线,绿色来 渲染
+                renderer.strokeColor = UIColor.green
+                renderer.lineCapType = kMALineCapArrow //设置画箭头的属性情况
+
+                break
+                
+            default:
+                break
+            }
+            
+            
+            return renderer
+        }
+        
+        return nil
+    }
 
 
 

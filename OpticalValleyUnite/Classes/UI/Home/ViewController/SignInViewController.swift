@@ -94,6 +94,7 @@ class SignInViewController: UIViewController {
            updateSige()
         }else{
             parmat["ADDRESS"] = addressLabel.text
+            
             let vc = AddSignInViewController.loadFromStoryboard(name: "SignIn") as! AddSignInViewController
             vc.parmat = parmat
             vc.address = addressLabel.text!

@@ -644,7 +644,7 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
             renderer.strokeImage = UIImage.init(named: "多边形-1")
 //            renderer.loadStrokeTextureImage(UIImage.init(named: "多边形1"))
 //            renderer.loadTexture(UIImage.init(named: "多边形1"))
-            
+//            renderer.lineCapType = kMALineCapArrow 设置画箭头的属性情况
             return renderer
         }
         

@@ -113,13 +113,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/PatrolResult/ViewController/YQResultMapViewController.swift"
-            timestampString = "534683465.430446"
+            filePath = "OpticalValleyUnite/Classes/UI/Home/View/DateChooseView.swift"
+            timestampString = "534769076.427374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "resultDrawerLoadWaysNoties(noties:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "awakeFromNib()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

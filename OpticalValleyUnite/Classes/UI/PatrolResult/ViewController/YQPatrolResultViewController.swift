@@ -219,6 +219,9 @@ extension YQPatrolResultViewController : YQResultViewCellDelegate{
         //传递参数, 跳转到详情页面
         let detail = UIStoryboard.instantiateInitialViewController(name : "YQResultDetail") as? YQResultDetailViewController
         
+        let model = self.dataArray[indexRow]
+        detail?.insResultId = model.insResultId
+        
         navigationController?.pushViewController(detail!, animated: true)
         
     }

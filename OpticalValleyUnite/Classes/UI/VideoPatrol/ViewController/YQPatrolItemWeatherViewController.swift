@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import SVProgressHUD
+import SnapKit
 
 class YQPatrolItemWeatherViewController: UIViewController {
 
@@ -61,35 +62,42 @@ class YQPatrolItemWeatherViewController: UIViewController {
             self.addImageButton.kf.setImage(with: URL.init(string: (model?.imgPath)!), for: .normal )
         }
         
-        
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
         //加载底部的项目
         switch bottomType {
         case "last":
             
             let view = Bundle.main.loadNibNamed("YQPatrolBottomLastView", owner: nil, options: nil)?[0] as! YQPatrolBottomLastView
-            view.frame = self.bottomView.bounds
+//            view.frame = self.bottomView.bounds
             bottomView.addSubview(view)
+            view.snp.makeConstraints({ (make) in
+                
+                make.top.left.right.bottom.equalToSuperview()
+            })
             
             break
             
         case "next":
             
             let view = Bundle.main.loadNibNamed("YQPatrolBottomNextView", owner: nil, options: nil)?[0] as! YQPatrolBottomNextView
-            view.frame = bottomView.bounds
+//            view.frame = bottomView.bounds
             bottomView.addSubview(view)
-            
+            view.snp.makeConstraints({ (make) in
+                
+                make.top.left.right.bottom.equalToSuperview()
+            })
+
             break
         default:
             break
         }
 
+    }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
         
     }
 

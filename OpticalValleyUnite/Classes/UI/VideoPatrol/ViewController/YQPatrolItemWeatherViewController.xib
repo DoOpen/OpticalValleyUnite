@@ -129,7 +129,7 @@
                         <constraint firstAttribute="width" constant="160" id="TrH-jG-2Qx"/>
                         <constraint firstAttribute="height" constant="160" id="WwW-UA-Oxb"/>
                     </constraints>
-                    <state key="normal" title="Button" backgroundImage="插入图片"/>
+                    <state key="normal" backgroundImage="插入图片"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否达标" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gf-zH-iYZ">
                     <rect key="frame" x="15" y="317" width="70" height="21"/>
@@ -137,14 +137,14 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQb-B0-WK8">
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQb-B0-WK8">
                     <rect key="frame" x="105" y="319" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="BAn-D2-Dly"/>
                         <constraint firstAttribute="width" constant="18" id="IEK-w7-ecr"/>
                     </constraints>
-                    <state key="normal" title="Button" image="Oval"/>
-                    <state key="selected" image="ovalcheck"/>
+                    <state key="normal" title="Button" image="weatherD"/>
+                    <state key="selected" image="weatherS"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xw-Kx-Xam">
                     <rect key="frame" x="133" y="317" width="17.5" height="21"/>
@@ -152,15 +152,15 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozK-c0-69o">
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozK-c0-69o">
                     <rect key="frame" x="181" y="318" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="0VB-v4-Btv"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="GXE-f7-tfc"/>
                         <constraint firstAttribute="width" constant="18" id="LKa-t8-Iim"/>
                     </constraints>
-                    <state key="normal" title="Button" image="Oval"/>
-                    <state key="selected" image="ovalcheck"/>
+                    <state key="normal" title="Button" image="weatherD"/>
+                    <state key="selected" image="weatherS"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="否" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rS8-r0-qyS">
                     <rect key="frame" x="209" y="317" width="17.5" height="21"/>
@@ -252,8 +252,8 @@
         </view>
     </objects>
     <resources>
-        <image name="Oval" width="22" height="22"/>
-        <image name="ovalcheck" width="20" height="20"/>
+        <image name="weatherD" width="22" height="22"/>
+        <image name="weatherS" width="22" height="22"/>
         <image name="插入图片" width="120" height="120"/>
         <image name="矢量智能对象" width="16" height="14"/>
     </resources>

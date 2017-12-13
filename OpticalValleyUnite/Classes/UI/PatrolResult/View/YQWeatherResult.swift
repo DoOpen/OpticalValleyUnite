@@ -14,7 +14,8 @@ class YQWeatherResult: UIView {
 
     @IBOutlet weak var describeLabel: UILabel!
 
-    @IBOutlet weak var pictureButton: UIButton!
+   
+    @IBOutlet weak var pictureShowImageView: ShowImageView!
     
     @IBOutlet weak var yesBtn: UIButton!
     
@@ -47,8 +48,17 @@ class YQWeatherResult: UIView {
                     imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.imgPath)!
                 }
                 
+                var temp = [String]()
+                temp.append(imageValue)
                 
-                self.pictureButton.kf.setImage(with: URL.init(string: imageValue), for: .normal)
+                pictureShowImageView.showImageUrls(temp)
+                
+                pictureShowImageView.didClickHandle = { index, image in
+                    
+                    CoverView.show(image: image)
+                    
+                }
+
                 
             }
             
@@ -83,12 +93,20 @@ class YQWeatherResult: UIView {
                     CoverView.show(image: image)
                     
                 }
-
             }
             
-
+            //设置评分的工作内容
+            if model?.score == 1 {//显示的是 选中的情况
+                self.yesBtn.isSelected = true
+                self.noBtn.isSelected = false
+            
+            }else{//默认都是显示的 否
+                self.noBtn.isSelected = true
+                self.yesBtn.isSelected = false
+            }
+            
+            
         }
-    
     }
     
     override func awakeFromNib() {

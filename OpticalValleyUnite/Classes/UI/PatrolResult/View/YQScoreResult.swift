@@ -15,11 +15,16 @@ class YQScoreResult: UIView {
     
     @IBOutlet weak var describeLabel: UILabel!
     
-    @IBOutlet weak var pictureButton: UIButton!
+    @IBOutlet weak var pictureShowImageView: ShowImageView!
+   
 
     @IBOutlet weak var itemPictureView: ShowImageView!
     
     @IBOutlet weak var remarkView: UITextView!
+    
+    @IBOutlet weak var starsViews: UIView!
+    
+    @IBOutlet weak var scoreLabel: UILabel!
     
     
     //数据模型
@@ -42,11 +47,19 @@ class YQScoreResult: UIView {
                     let basicPath = URLPath.basicPath
                     imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.imgPath)!
                 }
-
                 
-                self.pictureButton.kf.setImage(with: URL.init(string: imageValue), for: .normal)
-            
+                var temp = [String]()
+                temp.append(imageValue)
+                
+                pictureShowImageView.showImageUrls(temp)
+                
+                pictureShowImageView.didClickHandle = { index, image in
+                    
+                    CoverView.show(image: image)
+                    
+                }
             }
+            
             
             if model?.feedback != "" {
                 
@@ -56,6 +69,27 @@ class YQScoreResult: UIView {
             
                 self.remarkView.text = "巡查意见:"
             }
+            
+            //设置starsView的显示情况
+            if (model?.score)! <= 0 {
+                
+                //解决model.source 的逻辑bug的 情况
+                model?.score = 1
+                
+            }else if (model?.score)! > 5{
+                
+                model?.score =  (model?.score)! / 2
+            }
+            
+            for i in 0...((model?.score)! - 1){
+                
+                let star = starsViews.subviews[i] as! UIButton
+                star.isSelected = true
+            }
+            
+            self.scoreLabel.text = "\((model?.score)! * 20)" + "分"
+
+            
             
             //showimages组内容
             if model?.itemImgPath != "" {
@@ -76,17 +110,14 @@ class YQScoreResult: UIView {
                 itemPictureView.didClickHandle = { index, image in
                     
                     CoverView.show(image: image)
-                    
                 }
-                
             }
-            
         }
-        
     }
     
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         
         self.remarkView.isEditable = false

@@ -131,7 +131,7 @@
                         <constraint firstAttribute="width" constant="160" id="h1L-Ff-igB"/>
                         <constraint firstAttribute="height" constant="160" id="yAP-rv-Kss"/>
                     </constraints>
-                    <state key="normal" title="Button" backgroundImage="插入图片"/>
+                    <state key="normal" backgroundImage="插入图片"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eu-1T-pba">
                     <rect key="frame" x="15" y="337" width="35" height="21"/>
@@ -148,8 +148,8 @@
                                 <constraint firstAttribute="width" constant="15" id="PoX-i8-g8q"/>
                                 <constraint firstAttribute="width" secondItem="PlN-01-zGX" secondAttribute="height" id="yoF-iJ-8QJ"/>
                             </constraints>
-                            <state key="normal" image="bigstar_normal"/>
-                            <state key="selected" image="bigstar_active"/>
+                            <state key="normal" image="star拷贝8"/>
+                            <state key="selected" image="star拷贝7"/>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="PoX-i8-g8q"/>
@@ -158,27 +158,28 @@
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyF-cD-mc2">
                             <rect key="frame" x="128" y="0.0" width="50" height="50"/>
-                            <state key="normal" image="bigstar_normal"/>
-                            <state key="selected" image="bigstar_active"/>
+                            <state key="normal" image="star拷贝8"/>
+                            <state key="selected" image="star拷贝7"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4w-CL-T75">
                             <rect key="frame" x="26" y="0.0" width="50" height="50"/>
-                            <state key="normal" image="bigstar_normal"/>
-                            <state key="selected" image="bigstar_active"/>
+                            <state key="normal" image="star拷贝8"/>
+                            <state key="selected" image="star拷贝7"/>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMi-RK-BkS">
                             <rect key="frame" x="179" y="0.0" width="50" height="50"/>
-                            <state key="normal" image="bigstar_normal"/>
-                            <state key="selected" image="bigstar_active"/>
+                            <state key="normal" image="star拷贝8"/>
+                            <state key="selected" image="star拷贝7"/>
                         </button>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFi-JI-oJO">
                             <rect key="frame" x="230" y="0.0" width="50" height="50"/>
-                            <state key="normal" image="bigstar_normal"/>
-                            <state key="selected" image="bigstar_active"/>
+                            <state key="normal" image="star拷贝8"/>
+                            <state key="selected" image="star拷贝7"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="R4w-CL-T75" secondAttribute="bottom" id="2NR-4a-rFL"/>
                         <constraint firstItem="PlN-01-zGX" firstAttribute="centerY" secondItem="R4w-CL-T75" secondAttribute="centerY" id="Gwl-Vh-8XG"/>
                         <constraint firstItem="dFi-JI-oJO" firstAttribute="height" secondItem="R4w-CL-T75" secondAttribute="height" id="JxJ-r8-hlw"/>
                         <constraint firstItem="R4w-CL-T75" firstAttribute="centerY" secondItem="oZv-DS-bc6" secondAttribute="centerY" id="Kqj-pI-cW6"/>
@@ -197,14 +198,15 @@
                         <constraint firstItem="PlN-01-zGX" firstAttribute="centerX" secondItem="oZv-DS-bc6" secondAttribute="centerX" multiplier="2/3" id="rdV-d0-w2u"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="sJk-z7-xDG"/>
                         <constraint firstItem="dFi-JI-oJO" firstAttribute="width" secondItem="R4w-CL-T75" secondAttribute="width" id="sff-br-lko"/>
+                        <constraint firstItem="R4w-CL-T75" firstAttribute="top" secondItem="oZv-DS-bc6" secondAttribute="top" id="uEc-Ye-vaS"/>
                         <constraint firstItem="PlN-01-zGX" firstAttribute="width" secondItem="R4w-CL-T75" secondAttribute="width" id="ykB-Ei-ro0"/>
                         <constraint firstItem="yMi-RK-BkS" firstAttribute="width" secondItem="R4w-CL-T75" secondAttribute="width" id="zab-st-FJZ"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1j6-RL-fDk">
-                    <rect key="frame" x="366" y="339" width="55" height="18"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <nil key="textColor"/>
+                    <rect key="frame" x="366" y="336.5" width="55" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbB-Ek-4FJ">
@@ -289,8 +291,8 @@
         </view>
     </objects>
     <resources>
-        <image name="bigstar_active" width="50" height="50"/>
-        <image name="bigstar_normal" width="50" height="50"/>
+        <image name="star拷贝7" width="22" height="22"/>
+        <image name="star拷贝8" width="22" height="22"/>
         <image name="插入图片" width="120" height="120"/>
         <image name="矢量智能对象" width="16" height="14"/>
     </resources>

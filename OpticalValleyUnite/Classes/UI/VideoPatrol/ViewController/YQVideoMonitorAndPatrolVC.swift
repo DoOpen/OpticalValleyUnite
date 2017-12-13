@@ -54,12 +54,10 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                         
                         vc.bottomType = "last"
                         
-                                              
                     }else{//next项
                         
                         vc.bottomType = "next"
                         
-                                           
                     }
                     
                     //传递模型的数据
@@ -81,13 +79,9 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                         
                         vc.bottomType = "last"
                         
-                        
-                        
                     }else{//next项
                         
                         vc.bottomType = "next"
-                        
-                     
                     }
                     
                     //传递模型的数据

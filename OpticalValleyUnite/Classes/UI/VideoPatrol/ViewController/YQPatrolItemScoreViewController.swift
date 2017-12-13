@@ -9,6 +9,8 @@
 import UIKit
 import Kingfisher
 import SVProgressHUD
+import SnapKit
+
 
 class YQPatrolItemScoreViewController: UIViewController {
 
@@ -35,6 +37,15 @@ class YQPatrolItemScoreViewController: UIViewController {
     /// 添加底部type项
     var bottomType = ""
     
+    var selectStarsBtn : UIButton?{
+        didSet{
+            //设置打分label的情况
+            
+        
+        }
+    
+    }
+    
     
     /// 数据模型设置数据传递参数
     var model : YQPatrolItemModel?{
@@ -49,8 +60,9 @@ class YQPatrolItemScoreViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.textView.placeHolder = "巡查意见"
         
+        
+        self.textView.placeHolder = "巡查意见"
         
         self.patrolTypeLabel.text = model?.insItemTypeName
         self.patrolItemLabel.text = model?.name
@@ -61,14 +73,6 @@ class YQPatrolItemScoreViewController: UIViewController {
             self.imageButton.kf.setImage(with: URL.init(string: (model?.imgPath)!), for: .normal )
         }
 
-        
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
         //加载底部的项目
         switch bottomType {
             
@@ -76,16 +80,26 @@ class YQPatrolItemScoreViewController: UIViewController {
             
             let view = Bundle.main.loadNibNamed("YQPatrolBottomLastView", owner: nil, options: nil)?[0] as! YQPatrolBottomLastView
             
-            view.frame = bottomView.bounds
+
             bottomView.addSubview(view)
+            view.snp.makeConstraints({ (make) in
+                
+                make.top.left.right.bottom.equalToSuperview()
+            })
+
             
             break
             
         case "next":
             
             let view = Bundle.main.loadNibNamed("YQPatrolBottomNextView", owner: nil, options: nil)?[0] as! YQPatrolBottomNextView
-            view.frame = bottomView.bounds
+
             bottomView.addSubview(view)
+            view.snp.makeConstraints({ (make) in
+                
+                make.top.left.right.bottom.equalToSuperview()
+            })
+
             
             break
             
@@ -94,6 +108,31 @@ class YQPatrolItemScoreViewController: UIViewController {
         }
 
         
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        setupStartView()
+    }
+    
+    
+    // MARK: - 点击评分按钮的执行系列的方法
+    func setupStartView(){
+        
+        for btn in starsView.subviews as! [UIButton]{
+            btn.addTarget(self, action:  #selector(startBtnClick(sender:)), for: .touchUpInside)
+        }
+    }
+    
+    func startBtnClick(sender: UIButton){
+        
+        selectStarsBtn = sender
+        for btn in starsView.subviews as! [UIButton]{
+            btn.isSelected = btn.tag < sender.tag + 1
+        }
     }
 
 

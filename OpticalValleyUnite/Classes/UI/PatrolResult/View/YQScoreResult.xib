@@ -76,16 +76,16 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gv9-Th-FH8" userLabel="stars1">
-                    <rect key="frame" x="105" y="158.5" width="238" height="30"/>
+                    <rect key="frame" x="105" y="161" width="238" height="25"/>
                     <subviews>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-lE-MqO">
-                            <rect key="frame" x="64.5" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="64.5" y="-2.5" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Ol5-lE-MqO" secondAttribute="height" id="6lL-Fw-uyv"/>
                                 <constraint firstAttribute="width" constant="15" id="W7m-n1-I7a"/>
                             </constraints>
-                            <state key="normal" image="bigstar_normal"/>
-                            <state key="selected" image="bigstar_active"/>
+                            <state key="normal" image="star拷贝8"/>
+                            <state key="selected" image="star拷贝7"/>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="W7m-n1-I7a"/>
@@ -93,28 +93,28 @@
                             </variation>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyc-7j-Ivr">
-                            <rect key="frame" x="104" y="0.0" width="30" height="30"/>
-                            <state key="normal" image="bigstar_normal"/>
-                            <state key="selected" image="bigstar_active"/>
+                            <rect key="frame" x="104" y="-2.5" width="30" height="30"/>
+                            <state key="normal" image="star拷贝8"/>
+                            <state key="selected" image="star拷贝7"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y86-wF-Jr3">
-                            <rect key="frame" x="24.5" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="24.5" y="-2.5" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="9rr-zL-JHq"/>
                                 <constraint firstAttribute="height" constant="30" id="qU3-fx-6bz"/>
                             </constraints>
-                            <state key="normal" image="bigstar_normal"/>
-                            <state key="selected" image="bigstar_active"/>
+                            <state key="normal" image="star拷贝8"/>
+                            <state key="selected" image="star拷贝7"/>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qer-NH-O9o">
-                            <rect key="frame" x="143.5" y="0.0" width="30" height="30"/>
-                            <state key="normal" image="bigstar_normal"/>
-                            <state key="selected" image="bigstar_active"/>
+                            <rect key="frame" x="143.5" y="-2.5" width="30" height="30"/>
+                            <state key="normal" image="star拷贝8"/>
+                            <state key="selected" image="star拷贝7"/>
                         </button>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxO-cR-Okm">
-                            <rect key="frame" x="183.5" y="0.0" width="30" height="30"/>
-                            <state key="normal" image="bigstar_normal"/>
-                            <state key="selected" image="bigstar_active"/>
+                            <rect key="frame" x="183.5" y="-2.5" width="30" height="30"/>
+                            <state key="normal" image="star拷贝8"/>
+                            <state key="selected" image="star拷贝7"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -123,7 +123,7 @@
                         <constraint firstItem="qer-NH-O9o" firstAttribute="height" secondItem="y86-wF-Jr3" secondAttribute="height" id="20v-Pl-SxH"/>
                         <constraint firstItem="Kyc-7j-Ivr" firstAttribute="height" secondItem="y86-wF-Jr3" secondAttribute="height" id="7Ac-BH-XwU"/>
                         <constraint firstItem="Kyc-7j-Ivr" firstAttribute="centerX" secondItem="Gv9-Th-FH8" secondAttribute="centerX" id="8db-lm-pOO"/>
-                        <constraint firstAttribute="height" constant="30" id="93t-vi-he7"/>
+                        <constraint firstAttribute="height" constant="25" id="93t-vi-he7"/>
                         <constraint firstItem="qer-NH-O9o" firstAttribute="width" secondItem="y86-wF-Jr3" secondAttribute="width" id="BBB-G2-oSU"/>
                         <constraint firstItem="y86-wF-Jr3" firstAttribute="centerY" secondItem="Gv9-Th-FH8" secondAttribute="centerY" id="DTT-Hw-rQE"/>
                         <constraint firstItem="sxO-cR-Okm" firstAttribute="width" secondItem="y86-wF-Jr3" secondAttribute="width" id="ILr-PX-w5Q"/>
@@ -143,17 +143,17 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIK-Nl-N4P">
                     <rect key="frame" x="343" y="163" width="50" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hD5-L5-RZ5">
-                    <rect key="frame" x="118.5" y="68" width="95" height="85"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQl-JE-L08" customClass="ShowImageView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                    <rect key="frame" x="123.5" y="62" width="95" height="95"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="85" id="DUX-9a-7zG"/>
-                        <constraint firstAttribute="width" constant="95" id="sCh-c0-cX2"/>
+                        <constraint firstAttribute="width" constant="95" id="BAJ-zn-f2U"/>
+                        <constraint firstAttribute="height" constant="95" id="Yd8-2K-Yp6"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                </button>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -163,11 +163,11 @@
                 <constraint firstAttribute="trailing" secondItem="DIK-Nl-N4P" secondAttribute="trailing" id="65R-bB-GHc"/>
                 <constraint firstItem="erV-pY-GO0" firstAttribute="leading" secondItem="XUL-RR-snD" secondAttribute="leading" constant="30" id="8ZW-lC-aAp"/>
                 <constraint firstItem="erV-pY-GO0" firstAttribute="top" secondItem="vYw-Wf-W0c" secondAttribute="bottom" constant="21" id="9av-aF-USY"/>
-                <constraint firstItem="hD5-L5-RZ5" firstAttribute="top" secondItem="ElL-JQ-dtC" secondAttribute="bottom" constant="-15" id="CZU-9e-9tU"/>
                 <constraint firstItem="DIK-Nl-N4P" firstAttribute="centerY" secondItem="W5X-ZX-FT5" secondAttribute="centerY" id="FJP-4F-qde"/>
                 <constraint firstAttribute="trailing" secondItem="ln8-Ir-ozb" secondAttribute="trailing" constant="5" id="GYR-FW-PhA"/>
                 <constraint firstItem="vYw-Wf-W0c" firstAttribute="leading" secondItem="XUL-RR-snD" secondAttribute="leading" constant="30" id="HnD-8E-rp9"/>
-                <constraint firstItem="hD5-L5-RZ5" firstAttribute="leading" secondItem="ElL-JQ-dtC" secondAttribute="trailing" constant="5" id="Mg9-ko-sBB"/>
+                <constraint firstItem="HQl-JE-L08" firstAttribute="leading" secondItem="ElL-JQ-dtC" secondAttribute="trailing" constant="10" id="OlC-oe-bVe"/>
+                <constraint firstItem="HQl-JE-L08" firstAttribute="top" secondItem="ElL-JQ-dtC" secondAttribute="top" id="OxF-zk-pCX"/>
                 <constraint firstItem="Jei-JL-TPg" firstAttribute="centerX" secondItem="XUL-RR-snD" secondAttribute="centerX" constant="-120" id="aW8-6B-f9e"/>
                 <constraint firstItem="W5X-ZX-FT5" firstAttribute="top" secondItem="ElL-JQ-dtC" secondAttribute="bottom" constant="80" id="dac-Dd-hEX"/>
                 <constraint firstItem="Gv9-Th-FH8" firstAttribute="leading" secondItem="cwc-gS-uOE" secondAttribute="trailing" constant="8.5" id="eEc-wp-Tm2"/>
@@ -193,14 +193,16 @@
                 <outlet property="describeLabel" destination="ln8-Ir-ozb" id="lPU-HU-dTG"/>
                 <outlet property="itemPictureView" destination="vYw-Wf-W0c" id="eui-9G-ik1"/>
                 <outlet property="patrolTypeLabel" destination="iws-qA-wNI" id="bey-t3-ZBs"/>
-                <outlet property="pictureButton" destination="hD5-L5-RZ5" id="pRb-Yi-E5n"/>
+                <outlet property="pictureShowImageView" destination="HQl-JE-L08" id="fK9-e4-5jb"/>
                 <outlet property="remarkView" destination="erV-pY-GO0" id="Uqd-Xm-OSf"/>
+                <outlet property="scoreLabel" destination="DIK-Nl-N4P" id="93a-Zm-rkY"/>
+                <outlet property="starsViews" destination="Gv9-Th-FH8" id="XuR-fb-KoM"/>
             </connections>
-            <point key="canvasLocation" x="-198.5" y="-42.5"/>
+            <point key="canvasLocation" x="-117.5" y="-47.5"/>
         </view>
     </objects>
     <resources>
-        <image name="bigstar_active" width="50" height="50"/>
-        <image name="bigstar_normal" width="50" height="50"/>
+        <image name="star拷贝7" width="22" height="22"/>
+        <image name="star拷贝8" width="22" height="22"/>
     </resources>
 </document>

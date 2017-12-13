@@ -12,6 +12,10 @@ import SVProgressHUD
 import SnapKit
 
 class YQPatrolItemWeatherViewController: UIViewController {
+    
+    ///属性列表情况
+    
+    @IBOutlet weak var constraintViewHeight: NSLayoutConstraint!
 
     @IBOutlet weak var patrolItemLabel: UILabel!
     
@@ -36,23 +40,18 @@ class YQPatrolItemWeatherViewController: UIViewController {
     /// 添加底部type项
     var bottomType = ""
     
+    var contentIndex : Int?
     
     /// 数据模型设置数据传递参数
-    var model : YQPatrolItemModel?{
-        
-        didSet{
-            
-            
-        }
-        
-    }
-
+    var model : YQPatrolItemModel?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //设置remarkView
         self.remarkView.placeHolder = "巡查意见"
+        
+        self.constraintViewHeight.constant = 800
         
         self.patrolTypeLabel.text = model?.insItemTypeName
         self.patrolItemLabel.text = model?.name
@@ -69,6 +68,7 @@ class YQPatrolItemWeatherViewController: UIViewController {
             let view = Bundle.main.loadNibNamed("YQPatrolBottomLastView", owner: nil, options: nil)?[0] as! YQPatrolBottomLastView
 //            view.frame = self.bottomView.bounds
             bottomView.addSubview(view)
+            view.delegate = self
             view.snp.makeConstraints({ (make) in
                 
                 make.top.left.right.bottom.equalToSuperview()
@@ -80,6 +80,8 @@ class YQPatrolItemWeatherViewController: UIViewController {
             
             let view = Bundle.main.loadNibNamed("YQPatrolBottomNextView", owner: nil, options: nil)?[0] as! YQPatrolBottomNextView
 //            view.frame = bottomView.bounds
+            view.delegate = self
+            
             bottomView.addSubview(view)
             view.snp.makeConstraints({ (make) in
                 
@@ -93,13 +95,75 @@ class YQPatrolItemWeatherViewController: UIViewController {
 
     }
     
+    // MARK: - 选择buttonclick的点击事件
+    @IBAction func yesButtonClick(_ sender: UIButton) {
+        sender.isSelected = true
+        self.noButton.isSelected = false
     
+    }
     
-    override func viewWillAppear(_ animated: Bool) {
+    @IBAction func noButtonClick(_ sender: UIButton) {
+        sender.isSelected = true
+        self.yesButton.isSelected = false
         
-        super.viewWillAppear(animated)
+        
+    }
+    
+    @IBAction func addPictureButtonClick(_ sender: UIButton) {
+        //调用相册选择图片
+        SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
+            
+            DispatchQueue.main.async {
+                
+                sender.setImage(image, for: .normal)
+            }
+
+            
+        }, viewController: (SJKeyWindow?.rootViewController ))
         
     }
 
-
 }
+
+extension YQPatrolItemWeatherViewController : YQPatrolBottomNextViewDelegate{
+    
+    func PatrolBottomNextViewCancel() {
+        
+    }
+    
+    
+    func PatrolBottomNextViewSaveAndNext() {
+        
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "NextViewNextNoties")
+        center.post(name: notiesName, object: nil, userInfo:
+            ["currentContentSize" : self.contentIndex! + 1])
+        
+    }
+}
+
+extension YQPatrolItemWeatherViewController : YQPatrolBottomLastViewDelegate{
+    
+    func PatrolBottomLastViewUpward() {
+        
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "NextViewNextNoties")
+        center.post(name: notiesName, object: nil, userInfo:
+            ["currentContentSize" : self.contentIndex! - 1])
+        
+        
+    }
+    
+    func PatrolBottomLastViewCancel() {
+        
+        
+    }
+    
+    func PatrolBottomLastViewSubmit() {
+        
+        
+    }
+    
+    
+}
+

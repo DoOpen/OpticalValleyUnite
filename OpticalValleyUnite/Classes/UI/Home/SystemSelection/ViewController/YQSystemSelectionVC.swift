@@ -291,21 +291,21 @@ class YQSystemSelectionVC: UIViewController {
             //最后一个是显示的图标
             // return
             
-            // 调试视频巡查的内容
-            let Video = UIStoryboard.instantiateInitialViewController(name: "YQVideoPatrol")
-            let mainViewController   = Video
-            let drawerViewController = YQVideoDrawerViewController()
-            // 初始化drawer抽屉的情况
-            let drawerController     = KYDrawerController(drawerDirection: .right, drawerWidth: 300)
-            drawerController.mainViewController =  mainViewController
+//            // 调试视频巡查的内容
+//            let Video = UIStoryboard.instantiateInitialViewController(name: "YQVideoPatrol")
+//            let mainViewController   = Video
+//            let drawerViewController = YQVideoDrawerViewController()
+//            // 初始化drawer抽屉的情况
+//            let drawerController     = KYDrawerController(drawerDirection: .right, drawerWidth: 300)
+//            drawerController.mainViewController =  mainViewController
+//            
+//            drawerController.drawerViewController = drawerViewController
+//
+//            SJKeyWindow?.rootViewController = drawerController
             
-            drawerController.drawerViewController = drawerViewController
-
-            SJKeyWindow?.rootViewController = drawerController
-            
-//            // 调试视频结果的内容
-//            let videoResult = UIStoryboard.instantiateInitialViewController(name: "YQPatrolResult")
-//            SJKeyWindow?.rootViewController = videoResult
+            // 调试视频结果的内容
+            let videoResult = UIStoryboard.instantiateInitialViewController(name: "YQPatrolResult")
+            SJKeyWindow?.rootViewController = videoResult
             
         }else if tap.tapIndex == fireindex {//消防的界面的跳转的情况
             

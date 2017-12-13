@@ -30,7 +30,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         didSet{
             //创建添加scrollView
             let count = patrolItemArray.count
-            self.contentScrollView.contentSize = CGSize.init(width: (UIScreen.main.bounds.size.width * CGFloat(count)), height: 800)
+            self.contentScrollView.contentSize = CGSize.init(width: (UIScreen.main.bounds.size.width * CGFloat(count)), height: 0)
             contentScrollView.isPagingEnabled = true
             
             //创建添加子控件
@@ -48,6 +48,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                 case 1://是否达标
                     
                     let vc = YQPatrolItemWeatherViewController.init(nibName: "YQPatrolItemWeatherViewController", bundle: nil)
+                    vc.contentIndex = indexN
                     
                     //添加bottomView和传递模型
                     if  indexN == count - 1 {//最后项
@@ -73,6 +74,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                 case 2://评分
                     
                     let vc = YQPatrolItemScoreViewController.init(nibName: "YQPatrolItemScoreViewController", bundle: nil)
+                    vc.contentIndex = indexN
                     
                     //添加bottomView和传递模型
                     if  indexN == count - 1 {//最后项
@@ -109,8 +111,8 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         
         self.automaticallyAdjustsScrollViewInsets = false
         self.contentScrollView.isDirectionalLockEnabled = true
-        
-        
+        self.title = "巡查项"
+    
         //连续调用的两个接口
         getMediaPlayerData()
         getPatrolItemTypeDada()
@@ -120,6 +122,9 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         
         //2.添加media
         self.addMediaPlayerViewMethod()
+        
+        //3.接受通知类型
+        setNotiesFunction()
         
     }
     
@@ -192,6 +197,24 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
             SVProgressHUD.showError(withStatus: "巡查项获取失败,请检查网络!")
         }
         
+    }
+    
+    // MARK: - 接受通知的方法
+    func setNotiesFunction(){
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "NextViewNextNoties")
+
+        center.addObserver(self, selector: #selector(notiesContentScrollView(noties : )), name: notiesName, object: nil)
+        
+    }
+    
+    func notiesContentScrollView(noties : Notification){
+        
+        let indexxx = noties.userInfo?["currentContentSize"] as! Int
+        
+        self.contentScrollView.setContentOffset(
+            CGPoint.init(x: self.contentScrollView.width * CGFloat(indexxx), y: 0), animated: true)
+    
     }
     
     // MARK: - 添加流媒体的播放视频项

@@ -12,24 +12,30 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="CCc-vn-8Yi" customClass="YQPatrolBottomNextView" customModule="OpticalValleyUnite" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="443" height="56"/>
+            <rect key="frame" x="0.0" y="0.0" width="357" height="56"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNG-B2-Ufm">
-                    <rect key="frame" x="0.0" y="0.0" width="250" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="220" height="56"/>
                     <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="250" id="ZZ4-0P-Sv6"/>
+                        <constraint firstAttribute="width" constant="220" id="ZZ4-0P-Sv6"/>
                     </constraints>
                     <state key="normal" title="保存并评价下一项">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="nextViewSaveAndNext:" destination="CCc-vn-8Yi" eventType="touchUpInside" id="mu2-Ws-v3e"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLK-ko-BkQ">
-                    <rect key="frame" x="250" y="0.0" width="193" height="56"/>
+                    <rect key="frame" x="220" y="0.0" width="137" height="56"/>
+                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="取消">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
@@ -54,7 +60,7 @@
                 <constraint firstAttribute="trailing" secondItem="DLK-ko-BkQ" secondAttribute="trailing" id="v99-mB-Hth"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-49.5" y="-209"/>
+            <point key="canvasLocation" x="-92.5" y="-209"/>
         </view>
     </objects>
 </document>

@@ -8,12 +8,22 @@
 
 import UIKit
 
+protocol YQPatrolBottomNextViewDelegate : class {
+    
+    func PatrolBottomNextViewSaveAndNext()
+    
+    func PatrolBottomNextViewCancel()
+    
+}
+
 class YQPatrolBottomNextView: UIView {
+    
+    weak var  delegate : YQPatrolBottomNextViewDelegate?
     
     /// 保存并评价下一项
     @IBAction func nextViewSaveAndNext(_ sender: UIButton) {
         
-        
+        self.delegate?.PatrolBottomNextViewSaveAndNext()
         
     }
     
@@ -21,7 +31,7 @@ class YQPatrolBottomNextView: UIView {
     /// 取消 按钮点击
     @IBAction func nextViewCancel(_ sender: UIButton) {
         
-        
+        self.delegate?.PatrolBottomNextViewCancel()
     }
 
    

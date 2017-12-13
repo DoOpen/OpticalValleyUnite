@@ -13,6 +13,11 @@ import SnapKit
 
 
 class YQPatrolItemScoreViewController: UIViewController {
+    
+    ///属性的列表的情况
+    @IBOutlet weak var scrollVIEW: UIScrollView!
+    
+    @IBOutlet weak var constraintHeight: NSLayoutConstraint!
 
     @IBOutlet weak var patrolItemLabel: UILabel!
     
@@ -34,13 +39,15 @@ class YQPatrolItemScoreViewController: UIViewController {
     
     @IBOutlet weak var bottomView: UIView!
     
+    var contentIndex : Int?
+    
     /// 添加底部type项
     var bottomType = ""
     
     var selectStarsBtn : UIButton?{
         didSet{
             //设置打分label的情况
-            
+            self.scoreLabel.text = "\(((selectStarsBtn?.tag)! + 1) * 20)" + "分"
         
         }
     
@@ -48,18 +55,16 @@ class YQPatrolItemScoreViewController: UIViewController {
     
     
     /// 数据模型设置数据传递参数
-    var model : YQPatrolItemModel?{
-        
-        didSet{
-            //这里最开始的时候数据没有显示加载出来
-        
-        }
-        
-    }
+    var model : YQPatrolItemModel?
     
+    
+    // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.constraintHeight.constant = 800
+//        self.scrollVIEW.contentSize = CGSize.init(width: 0, height: self.constraintHeight.constant)
         
         
         self.textView.placeHolder = "巡查意见"
@@ -80,42 +85,36 @@ class YQPatrolItemScoreViewController: UIViewController {
             
             let view = Bundle.main.loadNibNamed("YQPatrolBottomLastView", owner: nil, options: nil)?[0] as! YQPatrolBottomLastView
             
-
+            view.delegate = self
             bottomView.addSubview(view)
             view.snp.makeConstraints({ (make) in
                 
                 make.top.left.right.bottom.equalToSuperview()
             })
 
-            
             break
             
         case "next":
             
             let view = Bundle.main.loadNibNamed("YQPatrolBottomNextView", owner: nil, options: nil)?[0] as! YQPatrolBottomNextView
-
+            //设置代理
+            view.delegate = self
+            
             bottomView.addSubview(view)
             view.snp.makeConstraints({ (make) in
                 
                 make.top.left.right.bottom.equalToSuperview()
             })
-
             
             break
             
         default:
             break
         }
-
         
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
+        //评价按钮的点击情况
         setupStartView()
+        
     }
     
     
@@ -125,6 +124,7 @@ class YQPatrolItemScoreViewController: UIViewController {
         for btn in starsView.subviews as! [UIButton]{
             btn.addTarget(self, action:  #selector(startBtnClick(sender:)), for: .touchUpInside)
         }
+        
     }
     
     func startBtnClick(sender: UIButton){
@@ -135,7 +135,60 @@ class YQPatrolItemScoreViewController: UIViewController {
         }
     }
 
+    // MARK: - buttonClick的方法
+    @IBAction func pictureButtonClick(_ sender: UIButton) {
+        
+        SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
+            
+            
+            DispatchQueue.main.async {
+                
+                sender.setImage(image, for: .normal)
+            }
+            
+        }, viewController: (SJKeyWindow?.rootViewController ))
+        
+    }
+}
 
+extension YQPatrolItemScoreViewController : YQPatrolBottomNextViewDelegate{
+    
+    func PatrolBottomNextViewCancel() {
+        
+    }
+    
 
+    func PatrolBottomNextViewSaveAndNext() {
+        
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "NextViewNextNoties")
+        center.post(name: notiesName, object: nil, userInfo:
+            ["currentContentSize" : self.contentIndex! + 1])
+        
+    }
+}
 
+extension YQPatrolItemScoreViewController : YQPatrolBottomLastViewDelegate{
+    
+    func PatrolBottomLastViewUpward() {
+        
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "NextViewNextNoties")
+        center.post(name: notiesName, object: nil, userInfo:
+            ["currentContentSize" : self.contentIndex! - 1])
+
+        
+    }
+    
+    func PatrolBottomLastViewCancel() {
+        
+        
+    }
+    
+    func PatrolBottomLastViewSubmit() {
+        
+        
+    }
+    
+    
 }

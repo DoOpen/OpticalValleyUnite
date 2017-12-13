@@ -49,6 +49,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                     
                     let vc = YQPatrolItemWeatherViewController.init(nibName: "YQPatrolItemWeatherViewController", bundle: nil)
                     vc.contentIndex = indexN
+                    vc.prameterDict = self.prameterDict
                     
                     //添加bottomView和传递模型
                     if  indexN == count - 1 {//最后项
@@ -75,6 +76,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                     
                     let vc = YQPatrolItemScoreViewController.init(nibName: "YQPatrolItemScoreViewController", bundle: nil)
                     vc.contentIndex = indexN
+                    vc.prameterDict = self.prameterDict
                     
                     //添加bottomView和传递模型
                     if  indexN == count - 1 {//最后项
@@ -211,10 +213,24 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
     func notiesContentScrollView(noties : Notification){
         
         let indexxx = noties.userInfo?["currentContentSize"] as! Int
+        let insResultId = noties.userInfo?["insResultId"] as? Int
         
         self.contentScrollView.setContentOffset(
             CGPoint.init(x: self.contentScrollView.width * CGFloat(indexxx), y: 0), animated: true)
-    
+        
+        if let vc = self.childViewControllers[indexxx] as? YQPatrolItemWeatherViewController {
+            
+            vc.insResultId = insResultId
+        
+        }
+        
+        if let vc = self.childViewControllers[indexxx] as? YQPatrolItemScoreViewController {
+            
+            vc.insResultId = insResultId
+            
+        }
+
+        
     }
     
     // MARK: - 添加流媒体的播放视频项

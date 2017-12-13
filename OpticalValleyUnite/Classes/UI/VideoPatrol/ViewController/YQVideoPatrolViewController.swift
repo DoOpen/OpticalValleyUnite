@@ -383,16 +383,20 @@ class YQVideoPatrolViewController: UIViewController {
                     //遍历巡查的操作
                     let selectDic = respose["status"] as! NSArray
                     var array = [String]()
+                    var idArray = [String]()
+                    
                     for dic in selectDic {
                         
                         let tempDic = dic as? NSDictionary
-                        
+                        idArray.append((tempDic?["id"] as? String)!)
                         array.append((tempDic?["title"] as? String)!)
                     }
                     
                     //发送查询路线的规划的情况!路线的内容信息的保存添加
                     //界面跳转,数据的参数的传递!(跳转到视频巡查的路线界面)
                     SJPickerView.show(withDataArry: array , didSlected: { (indexRow) in
+                        
+                       self.videoAllSelectParmeter["pointType"] = idArray[index]
                         //执行的是界面的跳转的情况!
                         //所有的选择,参数要求一起传递过来!(跳转到视频巡查的路线界面)
                         self.pushToVideoAndPatrolVC()
@@ -434,13 +438,21 @@ class YQVideoPatrolViewController: UIViewController {
                         //选择的班次和对应的id的情况
                         let selectDic = respose["status"] as! NSArray
                         var array = [String]()
+                        var idArray = [String]()
+                        
                         for dic in selectDic {
                             let tempDic = dic as? NSDictionary
                             
                             array.append((tempDic?["title"] as? String)!)
+                            idArray.append((tempDic?["id"] as? String)!)
                         }
                         
+                        
+                        
                         SJPickerView.show(withDataArry: array , didSlected: { (indexRow) in
+                            
+                             self.videoAllSelectParmeter["pointType"] = idArray[index]
+                            
                             //执行的是界面的跳转的情况!
                             //所有的选择,参数要求一起传递过来!(跳转到视频巡查的路线界面)
                             self.pushToVideoAndPatrolVC()

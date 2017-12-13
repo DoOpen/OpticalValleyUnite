@@ -147,9 +147,6 @@
                                         <constraint firstAttribute="height" constant="150" id="yAP-rv-Kss"/>
                                     </constraints>
                                     <state key="normal" backgroundImage="插入图片"/>
-                                    <connections>
-                                        <action selector="pictureButtonClick:" destination="-1" eventType="touchUpInside" id="8Ps-C4-CF9"/>
-                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eu-1T-pba">
                                     <rect key="frame" x="15" y="297" width="40" height="46"/>

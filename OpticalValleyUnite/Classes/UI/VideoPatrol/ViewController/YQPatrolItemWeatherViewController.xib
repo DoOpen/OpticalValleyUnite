@@ -140,9 +140,6 @@
                                                 <constraint firstAttribute="height" constant="150" id="WwW-UA-Oxb"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="插入图片"/>
-                                            <connections>
-                                                <action selector="addPictureButtonClick:" destination="-1" eventType="touchUpInside" id="gc5-Ck-kF2"/>
-                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否达标" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gf-zH-iYZ">
                                             <rect key="frame" x="15" y="297" width="70" height="21"/>
@@ -294,7 +291,7 @@
                 <constraint firstAttribute="bottom" secondItem="zU0-CD-keG" secondAttribute="bottom" id="UP0-Oo-8nn"/>
                 <constraint firstItem="zU0-CD-keG" firstAttribute="top" secondItem="u8r-du-viz" secondAttribute="top" id="nYI-K9-JuA"/>
             </constraints>
-            <point key="canvasLocation" x="-167" y="851"/>
+            <point key="canvasLocation" x="-573" y="916"/>
         </view>
     </objects>
     <resources>

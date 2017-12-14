@@ -17,6 +17,8 @@ class WorkOrderProgressViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var models = [WorkHistoryModel]()
+    
+    //设备类的工单模型数据
     var workOrderDetalModel: WorkOrderDetailModel?
     var parmate: [String: Any]?
     var callbackModels = [CallbackModel]()
@@ -73,8 +75,8 @@ class WorkOrderProgressViewController: UIViewController {
                 rightText = "退回"
                 leftBtn.isHidden = false
                 
-                
                 setupTimer()
+                
             //待处理
             case .waitProcessing:
                 leftBtnClickHandel = processingBtnClick
@@ -351,6 +353,9 @@ class WorkOrderProgressViewController: UIViewController {
                 self.workOrderDetalModel = model
                 
 //                print(model.equipment_id)
+                
+                
+                //这里是获取了设备id的方法
                 self.getEquipment(model.equipment_id)
                 
                 
@@ -583,6 +588,8 @@ class WorkOrderProgressViewController: UIViewController {
     func executingBtnClick(){
         let  vc = ExecutingViewConttroller.loadFromStoryboard(name: "WorkOrder") as! ExecutingViewConttroller
         vc.workOrderDetalModel = workOrderDetalModel
+        
+        
         vc.ProgressVC = self
         navigationController?.pushViewController(vc, animated: true)
         

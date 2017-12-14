@@ -9,6 +9,8 @@
 import UIKit
 import SVProgressHUD
 import RealmSwift
+import AVFoundation
+import Photos
 
 class ExecutingViewConttroller: UIViewController {
 
@@ -25,9 +27,9 @@ class ExecutingViewConttroller: UIViewController {
     @IBOutlet weak var textView: SJTextView!
     @IBOutlet weak var emergencyView: UIView!
     
-    
-    
     @IBOutlet weak var hideTableViewHeightConstraint: NSLayoutConstraint!
+    
+    
     
     var models = [ExecSectionModel]()
     
@@ -37,6 +39,8 @@ class ExecutingViewConttroller: UIViewController {
     weak var ProgressVC: WorkOrderProgressViewController?
     
     var hisriyModel: WorkHistoryModel?
+    
+    
     
     @IBOutlet weak var saveBtn: UIButton!
     
@@ -657,6 +661,37 @@ class ExecutingViewConttroller: UIViewController {
     }
     
     
+    // MARK: - 二维码执行扫描界面
+    
+    func scanBtnClick() {
+        
+        if Const.SJIsSIMULATOR {
+            alert(message: "模拟器不能使用扫描")
+            return
+        }
+        
+        let device = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
+        if device != nil {
+            
+            
+            let status = PHPhotoLibrary.authorizationStatus()
+            if status == .authorized{
+                let vc = SGScanningQRCodeVC()
+                //设置代理
+                vc.delegate = self
+                navigationController?.pushViewController(vc, animated: true)
+            }else if status == .notDetermined{
+                PHPhotoLibrary.requestAuthorization({ (authorizationStatus) in
+                    
+                })
+            }else{
+                self.alert(message: "授权失败")
+            }
+        }
+    }
+
+    
+    
 //    //MARK: - 子步骤完成按钮点击
 //    func cellDoneBtnClick(model: ExecChild,image: UIImage?,text: String?){
 //        
@@ -683,8 +718,6 @@ class ExecutingViewConttroller: UIViewController {
         
         
     }
-
-    
     
     
 //    func cellDoneBtnClick(model: ExecChild,isDone: Bool){
@@ -777,7 +810,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectSell", for: indexPath) as! ExexSwithCell
             
             cell.model = model
-            currentSelectIndexPath = indexPath
+//            currentSelectIndexPath = indexPath
             
 //            cell.doneBtnClickHandle = { [weak self] (isDone) in
 //                self?.currentSelectIndexPath = indexPath
@@ -821,7 +854,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             cell?.currentIndex = indexPath
             
             cell?.model = model
-            currentSelectIndexPath = indexPath
+//            currentSelectIndexPath = indexPath
             
             cell?.layoutIfNeeded()
             
@@ -836,16 +869,18 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             
             return cell!
             
-        }else { //扫描,扫码的界面cell
+        }else  { //扫描,扫码的界面cell  <else if model.type == "x">
         
-            var cell = tableView.dequeueReusableCell(withIdentifier: "scanCell")
+            var cell = tableView.dequeueReusableCell(withIdentifier: "scanCell") as? YQExecScanCell
             
             if cell == nil {
                 
                 cell = Bundle.main.loadNibNamed("YQExecScanCell", owner: nil, options: nil)?[0] as? YQExecScanCell
-                
             }
-        
+            
+            cell?.delegate = self
+            cell?.indexPath = indexPath.row
+    
             return cell!
         }
         
@@ -932,13 +967,10 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
             DispatchQueue.main.async {
                 
                 if model.imageValue == "" {
-                    
                     //传递image 刷新列表
                     model.imageValue =  url
                     
                 }else{
-                    
-                    
                     //传递image 刷新列表
                     model.imageValue = model.imageValue + "," + url
                     
@@ -954,16 +986,13 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
             
             
         },errorHandle: {
-            
             SVProgressHUD.showError(withStatus: "网络超时,请重试!")
-          
         })
 
     }
     
     
     func ExecNewCellDeleteSuperModelFunction(view: YQExecNewCell, currentRow: IndexPath, buttonTag: Int) {
-        
         
         //移除相应的模型数据, tableView的单行数据刷新
         let model = models[(currentRow.section)].childs[currentRow.row]
@@ -1004,7 +1033,6 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
         
         }
         
-        
         //重新的逻辑替换
         models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
         
@@ -1032,6 +1060,60 @@ extension ExecutingViewConttroller : YQExecTextCellDelegate{
 
         
     }
+
+}
+
+
+extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCDelegate {
+
+    func ExecScanCellScanButtonClick(indexPath : Int){
+        //跳转到工单扫描界面进行测试
+        //1.跳转到工单扫描界面,block回调拿到相应结果
+        self.scanBtnClick()
+        currentSelectIndexPath = IndexPath.init(row: indexPath, section: 0)
+    }
+    
+    func didScanningText(_ text: String!) {
+        
+        if text.contains("设备"){//区分是否是自己的二维码的情况
+            
+            let str = text.components(separatedBy: ":").last
+            
+            if let str = str{
+                
+                self.navigationController?.popViewController(animated: false)
+                
+                //校验二维码的情况
+                let equipment_id = self.workOrderDetalModel?.equipment_id
+                //截取str 中的设备ID的情况
+                let temp = Double(str)
+                
+                if equipment_id == temp {
+                    //代表的是同一设备
+                    let cell = self.tableView.cellForRow(at: currentSelectIndexPath!) as! YQExecScanCell
+                    cell.color = "green"
+                    
+//                    self.tableView.reloadRows(at: [currentSelectIndexPath!], with: .automatic)
+                    
+                }else{
+                    
+                    //不同的设备类型
+                    let cell = self.tableView.cellForRow(at: currentSelectIndexPath!) as! YQExecScanCell
+                    cell.color = "red"
+                    
+//                    self.tableView.reloadRows(at: [currentSelectIndexPath!], with: .automatic)
+
+                }
+                
+            }
+            
+        }else{
+            
+            self.alert(message: "非可识别二维码!")
+            
+        }
+    }
+
 
 }
 

@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 import Photos
+
+
 class AllViewController: UIViewController {
 
     var btnViews = [HomeBtnView]()
@@ -134,7 +136,7 @@ class AllViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    // MARK: - 跳转到二维码的扫描的界面
+    // MARK: - 跳转到设备详情扫描的界面
     fileprivate func pushToDeviceViewController(equipmentId: String){
         
         let vc = DeviceViewController.loadFromStoryboard(name: "Home") as! DeviceViewController

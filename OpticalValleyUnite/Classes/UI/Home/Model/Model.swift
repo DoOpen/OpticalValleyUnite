@@ -976,12 +976,14 @@ class RealmString: Object {
 
 
 class SignModel{
+    
     var MAP_LNG = ""
     var MAP_LAT = ""
     var ADDRESS = ""
     var SIGN_TIME = ""
     var SIGN_STATU = ""
     var index = 0
+    
     convenience init(parmart: [String: Any]) {
         self.init()
         MAP_LNG = parmart["MAP_LNG"] as? String ?? ""

@@ -259,6 +259,7 @@ extension HttpClient {
     func upLoadImages(_ images: [UIImage], succses: @escaping ((String?) -> ()), failure: @escaping ((Error) -> ())){
         
         var url = URLPath.basicPath + URLPath.uploadImage
+        
         if let token = UserDefaults.standard.object(forKey: Const.SJToken) as? String{
             
             url = url + "?token=\(token)"
@@ -269,6 +270,7 @@ extension HttpClient {
             var count = 0
             for image in images{
                 
+                //进行的图片的压缩上传
                 let frame = CGRect(x: image.size.width - 400, y: image.size.height - 80, width: 400, height: 40)
                 let str = NSDate().dateStr(withFormat: "YYYY-MM-dd HH:mm")
                 let newImage = image.addContent(content: str!, frame: frame)
@@ -283,34 +285,41 @@ extension HttpClient {
             switch response {
                 
             case .success(let upload, _, _):
+                
                 upload.responseJSON(completionHandler: { (resposen) in
+                    
                     switch resposen.result {
-                    case .success(let value):
-                        if let dic = value as? [String: Any]{
-                            
-                            guard dic["MSG"] as? String != "token无效" else{
-                                LoginViewController.loginOut()
-                                print("token无效")
-                                return
-                            }
-                            
-                            guard dic["MSG"] as? String != "图片上传失败" else{
-//                                LoginViewController.loginOut()
-                                print("图片上传失败")
-                                SVProgressHUD.showError(withStatus: "图片上传失败")
-                                return
-                            }
-                            
-                            
-                            succses(dic["urls"] as? String)
-                        }
                         
-                    case .failure(let error):
-                        print(error)
-                        failure(error)
+                        case .success(let value):
+                            
+                            if let dic = value as? [String: Any]{
+                                
+                                guard dic["MSG"] as? String != "token无效" else{
+                                    LoginViewController.loginOut()
+                                    print("token无效")
+                                    return
+                                }
+                                
+                                guard dic["MSG"] as? String != "图片上传失败" else{
+    //                                LoginViewController.loginOut()
+                                    print("图片上传失败")
+                                    SVProgressHUD.showError(withStatus: "图片上传失败")
+                                    return
+                                }
+                                
+                                succses(dic["urls"] as? String)
+                            }
+                            
+                        case .failure(let error):
+                            print(error)
+                            failure(error)
                     }
+                    
+                    
                 })
+                
                 break
+                
             case .failure(let error):
                 
                 debugPrint(error)

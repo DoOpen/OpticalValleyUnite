@@ -120,6 +120,10 @@
 		2F7550FB1FA71D1900A5E242 /* YQJournalDetailTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550FA1FA71D1900A5E242 /* YQJournalDetailTVCell.swift */; };
 		2F7550FD1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550FC1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift */; };
 		2F7550FF1FA7313200A5E242 /* YQWorkRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */; };
+		2F79450F1FE794C70085E803 /* RfmAccessControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F79450E1FE794C70085E803 /* RfmAccessControl.framework */; };
+		2F7945191FE795190085E803 /* NSData+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7945151FE795190085E803 /* NSData+YYExtend.m */; };
+		2F79451A1FE795190085E803 /* NSString+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7945171FE795190085E803 /* NSString+YYExtend.m */; };
+		2F79451C1FE7C4CD0085E803 /* YQBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79451B1FE7C4CD0085E803 /* YQBluetooth.swift */; };
 		2F7E0AA51FB5956000344D4E /* YQPedometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E0AA41FB5956000344D4E /* YQPedometerViewController.swift */; };
 		2F7E0AA71FB595BF00344D4E /* YQPedometerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E0AA61FB595BF00344D4E /* YQPedometerVC.storyboard */; };
 		2F92B2601FBB03D500168FC6 /* YQStepShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92B25F1FBB03D500168FC6 /* YQStepShowModel.swift */; };
@@ -433,6 +437,14 @@
 		2F7550FA1FA71D1900A5E242 /* YQJournalDetailTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalDetailTVCell.swift; sourceTree = "<group>"; };
 		2F7550FC1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkRecordTableViewCell.swift; sourceTree = "<group>"; };
 		2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWorkRecord.xib; sourceTree = "<group>"; };
+		2F79450E1FE794C70085E803 /* RfmAccessControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RfmAccessControl.framework; sourceTree = "<group>"; };
+		2F7945101FE794E00085E803 /* 立方SDK_3.0.0.ipa */ = {isa = PBXFileReference; lastKnownFileType = file; path = "立方SDK_3.0.0.ipa"; sourceTree = "<group>"; };
+		2F7945141FE795190085E803 /* NSData+YYExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+YYExtend.h"; sourceTree = "<group>"; };
+		2F7945151FE795190085E803 /* NSData+YYExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+YYExtend.m"; sourceTree = "<group>"; };
+		2F7945161FE795190085E803 /* NSString+YYExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YYExtend.h"; sourceTree = "<group>"; };
+		2F7945171FE795190085E803 /* NSString+YYExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YYExtend.m"; sourceTree = "<group>"; };
+		2F7945181FE795190085E803 /* YYCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCategory.h; sourceTree = "<group>"; };
+		2F79451B1FE7C4CD0085E803 /* YQBluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQBluetooth.swift; sourceTree = "<group>"; };
 		2F7E0AA41FB5956000344D4E /* YQPedometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPedometerViewController.swift; sourceTree = "<group>"; };
 		2F7E0AA61FB595BF00344D4E /* YQPedometerVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPedometerVC.storyboard; sourceTree = "<group>"; };
 		2F92B25F1FBB03D500168FC6 /* YQStepShowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStepShowModel.swift; sourceTree = "<group>"; };
@@ -673,6 +685,7 @@
 				2F73FA671F74CE8600D37FDA /* CoreLocation.framework in Frameworks */,
 				2F73FA651F74CE1300D37FDA /* GLKit.framework in Frameworks */,
 				4B91E89A1F258BB200F63D66 /* UserNotifications.framework in Frameworks */,
+				2F79450F1FE794C70085E803 /* RfmAccessControl.framework in Frameworks */,
 				4B3951E91E27DFA800E2642F /* CoreTelephony.framework in Frameworks */,
 				4B3951E31E27D8F900E2642F /* Security.framework in Frameworks */,
 				4B3951E11E27D8EE00E2642F /* libstdc++.6.0.9.tbd in Frameworks */,
@@ -974,6 +987,7 @@
 		2F68BED81FE2856C0079B2AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2F79451B1FE7C4CD0085E803 /* YQBluetooth.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1067,6 +1081,28 @@
 				2F63436E1F9F4963005F930A /* AnimatedAnnotationView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2F79450D1FE7943B0085E803 /* RfmFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F7945131FE795190085E803 /* Category */,
+				2F7945101FE794E00085E803 /* 立方SDK_3.0.0.ipa */,
+				2F79450E1FE794C70085E803 /* RfmAccessControl.framework */,
+			);
+			path = RfmFrameworks;
+			sourceTree = "<group>";
+		};
+		2F7945131FE795190085E803 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2F7945141FE795190085E803 /* NSData+YYExtend.h */,
+				2F7945151FE795190085E803 /* NSData+YYExtend.m */,
+				2F7945161FE795190085E803 /* NSString+YYExtend.h */,
+				2F7945171FE795190085E803 /* NSString+YYExtend.m */,
+				2F7945181FE795190085E803 /* YYCategory.h */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		4B1DEC441E31B646000917D2 /* SGQRCode */ = {
@@ -1252,6 +1288,7 @@
 		4BD4B9151E272EA600AE2BC9 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				2F79450D1FE7943B0085E803 /* RfmFrameworks */,
 				4B91E8951F258B1E00F63D66 /* UMessage_Sdk_1.5.0a */,
 				4B6E64F31EEAEFCE00BA23E4 /* PhotoBrowser */,
 				4B1DEC441E31B646000917D2 /* SGQRCode */,
@@ -1958,6 +1995,7 @@
 				2F2F957A1F8DF74800870DC8 /* YQJournalCellView.swift in Sources */,
 				2F94A2831F73B46B00455162 /* YQImplementFeedbackVC.swift in Sources */,
 				4BD4A0E21EE2B18300F044C1 /* AppraisalCell.swift in Sources */,
+				2F7945191FE795190085E803 /* NSData+YYExtend.m in Sources */,
 				2FC167571F90B45B001CEACD /* YQReleaseJournalFooterV.swift in Sources */,
 				4BD4B9421E272EA600AE2BC9 /* Const.swift in Sources */,
 				2F7E0AA51FB5956000344D4E /* YQPedometerViewController.swift in Sources */,
@@ -2025,6 +2063,7 @@
 				2F5E8C541F595D9600007717 /* YQPartDataFooterCell.swift in Sources */,
 				4BD4B9521E272EA600AE2BC9 /* PersonCoreViewController.swift in Sources */,
 				4BE88A601E88D242003D9179 /* SigninCell.swift in Sources */,
+				2F79451C1FE7C4CD0085E803 /* YQBluetooth.swift in Sources */,
 				4BE9226A1EE84CC000FDEFE1 /* ExecuteDetailSubImageCell.swift in Sources */,
 				4BD4B94E1E272EA600AE2BC9 /* HomeViewController.swift in Sources */,
 				2F0223B61FA99ECF0090822F /* YQFilterPersonModel.swift in Sources */,
@@ -2040,6 +2079,7 @@
 				4B6E64F91EEAEFCF00BA23E4 /* Photo.swift in Sources */,
 				2FDED33E1F711DF000E4BA2E /* YQFireLocationModel.swift in Sources */,
 				4B50D62F1EBB1B3900BB480F /* AllViewController.swift in Sources */,
+				2F79451A1FE795190085E803 /* NSString+YYExtend.m in Sources */,
 				4B8A9FD01E2C7C440009F757 /* AppraisalViewController.swift in Sources */,
 				2FC167471F905F34001CEACD /* YQJournalDetailViewController.swift in Sources */,
 				2F92B2601FBB03D500168FC6 /* YQStepShowModel.swift in Sources */,
@@ -2182,6 +2222,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",
+					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/RfmFrameworks",
 				);
 				INFOPLIST_FILE = OpticalValleyUnite/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2189,6 +2230,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/UMessage_Sdk_1.5.0a",
+					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/RfmFrameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2214,6 +2256,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",
+					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/RfmFrameworks",
 				);
 				INFOPLIST_FILE = OpticalValleyUnite/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2221,6 +2264,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/UMessage_Sdk_1.5.0a",
+					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/RfmFrameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -31,22 +31,24 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var siginLastView: SiginCellView!
     
     deinit {
+        
         print("SignInViewController----deinit")
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         showList()
+        
         addressLabel.text = "地理位置获取中..."
         
         let time = Date.dateStringDate(dateFormetString: "HH:mm")
         timeLabel.text = time
-        
-        
+    
         mapSetup()
         
-        }
+    }
     
     func getSignCount(){
         var paramet = [String: Any]()
@@ -63,6 +65,7 @@ class SignInViewController: UIViewController {
             print(error)
         }
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -89,9 +92,9 @@ class SignInViewController: UIViewController {
         }
         
         
-        
         if isPaskAddress{
            updateSige()
+            
         }else{
             parmat["ADDRESS"] = addressLabel.text
             
@@ -100,6 +103,7 @@ class SignInViewController: UIViewController {
             vc.address = addressLabel.text!
             navigationController?.pushViewController(vc, animated: true)
         }
+        
     }
     
     

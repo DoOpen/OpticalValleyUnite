@@ -28,7 +28,7 @@
         <!--智能开门-->
         <scene sceneID="1Ol-Wx-cjF">
             <objects>
-                <viewController id="DHM-fC-cen" sceneMemberID="viewController">
+                <viewController id="DHM-fC-cen" customClass="YQIntoDoorViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EoE-J1-dIz"/>
                         <viewControllerLayoutGuide type="bottom" id="YAL-X7-WBo"/>
@@ -48,8 +48,11 @@
                                         <state key="selected">
                                             <color key="titleColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="allButtonClickEvent:" destination="DHM-fC-cen" eventType="touchUpInside" id="fdX-aQ-gI7"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oa0-eO-21I">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oa0-eO-21I">
                                         <rect key="frame" x="125" y="0.0" width="125" height="60"/>
                                         <state key="normal" title="二维码开门">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,8 +60,11 @@
                                         <state key="selected">
                                             <color key="titleColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="allButtonClickEvent:" destination="DHM-fC-cen" eventType="touchUpInside" id="Aef-A2-zlJ"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRm-d6-QDf">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRm-d6-QDf">
                                         <rect key="frame" x="250" y="0.0" width="125" height="60"/>
                                         <state key="normal" title="动态密码开门">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -66,6 +72,9 @@
                                         <state key="selected">
                                             <color key="titleColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="allButtonClickEvent:" destination="DHM-fC-cen" eventType="touchUpInside" id="2mv-e7-pVf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -102,10 +111,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="智能开门" id="PGF-Iq-HmN"/>
+                    <connections>
+                        <outlet property="OpenDynamicCipher" destination="yRm-d6-QDf" id="66t-sb-ZyJ"/>
+                        <outlet property="openBluetooth" destination="bil-Sy-Q3P" id="ZLi-lB-xhm"/>
+                        <outlet property="openQRCode" destination="Oa0-eO-21I" id="9VZ-dB-xrg"/>
+                        <outlet property="tableView" destination="qaV-I0-wj6" id="xIi-Ei-W0T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gfP-NF-5V9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-857" y="151"/>
+            <point key="canvasLocation" x="-895" y="151"/>
         </scene>
     </scenes>
 </document>

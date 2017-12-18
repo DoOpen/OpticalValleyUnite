@@ -1,0 +1,6 @@
+framework module RfmAccessControl {
+  umbrella header "RfmAccessControl.h"
+
+  export *
+  module * { export * }
+}

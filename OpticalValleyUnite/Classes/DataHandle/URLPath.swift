@@ -30,9 +30,10 @@ struct URLPath {
     ///主机地址
 //    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
     ///新版服务器的域名 http://172.16.19.98:8091
+    ///门禁接口服务器: 172.16.11.75:8080
     
     //服务器的basic 地址:
-    static let basicPath = "http://172.16.19.98:8091/ovu-pcos/api/"
+    static let basicPath = "http://172.16.11.75:8080/ovu-pcos/api/"
 
     
     static let login = "user/login.do"
@@ -239,11 +240,20 @@ struct URLPath {
     ///巡查结果展示所有的数据接口
     //分页查看巡查结果
     static let getResultList = "quality/insresult/list"
-    
     //巡查结果详情
     static let getResultDetail  = "quality/insresult/detail"
-    
     //巡查轨迹
     static let getResultInsOrbitList  = "quality/humanins/getInsOrbitList"
+    
+    ///门禁管理的接口
+    //蓝牙开门成功之后的,保存的接口
+    static let getopenDoorByBlueTooth = "acs/openDoorByBlueTooth"
+    //list 通过调用获取相应的 开门的权限的接口
+    static let getAuthEquipmentList = "acs/getAuthEquipmentList"
+    //
+    
+    
+    
+    
     
 }

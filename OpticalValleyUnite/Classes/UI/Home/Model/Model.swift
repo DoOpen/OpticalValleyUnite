@@ -892,7 +892,7 @@ class ExecChild: Object{
             if value.contains("ovu-pcos"){
                 
                 
-                let basicPath = URLPath.basicPath
+                let basicPath = URLPath.systemSelectionURL
                 imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + value
                 
             }else{

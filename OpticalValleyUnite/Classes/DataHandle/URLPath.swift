@@ -49,7 +49,7 @@ struct URLPath {
     
     static let getWorkTypeList = "workunit/getWorkTypeList.do"
     
-    //子系统选择图片服务器的地址
+    //子系统选择图片服务器的地址(所有的图片)
     static let systemSelectionURL = "http://172.16.19.98:8091/ovu-base/"
     
     //获取配件库主页数据接口

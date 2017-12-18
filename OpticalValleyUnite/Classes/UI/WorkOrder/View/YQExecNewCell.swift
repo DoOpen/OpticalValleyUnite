@@ -104,7 +104,7 @@ class YQExecNewCell: UITableViewCell {
                                 
                             }else{
                                 
-                                let basicPath = URLPath.basicPath
+                                let basicPath = URLPath.systemSelectionURL
                                 imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + string
                             }
                         
@@ -122,7 +122,7 @@ class YQExecNewCell: UITableViewCell {
                             
                         }else{
                             
-                            let basicPath = URLPath.basicPath
+                            let basicPath = URLPath.systemSelectionURL
                             imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                         }
 

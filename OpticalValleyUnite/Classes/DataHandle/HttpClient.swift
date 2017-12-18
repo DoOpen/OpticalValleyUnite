@@ -258,12 +258,15 @@ extension HttpClient {
 
     func upLoadImages(_ images: [UIImage], succses: @escaping ((String?) -> ()), failure: @escaping ((Error) -> ())){
         
-        var url = URLPath.basicPath + URLPath.uploadImage
+        var url = URLPath.systemSelectionURL + URLPath.uploadImage
         
         if let token = UserDefaults.standard.object(forKey: Const.SJToken) as? String{
             
             url = url + "?token=\(token)"
         }
+        
+        print(url)
+        
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             
@@ -279,8 +282,13 @@ extension HttpClient {
                 count += 1
                 
             }
+            
+            print( multipartFormData)
+            
     
         }, to: url) { (response) in
+            
+            print(url)
             
             switch response {
                 
@@ -311,6 +319,7 @@ extension HttpClient {
                             }
                             
                         case .failure(let error):
+                            
                             print(error)
                             failure(error)
                     }

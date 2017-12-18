@@ -37,13 +37,13 @@ class ExecuteDetailSubImageCell: UITableViewCell {
                     
                     let arry = model.imageValue.components(separatedBy: ",")
                     let imagesUrls = arry.map{ (url) -> String in
-                        let basicPath = URLPath.basicPath
+                        let basicPath = URLPath.systemSelectionURL
                         let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                         return imageValue
                     }
                     
                     if arry.isEmpty {//数组为 空的情况
-                        let basicPath = URLPath.basicPath
+                        let basicPath = URLPath.systemSelectionURL
                         let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + model.imageValue
                         showImageView.showImageUrls([imageValue])
                         

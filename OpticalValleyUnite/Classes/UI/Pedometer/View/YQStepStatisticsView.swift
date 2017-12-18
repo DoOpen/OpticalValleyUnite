@@ -85,7 +85,7 @@ class YQStepStatisticsView: UITableViewCell {
                 
             }else{
             
-                let basicPath = URLPath.basicPath
+                let basicPath = URLPath.systemSelectionURL
                 let newString = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + string!
                 
                 url = URL(string: newString)

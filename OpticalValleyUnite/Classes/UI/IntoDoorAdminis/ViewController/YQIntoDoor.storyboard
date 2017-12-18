@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ncg-7d-w1y">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="n9j-jO-ZeM">
+            <objects>
+                <navigationController id="ncg-7d-w1y" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ebi-2D-eF3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DHM-fC-cen" kind="relationship" relationship="rootViewController" id="kNG-0i-pex"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I6u-g3-bU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1736" y="151"/>
+        </scene>
+        <!--智能开门-->
+        <scene sceneID="1Ol-Wx-cjF">
+            <objects>
+                <viewController id="DHM-fC-cen" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EoE-J1-dIz"/>
+                        <viewControllerLayoutGuide type="bottom" id="YAL-X7-WBo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OcZ-m8-b7V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8QG-8p-0Gf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bil-Sy-Q3P">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="60"/>
+                                        <state key="normal" title="蓝牙开门">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oa0-eO-21I">
+                                        <rect key="frame" x="125" y="0.0" width="125" height="60"/>
+                                        <state key="normal" title="二维码开门">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRm-d6-QDf">
+                                        <rect key="frame" x="250" y="0.0" width="125" height="60"/>
+                                        <state key="normal" title="动态密码开门">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="yRm-d6-QDf" firstAttribute="width" secondItem="bil-Sy-Q3P" secondAttribute="width" id="6Ko-5t-GiA"/>
+                                    <constraint firstAttribute="bottom" secondItem="yRm-d6-QDf" secondAttribute="bottom" id="9St-xv-7IW"/>
+                                    <constraint firstItem="Oa0-eO-21I" firstAttribute="leading" secondItem="bil-Sy-Q3P" secondAttribute="trailing" id="9xW-Qu-hlK"/>
+                                    <constraint firstItem="bil-Sy-Q3P" firstAttribute="top" secondItem="8QG-8p-0Gf" secondAttribute="top" id="C0U-0q-mQu"/>
+                                    <constraint firstItem="Oa0-eO-21I" firstAttribute="top" secondItem="8QG-8p-0Gf" secondAttribute="top" id="JNr-HP-pKV"/>
+                                    <constraint firstItem="yRm-d6-QDf" firstAttribute="top" secondItem="8QG-8p-0Gf" secondAttribute="top" id="Ohh-xf-R1W"/>
+                                    <constraint firstAttribute="trailing" secondItem="yRm-d6-QDf" secondAttribute="trailing" id="Qfu-j6-Cde"/>
+                                    <constraint firstAttribute="bottom" secondItem="bil-Sy-Q3P" secondAttribute="bottom" id="UrI-ZT-8DY"/>
+                                    <constraint firstItem="Oa0-eO-21I" firstAttribute="width" secondItem="bil-Sy-Q3P" secondAttribute="width" id="VIZ-H8-dwE"/>
+                                    <constraint firstItem="bil-Sy-Q3P" firstAttribute="leading" secondItem="8QG-8p-0Gf" secondAttribute="leading" id="ku7-Nu-mUJ"/>
+                                    <constraint firstItem="yRm-d6-QDf" firstAttribute="leading" secondItem="Oa0-eO-21I" secondAttribute="trailing" id="mLq-ad-OF9"/>
+                                    <constraint firstAttribute="bottom" secondItem="Oa0-eO-21I" secondAttribute="bottom" id="oU3-cJ-7mg"/>
+                                    <constraint firstAttribute="height" constant="60" id="veM-Qh-k3r"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qaV-I0-wj6">
+                                <rect key="frame" x="0.0" y="124" width="375" height="543"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qaV-I0-wj6" secondAttribute="trailing" id="8Gk-lT-Mra"/>
+                            <constraint firstItem="8QG-8p-0Gf" firstAttribute="top" secondItem="EoE-J1-dIz" secondAttribute="bottom" id="KIm-kx-WG8"/>
+                            <constraint firstAttribute="trailing" secondItem="8QG-8p-0Gf" secondAttribute="trailing" id="YNk-WE-Tfy"/>
+                            <constraint firstItem="qaV-I0-wj6" firstAttribute="top" secondItem="8QG-8p-0Gf" secondAttribute="bottom" id="bem-Gh-ybX"/>
+                            <constraint firstItem="qaV-I0-wj6" firstAttribute="leading" secondItem="OcZ-m8-b7V" secondAttribute="leading" id="d2z-0F-EDS"/>
+                            <constraint firstItem="8QG-8p-0Gf" firstAttribute="leading" secondItem="OcZ-m8-b7V" secondAttribute="leading" id="fjs-tk-CSc"/>
+                            <constraint firstItem="YAL-X7-WBo" firstAttribute="top" secondItem="qaV-I0-wj6" secondAttribute="bottom" id="xzH-W8-DX6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="智能开门" id="PGF-Iq-HmN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfP-NF-5V9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-857" y="151"/>
+        </scene>
+    </scenes>
+</document>

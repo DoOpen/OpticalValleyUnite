@@ -43,7 +43,7 @@ class PersonDetailViewController: UITableViewController{
                 
                 if model.picture != ""{
                     
-                    let basicPath = URLPath.basicPath
+                    let basicPath = URLPath.systemSelectionURL
                     let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + model.picture
                     
                     photoBtn.kf.setBackgroundImage(with: URL(string:imageValue), for: .normal)

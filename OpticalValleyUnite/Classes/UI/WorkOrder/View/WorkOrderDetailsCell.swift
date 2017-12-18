@@ -214,7 +214,7 @@ class WorkOrderDetailsCell: UITableViewCell {
                 let arry = model.picture.components(separatedBy: ",")
                 
                 for str in arry{
-                    let basicPath = URLPath.basicPath
+                    let basicPath = URLPath.systemSelectionURL
                     let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + str
                     
                     let photo = Photo(urlString: imageValue)

@@ -79,7 +79,7 @@ class YQPatrolItemWeatherViewController: UIViewController {
                 
             }else{
                 
-                let basicPath = URLPath.basicPath
+                let basicPath = URLPath.systemSelectionURL
                 imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.imgPath)!
             }
         
@@ -141,7 +141,7 @@ class YQPatrolItemWeatherViewController: UIViewController {
             
             self.upDataImage(images as! [UIImage], complit: { (url) in
                 //重新进行图片的下载,赋值
-                let basicPath = URLPath.basicPath
+                let basicPath = URLPath.systemSelectionURL
                 let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (url)
                 
                 self.pictureImageString = imageValue

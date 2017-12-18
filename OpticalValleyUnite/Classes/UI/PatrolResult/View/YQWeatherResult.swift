@@ -44,7 +44,7 @@ class YQWeatherResult: UIView {
                     
                 }else{
                     
-                    let basicPath = URLPath.basicPath
+                    let basicPath = URLPath.systemSelectionURL
                     imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.imgPath)!
                 }
                 
@@ -81,7 +81,7 @@ class YQWeatherResult: UIView {
                 
                 for url in images!{
                     
-                    let basicPath = URLPath.basicPath
+                    let basicPath = URLPath.systemSelectionURL
                     let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                     temp.append(imageValue)
                 }

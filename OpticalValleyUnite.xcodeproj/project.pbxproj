@@ -133,6 +133,8 @@
 		2F94A28F1F73BA4F00455162 /* YQResolved.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A28E1F73BA4F00455162 /* YQResolved.xib */; };
 		2FAA64221FB04B7F00A34311 /* YQDeviceCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA64201FB04B7F00A34311 /* YQDeviceCell2.swift */; };
 		2FAA64231FB04B7F00A34311 /* YQDeviceCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */; };
+		2FB180761FE69BEF00BC1A40 /* YQIntoDoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB180751FE69BEF00BC1A40 /* YQIntoDoorViewController.swift */; };
+		2FB180781FE69C2600BC1A40 /* YQIntoDoor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FB180771FE69C2600BC1A40 /* YQIntoDoor.storyboard */; };
 		2FC167471F905F34001CEACD /* YQJournalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC167461F905F34001CEACD /* YQJournalDetailViewController.swift */; };
 		2FC167491F905F5A001CEACD /* YQJournalDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC167481F905F5A001CEACD /* YQJournalDetail.storyboard */; };
 		2FC1674B1F906BA4001CEACD /* YQJournalDetailHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC1674A1F906BA4001CEACD /* YQJournalDetailHead.xib */; };
@@ -444,6 +446,8 @@
 		2F94A28E1F73BA4F00455162 /* YQResolved.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQResolved.xib; sourceTree = "<group>"; };
 		2FAA64201FB04B7F00A34311 /* YQDeviceCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDeviceCell2.swift; sourceTree = "<group>"; };
 		2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDeviceCell2.xib; sourceTree = "<group>"; };
+		2FB180751FE69BEF00BC1A40 /* YQIntoDoorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQIntoDoorViewController.swift; sourceTree = "<group>"; };
+		2FB180771FE69C2600BC1A40 /* YQIntoDoor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQIntoDoor.storyboard; sourceTree = "<group>"; };
 		2FC167461F905F34001CEACD /* YQJournalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalDetailViewController.swift; sourceTree = "<group>"; };
 		2FC167481F905F5A001CEACD /* YQJournalDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJournalDetail.storyboard; sourceTree = "<group>"; };
 		2FC1674A1F906BA4001CEACD /* YQJournalDetailHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQJournalDetailHead.xib; sourceTree = "<group>"; };
@@ -957,6 +961,39 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		2F68BED71FE2856C0079B2AF /* IntoDoorAdminis */ = {
+			isa = PBXGroup;
+			children = (
+				2F68BED81FE2856C0079B2AF /* Model */,
+				2F68BED91FE2856C0079B2AF /* View */,
+				2F68BEDA1FE2856C0079B2AF /* ViewController */,
+			);
+			path = IntoDoorAdminis;
+			sourceTree = "<group>";
+		};
+		2F68BED81FE2856C0079B2AF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2F68BED91FE2856C0079B2AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F68BEDA1FE2856C0079B2AF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2FB180751FE69BEF00BC1A40 /* YQIntoDoorViewController.swift */,
+				2FB180771FE69C2600BC1A40 /* YQIntoDoor.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		2F6A43891F6A33A0003E10C9 /* FireControlProfession */ = {
 			isa = PBXGroup;
 			children = (
@@ -1274,6 +1311,7 @@
 		4BD4B9221E272EA600AE2BC9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2F68BED71FE2856C0079B2AF /* IntoDoorAdminis */,
 				2F07A0131FDBEC100064556D /* PatrolResult */,
 				2F4EB28F1FD51A170004A532 /* VideoPatrol */,
 				2F399F021FB4571700AA3BEC /* Pedometer */,
@@ -1682,6 +1720,7 @@
 				2F5E8C561F595F7000007717 /* YQPartDataAll.xib in Resources */,
 				2F1764D61FD01BE500C816A8 /* YQExecScanCell.xib in Resources */,
 				4B5E43C11F2ECEE000DCE5AC /* SiginCellView.xib in Resources */,
+				2FB180781FE69C2600BC1A40 /* YQIntoDoor.storyboard in Resources */,
 				2F0223BC1FA9C2330090822F /* YQWorkOderComplete.storyboard in Resources */,
 				2F40D98E1FB93AEA007971D1 /* YQStepScreen.storyboard in Resources */,
 				4B3951ED1E28718200E2642F /* ReportMaster.storyboard in Resources */,
@@ -1821,6 +1860,7 @@
 				4B7A59C51E35DD5B002E96B6 /* HttpClient.swift in Sources */,
 				2FDF32981F7926ED008EDEB4 /* MANaviRoute.m in Sources */,
 				4BD4B9491E272EA600AE2BC9 /* SJNavigationController.swift in Sources */,
+				2FB180761FE69BEF00BC1A40 /* YQIntoDoorViewController.swift in Sources */,
 				4BB53FF01F14D9CA0061190F /* DeviceCell.swift in Sources */,
 				4B7A59C91E35E1AD002E96B6 /* Model.swift in Sources */,
 				4B3952061E29CE1F00E2642F /* WorkOrderOprationCell.swift in Sources */,

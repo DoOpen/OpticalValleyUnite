@@ -242,7 +242,7 @@ extension YQPatrolItemWeatherViewController : YQPatrolBottomNextViewDelegate{
         self.upDataImage(images , complit: { (url) in
             //重新进行图片的下载,赋值
             self.pictureImageString = url
-            par["imgPath"] = self.pictureImageString
+            par["imgPaths"] = self.pictureImageString
             
             SVProgressHUD.show()
             
@@ -319,7 +319,7 @@ extension YQPatrolItemWeatherViewController : YQPatrolBottomLastViewDelegate{
         self.upDataImage(images , complit: { (url) in
             //重新进行图片的下载,赋值
             self.pictureImageString = url
-            par["imgPath"] = self.pictureImageString
+            par["imgPaths"] = self.pictureImageString
 
             SVProgressHUD.show()
             

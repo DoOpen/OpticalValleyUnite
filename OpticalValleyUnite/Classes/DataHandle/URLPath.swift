@@ -30,10 +30,10 @@ struct URLPath {
     ///主机地址
 //    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
     ///新版服务器的域名 http://172.16.19.98:8091
-    ///门禁接口服务器: 172.16.11.75:8080
+    ///门禁接口服务器: http://172.16.11.63:8080
     
     //服务器的basic 地址:
-    static let basicPath = "http://172.16.11.75:8080/ovu-pcos/api/"
+    static let basicPath = "http://172.16.19.98:8091/ovu-pcos/api/"
 
     
     static let login = "user/login.do"

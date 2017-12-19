@@ -87,6 +87,7 @@
 		2F4EB29C1FD549340004A532 /* YQVideoMapPointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4EB29B1FD549340004A532 /* YQVideoMapPointModel.swift */; };
 		2F54BF0B1FCBF7C7006B4DCF /* YQExecTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */; };
 		2F54BF0C1FCBF7C7006B4DCF /* YQExecTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F54BF0A1FCBF7C7006B4DCF /* YQExecTextCell.xib */; };
+		2F5A3D591FE8DFE50069ABE1 /* RfmAccessControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5A3D581FE8DFE50069ABE1 /* RfmAccessControl.framework */; };
 		2F5D276C1F998DE20022F7D6 /* YQProjectSelectFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D276B1F998DE20022F7D6 /* YQProjectSelectFooterView.swift */; };
 		2F5D276E1F998E0C0022F7D6 /* YQProjectSelectFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D276D1F998E0C0022F7D6 /* YQProjectSelectFooter.xib */; };
 		2F5D27701F998F340022F7D6 /* YQProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D276F1F998F340022F7D6 /* YQProjectTableViewCell.swift */; };
@@ -120,7 +121,6 @@
 		2F7550FB1FA71D1900A5E242 /* YQJournalDetailTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550FA1FA71D1900A5E242 /* YQJournalDetailTVCell.swift */; };
 		2F7550FD1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550FC1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift */; };
 		2F7550FF1FA7313200A5E242 /* YQWorkRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */; };
-		2F79450F1FE794C70085E803 /* RfmAccessControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F79450E1FE794C70085E803 /* RfmAccessControl.framework */; };
 		2F7945191FE795190085E803 /* NSData+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7945151FE795190085E803 /* NSData+YYExtend.m */; };
 		2F79451A1FE795190085E803 /* NSString+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7945171FE795190085E803 /* NSString+YYExtend.m */; };
 		2F79451C1FE7C4CD0085E803 /* YQBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79451B1FE7C4CD0085E803 /* YQBluetooth.swift */; };
@@ -402,6 +402,8 @@
 		2F4EB29B1FD549340004A532 /* YQVideoMapPointModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQVideoMapPointModel.swift; sourceTree = "<group>"; };
 		2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQExecTextCell.swift; sourceTree = "<group>"; };
 		2F54BF0A1FCBF7C7006B4DCF /* YQExecTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQExecTextCell.xib; sourceTree = "<group>"; };
+		2F5A3D561FE8DBAD0069ABE1 /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
+		2F5A3D581FE8DFE50069ABE1 /* RfmAccessControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RfmAccessControl.framework; sourceTree = "<group>"; };
 		2F5D276B1F998DE20022F7D6 /* YQProjectSelectFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQProjectSelectFooterView.swift; sourceTree = "<group>"; };
 		2F5D276D1F998E0C0022F7D6 /* YQProjectSelectFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQProjectSelectFooter.xib; sourceTree = "<group>"; };
 		2F5D276F1F998F340022F7D6 /* YQProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQProjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -437,7 +439,6 @@
 		2F7550FA1FA71D1900A5E242 /* YQJournalDetailTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalDetailTVCell.swift; sourceTree = "<group>"; };
 		2F7550FC1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkRecordTableViewCell.swift; sourceTree = "<group>"; };
 		2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWorkRecord.xib; sourceTree = "<group>"; };
-		2F79450E1FE794C70085E803 /* RfmAccessControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RfmAccessControl.framework; sourceTree = "<group>"; };
 		2F7945101FE794E00085E803 /* 立方SDK_3.0.0.ipa */ = {isa = PBXFileReference; lastKnownFileType = file; path = "立方SDK_3.0.0.ipa"; sourceTree = "<group>"; };
 		2F7945141FE795190085E803 /* NSData+YYExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+YYExtend.h"; sourceTree = "<group>"; };
 		2F7945151FE795190085E803 /* NSData+YYExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+YYExtend.m"; sourceTree = "<group>"; };
@@ -682,16 +683,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B3951DD1E27D8D300E2642F /* libz.tbd in Frameworks */,
 				2F73FA671F74CE8600D37FDA /* CoreLocation.framework in Frameworks */,
 				2F73FA651F74CE1300D37FDA /* GLKit.framework in Frameworks */,
+				2F5A3D591FE8DFE50069ABE1 /* RfmAccessControl.framework in Frameworks */,
 				4B91E89A1F258BB200F63D66 /* UserNotifications.framework in Frameworks */,
-				2F79450F1FE794C70085E803 /* RfmAccessControl.framework in Frameworks */,
 				4B3951E91E27DFA800E2642F /* CoreTelephony.framework in Frameworks */,
 				4B3951E31E27D8F900E2642F /* Security.framework in Frameworks */,
 				4B3951E11E27D8EE00E2642F /* libstdc++.6.0.9.tbd in Frameworks */,
 				4B91E8981F258B1E00F63D66 /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
 				4B3951DF1E27D8E200E2642F /* libc++.tbd in Frameworks */,
-				4B3951DD1E27D8D300E2642F /* libz.tbd in Frameworks */,
 				4B3951E51E27DDCE00E2642F /* MAMapKit.framework in Frameworks */,
 				2F73FA631F74C0B600D37FDA /* AMapSearchKit.framework in Frameworks */,
 				4B3951DB1E27D8A800E2642F /* SystemConfiguration.framework in Frameworks */,
@@ -708,6 +709,7 @@
 		2DE0C4DE5B1BF48FFA401773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F5A3D561FE8DBAD0069ABE1 /* libc.tbd */,
 				2F73FA661F74CE8600D37FDA /* CoreLocation.framework */,
 				2F73FA641F74CE1300D37FDA /* GLKit.framework */,
 				4B91E8991F258BB200F63D66 /* UserNotifications.framework */,
@@ -1086,9 +1088,9 @@
 		2F79450D1FE7943B0085E803 /* RfmFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F5A3D581FE8DFE50069ABE1 /* RfmAccessControl.framework */,
 				2F7945131FE795190085E803 /* Category */,
 				2F7945101FE794E00085E803 /* 立方SDK_3.0.0.ipa */,
-				2F79450E1FE794C70085E803 /* RfmAccessControl.framework */,
 			);
 			path = RfmFrameworks;
 			sourceTree = "<group>";
@@ -2219,6 +2221,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: tao wei (8ES22U6BV5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = UAHXEMH9BC;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",
@@ -2253,6 +2256,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: WUHAN XIAOMIAO TECHNOLOGY CO. , LTD. (A2R3PWNCGN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = UAHXEMH9BC;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",

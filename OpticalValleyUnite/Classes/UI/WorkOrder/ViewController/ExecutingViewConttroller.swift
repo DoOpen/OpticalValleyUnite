@@ -662,7 +662,6 @@ class ExecutingViewConttroller: UIViewController {
     
     
     // MARK: - 二维码执行扫描界面
-    
     func scanBtnClick() {
         
         if Const.SJIsSIMULATOR {

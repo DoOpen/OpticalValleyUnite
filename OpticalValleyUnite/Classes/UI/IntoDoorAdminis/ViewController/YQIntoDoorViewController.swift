@@ -8,6 +8,9 @@
 
 import UIKit
 import SVProgressHUD
+import AVFoundation
+import Photos
+
 
 class YQIntoDoorViewController: UIViewController {
 
@@ -59,9 +62,8 @@ class YQIntoDoorViewController: UIViewController {
         addLeftRightBarButtonFunction()
         
         
-        //默认的是选中第一项bluetooth
-//        self.allButtonClickEvent(self.openBluetooth)
-        
+        //默认的是选中第二项 二维码扫描的图片
+        self.allButtonClickEvent(self.openQRCode)
         
     
     }
@@ -75,15 +77,15 @@ class YQIntoDoorViewController: UIViewController {
         
         switch sender.tag {
             
-            case 0:
+            case 0://蓝牙开门
                 bluetoothOpenTheDoor()
                 break
             case 1:
                 
                 break
                 
-            case 2:
-
+            case 2://动态密码开门,实现逻辑一样的
+                bluetoothOpenTheDoor()
                 break
 
             default:
@@ -106,6 +108,16 @@ class YQIntoDoorViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = barItem
         
+        let rightBtn = UIButton()
+        rightBtn.frame = CGRect.init(x: 0, y: 0, width: 40, height: 40)
+        rightBtn.setImage(UIImage.init(name: "二维码2"), for: .normal)
+        rightBtn.addTarget(self, action: #selector(rightBarButtonClick), for: .touchUpInside)
+        let batItem2 = UIBarButtonItem()
+        batItem2.customView = rightBtn
+        
+        self.navigationItem.rightBarButtonItem = batItem2
+        
+        
     }
     func leftBarButtonClick() {
         //返回子系统选择的界面
@@ -123,6 +135,13 @@ class YQIntoDoorViewController: UIViewController {
             LoginViewController.loginOut()
         }
     }
+    func rightBarButtonClick(){
+        
+        
+        
+        
+    }
+    
     
     // MARK: - 设置上传蓝牙开门的接口
     func bluetoothOpenTheDoor(){
@@ -227,6 +246,72 @@ class YQIntoDoorViewController: UIViewController {
         }
     }
     
+    // MARK: - 动态密码开门
+    func dynamicPwdOpenTheDoorWithData(model : YQBluetooth) {
+        
+        var allParams = [String : Any]()
+        
+        var params = [String : Any]()
+        
+        var par = [String : Any]()
+        
+        par["appType"] = "2"//设备类型  1 业主 2员工
+        par["parkId"] = self.parkID
+        par["deviceBlueMac"] = model.deviceBlueMac
+        
+        
+        params["data"] = par
+        
+        //swift 中的 格式化的固定写法语法!
+        do{
+            
+            let jsonData = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8){
+                
+                //格式化的json字典的情况
+                print(JSONString)
+                
+                //注意的是这里的par 要求序列化json
+                allParams["params"] = JSONString
+                
+            }
+            
+        }catch {
+            
+            print("转换错误 ")
+        }
+        
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getdynPwdOpenDoor, parameters: allParams, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            //获取时间和data 密码
+            let dict = response as? NSDictionary
+            
+            DispatchQueue.main.async {
+                
+                let pwdVC = YQDynamicPwdViewController.init(nibName: "YQDynamicPwdViewController", bundle: nil)
+                pwdVC.model = model
+                pwdVC.dataDict = dict
+                
+                
+                self.navigationController?.pushViewController(pwdVC, animated: true)
+                
+            }
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
+            
+        }
+        
+    }
+    
+    
     // MARK: - 设置保存记录的上传
     func bluetoothOpenDoorSaveFunction(){
     
@@ -300,8 +385,36 @@ class YQIntoDoorViewController: UIViewController {
             
             projectName = "请选择默认项目"
         }
-        
         return projectName
+    }
+
+    
+    // MARK: - 二维码执行扫描界面
+    func scanBtnClick() {
+        
+        if Const.SJIsSIMULATOR {
+            alert(message: "模拟器不能使用扫描")
+            return
+        }
+        
+        let device = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
+        if device != nil {
+            
+            
+            let status = PHPhotoLibrary.authorizationStatus()
+            if status == .authorized{
+                let vc = SGScanningQRCodeVC()
+                //设置代理
+                vc.delegate = self
+                navigationController?.pushViewController(vc, animated: true)
+            }else if status == .notDetermined{
+                PHPhotoLibrary.requestAuthorization({ (authorizationStatus) in
+                    
+                })
+            }else{
+                self.alert(message: "授权失败")
+            }
+        }
     }
 
     
@@ -324,15 +437,42 @@ extension YQIntoDoorViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var Cell = tableView.dequeueReusableCell(withIdentifier: "bluetoothCell") as? YQBluetoothCell
-        if Cell == nil {
-            Cell = Bundle.main.loadNibNamed("YQBluetoothCell", owner: nil, options: nil)?[0] as? YQBluetoothCell
+        //逻辑判断写出三种类型的cell的判断
+        switch (self.currentSelectButton?.tag)! {
+        case 0://蓝牙开门
+            
+            var Cell = tableView.dequeueReusableCell(withIdentifier: "bluetoothCell") as? YQBluetoothCell
+            if Cell == nil {
+                Cell = Bundle.main.loadNibNamed("YQBluetoothCell", owner: nil, options: nil)?[0] as? YQBluetoothCell
+            }
+            Cell?.delegate = self
+            Cell?.indexpath = indexPath
+            Cell?.model = self.dataArray?[indexPath.row]
+            return Cell!
+            
+            
+            
+        case 1://二维码开门
+            
+            break
+            
+        case 2://动态密码开门
+            
+            var cell = tableView.dequeueReusableCell(withIdentifier: "pwdCell") as? YQDynamicPasswordCell
+            if cell == nil {
+                cell = Bundle.main.loadNibNamed("YQDynamicPasswordCell", owner: nil, options: nil)?[0] as? YQDynamicPasswordCell
+            }
+            cell?.delegate = self
+            cell?.model = self.dataArray?[indexPath.row]
+            cell?.indexPath = indexPath
+            
+            return cell!
+            
+        default:
+            break
         }
-        Cell?.delegate = self
-        Cell?.indexpath = indexPath
-        Cell?.model = self.dataArray?[indexPath.row]
         
-        return Cell!
+        return UITableViewCell()
     }
 
 }
@@ -377,10 +517,7 @@ extension YQIntoDoorViewController : RfmSessionDelegate{
             default:
                 break
             }
-        
         }
-
-
     }
 
 }
@@ -391,7 +528,44 @@ extension YQIntoDoorViewController : YQBluetoothCellDelegate{
         
         self.currentIndexP = indexpath
     }
-
     
+}
+
+extension YQIntoDoorViewController : YQDynamicPasswordCellDelegate{
+    
+    func dynamicPasswordCellPwdClick(indexPath: IndexPath) {
+        //获取数据-跳转界面
+        let model = self.dataArray?[indexPath.row]
+        
+        self.dynamicPwdOpenTheDoorWithData(model: model!)
+        
+    }
+    
+    
+}
+
+extension YQIntoDoorViewController : SGScanningQRCodeVCDelegate{
+    
+    func didScanningText(_ text: String!) {
+        
+        if text.contains("设备"){//区分是否是自己的二维码的情况
+            
+            let str = text.components(separatedBy: ":").last
+            
+            if str != nil{
+                
+                self.navigationController?.popViewController(animated: false)
+
+                
+            }
+            
+        }else{
+            
+            self.alert(message: "非可识别二维码!")
+            
+        }
+    }
+
+
 }
 

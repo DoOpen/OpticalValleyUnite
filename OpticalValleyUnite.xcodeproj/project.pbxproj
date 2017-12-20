@@ -127,6 +127,8 @@
 		2F7550FB1FA71D1900A5E242 /* YQJournalDetailTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550FA1FA71D1900A5E242 /* YQJournalDetailTVCell.swift */; };
 		2F7550FD1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550FC1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift */; };
 		2F7550FF1FA7313200A5E242 /* YQWorkRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */; };
+		2F78D94D1FEA388D006F7692 /* YQDynamicPwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F78D94B1FEA388D006F7692 /* YQDynamicPwdViewController.swift */; };
+		2F78D94E1FEA388D006F7692 /* YQDynamicPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F78D94C1FEA388D006F7692 /* YQDynamicPwdViewController.xib */; };
 		2F7945191FE795190085E803 /* NSData+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7945151FE795190085E803 /* NSData+YYExtend.m */; };
 		2F79451A1FE795190085E803 /* NSString+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7945171FE795190085E803 /* NSString+YYExtend.m */; };
 		2F79451C1FE7C4CD0085E803 /* YQBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79451B1FE7C4CD0085E803 /* YQBluetooth.swift */; };
@@ -451,6 +453,8 @@
 		2F7550FA1FA71D1900A5E242 /* YQJournalDetailTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalDetailTVCell.swift; sourceTree = "<group>"; };
 		2F7550FC1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkRecordTableViewCell.swift; sourceTree = "<group>"; };
 		2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWorkRecord.xib; sourceTree = "<group>"; };
+		2F78D94B1FEA388D006F7692 /* YQDynamicPwdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDynamicPwdViewController.swift; sourceTree = "<group>"; };
+		2F78D94C1FEA388D006F7692 /* YQDynamicPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDynamicPwdViewController.xib; sourceTree = "<group>"; };
 		2F7945101FE794E00085E803 /* 立方SDK_3.0.0.ipa */ = {isa = PBXFileReference; lastKnownFileType = file; path = "立方SDK_3.0.0.ipa"; sourceTree = "<group>"; };
 		2F7945141FE795190085E803 /* NSData+YYExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+YYExtend.h"; sourceTree = "<group>"; };
 		2F7945151FE795190085E803 /* NSData+YYExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+YYExtend.m"; sourceTree = "<group>"; };
@@ -1024,6 +1028,8 @@
 			children = (
 				2FB180751FE69BEF00BC1A40 /* YQIntoDoorViewController.swift */,
 				2FB180771FE69C2600BC1A40 /* YQIntoDoor.storyboard */,
+				2F78D94B1FEA388D006F7692 /* YQDynamicPwdViewController.swift */,
+				2F78D94C1FEA388D006F7692 /* YQDynamicPwdViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1808,6 +1814,7 @@
 				2F5E8C521F59598400007717 /* YQSystemSelectionVC.xib in Resources */,
 				2FAA64231FB04B7F00A34311 /* YQDeviceCell2.xib in Resources */,
 				2F7550FF1FA7313200A5E242 /* YQWorkRecord.xib in Resources */,
+				2F78D94E1FEA388D006F7692 /* YQDynamicPwdViewController.xib in Resources */,
 				4BBBEC971E2CAAE200F60313 /* BoPhotoPicker.bundle in Resources */,
 				2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */,
 				2FC1674B1F906BA4001CEACD /* YQJournalDetailHead.xib in Resources */,
@@ -2006,6 +2013,7 @@
 				2F40D98C1FB93A39007971D1 /* YQStepScreenViewController.swift in Sources */,
 				2F2DF4381F7365B300ADA588 /* YQStateListModel.swift in Sources */,
 				2FEB0E7F1F6E5EA10002DEE8 /* YQViewController.swift in Sources */,
+				2F78D94D1FEA388D006F7692 /* YQDynamicPwdViewController.swift in Sources */,
 				4B429B081F4AC3A000381F3F /* ShowImagesView.swift in Sources */,
 				4B1DEC681E31F5D1000917D2 /* SlotViewController.swift in Sources */,
 				2FDF32A51F792975008EDEB4 /* CommonUtility.m in Sources */,

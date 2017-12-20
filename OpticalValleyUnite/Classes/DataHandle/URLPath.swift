@@ -33,7 +33,7 @@ struct URLPath {
     ///门禁接口服务器: http://172.16.11.63:8080
     
     //服务器的basic 地址:
-    static let basicPath = "http://172.16.11.63:8080/ovu-pcos/api/"
+    static let basicPath = "http://172.16.19.98:8091/ovu-pcos/api/"
 
     //服务器拆分的接口 newbasicPath
     static let newbasicPath = "http://172.16.19.98:8091/ovu-base/api/"

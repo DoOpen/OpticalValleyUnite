@@ -49,7 +49,7 @@ extension HttpClient {
         let bool4 = urlString.contains("getParkInfoById")
         let bool5 = urlString.contains("getDeptList")
         let bool6 = urlString.contains("getModules")
-        let bool7 = urlString.contains("getModuleAndAppRes")
+//        let bool7 = urlString.contains("getModuleAndAppRes") //子系统的接口调试ok
         let bool8 = urlString.contains("getRoles")
         let bool10 = urlString.contains("getPersonPositionList")
         let bool11 = urlString.contains("getOldPersonPosition")
@@ -59,7 +59,7 @@ extension HttpClient {
         let bool15 = urlString.contains("savePersonIcon")
         
         
-        if bool1 {
+        if bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool8 || bool10 || bool11 || bool12 || bool13 || bool14 || bool15{
             
             allurl = URLPath.newbasicPath + urlString
             

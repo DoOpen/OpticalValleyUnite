@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
         
         SVProgressHUD.show(withStatus: "登录中")
         
-        Alamofire.request(URLPath.basicPath + URLPath.login, method: .post, parameters: parameters).responseJSON { (response) in
+        Alamofire.request(URLPath.newbasicPath + URLPath.login, method: .post, parameters: parameters).responseJSON { (response) in
             SVProgressHUD.dismiss()
             switch response.result {
                 

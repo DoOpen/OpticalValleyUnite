@@ -49,13 +49,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/DataHandle/HttpClient.swift"
-            timestampString = "535259763.130278"
+            filePath = "OpticalValleyUnite/Classes/UI/Login/ViewController/LoginViewController.swift"
+            timestampString = "535428090.468153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
-            landmarkName = "upLoadImages(_:succses:failure:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "loginBtnClick()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -65,109 +65,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/DataHandle/HttpClient.swift"
-            timestampString = "535258975.660694"
+            filePath = "OpticalValleyUnite/Classes/UI/Login/ViewController/LoginViewController.swift"
+            timestampString = "535428326.209489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
-            landmarkName = "upLoadImages(_:succses:failure:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/DataHandle/HttpClient.swift"
-            timestampString = "535258758.585138"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
-            landmarkName = "upLoadImages(_:succses:failure:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.HttpClient.upLoadImages (Swift.Array&lt;__ObjC.UIImage&gt;, succses : (Swift.Optional&lt;Swift.String&gt;) -&gt; (), failure : (Swift.Error) -&gt; ()) -&gt; ()"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/DataHandle/HttpClient.swift"
-                  timestampString = "535372107.656923"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "263"
-                  endingLineNumber = "263"
-                  offsetFromSymbolStart = "180">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.HttpClient.upLoadImages (Swift.Array&lt;__ObjC.UIImage&gt;, succses : (Swift.Optional&lt;Swift.String&gt;) -&gt; (), failure : (Swift.Error) -&gt; ()) -&gt; ()"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/DataHandle/HttpClient.swift"
-                  timestampString = "535372107.661158"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "263"
-                  endingLineNumber = "263"
-                  offsetFromSymbolStart = "1164">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/DataHandle/HttpClient.swift"
-            timestampString = "535259763.130278"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
-            landmarkName = "upLoadImages(_:succses:failure:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/DataHandle/HttpClient.swift"
-            timestampString = "535259763.130278"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
-            landmarkName = "upLoadImages(_:succses:failure:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/DataHandle/HttpClient.swift"
-            timestampString = "535259821.579187"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
-            landmarkName = "upLoadImages(_:succses:failure:)"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "loginBtnClick()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

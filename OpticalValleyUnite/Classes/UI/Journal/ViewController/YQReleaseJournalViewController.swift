@@ -222,12 +222,13 @@ class YQReleaseJournalViewController: UIViewController {
         }
         
         // || self.worklogId == -1
-        if self.workunitIds == ""  {
-            
-            self.alert(message: "请选择工作记录")
-            
-            return
-        }
+        // 日志的逻辑的调整,工作记录不是必选的 修订
+//        if self.workunitIds == ""  {
+//            
+//            self.alert(message: "请选择工作记录")
+//            
+//            return
+//        }
         
 //        if self.workunitIds == ""{
 //            

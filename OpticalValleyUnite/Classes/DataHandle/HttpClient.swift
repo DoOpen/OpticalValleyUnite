@@ -40,10 +40,41 @@ extension HttpClient {
         var parameters = parameters ?? [String : Any]()
 //        parameters["token"] = "097e84d8d4cd4e93973528a8e06fd54e"
          parameters["token"] = UserDefaults.standard.object(forKey: Const.SJToken)
-        print("请求URL:" + URLPath.basicPath + urlString)
+        
+        var allurl = ""
+        
+        let bool1 = urlString.contains("logout")
+        let bool2 = urlString.contains("updatepwd")
+        let bool3 = urlString.contains("getParkList")
+        let bool4 = urlString.contains("getParkInfoById")
+        let bool5 = urlString.contains("getDeptList")
+        let bool6 = urlString.contains("getModules")
+        let bool7 = urlString.contains("getModuleAndAppRes")
+        let bool8 = urlString.contains("getRoles")
+        let bool10 = urlString.contains("getPersonPositionList")
+        let bool11 = urlString.contains("getOldPersonPosition")
+        let bool12 = urlString.contains("loadPersonPosition")
+        let bool13 = urlString.contains("getParkDescription")
+        let bool14 = urlString.contains("personList3")
+        let bool15 = urlString.contains("savePersonIcon")
+        
+        
+        if bool1 {
+            
+            allurl = URLPath.newbasicPath + urlString
+            
+        }else{
+            
+            allurl = URLPath.basicPath + urlString
+            
+        }
+        
+        
+        print("请求URL:" + allurl)
         print("请求参数:")
         print(parameters)
-        Alamofire.request(URLPath.basicPath + urlString, method: .post, parameters: parameters).responseJSON { (response) in
+        
+        Alamofire.request(allurl, method: .post, parameters: parameters).responseJSON { (response) in
 
             switch response.result {
             case .success(_):
@@ -99,11 +130,12 @@ extension HttpClient {
         var parameters = parameters ?? [String : Any]()
         parameters["token"] = UserDefaults.standard.object(forKey: Const.SJToken)
         
-        print("请求URL:" + URLPath.basicPath + urlString)
+        let allurl = URLPath.basicPath + urlString
+        print("请求URL:" + allurl)
         print(parameters)
         
 //        print(parameters)
-        Alamofire.request(URLPath.basicPath + urlString, method: .get, parameters: parameters).responseJSON { (response) in
+        Alamofire.request(allurl, method: .get, parameters: parameters).responseJSON { (response) in
             
             switch response.result {
             case .success(_):

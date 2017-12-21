@@ -23,6 +23,11 @@ class YQBluetooth: NSObject {
     
     //蓝牙 MAC地址
     var deviceBlueMac : String = ""
+    //二维码的 mac地址
+    var deviceQrMac : String = ""
+    //wifimac mac地址
+    var deviceWifiMac : String = ""
+    
     
     //32位密钥 蓝牙开门的密钥
     var deviceKey : String = ""

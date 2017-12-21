@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQScanImageViewController" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="Z0Q-aW-ZwN" id="pkO-vf-4AS"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z0Q-aW-ZwN">
+                    <rect key="frame" x="0.0" y="183.5" width="375" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="NHF-yD-KmL"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Z0Q-aW-ZwN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="25a-VC-yKN"/>
+                <constraint firstItem="Z0Q-aW-ZwN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="59P-q1-viV"/>
+                <constraint firstAttribute="trailing" secondItem="Z0Q-aW-ZwN" secondAttribute="trailing" id="65L-C0-sKU"/>
+                <constraint firstItem="Z0Q-aW-ZwN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Mob-ew-saw"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

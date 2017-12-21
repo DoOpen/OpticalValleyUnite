@@ -8,12 +8,38 @@
 
 import UIKit
 
+protocol YQScanCellDelegate : class  {
+    
+    func scanCellBGButtonClick( indexpath : IndexPath )
+    
+}
+
+
 class YQScanCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var textView: UITextView!
+  
+    @IBOutlet weak var BGScanButton: UIButton!
+    
+    weak var delegate : YQScanCellDelegate?
+    
+    var indexPath : IndexPath?
+    
+    
+    var model : YQBluetooth?{
+        didSet{
+            
+            self.textView.text = model?.name
+            
+        }
 
+    }
+    
+    @IBAction func bgScanButtonClick(_ sender: UIButton) {
+        
+        self.delegate?.scanCellBGButtonClick(indexpath: self.indexPath!)
+        
+    }
+    
     
 }

@@ -52,7 +52,7 @@ struct URLPath {
     
     static let getWorkTypeList = "workunit/getWorkTypeList.do"
     
-    //子系统选择图片服务器的地址(所有的图片)
+    //子系统选择图片服务器的地址(所有的图片)(子系统选择和 图片上传所有的图片URL)
     static let systemSelectionURL = "http://172.16.19.98:8091/ovu-base/"
     
     //获取配件库主页数据接口
@@ -254,7 +254,11 @@ struct URLPath {
     static let getAuthEquipmentList = "acs/getAuthEquipmentList"
     //动态密码开门的接口
     static let getdynPwdOpenDoor  = "acs/dynPwdOpenDoor"
-    
+    ///二维码开门接口调试
+    //开门反扫list的接口
+    static let getQrAuthEquipmentList = "acs/getQrAuthEquipmentList"
+    //二维码开门的接口
+    static let getOpenDoorByQrCode = "acs/openDoorByQrCode"
     
     
 }

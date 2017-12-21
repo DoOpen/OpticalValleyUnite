@@ -416,6 +416,90 @@ class YQIntoDoorViewController: UIViewController {
     }
 
     
+    // MARK: - 二维码正扫开门的接口调试
+    func openDoorByQrCodeFunction(deviceMacString : String){
+        
+        var allParams = [String : Any]()
+        
+        var params = [String : Any]()
+        
+        var par = [String : Any]()
+        
+        par["appType"] = "2"//设备类型  1 业主 2员工
+        par["parkId"] = self.parkID
+        par["deviceQrMac"] = deviceMacString
+        
+        
+        params["data"] = par
+        
+        //swift 中的 格式化的固定写法语法!
+        do{
+            
+            let jsonData = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8){
+                
+                //格式化的json字典的情况
+                //print(JSONString)
+                
+                //注意的是这里的par 要求序列化json
+                allParams["params"] = JSONString
+                
+            }
+            
+        }catch {
+            
+            print("转换错误 ")
+        }
+        
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getOpenDoorByQrCode, parameters: allParams, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            // 显示的是开门成功的内容
+            SVProgressHUD.showSuccess(withStatus: "打开成功!")
+           
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
+            
+        }
+
+    }
+    
+    // MARK: - 二维码反扫list获取
+    func getDoorByBGQrCode(){
+    
+        var par = [String : Any]()
+        par["appType"] = "2"//设备类型  1 业主 2员工
+        par["parkId"] = self.parkID
+    
+        HttpClient.instance.post(path: URLPath.getQrAuthEquipmentList, parameters: par, success: { (resonse) in
+            //获取相应的数据,字典转模型
+            //获取时间和data 密码
+            var temp = [YQBluetooth]()
+            
+            //通过字典转模型来进行的操作!
+            let array = resonse as? NSArray
+            for dict in array!{
+                
+                temp.append(YQBluetooth.init(dic: dict as! [String : Any]))
+                
+            }
+            
+            self.dataArray = temp
+
+            
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+        }
+    
+    }
 
 }
 
@@ -448,11 +532,18 @@ extension YQIntoDoorViewController : UITableViewDelegate,UITableViewDataSource{
             Cell?.model = self.dataArray?[indexPath.row]
             return Cell!
             
+        case 1://二维码开门(调用的反扫列表)
             
+            var cell = tableView.dequeueReusableCell(withIdentifier: "") as? YQScanCell
+            if cell == nil {
+                cell = Bundle.main.loadNibNamed("BGscanCell", owner: nil, options: nil)?[0] as? YQScanCell
+            }
+            cell?.delegate = self
+            cell?.model = self.dataArray?[indexPath.row]
+            cell?.indexPath = indexPath
             
-        case 1://二维码开门
-            
-            break
+            return cell!
+
             
         case 2://动态密码开门
             
@@ -539,7 +630,6 @@ extension YQIntoDoorViewController : YQDynamicPasswordCellDelegate{
         
     }
     
-    
 }
 
 extension YQIntoDoorViewController : SGScanningQRCodeVCDelegate{
@@ -553,7 +643,8 @@ extension YQIntoDoorViewController : SGScanningQRCodeVCDelegate{
             if str != nil{
                 
                 self.navigationController?.popViewController(animated: false)
-
+                //拿到了二维码的设备开门的str ---->
+                self.openDoorByQrCodeFunction(deviceMacString: str!)
                 
             }
             
@@ -563,7 +654,21 @@ extension YQIntoDoorViewController : SGScanningQRCodeVCDelegate{
             
         }
     }
+}
 
+extension YQIntoDoorViewController : YQScanCellDelegate{
+
+    func scanCellBGButtonClick( indexpath : IndexPath ){
+        //跳转到相应的二维码的图片的界面
+         let scanImageV = YQScanImageViewController.init(nibName: "YQScanImageViewController", bundle: nil)
+        
+        scanImageV.model = self.dataArray?[indexpath.row]
+        
+        self.navigationController?.pushViewController(scanImageV, animated: true)
+    
+    }
 
 }
+
+
 

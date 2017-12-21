@@ -9,9 +9,11 @@
 import UIKit
 import AVFoundation
 import Photos
-
+import KYDrawerController
 
 class AllViewController: UIViewController {
+    
+    var totalCount = 12
 
     var btnViews = [HomeBtnView]()
     
@@ -22,9 +24,10 @@ class AllViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
-        for index in 1...12{
+        for index in 1...totalCount{
             
             let btnView = view.sj_viewWithTag(tag: index) as! HomeBtnView
             btnViews.append(btnView)
@@ -32,8 +35,9 @@ class AllViewController: UIViewController {
             
         }
         
-        let count = [models.count, 12].min()!
-        let imageDic = ["报事": "baoshi2","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"baoshi2","日志":"日志","计步器":"step"]
+        let count = [models.count, totalCount].min()!
+        
+        let imageDic = ["报事": "baoshi2","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","门禁管理": "intodoor","丽岛学院": "xueyuan","电梯报事":"baoshi2","日志":"日志","计步器":"step","视频巡查" : "xuncha","巡查结果" : "xunguan"]
         for index in 0..<count{
             
             let imageName = imageDic[models[index].aPPMODULENAME] ?? ""
@@ -75,12 +79,15 @@ class AllViewController: UIViewController {
         case "签到":
             let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)
+            
         case "定位":
             let vc = UIStoryboard(name: "Map", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)
+            
         case "扫描":
             scanBtnClick()
         //            surveillanceWorkOrderBtnClick()
+            
         case "督办":
             surveillanceWorkOrderBtnClick()
             
@@ -93,9 +100,30 @@ class AllViewController: UIViewController {
         case "计步器":
             
             let step = UIStoryboard.instantiateInitialViewController(name: "YQPedometerVC")
-            
             self.present(step, animated: true, completion: nil)
+            
+        case "视频巡查":
+            // 调试视频巡查的内容
+            let Video = UIStoryboard.instantiateInitialViewController(name: "YQVideoPatrol")
+            let mainViewController   = Video
+            let drawerViewController = YQVideoDrawerViewController()
+            // 初始化drawer抽屉的情况
+            let drawerController     = KYDrawerController(drawerDirection: .right, drawerWidth: 300)
+            drawerController.mainViewController =  mainViewController
 
+            drawerController.drawerViewController = drawerViewController
+            self.present(drawerController, animated: true, completion: nil)
+            
+        case "巡查结果":
+            let videoResult = UIStoryboard.instantiateInitialViewController(name: "YQPatrolResult")
+            self.present(videoResult, animated: true, completion: nil)
+            
+            
+        case "门禁管理":
+            let door = UIStoryboard.instantiateInitialViewController(name: "YQIntoDoor")
+            self.present(door, animated: true, completion: nil)
+
+            
         default: break
             
         }

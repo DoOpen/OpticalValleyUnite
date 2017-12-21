@@ -81,7 +81,7 @@ class YQIntoDoorViewController: UIViewController {
                 bluetoothOpenTheDoor()
                 break
             case 1:
-                
+                getDoorByBGQrCode()
                 break
                 
             case 2://动态密码开门,实现逻辑一样的
@@ -473,11 +473,21 @@ class YQIntoDoorViewController: UIViewController {
     // MARK: - 二维码反扫list获取
     func getDoorByBGQrCode(){
     
+        if self.parkID == "" {
+            self.alert(message: "请选择项目")
+            return
+        }
+
+        
         var par = [String : Any]()
         par["appType"] = "2"//设备类型  1 业主 2员工
         par["parkId"] = self.parkID
-    
+        
+        SVProgressHUD.show()
+        
         HttpClient.instance.post(path: URLPath.getQrAuthEquipmentList, parameters: par, success: { (resonse) in
+            
+            SVProgressHUD.dismiss()
             //获取相应的数据,字典转模型
             //获取时间和data 密码
             var temp = [YQBluetooth]()

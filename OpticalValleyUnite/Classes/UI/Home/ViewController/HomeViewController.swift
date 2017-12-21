@@ -210,12 +210,27 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                     
                     if SORT == 9 {
                         
-                        SORT = array.count - 2 //计步器的功能数组
+                        SORT = 6 //计步器的功能数组
                     }
                     
                     if SORT == 10 {
                         
-                        SORT = array.count - 1 //重新对sort进行赋值的操作
+                        SORT = 7 //重新对sort进行赋值的操作
+                    }
+                    
+                    if SORT == 11 {
+                        
+                        SORT = 8 //门禁
+                    }
+                    
+                    if SORT == 12 {
+                        
+                        SORT = 9 //视频巡查
+                    }
+
+                    if SORT == 13 {
+                        
+                        SORT = 10 //巡查结果
                     }
                     
                     if xxxx == SORT {
@@ -362,7 +377,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
 
     func settopArry(topArry:[PermissionModel],donwArry: [PermissionModel]){
-        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","智能开门": "ic_door","丽岛学院": "xueyuan","电梯报事":"报事","日志":"日志","计步器":"step"]
+        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","门禁": "intodoor","丽岛学院": "xueyuan","电梯报事":"报事","日志":"日志","计步器":"step","视频巡查" : "xuncha","巡查结果" : "xunguan"]
         for (index,model) in topArry.enumerated(){
             
             if index >= 4{

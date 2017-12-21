@@ -289,19 +289,19 @@ class YQSystemSelectionVC: UIViewController {
         if tap.tapIndex >= dataArray.count {
             
             //最后一个是显示的图标
-            // return
+             return
             
 //            // 调试视频巡查的内容
-            let Video = UIStoryboard.instantiateInitialViewController(name: "YQVideoPatrol")
-            let mainViewController   = Video
-            let drawerViewController = YQVideoDrawerViewController()
-            // 初始化drawer抽屉的情况
-            let drawerController     = KYDrawerController(drawerDirection: .right, drawerWidth: 300)
-            drawerController.mainViewController =  mainViewController
-            
-            drawerController.drawerViewController = drawerViewController
-
-            SJKeyWindow?.rootViewController = drawerController
+//            let Video = UIStoryboard.instantiateInitialViewController(name: "YQVideoPatrol")
+//            let mainViewController   = Video
+//            let drawerViewController = YQVideoDrawerViewController()
+//            // 初始化drawer抽屉的情况
+//            let drawerController     = KYDrawerController(drawerDirection: .right, drawerWidth: 300)
+//            drawerController.mainViewController =  mainViewController
+//            
+//            drawerController.drawerViewController = drawerViewController
+//
+//            SJKeyWindow?.rootViewController = drawerController
             
 //            // 调试视频结果的内容
 //            let videoResult = UIStoryboard.instantiateInitialViewController(name: "YQPatrolResult")

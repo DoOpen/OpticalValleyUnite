@@ -122,8 +122,8 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         //1.视频接口,巡查的接口
         self.videoButtonClick(self.videoButton)
         
-        //2.添加media
-        self.addMediaPlayerViewMethod()
+        //2.添加media,测试播放情况
+        // self.addMediaPlayerViewMethod()
         
         //3.接受通知类型
         setNotiesFunction()
@@ -154,7 +154,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         if insPointId != 0{
         
             var par = [String : Any]()
-            par["videoConfigId"] = "\(insPointId)"
+            par["equipmentId"] = "\(insPointId)"
                 
             HttpClient.instance.post(path: URLPath.getVideogetLive, parameters: par, success: { (respose) in
                 
@@ -162,7 +162,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                 let url = respose["interM3u8"] as? String
                 DispatchQueue.main.async {
                     //获取url 来进行创建
-                    
+                    self.addMediaPlayerViewMethod(urlString: url!)
                 }
                 
             }) { (error) in
@@ -234,9 +234,11 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
     }
     
     // MARK: - 添加流媒体的播放视频项
-    func addMediaPlayerViewMethod (){
+    func addMediaPlayerViewMethod (urlString : String){
         
-        let videoURL =  URL(string: "http://116.205.13.37:2020/34020000001320000002/live/34020000001320000002.m3u8")!
+        //  "http://116.205.13.37:2020/34020000001320000002/live/34020000001320000002.m3u8"
+        
+        let videoURL =  URL(string: urlString)!
         //定义一个视频播放器，通过本地文件路径初始化
         let player = AVPlayer(url: videoURL)
         let playerLayer = AVPlayerLayer(player: player)

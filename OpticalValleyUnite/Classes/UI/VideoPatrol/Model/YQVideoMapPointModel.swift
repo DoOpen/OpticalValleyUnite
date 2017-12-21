@@ -26,8 +26,10 @@ class YQVideoMapPointModel: NSObject {
     var latitude : String = ""
     
     //摄像头id
-    var videoConfigId : Int = 0
+//    var videoConfigId : Int = 0
     
+    //设备摄像头id
+    var equipmentId : Int = 0
     
     init(dict : [String : Any]) {
         super.init()

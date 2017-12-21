@@ -67,9 +67,9 @@ class YQVideoPatrolViewController: UIViewController {
                     
                     //取出响应的数据点模型
                     self.indoorVideoSelectModel = self.indoorVideoPointModel[intIndex]
-                    if  self.indoorVideoSelectModel?.videoConfigId != 0 {
+                    if  self.indoorVideoSelectModel?.equipmentId != 0 {
                         
-                        self.videoAllSelectParmeter["videoConfigId"] = self.indoorVideoSelectModel?.videoConfigId
+                        self.videoAllSelectParmeter["videoConfigId"] = self.indoorVideoSelectModel?.equipmentId
                     }
                     
                     self.videoAllSelectParmeter["insPointId"] = self.indoorVideoSelectModel?.insPointId
@@ -333,9 +333,9 @@ class YQVideoPatrolViewController: UIViewController {
             
         }else{//室外点,直接调用
             
-            if  mapViewModel.videoConfigId != 0 {
+            if  mapViewModel.equipmentId != 0 {
                 
-                videoAllSelectParmeter["videoConfigId"] = mapViewModel.videoConfigId
+                videoAllSelectParmeter["videoConfigId"] = mapViewModel.equipmentId
             }
 
             self.videoAllSelectParmeter["type"] = mapViewModel.type
@@ -587,7 +587,7 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
                 annotationView?.image = UIImage.init(name: "内摄像头-关")
                 break
             case 2://室外点
-                if nowAnnotation?.videoModel?.videoConfigId != 0 {
+                if nowAnnotation?.videoModel?.equipmentId != 0 {
                     
                     annotationView?.image = UIImage.init(name: "外摄像头—关")
                 }else{

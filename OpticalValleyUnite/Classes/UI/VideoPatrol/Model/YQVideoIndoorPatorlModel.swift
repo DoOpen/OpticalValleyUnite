@@ -17,7 +17,11 @@ class YQVideoIndoorPatorlModel: NSObject {
     var name : String = ""
     
     // 摄像头ID
-    var videoConfigId : Int = 0
+//    var videoConfigId : Int = 0
+    
+    // 摄像头设备ID
+    var equipmentId : Int = 0
+    
     
     init(dic : [String : Any]) {
         super.init()

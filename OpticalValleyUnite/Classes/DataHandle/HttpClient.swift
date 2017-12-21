@@ -130,7 +130,22 @@ extension HttpClient {
         var parameters = parameters ?? [String : Any]()
         parameters["token"] = UserDefaults.standard.object(forKey: Const.SJToken)
         
-        let allurl = URLPath.basicPath + urlString
+        var allurl = ""
+        
+        let bool3 = urlString.contains("getParkList")
+
+        if  bool3 {
+            
+            allurl = URLPath.newbasicPath + urlString
+            
+        }else{
+            
+            allurl = URLPath.basicPath + urlString
+            
+        }
+
+        
+        
         print("请求URL:" + allurl)
         print(parameters)
         

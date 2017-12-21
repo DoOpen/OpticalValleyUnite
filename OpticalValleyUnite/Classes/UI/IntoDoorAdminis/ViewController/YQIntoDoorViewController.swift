@@ -136,9 +136,8 @@ class YQIntoDoorViewController: UIViewController {
         }
     }
     func rightBarButtonClick(){
-        
-        
-        
+        //跳转扫描
+        self.scanBtnClick()
         
     }
     
@@ -327,7 +326,6 @@ class YQIntoDoorViewController: UIViewController {
         let model = self.dataArray?[(self.currentIndexP?.row)!]
         par["deviceBlueMac"] = model?.deviceBlueMac
     
-        
         params["data"] = par
         
         //swift 中的 格式化的固定写法语法!

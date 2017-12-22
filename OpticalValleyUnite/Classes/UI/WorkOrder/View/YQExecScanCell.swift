@@ -27,9 +27,28 @@ class YQExecScanCell: UITableViewCell {
     var indexPath : Int?
     
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    //数据模型
+    var model : ExecChild?{
+        didSet{
+            
+            if model?.value == "" {
+            
+                self.scanLabel.text = "请扫码核对工单信息"
+            
+            }else {
+                
+                if (model?.value.contains("未匹配"))!{
+                    
+                    self.scanLabel.textColor = UIColor.red
+                    
+                }else if (model?.value.contains("已匹配"))!{
+                    
+                    self.scanLabel.textColor = UIColor.green
+                }
+            }
+        }
     }
+
     
 
     @IBAction func scanButtonClick(_ sender: Any) {

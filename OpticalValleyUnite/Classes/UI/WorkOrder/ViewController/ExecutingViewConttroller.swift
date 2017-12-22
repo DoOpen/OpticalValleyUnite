@@ -461,6 +461,7 @@ class ExecutingViewConttroller: UIViewController {
                 arry.append(taskDic)
                 
             }
+        
             do {
                 
                 //Convert to Data
@@ -872,11 +873,13 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
         
             var cell = tableView.dequeueReusableCell(withIdentifier: "scanCell") as? YQExecScanCell
             
+            
             if cell == nil {
                 
                 cell = Bundle.main.loadNibNamed("YQExecScanCell", owner: nil, options: nil)?[0] as? YQExecScanCell
             }
             
+            cell?.model = model
             cell?.delegate = self
             cell?.indexPath = indexPath.row
     
@@ -1078,6 +1081,8 @@ extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCD
             
             let str = text.components(separatedBy: ":").last
             
+            let model = models[(currentSelectIndexPath?.section)!].childs[(currentSelectIndexPath?.row)!]
+            
             if let str = str{
                 
                 self.navigationController?.popViewController(animated: false)
@@ -1091,7 +1096,7 @@ extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCD
                     //代表的是同一设备
                     let cell = self.tableView.cellForRow(at: currentSelectIndexPath!) as! YQExecScanCell
                     cell.color = "green"
-                    
+                    model.value = "工单设备已匹配"
 //                    self.tableView.reloadRows(at: [currentSelectIndexPath!], with: .automatic)
                     
                 }else{
@@ -1099,7 +1104,7 @@ extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCD
                     //不同的设备类型
                     let cell = self.tableView.cellForRow(at: currentSelectIndexPath!) as! YQExecScanCell
                     cell.color = "red"
-                    
+                    model.value = "未匹配对应的设备"
 //                    self.tableView.reloadRows(at: [currentSelectIndexPath!], with: .automatic)
 
                 }

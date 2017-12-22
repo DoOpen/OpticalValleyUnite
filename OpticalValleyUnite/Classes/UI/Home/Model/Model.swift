@@ -961,8 +961,12 @@ class ExecChild: Object{
         }else if type == "2"{//type == "2" 文本框的内容情况
             
             dic["value"] = value
+            
+        }else if type == "x"{//type == "x" 扫码的执行的情况
+            
+            dic["value"] = value
         }
-        
+
         return dic
     }
     

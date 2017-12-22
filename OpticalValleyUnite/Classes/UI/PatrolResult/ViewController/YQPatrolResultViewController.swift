@@ -109,20 +109,24 @@ class YQPatrolResultViewController: UIViewController {
     
     }
     func leftBarButtonClick() {
-        //返回子系统选择的界面
-        //查看是否有缓存的数据
-        let data = UserDefaults.standard.object(forKey: Const.YQTotallData) as? NSArray
-        //跳转到子系统的选择界面(需要的是逻辑的判断) 如果是只有一条数据的话,直接调到登录界面
-        if (data?.count)! > 1{
-            
-            let systemVC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
-            SJKeyWindow?.rootViewController = systemVC
-            
-            
-        }else{// 跳转到登录界面
-            
-            LoginViewController.loginOut()
-        }
+//        //返回子系统选择的界面
+//        //查看是否有缓存的数据
+//        let data = UserDefaults.standard.object(forKey: Const.YQTotallData) as? NSArray
+//        //跳转到子系统的选择界面(需要的是逻辑的判断) 如果是只有一条数据的话,直接调到登录界面
+//        if (data?.count)! > 1{
+//            
+//            let systemVC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
+//            SJKeyWindow?.rootViewController = systemVC
+//            
+//            
+//        }else{// 跳转到登录界面
+//            
+//            LoginViewController.loginOut()
+//        }
+        
+        self.dismiss(animated: true, completion: nil)
+
+        
     }
     
     // MARK: - 上下拉的刷新的界面情况

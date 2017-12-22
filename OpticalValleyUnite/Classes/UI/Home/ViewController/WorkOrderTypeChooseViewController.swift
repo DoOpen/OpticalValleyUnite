@@ -53,13 +53,16 @@ class WorkOrderTypeChooseViewController: UIViewController {
     func getWorkTypeList(){
         HttpClient.instance.get(path: URLPath.getWorkTypeList, parameters: nil, success: { (response) in
             
+            //添加二级的工单的筛选的界面展示的问题点:
+            
             var temp = [WorkTypeModel]()
+            
             for dic in response as! Array<[String: Any]>{
                 let model = WorkTypeModel(parmart: dic)
                 temp.append(model)
             }
-            self.models = temp
             
+            self.models = temp
             
         }) { (error) in
             print(error)

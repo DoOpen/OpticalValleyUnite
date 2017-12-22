@@ -42,6 +42,13 @@ class WorkOrderViewController: UIViewController {
      */
     @IBOutlet weak var waitEvaluateBtn: UIButton!
     
+    /*
+     新增的 已处理的 按钮逻辑
+     */
+    @IBOutlet weak var alreadyProcessed: UIButton!
+    
+    
+    
     var siftVc: WorkOrderSiftViewController?
     var siftParmat: [String: Any]?
     var siftsiftParmat : [String : Any]?
@@ -68,7 +75,7 @@ class WorkOrderViewController: UIViewController {
         self.navigationItem.title = "我的工单"
     
         
-        statusBtnClick(waitProcessedBtn)
+        statusBtnClick(alreadyProcessed)
         addRefirsh()
 //        getWorkOrder(type: currentIndex,indexPage: 0)
         
@@ -217,18 +224,20 @@ class WorkOrderViewController: UIViewController {
         if type < array.count {
             
             parmat["STATUS"] = array[type]
+            
+        }else{
+        
+            let dic = ["待派发": 11,"待执行" : 22, "待评价": 31,"待接收": 21,"已处理": 7, "已接受": 5,"协助查看": 5]
+            let  string  = currentStatusBtn?.titleLabel?.text
+            
+            parmat["operateType"] = dic[string!]
+        
         }
         
-        let dic = ["待派发": 11,"待执行" : 22, "待评价": 31,"待接收": 21,"已处理": 7, "已接受": 5,"协助查看": 5]
-        let  string  = currentStatusBtn?.titleLabel?.text
-        
-        parmat["operateType"] = dic[string!]
-
         //添加默认的选择项目 筛选条件
         parmat["PARK_ID"] = getUserDefaultsProject()
         
-        
-        
+    
         SVProgressHUD.show(withStatus: "加载中...")
         
         HttpClient.instance.get(path: URLPath.getWorkunitList, parameters: parmat, success: { (response) in

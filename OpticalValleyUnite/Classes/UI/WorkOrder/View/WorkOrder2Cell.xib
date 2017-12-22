@@ -68,20 +68,23 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="武汉创意天地" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePb-QB-pcG">
-                                <rect key="frame" x="19" y="17" width="86" height="17"/>
+                                <rect key="frame" x="19" y="17" width="90" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="kBN-0K-dbw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_person" translatesAutoresizingMaskIntoConstraints="NO" id="l0e-NL-Ie9">
-                                <rect key="frame" x="100" y="18" width="14" height="14"/>
+                                <rect key="frame" x="115" y="18" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="14" id="Oel-Da-qY8"/>
                                     <constraint firstAttribute="height" constant="14" id="oIA-43-vbd"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王磊" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6E-99-Bd8">
-                                <rect key="frame" x="116" y="17" width="29" height="17"/>
+                                <rect key="frame" x="131" y="17" width="29" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -106,7 +109,7 @@
                             <constraint firstItem="q77-ly-gGf" firstAttribute="centerY" secondItem="nRA-QT-IzG" secondAttribute="centerY" id="409-iz-CZJ"/>
                             <constraint firstItem="q77-ly-gGf" firstAttribute="centerY" secondItem="GVy-yQ-zMa" secondAttribute="centerY" id="B5S-5G-SfW"/>
                             <constraint firstItem="ePb-QB-pcG" firstAttribute="centerY" secondItem="d1D-pB-5MX" secondAttribute="centerY" id="DRA-hP-di3"/>
-                            <constraint firstItem="j6E-99-Bd8" firstAttribute="centerX" secondItem="nRA-QT-IzG" secondAttribute="centerX" constant="-30" id="FvB-EA-mYF"/>
+                            <constraint firstItem="j6E-99-Bd8" firstAttribute="centerX" secondItem="nRA-QT-IzG" secondAttribute="centerX" constant="-15" id="FvB-EA-mYF"/>
                             <constraint firstItem="j6E-99-Bd8" firstAttribute="leading" secondItem="l0e-NL-Ie9" secondAttribute="trailing" constant="2" id="GU1-6o-RJ3"/>
                             <constraint firstItem="fdK-Ka-sLL" firstAttribute="top" secondItem="nRA-QT-IzG" secondAttribute="top" id="Gm9-Gx-FaF"/>
                             <constraint firstAttribute="trailing" secondItem="fdK-Ka-sLL" secondAttribute="trailing" id="Lp6-sv-89e"/>
@@ -207,7 +210,7 @@
                 <outlet property="typeBtn" destination="5VS-H5-BHA" id="U3p-NY-d7A"/>
                 <outlet property="workOrderIdLabel" destination="Yu9-gj-glD" id="t29-9Z-qNO"/>
             </connections>
-            <point key="canvasLocation" x="13.5" y="-1.5"/>
+            <point key="canvasLocation" x="-64" y="-19"/>
         </tableViewCell>
     </objects>
     <resources>

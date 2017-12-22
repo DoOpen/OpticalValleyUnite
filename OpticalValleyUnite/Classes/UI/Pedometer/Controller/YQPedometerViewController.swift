@@ -203,7 +203,6 @@ class YQPedometerViewController: UIViewController {
             
             //读取数据,字典转模型
             DispatchQueue.main.async {
-                
                 //设置项目排名
                 let project = "第" + "\(num1!)"  + "名"
                 let depart = "第" + "\(num2!)" + "名"
@@ -270,10 +269,12 @@ class YQPedometerViewController: UIViewController {
         parmat["date"] = date
         
         for (key,value) in dic{
+            
             parmat[key] = value
         }
         
         SVProgressHUD.show()
+        
         HttpClient.instance.post(path: URLPath.getRankPedometer, parameters: parmat, success: { (respose) in
             
             SVProgressHUD.dismiss()
@@ -283,7 +284,6 @@ class YQPedometerViewController: UIViewController {
             for dic in respose as! NSArray {
                 
                 temp.append(YQStepShowModel.init(dict: dic as! [String : Any]))
-            
             }
             
             if indexPage == 1{
@@ -307,9 +307,9 @@ class YQPedometerViewController: UIViewController {
 
         }) { (error) in
             
-            SVProgressHUD.showError(withStatus: "数据加载失败,请重新检查网络!")
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
+            SVProgressHUD.showError(withStatus: "数据加载失败,请重新检查网络!")
 
         }
         
@@ -385,6 +385,7 @@ extension YQPedometerViewController : UITableViewDelegate,UITableViewDataSource{
         cell?.delegate = self
         
         cell?.backgroundColor =  UIColor.clear
+        cell?.yesterdayImage.isHidden = true
         
         cell?.indepathrow = indexPath.row
         cell?.indexHeadImageHidde = true
@@ -425,22 +426,27 @@ extension YQPedometerViewController : YQStepStatisticsViewDelegate {
         var par = [String : Any]()
         
         if isZan {//点赞
-            par["type"] = 1
-        }else{//取消点赞
             par["type"] = 0
+            
+        }else{//取消点赞
+            par["type"] = 1
         }
         
         par["date"] = yesterday
         par["userid"] = self.rankData[indexPath].userid
         
-        
         //调用实现点赞的功能
         HttpClient.instance.post(path: URLPath.getPedometerZan, parameters: par, success: { (respose) in
             
+            var par = [String : Any]()
+            par["type"] = self.type
+            par["date"] = self.yesterday
+            
             //要求的是,重新的刷新所有的表格
-            self.getRankForAllData( date : self.yesterday)
+            self.getRankForAllData(dic : par)
             
         }) { (error) in
+            
             SVProgressHUD.showError(withStatus: "网络出错,点赞失败!")
         }
         

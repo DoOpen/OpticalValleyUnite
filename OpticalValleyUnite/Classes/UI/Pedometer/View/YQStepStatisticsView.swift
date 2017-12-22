@@ -34,6 +34,10 @@ class YQStepStatisticsView: UITableViewCell {
     
     @IBOutlet weak var helpLabel: UILabel!
     
+    @IBOutlet weak var yesterdayImage: UIImageView!
+    
+    
+    
     var delegate : YQStepStatisticsViewDelegate?
     
     // 显示开头排序图片的显示和隐藏

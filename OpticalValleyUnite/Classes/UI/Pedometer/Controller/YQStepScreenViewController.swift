@@ -221,6 +221,8 @@ extension YQStepScreenViewController : UITableViewDataSource,UITableViewDelegate
         cell?.indepathrow = indexPath.row
         cell?.backgroundColor =  UIColor.clear
         cell?.type = self.type
+        cell?.helpButton.isHidden = true
+        cell?.helpLabel.textColor = UIColor.black
         
         cell?.model = self.rankData[indexPath.row]
         

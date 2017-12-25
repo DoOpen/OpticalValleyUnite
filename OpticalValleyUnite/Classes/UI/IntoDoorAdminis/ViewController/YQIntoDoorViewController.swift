@@ -52,20 +52,32 @@ class YQIntoDoorViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+    
         //设置蓝牙开门的情况
         self.initBluetooth = (rfmsessionClass?.setup(withWhitelist: nil, delegate: self))!
         
         //获取项目parkID的情况
         let _ = setUpProjectNameLable()
         
+        if self.parkID == "" {
+            
+            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+            navigationController?.pushViewController(project, animated: true)
+        }
+        
+        
         addLeftRightBarButtonFunction()
         
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let _ = setUpProjectNameLable()
         
         //默认的是选中第二项 二维码扫描的图片
         self.allButtonClickEvent(self.openQRCode)
-        
-    
     }
     
     

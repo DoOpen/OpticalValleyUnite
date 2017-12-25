@@ -100,7 +100,11 @@ class SlotViewController: UIViewController {
         
         let url = URLPath.getPersonPosList
 
+        SVProgressHUD.show()
+        
         HttpClient.instance.get(path: url, parameters: parmat, success: { (response) in
+            
+            SVProgressHUD.dismiss()
             
             var temp = [SignModel]()
             

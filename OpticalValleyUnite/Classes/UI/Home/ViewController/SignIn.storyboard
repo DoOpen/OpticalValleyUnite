@@ -309,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n1N-1a-cH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6401" y="143"/>
+            <point key="canvasLocation" x="6315" y="505"/>
         </scene>
         <!--2017.01.02-->
         <scene sceneID="1fD-eT-VF8">
@@ -360,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6pU-Zq-stY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7029.6000000000004" y="142.57871064467767"/>
+            <point key="canvasLocation" x="7241" y="130"/>
         </scene>
     </scenes>
     <resources>
@@ -370,6 +370,6 @@
         <image name="time" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Uao-uk-oNl"/>
+        <segue reference="XUb-Ru-3Ob"/>
     </inferredMetricsTieBreakers>
 </document>

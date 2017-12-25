@@ -35,17 +35,23 @@ class SignInListViewController: UIViewController {
             
             self?.getData(dateStr)
             self?.title = dateStr
+            
         }
+        
     }
     
     func getData(_ date: String){
+        
         var parmat = [String: Any]()
         parmat["DATE"] = date
         
         let url = URLPath.getPersonSinList
         
+        SVProgressHUD.show()
         
         HttpClient.instance.get(path: url, parameters: parmat, success: { (response) in
+            
+            SVProgressHUD.dismiss()
             
             var temp = [SignModel]()
             

@@ -36,16 +36,40 @@ class ExecuteDetailSubImageCell: UITableViewCell {
                 if model.imageValue != "" {
                     
                     let arry = model.imageValue.components(separatedBy: ",")
+                    
                     let imagesUrls = arry.map{ (url) -> String in
+                        
                         let basicPath = URLPath.systemSelectionURL
-                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
-                        return imageValue
+                        
+                        if url.contains("http") {
+                            
+                            return url
+                            
+                        }else{
+                        
+                            let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                            
+                            return imageValue
+                        
+                        }
+                        
                     }
                     
                     if arry.isEmpty {//数组为 空的情况
+                        
                         let basicPath = URLPath.systemSelectionURL
-                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + model.imageValue
-                        showImageView.showImageUrls([imageValue])
+                        
+                        if model.imageValue.contains("http") {
+                            
+                            showImageView.showImageUrls([model.imageValue])
+                            
+                        }else{
+                            
+                            let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + model.imageValue
+                            
+                            showImageView.showImageUrls([imageValue])
+                            
+                        }
                         
                     }else{// 数组不为 空的情况
                         
@@ -54,6 +78,7 @@ class ExecuteDetailSubImageCell: UITableViewCell {
                     
                     
                     showImageView.didClickHandle = { _,image in
+                        
                         CoverView.show(image: image)
                         
                     }

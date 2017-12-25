@@ -214,11 +214,23 @@ class WorkOrderDetailsCell: UITableViewCell {
                 let arry = model.picture.components(separatedBy: ",")
                 
                 for str in arry{
-                    let basicPath = URLPath.systemSelectionURL
-                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + str
                     
-                    let photo = Photo(urlString: imageValue)
-                    photos.append(photo)
+                    let basicPath = URLPath.systemSelectionURL
+                    
+                    if str.contains("http") {
+                        
+                        let photo = Photo(urlString: str)
+                        photos.append(photo)
+
+                    }else{
+                    
+                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + str
+                    
+                        let photo = Photo(urlString: imageValue)
+                        photos.append(photo)
+                    }
+                    
+                    
                 }
                 
                 let pb = PhotoBrowser(photos: photos, currentIndex: 0)

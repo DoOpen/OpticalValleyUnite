@@ -44,9 +44,19 @@ class PersonDetailViewController: UITableViewController{
                 if model.picture != ""{
                     
                     let basicPath = URLPath.systemSelectionURL
-                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + model.picture
                     
-                    photoBtn.kf.setBackgroundImage(with: URL(string:imageValue), for: .normal)
+                    if model.picture.contains("http"){
+                        
+                        photoBtn.kf.setBackgroundImage(with: URL(string:model.picture), for: .normal)
+                        
+                    }else{
+                        
+                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + model.picture
+                        
+                        photoBtn.kf.setBackgroundImage(with: URL(string:imageValue), for: .normal)
+                        
+                    }
+                    
                     
                     //重新要求 来进行的设置 user 的图片
                     let user = User.currentUser()
@@ -72,6 +82,7 @@ class PersonDetailViewController: UITableViewController{
         HttpClient.instance.get(path: URLPath.getPersonInfo, parameters: nil, success: { (response) in
             
             if let dic = (response as? Array<[String: Any]>)?.first{
+                
                 self.model = PersonInfo(parmart: dic)
                 
             }
@@ -94,6 +105,7 @@ class PersonDetailViewController: UITableViewController{
             }
             
         }, viewController: self)
+        
     }
 
     // MARK: - 更新后台的图片的接口

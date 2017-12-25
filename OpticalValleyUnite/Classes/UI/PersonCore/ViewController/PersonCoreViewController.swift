@@ -60,6 +60,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             if let url = user.avatar,url != ""{
                 
+                
                 if url.contains("http") {
                     
                     photoImageView.kf.setImage(with: URL(string: url))
@@ -85,6 +86,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         var projectName  = ""
         
         if dic != nil {
+            
             projectName = dic?["PARK_NAME"] as! String
         }else{
         
@@ -182,7 +184,6 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
                 
             })
         }
-        
     }
 
     

@@ -133,8 +133,10 @@ extension HttpClient {
         var allurl = ""
         
         let bool3 = urlString.contains("getParkList")
+        
+        let bool1 = urlString.contains("getPersonInfo")
 
-        if  bool3 {
+        if  bool1 || bool3 {
             
             allurl = URLPath.newbasicPath + urlString
             

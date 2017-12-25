@@ -243,6 +243,7 @@ class YQIntoDoorViewController: UIViewController {
                 
             }) { (error) in
                 
+                print(error)
                 SVProgressHUD.showError(withStatus: "数据获取失败,请检查网络连接!")
             }
         
@@ -308,6 +309,7 @@ class YQIntoDoorViewController: UIViewController {
             
         }) { (error) in
             
+            print(error)
             SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
             
         }
@@ -363,6 +365,7 @@ class YQIntoDoorViewController: UIViewController {
             
         }) { (error) in
             
+            print(error)
             SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
             
         }
@@ -467,7 +470,7 @@ class YQIntoDoorViewController: UIViewController {
            
             
         }) { (error) in
-            
+            print(error)
             SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
             
         }
@@ -510,6 +513,7 @@ class YQIntoDoorViewController: UIViewController {
             
         }) { (error) in
             
+            print(error)
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
     

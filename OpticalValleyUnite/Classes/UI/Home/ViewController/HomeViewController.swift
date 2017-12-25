@@ -447,11 +447,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     //MARK: - 设置定位的方法;
     func setUpLocation() {
+        
         locationManager.delegate = self
         locationManager.distanceFilter = KDistence
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.locatingWithReGeocode = true
-        
+//        locationManager.locationTimeout =
         
         if Double(UIDevice.current.systemVersion.components(separatedBy: ".").first!)! >= 9.0{
             locationManager.allowsBackgroundLocationUpdates = true

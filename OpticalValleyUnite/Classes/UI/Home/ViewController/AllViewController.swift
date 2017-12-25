@@ -101,7 +101,6 @@ class AllViewController: UIViewController {
         case "日志":
             //测试日志模块
             let journa = UIStoryboard.instantiateInitialViewController(name: "YQJournal")
-            
             self.present(journa, animated: true, completion: nil)
             
         case "计步器":
@@ -220,7 +219,6 @@ extension AllViewController :SGScanningQRCodeVCDelegate{
         }else{
             
             self.alert(message: "非可识别二维码!")
-            
         }
     }
     

@@ -98,7 +98,7 @@ class YQDynamicPwdViewController: UIViewController {
             
         }) { (error) in
             
-            SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
             
         }
         

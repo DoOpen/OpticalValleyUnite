@@ -97,6 +97,11 @@ class YQVideoPatrolViewController: UIViewController {
         super.viewDidLoad()
         //1. 添加leftRight
         addLeftRightBarButtonFunction()
+        
+        //获取项目parkID的情况
+        let _ = setUpProjectNameLable()
+      
+        
         //2. 获取map数据
         mapViewSetup()
         makeMapLocationData()
@@ -354,6 +359,30 @@ class YQVideoPatrolViewController: UIViewController {
         
         //只传token 不要什麽东西
         SVProgressHUD.show()
+        
+        //要求的项目ID是必传的 情况!
+        var par = [String : Any]()
+        par["parkId"] = self.parkId
+        
+        if self.parkId == "" {
+            
+//            self.alert(message: <#T##String#>, doneBlock: <#T##((UIAlertAction) -> ())##((UIAlertAction) -> ())##(UIAlertAction) -> ()#>)
+            
+            self.alert(message: "请选择项目!", doneBlock: { (action) in
+                
+                DispatchQueue.main.async {
+                    
+                    if self.parkId == "" {
+                        
+                        let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+                        self.navigationController?.pushViewController(project, animated: true)
+                    }
+                }
+
+                
+            })
+            return
+        }
         
         HttpClient.instance.post(path: URLPath.getVideoPatrolCheckBegin, parameters: nil, success: { (respose) in
             

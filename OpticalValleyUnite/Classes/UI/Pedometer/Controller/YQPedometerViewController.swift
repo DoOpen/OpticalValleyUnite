@@ -35,6 +35,8 @@ class YQPedometerViewController: UIViewController {
     var currentIndex  = 1
     var type = 1 //默认的是获取集团的 总体排名
     
+    var parkId = ""
+    
     /// rank模型的数据
     var rankData = [YQStepShowModel](){
         
@@ -76,12 +78,16 @@ class YQPedometerViewController: UIViewController {
         //获取集团和 项目版的参数
         let isgroup = UserDefaults.standard.object(forKey: Const.YQIs_Group) as? Int ?? -1
         if isgroup == 2 || isgroup == -1 {//集团版
+            
             type = 1
             
         }else{//项目版
             
             type = 2
         }
+        
+        //获取项目parkID的情况
+        let _ = setUpProjectNameLable()
 
         
         //1.0设置leftbar的返回界面
@@ -187,6 +193,26 @@ class YQPedometerViewController: UIViewController {
         }
     }
     
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            
+            projectName = dic?["PARK_NAME"] as! String
+            self.parkId = dic?["ID"] as! String
+            
+        }else{
+            
+            projectName = "请选择默认项目"
+        }
+        return projectName
+    }
+
+    
     
     // MARK: - 获取运动的当前步数的方法
     func getStepDataForService(){
@@ -262,7 +288,6 @@ class YQPedometerViewController: UIViewController {
     func getRankForAllData(indexPage : Int = 1 , date : String = "", dic : [String : Any]  = [String: Any]()){
         
         var parmat = [String: Any]()
-        
         parmat["pagesize"] = 20
         parmat["pageno"] = indexPage
         
@@ -325,8 +350,15 @@ class YQPedometerViewController: UIViewController {
             var par = [String : Any]()
             par["type"] = self.type
             par["date"] = self.yesterday
-            self.stepFunctionDidStart()
-            self.getStepDataForService()
+            if self.type == 2 {
+                
+                par["projectid"] = self.parkId
+            }
+
+            
+//            self.stepFunctionDidStart()
+//            
+//            self.getStepDataForService()
             
             self.getRankForAllData(indexPage: 1 ,dic : par)
             
@@ -338,6 +370,11 @@ class YQPedometerViewController: UIViewController {
             var par = [String : Any]()
             par["type"] = self.type
             par["date"] = self.yesterday
+
+            if self.type == 2 {
+                
+                par["projectid"] = self.parkId
+            }
 
             self.getRankForAllData(indexPage: self.currentIndex + 1 ,dic : par)
             
@@ -406,10 +443,15 @@ extension YQPedometerViewController : YQStepHeadViewDelegate {
         self.type = button.tag
         
         var dict = [String : Any]()
-        dict["type"] = self.type
+        dict["type"] = button.tag
         dict["pagesize"] = 20
         dict["pageno"] = currentIndex
         dict["date"] = yesterday
+        
+        if button.tag == 2 {
+            
+            dict["projectid"] = self.parkId
+        }
         
         self.getRankForAllData(dic: dict)
         

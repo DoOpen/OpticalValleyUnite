@@ -34,10 +34,10 @@ class YQIntoDoorViewController: UIViewController {
     
     /// 定义的模型的数组
     var dataArray : [YQBluetooth]?{
+        
         didSet{
             
             self.tableView.reloadData()
-        
         }
     
     }
@@ -65,19 +65,26 @@ class YQIntoDoorViewController: UIViewController {
             navigationController?.pushViewController(project, animated: true)
         }
         
-        
         addLeftRightBarButtonFunction()
         
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         
         let _ = setUpProjectNameLable()
         
-        //默认的是选中第二项 二维码扫描的图片
-        self.allButtonClickEvent(self.openQRCode)
+        if self.currentSelectButton != nil{
+            
+            self.allButtonClickEvent(self.currentSelectButton!)
+            
+        }else{
+            
+            //默认的是选中第二项 二维码扫描的图片
+            self.allButtonClickEvent(self.openQRCode)
+        }
+        
     }
     
     
@@ -92,6 +99,7 @@ class YQIntoDoorViewController: UIViewController {
             case 0://蓝牙开门
                 bluetoothOpenTheDoor()
                 break
+            
             case 1:
                 getDoorByBGQrCode()
                 break
@@ -313,7 +321,7 @@ class YQIntoDoorViewController: UIViewController {
                 let pwdVC = YQDynamicPwdViewController.init(nibName: "YQDynamicPwdViewController", bundle: nil)
                 pwdVC.model = model
                 pwdVC.dataDict = dict
-                
+                pwdVC.parkID = self.parkID
                 
                 self.navigationController?.pushViewController(pwdVC, animated: true)
                 
@@ -521,8 +529,6 @@ class YQIntoDoorViewController: UIViewController {
             
             self.dataArray = temp
 
-            
-            
         }) { (error) in
             
             print(error)

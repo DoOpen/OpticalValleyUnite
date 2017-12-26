@@ -28,6 +28,8 @@ class YQStepScreenViewController: UIViewController {
     var currentIndex  = 1
     var type = -1
     
+    var parkID = ""
+    
     lazy var yesterday : String = { () -> String
         in
         
@@ -57,7 +59,7 @@ class YQStepScreenViewController: UIViewController {
         super.viewDidLoad()
         
         self.automaticallyAdjustsScrollViewInsets = false
-        
+        let _ = setUpProjectNameLable()
         
         //1.默认选择第一个button
         switch type {
@@ -107,6 +109,13 @@ class YQStepScreenViewController: UIViewController {
         
         var par = [String : Any]()
         par["type"] = selectTag
+        
+        
+        if selectTag == 2 {
+            
+            par["projectid"] = self.parkID
+        }
+        
         
         getRankForAllData( date: yesterday, dic: par)
         
@@ -175,6 +184,26 @@ class YQStepScreenViewController: UIViewController {
         
     }
     
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            
+            projectName = dic?["PARK_NAME"] as! String
+            self.parkID = dic?["ID"] as! String
+            
+        }else{
+            
+            projectName = "请选择默认项目"
+        }
+        return projectName
+    }
+
+    
     // MARK: - 上下拉的刷新的界面情况
     func addRefirsh(){
         
@@ -184,6 +213,11 @@ class YQStepScreenViewController: UIViewController {
             par["type"] = self.type
             par["date"] = self.yesterday
             
+            if self.type == 2 {
+                
+                par["projectid"] = self.parkID
+            }
+
             self.getRankForAllData(indexPage: 1,dic : par)
             
         })
@@ -193,7 +227,13 @@ class YQStepScreenViewController: UIViewController {
             var par = [String : Any]()
             par["type"] = self.type
             par["date"] = self.yesterday
+            
+            if self.type == 2 {
+                
+                par["projectid"] = self.parkID
+            }
 
+            
             self.getRankForAllData(indexPage: self.currentIndex + 1,dic : par)
         })
     

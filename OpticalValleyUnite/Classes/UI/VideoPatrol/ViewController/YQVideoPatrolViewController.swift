@@ -379,8 +379,8 @@ class YQVideoPatrolViewController: UIViewController {
                     }
                 }
 
-                
             })
+            
             return
         }
         

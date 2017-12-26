@@ -22,14 +22,26 @@ class YQExecScanCell: UITableViewCell {
     
     @IBOutlet weak var scanLabel: UILabel!
     
+    @IBOutlet weak var indexLabel: UILabel!
+    
+    
     weak var delegate : YQExecScanCellDelegate?
     
-    var indexPath : Int?
+    var indexPath : Int?{
+        
+        didSet{
+            
+//            self.indexLabel.text = "\(indexPath)"
+        }
+        
+    }
     
     
     //数据模型
     var model : ExecChild?{
         didSet{
+            
+            self.indexLabel.text = model?.name
             
             if model?.value == "" {
             

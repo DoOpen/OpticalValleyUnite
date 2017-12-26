@@ -35,15 +35,25 @@
                             <action selector="scanButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vu3-vf-hu3"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEB-cu-12d">
+                        <rect key="frame" x="10" y="0.0" width="328" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="fLP-WG-abA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="0PA-2n-Q2d"/>
                     <constraint firstItem="fLP-WG-abA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BYz-YU-qZq"/>
+                    <constraint firstAttribute="trailing" secondItem="aEB-cu-12d" secondAttribute="trailing" constant="5" id="DTO-Xg-JDf"/>
                     <constraint firstAttribute="trailing" secondItem="qwd-bT-bY6" secondAttribute="trailing" constant="30" id="Sgk-LU-jZu"/>
+                    <constraint firstItem="aEB-cu-12d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Sr9-76-ONL"/>
                     <constraint firstItem="qwd-bT-bY6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ul6-Xa-cbW"/>
+                    <constraint firstItem="aEB-cu-12d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="yIR-q3-P2i"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="indexLabel" destination="aEB-cu-12d" id="pqc-4B-94d"/>
                 <outlet property="scanButton" destination="qwd-bT-bY6" id="3E8-MA-2AK"/>
                 <outlet property="scanLabel" destination="fLP-WG-abA" id="bPr-55-Fjl"/>
             </connections>

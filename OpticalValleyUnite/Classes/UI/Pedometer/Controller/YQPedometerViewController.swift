@@ -322,7 +322,6 @@ class YQPedometerViewController: UIViewController {
                 if temp.count > 0{
                     
                     self.currentIndex = indexPage
-                    
                     self.rankData.append(contentsOf: temp)
                     
                 }
@@ -343,7 +342,6 @@ class YQPedometerViewController: UIViewController {
     
     // MARK: - 上下拉的刷新的界面情况
     func addRefirsh(){
-        
         
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             

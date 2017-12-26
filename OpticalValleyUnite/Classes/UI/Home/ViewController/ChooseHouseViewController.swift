@@ -226,6 +226,7 @@ extension ChooseHouseViewController: UITableViewDelegate, UITableViewDataSource{
             
             let index = indexPath.row
             if selectParkHandel != nil{
+                
                 selectParkHandel!(currentParkInfoModel[index])
             }
 
@@ -241,16 +242,16 @@ extension ChooseHouseViewController: UITableViewDelegate, UITableViewDataSource{
                 
                 let index = indexPath.row
                 if selectParkHandel != nil{
-                    selectParkHandel!(currentParkInfoModel[index])
+                    
+                    selectParkHandel!(currentParkInfoModel[index - 1])
+                    
                 }
 
-                
                 tableView.reloadData()
             }
             
             currentLevel += 1
 
-            
         }else{
             
             currentSelectCell?.setSelectCellClick(false)

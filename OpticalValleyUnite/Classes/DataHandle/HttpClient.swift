@@ -46,7 +46,7 @@ extension HttpClient {
         let bool1 = urlString.contains("logout")
         let bool2 = urlString.contains("updatepwd")
         let bool3 = urlString.contains("getParkList")
-        let bool4 = urlString.contains("getParkInfoById")
+      
         let bool5 = urlString.contains("getDeptList")
         let bool6 = urlString.contains("getModules")
 //        let bool7 = urlString.contains("getModuleAndAppRes") //子系统的接口调试ok
@@ -59,7 +59,7 @@ extension HttpClient {
         let bool15 = urlString.contains("savePersonIcon")
         
         
-        if bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool8 || bool10 || bool11 || bool12 || bool13 || bool14 || bool15{
+        if bool1 || bool2 || bool3 || bool5 || bool6 || bool8 || bool10 || bool11 || bool12 || bool13 || bool14 || bool15{
             
             allurl = URLPath.newbasicPath + urlString
             
@@ -131,14 +131,14 @@ extension HttpClient {
         parameters["token"] = UserDefaults.standard.object(forKey: Const.SJToken)
         
         var allurl = ""
-        
+        let bool4 = urlString.contains("getParkInfoById")
         let bool3 = urlString.contains("getParkList")
         
         let bool1 = urlString.contains("getPersonInfo")
         
         let bool2 = urlString.contains("getPersonPosList")
 
-        if  bool1 || bool3 || bool2 {
+        if  bool1 || bool3 || bool2 || bool4{
             
             allurl = URLPath.newbasicPath + urlString
             

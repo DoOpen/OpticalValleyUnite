@@ -31,7 +31,7 @@ class YQPatrolItemWeatherViewController: UIViewController {
     
     @IBOutlet weak var addImageButton: UIButton!
     
-    @IBOutlet weak var addImageView: SJAddView!
+    @IBOutlet weak var addImageView: YQAddView!
     
     @IBOutlet weak var remarkView: SJTextView!
     
@@ -59,6 +59,9 @@ class YQPatrolItemWeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.addImageView.superVC = self
+        
         //设置remarkView
         self.remarkView.placeHolder = "巡查意见"
         

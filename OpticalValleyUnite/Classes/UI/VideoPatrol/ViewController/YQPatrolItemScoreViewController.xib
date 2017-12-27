@@ -140,13 +140,13 @@
                                     <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPy-RI-zAb">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPy-RI-zAb">
                                     <rect key="frame" x="113" y="143" width="120" height="120"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="h1L-Ff-igB"/>
                                         <constraint firstAttribute="height" constant="120" id="yAP-rv-Kss"/>
                                     </constraints>
-                                    <state key="normal" backgroundImage="插入图片"/>
+                                    <state key="normal" image="插入图片"/>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eu-1T-pba">
                                     <rect key="frame" x="15" y="287" width="40" height="46"/>
@@ -233,7 +233,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Aa-Ww-Z7F" customClass="SJAddView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Aa-Ww-Z7F" customClass="YQAddView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                     <rect key="frame" x="55" y="343" width="324" height="80"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>

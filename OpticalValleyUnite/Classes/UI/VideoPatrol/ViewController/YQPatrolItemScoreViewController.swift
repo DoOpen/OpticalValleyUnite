@@ -33,7 +33,7 @@ class YQPatrolItemScoreViewController: UIViewController {
     
     @IBOutlet weak var scoreLabel: UILabel!
     
-    @IBOutlet weak var addImageView: SJAddView!
+    @IBOutlet weak var addImageView: YQAddView!
     
     @IBOutlet weak var textView: SJTextView!
     
@@ -73,6 +73,8 @@ class YQPatrolItemScoreViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.addImageView.superVC = self
         
         self.constraintHeight.constant = 800
 //        self.scrollVIEW.contentSize = CGSize.init(width: 0, height: self.constraintHeight.constant)

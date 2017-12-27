@@ -105,6 +105,7 @@
 		2F5E8C541F595D9600007717 /* YQPartDataFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5E8C531F595D9600007717 /* YQPartDataFooterCell.swift */; };
 		2F5E8C561F595F7000007717 /* YQPartDataAll.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5E8C551F595F7000007717 /* YQPartDataAll.xib */; };
 		2F5E8C581F595FED00007717 /* YQPartDataSelect.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5E8C571F595FED00007717 /* YQPartDataSelect.xib */; };
+		2F5F9ABC1FF3ADCE00630271 /* YQAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F9ABB1FF3ADCE00630271 /* YQAddView.swift */; };
 		2F63436C1F9EE5D6005F930A /* AnimatedAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63436B1F9EE5D6005F930A /* AnimatedAnnotation.m */; };
 		2F63436F1F9F4963005F930A /* AnimatedAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63436E1F9F4963005F930A /* AnimatedAnnotationView.m */; };
 		2F648DAD1F57A2DC006D51D3 /* PartsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F648DAC1F57A2DC006D51D3 /* PartsModel.swift */; };
@@ -432,6 +433,7 @@
 		2F5E8C531F595D9600007717 /* YQPartDataFooterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataFooterCell.swift; sourceTree = "<group>"; };
 		2F5E8C551F595F7000007717 /* YQPartDataAll.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartDataAll.xib; sourceTree = "<group>"; };
 		2F5E8C571F595FED00007717 /* YQPartDataSelect.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartDataSelect.xib; sourceTree = "<group>"; };
+		2F5F9ABB1FF3ADCE00630271 /* YQAddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQAddView.swift; sourceTree = "<group>"; };
 		2F63436A1F9EE5D6005F930A /* AnimatedAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedAnnotation.h; sourceTree = "<group>"; };
 		2F63436B1F9EE5D6005F930A /* AnimatedAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedAnnotation.m; sourceTree = "<group>"; };
 		2F63436D1F9F4963005F930A /* AnimatedAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedAnnotationView.h; sourceTree = "<group>"; };
@@ -1360,6 +1362,7 @@
 				4BD4B9201E272EA600AE2BC9 /* SJNavigationController.swift */,
 				4BD4B9211E272EA600AE2BC9 /* SJTabBarViewController.swift */,
 				4BBBEC9D1E2CB34500F60313 /* SJAddView.swift */,
+				2F5F9ABB1FF3ADCE00630271 /* YQAddView.swift */,
 				4B751BD21E5B301C00C0CEC0 /* AddScrollerView.swift */,
 				4BE9225A1EE6993000FDEFE1 /* ShowImageView.swift */,
 				4B429B071F4AC3A000381F3F /* ShowImagesView.swift */,
@@ -2098,6 +2101,7 @@
 				4B3078111E2A136600FB4007 /* MyStatisticsViewController.swift in Sources */,
 				2F94A2891F73B9D800455162 /* YQFalsePositiveView.swift in Sources */,
 				4B8EE7761F17047400A59F8D /* WorkOrderCell.swift in Sources */,
+				2F5F9ABC1FF3ADCE00630271 /* YQAddView.swift in Sources */,
 				2FEB0E871F6E710B0002DEE8 /* YQFalsePositivesVC.swift in Sources */,
 				4BD4B94A1E272EA600AE2BC9 /* SJTabBarViewController.swift in Sources */,
 				2FC1674F1F90A840001CEACD /* YQFilterJournalViewController.swift in Sources */,

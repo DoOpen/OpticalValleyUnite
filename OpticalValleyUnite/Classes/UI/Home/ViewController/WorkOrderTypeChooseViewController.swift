@@ -51,7 +51,7 @@ class WorkOrderTypeChooseViewController: UIViewController {
         projectTagsView.allowsMultipleSelection = false
         projectTagsView.delegate = self
         
-        //projectTagsView.scrollsHorizontally = true
+//        projectTagsView.scrollsHorizontally = true
         
         getWorkTypeList()
         
@@ -65,6 +65,8 @@ class WorkOrderTypeChooseViewController: UIViewController {
         deviceTagsView.lineSpacing = 20
         deviceTagsView.interitemSpacing = 20
         deviceTagsView.allowsMultipleSelection = false
+//        deviceTagsView.scrollsHorizontally = true
+        
 //        for statu in status {
 //            deviceTagsView.addTag(statu)
 //        }

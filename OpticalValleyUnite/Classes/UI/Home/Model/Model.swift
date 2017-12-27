@@ -822,11 +822,12 @@ class ExecSectionModel: Object{
                                     
                                     if stringIndex > 0 {
                                         
-                                        
-                                        model.value = model.value + ",/" + array[stringIndex]
+                                        model.value = model.value + "," + array[stringIndex]
                                     }
                                 }
-                            
+                                
+                                
+                                
                             }else{
                                 
                                 if let text = arry3[index]["value"] as? String{//文本text的数据

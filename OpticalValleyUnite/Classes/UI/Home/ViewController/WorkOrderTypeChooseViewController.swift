@@ -131,7 +131,6 @@ extension WorkOrderTypeChooseViewController : RKTagsViewDelegate{
     func tagsView(_ tagsView: RKTagsView, shouldSelectTagAt index: Int) -> Bool {
         
         self.deviceTagsView.removeAllTags()
-        
         let modelArray = models[index].nodes
         
         if modelArray != nil {

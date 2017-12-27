@@ -280,8 +280,7 @@ class ExecutingViewConttroller: UIViewController {
             
                 parmat["partsList[" + "\(indexxxxx)" + "].amount"] = tempModel.partNum
             }
-        
-        
+    
         }
         
         
@@ -303,8 +302,6 @@ class ExecutingViewConttroller: UIViewController {
                 
                 self.tableView.reloadData()
                 //查看模型的转变的情况!
-                
-        
             }
 
         }) { (error) in

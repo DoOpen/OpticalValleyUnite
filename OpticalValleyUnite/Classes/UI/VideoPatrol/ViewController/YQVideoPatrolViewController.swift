@@ -684,6 +684,8 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
             polylineRenderer.loadStrokeTextureImage(UIImage.init(named: "arrowTexture"))
          */
         
+//        self.mapView.remove(overlay)
+        
         if overlay.isKind(of: MAPolyline.self) {
             
             let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)

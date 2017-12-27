@@ -280,7 +280,7 @@ extension YQResultMapViewController : MAMapViewDelegate {
          */
         
         //重置渲染的情况
-        self.mapView.remove(overlay)
+//        self.mapView.remove(overlay)
         
         if overlay.isKind(of: MAPolyline.self) {
             

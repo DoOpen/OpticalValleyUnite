@@ -146,7 +146,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/Lib/SJKit/SJAddView.swift"
-                  timestampString = "536080961.483348"
+                  timestampString = "536082669.173602"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "115"
@@ -161,7 +161,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/Lib/SJKit/SJAddView.swift"
-                  timestampString = "536080961.485641"
+                  timestampString = "536082669.175602"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "117"
@@ -194,7 +194,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/Lib/SJKit/SJAddView.swift"
-                  timestampString = "536080961.491078"
+                  timestampString = "536082669.183901"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "119"
@@ -209,108 +209,12 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/Lib/SJKit/SJAddView.swift"
-                  timestampString = "536080961.493355"
+                  timestampString = "536082669.188168"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "119"
                   endingLineNumber = "119"
                   offsetFromSymbolStart = "252">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQPatrolItemScoreViewController.swift"
-            timestampString = "536072151.38822"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
-            landmarkName = "PatrolBottomNextViewSaveAndNext()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQPatrolItemScoreViewController.(PatrolBottomNextViewSaveAndNext () -&gt; ()).(closure #2)"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQPatrolItemScoreViewController.swift"
-                  timestampString = "536080961.498506"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "286"
-                  endingLineNumber = "286"
-                  offsetFromSymbolStart = "388">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQPatrolItemScoreViewController.(PatrolBottomNextViewSaveAndNext () -&gt; ()).(closure #2).(closure #1)"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQPatrolItemScoreViewController.swift"
-                  timestampString = "536080961.500776"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQPatrolItemWeatherViewController.swift"
-            timestampString = "536072294.012609"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "PatrolBottomNextViewSaveAndNext()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQPatrolItemWeatherViewController.(PatrolBottomNextViewSaveAndNext () -&gt; ()).(closure #2).(closure #1)"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQPatrolItemWeatherViewController.swift"
-                  timestampString = "536080961.506136"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "254"
-                  endingLineNumber = "254"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQPatrolItemWeatherViewController.(PatrolBottomNextViewSaveAndNext () -&gt; ()).(closure #2).(closure #1).(implicit closure #1)"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQPatrolItemWeatherViewController.swift"
-                  timestampString = "536080961.508405"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "254"
-                  endingLineNumber = "254"
-                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>

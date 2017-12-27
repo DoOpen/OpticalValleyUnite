@@ -48,7 +48,7 @@ class ReportListViewController: UIViewController {
             SVProgressHUD.dismiss()
             
             var temp = [WorkOrderModel]()
-            for dic in response["list"] as! Array<[String: Any]> {
+            for dic in response["data"] as! Array<[String: Any]> {
                 let model = WorkOrderModel(parmart: dic)
                 temp.append(model)
             }

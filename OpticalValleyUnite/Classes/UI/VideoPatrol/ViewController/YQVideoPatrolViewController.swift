@@ -433,7 +433,7 @@ class YQVideoPatrolViewController: UIViewController {
                     //界面跳转,数据的参数的传递!(跳转到视频巡查的路线界面)
                     SJPickerView.show(withDataArry: array , didSlected: { (indexRow) in
                         
-                       self.videoAllSelectParmeter["c"] = idArray[index + 1]
+                       self.videoAllSelectParmeter["pointType"] = idArray[indexRow]
                         //执行的是界面的跳转的情况!
                         //所有的选择,参数要求一起传递过来!(跳转到视频巡查的路线界面)
                         self.pushToVideoAndPatrolVC()
@@ -487,7 +487,7 @@ class YQVideoPatrolViewController: UIViewController {
                         
                         SJPickerView.show(withDataArry: array , didSlected: { (indexRow) in
                             
-                             self.videoAllSelectParmeter["pointType"] = idArray[index + 1]
+                             self.videoAllSelectParmeter["pointType"] = idArray[indexRow]
                             
                             //执行的是界面的跳转的情况!
                             //所有的选择,参数要求一起传递过来!(跳转到视频巡查的路线界面)

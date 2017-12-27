@@ -215,8 +215,14 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         let indexxx = noties.userInfo?["currentContentSize"] as! Int
         let insResultId = noties.userInfo?["insResultId"] as? Int
         
+        if indexxx < 0 {
+            
+            return
+        }
+        
         self.contentScrollView.setContentOffset(
             CGPoint.init(x: self.contentScrollView.width * CGFloat(indexxx), y: 0), animated: true)
+        
         
         if let vc = self.childViewControllers[indexxx] as? YQPatrolItemWeatherViewController {
             

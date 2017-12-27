@@ -89,8 +89,13 @@ class YQVideoDrawerViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //1.获取网络数据
-        makeUpTagViewData()
+        
+        if self.patrolItemTagsView.tags.count <= 0 || self.patrolRouteTagsView.tags.count <= 0 {
+            
+            //1.获取网络数据
+            makeUpTagViewData()
+            
+        }
 
     }
     

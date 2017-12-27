@@ -681,11 +681,35 @@ class WorkTypeModel{
     var id = ""
     var name = ""
     
+    var nodes : [WorkTypeModel]?
+    
+    
     convenience init(parmart: [String: Any]) {
         self.init()
+        
         id = parmart["ID"] as? String ?? ""
         name = parmart["WORKTYPE_NAME"] as? String ?? ""
+        
+        
+        if let nodel = parmart["nodes"] as? NSArray {
+            
+            var temp = [WorkTypeModel]()
+            
+            for te in nodel{
+                
+                let tempppp = te as! [String : Any]
+                let model = WorkTypeModel.init(parmart: tempppp )
+                
+                temp.append(model)
+            }
+            
+            nodes = temp
+        }
+        
     }
+    
+    
+    
 }
 
 class ParkInfoModel{

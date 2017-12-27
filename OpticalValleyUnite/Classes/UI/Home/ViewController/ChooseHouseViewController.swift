@@ -79,7 +79,7 @@ class ChooseHouseViewController: UIViewController {
             
             if currentLevel + 1 != arry.count{
                 
-                if (currentParkInfoModel[index].child?.count)! > 0{
+                if currentParkInfoModel[index].child != nil{
                     
                     currentParkInfoModel = currentParkInfoModel[index].child!
                     
@@ -107,11 +107,19 @@ class ChooseHouseViewController: UIViewController {
             return
         }
         
-        let index = tableView.indexPath(for: currentSelectCell!)!.row
+        let index = tableView.indexPath(for: currentSelectCell!)?.row
         
         if selectParkHandel != nil{
-            
-            selectParkHandel!(currentParkInfoModel[index])
+            if index == nil {
+                
+                 _ = self.navigationController?.popViewController(animated: true)
+                
+                return
+                
+            }else{
+                
+               selectParkHandel!(currentParkInfoModel[index!])
+            }
         }
         
         _ = self.navigationController?.popViewController(animated: true)
@@ -237,13 +245,15 @@ extension ChooseHouseViewController: UITableViewDelegate, UITableViewDataSource{
             }else{
                 
                 if (parkInfoModels?[indexPath.row].child?.count)! > 0 {
+                    
                     currentParkInfoModel = (parkInfoModels?[indexPath.row].child)!
                 }
                 
-                let index = indexPath.row
+//                let index = indexPath.row
+                
                 if selectParkHandel != nil{
                     
-                    selectParkHandel!(currentParkInfoModel[index - 1])
+                    selectParkHandel!(currentParkInfoModel[0])
                     
                 }
 

@@ -100,8 +100,16 @@ class YQVideoPatrolViewController: UIViewController {
     
         //2. 获取map数据
         let _ = setUpProjectNameLable()
+      
+        if self.parkId == "" {
+            
+            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+            self.navigationController?.pushViewController(project, animated: true)
+        }
+        
+        
         mapViewSetup()
-        makeMapLocationData()
+        
         
         //3.接受通知赋值
         setupNoties()
@@ -112,6 +120,7 @@ class YQVideoPatrolViewController: UIViewController {
         super.viewWillAppear(animated)
         //获取项目parkID的情况
         let _ = setUpProjectNameLable()
+        makeMapLocationData()
         
     }
     
@@ -373,15 +382,6 @@ class YQVideoPatrolViewController: UIViewController {
             
             self.alert(message: "请选择项目!", doneBlock: { (action) in
                 
-                DispatchQueue.main.async {
-                    
-                    if self.parkId == "" {
-                        
-                        let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
-                        self.navigationController?.pushViewController(project, animated: true)
-                    }
-                }
-
             })
             
             return

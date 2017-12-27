@@ -19,8 +19,6 @@ class YQAddView: UIView {
         
         didSet{
             
-            
-            
         }
         
     }

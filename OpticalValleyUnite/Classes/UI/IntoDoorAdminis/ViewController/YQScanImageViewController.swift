@@ -62,17 +62,24 @@ class YQScanImageViewController: UIViewController {
     
     // MARK: - 获取反扫image数据的方法
     func setBGImageData(){
+        
         var allParams = [String : Any]()
         
         var params = [String : Any]()
         
         var par = [String : Any]()
+        var devicePar = [String : Any]()
         
         par["appType"] = "2"//设备类型  1 业主 2员工
         par["parkId"] = self.parkID
-        par["deviceQrMac"] = self.model?.deviceQrMac
+    
+        devicePar["deviceQrMac"] = self.model?.deviceQrMac
         
-        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        devicePar["qrCreateTime"] = dateFormatter.string(from: Date())
+    
+        par["device"] = devicePar
         params["data"] = par
         
         //swift 中的 格式化的固定写法语法!
@@ -87,6 +94,8 @@ class YQScanImageViewController: UIViewController {
                 
                 //注意的是这里的par 要求序列化json
                 allParams["params"] = JSONString
+                
+                print(JSONString)
                 
             }
             
@@ -107,13 +116,12 @@ class YQScanImageViewController: UIViewController {
             //判断图片的地址名称
             
             // 显示的拿到的image图片的数据
-            self.imageView.kf.setImage(with: nil, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+//            self.imageView.kf.setImage(with: nil, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
            
             
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
-            
         }
     }
     

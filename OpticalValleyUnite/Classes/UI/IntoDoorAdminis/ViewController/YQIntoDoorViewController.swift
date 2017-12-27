@@ -498,7 +498,7 @@ class YQIntoDoorViewController: UIViewController {
     }
     
     // MARK: - 二维码反扫list获取
-    func getDoorByBGQrCode(){
+    func getDoorByBGQrCode(pageIndex : Int = 0){
     
         if self.parkID == "" {
             self.alert(message: "请选择项目")
@@ -509,6 +509,8 @@ class YQIntoDoorViewController: UIViewController {
         var par = [String : Any]()
         par["appType"] = "2"//设备类型  1 业主 2员工
         par["parkId"] = self.parkID
+        par["pageIndex"] = pageIndex
+        par["pageSize"] = 20
         
         SVProgressHUD.show()
         
@@ -520,7 +522,7 @@ class YQIntoDoorViewController: UIViewController {
             var temp = [YQBluetooth]()
             
             //通过字典转模型来进行的操作!
-            let array = resonse as? NSArray
+            let array = resonse["data"] as? NSArray
             for dict in array!{
                 
                 temp.append(YQBluetooth.init(dic: dict as! [String : Any]))
@@ -572,7 +574,7 @@ extension YQIntoDoorViewController : UITableViewDelegate,UITableViewDataSource{
             
             var cell = tableView.dequeueReusableCell(withIdentifier: "") as? YQScanCell
             if cell == nil {
-                cell = Bundle.main.loadNibNamed("BGscanCell", owner: nil, options: nil)?[0] as? YQScanCell
+                cell = Bundle.main.loadNibNamed("YQScanCell", owner: nil, options: nil)?[0] as? YQScanCell
             }
             cell?.delegate = self
             cell?.model = self.dataArray?[indexPath.row]
@@ -696,7 +698,7 @@ extension YQIntoDoorViewController : YQScanCellDelegate{
 
     func scanCellBGButtonClick( indexpath : IndexPath ){
         //跳转到相应的二维码的图片的界面
-         let scanImageV = YQScanImageViewController.init(nibName: "YQScanImageViewController", bundle: nil)
+        let scanImageV = YQScanImageViewController.init(nibName: "YQScanImageViewController", bundle: nil)
         
         scanImageV.model = self.dataArray?[indexpath.row]
         

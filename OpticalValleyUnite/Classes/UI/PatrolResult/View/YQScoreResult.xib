@@ -67,7 +67,6 @@
                                         </textView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYw-Wf-W0c" customClass="ShowImageView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                             <rect key="frame" x="30" y="225" width="340" height="60"/>
-                                            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="IOr-wu-wgm"/>
                                             </constraints>

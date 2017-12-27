@@ -149,6 +149,9 @@ class YQResultMapViewController: UIViewController {
         
         let dataArray = noties.userInfo?["VideoLoadWaysArray"] as? NSDictionary
         
+        
+        
+        
         //赋值,划线,逻辑渲染
         //1.实际执行的路线, 还是应用的是 红色 箭头来显示的  本地区分是 1
         if let executeWay = dataArray?["executeWay"]  as? NSArray{
@@ -275,6 +278,9 @@ extension YQResultMapViewController : MAMapViewDelegate {
         /*
          polylineRenderer.loadStrokeTextureImage(UIImage.init(named: "arrowTexture"))
          */
+        
+        //重置渲染的情况
+        self.mapView.remove(overlay)
         
         if overlay.isKind(of: MAPolyline.self) {
             

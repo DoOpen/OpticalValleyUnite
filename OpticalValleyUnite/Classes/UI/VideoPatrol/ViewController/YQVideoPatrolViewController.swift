@@ -211,10 +211,9 @@ class YQVideoPatrolViewController: UIViewController {
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
-            
         }
-        
     }
+    
     
     // MARK: - 添加默认的项目选择方法
     func setUpProjectNameLable() -> String{
@@ -390,7 +389,7 @@ class YQVideoPatrolViewController: UIViewController {
         //只传token 不要什麽东西
         SVProgressHUD.show()
         
-        HttpClient.instance.post(path: URLPath.getVideoPatrolCheckBegin, parameters: nil, success: { (respose) in
+        HttpClient.instance.post(path: URLPath.getVideoPatrolCheckBegin, parameters: par, success: { (respose) in
             
             SVProgressHUD.dismiss()
             
@@ -434,14 +433,13 @@ class YQVideoPatrolViewController: UIViewController {
                     //界面跳转,数据的参数的传递!(跳转到视频巡查的路线界面)
                     SJPickerView.show(withDataArry: array , didSlected: { (indexRow) in
                         
-                       self.videoAllSelectParmeter["pointType"] = idArray[index]
+                       self.videoAllSelectParmeter["c"] = idArray[index + 1]
                         //执行的是界面的跳转的情况!
                         //所有的选择,参数要求一起传递过来!(跳转到视频巡查的路线界面)
                         self.pushToVideoAndPatrolVC()
                         
                     })
-
-                
+                    
                 })
             
             
@@ -489,7 +487,7 @@ class YQVideoPatrolViewController: UIViewController {
                         
                         SJPickerView.show(withDataArry: array , didSlected: { (indexRow) in
                             
-                             self.videoAllSelectParmeter["pointType"] = idArray[index]
+                             self.videoAllSelectParmeter["pointType"] = idArray[index + 1]
                             
                             //执行的是界面的跳转的情况!
                             //所有的选择,参数要求一起传递过来!(跳转到视频巡查的路线界面)

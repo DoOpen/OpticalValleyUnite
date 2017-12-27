@@ -21,6 +21,8 @@ class YQPatrolResultViewController: UIViewController {
     
     var currentIndex = 0
     
+    var parkId = ""
+    
     /// 模型数组
     var dataArray = [YQResultCellModel](){
         
@@ -34,6 +36,16 @@ class YQPatrolResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //2. 获取map数据
+        let _ = setUpProjectNameLable()
+        
+        if self.parkId == "" {
+            
+            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+            self.navigationController?.pushViewController(project, animated: true)
+        }
+
+        
         //1.获取数据
         makeUpData()
         
@@ -44,15 +56,23 @@ class YQPatrolResultViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let _ = setUpProjectNameLable()
+        
+    }
     
-    func makeUpData(pageIndex : Int = 0,pageSize : Int = 20, dic : [String : Any] = [String : Any]()) {
+    
+    func makeUpData(pageIndexxxxx : Int = 0,pageSize : Int = 20, dic : [String : Any] = [String : Any]()) {
         
         var par = [String : Any]()
         
-        par["pageIndex"] = pageIndex
+        par["pageIndex"] = pageIndexxxxx
         par["pageSize"] = pageSize
         par["insPointName"] = self.pointSearch.text
         par["personName"] = self.personNameSearch.text
+        par["parkId"] = self.parkId
         
         SVProgressHUD.show()
         
@@ -62,8 +82,16 @@ class YQPatrolResultViewController: UIViewController {
             //拿到数据字典转模型
             var temp = [YQResultCellModel]()
             
-            if pageIndex == 0 {
+            if pageIndexxxxx == 0 {
             
+                if respose["data"] as? NSArray == nil {
+                    
+                    self.dataArray.removeAll()
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.endRefreshing()
+                    
+                    return
+                }
                 
                 for dic in (respose["data"] as? NSArray)! {
                     
@@ -77,7 +105,8 @@ class YQPatrolResultViewController: UIViewController {
                 
                 if temp.count > 0{
                     
-                    self.currentIndex = pageIndex
+                    self.currentIndex = pageIndexxxxx
+                    
                     self.dataArray.append(contentsOf: temp)
                     
                 }
@@ -93,6 +122,28 @@ class YQPatrolResultViewController: UIViewController {
         }
         
     }
+    
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            
+            projectName = dic?["PARK_NAME"] as! String
+            self.parkId = dic?["ID"] as! String
+            
+            
+        }else{
+            
+            projectName = "请选择默认项目"
+        }
+        
+        return projectName
+    }
+
     
     // MARK: - 添加左右barItem的情况
     func addLeftRightBarButtonFunction(){
@@ -141,7 +192,7 @@ class YQPatrolResultViewController: UIViewController {
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
-            self.makeUpData(pageIndex: self.currentIndex + 1)
+            self.makeUpData(pageIndexxxxx: self.currentIndex + 1)
             
         })
         
@@ -169,11 +220,13 @@ class YQPatrolResultViewController: UIViewController {
     
     @IBAction func searchButtonClick(_ sender: UIButton) {
         
-        if pointSearch.text != "" && personNameSearch.text != "" {
+        if pointSearch.text == "" && personNameSearch.text == "" {
             
             self.alert(message: "请填写输入搜索条件")
             
         }else{
+            
+            self.view.endEditing(true)
             
             self.makeUpData()
         }

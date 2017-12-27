@@ -85,11 +85,13 @@ class YQVideoDrawerViewController: UIViewController {
         self.scrollView.contentSize = CGSize.init(width: 0, height: 600)
         self.searchBar.delegate = self
         
-        
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         //1.获取网络数据
         makeUpTagViewData()
-        
-        
+
     }
     
     // MARK: - 获取数据的方法
@@ -169,11 +171,14 @@ class YQVideoDrawerViewController: UIViewController {
         //重置数据选择数据
         self.patrolItemTagsView.deselectAll()
         self.patrolRouteTagsView.deselectAll()
+        self.searchBar.text = ""
         
         self.type = "0"
     }
     
     @IBAction func compeleteButtonClick(_ sender: UIButton) {
+        
+        self.searchBar.text = ""
         
         var par = [String : Any]()
         par["parkId"] = self.parkID

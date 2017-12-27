@@ -97,12 +97,9 @@ class YQVideoPatrolViewController: UIViewController {
         super.viewDidLoad()
         //1. 添加leftRight
         addLeftRightBarButtonFunction()
-        
-        //获取项目parkID的情况
-        let _ = setUpProjectNameLable()
-      
-        
+    
         //2. 获取map数据
+        let _ = setUpProjectNameLable()
         mapViewSetup()
         makeMapLocationData()
         
@@ -110,6 +107,14 @@ class YQVideoPatrolViewController: UIViewController {
         setupNoties()
     
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //获取项目parkID的情况
+        let _ = setUpProjectNameLable()
+        
+    }
+    
     
     // MARK: - 添加左右barItem的情况
     func addLeftRightBarButtonFunction(){
@@ -357,9 +362,7 @@ class YQVideoPatrolViewController: UIViewController {
     // MARK: - CheckBegin开始巡查的接口调直接调用
     func CheckBeginDataStart(){
         
-        //只传token 不要什麽东西
-        SVProgressHUD.show()
-        
+    
         //要求的项目ID是必传的 情况!
         var par = [String : Any]()
         par["parkId"] = self.parkId
@@ -383,6 +386,9 @@ class YQVideoPatrolViewController: UIViewController {
             
             return
         }
+        
+        //只传token 不要什麽东西
+        SVProgressHUD.show()
         
         HttpClient.instance.post(path: URLPath.getVideoPatrolCheckBegin, parameters: nil, success: { (respose) in
             

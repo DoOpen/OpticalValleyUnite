@@ -66,7 +66,7 @@ class YQIntoDoorViewController: UIViewController {
         }
         
         addLeftRightBarButtonFunction()
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +80,6 @@ class YQIntoDoorViewController: UIViewController {
             self.allButtonClickEvent(self.currentSelectButton!)
             
         }else{
-            
             //默认的是选中第二项 二维码扫描的图片
             self.allButtonClickEvent(self.openQRCode)
         }
@@ -238,7 +237,7 @@ class YQIntoDoorViewController: UIViewController {
 
                 }
                 
-            }catch {
+            } catch {
                 
                 print("转换错误 ")
             }
@@ -410,6 +409,7 @@ class YQIntoDoorViewController: UIViewController {
             
             projectName = "请选择默认项目"
         }
+        
         return projectName
     }
 

@@ -9,12 +9,14 @@
 import UIKit
 
 class WorkOrderTypeChooseViewController: UIViewController {
+    
     @IBOutlet weak var projectTagsView: RKTagsView!
     @IBOutlet weak var deviceTagsView: RKTagsView!
     
     var didSelectedHandel: ((WorkTypeModel) -> () )?
     
     var models = [WorkTypeModel](){
+        
         didSet{
             for model in models{
                 projectTagsView.addTag(model.name)
@@ -32,7 +34,9 @@ class WorkOrderTypeChooseViewController: UIViewController {
         projectTagsView.interitemSpacing = 20
         projectTagsView.allowsMultipleSelection = false
         //projectTagsView.scrollsHorizontally = true
+        
         getWorkTypeList()
+        
 //        for projects in projects {
 //            projectTagsView.addTag(projects)
 //        }
@@ -47,26 +51,29 @@ class WorkOrderTypeChooseViewController: UIViewController {
 //            deviceTagsView.addTag(statu)
 //        }
         
-        
     }
     
     func getWorkTypeList(){
+        
         HttpClient.instance.get(path: URLPath.getWorkTypeList, parameters: nil, success: { (response) in
             
             //添加二级的工单的筛选的界面展示的问题点:
+            //筛选,子集的选项列表!
             
             var temp = [WorkTypeModel]()
             
             for dic in response as! Array<[String: Any]>{
+                
                 let model = WorkTypeModel(parmart: dic)
                 temp.append(model)
             }
-            
             self.models = temp
+            
             
         }) { (error) in
             print(error)
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,7 +92,6 @@ class WorkOrderTypeChooseViewController: UIViewController {
             
         }
         
-
         _ = navigationController?.popViewController(animated: true)
     }
 

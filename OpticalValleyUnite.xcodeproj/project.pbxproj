@@ -13,6 +13,7 @@
 		2F0223B81FA9A3E60090822F /* YQParkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0223B71FA9A3E60090822F /* YQParkTableViewCell.swift */; };
 		2F0223BA1FA9C2030090822F /* YQWorkOrderCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0223B91FA9C2030090822F /* YQWorkOrderCompleteVC.swift */; };
 		2F0223BC1FA9C2330090822F /* YQWorkOderComplete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F0223BB1FA9C2330090822F /* YQWorkOderComplete.storyboard */; };
+		2F079A6F1FF25F63009D204D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F079A6E1FF25F63009D204D /* Alamofire.framework */; };
 		2F07A00C1FDB97100064556D /* YQPatrolBottomNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07A00B1FDB97100064556D /* YQPatrolBottomNextView.swift */; };
 		2F07A00E1FDB97350064556D /* YQPatrolBottomNextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F07A00D1FDB97350064556D /* YQPatrolBottomNextView.xib */; };
 		2F07A0101FDB97880064556D /* YQPatrolBottomLastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07A00F1FDB97880064556D /* YQPatrolBottomLastView.swift */; };
@@ -337,6 +338,7 @@
 		2F0223B71FA9A3E60090822F /* YQParkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQParkTableViewCell.swift; sourceTree = "<group>"; };
 		2F0223B91FA9C2030090822F /* YQWorkOrderCompleteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkOrderCompleteVC.swift; sourceTree = "<group>"; };
 		2F0223BB1FA9C2330090822F /* YQWorkOderComplete.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQWorkOderComplete.storyboard; sourceTree = "<group>"; };
+		2F079A6E1FF25F63009D204D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/OpticalValleyUnite-alypomjpbjsfhydtyataweazvxfb/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		2F07A00B1FDB97100064556D /* YQPatrolBottomNextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPatrolBottomNextView.swift; sourceTree = "<group>"; };
 		2F07A00D1FDB97350064556D /* YQPatrolBottomNextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPatrolBottomNextView.xib; sourceTree = "<group>"; };
 		2F07A00F1FDB97880064556D /* YQPatrolBottomLastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPatrolBottomLastView.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F079A6F1FF25F63009D204D /* Alamofire.framework in Frameworks */,
 				4B3951DD1E27D8D300E2642F /* libz.tbd in Frameworks */,
 				2F73FA671F74CE8600D37FDA /* CoreLocation.framework in Frameworks */,
 				2F73FA651F74CE1300D37FDA /* GLKit.framework in Frameworks */,
@@ -729,6 +732,7 @@
 		2DE0C4DE5B1BF48FFA401773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F079A6E1FF25F63009D204D /* Alamofire.framework */,
 				2F5A3D561FE8DBAD0069ABE1 /* libc.tbd */,
 				2F73FA661F74CE8600D37FDA /* CoreLocation.framework */,
 				2F73FA641F74CE1300D37FDA /* GLKit.framework */,

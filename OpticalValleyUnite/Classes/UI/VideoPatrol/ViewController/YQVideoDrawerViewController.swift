@@ -174,11 +174,13 @@ class YQVideoDrawerViewController: UIViewController {
     // MARK: - 重置,完成按钮的点击的情况
     @IBAction func resetButtonClick(_ sender: UIButton) {
         //重置数据选择数据
-        self.patrolItemTagsView.deselectAll()
-        self.patrolRouteTagsView.deselectAll()
+        self.patrolItemTagsView.removeAllTags()
+        self.patrolRouteTagsView.removeAllTags()
         self.searchBar.text = ""
         
         self.type = "0"
+        
+        self.makeUpTagViewData()
     }
     
     @IBAction func compeleteButtonClick(_ sender: UIButton) {
@@ -305,7 +307,8 @@ extension YQVideoDrawerViewController : RKTagsViewDelegate {
 extension YQVideoDrawerViewController : UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.endEditing(false)
+        
+        self.searchBar.endEditing(true)
         
         self.patrolItemTagsView.removeAllTags()
         self.patrolRouteTagsView.removeAllTags()
@@ -316,7 +319,7 @@ extension YQVideoDrawerViewController : UISearchBarDelegate{
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-        self.searchBar.endEditing(false)
+        self.searchBar.endEditing(true)
         
     }
     

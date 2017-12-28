@@ -85,8 +85,6 @@ class AddScrollerView: UIView {
                 self.addSubview(view1)
             }
             
-            
-
         }
     }
     

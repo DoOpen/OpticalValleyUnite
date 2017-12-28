@@ -25,6 +25,12 @@ class YQResultMapViewController: UIViewController {
     // lineType
     var wayLineType = 0
     
+    lazy var overlays = {
+        
+        return Array<MAOverlay>()
+    }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,9 +58,15 @@ class YQResultMapViewController: UIViewController {
             center.post(name: notiesName, object: nil, userInfo: ["drawerdateString": dateStr])
             
         }
-
-        
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        mapView.addOverlays(overlays)
+//        mapView.showOverlays(overlays, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
+//
+//    }
     
     // MARK: - 添加左右barItem的情况
     func addLeftRightBarButtonFunction(){
@@ -149,8 +161,7 @@ class YQResultMapViewController: UIViewController {
         
         let dataArray = noties.userInfo?["VideoLoadWaysArray"] as? NSDictionary
         
-        
-        
+        overlays.removeAll()
         
         //赋值,划线,逻辑渲染
         //1.实际执行的路线, 还是应用的是 红色 箭头来显示的  本地区分是 1
@@ -179,7 +190,7 @@ class YQResultMapViewController: UIViewController {
                         //执行画线的方法
                         //划线
                         let polyline: MAPolyline = MAPolyline(coordinates: &executeWayArray, count: UInt(executeWayArray.count))
-                        mapView.add(polyline)
+                       overlays.append(polyline)
                     }
                 }
             }
@@ -187,8 +198,7 @@ class YQResultMapViewController: UIViewController {
         
         //设计路线  要求应用 蓝色来表示 本地区分是 2
         if let designWay = dataArray?["designWay"] as? NSArray {
-            
-            
+    
             for temp in designWay {
                 
                 let temp1 = temp as! NSDictionary
@@ -212,7 +222,7 @@ class YQResultMapViewController: UIViewController {
                         //执行画线的方法
                         //划线
                         let polyline: MAPolyline = MAPolyline(coordinates: &designWayArray, count: UInt(designWayArray.count))
-                        mapView.add(polyline)
+                        overlays.append(polyline)
                         
                     }
                 }
@@ -246,8 +256,7 @@ class YQResultMapViewController: UIViewController {
                         //执行画线的方法
                         //划线
                         let polyline: MAPolyline = MAPolyline(coordinates: &realWayArray, count: UInt(realWayArray.count))
-                        mapView.add(polyline)
-                        
+                        overlays.append(polyline)
                     }
                     
                 }
@@ -255,6 +264,9 @@ class YQResultMapViewController: UIViewController {
             }
           
         }
+        
+        
+        mapView.addOverlays(overlays)
         
     }
     

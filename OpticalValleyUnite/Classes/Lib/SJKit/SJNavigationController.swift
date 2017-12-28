@@ -13,6 +13,8 @@ class SJNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.barTintColor = UIColor.white
+//        navigationBar.tintColor = UIColor.black
+        
     }
     
     
@@ -38,7 +40,6 @@ class SJNavigationController: UINavigationController {
             self.popViewController(animated: true)
         }
         
-        
-        
+    
     }
 }

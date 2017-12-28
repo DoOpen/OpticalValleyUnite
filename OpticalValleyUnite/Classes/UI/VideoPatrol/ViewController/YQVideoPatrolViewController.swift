@@ -34,10 +34,11 @@ class YQVideoPatrolViewController: UIViewController {
             for model in videoMapPointModel{
                 
                 addLocationAndMessageView(model: model)
-                
             }
         }
     }
+    
+//    var overlays: Array<MAOverlay>!
     
     // indoorVideo模型数据
     var indoorVideoPointModel = [YQVideoIndoorPatorlModel](){
@@ -92,6 +93,12 @@ class YQVideoPatrolViewController: UIViewController {
         
     }()
     
+    lazy var overlays = {
+        
+        return Array<MAOverlay>()
+    }()
+
+    
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,6 +130,7 @@ class YQVideoPatrolViewController: UIViewController {
         makeMapLocationData()
         
     }
+    
     
     
     // MARK: - 添加左右barItem的情况
@@ -523,6 +531,8 @@ class YQVideoPatrolViewController: UIViewController {
         
     }
     func videoLoadWaysNoties(noties : Notification){
+        
+        overlays.removeAll()
         //1.关闭弹窗
         //回弹的方法接口
         if let drawerController = self.navigationController?.parent as? KYDrawerController {
@@ -556,9 +566,12 @@ class YQVideoPatrolViewController: UIViewController {
             
             //划线
             let polyline: MAPolyline = MAPolyline(coordinates: &videoMapLayWays, count: UInt(videoMapLayWays.count))
-            mapView.add(polyline)
+            overlays.append(polyline)
             
         }
+        
+        mapView.addOverlays(overlays)
+
     }
     
     // MARK: - 跳转到视频执行界面的操作
@@ -576,7 +589,6 @@ class YQVideoPatrolViewController: UIViewController {
     deinit {
         
         NotificationCenter.default.removeObserver(self)
-        
     }
 
 }

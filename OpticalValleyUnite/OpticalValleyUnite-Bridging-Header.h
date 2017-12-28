@@ -15,6 +15,8 @@
 #import "SJComposePhotoView.h"
 #import "SJTakePhotoHandle.h"
 #import "SGScanningQRCodeVC.h"
+#import "SGQRCodeTool.h"
+
 #import "UIMonthYearPicker.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "UMessage.h"

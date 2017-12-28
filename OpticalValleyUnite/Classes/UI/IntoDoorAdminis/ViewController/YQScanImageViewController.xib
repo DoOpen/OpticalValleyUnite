@@ -21,18 +21,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z0Q-aW-ZwN">
-                    <rect key="frame" x="0.0" y="183.5" width="375" height="300"/>
+                    <rect key="frame" x="0.0" y="153.5" width="375" height="300"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="NHF-yD-KmL"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该二维码20分钟内有效" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6R-0e-uIG">
+                    <rect key="frame" x="119.5" y="463.5" width="136" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="Z0Q-aW-ZwN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="25a-VC-yKN"/>
+                <constraint firstItem="Z0Q-aW-ZwN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-30" id="25a-VC-yKN"/>
                 <constraint firstItem="Z0Q-aW-ZwN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="59P-q1-viV"/>
                 <constraint firstAttribute="trailing" secondItem="Z0Q-aW-ZwN" secondAttribute="trailing" id="65L-C0-sKU"/>
                 <constraint firstItem="Z0Q-aW-ZwN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Mob-ew-saw"/>
+                <constraint firstItem="U6R-0e-uIG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NRu-em-qIv"/>
+                <constraint firstItem="U6R-0e-uIG" firstAttribute="top" secondItem="Z0Q-aW-ZwN" secondAttribute="bottom" constant="10" id="QG3-xM-X0a"/>
             </constraints>
         </view>
     </objects>

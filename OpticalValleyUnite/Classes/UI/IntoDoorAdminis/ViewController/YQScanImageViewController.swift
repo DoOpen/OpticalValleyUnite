@@ -105,6 +105,8 @@ class YQScanImageViewController: UIViewController {
         }
         
         
+      
+        
         SVProgressHUD.show()
         
         HttpClient.instance.post(path: URLPath.getOpenDoorByQrCode, parameters: allParams, success: { (response) in
@@ -112,8 +114,25 @@ class YQScanImageViewController: UIViewController {
             SVProgressHUD.dismiss()
             
             let dict = response as? NSDictionary
+            let result = dict?["result"] as! Int
+            let qrCode = dict?["qrCode"] as! String
             
-            //判断图片的地址名称
+            switch (result) {
+                case 0://成功
+                    //判断图片的地址名称
+                    //通过SGQRcode 来生成二维码的图片
+                    self.imageView.image =  SGQRCodeTool.sg_generate(withDefaultQRCodeData: qrCode, imageViewWidth: self.imageView.width)
+                    break
+                case 1://门禁设备未连接
+                     SVProgressHUD.showError(withStatus: "门禁设备未连接!")
+                    break
+                case 2://数据加载失败
+                    SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+
+                    break
+                default:
+                    break
+            }
             
             // 显示的拿到的image图片的数据
 //            self.imageView.kf.setImage(with: nil, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
@@ -121,7 +140,7 @@ class YQScanImageViewController: UIViewController {
             
         }) { (error) in
             
-            SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
     }
     

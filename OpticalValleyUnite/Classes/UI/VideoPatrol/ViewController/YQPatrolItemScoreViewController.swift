@@ -21,6 +21,7 @@ class YQPatrolItemScoreViewController: UIViewController {
 
     @IBOutlet weak var patrolItemLabel: UILabel!
     
+    //总共项数
     @IBOutlet weak var itemNumLabel: UILabel!
     
     @IBOutlet weak var patrolTypeLabel: UILabel!
@@ -67,7 +68,7 @@ class YQPatrolItemScoreViewController: UIViewController {
     
     /// 数据模型设置数据传递参数
     var model : YQPatrolItemModel?
-    
+    var count : Int = 0
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
@@ -85,6 +86,7 @@ class YQPatrolItemScoreViewController: UIViewController {
         self.patrolTypeLabel.text = model?.insItemTypeName
         self.patrolItemLabel.text = model?.name
         self.descriptionLabel.text = model?.descriptionString
+        self.itemNumLabel.text = "共" + "\(count)" + "项"
         
         if model?.imgPath != nil{
             

@@ -19,6 +19,7 @@ class YQPatrolItemWeatherViewController: UIViewController {
 
     @IBOutlet weak var patrolItemLabel: UILabel!
     
+    //总共项数
     @IBOutlet weak var itemNumLabel: UILabel!
     
     @IBOutlet weak var patrolTypeLabel: UILabel!
@@ -46,6 +47,7 @@ class YQPatrolItemWeatherViewController: UIViewController {
     
     /// 数据模型设置数据传递参数
     var model : YQPatrolItemModel?
+    var count : Int = 0
     
     /// 保存图片的属性列表
     var pictureImageString = ""
@@ -72,6 +74,8 @@ class YQPatrolItemWeatherViewController: UIViewController {
         self.patrolTypeLabel.text = model?.insItemTypeName
         self.patrolItemLabel.text = model?.name
         self.descriptionLabel.text = model?.descriptionString
+        self.itemNumLabel.text = "共" + "\(count)" + "项"
+        
         if model?.imgPath != nil{
             
             var imageValue = ""

@@ -92,10 +92,12 @@ class YQIntoDoorViewController: UIViewController {
         self.currentSelectButton?.isSelected = false
         sender.isSelected = true
         self.currentSelectButton = sender
+        self.dataArray?.removeAll()
         
         switch sender.tag {
             
             case 0://蓝牙开门
+                
                 bluetoothOpenTheDoor()
                 break
             

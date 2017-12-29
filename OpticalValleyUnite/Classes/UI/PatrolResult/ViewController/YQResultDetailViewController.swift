@@ -101,8 +101,6 @@ class YQResultDetailViewController: UIViewController {
         self.title = "巡查结果"
         self.automaticallyAdjustsScrollViewInsets = false
         
-       
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -130,7 +128,7 @@ class YQResultDetailViewController: UIViewController {
             self.patrolPerson.text = dic?["personName"] as? String
             self.patrolTime.text = dic?["insTime"] as? String
             
-            let type = dic?["type"] as? Int ?? 0
+            let type = dic?["insType"] as? Int ?? 0
             
             switch type {
                 
@@ -144,7 +142,7 @@ class YQResultDetailViewController: UIViewController {
                 break
             }
             
-            let insType = dic?["insType"] as? Int ?? 0
+            let insType = dic?["type"] as? Int ?? 0 // type
             
             switch insType {
                 

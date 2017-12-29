@@ -63,6 +63,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                     }
                     
                     //传递模型的数据
+                    vc.count = count
                     vc.model = model
                     
                     self.addChildViewController(vc)
@@ -89,6 +90,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                     }
                     
                     //传递模型的数据
+                    vc.count = count
                     vc.model = model
                     
                     self.addChildViewController(vc)
@@ -113,7 +115,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         
         self.automaticallyAdjustsScrollViewInsets = false
         self.contentScrollView.isDirectionalLockEnabled = true
-        self.title = "巡查项"
+        self.title = "巡查"
     
         //连续调用的两个接口
         getMediaPlayerData()

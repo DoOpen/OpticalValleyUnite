@@ -82,6 +82,12 @@ class YQPatrolResultViewController: UIViewController {
             //拿到数据字典转模型
             var temp = [YQResultCellModel]()
             
+            for dic in (respose["data"] as? NSArray)! {
+                
+                temp.append(YQResultCellModel.init(dict: dic as! [String : Any]))
+            }
+
+            
             if pageIndexxxxx == 0 {
             
                 if respose["data"] as? NSArray == nil {
@@ -91,11 +97,6 @@ class YQPatrolResultViewController: UIViewController {
                     self.tableView.mj_footer.endRefreshing()
                     
                     return
-                }
-                
-                for dic in (respose["data"] as? NSArray)! {
-                    
-                    temp.append(YQResultCellModel.init(dict: dic as! [String : Any]))
                 }
                 
                 self.dataArray = temp

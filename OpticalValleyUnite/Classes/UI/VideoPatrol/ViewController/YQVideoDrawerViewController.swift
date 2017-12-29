@@ -181,6 +181,12 @@ class YQVideoDrawerViewController: UIViewController {
         self.type = "0"
         
         self.makeUpTagViewData()
+        
+        //发送通知进行传值
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "drawerVideoLoadWaysNoties")
+        center.post(name: notiesName, object: nil)
+
     }
     
     @IBAction func compeleteButtonClick(_ sender: UIButton) {
@@ -194,8 +200,6 @@ class YQVideoDrawerViewController: UIViewController {
         if self.type == "0"{
             
             //重新的调用显示的- 地图所有点的情况!
-            
-            
             //回弹的方法接口
             if let drawerController = self.navigationController?.parent as? KYDrawerController {
                 
@@ -249,6 +253,7 @@ class YQVideoDrawerViewController: UIViewController {
             
         default:
             break
+            
         }
         
         
@@ -321,6 +326,11 @@ extension YQVideoDrawerViewController : UISearchBarDelegate{
         
         self.searchBar.endEditing(true)
         
+        self.patrolItemTagsView.removeAllTags()
+        self.patrolRouteTagsView.removeAllTags()
+        //重新刷新数据
+        self.makeUpTagViewData()
+
     }
     
 }

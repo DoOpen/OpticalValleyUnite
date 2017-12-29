@@ -27,7 +27,7 @@ class YQPatrolItemScoreViewController: UIViewController {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var imageButton: ShowImageView!
     
     @IBOutlet weak var starsView: UIView!
     
@@ -101,7 +101,13 @@ class YQPatrolItemScoreViewController: UIViewController {
             }
 
             
-            self.imageButton.kf.setImage(with: URL.init(string: (imageValue)), for: .normal )
+            self.imageButton.showImageUrls([imageValue])
+            
+            self.imageButton.didClickHandle = { index, image in
+                
+                CoverView.show(image: image)
+            }
+
         }
 
         //加载底部的项目
@@ -245,8 +251,6 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomNextViewDelegate{
 
     func PatrolBottomNextViewSaveAndNext() {
         
-        
-        
         //保存当前页的图片,文本的信息
         var par = [String : Any]()
         //有就可传项
@@ -281,7 +285,11 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomNextViewDelegate{
             self.alert(message: "请添加上传图片")
             return
         }
-
+        if self.textView.text == "" {
+            
+            self.alert(message: "请输入巡查意见")
+            return
+        }
         
         self.upDataImage(images , complit: { (url) in
             //重新进行图片的下载,赋值
@@ -363,6 +371,11 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomLastViewDelegate{
         if images.isEmpty {
             
             self.alert(message: "请添加上传图片")
+            return
+        }
+        if self.textView.text == "" {
+            
+            self.alert(message: "请输入巡查意见")
             return
         }
         

@@ -153,16 +153,22 @@ class YQResultMapViewController: UIViewController {
     
     func resultDrawerLoadWaysNoties (noties : Notification){
         
+        //划线重新置空的情况
+        mapView.removeOverlays(overlays)
+        overlays.removeAll()
+        
+        
+        let dataArray = noties.userInfo?["VideoLoadWaysArray"] as? NSDictionary
+        if dataArray == nil {
+            
+            return
+        }
+
         if let drawerController = self.navigationController?.parent as? KYDrawerController {
             
             drawerController.setDrawerState(.closed , animated: true)
         }
 
-        
-        let dataArray = noties.userInfo?["VideoLoadWaysArray"] as? NSDictionary
-        
-        overlays.removeAll()
-        
         //赋值,划线,逻辑渲染
         //1.实际执行的路线, 还是应用的是 红色 箭头来显示的  本地区分是 1
         if let executeWay = dataArray?["executeWay"]  as? NSArray{

@@ -532,7 +532,16 @@ class YQVideoPatrolViewController: UIViewController {
     }
     func videoLoadWaysNoties(noties : Notification){
         
+        mapView.removeOverlays(overlays)
         overlays.removeAll()
+        
+        let loadWays = noties.userInfo?["VideoLoadWaysArray"] as? NSArray
+        
+        if loadWays == nil {
+            
+            return
+        }
+        
         //1.关闭弹窗
         //回弹的方法接口
         if let drawerController = self.navigationController?.parent as? KYDrawerController {
@@ -541,7 +550,7 @@ class YQVideoPatrolViewController: UIViewController {
         }
         
         //2.获取数据重绘,多维的数组的情况
-        let loadWays = noties.userInfo?["VideoLoadWaysArray"] as? NSArray
+       
         
         for array in loadWays! {
             

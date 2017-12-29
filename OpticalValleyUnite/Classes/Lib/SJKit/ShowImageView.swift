@@ -60,12 +60,14 @@ class ShowImageView: UIView {
     }
 
     func btnClick(sender: UIButton){
+        
         if let block = didClickHandle{
+            
             let image = (subviews[sender.tag] as! UIButton).currentBackgroundImage
+            
             if let image = image{
                 block(sender.tag,image)
             }
-            
         }
     }
     

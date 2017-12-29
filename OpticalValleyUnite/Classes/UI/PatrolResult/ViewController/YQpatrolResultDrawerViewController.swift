@@ -138,6 +138,10 @@ class YQpatrolResultDrawerViewController: UIViewController {
         self.selectWaysTagsV.deselectAll()
         self.trajectoryTagsV.deselectAll()
         
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "resultDrawerLoadWaysNoties")
+        center.post(name: notiesName, object: nil)
+        
     }
 
     @IBAction func compeletButtonClick(_ sender: UIButton) {

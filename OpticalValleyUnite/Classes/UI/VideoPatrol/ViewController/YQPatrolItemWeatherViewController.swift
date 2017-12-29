@@ -29,7 +29,7 @@ class YQPatrolItemWeatherViewController: UIViewController {
     
     @IBOutlet weak var noButton: UIButton!
     
-    @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var addImageButton: ShowImageView!
     
     @IBOutlet weak var addImageView: YQAddView!
     
@@ -86,7 +86,13 @@ class YQPatrolItemWeatherViewController: UIViewController {
                 imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.imgPath)!
             }
         
-            self.addImageButton.kf.setImage(with: URL.init(string: (imageValue)), for: .normal )
+            self.addImageButton.showImageUrls([imageValue])
+            self.addImageButton.didClickHandle = { index, image in
+                
+                CoverView.show(image: image)
+            }
+
+            
         }
         
         //加载底部的项目
@@ -248,6 +254,11 @@ extension YQPatrolItemWeatherViewController : YQPatrolBottomNextViewDelegate{
             self.alert(message: "请添加上传图片")
             return
         }
+        if self.remarkView.text == "" {
+            
+            self.alert(message: "请输入巡查意见")
+            return
+        }
 
         
         self.upDataImage(images , complit: { (url) in
@@ -330,6 +341,11 @@ extension YQPatrolItemWeatherViewController : YQPatrolBottomLastViewDelegate{
         if images.isEmpty {
             
             self.alert(message: "请添加上传图片")
+            return
+        }
+        if self.remarkView.text == "" {
+            
+            self.alert(message: "请输入巡查意见")
             return
         }
 

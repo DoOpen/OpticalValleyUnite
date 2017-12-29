@@ -214,8 +214,13 @@ extension YQPatrolItemWeatherViewController : YQPatrolBottomNextViewDelegate{
     
     func PatrolBottomNextViewCancel() {
         
-        //现在 暂时没有处理
-        
+        //暂时不做处理,
+//        self.remarkView.text = ""
+//        addImageView.photos.removeAll()
+//        self.yesButton.isSelected = false
+//        self.noButton.isSelected = false
+        self.navigationController?.popViewController(animated: true)
+
     }
     
     
@@ -305,8 +310,15 @@ extension YQPatrolItemWeatherViewController : YQPatrolBottomLastViewDelegate{
     }
     
     func PatrolBottomLastViewCancel() {
-        //取消,暂时不做处理
         
+        //暂时不做处理,
+//        self.remarkView.text = ""
+//        addImageView.photos.removeAll()
+//        self.yesButton.isSelected = false
+//        self.noButton.isSelected = false
+        
+        self.navigationController?.popViewController(animated: true)
+
     }
     
     func PatrolBottomLastViewSubmit() {

@@ -244,7 +244,7 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomNextViewDelegate{
     
     func PatrolBottomNextViewCancel() {
         //暂时不做处理,
-        
+        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -319,8 +319,9 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomNextViewDelegate{
             }
             
         })
-        
     }
+    
+    
 }
 
 extension YQPatrolItemScoreViewController : YQPatrolBottomLastViewDelegate{
@@ -336,8 +337,12 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomLastViewDelegate{
     }
     
     func PatrolBottomLastViewCancel() {
-         //暂时不做处理
-        
+        //暂时不做处理
+//        self.textView.text = ""
+//        addImageView.photos.removeAll()
+//        self.selectStarsBtn = nil
+        self.navigationController?.popViewController(animated: true)
+
     }
     
     func PatrolBottomLastViewSubmit() {

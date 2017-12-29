@@ -271,6 +271,8 @@ class LoginViewController: UIViewController {
         HttpClient.instance.post(path: URLPath.logOut, parameters: paramet, success: { (data) in
             
 //            SVProgressHUD.dismiss()
+            UIApplication.shared.applicationIconBadgeNumber = 0
+
 
         }) { (error) in
             print(error)

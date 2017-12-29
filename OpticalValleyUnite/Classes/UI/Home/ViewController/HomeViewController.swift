@@ -365,6 +365,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 if tatolCount >= 0 {
                     self.messageBtn.badge(text: "\(tatolCount)")
                     
+                    //设置 系统app的显示的图标的选项的情况
                     UIApplication.shared.applicationIconBadgeNumber = tatolCount
                 }
             }
@@ -488,15 +489,19 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             navigationController?.pushViewController(WO, animated: true)
             
         case "签到":
+            
             let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)
         case "定位":
+            
             let vc = UIStoryboard(name: "Map", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)
         case "扫描":
+            
             scanBtnClick()
 //            surveillanceWorkOrderBtnClick()
         case "督办":
+            
             surveillanceWorkOrderBtnClick()
             
         case "日志":
@@ -582,7 +587,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             alert(message: "模拟器不能使用扫描")
             return
-            
         }
         
         let device = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
@@ -780,6 +784,7 @@ extension HomeViewController:SGScanningQRCodeVCDelegate{
         if text.contains("设备"){//区分是否是自己的二维码的情况
             
             let str = text.components(separatedBy: ":").last
+            
             if let str = str{
                 
                 self.navigationController?.popViewController(animated: false)

@@ -242,6 +242,14 @@ extension YQPatrolItemWeatherViewController : YQPatrolBottomNextViewDelegate{
         par["insResultId"] = self.insResultId
         
         let images = addImageView.photos.map{$0.image}
+        
+        if images.isEmpty {
+            
+            self.alert(message: "请添加上传图片")
+            return
+        }
+
+        
         self.upDataImage(images , complit: { (url) in
             //重新进行图片的下载,赋值
             self.pictureImageString = url
@@ -319,6 +327,12 @@ extension YQPatrolItemWeatherViewController : YQPatrolBottomLastViewDelegate{
         //        par["id"] =
 
         let images = addImageView.photos.map{$0.image}
+        if images.isEmpty {
+            
+            self.alert(message: "请添加上传图片")
+            return
+        }
+
         self.upDataImage(images , complit: { (url) in
             //重新进行图片的下载,赋值
             self.pictureImageString = url

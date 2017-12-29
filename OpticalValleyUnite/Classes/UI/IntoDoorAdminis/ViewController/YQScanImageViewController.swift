@@ -111,18 +111,21 @@ class YQScanImageViewController: UIViewController {
         
         HttpClient.instance.post(path: URLPath.getOpenDoorByQrCode, parameters: allParams, success: { (response) in
             
-            SVProgressHUD.dismiss()
-            
+            //拿取数据
             let dict = response as? NSDictionary
             let result = dict?["result"] as! Int
             let qrCode = dict?["qrCode"] as! String
             
             switch (result) {
                 case 0://成功
+                    
+                    SVProgressHUD.dismiss()
+
                     //判断图片的地址名称
                     //通过SGQRcode 来生成二维码的图片
                     self.imageView.image =  SGQRCodeTool.sg_generate(withDefaultQRCodeData: qrCode, imageViewWidth: self.imageView.width)
                     break
+                
                 case 1://门禁设备未连接
                      SVProgressHUD.showError(withStatus: "门禁设备未连接!")
                     break

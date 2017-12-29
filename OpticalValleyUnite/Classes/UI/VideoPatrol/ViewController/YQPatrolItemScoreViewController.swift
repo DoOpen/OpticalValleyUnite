@@ -276,6 +276,13 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomNextViewDelegate{
 
         let images = addImageView.photos.map{$0.image}
         
+        if images.isEmpty {
+            
+            self.alert(message: "请添加上传图片")
+            return
+        }
+
+        
         self.upDataImage(images , complit: { (url) in
             //重新进行图片的下载,赋值
             self.pictureImageString = url
@@ -352,6 +359,12 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomLastViewDelegate{
         par["insResultId"] = self.insResultId
         //        par["id"] =
         let images = addImageView.photos.map{$0.image}
+        
+        if images.isEmpty {
+            
+            self.alert(message: "请添加上传图片")
+            return
+        }
         
         self.upDataImage(images , complit: { (url) in
             //重新进行图片的下载,赋值

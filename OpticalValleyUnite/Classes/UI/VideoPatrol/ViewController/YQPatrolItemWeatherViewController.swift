@@ -343,6 +343,8 @@ extension YQPatrolItemWeatherViewController : YQPatrolBottomLastViewDelegate{
             self.alert(message: "请添加上传图片")
             return
         }
+        
+        
         if self.remarkView.text == "" {
             
             self.alert(message: "请输入巡查意见")

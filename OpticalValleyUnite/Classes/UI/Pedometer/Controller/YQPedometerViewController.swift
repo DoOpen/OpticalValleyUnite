@@ -276,11 +276,12 @@ class YQPedometerViewController: UIViewController {
         
         SVProgressHUD.dismiss()
         
+        //手动释放内存
+        let attr: NSMutableDictionary! = [NSForegroundColorAttributeName: UIColor.black]
+        UINavigationBar.appearance().titleTextAttributes = attr as? [String : Any]
+        
         self.dismiss(animated: true) {
             
-            //手动释放内存
-            let attr: NSMutableDictionary! = [NSForegroundColorAttributeName: UIColor.black]
-            UINavigationBar.appearance().titleTextAttributes = attr as? [String : Any]
         }
 
     }
@@ -386,16 +387,8 @@ class YQPedometerViewController: UIViewController {
         })
         
     }
+
     
-    deinit {
-        
-        SVProgressHUD.dismiss()
-        
-        let attr: NSMutableDictionary! = [NSForegroundColorAttributeName: UIColor.black]
-        UINavigationBar.appearance().titleTextAttributes = attr as? [String : Any]
-
-    }
-
 }
 
 

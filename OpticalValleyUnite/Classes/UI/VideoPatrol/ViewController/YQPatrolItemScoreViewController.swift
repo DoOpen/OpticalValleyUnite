@@ -243,7 +243,7 @@ class YQPatrolItemScoreViewController: UIViewController {
 extension YQPatrolItemScoreViewController : YQPatrolBottomNextViewDelegate{
     
     func PatrolBottomNextViewCancel() {
-        //暂时不做处理
+        //暂时不做处理,
         
         
     }
@@ -373,6 +373,7 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomLastViewDelegate{
             self.alert(message: "请添加上传图片")
             return
         }
+        
         if self.textView.text == "" {
             
             self.alert(message: "请输入巡查意见")

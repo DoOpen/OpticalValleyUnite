@@ -30,14 +30,23 @@ class UpdataPSWViewController: UIViewController {
             return
         }
         
+        let string1 = NSString.init(string: (oragerPassWorld?.md5())!)
+        let string2 = NSString.init(string: (newPassword2?.md5())!)
         var paramet = [String: Any]()
-        paramet["OLD_PASSWORD"] = oragerPassWorld?.md5()
-        paramet["NEW_PASSWORD"] = newPassword2?.md5()
+        //修改密码,字符串要求全部转大写的情况!
+        paramet["OLD_PASSWORD"] = string1.uppercased
+        paramet["NEW_PASSWORD"] = string2.uppercased
+        
+        SVProgressHUD.show()
         
         HttpClient.instance.post(path: URLPath.updatepwd, parameters: paramet, success: { (response) in
+            
             SVProgressHUD.showSuccess(withStatus: "修改密码成功")
+            self.navigationController?.popViewController(animated: true)
+            
         }) { (error) in
             
+            SVProgressHUD.showError(withStatus: error.description)
         }
         
     }

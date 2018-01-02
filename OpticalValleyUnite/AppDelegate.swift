@@ -186,13 +186,25 @@ extension AppDelegate{
     // MARK: - 应用后台推送通知返回的 值--->(关联后台的参数值来解析) 进行相应的跳转传值
     func noticHandel(userInfo: [AnyHashable : Any]){
         
+        //应用处于后台时的远程推送接受
+        if let _ = userInfo["type"] as? String{
+            
+            if let sub_type = userInfo["sub_type"] as? String{
+                //添加语音推送的消息内容
+                
+            }
+            
+        }
+        
         if !User.isLogin(){
+            
             print("没有登录")
             return
         }
         
         //应用处于后台时的远程推送接受
         if let type = userInfo["type"] as? String{
+            
             if type == "工单"{
                 
                 if let sub_type = userInfo["sub_type"] as? String,sub_type == "督办"{

@@ -644,15 +644,15 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
                 
                 switch (nowAnnotation?.videoModel?.type)! {
                 case 1://室内点
-                    annotationView?.image = UIImage.init(name: "内摄像头-关")
+                    annotationView?.image = UIImage.init(name: "室内2")
                     break
                 case 2://室外点
                     if nowAnnotation?.videoModel?.equipmentId != 0 {
                         
-                        annotationView?.image = UIImage.init(name: "外摄像头—关")
+                        annotationView?.image = UIImage.init(name: "室外摄像头2")
                     }else{
                         
-                        annotationView?.image = UIImage.init(name: "室外-关")
+                        annotationView?.image = UIImage.init(name: "室外2")
                     }
                     
                     break
@@ -665,17 +665,17 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
                 
                 switch (nowAnnotation?.videoModel?.type)! {
                 case 1://室内点
-                    annotationView?.image = UIImage.init(name: "内摄像头-关")
+                    annotationView?.image = UIImage.init(name: "室内1")
                     break
                     
                 case 2://室外点
                     
                     if nowAnnotation?.videoModel?.equipmentId != 0 {
                         
-                        annotationView?.image = UIImage.init(name: "外摄像头—关")
+                        annotationView?.image = UIImage.init(name: "室外摄像头1")
                     }else{
                         
-                        annotationView?.image = UIImage.init(name: "室外-关")
+                        annotationView?.image = UIImage.init(name: "室外1")
                     }
                     
                     break

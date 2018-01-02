@@ -205,9 +205,12 @@ class SurveillanceWorkOrderViewController: UIViewController {
     func selectionDidChange(noti: NSNotification){
         
         if tableView.indexPathsForSelectedRows == nil{
+            
             leftBtn.setTitle("全部选择", for: .normal)
+            
         }else{
-            leftBtn.setTitle("完成", for: .normal)
+            
+            leftBtn.setTitle("全选", for: .normal)
         }
         
     }
@@ -243,8 +246,6 @@ class SurveillanceWorkOrderViewController: UIViewController {
             
             parmat["PARK_ID"] = park_ID
         }
-        
-        
         
         //需要的是,补传的三个参数:
         if let start = dic["STAR"] {

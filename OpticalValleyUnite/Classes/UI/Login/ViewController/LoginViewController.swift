@@ -217,9 +217,7 @@ class LoginViewController: UIViewController {
                         
                         //进行UI界面赋值添加
                         self.systemDataArray = data
-                        
                     }
-                    
                     break
                 }
                 
@@ -275,6 +273,7 @@ class LoginViewController: UIViewController {
 
 
         }) { (error) in
+            
             print(error)
         }
         

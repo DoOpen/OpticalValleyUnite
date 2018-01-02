@@ -30,6 +30,7 @@ class YQVideoPatrolViewController: UIViewController {
     var videoMapPointModel = [YQVideoMapPointModel](){
         didSet{
             
+            mapView.removeAnnotations(mapView.annotations)
             //调用地图渲染,打点的方法(有多少个模型,就需要多少个标记)
             for model in videoMapPointModel{
                 
@@ -235,7 +236,6 @@ class YQVideoPatrolViewController: UIViewController {
             projectName = dic?["PARK_NAME"] as! String
             self.parkId = dic?["ID"] as! String
             
-            
         }else{
             
             projectName = "请选择默认项目"
@@ -293,6 +293,8 @@ class YQVideoPatrolViewController: UIViewController {
 //        annotation?.subtitle = "CustomAnnotationView"
     
         mapView.addAnnotation(annotation)
+        
+        
     }
     
     
@@ -538,7 +540,8 @@ class YQVideoPatrolViewController: UIViewController {
         let loadWays = noties.userInfo?["VideoLoadWaysArray"] as? NSArray
         
         if loadWays == nil {
-            
+            //调用首页的初始点的接口
+            // viewWill的方法再次进行调用实现了,重置打点的情况!
             return
         }
         
@@ -549,9 +552,7 @@ class YQVideoPatrolViewController: UIViewController {
             drawerController.setDrawerState(.closed , animated: true)
         }
         
-        //2.获取数据重绘,多维的数组的情况
-       
-        
+        //2.获取数据重绘,多维的数组的情况,增加需求的判断情况:是否巡查点之后,要求换图标效果
         for array in loadWays! {
             
             var tempModel = [YQVideoMapPointModel]()
@@ -637,28 +638,55 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
                 annotationView = MAAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
             }
             
-            
+            //添加逻辑的判断 情况: isint的属性来进行判断
             //通过模型来进行的传递的 model
-            switch (nowAnnotation?.videoModel?.type)! {
-            case 1://室内点
-                annotationView?.image = UIImage.init(name: "内摄像头-关")
-                break
-            case 2://室外点
-                if nowAnnotation?.videoModel?.equipmentId != 0 {
+            if nowAnnotation?.videoModel?.isIns == 0 { // 没有执行的情况
+                
+                switch (nowAnnotation?.videoModel?.type)! {
+                case 1://室内点
+                    annotationView?.image = UIImage.init(name: "内摄像头-关")
+                    break
+                case 2://室外点
+                    if nowAnnotation?.videoModel?.equipmentId != 0 {
+                        
+                        annotationView?.image = UIImage.init(name: "外摄像头—关")
+                    }else{
+                        
+                        annotationView?.image = UIImage.init(name: "室外-关")
+                    }
                     
-                    annotationView?.image = UIImage.init(name: "外摄像头—关")
-                }else{
+                    break
+                default:
+                    break
                     
-                    annotationView?.image = UIImage.init(name: "室外-关")
                 }
                 
-                break
-            default:
-                break
+            }else {
                 
+                switch (nowAnnotation?.videoModel?.type)! {
+                case 1://室内点
+                    annotationView?.image = UIImage.init(name: "内摄像头-关")
+                    break
+                    
+                case 2://室外点
+                    
+                    if nowAnnotation?.videoModel?.equipmentId != 0 {
+                        
+                        annotationView?.image = UIImage.init(name: "外摄像头—关")
+                    }else{
+                        
+                        annotationView?.image = UIImage.init(name: "室外-关")
+                    }
+                    
+                    break
+                default:
+                    break
+                    
+                }
+
             }
             
-
+            
             annotationView!.canShowCallout = true //设置气泡可以弹出，默认为NO
             
             return annotationView!

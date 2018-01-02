@@ -31,6 +31,10 @@ class YQVideoMapPointModel: NSObject {
     //设备摄像头id
     var equipmentId : Int = 0
     
+    //新增的是否是巡查过的点
+    var isIns : Int = 0
+    
+    
     init(dict : [String : Any]) {
         super.init()
         

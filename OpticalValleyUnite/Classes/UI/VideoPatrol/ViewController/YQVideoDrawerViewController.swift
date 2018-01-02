@@ -271,7 +271,6 @@ class YQVideoDrawerViewController: UIViewController {
                 let tempDict = dict as? NSDictionary
                 let drawAarray = tempDict?["pointList"] as! NSArray
                 allDrawArray.add(drawAarray)
-            
             }
             
             //发送通知进行传值

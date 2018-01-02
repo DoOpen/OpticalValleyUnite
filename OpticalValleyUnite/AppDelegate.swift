@@ -11,13 +11,15 @@ import IQKeyboardManager
 import SVProgressHUD
 import MessageUI
 import KYDrawerController
-import Speech
+import AVFoundation
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    fileprivate let avSpeech = AVSpeechSynthesizer()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -191,7 +193,7 @@ extension AppDelegate{
             
             if let sub_type = userInfo["sub_type"] as? String{
                 //添加语音推送的消息内容
-                
+                startTranslattion(voicessss: sub_type)
             }
             
         }
@@ -345,5 +347,23 @@ extension AppDelegate{
 //        getNavController()?.pushViewController(drawerController, animated: true)
         
     }
+    
+    
+    // MARK: - 语音播报的内容
+    fileprivate func startTranslattion(voicessss : String){
+        //1. 创建需要合成的声音类型
+        let voice = AVSpeechSynthesisVoice(language: "zh-CN")
+        
+        //2. 创建合成的语音类
+        let utterance = AVSpeechUtterance(string: voicessss)
+        utterance.rate = AVSpeechUtteranceDefaultSpeechRate
+        utterance.voice = voice
+        utterance.volume = 1
+        utterance.postUtteranceDelay = 0.1
+        utterance.pitchMultiplier = 1
+        //开始播放
+        avSpeech.speak(utterance)
+    }
+
 }
 

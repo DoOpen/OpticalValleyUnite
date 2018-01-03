@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared().isEnabled = true
         SVProgressHUD.setMaximumDismissTimeInterval(2)
         
+        
         /*
          1. 集成友盟的sdk,步骤方法
          2. 通过的是 适配Https
@@ -108,6 +109,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         
         UMessage.didReceiveRemoteNotification(userInfo)
+        //应用处于后台时的远程推送接受
+        if let body = userInfo["aps"] as? [String : Any]{
+            
+            let voiceText = body["alert"] as? String
+            //添加语音推送的消息内容
+            startTranslattion(voicessss: voiceText!)
+        }
+
         
         noticHandel(userInfo: userInfo)
         
@@ -120,13 +129,21 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         
         let userInfo = response.notification.request.content.userInfo
         
+        //应用处于后台时的远程推送接受
+        if let body = userInfo["aps"] as? [String : Any]{
+            
+            let voiceText = body["alert"] as? String
+            //添加语音推送的消息内容
+            startTranslattion(voicessss: voiceText!)
+        }
+
+        
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
             
             /// 这个是应用处在后台时候的推送执行的方法
             // 接受通知执行界面的跳转功能
             noticHandel(userInfo: userInfo)
             UMessage.didReceiveRemoteNotification(userInfo)
-            
             
         }else{
             //应用处于后台时的本地推送接受
@@ -185,18 +202,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
 /// 继承appDelegate的点击进行的界面间跳转的方法
 extension AppDelegate{
     
-    // MARK: - 应用后台推送通知返回的 值--->(关联后台的参数值来解析) 进行相应的跳转传值
+    // MARK: - 点击推送工单执行的方法--->(关联后台的参数值来解析) 进行相应的跳转传值
     func noticHandel(userInfo: [AnyHashable : Any]){
         
-        //应用处于后台时的远程推送接受
-        if let _ = userInfo["type"] as? String{
-            
-            if let sub_type = userInfo["sub_type"] as? String{
-                //添加语音推送的消息内容
-                startTranslattion(voicessss: sub_type)
-            }
-            
-        }
         
         if !User.isLogin(){
             

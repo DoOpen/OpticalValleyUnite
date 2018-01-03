@@ -127,8 +127,13 @@ class YQScanImageViewController: UIViewController {
                     break
                 
                 case 1://门禁设备未连接
-                     SVProgressHUD.showError(withStatus: "门禁设备未连接!")
+                    
+//                    self.imageView.image =  SGQRCodeTool.sg_generate(withDefaultQRCodeData: qrCode, imageViewWidth: self.imageView.width)
+
+                    SVProgressHUD.showError(withStatus: "门禁设备未连接!")
+                    
                     break
+                
                 case 2://数据加载失败
                     SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
 

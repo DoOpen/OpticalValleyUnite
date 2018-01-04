@@ -123,20 +123,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         UIApplication.shared.applicationIconBadgeNumber += 1
     }
     
-    //iOS10新增：处理后台点击通知的代理方法
+    //iOS10新增：处理后台点击通知的代理方法(点击通知执行的方法)
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let userInfo = response.notification.request.content.userInfo
-        
-        //应用处于后台时的远程推送接受
-        if let body = userInfo["aps"] as? [String : Any]{
-            
-            let voiceText = body["alert"] as? String
-            //添加语音推送的消息内容
-            startTranslattion(voicessss: voiceText!)
-        }
-
         
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
             
@@ -152,12 +143,20 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         
     }
     
-//iOS10新增：处理前台收到通知的代理方法
+//iOS10新增：处理前台收到通知的代理方法(接受通知的方法)
     ////iOS10新增：处理前台收到通知的代理方法
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-//        let userInfo = notification.request.content.userInfo
+        let userInfo = notification.request.content.userInfo
+        
+        if let body = userInfo["aps"] as? [String : Any]{
+            
+            let voiceText = body["alert"] as? String
+            //添加语音推送的消息内容
+            startTranslattion(voicessss: voiceText!)
+        }
+
         
         if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
             //应用处于前台时的远程推送接受

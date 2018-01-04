@@ -123,13 +123,17 @@ class YQScanImageViewController: UIViewController {
 
                     //判断图片的地址名称
                     //通过SGQRcode 来生成二维码的图片
-                    self.imageView.image =  SGQRCodeTool.sg_generate(withDefaultQRCodeData: qrCode, imageViewWidth: self.imageView.width)
+//                    self.imageView.image =  SGQRCodeTool.sg_generate(withDefaultQRCodeData: qrCode, imageViewWidth: self.imageView.width)
+                    self.imageView.image = SGQRCodeTool.sg_generate(withLogoQRCodeData: qrCode, logoImageName: "icon-40", logoScaleToSuperView: 0.2)
+                    
                     break
                 
                 case 1://门禁设备未连接
                     
 //                    self.imageView.image =  SGQRCodeTool.sg_generate(withDefaultQRCodeData: qrCode, imageViewWidth: self.imageView.width)
 
+//                    self.imageView.image = SGQRCodeTool.sg_generate(withLogoQRCodeData: qrCode, logoImageName: "icon-40", logoScaleToSuperView: 0.2)
+                    
                     SVProgressHUD.showError(withStatus: "门禁设备未连接!")
                     
                     break

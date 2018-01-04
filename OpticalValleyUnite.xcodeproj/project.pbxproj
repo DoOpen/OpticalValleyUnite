@@ -73,6 +73,8 @@
 		2F4217391FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4217371FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift */; };
 		2F42173A1FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4217381FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.xib */; };
 		2F452E8B1FDE31EE0036DE7A /* YQResultViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F452E8A1FDE31EE0036DE7A /* YQResultViewCell.swift */; };
+		2F45F7F91FFDD40E00293A23 /* YQOffLineWorkOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45F7F71FFDD40E00293A23 /* YQOffLineWorkOrderVC.swift */; };
+		2F45F7FC1FFDD45D00293A23 /* YQOffLineWorkOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F45F7FB1FFDD45D00293A23 /* YQOffLineWorkOrder.storyboard */; };
 		2F4A658C1F945A9700F4C72A /* YQJournalAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A658B1F945A9700F4C72A /* YQJournalAddEventViewController.swift */; };
 		2F4A658E1F945AC300F4C72A /* YQJournalAddEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F4A658D1F945AC300F4C72A /* YQJournalAddEvent.storyboard */; };
 		2F4A65901F9462CF00F4C72A /* YQWorkRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A658F1F9462CF00F4C72A /* YQWorkRecordViewController.swift */; };
@@ -400,6 +402,8 @@
 		2F4217371FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPatrolItemWeatherViewController.swift; sourceTree = "<group>"; };
 		2F4217381FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPatrolItemWeatherViewController.xib; sourceTree = "<group>"; };
 		2F452E8A1FDE31EE0036DE7A /* YQResultViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQResultViewCell.swift; sourceTree = "<group>"; };
+		2F45F7F71FFDD40E00293A23 /* YQOffLineWorkOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQOffLineWorkOrderVC.swift; sourceTree = "<group>"; };
+		2F45F7FB1FFDD45D00293A23 /* YQOffLineWorkOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQOffLineWorkOrder.storyboard; sourceTree = "<group>"; };
 		2F4A658B1F945A9700F4C72A /* YQJournalAddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalAddEventViewController.swift; sourceTree = "<group>"; };
 		2F4A658D1F945AC300F4C72A /* YQJournalAddEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJournalAddEvent.storyboard; sourceTree = "<group>"; };
 		2F4A658F1F9462CF00F4C72A /* YQWorkRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkRecordViewController.swift; sourceTree = "<group>"; };
@@ -908,6 +912,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2F45F7F41FFDD39700293A23 /* OffLineWorkOrder */ = {
+			isa = PBXGroup;
+			children = (
+				2F45F7F51FFDD39700293A23 /* View */,
+				2F45F7F61FFDD39700293A23 /* ViewController */,
+			);
+			path = OffLineWorkOrder;
+			sourceTree = "<group>";
+		};
+		2F45F7F51FFDD39700293A23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F45F7F61FFDD39700293A23 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2F45F7F71FFDD40E00293A23 /* YQOffLineWorkOrderVC.swift */,
+				2F45F7FB1FFDD45D00293A23 /* YQOffLineWorkOrder.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		2F4EB28F1FD51A170004A532 /* VideoPatrol */ = {
 			isa = PBXGroup;
 			children = (
@@ -1387,6 +1416,7 @@
 		4BD4B9221E272EA600AE2BC9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2F45F7F41FFDD39700293A23 /* OffLineWorkOrder */,
 				2F68BED71FE2856C0079B2AF /* IntoDoorAdminis */,
 				2F07A0131FDBEC100064556D /* PatrolResult */,
 				2F4EB28F1FD51A170004A532 /* VideoPatrol */,
@@ -1802,6 +1832,7 @@
 				2F0223BC1FA9C2330090822F /* YQWorkOderComplete.storyboard in Resources */,
 				2F40D98E1FB93AEA007971D1 /* YQStepScreen.storyboard in Resources */,
 				4B3951ED1E28718200E2642F /* ReportMaster.storyboard in Resources */,
+				2F45F7FC1FFDD45D00293A23 /* YQOffLineWorkOrder.storyboard in Resources */,
 				4BD4B90B1E272E0C00AE2BC9 /* LaunchScreen.storyboard in Resources */,
 				2F94A2811F73A5F500455162 /* YQFireMapDetail.storyboard in Resources */,
 				4B1DEC5F1E31BD27000917D2 /* Map.storyboard in Resources */,
@@ -2129,6 +2160,7 @@
 				2FDED33E1F711DF000E4BA2E /* YQFireLocationModel.swift in Sources */,
 				4B50D62F1EBB1B3900BB480F /* AllViewController.swift in Sources */,
 				2F79451A1FE795190085E803 /* NSString+YYExtend.m in Sources */,
+				2F45F7F91FFDD40E00293A23 /* YQOffLineWorkOrderVC.swift in Sources */,
 				4B8A9FD01E2C7C440009F757 /* AppraisalViewController.swift in Sources */,
 				2FC167471F905F34001CEACD /* YQJournalDetailViewController.swift in Sources */,
 				2F92B2601FBB03D500168FC6 /* YQStepShowModel.swift in Sources */,

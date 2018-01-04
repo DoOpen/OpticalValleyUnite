@@ -350,7 +350,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     }
     
     
-    //MARK: - 获取读完工单数量
+    //MARK: - 获取消息工单数量接口
     func getStaticWorkunitDB(){
         
         HttpClient.instance.get(path: URLPath.getStaticWorkunitDB, parameters: nil, success: { (respose) in
@@ -363,10 +363,14 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 self.dubanCount = dubanCount
                 self.workCount = workCount
                 if tatolCount >= 0 {
+                    
                     self.messageBtn.badge(text: "\(tatolCount)")
                     
-                    //设置 系统app的显示的图标的选项的情况
-                    UIApplication.shared.applicationIconBadgeNumber = tatolCount
+                    DispatchQueue.main.async {
+                        //设置 系统app的显示的图标的选项的情况
+                        UIApplication.shared.applicationIconBadgeNumber = tatolCount
+                        
+                    }
                 }
             }
             

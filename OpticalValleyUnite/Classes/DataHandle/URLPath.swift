@@ -261,4 +261,13 @@ struct URLPath {
     static let getOpenDoorByQrCode = "acs/openDoorByQrCode"
     
     
+    ///离线工单的接口
+    //下载离线工单
+    static let getDownloadOfflineUnits = "workunit/downloadOfflineUnits"
+    //上传离线工单
+    static let getUploadOfflineUnits = "workunit/uploadOfflineUnits"
+    //上传图片的接口
+    static let getUploadUnits = "workunit/uploadUnits"
+    
+    
 }

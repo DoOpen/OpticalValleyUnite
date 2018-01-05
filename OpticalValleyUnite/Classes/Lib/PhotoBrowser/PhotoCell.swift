@@ -49,11 +49,19 @@ class PhotoCell: UICollectionViewCell {
                 imageView.kf.setImage(with: photo?.url, placeholder: photo?.placeholderImage, options: nil, progressBlock: { (receivedSize, totalSize) in
                     
                 }) { (image, error, calce, url) in
+                    
                     if (error != nil) {
 
                         let data = NSData.init(contentsOf: (self.photo?.url)!)
                         
-                        self.imageView.image = UIImage.init(data: data! as Data)
+                        if data == nil {
+                        
+                            self.imageView.image = nil
+                        }else{
+                        
+                            self.imageView.image = UIImage.init(data: data! as Data)
+                        }
+                        
                         
                     }
                     

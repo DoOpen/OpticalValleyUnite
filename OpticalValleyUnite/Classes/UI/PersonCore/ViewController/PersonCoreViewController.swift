@@ -38,7 +38,6 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         //写死的项目发版的时间
         bundleVersionLabel.text = bundleVersionLabel.text! + "(\(version))"
         
-        
     }
     
     
@@ -105,6 +104,17 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         navigationController?.pushViewController(vc, animated: true)
         vc.title = "修改密码"
     }
+    
+    // MARK: - 跳转到离线工单的界面
+    @IBAction func offLineButtonClick(_ sender: Any) {
+        
+        let offlineVC = UIStoryboard.instantiateInitialViewController(name: "YQOffLineWorkOrder") as? YQOffLineWorkOrderVC
+        
+        self.navigationController?.pushViewController(offlineVC!, animated: true)
+        
+        
+    }
+    
     
     // MARK: - 个人详情信息的界面跳转
     @IBAction func PersonDetailButtonClick(_ sender: Any) {

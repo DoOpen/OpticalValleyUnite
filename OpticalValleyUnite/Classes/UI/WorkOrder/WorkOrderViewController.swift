@@ -174,8 +174,11 @@ class WorkOrderViewController: UIViewController {
     
 
     func getWorkOrderFormDataDB(type:String, indexPage: Int = 0) -> [WorkOrderModel2]{
-        let realm = try! Realm()
-        let result =  realm.objects(WorkOrderModel2.self)
+        
+        //使用 Realm API 初始化 Swift 属性
+        let realm = try! Realm()// 开始数据库的操作
+        let result =  realm.objects(WorkOrderModel2.self) //新建一个数据库的属性
+        
  
         var tempArray = [WorkOrderModel2]()
         for model in result {

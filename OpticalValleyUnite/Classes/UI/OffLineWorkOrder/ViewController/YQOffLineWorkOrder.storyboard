@@ -20,12 +20,66 @@
                     <view key="view" contentMode="scaleToFill" id="Bqk-lB-HSQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHS-uK-tSb">
+                                <rect key="frame" x="27.5" y="75" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5EF-NS-FbJ"/>
+                                    <constraint firstAttribute="width" constant="150" id="DSA-5W-Nx2"/>
+                                </constraints>
+                                <state key="normal" title="离线工单的下载">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="offLineButtonDownLoad:" destination="fam-1C-CUu" eventType="touchUpInside" id="kKq-iF-HVA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKc-YP-0O1">
+                                <rect key="frame" x="197.5" y="75" width="150" height="50"/>
+                                <state key="normal" title="离线工单的上传">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="offLineButtonUP:" destination="fam-1C-CUu" eventType="touchUpInside" id="YNW-0j-NNX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="kKc-YP-0O1" firstAttribute="centerX" secondItem="Bqk-lB-HSQ" secondAttribute="centerX" constant="85" id="8mU-sh-6nh"/>
+                            <constraint firstItem="kKc-YP-0O1" firstAttribute="centerY" secondItem="yHS-uK-tSb" secondAttribute="centerY" id="CFv-jY-Z8b"/>
+                            <constraint firstItem="yHS-uK-tSb" firstAttribute="top" secondItem="wih-2M-LLq" secondAttribute="bottom" constant="55" id="Dnk-Ae-zHe"/>
+                            <constraint firstItem="yHS-uK-tSb" firstAttribute="centerX" secondItem="Bqk-lB-HSQ" secondAttribute="centerX" constant="-85" id="KUt-fF-63O"/>
+                            <constraint firstItem="kKc-YP-0O1" firstAttribute="width" secondItem="yHS-uK-tSb" secondAttribute="width" id="Sas-2g-SJj"/>
+                            <constraint firstItem="kKc-YP-0O1" firstAttribute="height" secondItem="yHS-uK-tSb" secondAttribute="height" id="eUU-AK-hEE"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="de1-Zd-fNW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-417" y="45"/>
+            <point key="canvasLocation" x="-676" y="-33.733133433283363"/>
         </scene>
     </scenes>
 </document>

@@ -78,17 +78,19 @@ class YQVideoDrawerViewController: UIViewController {
     
     // MARK: - 视图生命周期的方法
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        //0.获取parkID
-        let _ = setUpProjectNameLable()
-        
+       
         self.scrollView.contentSize = CGSize.init(width: 0, height: 600)
-        self.searchBar.delegate = self
         
+        self.searchBar.delegate = self
     
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        //0.获取parkID
+        let _ = setUpProjectNameLable()
         
         if self.patrolItemTagsView.tags.count <= 0 || self.patrolRouteTagsView.tags.count <= 0 {
             

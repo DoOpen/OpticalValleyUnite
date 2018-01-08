@@ -177,9 +177,8 @@ class WorkOrderViewController: UIViewController {
         
         //使用 Realm API 初始化 Swift 属性
         let realm = try! Realm()// 开始数据库的操作
-        let result =  realm.objects(WorkOrderModel2.self) //新建一个数据库的属性
-        
- 
+        let result =  realm.objects(WorkOrderModel2.self) //新建一个数据库的属性,realm的直接的引用模型的操作
+    
         var tempArray = [WorkOrderModel2]()
         for model in result {
             let model = model as WorkOrderModel2

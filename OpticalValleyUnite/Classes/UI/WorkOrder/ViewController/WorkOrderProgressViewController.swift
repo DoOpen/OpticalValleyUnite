@@ -205,8 +205,6 @@ class WorkOrderProgressViewController: UIViewController {
     // MARK: - left,rightButton的点击
     @IBAction func leftBtnClick() {
         
-        
-        
         switch type {
             
         //待派发
@@ -293,7 +291,6 @@ class WorkOrderProgressViewController: UIViewController {
                 let model = WorkOrderDetailModel(parmart: dic)
                 self.workOrderDetalModel = model
             }
-            
             
             self.models = temp
             self.tableView.reloadData()
@@ -550,6 +547,7 @@ class WorkOrderProgressViewController: UIViewController {
         request(paramat: parmat, completionHandler: {
             self.getWorkDetail()
         })
+        
     }
     
     //工单退回

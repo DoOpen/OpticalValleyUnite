@@ -28,25 +28,71 @@ class YQOffLineWorkOrderVC: UIViewController {
          4.读取进行渲染,拿到数据,进行操作
          */
         
-        let realm = try! Realm()
-        
-        try! realm.write {
-            
-//            realm.add("你好")
-            
-        }
-        
         SVProgressHUD.show()
         
         HttpClient.instance.post(path: URLPath.getDownloadOfflineUnits, parameters: nil, success: { (response) in
             
+            SVProgressHUD.dismiss()
+            //大数据的处理情况
+            let data = response["data"] as? NSArray
             
+            //1.先转工单首页的模型数据表
+            var tempData = [WorkOrderModel2]()
+            
+            for temp in data! {
+                
+                let model = WorkOrderModel2.init(parmart: temp as! [String : Any])
+                tempData.append(model)
+            }
+            
+            let realm = try! Realm()
+            try! realm.write {
+                
+                realm.add(tempData)
+            }
+            
+            //2.再转工单详情的模型数据列表
+            let offlineFirst = UIStoryboard.instantiateInitialViewController(name: "YQOffLineFirst")
+            self.navigationController?.pushViewController(offlineFirst, animated: true)
+
             
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "离线工单下载失败,请重试!")
-            
         }
+        
+        
+        
+        /// 测试数据库的代码情况
+        var tempData = [WorkOrderModel2]()
+        
+        var dict = [String : Any]()
+        dict["id"] = "8980980"
+        dict["status"] = 1
+        dict["content"] = "都帮songodjodn"
+        dict["EXEC_PERSON_ID"] = "jsongodijdojfdof"
+        dict["statusCn"] = "jsongdoufbdo"
+        dict["reportPeopleName"] = "eionfoaohgd"
+        dict["WORKUNIT_TYPE"] = "1"
+        
+        let model = WorkOrderModel2.init(parmart: dict)
+        
+        for _ in 0...3 {
+            
+            tempData.append(model)
+        }
+        
+        
+        let realm = try! Realm()
+        
+        try! realm.write {
+            
+            realm.deleteAll()
+            
+            realm.add(tempData)
+        }
+        
+        
         
     }
     
@@ -58,8 +104,15 @@ class YQOffLineWorkOrderVC: UIViewController {
          
          */
         
-        
-        
+//        let realm = try! Realm()
+//        let result =  realm.objects(WorkOrderModel2.self)
+//        
+//        
+//        print(result.count)
+//        
+//        print(result)
+
+               
     }
 
 }

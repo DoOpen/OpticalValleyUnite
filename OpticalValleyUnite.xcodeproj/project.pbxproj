@@ -92,6 +92,8 @@
 		2F51D3DD1FEB8B0D00BC7B04 /* YQScanImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F51D3DB1FEB8B0D00BC7B04 /* YQScanImageViewController.xib */; };
 		2F54BF0B1FCBF7C7006B4DCF /* YQExecTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */; };
 		2F54BF0C1FCBF7C7006B4DCF /* YQExecTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F54BF0A1FCBF7C7006B4DCF /* YQExecTextCell.xib */; };
+		2F57D7E21FFF4A0300207E98 /* YQOffLineFirstWorkOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57D7E11FFF4A0300207E98 /* YQOffLineFirstWorkOrderVC.swift */; };
+		2F57D7E41FFF4A3300207E98 /* YQOffLineFirst.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F57D7E31FFF4A3300207E98 /* YQOffLineFirst.storyboard */; };
 		2F5A3D591FE8DFE50069ABE1 /* RfmAccessControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5A3D581FE8DFE50069ABE1 /* RfmAccessControl.framework */; };
 		2F5A3D5C1FE8ED7F0069ABE1 /* YQBluetoothCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5A3D5A1FE8ED7F0069ABE1 /* YQBluetoothCell.swift */; };
 		2F5A3D5D1FE8ED7F0069ABE1 /* YQBluetoothCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5A3D5B1FE8ED7F0069ABE1 /* YQBluetoothCell.xib */; };
@@ -421,6 +423,8 @@
 		2F51D3DB1FEB8B0D00BC7B04 /* YQScanImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQScanImageViewController.xib; sourceTree = "<group>"; };
 		2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQExecTextCell.swift; sourceTree = "<group>"; };
 		2F54BF0A1FCBF7C7006B4DCF /* YQExecTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQExecTextCell.xib; sourceTree = "<group>"; };
+		2F57D7E11FFF4A0300207E98 /* YQOffLineFirstWorkOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQOffLineFirstWorkOrderVC.swift; sourceTree = "<group>"; };
+		2F57D7E31FFF4A3300207E98 /* YQOffLineFirst.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQOffLineFirst.storyboard; sourceTree = "<group>"; };
 		2F5A3D561FE8DBAD0069ABE1 /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
 		2F5A3D581FE8DFE50069ABE1 /* RfmAccessControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RfmAccessControl.framework; sourceTree = "<group>"; };
 		2F5A3D5A1FE8ED7F0069ABE1 /* YQBluetoothCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQBluetoothCell.swift; sourceTree = "<group>"; };
@@ -933,6 +937,8 @@
 			children = (
 				2F45F7F71FFDD40E00293A23 /* YQOffLineWorkOrderVC.swift */,
 				2F45F7FB1FFDD45D00293A23 /* YQOffLineWorkOrder.storyboard */,
+				2F57D7E11FFF4A0300207E98 /* YQOffLineFirstWorkOrderVC.swift */,
+				2F57D7E31FFF4A3300207E98 /* YQOffLineFirst.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1815,6 +1821,7 @@
 				4B5AF64B1E36F73B00844F3D /* LoginViewController.xib in Resources */,
 				2FEB0E891F6E713F0002DEE8 /* YQFalsePositives.xib in Resources */,
 				2F5A3D651FE8EF770069ABE1 /* YQDynamicPasswordCell.xib in Resources */,
+				2F57D7E41FFF4A3300207E98 /* YQOffLineFirst.storyboard in Resources */,
 				2F4EB29A1FD532590004A532 /* YQVideoDrawerViewController.xib in Resources */,
 				2F7550F51FA6C19100A5E242 /* YQFilterDepartment.storyboard in Resources */,
 				4BB53FF11F14D9CA0061190F /* DeviceCell.xib in Resources */,
@@ -2069,6 +2076,7 @@
 				4B3951FF1E28D2B900E2642F /* WorkOrderDistributionCell.swift in Sources */,
 				4BD4B95B1E275BDB00AE2BC9 /* SignInListViewController.swift in Sources */,
 				4BBBEC951E2CAAE200F60313 /* BoPhotoListCell.m in Sources */,
+				2F57D7E21FFF4A0300207E98 /* YQOffLineFirstWorkOrderVC.swift in Sources */,
 				4B6E64FD1EEAEFCF00BA23E4 /* PhotoTransition.swift in Sources */,
 				2F5A3D641FE8EF770069ABE1 /* YQDynamicPasswordCell.swift in Sources */,
 				2F2F957A1F8DF74800870DC8 /* YQJournalCellView.swift in Sources */,

@@ -31,6 +31,7 @@ struct URLPath {
 //    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
     ///新版测试服务器的域名 http://172.16.19.98:8091
     ///新版正式服 : http://116.62.117.82:2018
+    ///元元 : http://172.16.11.81
     
     //服务器的basic 地址:
     static let basicPath = "http://172.16.19.98:8091/ovu-pcos/api/"

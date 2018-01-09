@@ -173,6 +173,7 @@ class WorkOrderViewController: UIViewController {
     }
     
 
+    // MARK: - 废弃的方法条件!
     func getWorkOrderFormDataDB(type:String, indexPage: Int = 0) -> [WorkOrderModel2]{
         
         //使用 Realm API 初始化 Swift 属性
@@ -187,6 +188,7 @@ class WorkOrderViewController: UIViewController {
             }
             
         }
+        
         return tempArray
     }
     

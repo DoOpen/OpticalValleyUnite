@@ -387,10 +387,11 @@ class YQVideoPatrolViewController: UIViewController {
         
         if self.parkId == "" {
             
-//            self.alert(message: <#T##String#>, doneBlock: <#T##((UIAlertAction) -> ())##((UIAlertAction) -> ())##(UIAlertAction) -> ()#>)
-            
             self.alert(message: "请选择项目!", doneBlock: { (action) in
                 
+                let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+                self.navigationController?.pushViewController(project, animated: true)
+
             })
             
             return

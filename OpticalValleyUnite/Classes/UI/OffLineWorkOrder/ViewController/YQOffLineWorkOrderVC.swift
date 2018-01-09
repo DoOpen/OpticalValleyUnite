@@ -36,22 +36,103 @@ class YQOffLineWorkOrderVC: UIViewController {
             //大数据的处理情况
             let data = response["data"] as? NSArray
             
-            //1.先转工单首页的模型数据表
-            var tempData = [WorkOrderModel2]()
             
+            //1.先转工单首页的模型数据表
+            var tempWOModel2Data = [WorkOrderModel2]()
             for temp in data! {
                 
                 let model = WorkOrderModel2.init(parmart: temp as! [String : Any])
-                tempData.append(model)
+                tempWOModel2Data.append(model)
             }
+            
+            
+            //2.工单详情的界面的模型数据表
+            var tempESectionM = [ExecSectionModel]()
+            for temp in data!{
+                
+                let dic = temp as? NSDictionary
+                let detail = dic?["detail"] as? NSDictionary
+                let section = detail?["task"] as? NSDictionary
+                if section != nil {
+                    
+                    let model = ExecSectionModel(parmart: section as! [String : Any])
+                    
+                    tempESectionM.append(model)
+                    
+                }
+                
+            }
+            
+            
+            //3.工单详情histories的数据表
+            var tempHistoriesM = [WorkHistoryModel]()
+            for temp in data!{
+                
+                let dic = temp as? NSDictionary
+                let detail = dic?["detail"] as? NSDictionary
+                let histories = detail?["histories"] as? NSDictionary
+                
+                if histories != nil {
+                    
+                    let model = WorkHistoryModel(parmart: histories as! [String : Any])
+                    
+                    tempHistoriesM.append(model)
+                    
+                }
+                
+            }
+            
+            
+            //4.工单详情callbacks的数据表
+            var tempCallbsM = [CallbackModel]()
+            for temp in data!{
+                
+                let dic = temp as? NSDictionary
+                let detail = dic?["detail"] as? NSDictionary
+                let callbacks = detail?["callbacks"] as? NSDictionary
+                
+                if callbacks != nil {
+                    
+                    let model = CallbackModel(parmart: callbacks as! [String : Any])
+                    
+                    tempCallbsM.append(model)
+                }
+        
+            }
+
+            //5.拿到设备设置的接口,这里的是要求存储增加的是设备的id,通过设备ID来进行的筛选查找
+            var tempEquimentModel = [EquimentModel]()
+            
+            for temp in data!{
+                
+                let dic = temp as? NSDictionary
+                let detail = dic?["detail"] as? NSDictionary
+                let equipment = detail?["equipment"] as? NSDictionary
+                
+                if equipment != nil {
+                    
+                    let model = EquimentModel(parmart: equipment as! [String : Any])
+                    
+                    tempEquimentModel.append(model)
+                }
+                
+            }
+
+            
             
             let realm = try! Realm()
             try! realm.write {
                 
-                realm.add(tempData)
+                realm.add(tempWOModel2Data)
+//                realm.add(tempESectionM)
+//                realm.add(tempHistoriesM)
+//                realm.add(tempCallbsM)
+//                realm.add(tempEquimentModel)
+                
             }
+
             
-            //2.再转工单详情的模型数据列表
+            //最后.再转工单详情的模型数据列表
             let offlineFirst = UIStoryboard.instantiateInitialViewController(name: "YQOffLineFirst")
             self.navigationController?.pushViewController(offlineFirst, animated: true)
 
@@ -62,37 +143,50 @@ class YQOffLineWorkOrderVC: UIViewController {
         }
         
         
-        
-        /// 测试数据库的代码情况
-        var tempData = [WorkOrderModel2]()
-        
-        var dict = [String : Any]()
-        dict["id"] = "8980980"
-        dict["status"] = 1
-        dict["content"] = "都帮songodjodn"
-        dict["EXEC_PERSON_ID"] = "jsongodijdojfdof"
-        dict["statusCn"] = "jsongdoufbdo"
-        dict["reportPeopleName"] = "eionfoaohgd"
-        dict["WORKUNIT_TYPE"] = "1"
-        
-        let model = WorkOrderModel2.init(parmart: dict)
-        
-        for _ in 0...3 {
-            
-            tempData.append(model)
-        }
-        
-        
-        let realm = try! Realm()
-        
-        try! realm.write {
-            
-            realm.deleteAll()
-            
-            realm.add(tempData)
-        }
-        
-        
+//        /// 测试数据库的代码情况
+//        var tempData = [WorkOrderModel2]()
+//        
+//        var dict = [String : Any]()
+//        dict["id"] = "8980980"
+//        dict["status"] = 1
+//        dict["content"] = "都帮songodjodn"
+//        dict["EXEC_PERSON_ID"] = "jsongodijdojfdof"
+//        dict["statusCn"] = "jsongdoufbdo"
+//        dict["reportPeopleName"] = "eionfoaohgd"
+//        dict["WORKUNIT_TYPE"] = "1"
+//        
+//        for xxxx in 0...4 {
+//            
+//            if xxxx == 0 {
+//                dict["id"] = "898098009080q"
+//                dict["WORKUNIT_TYPE"] = "1"
+//                
+//            }else if (xxxx == 1){
+//                dict["id"] = "898098009sefe080q"
+//                dict["WORKUNIT_TYPE"] = "2"
+//                
+//            }else if (xxxx == 2){
+//                dict["id"] = "980091224080q"
+//                dict["WORKUNIT_TYPE"] = "1"
+//                
+//            }else if (xxxx == 3){
+//                dict["id"] = "8980980045459080q"
+//                dict["WORKUNIT_TYPE"] = "2"
+//                
+//            }
+//            
+//            let model = WorkOrderModel2.init(parmart: dict)
+//            tempData.append(model)
+//        }
+//        
+//        
+//        let realm = try! Realm()
+//        try! realm.write {
+//            
+//            realm.add(tempData, update: true)
+//            
+//        }
+
         
     }
     

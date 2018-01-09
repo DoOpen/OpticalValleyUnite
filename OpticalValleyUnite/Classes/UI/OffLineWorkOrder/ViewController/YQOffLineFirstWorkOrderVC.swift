@@ -117,20 +117,22 @@ extension YQOffLineFirstWorkOrderVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        let vc = WorkOrderProgressViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderProgressViewController
-//        //        vc.workModelId = currentDatas[indexPath.row].workOrderId
-//        let model = currentDatas[indexPath.row]
-//        
-//        var parmat = [String: Any]()
-//        parmat["UNIT_STATUS"] = model.status
-//        parmat["PERSONTYPE"] = model.PERSONTYPE
-//        parmat["EXEC_PERSON_ID"] = model.execPersionId
-//        parmat["WORKUNIT_ID"] = model.workOrderId
-//        
-//        vc.parmate = parmat
-//        // 执行的工单的 回退之后 进行的list的刷新, 要求的补全逻辑的代码
-//        //    vc.listVc = self
-//        navigationController?.pushViewController(vc, animated: true)
+        let vc = WorkOrderProgressViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderProgressViewController
+        let model = currentDatas[indexPath.row]
+        
+        var parmat = [String: Any]()
+        parmat["UNIT_STATUS"] = model.status
+        parmat["PERSONTYPE"] = model.PERSONTYPE
+        parmat["EXEC_PERSON_ID"] = model.execPersionId
+        parmat["WORKUNIT_ID"] = model.workOrderId
+        
+        vc.parmate = parmat
+        // 执行的工单的 回退之后 进行的list的刷新, 要求的补全逻辑的代码
+        //    vc.listVc = self
+        // 属性列表的判断
+        vc.backDB = true
+        
+        navigationController?.pushViewController(vc, animated: true)
         
     }
     

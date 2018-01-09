@@ -14,8 +14,13 @@ enum OperationType: Int{
 }
 
 class WorkOrderProgressViewController: UIViewController {
-
+    
+    ///新增的属性backDB属性的情况
+    var backDB : Bool = false
+    
+    
     @IBOutlet weak var tableView: UITableView!
+    
     var models = [WorkHistoryModel]()
     
     //设备类的工单模型数据
@@ -221,6 +226,7 @@ class WorkOrderProgressViewController: UIViewController {
             
         //待执行
         case .waitExecuting, .waitDone:
+            
             executingBtnClick()
             //待完成
             
@@ -303,7 +309,7 @@ class WorkOrderProgressViewController: UIViewController {
     }
     
     
-    // MARK: - 拿到工单详情
+    // MARK: - 拿到工单详情后再次拿到设备
     func getWorkDetail(){
         
         SVProgressHUD.show(withStatus: "加载中...")
@@ -346,16 +352,12 @@ class WorkOrderProgressViewController: UIViewController {
             if let dic = respose as? [String: Any]{
                 
                 let model = WorkOrderDetailModel(parmart: dic)
-                
                 self.workOrderDetalModel = model
                 
 //                print(model.equipment_id)
                 
-                
                 //这里是获取了设备id的方法
                 self.getEquipment(model.equipment_id)
-                
-                
             }
             
             self.models = temp
@@ -371,7 +373,7 @@ class WorkOrderProgressViewController: UIViewController {
     }
     
     
-    // MARK: - 拿到设备
+    // MARK: - 拿到设备设置的接口
     func getEquipment(_ equipment: Double){
         
         if equipment == -1{//没有设备的列表,拿到的是原始默认值
@@ -435,6 +437,7 @@ class WorkOrderProgressViewController: UIViewController {
         }) { (error) in
 
         }
+        
     }
 
     

@@ -161,13 +161,25 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
             HttpClient.instance.post(path: URLPath.getVideogetLive, parameters: par, success: { (respose) in
                 
                 //获取视频地址,显示播放
-                let url = respose["interM3u8"] as? String
+                let urlArray = respose as? NSArray
+                
+                if (urlArray?.count)! < 1{
+                    
+                    SVProgressHUD.showError(withStatus: "没有视频源!")
+                    
+                    return
+                }
+                //增加需求来进行设置调试设置配置
+                let urlDict = urlArray?[0] as? NSDictionary
+                let url = urlDict?["interM3u8"] as? String
+                
                 DispatchQueue.main.async {
                     //获取url 来进行创建
                     self.addMediaPlayerViewMethod(urlString: url!)
                 }
                 
             }) { (error) in
+                
                 SVProgressHUD.showError(withStatus: "视频失败,请检查网络!")
             }
         

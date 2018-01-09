@@ -268,7 +268,7 @@ class WorkStaticModel{
 }
 
 
-class WorkHistoryModel{
+class WorkHistoryModel : Object{
 //    //执行人名称
 //    var executerName = ""
 //    //工单类型名称
@@ -496,7 +496,7 @@ class WorkDetailModel{
     }
 }
 
-class EquimentModel{
+class EquimentModel : Object{
     
     var type_name = ""
     var park_name = ""
@@ -1057,7 +1057,7 @@ class PermissionModel {
     }
 }
 
-class CallbackModel {
+class CallbackModel : Object{
     var time = ""
     var content = ""
     var name = ""

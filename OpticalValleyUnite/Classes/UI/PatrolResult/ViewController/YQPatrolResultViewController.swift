@@ -45,10 +45,6 @@ class YQPatrolResultViewController: UIViewController {
             self.navigationController?.pushViewController(project, animated: true)
         }
 
-        
-        //1.获取数据
-        makeUpData()
-        
         //2.实现上拉下拉刷新
         addRefirsh()
         
@@ -60,7 +56,8 @@ class YQPatrolResultViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let _ = setUpProjectNameLable()
-        
+        //1.获取数据
+        makeUpData()
     }
     
     

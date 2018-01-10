@@ -18,12 +18,15 @@ class offLineWorkOrderDetailModel  : Object {
     
     var REMARKS = ""
     var type = ""
+    var ID = "" 
     
     convenience init(parmart: [String: Any]) {
         
         self.init()
         
         setValuesForKeys(parmart)
+        
+       
     }
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {

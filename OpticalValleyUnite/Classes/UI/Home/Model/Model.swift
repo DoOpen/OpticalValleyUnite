@@ -268,7 +268,7 @@ class WorkStaticModel{
 }
 
 
-class WorkHistoryModel : Object{
+class WorkHistoryModel {
 //    //执行人名称
 //    var executerName = ""
 //    //工单类型名称
@@ -781,6 +781,7 @@ class ExecSectionModel: Object{
         self.init()
         
         id = parmart["WORKTASK_ID"] as? String ?? ""
+        
         TASK_DESCRIPTION = parmart["TASK_DESCRIPTION"] as? String ?? ""
         name = parmart["WORKTASK_NAME"] as? String ?? ""
         DESCRIPTION_ID = parmart["DESCRIPTION_ID"] as? String ?? ""

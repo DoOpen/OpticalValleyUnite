@@ -108,17 +108,16 @@ class YQVideoPatrolViewController: UIViewController {
     
         //2. 获取map数据
         let _ = setUpProjectNameLable()
-      
+        
         if self.parkId == "" {
             
             let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
             self.navigationController?.pushViewController(project, animated: true)
         }
+
         
-        
-        mapViewSetup()
-        
-        
+        makeMapLocationData()
+
         //3.接受通知赋值
         setupNoties()
     
@@ -126,9 +125,12 @@ class YQVideoPatrolViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         //获取项目parkID的情况
         let _ = setUpProjectNameLable()
-        makeMapLocationData()
+        
+       
+        mapViewSetup()
         
     }
     
@@ -197,6 +199,11 @@ class YQVideoPatrolViewController: UIViewController {
         
         var parameter = [String : Any]()
         parameter["parkId"] = self.parkId
+        
+//        if self.parkId == "" {
+//            
+//            
+//        }
         
         //2.网络数据的请求
         SVProgressHUD.show()
@@ -281,6 +288,13 @@ class YQVideoPatrolViewController: UIViewController {
     
     // MARK: - mapView 进行打点的方法
     func addLocationAndMessageView(model: YQVideoMapPointModel){
+        //进行判空的情况
+        if model.latitude == "" || model.longitude == "" {
+            
+            SVProgressHUD.showError(withStatus: "点位信息为空!")
+            return
+        }
+        
         //设置打点的情况
         let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(model.latitude)!, CLLocationDegrees(model.longitude)!)
         
@@ -478,6 +492,12 @@ class YQVideoPatrolViewController: UIViewController {
                     SJPickerView.show(withDataArry: stringArray, didSlected: { (index) in
                         
                         let result1 = result as? NSArray
+                        if (result1?.count)! < 1 {
+                            
+                            SVProgressHUD.showError(withStatus: "该项目没有巡查路线")
+                            return
+                        }
+                        
                         let selectLoadWay = result1?[index] as? NSDictionary //需要进行缓存的内容选项!
                         
                         self.videoAllSelectParmeter["insWayId"] = selectLoadWay?["insWayId"]

@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import RealmSwift
 
 enum OperationType: Int{
     case none = 0, waitDistribution, waitMeetsList, waitProcessing, waitExecuting, waitDone, waitAppraise
@@ -312,6 +313,23 @@ class WorkOrderProgressViewController: UIViewController {
     // MARK: - 拿到工单详情后再次拿到设备
     func getWorkDetail(){
         
+        if backDB {
+            
+            let id = parmate?["WORKUNIT_ID"] as? String
+            
+            autoreleasepool {
+                
+                let realm = try! Realm()
+                let model = realm.objects(EquimentModel.self).filter("ID == " + id!).first
+                
+                self.equimentModel = model
+
+            }
+            
+            return
+        }
+        
+        
         SVProgressHUD.show(withStatus: "加载中...")
         
         HttpClient.instance.get(path: URLPath.getWorkDetail, parameters: parmate, success: { (respose) in
@@ -370,6 +388,8 @@ class WorkOrderProgressViewController: UIViewController {
             
             SVProgressHUD.dismiss()
         }
+        
+        
     }
     
     
@@ -400,6 +420,42 @@ class WorkOrderProgressViewController: UIViewController {
     
     // MARK: - 拿到数据
     func getData(){
+        
+        if backDB {//离线工单
+            //查询所有的表的内容情况
+            let id = parmate?["WORKUNIT_ID"] as? String
+            
+            autoreleasepool {
+                
+                let realm = try! Realm()
+                let model = realm.objects(ExecSectionModel.self).filter("id == " + id!)
+                
+                for temp in model{
+                
+                    self.taskModels.append(temp)
+                
+                }
+                
+                if let cell = self.taskCell{
+                    
+                    cell.models = self.taskModels
+//                    cell.remarkTextView.text = response["remark"] as? String
+                    
+                }
+                
+                if let cell = self.detailsCell{
+                    
+//                    cell.contentLabel.text = temp.first?.TASK_DESCRIPTION
+                }
+
+            }
+            
+            return
+        }
+        
+        
+        
+        
 //        var parmat = [String: Any]()
 //        parmat["WORKUNIT_ID"] = workOrderDetalModel?.id
 //        SVProgressHUD.show(withStatus: "加载任务中")

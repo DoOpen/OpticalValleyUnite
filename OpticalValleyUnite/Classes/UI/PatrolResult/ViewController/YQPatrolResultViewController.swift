@@ -76,10 +76,19 @@ class YQPatrolResultViewController: UIViewController {
         HttpClient.instance.post(path: URLPath.getResultList, parameters: par, success: { (respose) in
             
             SVProgressHUD.dismiss()
+            
+            let array = respose["data"] as? NSArray
+            
+            if array == nil {
+                
+                SVProgressHUD.showError(withStatus: "查询数据为空")
+                return
+            }
+            
             //拿到数据字典转模型
             var temp = [YQResultCellModel]()
             
-            for dic in (respose["data"] as? NSArray)! {
+            for dic in array! {
                 
                 temp.append(YQResultCellModel.init(dict: dic as! [String : Any]))
             }

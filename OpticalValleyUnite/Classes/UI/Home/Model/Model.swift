@@ -336,7 +336,6 @@ class WorkHistoryModel {
             
         }
         
-        
     }
 }
 
@@ -498,6 +497,8 @@ class WorkDetailModel{
 
 class EquimentModel : Object{
     
+    var id = ""
+    
     var type_name = ""
     var park_name = ""
     var floor_name = ""
@@ -546,6 +547,9 @@ class EquimentModel : Object{
     convenience init(parmart: [String: Any]) {
         
         self.init()
+        //新增的工单的id 属性
+        id = parmart["id"] as? String ?? ""
+        
         //app设备编码
         app_code = parmart["app_code"] as? String ?? ""
         //app设备名称
@@ -779,6 +783,8 @@ class ExecSectionModel: Object{
     convenience init(parmart: [String: Any]) {
         
         self.init()
+        
+        workOrderId = parmart["ID"] as? String ?? ""
         
         id = parmart["WORKTASK_ID"] as? String ?? ""
         
@@ -1062,9 +1068,12 @@ class CallbackModel : Object{
     var time = ""
     var content = ""
     var name = ""
-
+    var id = ""
+    
     convenience init(parmart: [String: Any]) {
         self.init()
+        
+        id = parmart["id"] as? String ?? ""
         time = parmart["BACK_TIME"] as? String ?? ""
         content = parmart["BACK_TEXT"] as? String ?? ""
         name = parmart["BACK_NAME"] as? String ?? ""

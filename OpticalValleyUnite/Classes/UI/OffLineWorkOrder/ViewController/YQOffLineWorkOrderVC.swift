@@ -65,22 +65,11 @@ class YQOffLineWorkOrderVC: UIViewController {
             let realm = try! Realm()
             
             try! realm.write {
+                
                 realm.deleteAll()
                 
                 realm.add(tempWOModel2Data, update: true)
                 realm.add(tempDetailM)
-                
-             
-                //                realm.add(tempHistoriesM)
-                //                if !tempCallbsM.isEmpty {
-                //
-                //                    realm.add(tempCallbsM)
-                //                }
-                //
-                //                if !tempEquimentModel.isEmpty {
-                //                    
-                //                    realm.add(tempEquimentModel)
-                //                }
                 
             }
 
@@ -94,14 +83,13 @@ class YQOffLineWorkOrderVC: UIViewController {
                 let detail = dic?["detail"] as? NSDictionary
                 var section = detail?["task"] as? [String : Any]
                 
-                section?["WORKTASK_ID"] = dic?["ID"] as? String
+                section?["ID"] = dic?["ID"] as? String
                 
                 if section != nil {
                     
                     let model = ExecSectionModel(parmart: section!)
                     
                     tempESectionM.append(model)
-                    
                 }
             }
             
@@ -112,40 +100,50 @@ class YQOffLineWorkOrderVC: UIViewController {
                     realm.add(tempESectionM)
                     
                 }
-                
             }
             
             
-//            //3.工单详情histories的数据表
-//            var tempHistoriesM = [WorkHistoryModel]()
-//            for temp in data!{
-//                
-//                let dic = temp as? NSDictionary
-//                let detail = dic?["detail"] as? NSDictionary
-//                let histories = detail?["histories"] as? NSDictionary
-//                
-//                if histories != nil {
-//                    
-//                    let model = WorkHistoryModel(parmart: histories as! [String : Any])
-//                    
-//                    tempHistoriesM.append(model)
-//                    
-//                }
-//                
-//            }
-//            
-//            
+            //3.工单详情histories的数据表
+            var tempHistoriesM = [WorkHistoryModel111]()
+            for temp in data!{
+                
+                let dic = temp as? NSDictionary
+                let detail = dic?["detail"] as? NSDictionary
+                let histories = detail?["histories"] as? NSArray
+                
+                if histories != nil {
+                    var tempDict = [String : Any]()
+                    tempDict["id"] = dic?["ID"] as? String
+                    tempDict["list"] = histories
+                    
+                    let model = WorkHistoryModel111.init(parmart: tempDict)
+                    
+                    tempHistoriesM.append(model)
+                    
+                }
+            }
+            if !tempHistoriesM.isEmpty {
+                
+                try! realm.write {
+                    
+                    realm.add(tempHistoriesM)
+                    
+                }
+            }
+
+            
             //4.工单详情callbacks的数据表
             var tempCallbsM = [CallbackModel]()
             for temp in data!{
                 
                 let dic = temp as? NSDictionary
                 let detail = dic?["detail"] as? NSDictionary
-                let callbacks = detail?["callbacks"] as? NSDictionary
+                var callbacks = detail?["callbacks"] as? [String : Any]
+                callbacks?["id"] = dic?["ID"] as? String
                 
                 if callbacks != nil {
                     
-                    let model = CallbackModel(parmart: callbacks as! [String : Any])
+                    let model = CallbackModel(parmart: callbacks!)
                     
                     tempCallbsM.append(model)
                 }
@@ -171,8 +169,8 @@ class YQOffLineWorkOrderVC: UIViewController {
                 
                 let dic = temp as? NSDictionary
                 let detail = dic?["detail"] as? NSDictionary
-                let equipment = detail?["equipment"] as? NSDictionary
-//                equipment?["WORKTASK_ID"] = dic?["ID"] as? String
+                let equipment = detail?["equipment"] as? NSMutableDictionary
+                equipment?["ID"] = dic?["ID"] as? String
                 
                 if equipment != nil {
                     

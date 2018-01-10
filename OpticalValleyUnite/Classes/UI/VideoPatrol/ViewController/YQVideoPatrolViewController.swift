@@ -115,9 +115,6 @@ class YQVideoPatrolViewController: UIViewController {
             self.navigationController?.pushViewController(project, animated: true)
         }
 
-        
-        makeMapLocationData()
-
         //3.接受通知赋值
         setupNoties()
     
@@ -129,7 +126,8 @@ class YQVideoPatrolViewController: UIViewController {
         //获取项目parkID的情况
         let _ = setUpProjectNameLable()
         
-       
+        makeMapLocationData()
+
         mapViewSetup()
         
     }

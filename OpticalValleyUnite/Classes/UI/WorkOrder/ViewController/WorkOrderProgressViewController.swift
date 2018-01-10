@@ -320,9 +320,37 @@ class WorkOrderProgressViewController: UIViewController {
             autoreleasepool {
                 
                 let realm = try! Realm()
-                let model = realm.objects(EquimentModel.self).filter("ID == " + id!).first
+                
+                //查询WorkHistoryModel的项目表
+                let WorkHistoryModel = realm.objects(WorkHistoryModel111.self).filter("id == %@", id!).first
+                let workList = WorkHistoryModel?.childs
+                
+                for temp in workList! {
+                    
+                    let model = temp as? WorkHistoryModel222
+                    
+                    self.callbackModels.append(model)
+                }
+
+                
+                //查callback项目
+                let callBack = realm.objects(CallbackModel.self).filter("id == %@", id!)
+                for temp in callBack {
+                    
+                    self.callbackModels.append(temp)
+                }
+                
+                
+                //查设备展开项目
+                let model = realm.objects(EquimentModel.self).filter("id == %@", id!).first
                 
                 self.equimentModel = model
+                
+                
+                //总体赋值,刷新列表项目
+//                self.models = temp
+                self.tableView.reloadData()
+
 
             }
             
@@ -428,7 +456,7 @@ class WorkOrderProgressViewController: UIViewController {
             autoreleasepool {
                 
                 let realm = try! Realm()
-                let model = realm.objects(ExecSectionModel.self).filter("id == " + id!)
+                let model = realm.objects(ExecSectionModel.self).filter("workOrderId == %@", id!)
                 
                 for temp in model{
                 
@@ -439,13 +467,15 @@ class WorkOrderProgressViewController: UIViewController {
                 if let cell = self.taskCell{
                     
                     cell.models = self.taskModels
-//                    cell.remarkTextView.text = response["remark"] as? String
+                    //查一下detail的数据项的表
+                    let offLineWorkerDetail = realm.objects(offLineWorkOrderDetailModel.self).filter("ID == %@", id!).first
+                    cell.remarkTextView.text = offLineWorkerDetail?.REMARKS
                     
                 }
                 
                 if let cell = self.detailsCell{
                     
-//                    cell.contentLabel.text = temp.first?.TASK_DESCRIPTION
+                    cell.contentLabel.text = self.taskModels.first?.TASK_DESCRIPTION
                 }
 
             }

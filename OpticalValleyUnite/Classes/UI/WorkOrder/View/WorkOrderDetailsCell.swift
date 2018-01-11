@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class WorkOrderDetailsCell: UITableViewCell {
 
@@ -79,6 +80,7 @@ class WorkOrderDetailsCell: UITableViewCell {
     
     var model: WorkOrderDetailModel?{
         didSet{
+            
             if let model = model{
                 
                 contentLabel.text = model.content
@@ -195,13 +197,20 @@ class WorkOrderDetailsCell: UITableViewCell {
     
     
     @IBAction func openBtnClick(_ sender: UIButton) {
+        
+        //这里需要改写数据库的属性情况
+        let realm = try! Realm()
+        realm.beginWrite()
         model?.isOpen = !(model?.isOpen)!
         
         sender.isSelected = (model?.isOpen)!
+        try! realm.commitWrite()
         
         if let block = changedHeight{
             block()
         }
+        
+        
     }
     
     

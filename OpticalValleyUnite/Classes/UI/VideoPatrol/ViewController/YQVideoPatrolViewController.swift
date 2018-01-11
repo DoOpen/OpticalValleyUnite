@@ -114,6 +114,8 @@ class YQVideoPatrolViewController: UIViewController {
             let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
             self.navigationController?.pushViewController(project, animated: true)
         }
+        
+        makeMapLocationData()
 
         //3.接受通知赋值
         setupNoties()
@@ -126,7 +128,7 @@ class YQVideoPatrolViewController: UIViewController {
         //获取项目parkID的情况
         let _ = setUpProjectNameLable()
         
-        makeMapLocationData()
+        
 
         mapViewSetup()
         
@@ -582,9 +584,11 @@ class YQVideoPatrolViewController: UIViewController {
             for dict in array as! NSArray{
                 
                 let d = dict as? NSDictionary
+                
                 let longitude = d?["longitude"] as? String
                 let latitude = d?["latitude"] as? String
                 let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude!)!, CLLocationDegrees(longitude!)!)
+                
                 videoMapLayWays.append(CLLocationCoordinate2D)
                 
                 tempModel.append(YQVideoMapPointModel.init(dict: dict as! [String : Any]))
@@ -680,7 +684,7 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
                     
                 }
                 
-            }else {
+            }   else {
                 
                 switch (nowAnnotation?.videoModel?.type)! {
                 case 1://室内点

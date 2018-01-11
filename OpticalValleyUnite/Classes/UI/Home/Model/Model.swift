@@ -268,12 +268,12 @@ class WorkStaticModel{
 }
 
 
-class WorkHistoryModel {
+class WorkHistoryModel{
 //    //执行人名称
 //    var executerName = ""
 //    //工单类型名称
 //    var workTypeName = ""
-//    var workName = ""
+    var workName = ""
     var person_name = ""
     var status = -1
     var time = ""
@@ -331,15 +331,19 @@ class WorkHistoryModel {
         
         if let arry = parmart["photos"] as? Array<String>{
             if arry.count > 0{
+                
                 pictures = arry
+
             }
-            
         }
         
     }
 }
 
 class WorkOrderDetailModel: Object{
+    ///添加的工单的执行type
+    dynamic var type = ""
+    
     ///工单内容
     dynamic var content = ""
     ///工单类型
@@ -382,13 +386,13 @@ class WorkOrderDetailModel: Object{
     dynamic var equipment_id : Double  = -1
     
     dynamic var isOpen = false
-    var SUPERVISE_PERSON_NAMES = ""
+    dynamic var SUPERVISE_PERSON_NAMES = ""
     
     //新增的
-    var PERSONTYPE : Int = -1
+    dynamic var PERSONTYPE : Int = -1
     
     //待处理的字段
-    var DCL : Int = -1
+    dynamic var DCL : Int = -1
     
     
     convenience init(parmart: [String: Any]) {
@@ -396,6 +400,7 @@ class WorkOrderDetailModel: Object{
         self.init()
         
         DCL = parmart["DCL"] as? Int ?? -1
+        type = parmart["type"] as? String ?? ""
         
         workTypeName = parmart["WORKTYPE_NAME"] as? String ?? ""
         
@@ -497,51 +502,51 @@ class WorkDetailModel{
 
 class EquimentModel : Object{
     
-    var id = ""
+    dynamic var id = ""
     
-    var type_name = ""
-    var park_name = ""
-    var floor_name = ""
-    var stage_name = ""
-    var brand = ""
-    var produce_date = ""
-    var model_name = ""
-    var manufacturer = ""
-    var madeIn = ""
-    var use_company = ""
-    var name = ""
-    var parkAddress = ""
+    dynamic var type_name = ""
+    dynamic var park_name = ""
+    dynamic var floor_name = ""
+    dynamic var stage_name = ""
+    dynamic var brand = ""
+    dynamic var produce_date = ""
+    dynamic var model_name = ""
+    dynamic var manufacturer = ""
+    dynamic var madeIn = ""
+    dynamic var use_company = ""
+    dynamic var name = ""
+    dynamic var parkAddress = ""
     //备注
-    var comment = ""
+    dynamic var comment = ""
     
-    var regi_code = ""
-    var reform_company = ""
-    var install_company = ""
-    var install_date = ""
-    var maintain_company = ""
-    var maintain_person = ""
-    var frist_maintain_date = ""
-    var next_maintain_date = ""
-    var year_maintain_date = ""
+    dynamic var regi_code = ""
+    dynamic var reform_company = ""
+    dynamic var install_company = ""
+    dynamic var install_date = ""
+    dynamic var maintain_company = ""
+    dynamic var maintain_person = ""
+    dynamic var frist_maintain_date = ""
+    dynamic var next_maintain_date = ""
+    dynamic var year_maintain_date = ""
     
     //新增的模型字段
     //app设备编码
-    var app_code = ""
+    dynamic var app_code = ""
     //app设备名称
-    var app_name = ""
+    dynamic var app_name = ""
     //位置惯用名
-    var loc_simple_name = ""
+    dynamic var loc_simple_name = ""
     //设备惯用名
-    var equip_simple_name = ""
+    dynamic var equip_simple_name = ""
     //品牌
-    var brand_name = ""
+    dynamic var brand_name = ""
     
     //规格参数(进行一个数组的遍历累加 数值)
-    var attrs = ""
+    dynamic var attrs = ""
     //厂商
-    var made_company = ""
+    dynamic var made_company = ""
     //产地
-    var origin = ""
+    dynamic var origin = ""
     
     
     convenience init(parmart: [String: Any]) {
@@ -619,7 +624,6 @@ class EquimentModel : Object{
         //参数
         attrs = attrstr
         
-        
         floor_name = parmart["floor_name"] as? String ?? ""
         stage_name = parmart["stage_name"] as? String ?? ""
         
@@ -686,7 +690,6 @@ class WorkTypeModel{
     var name = ""
     
     var nodes : [WorkTypeModel]?
-    
     
     convenience init(parmart: [String: Any]) {
         self.init()

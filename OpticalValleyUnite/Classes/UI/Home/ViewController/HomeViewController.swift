@@ -14,6 +14,7 @@ import SnapKit
 import CoreMotion
 
 let KDistence = 100.0
+let KTime = 60 * 15
 
 class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
@@ -457,7 +458,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         locationManager.distanceFilter = KDistence
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.locatingWithReGeocode = true
-//        locationManager.locationTimeout =
+        locationManager.locationTimeout = KTime
         
         if Double(UIDevice.current.systemVersion.components(separatedBy: ".").first!)! >= 9.0{
             locationManager.allowsBackgroundLocationUpdates = true

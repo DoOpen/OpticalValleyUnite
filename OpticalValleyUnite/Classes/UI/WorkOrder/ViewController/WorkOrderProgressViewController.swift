@@ -322,14 +322,23 @@ class WorkOrderProgressViewController: UIViewController {
                 let realm = try! Realm()
                 
                 //查询WorkHistoryModel的项目表
-                let WorkHistoryModel = realm.objects(WorkHistoryModel111.self).filter("id == %@", id!).first
-                let workList = WorkHistoryModel?.childs
+                let WorkHistoryM = realm.objects(WorkHistoryModel111.self).filter("id == %@", id!).first
+                let workList = WorkHistoryM?.childs
+                var dict = [String : Any]()
+                var tempppp = [WorkHistoryModel]()
                 
                 for temp in workList! {
                     
-                    let model = temp as? WorkHistoryModel222
+                    dict["person_name"] = temp.person_name
+                    dict["unit_status"] = temp.status
+                    dict["time"] = temp.time
+                    dict["EVALUATE_SCORE"] = temp.source
+                    dict["text"] = temp.text
+                    dict["EVALUATE_TEXT"] = temp.content
+                    let model = WorkHistoryModel(parmart: dict)
+                   
+                    tempppp.append(model)
                     
-                    self.callbackModels.append(model)
                 }
 
                 
@@ -340,6 +349,17 @@ class WorkOrderProgressViewController: UIViewController {
                     self.callbackModels.append(temp)
                 }
                 
+                //查的type的值情况
+                let detailModel = realm.objects(WorkOrderDetailModel.self).filter("id == %@", id!).first
+                if let type = detailModel?.type{
+                    self.type = OperationType(rawValue:Int(type as String)!)!
+                    
+                }else{
+                    
+                    self.type = OperationType(rawValue:0)!
+                }
+                
+                self.workOrderDetalModel = detailModel
                 
                 //查设备展开项目
                 let model = realm.objects(EquimentModel.self).filter("id == %@", id!).first
@@ -348,7 +368,7 @@ class WorkOrderProgressViewController: UIViewController {
                 
                 
                 //总体赋值,刷新列表项目
-//                self.models = temp
+                self.models = tempppp
                 self.tableView.reloadData()
 
 
@@ -603,6 +623,8 @@ class WorkOrderProgressViewController: UIViewController {
         
     }
     
+
+    
     
     //MARK: - 操作按钮点击
     //派单按钮点击
@@ -784,7 +806,8 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
             }else{
                 
                 let model = models[indexPath.row - 1]
-                let cell2 = getCell(model: model)
+                
+                let cell2 = getCell(model: model )
                 cell = cell2
             }
         

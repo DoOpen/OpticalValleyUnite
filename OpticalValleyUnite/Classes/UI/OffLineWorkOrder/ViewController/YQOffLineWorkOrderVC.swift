@@ -46,16 +46,16 @@ class YQOffLineWorkOrderVC: UIViewController {
             }
             
             //1.1工单详细的模型数据表
-            var tempDetailM = [offLineWorkOrderDetailModel]()
+            var tempDetailM = [WorkOrderDetailModel]()
             for temp in data! {
                 
                 let dic = temp as? NSDictionary
-                let detail = dic?["detail"] as? NSMutableDictionary
-                detail?["ID"] = dic?["ID"] as? String
+                let detail = dic?["detail"] as? [String : Any]
+//                detail?["ID"] = dic?["ID"] as? String
                 
                 if detail != nil {
                     
-                    let model = offLineWorkOrderDetailModel.init(parmart: detail as! [String : Any])
+                    let model = WorkOrderDetailModel.init(parmart: detail!)
                     
                     tempDetailM.append(model)
                 }
@@ -95,11 +95,11 @@ class YQOffLineWorkOrderVC: UIViewController {
             
             if !tempESectionM.isEmpty {
                 
-                try! realm.write {
-                    
-                    realm.add(tempESectionM)
-                    
-                }
+//                try! realm.write {
+//                    
+//                    realm.add(tempESectionM)
+//                    
+//                }
             }
             
             
@@ -119,7 +119,6 @@ class YQOffLineWorkOrderVC: UIViewController {
                     let model = WorkHistoryModel111.init(parmart: tempDict)
                     
                     tempHistoriesM.append(model)
-                    
                 }
             }
             if !tempHistoriesM.isEmpty {
@@ -130,8 +129,34 @@ class YQOffLineWorkOrderVC: UIViewController {
                     
                 }
             }
-
             
+//            var tempHistoriesM = [WorkHistoryModel]()
+//
+//            for temp in data!{
+//                let dic = temp as? NSDictionary
+//                let detail = dic?["detail"] as? NSDictionary
+//                let histories = detail?["histories"] as? NSArray
+//                
+//                if histories != nil {
+//                    
+//                    var tempDict = [String : Any]()
+//                    tempDict["id"] = dic?["ID"] as? String
+//                    tempDict["list"] = histories
+//                    
+//                    let model = WorkHistoryModel.init(parmart: tempDict)
+//                    
+//                    tempHistoriesM.append(model)
+//                    
+//                }
+//            }
+//            
+//            if !tempHistoriesM.isEmpty {
+//                try! realm.write {
+//                    realm.add(tempHistoriesM)
+//                }
+//            }
+            
+
             //4.工单详情callbacks的数据表
             var tempCallbsM = [CallbackModel]()
             for temp in data!{
@@ -149,15 +174,12 @@ class YQOffLineWorkOrderVC: UIViewController {
                 }
         
             }
-            
             if !tempCallbsM.isEmpty {
                 
                 try! realm.write {
                     
                     realm.add(tempCallbsM)
-                    
                 }
-                
             }
 
             
@@ -169,12 +191,12 @@ class YQOffLineWorkOrderVC: UIViewController {
                 
                 let dic = temp as? NSDictionary
                 let detail = dic?["detail"] as? NSDictionary
-                let equipment = detail?["equipment"] as? NSMutableDictionary
-                equipment?["ID"] = dic?["ID"] as? String
+                var equipment = detail?["equipment"] as? [String : Any]
+                equipment?["id"] = dic?["ID"] as? String
                 
                 if equipment != nil {
                     
-                    let model = EquimentModel(parmart: equipment as! [String : Any])
+                    let model = EquimentModel(parmart: equipment!)
                     
                     tempEquimentModel.append(model)
                 }

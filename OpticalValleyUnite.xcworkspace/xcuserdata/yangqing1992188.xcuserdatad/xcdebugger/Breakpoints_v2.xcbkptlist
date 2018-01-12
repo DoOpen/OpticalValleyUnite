@@ -81,22 +81,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ExecutingViewConttroller.swift"
-            timestampString = "536058124.390084"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
-            landmarkName = "saveUpdate(json:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
             timestampString = "537345856.613961"
             startingColumnNumber = "9223372036854775807"
@@ -114,7 +98,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
-                  timestampString = "537430244.464625"
+                  timestampString = "537439880.388991"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "689"
@@ -129,7 +113,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
-                  timestampString = "537430244.467909"
+                  timestampString = "537439880.391306"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "689"
@@ -137,70 +121,6 @@
                   offsetFromSymbolStart = "4464">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineWorkOrderVC.swift"
-            timestampString = "537352809.917369"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "offLineButtonDownLoad(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQOffLineWorkOrderVC.(offLineButtonDownLoad (__ObjC.UIButton) -&gt; ()).(closure #1)"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineWorkOrderVC.swift"
-                  timestampString = "537430244.474454"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "8138">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQOffLineWorkOrderVC.(offLineButtonDownLoad (__ObjC.UIButton) -&gt; ()).(closure #1).(closure #2)"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineWorkOrderVC.swift"
-                  timestampString = "537430244.477034"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/WorkOrderProgressViewController.swift"
-            timestampString = "537420249.507211"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "513"
-            endingLineNumber = "513"
-            landmarkName = "getData()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

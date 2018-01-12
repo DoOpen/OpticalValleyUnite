@@ -156,6 +156,8 @@
 		2FAA64231FB04B7F00A34311 /* YQDeviceCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */; };
 		2FB180761FE69BEF00BC1A40 /* YQIntoDoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB180751FE69BEF00BC1A40 /* YQIntoDoorViewController.swift */; };
 		2FB180781FE69C2600BC1A40 /* YQIntoDoor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FB180771FE69C2600BC1A40 /* YQIntoDoor.storyboard */; };
+		2FBDEFC72008A70F006C5C69 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FBDEFC42008A70F006C5C69 /* Info.plist */; };
+		2FBDEFC82008A70F006C5C69 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEFC62008A70F006C5C69 /* Reachability.swift */; };
 		2FC167471F905F34001CEACD /* YQJournalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC167461F905F34001CEACD /* YQJournalDetailViewController.swift */; };
 		2FC167491F905F5A001CEACD /* YQJournalDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC167481F905F5A001CEACD /* YQJournalDetail.storyboard */; };
 		2FC1674B1F906BA4001CEACD /* YQJournalDetailHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC1674A1F906BA4001CEACD /* YQJournalDetailHead.xib */; };
@@ -495,6 +497,9 @@
 		2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDeviceCell2.xib; sourceTree = "<group>"; };
 		2FB180751FE69BEF00BC1A40 /* YQIntoDoorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQIntoDoorViewController.swift; sourceTree = "<group>"; };
 		2FB180771FE69C2600BC1A40 /* YQIntoDoor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQIntoDoor.storyboard; sourceTree = "<group>"; };
+		2FBDEFC42008A70F006C5C69 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FBDEFC52008A70F006C5C69 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		2FBDEFC62008A70F006C5C69 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2FC167461F905F34001CEACD /* YQJournalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalDetailViewController.swift; sourceTree = "<group>"; };
 		2FC167481F905F5A001CEACD /* YQJournalDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJournalDetail.storyboard; sourceTree = "<group>"; };
 		2FC1674A1F906BA4001CEACD /* YQJournalDetailHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQJournalDetailHead.xib; sourceTree = "<group>"; };
@@ -1189,6 +1194,16 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		2FBDEFC32008A70F006C5C69 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				2FBDEFC42008A70F006C5C69 /* Info.plist */,
+				2FBDEFC52008A70F006C5C69 /* Reachability.h */,
+				2FBDEFC62008A70F006C5C69 /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		4B1DEC441E31B646000917D2 /* SGQRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1372,6 +1387,7 @@
 		4BD4B9151E272EA600AE2BC9 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				2FBDEFC32008A70F006C5C69 /* Reachability */,
 				2F79450D1FE7943B0085E803 /* RfmFrameworks */,
 				4B91E8951F258B1E00F63D66 /* UMessage_Sdk_1.5.0a */,
 				4B6E64F31EEAEFCE00BA23E4 /* PhotoBrowser */,
@@ -1872,6 +1888,7 @@
 				4BFD07CC1E5D3ACC004AF998 /* ExecutingSectionView.xib in Resources */,
 				2F51D3DD1FEB8B0D00BC7B04 /* YQScanImageViewController.xib in Resources */,
 				2F3B96051F6BC17E0008AFEB /* YQJoinTotall.storyboard in Resources */,
+				2FBDEFC72008A70F006C5C69 /* Info.plist in Resources */,
 				2FC167491F905F5A001CEACD /* YQJournalDetail.storyboard in Resources */,
 				2F40D9961FB9A820007971D1 /* YQStepHead.xib in Resources */,
 				2F5E8C521F59598400007717 /* YQSystemSelectionVC.xib in Resources */,
@@ -2082,6 +2099,7 @@
 				4B1DEC681E31F5D1000917D2 /* SlotViewController.swift in Sources */,
 				2FDF32A51F792975008EDEB4 /* CommonUtility.m in Sources */,
 				2FC1674D1F906BC2001CEACD /* YQJournalDetailHeadView.swift in Sources */,
+				2FBDEFC82008A70F006C5C69 /* Reachability.swift in Sources */,
 				4BBBEC9E1E2CB34500F60313 /* SJAddView.swift in Sources */,
 				2F4217351FDA86F800B42BB3 /* YQPatrolItemScoreViewController.swift in Sources */,
 				2F35356C1F95AE0C00E8E77C /* YQWorkOrderFirstViewController.swift in Sources */,

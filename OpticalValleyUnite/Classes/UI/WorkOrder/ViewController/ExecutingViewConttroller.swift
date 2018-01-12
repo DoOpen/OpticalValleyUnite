@@ -40,6 +40,10 @@ class ExecutingViewConttroller: UIViewController {
     
     var hisriyModel: WorkHistoryModel?
     
+    ///离线工单的属性属性应用
+    var backDB : Bool = false
+    
+    var parmate: [String: Any]?
     
     
     @IBOutlet weak var saveBtn: UIButton!
@@ -161,6 +165,28 @@ class ExecutingViewConttroller: UIViewController {
     //MARK: -获取工单步骤信息
     func getData(){
         
+        if backDB {
+            
+            let id = parmate?["WORKUNIT_ID"] as? String
+            
+            autoreleasepool {
+                
+                let realm = try! Realm()
+                let model = realm.objects(ExecSectionModel.self).filter("workOrderId == %@", id!)
+                
+                for temp in model{
+                    
+                    self.models.append(temp)
+                    
+                }
+                
+                self.tableView.reloadData()
+            }
+            
+            return
+        }
+        
+        
         var parmat = [String: Any]()
         parmat["WORKUNIT_ID"] = workOrderDetalModel?.id
         parmat["GROUPID"] = workOrderDetalModel?.GROUPID
@@ -211,6 +237,8 @@ class ExecutingViewConttroller: UIViewController {
 //            }
     
         }) { (error) in
+            
+            
 //            let realm = try! Realm()
 //            let result = realm.objects(ExecSectionModel.self).map({ model in
 //                model as ExecSectionModel
@@ -934,11 +962,11 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
         
         
         view.didTouchHandle = { [weak self] in
-//            let realm = try! Realm()
-//            realm.beginWrite()
+            let realm = try! Realm()
+            realm.beginWrite()
             model.isOpen = !model.isOpen
             self?.tableView.reloadData()
-//            try! realm.commitWrite()
+            try! realm.commitWrite()
         }
 
         return view

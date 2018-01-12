@@ -46,7 +46,7 @@ class YQWorkOrderFirstViewController: UIViewController {
         self.navigationItem.title = "我的工单"
 //        self.navigationItem.rightBarButtonItem
         
-        
+        self.currentStatusBtn = emergencyWorkOrder
         //初始调用的方法
         addRefirsh()
         
@@ -61,7 +61,7 @@ class YQWorkOrderFirstViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //初始调用的方法
-        selectButtonClick(emergencyWorkOrder)
+        selectButtonClick(currentStatusBtn!)
         
     }
     

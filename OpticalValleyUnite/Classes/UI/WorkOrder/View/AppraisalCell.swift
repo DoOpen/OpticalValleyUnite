@@ -83,11 +83,18 @@ class AppraisalCell: UITableViewCell {
                 var temp = [String]()
                 
                 for url in model.pictures{
-                    let basicPath = URLPath.systemSelectionURL
-                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
-                    temp.append(imageValue)
+                    
+                    if url.contains("http") {
+                        
+                        temp.append(url)
+
+                    }else {
+                        
+                        let basicPath = URLPath.systemSelectionURL
+                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                        temp.append(imageValue)
+                    }
                 }
-                
                 
                 photoView.showImageUrls(temp)
                 

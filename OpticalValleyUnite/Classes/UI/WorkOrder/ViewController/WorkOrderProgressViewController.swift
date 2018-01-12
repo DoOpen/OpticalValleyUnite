@@ -561,7 +561,11 @@ class WorkOrderProgressViewController: UIViewController {
             if reportName == "" {
                 
 //                (cell as! WorkOrderCreatCell).model?.reportPeopleName = model.person_name
+                let realm = try! Realm()
+                realm.beginWrite()
+                
                 workOrderDetalModel?.reportPeopleName = model.person_name
+                try! realm.commitWrite()
                 
             }
             
@@ -697,9 +701,15 @@ class WorkOrderProgressViewController: UIViewController {
     func executingBtnClick(){
         let  vc = ExecutingViewConttroller.loadFromStoryboard(name: "WorkOrder") as! ExecutingViewConttroller
         vc.workOrderDetalModel = workOrderDetalModel
-        
+        //离线的工单属性设置
+        if backDB {
+            
+            vc.backDB = backDB
+            vc.parmate = parmate
+        }
         
         vc.ProgressVC = self
+        
         navigationController?.pushViewController(vc, animated: true)
         
     }

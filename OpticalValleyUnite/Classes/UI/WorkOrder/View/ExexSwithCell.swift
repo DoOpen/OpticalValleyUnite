@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ExexSwithCell: UITableViewCell {
 
@@ -52,8 +53,13 @@ class ExexSwithCell: UITableViewCell {
     @IBAction func selectBtnClick(_ sender: UIButton) {
         let arry = model!.OPTIONS_LIST
         SJPickerView.show(withDataArry: arry, didSlected: { [weak self] index in
+            let realm = try! Realm()
+            realm.beginWrite()
             self?.selectBtn.setTitle(arry[index], for: .normal)
             self?.model?.value = arry[index]
+            
+            try! realm.commitWrite()
+
         })
     }
     

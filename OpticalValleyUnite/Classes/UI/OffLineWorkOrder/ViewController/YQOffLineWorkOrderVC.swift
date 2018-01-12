@@ -47,9 +47,9 @@ class YQOffLineWorkOrderVC: UIViewController {
         }
         
         
-        reachability.whenReachable = { reachability in //当
-            
-        }
+//        reachability.whenReachable = { reachability in //当网络可用的情况下
+//            
+//        }
         
         //测试数据的调用显示
         /*
@@ -107,7 +107,7 @@ class YQOffLineWorkOrderVC: UIViewController {
         //上传思路:
         /*
          1.读取对应的工单进行上传
-         
+         2.对应的数据表的图片上传的情况
          */
         
 //        let realm = try! Realm()

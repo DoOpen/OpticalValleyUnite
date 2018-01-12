@@ -350,6 +350,12 @@ class ExecutingViewConttroller: UIViewController {
          
          */
         
+        if backDB {
+        
+            SVProgressHUD.showSuccess(withStatus: "保存数据成功!")
+            return
+        }
+        
         //注意的是:这里通过异步的方式来进行的实现,模型嵌套模型来实现功能的
 //        let group = DispatchGroup()
 //        
@@ -536,8 +542,15 @@ class ExecutingViewConttroller: UIViewController {
         }
     }
     
-
+    // MARK: - 离线工单的图片保存的方法
+    func offLineImageSave(_ images: [UIImage], complit: @escaping ((String) -> ()),errorHandle: (() -> ())? = nil){
+        //将图片数据分别进行本地的保存列表选项的数据表中
+        
+        
     
+    }
+    
+
     //MARK: - 所有完成按钮点击( 数据要求的是 补全接口的相关 数据)
     @IBAction func doneBtnClick() {
         
@@ -604,6 +617,16 @@ class ExecutingViewConttroller: UIViewController {
     
     // MARK: - 工单执行调用数据保存的方法
     func upload(_ parate: [String: Any]){
+        
+        if backDB {
+            
+            SVProgressHUD.showSuccess(withStatus: "离线操作成功!")
+            self.ProgressVC?.reloadStatus(status: 7)
+            
+            self.navigationController?.popViewController(animated: true)
+
+            return
+        }
         
         SVProgressHUD.show(withStatus: "上传中")
         ///工单点击, 完成之后的会调用这个接口,现在的是要求 通过接口文档来进行实现传参和调用的
@@ -911,8 +934,6 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             return cell!
         }
         
-        
-        
     }
     
     
@@ -1011,10 +1032,12 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
 
             }
             
-            
         },errorHandle: {
             SVProgressHUD.showError(withStatus: "网络超时,请重试!")
         })
+        
+        //离线工单的图片保存
+        
 
     }
     
@@ -1074,6 +1097,9 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
 extension ExecutingViewConttroller : YQExecTextCellDelegate{
 
     func ExecTextCellEndTextEidtingDelegate(ExecTextCell: UITableViewCell, textString: String, indexPath: IndexPath) {
+        
+        let realm = try! Realm()
+        realm.beginWrite()
         //传递重改模型,刷新当前的cell
         let model = models[(indexPath.section)].childs[indexPath.row]
         
@@ -1082,10 +1108,11 @@ extension ExecutingViewConttroller : YQExecTextCellDelegate{
         //重新的逻辑替换
         models[(indexPath.section)].childs.replace(index: indexPath.row, object: model)
         
+        try! realm.commitWrite()
+
         //单行刷新列表
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
 
-        
     }
 
 }
@@ -1109,6 +1136,9 @@ extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCD
             let model = models[(currentSelectIndexPath?.section)!].childs[(currentSelectIndexPath?.row)!]
             
             if let str = str{
+                
+                let realm = try! Realm()
+                realm.beginWrite()
                 
                 self.navigationController?.popViewController(animated: false)
                 
@@ -1134,12 +1164,12 @@ extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCD
 
                 }
                 
+                try! realm.commitWrite()
             }
             
         }else{
             
             self.alert(message: "非可识别二维码!")
-            
         }
     }
 

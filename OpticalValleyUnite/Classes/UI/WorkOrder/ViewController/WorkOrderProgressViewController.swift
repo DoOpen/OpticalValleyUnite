@@ -273,9 +273,23 @@ class WorkOrderProgressViewController: UIViewController {
     
     // MARK: - 刷新状态
     func reloadStatus(status: Int){
+        //离线需要的是更新数据库的接口
+        if backDB {
+            
+            SVProgressHUD.showSuccess(withStatus: "工单完成,状态显示成功!")
+            let realm = try! Realm()
+            realm.beginWrite()
+
+            //进行的工单的状态的筛选查询
+            workOrderDetalModel?.statu = "\(status)"
+            try! realm.commitWrite()
+        }
+        
         
         parmate?["UNIT_STATUS"] = status
+        
         SVProgressHUD.show(withStatus: "加载中...")
+        
         HttpClient.instance.get(path: URLPath.getWorkDetail, parameters: parmate, success: { (respose) in
             SVProgressHUD.dismiss()
             var temp = [WorkHistoryModel]()

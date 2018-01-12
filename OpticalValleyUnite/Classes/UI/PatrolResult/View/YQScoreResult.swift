@@ -85,6 +85,7 @@ class YQScoreResult: UIView {
                 
                 let star = starsViews.subviews[i] as! UIButton
                 star.isSelected = true
+                
             }
             
             self.scoreLabel.text = "\((model?.score)! * 20)" + "分"

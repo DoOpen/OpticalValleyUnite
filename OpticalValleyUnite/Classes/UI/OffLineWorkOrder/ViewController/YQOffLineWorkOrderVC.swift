@@ -28,24 +28,28 @@ class YQOffLineWorkOrderVC: UIViewController {
          4.读取进行渲染,拿到数据,进行操作
          */
         
+        //模拟器可能不适用
         let reachability = Reachability()!
         
-        reachability.whenReachable = { reachability in
-            if reachability.connection == .none {
-                print("Reachable via Cellular")
-                //最后.再转工单详情的模型数据列表
-                let offlineFirst = UIStoryboard.instantiateInitialViewController(name: "YQOffLineFirst")
-                self.navigationController?.pushViewController(offlineFirst, animated: true)
-                
-            } else {
-                
-                print("Reachable via 有网的情况下,更新数据库的情况")
-                
-                self.updateDataForDB()
-            }
+        if reachability.connection == .none {
+            
+            print("Reachable via Cellular")
+            
+            //最后.再转工单详情的模型数据列表
+            let offlineFirst = UIStoryboard.instantiateInitialViewController(name: "YQOffLineFirst")
+            self.navigationController?.pushViewController(offlineFirst, animated: true)
+            
+        } else {
+            
+            print("Reachable via 有网的情况下,更新数据库的情况")
+            self.updateDataForDB()
+            
         }
         
         
+        reachability.whenReachable = { reachability in //当
+            
+        }
         
         //测试数据的调用显示
         /*

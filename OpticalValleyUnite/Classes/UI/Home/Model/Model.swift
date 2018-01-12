@@ -778,7 +778,7 @@ class ExecSectionModel: Object{
     dynamic var id = ""
     var childs = List<ExecChild>()
     dynamic var DESCRIPTION_ID = ""
-//    dynamic var DESCRIPTI = Array<[String: Any]>()
+
     dynamic var workOrderId = ""
     dynamic var isOpen = false
     dynamic var TASK_DESCRIPTION = ""
@@ -811,7 +811,6 @@ class ExecSectionModel: Object{
                 
             }
             
-            
             for dic in arry {
                 
                 let model = ExecChild(parmart: dic)
@@ -835,8 +834,6 @@ class ExecSectionModel: Object{
                                         model.value = model.value + "," + array[stringIndex]
                                     }
                                 }
-                                
-                                
                                 
                             }else{
                                 
@@ -866,9 +863,9 @@ class ExecSectionModel: Object{
         }
     }
     
-    override static func primaryKey() -> String? {
-        return "id"
-    }
+//    override static func primaryKey() -> String? {
+//        return "id"
+//    }
     
     func toDic() -> [String: Any] {
         
@@ -1004,14 +1001,15 @@ class ExecChild: Object{
 
         return dic
     }
-    
 }
 
 
 
 class RealmString: Object {
+    
     dynamic var stringValue = ""
 }
+
 
 
 class SignModel{

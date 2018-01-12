@@ -95,11 +95,10 @@ class YQOffLineWorkOrderVC: UIViewController {
             
             if !tempESectionM.isEmpty {
                 
-//                try! realm.write {
-//                    
-//                    realm.add(tempESectionM)
-//                    
-//                }
+                try! realm.write {
+                    
+                    realm.add(tempESectionM)
+                }
             }
             
             

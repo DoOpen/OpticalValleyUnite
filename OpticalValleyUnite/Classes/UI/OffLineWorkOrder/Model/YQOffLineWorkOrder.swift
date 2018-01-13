@@ -16,9 +16,9 @@ class YQOffLineWorkOrder: NSObject {
 
 class offLineWorkOrderDetailModel  : Object {
     
-    var REMARKS = ""
-    var type = ""
-    var ID = "" 
+    dynamic var REMARKS = ""
+    dynamic var type = ""
+    dynamic var ID = ""
     
     convenience init(parmart: [String: Any]) {
         
@@ -37,7 +37,7 @@ class offLineWorkOrderDetailModel  : Object {
 
 class WorkHistoryModel111: Object {
     
-    var id = ""
+    dynamic var id = ""
     
     var childs = List<WorkHistoryModel222>()
     
@@ -63,15 +63,15 @@ class WorkHistoryModel111: Object {
 
 class WorkHistoryModel222  : Object{
 
-    var person_name = ""
-    var status = -1
-    var time = ""
-    var content = ""
-    var source = 10
-    var type = "1"
+    dynamic var person_name = ""
+    dynamic var status = -1
+    dynamic var time = ""
+    dynamic var content = ""
+    dynamic var source = 10
+    dynamic var type = "1"
 //    var pictures = [String]()
-    var text = ""
-    var DESCRIPTION = ""
+    dynamic var text = ""
+    dynamic var DESCRIPTION = ""
     
     
     convenience init(parmart: [String: Any]) {
@@ -105,6 +105,37 @@ class WorkHistoryModel222  : Object{
             
         }
     }
+}
+
+
+class offLineWorkOrderUpDatePictrueModel : Object {
+    
+    //图片data
+    @objc dynamic var pictureData : Data?
+    
+    //工单id
+    dynamic var id  = ""
+    
+    //工作步序 步骤
+    dynamic var stepId = ""
+    
+    //类别（1：工单 2：步骤）
+    dynamic var type = -1
+    
+    
+    convenience init(parmart: [String: Any]) {
+        
+        self.init()
+        pictureData = parmart["data"] as? Data
+        
+        setValuesForKeys(parmart)
+    }
+    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        
+    }
+
+
 }
 
 

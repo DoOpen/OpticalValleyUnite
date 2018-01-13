@@ -158,6 +158,8 @@ class YQOffLineWorkOrderVC: UIViewController {
             }
             
             let realm = try! Realm()
+            print("数据库地址:")
+            print(realm.configuration.fileURL ?? "")
             
             try! realm.write {
                 

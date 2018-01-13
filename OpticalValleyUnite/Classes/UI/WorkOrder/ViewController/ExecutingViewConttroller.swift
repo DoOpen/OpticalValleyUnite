@@ -543,10 +543,24 @@ class ExecutingViewConttroller: UIViewController {
     }
     
     // MARK: - 离线工单的图片保存的方法
-    func offLineImageSave(_ images: [UIImage], complit: @escaping ((String) -> ()),errorHandle: (() -> ())? = nil){
+    func offLineImageSave(_ images: UIImage, stepId : String){
         //将图片数据分别进行本地的保存列表选项的数据表中
+        //保存图片到数据库中:
+        var dict = [String : Any]()
         
+        dict["data"] = UIImagePNGRepresentation( images )
+        dict["stepId"] = stepId
+        dict["id"] = parmate?["WORKUNIT_ID"]
+        dict["type"] = 2 //不是工单里面的,而是步骤里面的
         
+        let model = offLineWorkOrderUpDatePictrueModel.init(parmart: dict)
+        
+        let realm = try! Realm()
+        
+        try! realm.write {
+            
+            realm.add(model)
+        }
     
     }
     
@@ -900,6 +914,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             
             //添加图片缓存数组
             cell?.currentIndex = indexPath
+            cell?.backDB = self.backDB
             
             cell?.model = model
 //            currentSelectIndexPath = indexPath
@@ -1007,7 +1022,15 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
     func ExecNewCellMakePhotoFunction(view: YQExecNewCell, currentRow: IndexPath,image : UIImage) {
         
         let model = models[(currentRow.section)].childs[currentRow.row]
-        
+        //离线工单的图片保存
+        if backDB {
+            
+            self.offLineImageSave(image, stepId: model.id)
+            //单行刷新列表
+            self.tableView.reloadRows(at: [currentRow], with: .automatic)
+            return
+        }
+
         let imageArray = [image]
         
         self.upDataImage(imageArray, complit: { (url) in
@@ -1036,9 +1059,7 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
             SVProgressHUD.showError(withStatus: "网络超时,请重试!")
         })
         
-        //离线工单的图片保存
         
-
     }
     
     
@@ -1046,6 +1067,25 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
         
         //移除相应的模型数据, tableView的单行数据刷新
         let model = models[(currentRow.section)].childs[currentRow.row]
+        
+        let id = model.id
+        
+        if backDB {
+            //删除移除数据库的picter图片
+            let realm = try! Realm()
+            
+            // 检索 Realm 数据库，找到小于 2 岁 的所有狗狗
+            let deleteArray = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@", id)
+            let delete = deleteArray[buttonTag]
+
+            try! realm.write {
+                realm.delete(delete)
+            }
+            
+            //单行刷新列表
+            self.tableView.reloadRows(at: [currentRow], with: .automatic)
+            return
+        }
         
         var tempArray =  model.imageValue.components(separatedBy: ",")
         
@@ -1100,6 +1140,7 @@ extension ExecutingViewConttroller : YQExecTextCellDelegate{
         
         let realm = try! Realm()
         realm.beginWrite()
+        
         //传递重改模型,刷新当前的cell
         let model = models[(indexPath.section)].childs[indexPath.row]
         

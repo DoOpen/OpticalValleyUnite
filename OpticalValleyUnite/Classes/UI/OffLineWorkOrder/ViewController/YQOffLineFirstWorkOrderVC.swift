@@ -43,6 +43,9 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = "我的离线工单"
+        
+        //默认设置为应急工单
+        self.currentStatusBtn = emergencyWorkOrderButton
        
         //注册cell
         let nib = UINib(nibName: "WorkOrder2Cell", bundle: nil)
@@ -59,7 +62,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
         
         super.viewWillAppear(animated)
         //初始调用的方法
-        clickButtonEvent(emergencyWorkOrderButton)
+        clickButtonEvent(currentStatusBtn!)
         
     }
 

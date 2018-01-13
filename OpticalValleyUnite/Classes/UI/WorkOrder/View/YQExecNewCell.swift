@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol YQExecNewCellClickDelegate : class {
     
@@ -49,6 +50,9 @@ class YQExecNewCell: UITableViewCell {
     
     }
     
+    //是否是离线
+    var backDB : Bool?
+    
     //数据模型
     var model : ExecChild?{
         
@@ -70,6 +74,29 @@ class YQExecNewCell: UITableViewCell {
                 
                 imageVV.image = nil
                 
+            }
+            
+            let id =  model?.id
+            //走离线工单的情况
+            if self.backDB! {//离线工单的图片获取情况
+                //获取stepid的数据库的表数据来查图片
+                //查图片库的数据表
+                let realm = try! Realm()
+                
+                let model = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@", id!)
+                if model.count == 3 {
+                    self.addButton.isHidden = true
+                }
+                
+                for PicIndex in 0..<model.count{
+                    
+                    let imageV =  self.pictureArray[PicIndex]
+                    let picModel = model[PicIndex]
+                    imageV.image = UIImage.init(data: picModel.pictureData!)
+                    
+                }
+ 
+                return
             }
             
             
@@ -149,12 +176,24 @@ class YQExecNewCell: UITableViewCell {
     
 
     // MARK: - 点击添加图片的回调的接口
-    @IBAction func addTapButtonClick(_ sender: Any) {
+    @IBAction func addTapButtonClick(_ sender: UIButton) {
         
         //点击获取相机相册的图片方法
         SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
             
             DispatchQueue.main.async {
+                
+//                if self.backDB! {//离线工单的图片获取情况
+//                    
+//                    for imageV in self.pictureArray{
+//                        
+//                        if imageV.image == nil {
+//                        
+//                            imageV.image = image
+//                        }
+//                    
+//                    }
+//                }
                 
                 self.delegate?.ExecNewCellMakePhotoFunction(view: self, currentRow: (self.currentIndex)! ,image : image!)
             }

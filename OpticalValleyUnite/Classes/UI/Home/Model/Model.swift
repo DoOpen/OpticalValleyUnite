@@ -910,6 +910,8 @@ class ExecChild: Object{
     dynamic var isDone = false
     dynamic var type = "-1"
     dynamic var taskId = ""
+//    dynamic var stepId = "" 就是那个id的情况
+    
     //图片缓存数组
 //    dynamic var imageArray = Array<[UIImage]>()
     
@@ -961,6 +963,8 @@ class ExecChild: Object{
         name = parmart["DESCRIPTION"] as? String ?? ""
         isDone = parmart["COMPLETE"] as? Bool ?? false
         type = parmart["OPERATION_TYPE"] as? String ?? "-1"
+//        stepId = parmart[""] as? String ?? ""
+        
         if let str = parmart["OPTIONS_LIST"] as? String{
             if str.contains(";"){
                 OPTIONS_LIST = str.components(separatedBy: ";")

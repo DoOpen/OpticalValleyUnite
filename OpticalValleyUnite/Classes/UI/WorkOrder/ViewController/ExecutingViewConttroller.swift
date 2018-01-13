@@ -25,6 +25,7 @@ class ExecutingViewConttroller: UIViewController {
     
     //应急工单中备注内容testView
     @IBOutlet weak var textView: SJTextView!
+    
     @IBOutlet weak var emergencyView: UIView!
     
     @IBOutlet weak var hideTableViewHeightConstraint: NSLayoutConstraint!
@@ -73,6 +74,8 @@ class ExecutingViewConttroller: UIViewController {
     var url: String?
     var image: UIImage?
     var savefalse = true
+    
+    var orderType : Int?
     
     
     //创建配件库数据数组
@@ -124,7 +127,7 @@ class ExecutingViewConttroller: UIViewController {
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单,是有配件库的选择功能的
             emergencyView.isHidden = true
 //            self.textView.isHidden = true
-            
+            self.orderType = 2
             getData()
             
             //只有的是 电梯报事中才又配件库的选择功能
@@ -134,7 +137,7 @@ class ExecutingViewConttroller: UIViewController {
             emergencyView.isHidden = false
             saveBtn.isHidden = true
 //            self.RemarksTextView.isHidden = true
-            
+            self.orderType = 1
             //隐藏应急工单 里面的 报事模块 内容,区分计划工单和应急工单的区别
             reportFunctionHiden()
             
@@ -551,7 +554,7 @@ class ExecutingViewConttroller: UIViewController {
         dict["data"] = UIImagePNGRepresentation( images )
         dict["stepId"] = stepId
         dict["id"] = parmate?["WORKUNIT_ID"]
-        dict["type"] = 2 //不是工单里面的,而是步骤里面的
+        dict["type"] = self.orderType//不是工单里面的,而是步骤里面的
         
         let model = offLineWorkOrderUpDatePictrueModel.init(parmart: dict)
         
@@ -591,25 +594,35 @@ class ExecutingViewConttroller: UIViewController {
             }
             
             if images.count > 0 {
+                //保存的数据的接口的重调!
+                var parmat = [String: Any]()
+                parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
+                parmat["UNIT_STATUS"] = 7
+                parmat["photo"] = url
+                parmat["SUCCESS_TEXT"] = self.textView.text
                 
-                upDataImage(images, complit: { (url) in
+                if backDB {
+                    for image in images {
+                        
+                        self.offLineImageSave(image, stepId: "yingji")
+                    }
                     
-                    //保存的数据的接口的重调!
-                    var parmat = [String: Any]()
-                    parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
-                    parmat["UNIT_STATUS"] = 7
-                    parmat["photo"] = url
-                    parmat["SUCCESS_TEXT"] = self.textView.text
-                    
-                    //设置添加配件库的模型数据进来
-
-//                    self.alert(message: "整个工单已经完成?") { (action) in
-                    
-                    //接着是调用了数据保存的接口
-                    //数据保存的接口调用
                     self.upload(parmat)
-//                    }
-                })
+                    
+                }else{
+                
+                    upDataImage(images, complit: { (url) in
+                        
+                        //设置添加配件库的模型数据进来
+                        //                    self.alert(message: "整个工单已经完成?") { (action) in
+                        
+                        //接着是调用了数据保存的接口
+                        //数据保存的接口调用
+                        self.upload(parmat)
+                        //                    }
+                    })
+                }
+                
                 
             }else{
                 

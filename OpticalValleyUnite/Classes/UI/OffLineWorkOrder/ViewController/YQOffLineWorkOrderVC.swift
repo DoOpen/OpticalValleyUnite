@@ -110,13 +110,245 @@ class YQOffLineWorkOrderVC: UIViewController {
          2.对应的数据表的图片上传的情况
          */
         
-//        let realm = try! Realm()
-//        let result =  realm.objects(WorkOrderModel2.self)
-//        
-//        
+        let realm = try! Realm()
+        
+   
 //        print(result.count)
 //        
 //        print(result)
+        
+        
+        // 上传图片和上传工单
+        //模拟器可能不适用
+        let reachability = Reachability()!
+        
+        if reachability.connection == .none {
+            
+            SVProgressHUD.showError(withStatus: "检测不到网络,无法上传!")
+
+        } else {
+            
+            let toallPictrue = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
+            
+            if toallPictrue.isEmpty {
+                
+                return
+            }
+            
+            SVProgressHUD.show(withStatus: "上传图片中...")
+            var parmart = [String : Any]()
+           
+            parmart["type"] = 1 //应急工单
+            let filerArray = NSMutableArray()
+            
+            //先区分应急和计划, 再查看应急工单中相同和不同的 工单ID的情况
+            let emergency = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
+            
+            if !emergency.isEmpty {
+                
+                let emergencyResult = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@","yingji")
+                
+                var id = emergencyResult.first?.id
+                
+                parmart["id"] = id
+                
+                for emergenyIndex in 0..<emergencyResult.count {
+                    
+                    let model = emergencyResult[emergenyIndex]
+                    
+                    if id != model.id {
+                        
+                        parmart["files"] = filerArray
+                        //上传一次应急工单了
+//                        HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], succses: { (url) in
+//                            SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
+//                        }, failure: { (error) in
+//                            
+//                            SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
+//                            
+//                        })
+                        
+                        id = model.id
+                        filerArray.removeAllObjects()
+                        
+                    }else{
+                        
+                        let data = model.pictureData
+                        let image = UIImage.init(data: data!)
+                        filerArray.adding(image!)
+                        
+                        if emergenyIndex == emergencyResult.count - 1 {
+                            
+                            //上传一次应急工单了
+//                            HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], succses: { (url) in
+//                                SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
+//                            }, failure: { (error) in
+//                                
+//                                SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
+//                                
+//                            })
+//                            
+
+                        }
+                    }
+                }
+            }
+            
+            parmart["type"] = 2 //计划工单
+            filerArray.removeAllObjects()
+            
+            let plan = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
+            
+            if !plan.isEmpty {
+                
+                let planResult =  realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@","yingji")
+                //注意的是: 计划工单的多个执行步骤要求分开上传
+                let stepID = planResult.first?.stepId
+                parmart["stepId"] = stepID
+                //应急工单直接上传
+                for planWorkOIndex in 0..<planResult.count {
+                    
+                    let model = planResult[planWorkOIndex]
+                    
+                    if stepID != model.stepId {
+                        
+                        parmart["files"] = filerArray
+                        //上传一次应急工单了
+                        HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], succses: { (url) in
+                            
+                            SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
+                        }, failure: { (error) in
+                            
+                            SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
+                            
+                        })
+                        
+                        parmart["stepId"] = stepID
+                        filerArray.removeAllObjects()
+                        
+                    }else{
+                        
+                        let data = model.pictureData
+                        let image = UIImage.init(data: data!)
+                        filerArray.adding(image!)
+                        
+                        if planWorkOIndex == planResult.count - 1 {
+                            
+                            //上传一次应急工单了
+//                            HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], succses: { (url) in
+//                                 SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
+//                            }, failure: { (error) in
+//                                
+//                                SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
+//                                
+//                            })
+                        }
+                    }
+                }
+            }
+            
+            //上传离线的工单的情况,根据保存和完成项的工单来进行的取值判断!
+            //有图片的工单肯定上传,点击保存和完成的工单ID也是要进行的上传
+            // parmat["SUCCESS_TEXT"] = self.RemarksTextView.text
+            let compelte = realm.objects(saveAndCompelteWorkIDModel.self)
+            
+            if !compelte.isEmpty {
+                
+                SVProgressHUD.show(withStatus: "正在保存工单")
+//                let id = toallPictrue
+                
+                var arrayDict = Array<[String: Any]>()
+                var parmat = [String: Any]()
+
+                for model in compelte {
+                    
+                    let id = model.WORKUNIT_ID
+                    let stepid = model.stepId
+                    
+                    if stepid == "yingji" {
+                        
+                        var par = [String: Any]()
+                        par["WORKUNIT_ID"] = model.WORKUNIT_ID
+//                        par["UNIT_STATUS"] = 7
+                        par["SUCCESS_TEXT"] = ""
+                        par["FINISH_STATUS"] = 1 //应急工单只有完成
+                        
+                        arrayDict.append(par)
+                        
+                        continue
+                    }
+                    
+                    var models = [ExecSectionModel]()
+                    
+                    autoreleasepool {
+                        
+                        let realm = try! Realm()
+                        
+                        let model = realm.objects(ExecSectionModel.self).filter("workOrderId == %@", id)
+                        
+                        for temp in model{
+                            
+                            models.append(temp)
+                        }
+                        
+                    }
+                    var arry = Array<[String: Any]>()
+                    
+                    for model in models{
+                        
+//                        model.workOrderId = id
+                        
+                        let taskDic = model.toDic()
+                        
+                        arry.append(taskDic)
+                    }
+                    
+                    //调整接口的数据的类型,上传数据类型调整
+                    let json0 = arry[0] 
+                    
+                    parmat["WORKUNIT_ID"] = json0["WORKUNIT_ID"]
+                    parmat["WORKTASK_ID"] = json0["WORKTASK_ID"]
+//                    parmat["UNIT_STATUS"] = json0["UNIT_STATUS"]
+                    parmat["ID"] = json0["ID"]
+                    parmat["DESCRIPTION"] = json0["DESCRIPTION"]
+                    
+                    arrayDict.append(parmat)
+                }
+                
+                var parameters = [String : Any]()
+                
+                do{
+                    
+                    let jsonData = try JSONSerialization.data(withJSONObject: arrayDict, options: JSONSerialization.WritingOptions.prettyPrinted)
+                    
+                    if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8){
+                        
+                        //格式化的json字典的情况
+                        print(JSONString)
+                        
+                        //注意的是这里的par 要求序列化json
+                        parameters["jsonData"] = JSONString
+                        
+                    }
+                    
+                } catch {
+                    
+                    print("转换错误 ")
+                }
+
+                
+                HttpClient.instance.post(path: URLPath.getUploadOfflineUnits, parameters: parameters, success: { (response) in
+                    
+                    SVProgressHUD.dismiss()
+                    SVProgressHUD.showSuccess(withStatus: "工单保存成功!")
+                    
+                }, failure: { (error) in
+                    
+                })
+            }
+
+        }
+
 
                
     }

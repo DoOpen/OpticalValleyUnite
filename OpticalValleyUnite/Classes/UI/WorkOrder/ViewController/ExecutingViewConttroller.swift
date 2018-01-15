@@ -30,8 +30,7 @@ class ExecutingViewConttroller: UIViewController {
     
     @IBOutlet weak var hideTableViewHeightConstraint: NSLayoutConstraint!
     
-    
-    
+
     var models = [ExecSectionModel]()
     
     var currentSelectIndexPath: IndexPath?
@@ -356,6 +355,15 @@ class ExecutingViewConttroller: UIViewController {
         if backDB {
         
             SVProgressHUD.showSuccess(withStatus: "保存数据成功!")
+            
+            let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
+            let realm = try! Realm()
+            
+            try! realm.write {
+                
+                realm.add(saveAndCompelete)
+            }
+
             return
         }
         
@@ -571,6 +579,7 @@ class ExecutingViewConttroller: UIViewController {
     //MARK: - 所有完成按钮点击( 数据要求的是 补全接口的相关 数据)
     @IBAction func doneBtnClick() {
         
+       
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单
             var parmat = [String: Any]()
             parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
@@ -587,6 +596,7 @@ class ExecutingViewConttroller: UIViewController {
             }
             
         }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单的保存,保存实现原理不同
+            parmate?["stepId"] = "yingji"
             
             let images = addPhoneView.photos.map { (image) -> UIImage in
                 
@@ -602,8 +612,9 @@ class ExecutingViewConttroller: UIViewController {
                 parmat["SUCCESS_TEXT"] = self.textView.text
                 
                 if backDB {
+                    
                     for image in images {
-                        
+                        //应急工单的执行是没有 stepId的情况
                         self.offLineImageSave(image, stepId: "yingji")
                     }
                     
@@ -639,6 +650,16 @@ class ExecutingViewConttroller: UIViewController {
                 }
             }
         }
+        
+        let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
+        let realm = try! Realm()
+        
+        try! realm.write {
+            
+            realm.add(saveAndCompelete)
+        }
+
+        
     }
     
     
@@ -788,7 +809,6 @@ class ExecutingViewConttroller: UIViewController {
         
         //移除通知监听
         NotificationCenter.default.removeObserver(self)
-        
         //清空沙盒缓存
         
         

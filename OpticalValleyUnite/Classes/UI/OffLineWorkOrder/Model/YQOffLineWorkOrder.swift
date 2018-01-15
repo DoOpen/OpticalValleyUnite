@@ -134,7 +134,25 @@ class offLineWorkOrderUpDatePictrueModel : Object {
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
         
     }
+    
+}
 
+class saveAndCompelteWorkIDModel : Object{
+
+    //工单id
+    dynamic var WORKUNIT_ID  = ""
+    dynamic var stepId = ""
+    
+    convenience init(parmart: [String: Any]) {
+        
+        self.init()
+        
+        setValuesForKeys(parmart)
+    }
+    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        
+    }
 
 }
 

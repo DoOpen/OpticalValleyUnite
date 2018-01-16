@@ -96,8 +96,6 @@ class YQOffLineWorkOrderVC: UIViewController {
          //            realm.add(tempData, update: true)
          //            
          //        }
-       
-         
 */
 
     }
@@ -112,7 +110,6 @@ class YQOffLineWorkOrderVC: UIViewController {
         
         let realm = try! Realm()
         
-   
 //        print(result.count)
 //        
 //        print(result)

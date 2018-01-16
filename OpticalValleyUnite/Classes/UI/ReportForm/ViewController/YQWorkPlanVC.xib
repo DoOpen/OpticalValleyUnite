@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQWorkPlanVC" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QzM-iv-792">
+                    <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beR-MG-28K">
+                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="45"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBu-GR-7UA">
+                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="45"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="确定"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="aBu-GR-7UA" secondAttribute="trailing" id="2Zo-4Z-zc9"/>
+                        <constraint firstItem="aBu-GR-7UA" firstAttribute="width" secondItem="beR-MG-28K" secondAttribute="width" id="3A7-Yo-7TW"/>
+                        <constraint firstAttribute="height" constant="45" id="T1I-TN-7dv"/>
+                        <constraint firstAttribute="bottom" secondItem="beR-MG-28K" secondAttribute="bottom" id="YOI-4M-Qcj"/>
+                        <constraint firstItem="beR-MG-28K" firstAttribute="top" secondItem="QzM-iv-792" secondAttribute="top" id="l8b-hv-8Lk"/>
+                        <constraint firstItem="beR-MG-28K" firstAttribute="leading" secondItem="QzM-iv-792" secondAttribute="leading" id="q92-id-IPU"/>
+                        <constraint firstAttribute="bottom" secondItem="aBu-GR-7UA" secondAttribute="bottom" id="rPS-he-jiq"/>
+                        <constraint firstItem="aBu-GR-7UA" firstAttribute="top" secondItem="QzM-iv-792" secondAttribute="top" id="svf-J9-YC6"/>
+                        <constraint firstItem="aBu-GR-7UA" firstAttribute="leading" secondItem="beR-MG-28K" secondAttribute="trailing" id="uOS-uS-DLa"/>
+                    </constraints>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojt-TS-upf">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ojt-TS-upf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3Wh-td-mqA"/>
+                <constraint firstItem="QzM-iv-792" firstAttribute="top" secondItem="ojt-TS-upf" secondAttribute="bottom" id="AUJ-Fl-R2v"/>
+                <constraint firstAttribute="bottom" secondItem="QzM-iv-792" secondAttribute="bottom" id="D7c-JY-wgy"/>
+                <constraint firstItem="QzM-iv-792" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ocv-ZZ-tHt"/>
+                <constraint firstItem="ojt-TS-upf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hde-H0-zRo"/>
+                <constraint firstAttribute="trailing" secondItem="QzM-iv-792" secondAttribute="trailing" id="oOw-W6-2gz"/>
+                <constraint firstAttribute="trailing" secondItem="ojt-TS-upf" secondAttribute="trailing" id="qG4-29-Z84"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

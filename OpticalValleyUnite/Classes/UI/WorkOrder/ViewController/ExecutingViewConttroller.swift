@@ -579,6 +579,25 @@ class ExecutingViewConttroller: UIViewController {
     //MARK: - 所有完成按钮点击( 数据要求的是 补全接口的相关 数据)
     @IBAction func doneBtnClick() {
         
+        //添加执行完成之后的工单,要求确认所有步骤执行完成
+        for model in self.models{
+            
+            let list = model.childs
+            for child in list{
+                
+                let bool1 = child.imageValue == ""
+                let bool2 = child.value == ""
+                
+                if bool1 && bool2 {
+                    
+                    self.alert(message: "请填写完工单执行步骤!")
+                    return
+                }
+            
+            }
+           
+        }
+
        
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单
             var parmat = [String: Any]()
@@ -651,13 +670,18 @@ class ExecutingViewConttroller: UIViewController {
             }
         }
         
-        let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
-        let realm = try! Realm()
+        if backDB {
         
-        try! realm.write {
+            let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
+            let realm = try! Realm()
             
-            realm.add(saveAndCompelete)
+            try! realm.write {
+                
+                realm.add(saveAndCompelete)
+            }
+        
         }
+        
 
         
     }

@@ -139,13 +139,6 @@
                                     <constraint firstItem="ZeN-Vv-dNn" firstAttribute="leading" secondItem="sNm-C2-u5O" secondAttribute="leading" constant="15" id="qVW-IF-TeG"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46B-58-aHY">
-                                <rect key="frame" x="0.0" y="140" width="375" height="200"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="AU2-5w-bI9"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFC-Yh-9f9">
                                 <rect key="frame" x="0.0" y="340" width="375" height="327"/>
                                 <subviews>
@@ -175,10 +168,6 @@
                                                     <searchBar contentMode="redraw" placeholder="请输入姓名搜索" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EBK-oP-VrD">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                         <textInputTraits key="textInputTraits"/>
-                                                        <scopeButtonTitles>
-                                                            <string>Title</string>
-                                                            <string>Title</string>
-                                                        </scopeButtonTitles>
                                                     </searchBar>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -218,6 +207,13 @@
                                     <constraint firstAttribute="trailing" secondItem="nAM-cP-QHF" secondAttribute="trailing" id="oMo-lE-bOK"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46B-58-aHY" customClass="YQDrawView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="140" width="375" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="AU2-5w-bI9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

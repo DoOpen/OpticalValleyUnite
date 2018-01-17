@@ -16,28 +16,79 @@ class YQReportFormDetailVC: UIViewController {
     
     @IBOutlet weak var spontaneousLabel: UILabel!
     
-    @IBOutlet weak var darwView: UIView!
+    @IBOutlet weak var darwView: YQDrawView!
     
+    
+    var selectTitle = ""
+    var type : Int!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = selectTitle
+        addRightBarButtonItem()
+        
+        
     }
 
-    // MARK: - 绘图的核心的方法
-    // 弧线
-    func drawRect(rect: CGRect) {
+    func addRightBarButtonItem(){
         
-        let color = UIColor.red
-        color.set() // 设置线条颜色
-        
-        let aPath = UIBezierPath.init(arcCenter: darwView.center, radius: 75,
-                                      startAngle: 0, endAngle: CGFloat(Double.pi/2), clockwise: true)
-        
-        aPath.lineWidth = 20.0 // 线条宽度
-       
-        aPath.fill() // Draws line 根据坐标点连线，填充
+        switch type {
+        case 1://日报
+            let button = UIButton()
+            button.frame = CGRect.init(x: 0, y: 0, width: 50, height: 40)
+            button.setTitle("工作计划", for: .normal)
+            button.setTitleColor(UIColor.gray, for: .normal)
+            button.sizeToFit()
+//            button.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
+            
+            let barItem = UIBarButtonItem()
+            barItem.customView = button
+            
+            navigationItem.rightBarButtonItem = barItem
+            
+            break
+        case 2://周报
+            
+            let button = UIButton()
+            button.frame = CGRect.init(x: 0, y: 0, width: 50, height: 40)
+            button.setTitle("工作亮点", for: .normal)
+            button.setTitleColor(UIColor.gray, for: .normal)
+            button.sizeToFit()
+            
+            //            button.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
+            
+            let barItem = UIBarButtonItem()
+            barItem.customView = button
+            
+            navigationItem.rightBarButtonItem = barItem
+            
+            break
+        case 3://月报
+            
+            let button = UIButton()
+            button.frame = CGRect.init(x: 0, y: 0, width: 50, height: 40)
+            button.setTitle("工作亮点", for: .normal)
+            button.setTitleColor(UIColor.gray, for: .normal)
+            button.sizeToFit()
+            
+            //            button.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
+            
+            let barItem = UIBarButtonItem()
+            barItem.customView = button
+            
+            navigationItem.rightBarButtonItem = barItem
+            
+            break
+        default:
+            
+            break
+            
+        }
     }
+    
+    
     
  
 }

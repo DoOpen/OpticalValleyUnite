@@ -49,6 +49,11 @@
 		2F2F957C1F8DF7C800870DC8 /* YQJournalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F957B1F8DF7C800870DC8 /* YQJournalCell.xib */; };
 		2F35356C1F95AE0C00E8E77C /* YQWorkOrderFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35356B1F95AE0C00E8E77C /* YQWorkOrderFirstViewController.swift */; };
 		2F35356E1F95AE3300E8E77C /* YQWorkOrderFirst.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F35356D1F95AE3300E8E77C /* YQWorkOrderFirst.storyboard */; };
+		2F39D73E200EF52000074B83 /* YQReportFormDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39D73D200EF52000074B83 /* YQReportFormDetailModel.swift */; };
+		2F39D740200EF90800074B83 /* YQReportFromDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39D73F200EF90800074B83 /* YQReportFromDetailCell.swift */; };
+		2F39D742200F20DD00074B83 /* YQDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39D741200F20DD00074B83 /* YQDrawView.swift */; };
+		2F39D744200F2FC500074B83 /* YQSelectTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39D743200F2FC500074B83 /* YQSelectTimeView.swift */; };
+		2F39D746200F2FF100074B83 /* YQSelectTime.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F39D745200F2FF100074B83 /* YQSelectTime.xib */; };
 		2F3AC6A81FD645100029AEE3 /* YQVideoPatrolAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3AC6A71FD645100029AEE3 /* YQVideoPatrolAnnotation.swift */; };
 		2F3AC6AA1FD6937D0029AEE3 /* YQVideoIndoorPatorlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3AC6A91FD6937D0029AEE3 /* YQVideoIndoorPatorlModel.swift */; };
 		2F3B96001F6B68BE0008AFEB /* YQDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B95FE1F6B68BE0008AFEB /* YQDrawerViewController.swift */; };
@@ -391,6 +396,11 @@
 		2F2F957B1F8DF7C800870DC8 /* YQJournalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQJournalCell.xib; sourceTree = "<group>"; };
 		2F35356B1F95AE0C00E8E77C /* YQWorkOrderFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkOrderFirstViewController.swift; sourceTree = "<group>"; };
 		2F35356D1F95AE3300E8E77C /* YQWorkOrderFirst.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQWorkOrderFirst.storyboard; sourceTree = "<group>"; };
+		2F39D73D200EF52000074B83 /* YQReportFormDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQReportFormDetailModel.swift; sourceTree = "<group>"; };
+		2F39D73F200EF90800074B83 /* YQReportFromDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQReportFromDetailCell.swift; sourceTree = "<group>"; };
+		2F39D741200F20DD00074B83 /* YQDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDrawView.swift; sourceTree = "<group>"; };
+		2F39D743200F2FC500074B83 /* YQSelectTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQSelectTimeView.swift; sourceTree = "<group>"; };
+		2F39D745200F2FF100074B83 /* YQSelectTime.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQSelectTime.xib; sourceTree = "<group>"; };
 		2F3AC6A71FD645100029AEE3 /* YQVideoPatrolAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQVideoPatrolAnnotation.swift; sourceTree = "<group>"; };
 		2F3AC6A91FD6937D0029AEE3 /* YQVideoIndoorPatorlModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQVideoIndoorPatorlModel.swift; sourceTree = "<group>"; };
 		2F3B95FE1F6B68BE0008AFEB /* YQDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDrawerViewController.swift; sourceTree = "<group>"; };
@@ -1223,6 +1233,7 @@
 		2F7DC8E1200D997C0087E2FC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2F39D73D200EF52000074B83 /* YQReportFormDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1230,6 +1241,10 @@
 		2F7DC8E2200D997C0087E2FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F39D73F200EF90800074B83 /* YQReportFromDetailCell.swift */,
+				2F39D741200F20DD00074B83 /* YQDrawView.swift */,
+				2F39D743200F2FC500074B83 /* YQSelectTimeView.swift */,
+				2F39D745200F2FF100074B83 /* YQSelectTime.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1875,6 +1890,7 @@
 				2F7DC8EB200D9F780087E2FC /* YQReportForm.storyboard in Resources */,
 				2F4AAD7C1FD9543E00697E51 /* YQVideoMonitorAndPatrol.storyboard in Resources */,
 				2F0F877C1F56D23F0030A6DB /* YQPartsLibary.storyboard in Resources */,
+				2F39D746200F2FF100074B83 /* YQSelectTime.xib in Resources */,
 				4B3952071E29CE1F00E2642F /* WorkOrderOprationCell.xib in Resources */,
 				2F5E8C581F595FED00007717 /* YQPartDataSelect.xib in Resources */,
 				2F3B96011F6B68BE0008AFEB /* YQDrawerViewController.xib in Resources */,
@@ -2065,6 +2081,7 @@
 				2F3C093F1F72623000036547 /* YQImplementDetailHeadView.swift in Sources */,
 				2FF2169D1FDD694100978A56 /* YQResultCellHeadView.swift in Sources */,
 				4B7A59C51E35DD5B002E96B6 /* HttpClient.swift in Sources */,
+				2F39D740200EF90800074B83 /* YQReportFromDetailCell.swift in Sources */,
 				2FDF32981F7926ED008EDEB4 /* MANaviRoute.m in Sources */,
 				4BD4B9491E272EA600AE2BC9 /* SJNavigationController.swift in Sources */,
 				2F7335272004680600384341 /* YQOffLineWorkOrder.swift in Sources */,
@@ -2072,6 +2089,7 @@
 				4BB53FF01F14D9CA0061190F /* DeviceCell.swift in Sources */,
 				4B7A59C91E35E1AD002E96B6 /* Model.swift in Sources */,
 				4B3952061E29CE1F00E2642F /* WorkOrderOprationCell.swift in Sources */,
+				2F39D742200F20DD00074B83 /* YQDrawView.swift in Sources */,
 				2F24CEBC1FBE7EB900EC6AF7 /* YQHistoryStepModel.swift in Sources */,
 				4B30780F1E29FBF500FB4007 /* ChooseHouseViewController.swift in Sources */,
 				4B1DEC5C1E31B646000917D2 /* SGQRCodeTool.m in Sources */,
@@ -2104,6 +2122,7 @@
 				2F4EB29C1FD549340004A532 /* YQVideoMapPointModel.swift in Sources */,
 				4BBBEC941E2CAAE200F60313 /* BoPhotoGroupView.m in Sources */,
 				4B3951F11E2899AE00E2642F /* WorkOrderTypeChooseViewController.swift in Sources */,
+				2F39D744200F2FC500074B83 /* YQSelectTimeView.swift in Sources */,
 				2F3DD6661FC7F36800C48D4D /* YQReleaseDetailTableViewCell.swift in Sources */,
 				2FDF32A01F79280E008EDEB4 /* LineDashPolyline.m in Sources */,
 				4BD4B9471E272EA600AE2BC9 /* MessageShowView.swift in Sources */,
@@ -2198,6 +2217,7 @@
 				2F94A27F1F73A5C500455162 /* YQFireMapDetailViewController.swift in Sources */,
 				4BD4B9461E272EA600AE2BC9 /* UIView+AdjustFrame.m in Sources */,
 				2F4217391FDA95D400B42BB3 /* YQPatrolItemWeatherViewController.swift in Sources */,
+				2F39D73E200EF52000074B83 /* YQReportFormDetailModel.swift in Sources */,
 				4B776E681E3857100021B5CA /* UpdataPSWViewController.swift in Sources */,
 				4B39520A1E29D25D00E2642F /* SJUpButton.m in Sources */,
 				2F07A01D1FDBEEDA0064556D /* YQpatrolResultDrawerViewController.swift in Sources */,
@@ -2417,6 +2437,7 @@
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/UMessage_Sdk_1.5.0a",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/RfmFrameworks",
 				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2452,6 +2473,7 @@
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/UMessage_Sdk_1.5.0a",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/RfmFrameworks",
 				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

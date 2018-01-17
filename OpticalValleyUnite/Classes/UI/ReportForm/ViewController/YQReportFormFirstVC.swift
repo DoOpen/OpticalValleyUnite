@@ -30,19 +30,24 @@ class YQReportFormFirstVC: UIViewController {
     
     @IBAction func reportFormSelectClick(_ sender: UIButton) {
         
+        let reportVC = UIStoryboard.instantiateInitialViewController(name: "YQReportForm") as? YQReportFromViewController
+        reportVC?.type = sender.tag
+        
         switch sender.tag {
-        case 0://日报的界面列表
-            
+        case 1://日报的界面列表
+            reportVC?.selectTitle = "日报"
             break
-        case 1://周报的界面列表
-            
+        case 2://周报的界面列表
+            reportVC?.selectTitle = "周报"
             break
-        case 2://月报的界面列表
-            
+        case 3://月报的界面列表
+            reportVC?.selectTitle = "月报"
             break
         default:
             break
         }
+        
+        navigationController?.pushViewController(reportVC!, animated: true)
         
         
     }

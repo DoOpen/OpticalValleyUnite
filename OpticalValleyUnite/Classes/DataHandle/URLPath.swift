@@ -271,4 +271,7 @@ struct URLPath {
     static let getUploadUnits = "workunit/uploadUnits"
     
     
+    ///日报,周报,月报的接口列表
+    static let getReportFormList = "report/list"
+    
 }

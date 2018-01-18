@@ -198,7 +198,6 @@ struct URLPath {
     static let getFilterDeptList = "worklog/dept/list.do"
     //对象
     static let getFilterPersonList = "worklog/person/list.do"
-    
     //日志工单
     static let getWorkunitList2 = "workunit/workunitList2.do"
     
@@ -273,5 +272,11 @@ struct URLPath {
     
     ///日报,周报,月报的接口列表
     static let getReportFormList = "report/list"
+    //工单统计查询 //员工工单详情查询
+    static let getReportWorkUnitQuery = "workUnit/query"
+    //获取人员列表
+    static let getReportWorkUnitPList = "workUnit/personList"
+    
+    
     
 }

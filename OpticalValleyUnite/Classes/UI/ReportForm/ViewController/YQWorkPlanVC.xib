@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQWorkPlanVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="MYr-kt-DUV" id="9Au-Rr-53s"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,6 +33,9 @@
                                     <real key="value" value="6"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="cancelButtonClick:" destination="-1" eventType="touchUpInside" id="9Gd-q0-21f"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBu-GR-7UA">
                             <rect key="frame" x="187.5" y="0.0" width="187.5" height="45"/>
@@ -42,9 +46,12 @@
                                     <real key="value" value="6"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="makeSureButtonClick:" destination="-1" eventType="touchUpInside" id="WQV-Bh-S5D"/>
+                            </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="aBu-GR-7UA" secondAttribute="trailing" id="2Zo-4Z-zc9"/>
                         <constraint firstItem="aBu-GR-7UA" firstAttribute="width" secondItem="beR-MG-28K" secondAttribute="width" id="3A7-Yo-7TW"/>
@@ -57,19 +64,24 @@
                         <constraint firstItem="aBu-GR-7UA" firstAttribute="leading" secondItem="beR-MG-28K" secondAttribute="trailing" id="uOS-uS-DLa"/>
                     </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojt-TS-upf">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
-                </scrollView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MYr-kt-DUV">
+                    <rect key="frame" x="0.0" y="64" width="375" height="558"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="dvl-8O-aoP"/>
+                        <outlet property="delegate" destination="-1" id="I7j-IF-KLG"/>
+                    </connections>
+                </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="ojt-TS-upf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3Wh-td-mqA"/>
-                <constraint firstItem="QzM-iv-792" firstAttribute="top" secondItem="ojt-TS-upf" secondAttribute="bottom" id="AUJ-Fl-R2v"/>
+                <constraint firstItem="MYr-kt-DUV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Bdl-FV-VGj"/>
                 <constraint firstAttribute="bottom" secondItem="QzM-iv-792" secondAttribute="bottom" id="D7c-JY-wgy"/>
                 <constraint firstItem="QzM-iv-792" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ocv-ZZ-tHt"/>
-                <constraint firstItem="ojt-TS-upf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hde-H0-zRo"/>
+                <constraint firstItem="MYr-kt-DUV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Yco-jX-aLp"/>
+                <constraint firstItem="QzM-iv-792" firstAttribute="top" secondItem="MYr-kt-DUV" secondAttribute="bottom" id="adv-tf-u1p"/>
                 <constraint firstAttribute="trailing" secondItem="QzM-iv-792" secondAttribute="trailing" id="oOw-W6-2gz"/>
-                <constraint firstAttribute="trailing" secondItem="ojt-TS-upf" secondAttribute="trailing" id="qG4-29-Z84"/>
+                <constraint firstAttribute="trailing" secondItem="MYr-kt-DUV" secondAttribute="trailing" id="uN7-nQ-mBO"/>
             </constraints>
         </view>
     </objects>

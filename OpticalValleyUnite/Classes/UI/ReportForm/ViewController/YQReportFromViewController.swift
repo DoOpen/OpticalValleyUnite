@@ -258,6 +258,7 @@ extension YQReportFromViewController : UITableViewDelegate, UITableViewDataSourc
         
         reportDetail?.selectTitle = model.reportTitle
         reportDetail?.type  = self.type
+        reportDetail?.createTime = model.createTime
 
         navigationController?.pushViewController(reportDetail!, animated: true)
         

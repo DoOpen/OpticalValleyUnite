@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQWorkHighlightsVC" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="Acl-R1-Hbi" id="RyT-8y-uFP"/>
+                <outlet property="view" destination="7Oy-2H-VFO" id="4XW-x2-k2P"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="7Oy-2H-VFO">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAq-Kz-Q3J">
+                    <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wl7-s7-IT1">
+                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="45"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="cancelButtonClick:" destination="-1" eventType="touchUpInside" id="qa3-4u-hCf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zeb-Q0-ewo">
+                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="45"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="确定"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="makeSureButtonClick:" destination="-1" eventType="touchUpInside" id="QrQ-qt-z1m"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="5dR-ga-m53"/>
+                        <constraint firstItem="Zeb-Q0-ewo" firstAttribute="width" secondItem="Wl7-s7-IT1" secondAttribute="width" id="CP7-Wn-HGL"/>
+                        <constraint firstItem="Zeb-Q0-ewo" firstAttribute="top" secondItem="zAq-Kz-Q3J" secondAttribute="top" id="UCs-u7-FnC"/>
+                        <constraint firstAttribute="bottom" secondItem="Wl7-s7-IT1" secondAttribute="bottom" id="UEd-DP-a0U"/>
+                        <constraint firstAttribute="bottom" secondItem="Zeb-Q0-ewo" secondAttribute="bottom" id="X8R-0t-SNT"/>
+                        <constraint firstItem="Wl7-s7-IT1" firstAttribute="leading" secondItem="zAq-Kz-Q3J" secondAttribute="leading" id="mJA-O6-xMj"/>
+                        <constraint firstItem="Wl7-s7-IT1" firstAttribute="top" secondItem="zAq-Kz-Q3J" secondAttribute="top" id="q9N-gW-kDZ"/>
+                        <constraint firstItem="Zeb-Q0-ewo" firstAttribute="leading" secondItem="Wl7-s7-IT1" secondAttribute="trailing" id="sIk-3U-YSB"/>
+                        <constraint firstAttribute="trailing" secondItem="Zeb-Q0-ewo" secondAttribute="trailing" id="xTm-mM-Tsn"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Acl-R1-Hbi">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="PUZ-n8-Izm"/>
+                        <outlet property="delegate" destination="-1" id="dFI-i7-a2D"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="zAq-Kz-Q3J" secondAttribute="bottom" id="1eG-re-RVZ"/>
+                <constraint firstAttribute="trailing" secondItem="Acl-R1-Hbi" secondAttribute="trailing" id="2HT-zk-reK"/>
+                <constraint firstItem="zAq-Kz-Q3J" firstAttribute="top" secondItem="Acl-R1-Hbi" secondAttribute="bottom" id="2Ij-j3-AF8"/>
+                <constraint firstItem="Acl-R1-Hbi" firstAttribute="top" secondItem="7Oy-2H-VFO" secondAttribute="top" id="FLQ-mm-PPS"/>
+                <constraint firstItem="zAq-Kz-Q3J" firstAttribute="leading" secondItem="7Oy-2H-VFO" secondAttribute="leading" id="QFI-5T-t74"/>
+                <constraint firstItem="Acl-R1-Hbi" firstAttribute="leading" secondItem="7Oy-2H-VFO" secondAttribute="leading" id="YzF-VD-ACa"/>
+                <constraint firstAttribute="trailing" secondItem="zAq-Kz-Q3J" secondAttribute="trailing" id="pCr-Ug-Zu1"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

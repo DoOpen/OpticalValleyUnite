@@ -551,8 +551,6 @@ class ReportMasterViewController: UIViewController {
             return
         }
         
-        //直接的是,禁用button
-        self.SubmitBtn.isUserInteractionEnabled = false
         
         var parmarReport = [String: Any]()
         
@@ -649,6 +647,8 @@ class ReportMasterViewController: UIViewController {
             
         }
         
+        //直接的是,禁用button
+        self.SubmitBtn.isUserInteractionEnabled = false
         
         let images = addPhotoView.photos.map{$0.image}
         

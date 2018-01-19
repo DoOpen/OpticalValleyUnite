@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -101,62 +99,52 @@
                                             <rect key="frame" x="87.5" y="158.5" width="242.5" height="30"/>
                                             <subviews>
                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGh-kK-l8x">
-                                                    <rect key="frame" x="26" y="0.0" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="GKb-Aw-yfv"/>
-                                                        <constraint firstAttribute="width" secondItem="rGh-kK-l8x" secondAttribute="height" id="SOt-KB-jEj"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="25" y="4" width="30.5" height="22"/>
                                                     <state key="normal" image="star拷贝8"/>
                                                     <state key="selected" image="star拷贝7"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="GKb-Aw-yfv"/>
-                                                        </mask>
-                                                    </variation>
                                                 </button>
                                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sm-fb-Zfv">
-                                                    <rect key="frame" x="66.5" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="65.5" y="4" width="30.5" height="22"/>
                                                     <state key="normal" image="star拷贝8"/>
                                                     <state key="selected" image="star拷贝7"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-8I-qIl">
-                                                    <rect key="frame" x="95.5" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="106" y="4" width="30" height="22"/>
                                                     <state key="normal" image="star拷贝8"/>
                                                     <state key="selected" image="star拷贝7"/>
                                                 </button>
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Do-3M-CCt">
-                                                    <rect key="frame" x="146.5" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="146" y="4" width="30.5" height="22"/>
                                                     <state key="normal" image="star拷贝8"/>
                                                     <state key="selected" image="star拷贝7"/>
                                                 </button>
                                                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdZ-xO-eUB">
-                                                    <rect key="frame" x="187" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="186.5" y="4" width="30.5" height="22"/>
                                                     <state key="normal" image="star拷贝8"/>
                                                     <state key="selected" image="star拷贝7"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7Do-3M-CCt" firstAttribute="height" secondItem="WAn-8I-qIl" secondAttribute="height" id="56s-w3-amb"/>
-                                                <constraint firstItem="VdZ-xO-eUB" firstAttribute="height" secondItem="WAn-8I-qIl" secondAttribute="height" id="7Ve-V1-yXI"/>
-                                                <constraint firstItem="9sm-fb-Zfv" firstAttribute="width" secondItem="WAn-8I-qIl" secondAttribute="width" id="7jX-d5-wbE"/>
-                                                <constraint firstItem="VdZ-xO-eUB" firstAttribute="centerY" secondItem="WAn-8I-qIl" secondAttribute="centerY" id="CCb-8V-WRP"/>
-                                                <constraint firstAttribute="bottom" secondItem="WAn-8I-qIl" secondAttribute="bottom" id="FDW-dG-v6W"/>
-                                                <constraint firstItem="VdZ-xO-eUB" firstAttribute="width" secondItem="WAn-8I-qIl" secondAttribute="width" id="GFg-ok-FdZ"/>
-                                                <constraint firstItem="rGh-kK-l8x" firstAttribute="centerX" secondItem="qTS-bL-K10" secondAttribute="centerX" multiplier="2/3" constant="-40" id="I9i-Ux-h0u"/>
-                                                <constraint firstItem="9sm-fb-Zfv" firstAttribute="centerY" secondItem="WAn-8I-qIl" secondAttribute="centerY" id="IdX-iM-bsF"/>
-                                                <constraint firstItem="rGh-kK-l8x" firstAttribute="centerY" secondItem="WAn-8I-qIl" secondAttribute="centerY" id="LX5-Nj-c3F"/>
-                                                <constraint firstItem="7Do-3M-CCt" firstAttribute="centerY" secondItem="WAn-8I-qIl" secondAttribute="centerY" id="Lng-jg-suN"/>
-                                                <constraint firstItem="rGh-kK-l8x" firstAttribute="width" secondItem="WAn-8I-qIl" secondAttribute="width" id="Lsc-Vm-77T"/>
-                                                <constraint firstItem="rGh-kK-l8x" firstAttribute="height" secondItem="WAn-8I-qIl" secondAttribute="height" id="M3p-7a-N2f"/>
+                                                <constraint firstAttribute="trailing" secondItem="VdZ-xO-eUB" secondAttribute="trailing" constant="25" id="9uc-bo-AZu"/>
+                                                <constraint firstItem="VdZ-xO-eUB" firstAttribute="centerY" secondItem="qTS-bL-K10" secondAttribute="centerY" id="BO4-Hn-xuo"/>
+                                                <constraint firstItem="7Do-3M-CCt" firstAttribute="height" secondItem="rGh-kK-l8x" secondAttribute="height" id="Iqa-gh-xgn"/>
                                                 <constraint firstAttribute="height" constant="30" id="MDm-kz-fo5"/>
-                                                <constraint firstItem="VdZ-xO-eUB" firstAttribute="centerX" secondItem="qTS-bL-K10" secondAttribute="centerX" multiplier="5/3" id="Nyf-aE-s0C"/>
-                                                <constraint firstItem="9sm-fb-Zfv" firstAttribute="height" secondItem="WAn-8I-qIl" secondAttribute="height" id="UGu-Lk-aET"/>
-                                                <constraint firstItem="7Do-3M-CCt" firstAttribute="width" secondItem="WAn-8I-qIl" secondAttribute="width" id="Yt1-JF-8mp"/>
-                                                <constraint firstItem="7Do-3M-CCt" firstAttribute="centerX" secondItem="qTS-bL-K10" secondAttribute="centerX" multiplier="4/3" id="dtm-5W-gp2"/>
-                                                <constraint firstItem="9sm-fb-Zfv" firstAttribute="centerX" secondItem="qTS-bL-K10" secondAttribute="centerX" constant="-40" id="eMv-T8-VKO"/>
-                                                <constraint firstItem="WAn-8I-qIl" firstAttribute="centerX" secondItem="qTS-bL-K10" secondAttribute="centerX" multiplier="1/3" constant="70" id="v3K-od-hgf"/>
-                                                <constraint firstItem="WAn-8I-qIl" firstAttribute="top" secondItem="qTS-bL-K10" secondAttribute="top" id="vA8-s3-XhP"/>
-                                                <constraint firstItem="WAn-8I-qIl" firstAttribute="centerY" secondItem="qTS-bL-K10" secondAttribute="centerY" id="x5A-ye-kkh"/>
+                                                <constraint firstItem="9sm-fb-Zfv" firstAttribute="width" secondItem="rGh-kK-l8x" secondAttribute="width" id="MJd-de-yBn"/>
+                                                <constraint firstItem="7Do-3M-CCt" firstAttribute="leading" secondItem="WAn-8I-qIl" secondAttribute="trailing" constant="10" id="N6S-uZ-3q1"/>
+                                                <constraint firstItem="rGh-kK-l8x" firstAttribute="leading" secondItem="qTS-bL-K10" secondAttribute="leading" constant="25" id="Pm6-fC-fnG"/>
+                                                <constraint firstItem="WAn-8I-qIl" firstAttribute="leading" secondItem="9sm-fb-Zfv" secondAttribute="trailing" constant="10" id="TnV-bi-Ztf"/>
+                                                <constraint firstItem="9sm-fb-Zfv" firstAttribute="leading" secondItem="rGh-kK-l8x" secondAttribute="trailing" constant="10" id="U5J-Ob-yI7"/>
+                                                <constraint firstItem="WAn-8I-qIl" firstAttribute="width" secondItem="rGh-kK-l8x" secondAttribute="width" id="aLj-4p-OOh"/>
+                                                <constraint firstItem="rGh-kK-l8x" firstAttribute="centerY" secondItem="qTS-bL-K10" secondAttribute="centerY" id="bnj-5c-ECL"/>
+                                                <constraint firstItem="VdZ-xO-eUB" firstAttribute="width" secondItem="rGh-kK-l8x" secondAttribute="width" id="bvK-jl-pP6"/>
+                                                <constraint firstItem="9sm-fb-Zfv" firstAttribute="centerY" secondItem="qTS-bL-K10" secondAttribute="centerY" id="d7b-ZB-WbE"/>
+                                                <constraint firstItem="WAn-8I-qIl" firstAttribute="height" secondItem="rGh-kK-l8x" secondAttribute="height" id="fYd-EC-0gd"/>
+                                                <constraint firstItem="7Do-3M-CCt" firstAttribute="width" secondItem="rGh-kK-l8x" secondAttribute="width" id="hAr-VB-Xci"/>
+                                                <constraint firstItem="9sm-fb-Zfv" firstAttribute="height" secondItem="rGh-kK-l8x" secondAttribute="height" id="iJ6-xf-l5A"/>
+                                                <constraint firstItem="VdZ-xO-eUB" firstAttribute="height" secondItem="rGh-kK-l8x" secondAttribute="height" id="kfx-F3-qrn"/>
+                                                <constraint firstItem="WAn-8I-qIl" firstAttribute="centerY" secondItem="qTS-bL-K10" secondAttribute="centerY" id="o2L-bG-QHZ"/>
+                                                <constraint firstItem="7Do-3M-CCt" firstAttribute="centerY" secondItem="qTS-bL-K10" secondAttribute="centerY" id="xXX-di-cZW"/>
+                                                <constraint firstItem="VdZ-xO-eUB" firstAttribute="leading" secondItem="7Do-3M-CCt" secondAttribute="trailing" constant="10" id="yfm-gM-QLG"/>
                                             </constraints>
                                         </view>
                                     </subviews>

@@ -63,8 +63,16 @@ class YQReportFromViewController: UIViewController {
     @IBAction func timeLabelClick(_ sender: UIButton) {
         //调用查询的时间的筛选的接口
         var par = [String : Any]()
-        par["endTime"] = self.endTimeButtonClick.titleLabel?.text
-        par["startTime"] = self.startTimeButtonClick.titleLabel?.text
+        
+        if !(self.endTimeButtonClick.titleLabel?.text?.contains("选择"))!{
+        
+            par["endTime"] = self.endTimeButtonClick.titleLabel?.text
+        }
+        
+        if !(self.startTimeButtonClick.titleLabel?.text?.contains("选择"))!{
+        
+            par["startTime"] = self.startTimeButtonClick.titleLabel?.text
+        }
         
         getTypeReportFromData(type: type!, par: par)
         
@@ -116,22 +124,39 @@ class YQReportFromViewController: UIViewController {
     func addRefirsh(){
         
         tabelView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
-            var par = [String : Any]()
-            par["endTime"] = self.endTimeButtonClick.titleLabel?.text
-            par["startTime"] = self.startTimeButtonClick.titleLabel?.text
-
             
+            var par = [String : Any]()
+            
+            if !(self.endTimeButtonClick.titleLabel?.text?.contains("选择"))!{
+                
+                par["endTime"] = self.endTimeButtonClick.titleLabel?.text
+            }
+            
+            if !(self.startTimeButtonClick.titleLabel?.text?.contains("选择"))!{
+                
+                par["startTime"] = self.startTimeButtonClick.titleLabel?.text
+            }
+
+
             self.getTypeReportFromData(type: self.type!, pageIndex: 0, pageSize: 20,par: par)
             
         })
         
         
         tabelView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
-            var par = [String : Any]()
-            par["endTime"] = self.endTimeButtonClick.titleLabel?.text
-            par["startTime"] = self.startTimeButtonClick.titleLabel?.text
-
             
+            var par = [String : Any]()
+            
+            if !(self.endTimeButtonClick.titleLabel?.text?.contains("选择"))!{
+                
+                par["endTime"] = self.endTimeButtonClick.titleLabel?.text
+            }
+            
+            if !(self.startTimeButtonClick.titleLabel?.text?.contains("选择"))!{
+                
+                par["startTime"] = self.startTimeButtonClick.titleLabel?.text
+            }
+
             self.getTypeReportFromData(type: self.type!, pageIndex: self.currentIndex + 1, pageSize: 20,par: par)
             
         })

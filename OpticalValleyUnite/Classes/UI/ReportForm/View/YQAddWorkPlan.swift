@@ -38,6 +38,8 @@ class YQAddWorkPlan: UITableViewCell,UITextViewDelegate,UITextFieldDelegate {
             
             let dfmatter = DateFormatter()
             dfmatter.dateFormat="yyyy-MM-dd"
+            self.backlogText.text = ""
+            self.backLogDetailText.text = ""
             
             self.timeLabel.text = dfmatter.string(from: Date())
             

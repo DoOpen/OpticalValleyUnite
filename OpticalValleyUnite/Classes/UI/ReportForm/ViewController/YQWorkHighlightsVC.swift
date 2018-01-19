@@ -7,35 +7,60 @@
 //
 
 import UIKit
+import SnapKit
 
 class YQWorkHighlightsVC: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var cellID = "WorkHighlights"
     
+    var height = 300
+    
+    var childsArray = [YQAddHighlights]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //注册原型cell 设置cell的每个的行高的情况
-        let nib = UINib(nibName: "YQAddHighlights", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: cellID)
-
-        //设置footer添加的按钮
+        
+        self.title = "工作亮点"
+        
+        let view =  Bundle.main.loadNibNamed("YQAddHighlights", owner: nil, options: nil)?[0] as! YQAddHighlights
+        view.frame = CGRect.init(x: 0, y: 0, width: Int(SJScreeW), height: height)
+        childsArray.append(view)
+        
+        self.scrollView.contentSize = CGSize.init(width: 0, height:childsArray.count * (height + 5))
+        
+        self.scrollView.addSubview(view)
         
     }
 
+    //取消
     @IBAction func cancelButtonClick(_ sender: UIButton) {
         
-        
-        
+        navigationController?.popViewController(animated: true)
     }
     
+    //确定
     @IBAction func makeSureButtonClick(_ sender: UIButton) {
         
         
-        
     }
     
+    //添加
+    @IBAction func addButtonClick(_ sender: UIButton) {
+        
+        let view =  Bundle.main.loadNibNamed("YQAddHighlights", owner: nil, options: nil)?[0] as! YQAddHighlights
+        let y = childsArray.count * (height + 5)
+        
+        view.frame = CGRect.init(x: 0, y: y, width: Int(SJScreeW), height: height)
+    
+        self.scrollView.addSubview(view)
+        childsArray.append(view)
+        
+        self.scrollView.contentSize = CGSize.init(width: 0, height:childsArray.count * (height + 5))
+        
+        
+    }
  
 }
 

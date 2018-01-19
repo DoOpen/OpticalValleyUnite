@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+import SnapKit
 
 class YQWorkPlanVC: UIViewController {
 
@@ -41,8 +43,20 @@ class YQWorkPlanVC: UIViewController {
 
     @IBAction func cancelButtonClick(_ sender: UIButton) {
         
+        navigationController?.popViewController(animated: true)
+        
     }
 
+    //MARK: - 添加workPlanList的方法
+    func addWorkPlanListButtonClick(){
+        //设置原型model的情况,内存保存的情况
+        let model = YQAddWorkPlanModel(dic: [String : Any]())
+        dataArray.append(model)
+        
+        self.tableView.reloadData()
+
+    }
+    
 
 }
 
@@ -69,10 +83,20 @@ extension YQWorkPlanVC : UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
         let view = UIView()
-        view.backgroundColor = UIColor.blue
+//        view.backgroundColor = UIColor.blue
         let boutton = UIButton()
+        boutton.setTitleColor(UIColor.brown, for: .normal)
+        boutton.setTitle("添加", for: .normal)
+        boutton.addTarget(self, action: #selector(addWorkPlanListButtonClick), for: .touchUpInside)
+        
         view.addSubview(boutton)
+        boutton.snp.makeConstraints { (maker) in
+            maker.right.bottom.top.equalToSuperview()
+            maker.width.equalTo(80)
+        }
+        
         
         return view
         

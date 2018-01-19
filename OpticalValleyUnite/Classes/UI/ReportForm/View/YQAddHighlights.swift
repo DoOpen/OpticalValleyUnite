@@ -19,8 +19,12 @@ class YQAddHighlights: UITableViewCell {
     @IBOutlet weak var pictureAddView: SJAddView!
     
     override func awakeFromNib() {
-        self.hightLightContentTextView.placeHolder = "亮点内容"
         
+        self.hightLightContentTextView.placeHolder = "亮点内容"
+        let dfmatter = DateFormatter()
+        dfmatter.dateFormat="yyyy-MM-dd"
+
+        self.timeLabel?.text = dfmatter.string(from: Date())
         
     }
   

@@ -72,7 +72,7 @@ class YQReportFormDetailVC: UIViewController {
             button.setTitleColor(UIColor.gray, for: .normal)
             button.sizeToFit()
             
-            //            button.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
+            button.addTarget(self, action: #selector(jumpToWorkHighlights), for: .touchUpInside)
             
             let barItem = UIBarButtonItem()
             barItem.customView = button

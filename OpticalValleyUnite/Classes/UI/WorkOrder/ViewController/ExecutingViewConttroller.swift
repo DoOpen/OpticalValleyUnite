@@ -1055,11 +1055,13 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
         
         
         view.didTouchHandle = { [weak self] in
+            
             let realm = try! Realm()
             realm.beginWrite()
             model.isOpen = !model.isOpen
             self?.tableView.reloadData()
             try! realm.commitWrite()
+            
         }
 
         return view

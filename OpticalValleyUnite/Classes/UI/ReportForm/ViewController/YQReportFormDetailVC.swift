@@ -88,7 +88,7 @@ class YQReportFormDetailVC: UIViewController {
             button.setTitleColor(UIColor.gray, for: .normal)
             button.sizeToFit()
             
-            //            button.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
+            button.addTarget(self, action: #selector(jumpToShowWorkHighlightDetail), for: .touchUpInside)
             
             let barItem = UIBarButtonItem()
             barItem.customView = button
@@ -246,6 +246,13 @@ class YQReportFormDetailVC: UIViewController {
     
     
     // 月报
+    func jumpToShowWorkHighlightDetail(){
+        
+        let showDetail = YQWorkHighlightsDetailVC.init(nibName: "YQWorkHighlightsDetailVC", bundle: nil)
+        
+        navigationController?.pushViewController(showDetail, animated: true)
+    
+    }
     
  
 }

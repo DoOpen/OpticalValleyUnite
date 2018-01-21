@@ -217,7 +217,7 @@
                 <outlet property="scoreLabel" destination="DIK-Nl-N4P" id="dGt-7l-vSa"/>
                 <outlet property="starsViews" destination="qTS-bL-K10" id="hE1-nV-Wzq"/>
             </connections>
-            <point key="canvasLocation" x="-285" y="94"/>
+            <point key="canvasLocation" x="-356" y="10"/>
         </view>
     </objects>
     <resources>

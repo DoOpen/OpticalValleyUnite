@@ -26,3 +26,9 @@ class YQAddWorkPlanModel: NSObject {
     }
 
 }
+
+class YQWorkHighlightsModel: NSObject {
+    
+    
+    
+}

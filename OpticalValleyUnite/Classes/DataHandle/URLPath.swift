@@ -276,6 +276,10 @@ struct URLPath {
     static let getReportWorkUnitQuery = "workUnit/query"
     //获取人员列表
     static let getReportWorkUnitPList = "workUnit/personList"
+    //获取月报的工作亮点的情况
+    static let getReportWorkHighlights = "report/get"
+    //工作计划添加或工作亮点
+    static let getReportAdd = "report/add"
     
     
     

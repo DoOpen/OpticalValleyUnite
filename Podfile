@@ -12,7 +12,7 @@ pod 'Alamofire’, '~> 4.5.0’
 pod 'IQKeyboardManager', '~> 4.0.0'
 pod 'Masonry', '~> 1.0.1'
 pod 'SVProgressHUD'
-pod 'RealmSwift', '~> 2.2.0'
+pod 'RealmSwift', '~> 3.0.1'
 pod 'MJRefresh'
 pod 'Kingfisher', '~> 3.2.4'
 pod 'LCNibBridge'

@@ -82,7 +82,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         getNotice()
         
         
-        
         //接受新的数据来显示
         getPermission()
 

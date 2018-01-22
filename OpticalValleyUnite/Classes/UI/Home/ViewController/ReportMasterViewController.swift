@@ -116,6 +116,7 @@ class ReportMasterViewController: UIViewController {
         //1.通过判断是普通报事,还是电梯报事
         //        Alamofire.request(URLPath.basicPath + URLPath.typeOfReportMaster, method: .get, parameters: parameters, encoding: <#T##ParameterEncoding#>, headers: <#T##HTTPHeaders?#>).responseJSON { (response) in
         
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         if let reportName = UserDefaults.standard.object(forKey: Const.YQReportName){
             

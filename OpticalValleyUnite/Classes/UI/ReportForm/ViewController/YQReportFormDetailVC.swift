@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import SnapKit
 
 class YQReportFormDetailVC: UIViewController {
 
@@ -25,11 +26,19 @@ class YQReportFormDetailVC: UIViewController {
     
     @IBOutlet weak var emergencyFinishLabel: UILabel!
     
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollViewheightConstraint: NSLayoutConstraint!
+    var personListArrray = [YQReportFromPersonList]()
+    
+    
     var parkID = ""
     
     var selectTitle = ""
     var type : Int!
     var createTime  = ""
+    var id : Int = 0
     
     override func viewDidLoad() {
         
@@ -136,48 +145,48 @@ class YQReportFormDetailVC: UIViewController {
         HttpClient.instance.post(path: URLPath.getReportWorkUnitQuery, parameters: par, success: { (response) in
             
            
-            let dict = response as? [String : Any]
+            let dict = response["workUnitPojo"] as? [String : Any]
             
             if dict == nil {
                 
                 SVProgressHUD.showError(withStatus: "没有更多数据!")
                 return
             }
-            let planNum = dict?["planTotal"] as? Int ?? 0
-            let emergencyTotal = dict?["emergencyTotal"] as? Int ?? 0
-            let sourceTotal = dict?["sourceTotal"] as? Int ?? 0
+            let planNum = dict?["planTotal"] as? CGFloat ?? 0
+            let emergencyTotal = dict?["emergencyTotal"] as? CGFloat ?? 0
+            let sourceTotal = dict?["sourceTotal"] as? CGFloat ?? 0
             
             //设置数据的属性赋值!
-            self.planLabel.text = "\(planNum)"
-            self.emergencyLabel.text = "\(emergencyTotal)"
-            self.spontaneousLabel.text = "\(sourceTotal)"
+            self.planLabel.text = "\(Int(planNum))"
+            self.emergencyLabel.text = "\(Int(emergencyTotal))"
+            self.spontaneousLabel.text = "\(Int(sourceTotal))"
             
             //完成数的比例计算
-            let planFinsh = dict?["planFinsh"] as? Int ?? 0
-            let emergencyFinsh = dict?["emergencyFinsh"] as? Int ?? 0
-            let sourceFinsh = dict?["sourceFinsh"] as? Int ?? 0
+            let planFinsh = dict?["planFinsh"] as? CGFloat ?? 0
+            let emergencyFinsh = dict?["emergencyFinsh"] as? CGFloat ?? 0
+            let sourceFinsh = dict?["sourceFinsh"] as? CGFloat ?? 0
             
-            var planScale : Double  = 0
-            var emergencyScale : Double = 0
-            var sourceScale : Double = 0
+            var planScale : CGFloat  = 0
+            var emergencyScale : CGFloat = 0
+            var sourceScale : CGFloat = 0
             
             let totall = planNum + emergencyTotal + sourceTotal
             
             if planNum != 0{
                 
-                planScale = Double (planFinsh / totall)
+                planScale = planFinsh / totall
                 
             }
             
             if emergencyTotal != 0 {
                 
-               emergencyScale = Double (emergencyFinsh / totall)
+               emergencyScale = emergencyFinsh / totall
                 
             }
             
-            if sourceScale != 0 {
+            if sourceFinsh != 0 {
                 
-               sourceScale = Double(sourceFinsh / totall)
+               sourceScale = sourceFinsh / totall
                 
             }
             
@@ -186,9 +195,9 @@ class YQReportFormDetailVC: UIViewController {
             self.darwView.sourceScale = sourceScale
             
             //数据展示和计算绘图
-            self.planFinishLabal.text = "\(planFinsh)"
-            self.emergencyFinishLabel.text = "\(emergencyFinsh)"
-            self.spontaneousFinishLabel.text = "\(sourceFinsh)"
+            self.planFinishLabal.text = "\(Int(planFinsh))"
+            self.emergencyFinishLabel.text = "\(Int(emergencyFinsh))"
+            self.spontaneousFinishLabel.text = "\(Int(sourceFinsh))"
             
             //重绘一下
             self.darwView.setNeedsDisplay()
@@ -220,6 +229,63 @@ class YQReportFormDetailVC: UIViewController {
             SVProgressHUD.dismiss()
             
             
+            let dict = response as? [String : Any]
+            
+            let firstDict = dict?["branch"] as? NSArray
+            let array = firstDict?.firstObject as? [String : Any]
+            
+            if array == nil {
+                
+                SVProgressHUD.showError(withStatus: "没有更多的数据!")
+                return
+            }
+            
+            if let nodes = array?["nodes"] as? Array<[String : Any]>{
+                
+                for indexTemp in 0..<nodes.count{
+                    
+                    //循环创建,多个值的情况
+                    let view = Bundle.main.loadNibNamed("YQReportFromPersonList", owner: nil, options: nil)?[0] as! YQReportFromPersonList
+                    view.dataDict = nodes[indexTemp]
+                    view.delegate = self
+                    
+                    self.personListArrray.append(view)
+                    
+                    self.contentView.addSubview(view)
+                    
+                    if indexTemp == 0 {
+                        
+                        view.snp.makeConstraints({ (maker) in
+                            
+                            maker.top.equalTo(self.searchBar.snp.bottom)
+                            maker.left.right.equalToSuperview()
+                            maker.height.equalTo(160)
+                            
+                        })
+                        
+                    
+                    }else{
+                        
+                        let viewTemp = self.personListArrray[indexTemp - 1]
+                        
+                        view.snp.makeConstraints({ (maker) in
+                            
+                            maker.top.equalTo(viewTemp.snp.bottom)
+                            maker.left.right.equalToSuperview()
+                            maker.height.equalTo(160)
+                            
+                        })
+
+                    
+                    }
+                }
+                
+                
+                self.scrollViewheightConstraint.constant += CGFloat((nodes.count-1) * 160 + 30)
+                
+            }
+            
+            
         }) { (error) in
             
              SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
@@ -231,6 +297,7 @@ class YQReportFormDetailVC: UIViewController {
     func jumpToWorkPlanVC(){
         
         let workPlan = YQWorkPlanVC.init(nibName: "YQWorkPlanVC", bundle: nil)
+        workPlan.id = id
         
         navigationController?.pushViewController(workPlan, animated: true)
         
@@ -240,7 +307,8 @@ class YQReportFormDetailVC: UIViewController {
     func jumpToWorkHighlights(){
         
         let WorkHighlights = YQWorkHighlightsVC.init(nibName: "YQWorkHighlightsVC", bundle: nil)
-        
+        WorkHighlights.id = id
+            
         navigationController?.pushViewController(WorkHighlights, animated: true)
     }
     
@@ -249,10 +317,29 @@ class YQReportFormDetailVC: UIViewController {
     func jumpToShowWorkHighlightDetail(){
         
         let showDetail = YQWorkHighlightsDetailVC.init(nibName: "YQWorkHighlightsDetailVC", bundle: nil)
+        showDetail.create = createTime
         
         navigationController?.pushViewController(showDetail, animated: true)
     
     }
     
  
+}
+
+extension YQReportFormDetailVC : YQReportFromPersonListDelegate{
+    
+    func reportFromPersonListDelegate(view: UIView, par: [String : Any]) {
+        
+        let reportDetail = UIStoryboard.instantiateInitialViewController(name: "YQReportPersonDetail") as? YQReportFormPersonDetailVC
+        reportDetail?.type = self.type
+        reportDetail?.parmart = par
+        reportDetail?.create = createTime
+        reportDetail?.id = id
+        
+        navigationController?.pushViewController(reportDetail!, animated: true)
+        
+        
+    }
+    
+    
 }

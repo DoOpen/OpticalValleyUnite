@@ -28,6 +28,9 @@ class YQWorkHighlightsDetailShowModel: NSObject {
     /// 工作计划内容
     var jobContent = ""
     
+    /// 项目名
+    var parkName = ""
+    
     init(dict : [String : Any]) {
         super.init()
         

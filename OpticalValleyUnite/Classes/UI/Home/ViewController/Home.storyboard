@@ -317,7 +317,10 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWM-dt-8AB">
-                                                <rect key="frame" x="12" y="10" width="24" height="24"/>
+                                                <rect key="frame" x="12" y="10" width="40" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="3Zy-pn-8uz"/>
+                                                </constraints>
                                                 <state key="normal" image="mess"/>
                                                 <connections>
                                                     <action selector="messageBtnClick" destination="BYZ-38-t0r" eventType="touchUpInside" id="nXA-7C-WlT"/>
@@ -326,11 +329,12 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="VWM-dt-8AB" secondAttribute="bottom" id="3Xb-k9-adB"/>
+                                            <constraint firstItem="VWM-dt-8AB" firstAttribute="top" secondItem="eyu-dr-Wog" secondAttribute="top" constant="10" id="X05-BN-wMT"/>
                                             <constraint firstAttribute="height" constant="44" id="Y2S-cC-VAT"/>
                                             <constraint firstItem="VWM-dt-8AB" firstAttribute="leading" secondItem="eyu-dr-Wog" secondAttribute="leading" constant="12" id="bQ8-vJ-Kv8"/>
                                             <constraint firstItem="sTN-ax-yYg" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="max-h9-jFs"/>
                                             <constraint firstItem="AWV-ab-LBm" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="mdT-Ru-dq2"/>
-                                            <constraint firstItem="VWM-dt-8AB" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="r4c-7H-ifc"/>
                                             <constraint firstAttribute="trailing" secondItem="AWV-ab-LBm" secondAttribute="trailing" id="ryv-G7-YID"/>
                                             <constraint firstItem="sTN-ax-yYg" firstAttribute="centerX" secondItem="eyu-dr-Wog" secondAttribute="centerX" id="ziC-TR-S2X"/>
                                         </constraints>
@@ -425,7 +429,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2838" y="-108"/>
+            <point key="canvasLocation" x="2887" y="-108"/>
         </scene>
         <!--WorkOrder-->
         <scene sceneID="cT2-oD-UIH">

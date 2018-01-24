@@ -132,6 +132,8 @@
 		2F70DC2E1FDFA659003B9938 /* YQScoreResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F70DC2D1FDFA659003B9938 /* YQScoreResult.xib */; };
 		2F70DC301FDFA69F003B9938 /* YQWeatherResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70DC2F1FDFA69F003B9938 /* YQWeatherResult.swift */; };
 		2F70DC321FDFA6B1003B9938 /* YQWeatherResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F70DC311FDFA6B1003B9938 /* YQWeatherResult.xib */; };
+		2F71039520158D000051E367 /* YQReportFromPersonList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F71039420158D000051E367 /* YQReportFromPersonList.xib */; };
+		2F710397201596C50051E367 /* YQReportFromPersonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F710396201596C50051E367 /* YQReportFromPersonList.swift */; };
 		2F7307381FA858910067BC4D /* YQToDoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7307371FA858910067BC4D /* YQToDoListModel.swift */; };
 		2F73073A1FA85DFA0067BC4D /* YQWorkLogListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7307391FA85DFA0067BC4D /* YQWorkLogListModel.swift */; };
 		2F7335272004680600384341 /* YQOffLineWorkOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7335262004680600384341 /* YQOffLineWorkOrder.swift */; };
@@ -499,6 +501,8 @@
 		2F70DC2D1FDFA659003B9938 /* YQScoreResult.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQScoreResult.xib; sourceTree = "<group>"; };
 		2F70DC2F1FDFA69F003B9938 /* YQWeatherResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWeatherResult.swift; sourceTree = "<group>"; };
 		2F70DC311FDFA6B1003B9938 /* YQWeatherResult.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWeatherResult.xib; sourceTree = "<group>"; };
+		2F71039420158D000051E367 /* YQReportFromPersonList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQReportFromPersonList.xib; sourceTree = "<group>"; };
+		2F710396201596C50051E367 /* YQReportFromPersonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQReportFromPersonList.swift; sourceTree = "<group>"; };
 		2F7307371FA858910067BC4D /* YQToDoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQToDoListModel.swift; sourceTree = "<group>"; };
 		2F7307391FA85DFA0067BC4D /* YQWorkLogListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkLogListModel.swift; sourceTree = "<group>"; };
 		2F7335262004680600384341 /* YQOffLineWorkOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQOffLineWorkOrder.swift; sourceTree = "<group>"; };
@@ -1290,6 +1294,8 @@
 				2F7EF82A201082F40029D38D /* YQAddHighlights.xib */,
 				2F57891A2011D4F400C1C5DF /* YQWorkHighlightsDetailCell.swift */,
 				2F57891B2011D4F400C1C5DF /* YQWorkHighlightsDetailCell.xib */,
+				2F710396201596C50051E367 /* YQReportFromPersonList.swift */,
+				2F71039420158D000051E367 /* YQReportFromPersonList.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1981,6 +1987,7 @@
 				2F7550F51FA6C19100A5E242 /* YQFilterDepartment.storyboard in Resources */,
 				2F5789192011D43300C1C5DF /* YQWorkHighlightsDetailVC.xib in Resources */,
 				4BB53FF11F14D9CA0061190F /* DeviceCell.xib in Resources */,
+				2F71039520158D000051E367 /* YQReportFromPersonList.xib in Resources */,
 				2F35356E1F95AE3300E8E77C /* YQWorkOrderFirst.storyboard in Resources */,
 				2FC167551F90A9DB001CEACD /* YQReleaseJournal.storyboard in Resources */,
 				2F2F95781F8DAECD00870DC8 /* YQJournal.storyboard in Resources */,
@@ -2150,6 +2157,7 @@
 				4B3952061E29CE1F00E2642F /* WorkOrderOprationCell.swift in Sources */,
 				2F39D742200F20DD00074B83 /* YQDrawView.swift in Sources */,
 				2F24CEBC1FBE7EB900EC6AF7 /* YQHistoryStepModel.swift in Sources */,
+				2F710397201596C50051E367 /* YQReportFromPersonList.swift in Sources */,
 				4B30780F1E29FBF500FB4007 /* ChooseHouseViewController.swift in Sources */,
 				4B1DEC5C1E31B646000917D2 /* SGQRCodeTool.m in Sources */,
 				2F236B721F6FE40300F1B0DF /* YQfireMessage.swift in Sources */,

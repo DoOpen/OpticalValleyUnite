@@ -10,9 +10,9 @@ import UIKit
 
 class YQDrawView: UIView {
     
-    var planScale : Double = 0
-    var emergencyScale : Double = 0
-    var sourceScale : Double = 0
+    var planScale : CGFloat = 0
+    var emergencyScale : CGFloat = 0
+    var sourceScale : CGFloat = 0
     
     override func draw(_ rect: CGRect) {
         
@@ -23,6 +23,8 @@ class YQDrawView: UIView {
         
         if bool1 && bool2 && bool3 {
             //没有数据不重绘
+            
+            
             return
         }
         
@@ -31,33 +33,48 @@ class YQDrawView: UIView {
             let center = CGPoint.init(x: self.viewCenter.x, y: self.viewCenter.y - 25)
             let radius = 50
             
-            
+            var startAngle =  CGFloat(3*Double.pi/2)
             //画 计划
             var color = UIColor.blue
             color.set() // 设置线条颜色
             
-            var aPath = UIBezierPath.init(arcCenter: center, radius: CGFloat(radius),startAngle: CGFloat(3*Double.pi/2), endAngle: CGFloat(2*Double.pi * self.planScale), clockwise: true)
+            var aPath = UIBezierPath.init(arcCenter: center, radius: CGFloat(radius),startAngle: startAngle, endAngle: startAngle + CGFloat(2*Double.pi) * self.planScale, clockwise: true)
             
             aPath.lineWidth = 23.0 // 线条宽度
             aPath.stroke() // Draws line 根据坐标点连线，填充
+            
+            startAngle += CGFloat(2*Double.pi) * self.planScale
             
             //画 自发
             color = UIColor.orange
             color.set()
             
-            aPath = UIBezierPath.init(arcCenter: center, radius: CGFloat(radius), startAngle: CGFloat(2*Double.pi * self.planScale), endAngle: CGFloat(2*Double.pi * self.sourceScale), clockwise: true)
-            aPath.lineWidth = 20.0
+            aPath = UIBezierPath.init(arcCenter: center, radius: CGFloat(radius), startAngle: startAngle, endAngle: startAngle + CGFloat(2*Double.pi) * self.sourceScale, clockwise: true)
+            aPath.lineWidth = 23.0
             aPath.stroke()
             
+            startAngle += CGFloat(2*Double.pi) * self.sourceScale
+            
             //画 应急
-            let startAngle = CGFloat(2*Double.pi * self.planScale + 2*Double.pi * self.sourceScale)
             
             color = UIColor.red
             color.set()
             
-            aPath = UIBezierPath.init(arcCenter: center, radius: CGFloat(radius), startAngle: startAngle, endAngle: CGFloat(2*Double.pi * self.emergencyScale), clockwise: true)
+            aPath = UIBezierPath.init(arcCenter: center, radius: CGFloat(radius), startAngle: startAngle, endAngle: startAngle + CGFloat(2*Double.pi) * self.emergencyScale, clockwise: true)
             
-            aPath.lineWidth = 18.0
+            aPath.lineWidth = 23.0
+            aPath.stroke()
+
+            
+             startAngle += CGFloat(2*Double.pi) * self.emergencyScale
+            
+            //未完成
+            color = UIColor.gray
+            color.set()
+            
+            aPath = UIBezierPath.init(arcCenter: center, radius: CGFloat(radius), startAngle: startAngle, endAngle: CGFloat(3*Double.pi / 2), clockwise: true)
+            
+            aPath.lineWidth = 23.0
             aPath.stroke()
 
             

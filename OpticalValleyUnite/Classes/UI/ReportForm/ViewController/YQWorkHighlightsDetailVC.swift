@@ -14,17 +14,28 @@ class YQWorkHighlightsDetailVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var dataArray = [YQWorkHighlightsDetailShowModel]()
+    var dataArray = [YQWorkHighlightsDetailShowModel](){
+        
+        didSet{
+            
+            self.tableView.reloadData()
+        }
+        
+    }
     
     var cellID = "WorkHighlightsDetailCell"
     
     var parkID = ""
     var currentIndex = 0
     
+    var create = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "工作亮点"
+        
+        self.automaticallyAdjustsScrollViewInsets = false
         
         //注册原型cell 设置cell的每个的行高的情况
         let nib = UINib(nibName: "YQWorkHighlightsDetailCell", bundle: nil)
@@ -46,19 +57,24 @@ class YQWorkHighlightsDetailVC: UIViewController {
         par["pageSize"] = 20
         par["reportId"] = 3 //只有月报的主键
         par["parkId"] = self.parkID
+        par["create"] = self.create
         
         SVProgressHUD.show()
         
         HttpClient.instance.post(path: URLPath.getReportWorkHighlights, parameters: par, success: { (response) in
             SVProgressHUD.dismiss()
             
-            let array = response as? Array<[String : Any]>
+            let array = response["data"] as? Array<[String : Any]>
             
-            if (array?.isEmpty)! {
-                
-                SVProgressHUD.showError(withStatus: "没有加载更多的数据!")
-                return
-            }
+//            if (array?.isEmpty)! {
+//                
+//                self.dataArray.removeAll()
+//                self.tableView.mj_header.endRefreshing()
+//                self.tableView.mj_footer.endRefreshing()
+//
+//                SVProgressHUD.showError(withStatus: "没有加载更多的数据!")
+//                return
+//            }
             
             var tempDataArray = [YQWorkHighlightsDetailShowModel]()
             
@@ -71,7 +87,7 @@ class YQWorkHighlightsDetailVC: UIViewController {
             //添加上拉下拉刷新的情况
             if pageIndex == 0 {
                 
-                if response as? NSArray == nil {
+                if array == nil {
                     
                     self.dataArray.removeAll()
                     self.tableView.mj_header.endRefreshing()
@@ -79,7 +95,7 @@ class YQWorkHighlightsDetailVC: UIViewController {
                     
                     return
                 }
-                
+
                 self.dataArray = tempDataArray
                 
                 self.tableView.mj_header.endRefreshing()
@@ -98,7 +114,6 @@ class YQWorkHighlightsDetailVC: UIViewController {
                 self.tableView.mj_footer.endRefreshing()
                 
             }
-            
             
         }) { (error) in
             
@@ -157,10 +172,15 @@ extension YQWorkHighlightsDetailVC : UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! YQWorkHighlightsDetailCell
         
-        cell.model = self.dataArray[indexPath.row]
         cell.indexPath = indexPath
+        cell.model = self.dataArray[indexPath.row]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 200
     }
 
 }

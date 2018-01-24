@@ -19,12 +19,18 @@ class YQWorkPlanVC: UIViewController {
     
     var cellID = "AddWorkPlan"
     
+    var id : Int = 0
+    var parkID = ""
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         self.automaticallyAdjustsScrollViewInsets = false
         self.title = "工作计划"
+        
+        let _ = setUpProjectNameLable()
         
         //注册原型cell 设置cell的每个的行高的情况
         let nib = UINib(nibName: "YQAddWorkPlan", bundle: nil)
@@ -39,6 +45,63 @@ class YQWorkPlanVC: UIViewController {
 
     @IBAction func makeSureButtonClick(_ sender: UIButton) {
         
+        self.view.endEditing(true)
+        
+        var fristParmerte = [String : Any]()
+        
+        //调用保存接口,保存add工作计划报告
+        var par = [String : Any]()
+        par["id"] = id
+        par["parkId"] = self.parkID
+        
+        
+        var array = Array<[String : Any]>()
+        
+        for model in self.dataArray {
+            var dict = [String : Any]()
+            dict["jobTitle"] = model.backlog
+            dict["jobContent"] = model.backLogDetail
+            
+            array.append(dict)
+            
+        }
+        
+        par["planList"] = array
+        
+        do{
+            
+            let jsonData = try JSONSerialization.data(withJSONObject: par, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8){
+                
+                //格式化的json字典的情况
+                print(JSONString)
+                
+                //注意的是这里的par 要求序列化json
+                fristParmerte["add"] = JSONString
+                
+            }
+            
+        } catch {
+            
+            print("转换错误 ")
+        }
+
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getReportAdd, parameters: fristParmerte, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            SVProgressHUD.showSuccess(withStatus: "上传成功!")
+            self.navigationController?.popViewController(animated: true)
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
+        }
+        
+        
     }
 
     @IBAction func cancelButtonClick(_ sender: UIButton) {
@@ -49,6 +112,9 @@ class YQWorkPlanVC: UIViewController {
 
     //MARK: - 添加workPlanList的方法
     func addWorkPlanListButtonClick(){
+        
+        self.view.endEditing(true)
+        
         //设置原型model的情况,内存保存的情况
         let model = YQAddWorkPlanModel(dic: [String : Any]())
         dataArray.append(model)
@@ -56,6 +122,27 @@ class YQWorkPlanVC: UIViewController {
         self.tableView.reloadData()
 
     }
+    
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            
+            projectName = dic?["PARK_NAME"] as! String
+            self.parkID = dic?["ID"] as! String
+            
+        }else{
+            
+            projectName = "请选择默认项目"
+        }
+        
+        return projectName
+    }
+
     
 
 }

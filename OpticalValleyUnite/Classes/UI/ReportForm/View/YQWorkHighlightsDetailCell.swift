@@ -45,15 +45,20 @@ class YQWorkHighlightsDetailCell: UITableViewCell {
                 
                 var temp = [String]()
                 
-                if (model?.imgPaths.contains("http"))!{
+                let array =  model?.imgPaths.components(separatedBy: ",")
                 
-                    temp.append((model?.imgPaths)!)
+                for tempIndex in array!{
                     
-                }else {
-                    
-                    let basicPath = URLPath.systemSelectionURL
-                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.imgPaths)!
-                    temp.append(imageValue)
+                    if (tempIndex.contains("http")){
+                        
+                        temp.append((model?.imgPaths)!)
+                        
+                    }else {
+                        
+                        let basicPath = URLPath.systemSelectionURL
+                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.imgPaths)!
+                        temp.append(imageValue)
+                    }
                     
                 }
                 
@@ -70,7 +75,8 @@ class YQWorkHighlightsDetailCell: UITableViewCell {
             
             lightspotContentText.text = model?.lightspotContent
             
-            lightsportBottomLabel.text = model?.lightspotTitle
+            //直接填写的是项目的id
+            lightsportBottomLabel.text = model?.parkName
             
             createTimeLabel.text = model?.createTime
         }

@@ -281,11 +281,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentView" destination="nAM-cP-QHF" id="wAJ-Zh-hyp"/>
                         <outlet property="darwView" destination="46B-58-aHY" id="Eus-ID-ORi"/>
                         <outlet property="emergencyFinishLabel" destination="DUe-G3-I3e" id="9NI-Hc-6K9"/>
                         <outlet property="emergencyLabel" destination="Ryh-aU-p7T" id="Wsg-lh-I7u"/>
                         <outlet property="planFinishLabal" destination="dnZ-ko-NMx" id="4ed-TA-plb"/>
                         <outlet property="planLabel" destination="PeT-ER-Z1U" id="hxF-UG-rz2"/>
+                        <outlet property="scrollViewheightConstraint" destination="gma-Jp-IuI" id="Boj-2d-kOP"/>
+                        <outlet property="searchBar" destination="EBK-oP-VrD" id="d2P-pc-eIk"/>
                         <outlet property="spontaneousFinishLabel" destination="ZDf-2r-KM1" id="MTX-g5-ZaM"/>
                         <outlet property="spontaneousLabel" destination="HOx-sd-gFG" id="dbR-hD-JhC"/>
                     </connections>

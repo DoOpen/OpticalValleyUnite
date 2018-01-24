@@ -37,7 +37,7 @@ class AllViewController: UIViewController {
         
         let count = [models.count, totalCount].min()!
         
-        let imageDic = ["报事": "baoshi","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","门禁": "intodoor","丽岛学院": "xueyuan","电梯报事":"baoshi","日志":"日志","计步器":"step","视频巡查" : "xuncha","巡查结果" : "xunguan"]
+        let imageDic = ["报事": "baoshi","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","门禁": "intodoor","丽岛学院": "xueyuan","电梯报事":"baoshi","日志":"日志","计步器":"step","视频巡查" : "xuncha","巡查结果" : "xunguan","工作报告" : "more_icon_work_report"]
         for index in 0..<count{
             
             let imageName = imageDic[models[index].aPPMODULENAME] ?? ""
@@ -128,6 +128,12 @@ class AllViewController: UIViewController {
         case "门禁":
             let door = UIStoryboard.instantiateInitialViewController(name: "YQIntoDoor")
             self.present(door, animated: true, completion: nil)
+            
+        case "工作报告":
+            
+            let report = YQReportFormFirstVC.init(nibName: "YQReportFormFirstVC", bundle: nil)
+            self.navigationController?.pushViewController(report, animated: true)
+
 
             
         default: break

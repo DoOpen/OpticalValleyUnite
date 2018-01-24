@@ -233,6 +233,11 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                         SORT = 10 //巡查结果
                     }
                     
+                    if SORT == 14 {
+                        
+                        SORT = 11 //工作报告
+                    }
+                    
                     if xxxx == SORT {
                         
                         //前台的数据重写逻辑!
@@ -272,7 +277,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             } catch  {
                 print("转换错误 ")
             }
-
 
         }else{
             //弹框提示网络出现异常
@@ -382,7 +386,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
 
     func settopArry(topArry:[PermissionModel],donwArry: [PermissionModel]){
-        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","门禁": "intodoor","丽岛学院": "xueyuan","电梯报事":"报事","日志":"日志","计步器":"step","视频巡查" : "xuncha","巡查结果" : "xunguan"]
+        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","门禁": "intodoor","丽岛学院": "xueyuan","电梯报事":"报事","日志":"日志","计步器":"step","视频巡查" : "xuncha","巡查结果" : "xunguan","工作报告" : "more_icon_work_report"]
         for (index,model) in topArry.enumerated(){
             
             if index >= 4{
@@ -521,7 +525,11 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             //            navigationController?.pushViewController(journa, animated: true)
             self.present(step, animated: true, completion: nil)
-
+        
+        case "工作报告":
+            
+            let report = YQReportFormFirstVC.init(nibName: "YQReportFormFirstVC", bundle: nil)
+            self.navigationController?.pushViewController(report, animated: true)
             
         default: break
             

@@ -82,7 +82,6 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
     @IBAction func workOrderUpButtonClick(_ sender: UIButton) {
         
         let realm = try! Realm()
-        
         // 上传图片和上传工单
         //模拟器可能不适用
         let reachability = Reachability()!
@@ -103,7 +102,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
             SVProgressHUD.show(withStatus: "上传图片中...")
             var parmart = [String : Any]()
             
-            parmart["type"] = 1 //应急工单
+            parmart["type"] = "1" //应急工单
             let filerArray = NSMutableArray()
             
             //先区分应急和计划, 再查看应急工单中相同和不同的 工单ID的情况
@@ -123,15 +122,15 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     
                     if id != model.id {
                         
-                        parmart["files"] = filerArray
-                        //上传一次应急工单了
-                        //                        HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], succses: { (url) in
-                        //                            SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
-                        //                        }, failure: { (error) in
-                        //
-                        //                            SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
-                        //
-                        //                        })
+                        //上传一次应急工单了,//点击上传来,清空数据已上传的图片数据
+                        HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], param: parmart, succses: { (url) in
+                            SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
+                            
+                        }, failure: { (error) in
+                            
+                            SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
+                            
+                        })
                         
                         id = model.id
                         filerArray.removeAllObjects()
@@ -145,21 +144,25 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                         if emergenyIndex == emergencyResult.count - 1 {
                             
                             //上传一次应急工单了
-                            //                            HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], succses: { (url) in
-                            //                                SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
-                            //                            }, failure: { (error) in
-                            //
-                            //                                SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
-                            //
-                            //                            })
-                            //
+                            HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], param: parmart, succses: { (url) in
+                                
+                                SVProgressHUD.dismiss()
+                                SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
+                                
+                                
+                            }, failure: { (error) in
+                                
+                                SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
+                                
+                            })
+                            
                             
                         }
                     }
                 }
             }
             
-            parmart["type"] = 2 //计划工单
+            parmart["type"] = "2" //计划工单
             filerArray.removeAllObjects()
             
             let plan = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
@@ -168,26 +171,29 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                 
                 let planResult =  realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@","yingji")
                 //注意的是: 计划工单的多个执行步骤要求分开上传
-                let stepID = planResult.first?.stepId
+                var stepID = planResult.first?.stepId
                 parmart["stepId"] = stepID
+                
                 //应急工单直接上传
                 for planWorkOIndex in 0..<planResult.count {
                     
                     let model = planResult[planWorkOIndex]
-                    
+                    parmart["id"] = model.id
+
                     if stepID != model.stepId {
                         
-                        parmart["files"] = filerArray
+//                        parmart["files"] = filerArray
                         //上传一次应急工单了
-                        HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], succses: { (url) in
-                            
-                            SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
-                        }, failure: { (error) in
-                            
-                            SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
-                            
-                        })
+//                        HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], param: parmart, succses: { (url) in
+//                            
+//                            SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
+//                        }, failure: { (error) in
+//                            
+//                            SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
+//                            
+//                        })
                         
+                        stepID = model.stepId
                         parmart["stepId"] = stepID
                         filerArray.removeAllObjects()
                         
@@ -199,18 +205,18 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                         
                         if planWorkOIndex == planResult.count - 1 {
                             
-                            //上传一次应急工单了
-                            //                            HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], succses: { (url) in
-                            //                                 SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
-                            //                            }, failure: { (error) in
-                            //
-                            //                                SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
-                            //
-                            //                            })
+//                            //上传一次应急工单了
+//                            HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], param: parmart, succses: { (url) in
+//                                SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
+//                            }, failure: { (error) in
+//                                
+//                                SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
+//                            })
                         }
                     }
                 }
             }
+            
             
             //上传离线的工单的情况,根据保存和完成项的工单来进行的取值判断!
             //有图片的工单肯定上传,点击保存和完成的工单ID也是要进行的上传
@@ -221,7 +227,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                 
                 SVProgressHUD.show(withStatus: "正在保存工单")
                 //                let id = toallPictrue
-                
+               
                 var arrayDict = Array<[String: Any]>()
                 var parmat = [String: Any]()
                 
@@ -307,8 +313,17 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     SVProgressHUD.dismiss()
                     SVProgressHUD.showSuccess(withStatus: "工单保存成功!")
                     
+                    //移除上传完成的工单
+                    try! realm.write {
+                        
+                        //清空所有,然后再进行的添加
+                        realm.delete(compelte)
+                    }
+
+                    
                 }, failure: { (error) in
                     
+                    SVProgressHUD.showError(withStatus: "工单保存失败,请检查网络!")
                 })
             }
             
@@ -387,6 +402,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                 
                 try! realm.write {
                     
+                    //清空所有,然后再进行的添加
                     realm.deleteAll()
                     
                     realm.add(tempWOModel2Data, update: true)
@@ -512,7 +528,6 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
             SVProgressHUD.showError(withStatus: "离线工单下载失败,请重试!")
         }
         
-        
     }
     
     // MARK: - 筛选查询本地的数据库data的方法
@@ -524,6 +539,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
         var tempDataArray = [WorkOrderModel2]()
         
         for model in result {
+            
             let temp = model as WorkOrderModel2
             
             if model.type2 == "\(currentIndex)" {

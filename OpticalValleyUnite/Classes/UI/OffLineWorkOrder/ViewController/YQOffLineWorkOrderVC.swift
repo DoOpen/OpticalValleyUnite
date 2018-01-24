@@ -207,7 +207,7 @@ class YQOffLineWorkOrderVC: UIViewController {
                         
                         parmart["files"] = filerArray
                         //上传一次应急工单了
-                        HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], succses: { (url) in
+                        HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], param: parmart, succses: { (url) in
                             
                             SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
                         }, failure: { (error) in

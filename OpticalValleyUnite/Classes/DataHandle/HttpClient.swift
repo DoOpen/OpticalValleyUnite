@@ -307,7 +307,7 @@ extension HttpClient {
     }
     
     
-    func uploadOffWorkLineImages(_ images: [UIImage], succses: @escaping ((String?) -> ()), failure: @escaping ((Error) -> ())){
+    func uploadOffWorkLineImages(_ images: [UIImage],param : [String : Any] ,succses: @escaping ((String?) -> ()), failure: @escaping ((Error) -> ())){
         
         var url = URLPath.systemSelectionURL + URLPath.getUploadUnits
         
@@ -332,6 +332,13 @@ extension HttpClient {
                 multipartFormData.append(data!, withName: "file\(count)",fileName:"file\(count).jpg", mimeType: "image/jpeg")
                 count += 1
                 
+            }
+            
+            for (key, value) in param {
+                assert(value is String, "参数必须能够转换为NSData的类型，比如String")
+                
+                let nowvalue = value as! String
+                multipartFormData.append(nowvalue.data(using: String.Encoding.utf8)!, withName: key)
             }
             
             print( multipartFormData)

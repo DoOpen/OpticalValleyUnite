@@ -1141,6 +1141,10 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
                 realm.delete(delete)
             }
             
+            model.imageValue = "add_jihua_picture"
+            
+            models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
+            
             //单行刷新列表
             self.tableView.reloadRows(at: [currentRow], with: .automatic)
             return

@@ -98,12 +98,12 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
-                  timestampString = "538455147.746464"
+                  timestampString = "538473027.799179"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "689"
                   endingLineNumber = "689"
-                  offsetFromSymbolStart = "2697">
+                  offsetFromSymbolStart = "2152">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -113,12 +113,12 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
-                  timestampString = "538455147.7485729"
+                  timestampString = "538473027.801526"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "689"
                   endingLineNumber = "689"
-                  offsetFromSymbolStart = "4464">
+                  offsetFromSymbolStart = "3576">
                </Location>
             </Locations>
          </BreakpointContent>

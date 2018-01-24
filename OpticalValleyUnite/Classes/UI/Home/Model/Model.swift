@@ -122,6 +122,7 @@ class WorkOrderModel: Object {
             workOrderId = parmart["WORKUNIT_ID"] as? String ?? ""
             
         }else{
+            
             workOrderId = parmart["ID"] as? String ?? ""
         }
         
@@ -231,6 +232,7 @@ class WorkOrderModel2: Object {
     override static func primaryKey() -> String? {
         return "workOrderId"
     }
+    
 }
 
 
@@ -480,6 +482,12 @@ class WorkOrderDetailModel: Object{
         
         SUPERVISE_PERSON_NAMES = parmart["SUPERVISE_PERSON_NAMES"] as? String ?? ""
     }
+    
+//    override static func primaryKey() -> String? {
+//        return "id"
+//    }
+
+    
 }
 
 class WorkDetailModel{
@@ -864,6 +872,7 @@ class ExecSectionModel: Object{
     }
     
 //    override static func primaryKey() -> String? {
+//        
 //        return "id"
 //    }
     

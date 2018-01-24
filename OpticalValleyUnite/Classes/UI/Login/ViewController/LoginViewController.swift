@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 import Alamofire
-
+import RealmSwift
 
 
 class LoginViewController: UIViewController {
@@ -292,6 +292,12 @@ class LoginViewController: UIViewController {
         User.removeUser()
         UserDefaults.standard.set(nil, forKey: Const.SJToken)
         chooseRootViewController()
+        
+        let realm = try! Realm()
+        try! realm.write {
+            
+            realm.deleteAll()
+        }
         
     }
     

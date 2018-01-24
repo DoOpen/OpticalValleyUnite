@@ -259,14 +259,70 @@
                                     <outlet property="delegate" destination="I5d-df-FJQ" id="Nda-Af-cqh"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9I-C7-0sC">
+                                <rect key="frame" x="305" y="607" width="60" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="dKP-fU-kQ3"/>
+                                    <constraint firstAttribute="width" constant="60" id="s8B-mi-hC8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="工单下载">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="workOrderDownButtonClick:" destination="I5d-df-FJQ" eventType="touchUpInside" id="ZM1-Vx-jLh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ijh-kc-bLP">
+                                <rect key="frame" x="305" y="547" width="60" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Mmn-Z2-7pS"/>
+                                    <constraint firstAttribute="height" constant="50" id="POL-xs-tsA"/>
+                                    <constraint firstAttribute="width" constant="60" id="oq7-4L-jyx"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="xpf-wB-7x5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="工单上传">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="workOrderUpButtonClick:" destination="I5d-df-FJQ" eventType="touchUpInside" id="HLK-kx-dIF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.89411764709999997" green="0.92156862750000001" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="okh-fZ-SN5" firstAttribute="leading" secondItem="k3f-GI-mwT" secondAttribute="leading" id="3HK-Uk-rvD"/>
                             <constraint firstItem="6NN-rz-XBm" firstAttribute="leading" secondItem="k3f-GI-mwT" secondAttribute="leading" id="62V-5w-W0y"/>
+                            <constraint firstAttribute="trailing" secondItem="Ijh-kc-bLP" secondAttribute="trailing" constant="10" id="Hdi-C2-JbU"/>
                             <constraint firstAttribute="trailing" secondItem="6NN-rz-XBm" secondAttribute="trailing" id="Ktx-OY-xfb"/>
+                            <constraint firstItem="dqA-2t-9zT" firstAttribute="top" secondItem="y9I-C7-0sC" secondAttribute="bottom" constant="10" id="bSN-xF-RQV"/>
                             <constraint firstItem="dqA-2t-9zT" firstAttribute="top" secondItem="okh-fZ-SN5" secondAttribute="bottom" id="bxf-3l-7m5"/>
+                            <constraint firstItem="y9I-C7-0sC" firstAttribute="top" secondItem="Ijh-kc-bLP" secondAttribute="bottom" constant="10" id="cNA-IJ-3ad"/>
                             <constraint firstAttribute="trailing" secondItem="okh-fZ-SN5" secondAttribute="trailing" id="dXP-aH-15F"/>
+                            <constraint firstAttribute="trailing" secondItem="y9I-C7-0sC" secondAttribute="trailing" constant="10" id="gBj-ms-FVH"/>
                             <constraint firstItem="okh-fZ-SN5" firstAttribute="top" secondItem="6NN-rz-XBm" secondAttribute="bottom" constant="10" id="sFd-ko-ODV"/>
                             <constraint firstItem="6NN-rz-XBm" firstAttribute="top" secondItem="Gyy-9v-ZnQ" secondAttribute="bottom" id="uag-ib-RD6"/>
                         </constraints>

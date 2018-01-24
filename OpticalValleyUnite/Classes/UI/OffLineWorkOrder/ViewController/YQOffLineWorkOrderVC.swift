@@ -110,10 +110,6 @@ class YQOffLineWorkOrderVC: UIViewController {
         
         let realm = try! Realm()
         
-//        print(result.count)
-//        
-//        print(result)
-        
         
         // 上传图片和上传工单
         //模拟器可能不适用
@@ -347,8 +343,6 @@ class YQOffLineWorkOrderVC: UIViewController {
         }
 
     }
-    
-    
     
     func updateDataForDB(){
         

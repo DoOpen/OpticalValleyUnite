@@ -108,7 +108,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     // MARK: - 跳转到离线工单的界面
     @IBAction func offLineButtonClick(_ sender: Any) {
         
-        let offlineVC = UIStoryboard.instantiateInitialViewController(name: "YQOffLineWorkOrder") as? YQOffLineWorkOrderVC
+        let offlineVC = UIStoryboard.instantiateInitialViewController(name: "YQOffLineFirst") as? YQOffLineFirstWorkOrderVC
         
         self.navigationController?.pushViewController(offlineVC!, animated: true)
         

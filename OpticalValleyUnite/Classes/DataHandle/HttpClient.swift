@@ -309,7 +309,7 @@ extension HttpClient {
     
     func uploadOffWorkLineImages(_ images: [UIImage],param : [String : Any] ,succses: @escaping ((String?) -> ()), failure: @escaping ((Error) -> ())){
         
-        var url = URLPath.systemSelectionURL + URLPath.getUploadUnits
+        var url = URLPath.basicPath + URLPath.getUploadUnits
         
         if let token = UserDefaults.standard.object(forKey: Const.SJToken) as? String{
             
@@ -335,10 +335,12 @@ extension HttpClient {
             }
             
             for (key, value) in param {
+                
                 assert(value is String, "参数必须能够转换为NSData的类型，比如String")
                 
                 let nowvalue = value as! String
                 multipartFormData.append(nowvalue.data(using: String.Encoding.utf8)!, withName: key)
+                
             }
             
             print( multipartFormData)

@@ -103,7 +103,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
             var parmart = [String : Any]()
             
             parmart["type"] = "1" //应急工单
-            let filerArray = NSMutableArray()
+            var filerArray = [UIImage]()
             
             //先区分应急和计划, 再查看应急工单中相同和不同的 工单ID的情况
             let emergency = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
@@ -123,28 +123,30 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     if id != model.id {
                         
                         //上传一次应急工单了,//点击上传来,清空数据已上传的图片数据
-                        HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], param: parmart, succses: { (url) in
-                            SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
+                        HttpClient.instance.uploadOffWorkLineImages(filerArray , param: parmart, succses: { (url) in
+                            
+                            SVProgressHUD.showSuccess(withStatus: "上传图片中!")
                             
                         }, failure: { (error) in
                             
-                            SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
+                            
+                            SVProgressHUD.showError(withStatus: "图片上传失败,请检查网络!")
                             
                         })
                         
                         id = model.id
-                        filerArray.removeAllObjects()
+                        filerArray.removeAll()
                         
                     }else{
                         
                         let data = model.pictureData
                         let image = UIImage.init(data: data!)
-                        filerArray.adding(image!)
+                        filerArray.append(image!)
                         
                         if emergenyIndex == emergencyResult.count - 1 {
                             
                             //上传一次应急工单了
-                            HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], param: parmart, succses: { (url) in
+                            HttpClient.instance.uploadOffWorkLineImages(filerArray , param: parmart, succses: { (url) in
                                 
                                 SVProgressHUD.dismiss()
                                 SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
@@ -152,7 +154,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                                 
                             }, failure: { (error) in
                                 
-                                SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
+                                SVProgressHUD.showError(withStatus: "图片上传失败,请检查网络!")
                                 
                             })
                             
@@ -163,7 +165,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
             }
             
             parmart["type"] = "2" //计划工单
-            filerArray.removeAllObjects()
+            filerArray.removeAll()
             
             let plan = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
             
@@ -183,40 +185,44 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     if stepID != model.stepId {
                         
 //                        parmart["files"] = filerArray
-                        //上传一次应急工单了
-//                        HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], param: parmart, succses: { (url) in
-//                            
-//                            SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
-//                        }, failure: { (error) in
-//                            
-//                            SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
-//                            
-//                        })
+                        HttpClient.instance.uploadOffWorkLineImages(filerArray , param: parmart, succses: { (url) in
+                            
+                            SVProgressHUD.dismiss()
+                            
+                            SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
+                        }, failure: { (error) in
+                            
+                             SVProgressHUD.showError(withStatus: "图片上传失败,请检查网络!")
+                            
+                        })
                         
                         stepID = model.stepId
                         parmart["stepId"] = stepID
-                        filerArray.removeAllObjects()
+                        filerArray.removeAll()
                         
                     }else{
                         
                         let data = model.pictureData
                         let image = UIImage.init(data: data!)
-                        filerArray.adding(image!)
+                        filerArray.append(image!)
                         
                         if planWorkOIndex == planResult.count - 1 {
                             
-//                            //上传一次应急工单了
-//                            HttpClient.instance.uploadOffWorkLineImages(filerArray as! [UIImage], param: parmart, succses: { (url) in
-//                                SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
-//                            }, failure: { (error) in
-//                                
-//                                SVProgressHUD.show(withStatus: "图片上传失败,请检查网络!")
-//                            })
+                            //上传一次应急工单了
+                            HttpClient.instance.uploadOffWorkLineImages(filerArray , param: parmart, succses: { (url) in
+                                SVProgressHUD.dismiss()
+
+                                SVProgressHUD.showSuccess(withStatus: "上传图片成功!")
+                            }, failure: { (error) in
+                                
+                                 SVProgressHUD.showError(withStatus: "图片上传失败,请检查网络!")
+                            })
                         }
                     }
                 }
             }
             
+            return
             
             //上传离线的工单的情况,根据保存和完成项的工单来进行的取值判断!
             //有图片的工单肯定上传,点击保存和完成的工单ID也是要进行的上传

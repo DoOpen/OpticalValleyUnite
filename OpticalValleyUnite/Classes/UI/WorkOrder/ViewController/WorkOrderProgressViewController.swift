@@ -273,6 +273,7 @@ class WorkOrderProgressViewController: UIViewController {
     
     // MARK: - 刷新状态
     func reloadStatus(status: Int){
+        
         //离线需要的是更新数据库的接口
         if backDB {
             
@@ -283,9 +284,13 @@ class WorkOrderProgressViewController: UIViewController {
             //进行的工单的状态的筛选查询
             workOrderDetalModel?.statu = "\(status)"
             try! realm.commitWrite()
+            
+            getData()
+            
+            return
         }
         
-        
+        //有线的请求!
         parmate?["UNIT_STATUS"] = status
         
         SVProgressHUD.show(withStatus: "加载中...")
@@ -384,7 +389,6 @@ class WorkOrderProgressViewController: UIViewController {
                 //总体赋值,刷新列表项目
                 self.models = tempppp
                 self.tableView.reloadData()
-
 
             }
             

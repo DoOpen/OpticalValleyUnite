@@ -15,7 +15,7 @@ class YQReportFormFirstVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "工作日志"
+        self.title = "工作报告"
         
         //获取项目parkID的情况
         let _ = setUpProjectNameLable()
@@ -46,6 +46,8 @@ class YQReportFormFirstVC: UIViewController {
         default:
             break
         }
+        
+        
         
         navigationController?.pushViewController(reportVC!, animated: true)
         

@@ -93,8 +93,6 @@ class WorkOrderProgressViewController: UIViewController {
                 leftBtn.isHidden = false
              
                 
-                
-                
             //待执行
             case .waitExecuting, .waitDone:
                 leftBtnClickHandel = executingBtnClick
@@ -283,9 +281,13 @@ class WorkOrderProgressViewController: UIViewController {
 
             //进行的工单的状态的筛选查询
             workOrderDetalModel?.statu = "\(status)"
+            workOrderDetalModel?.status = status
+            
             try! realm.commitWrite()
             
             getData()
+            
+            getWorkDetail()
             
             return
         }

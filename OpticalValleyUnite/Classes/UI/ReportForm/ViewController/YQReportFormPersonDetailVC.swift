@@ -203,8 +203,8 @@ class YQReportFormPersonDetailVC: UIViewController {
                 }
                 
                 let dataDict = response["workUnitPojo"] as? [String : Any]
-                self.workOrderNumLabel.text = "\(dataDict?["total"] as? CGFloat ?? 0)"
-                self.typeWorkNumLabel.text = "\(dataDict?["finshTotal"] as? CGFloat ?? 0)"
+                self.workOrderNumLabel.text = "\(dataDict?["total"] as? Int ?? 0)"
+                self.typeWorkNumLabel.text = "\(dataDict?["finshTotal"] as? Int ?? 0)"
                 
                 //计划工单
                 let planFinsh = dataDict?["planFinsh"] as? CGFloat ?? 0
@@ -239,17 +239,17 @@ class YQReportFormPersonDetailVC: UIViewController {
                 
                 }
                 
-                self.planLabel.text = "\(planFinsh + planNoFinsh)"
+                self.planLabel.text = "\(Int(planFinsh) + Int(planNoFinsh))"
                 self.planCompleteLabel.text = "\(planFinsh)"
                 let s = String(format: "%.1f", self.planView.planScale * 100)
                 self.planScale.text = s + "%"
                 
-                self.emelabel.text = "\(emergencyFinsh + emergencyNoFinsh)"
+                self.emelabel.text = "\(Int(emergencyFinsh) + Int(emergencyNoFinsh))"
                 self.emeCompleteLabel.text = "\(emergencyFinsh)"
                 let s1 = String(format: "%.1f", self.emergencyView.emergencyScale * 100)
                 self.emeScale.text = s1 + "%"
                 
-                self.sponLabel.text = "\(allFinshTotal + allNoFinshTotal)"
+                self.sponLabel.text = "\(Int(allFinshTotal) + Int(allNoFinshTotal))"
                 self.sponCompleteLabel.text = "\(allFinshTotal)"
                 let s2 = String(format: "%.1f", self.spontaneousView.sourceScale * 100)
                 self.sponScale.text =  s2 + "%"

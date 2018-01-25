@@ -71,21 +71,34 @@
                     <rect key="frame" x="0.0" y="577" width="375" height="45"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1E-Pa-DqA">
-                            <rect key="frame" x="325" y="0.0" width="50" height="45"/>
+                            <rect key="frame" x="330" y="0.0" width="45" height="45"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="50" id="Xsz-cD-ugb"/>
+                                <constraint firstAttribute="width" constant="45" id="Xsz-cD-ugb"/>
                             </constraints>
-                            <state key="normal" title="添加"/>
+                            <state key="normal" backgroundImage="icon_edd"/>
                             <connections>
                                 <action selector="addButtonClick:" destination="-1" eventType="touchUpInside" id="H7d-ie-NUD"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QS3-k3-4iA">
+                            <rect key="frame" x="0.0" y="0.0" width="46" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="46" id="sfF-Am-mK5"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="icon_del"/>
+                            <connections>
+                                <action selector="deleteButtonClick:" destination="-1" eventType="touchUpInside" id="vT2-up-RG7"/>
                             </connections>
                         </button>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="e1E-Pa-DqA" secondAttribute="trailing" id="0a9-bJ-vMk"/>
+                        <constraint firstItem="QS3-k3-4iA" firstAttribute="top" secondItem="eu2-To-yrC" secondAttribute="top" id="BCx-xe-NlO"/>
                         <constraint firstAttribute="bottom" secondItem="e1E-Pa-DqA" secondAttribute="bottom" id="GST-2l-kD9"/>
                         <constraint firstAttribute="height" constant="45" id="jvf-fy-1tZ"/>
                         <constraint firstItem="e1E-Pa-DqA" firstAttribute="top" secondItem="eu2-To-yrC" secondAttribute="top" id="s9M-Xs-7H7"/>
+                        <constraint firstItem="QS3-k3-4iA" firstAttribute="leading" secondItem="eu2-To-yrC" secondAttribute="leading" id="wJq-47-UGE"/>
+                        <constraint firstAttribute="bottom" secondItem="QS3-k3-4iA" secondAttribute="bottom" id="y5x-kn-k4y"/>
                     </constraints>
                 </view>
             </subviews>
@@ -105,4 +118,8 @@
             <point key="canvasLocation" x="24.5" y="52.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_del" width="70" height="70"/>
+        <image name="icon_edd" width="70" height="70"/>
+    </resources>
 </document>

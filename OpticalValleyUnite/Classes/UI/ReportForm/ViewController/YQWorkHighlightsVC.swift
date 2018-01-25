@@ -145,6 +145,21 @@ class YQWorkHighlightsVC: UIViewController {
         self.scrollView.contentSize = CGSize.init(width: 0, height:childsArray.count * (height + 5))
         
     }
+    //删除按钮点击
+    @IBAction func deleteButtonClick(_ sender: UIButton) {
+        
+        if childsArray.isEmpty {
+        
+            return
+        }
+        
+        let view = childsArray.last
+        
+        view?.removeFromSuperview()
+        childsArray.remove(at: childsArray.count - 1)
+        
+    }
+    
     
     //MARK: - 上传图片的专门的接口
     func upDataImage(_ images: [UIImage], complit: @escaping ((String) -> ()),errorHandle: (() -> ())? = nil){
@@ -191,31 +206,31 @@ class YQWorkHighlightsVC: UIViewController {
  
 }
 
-extension YQWorkHighlightsVC : UITableViewDataSource,UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-        
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView()
-        let boutton = UIButton()
-        view.addSubview(boutton)
-        
-        return view
-        
-    }
-    
-}
+//extension YQWorkHighlightsVC : UITableViewDataSource,UITableViewDelegate {
+//    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        
+//        return 1
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        
+//        return UITableViewCell()
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 200
+//        
+//    }
+//    
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let view = UIView()
+//        let boutton = UIButton()
+//        view.addSubview(boutton)
+//        
+//        return view
+//        
+//    }
+//    
+//}
 

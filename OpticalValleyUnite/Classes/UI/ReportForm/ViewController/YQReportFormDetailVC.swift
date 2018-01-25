@@ -30,9 +30,13 @@ class YQReportFormDetailVC: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollViewheightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var planSacleLabel: UILabel!
+    @IBOutlet weak var emeSacleLabel: UILabel!
+    @IBOutlet weak var snaSacleLabel: UILabel!
+    
     var personListArrray = [YQReportFromPersonList]()
-    
-    
+
     var parkID = ""
     
     var selectTitle = ""
@@ -170,7 +174,7 @@ class YQReportFormDetailVC: UIViewController {
             var emergencyScale : CGFloat = 0
             var sourceScale : CGFloat = 0
             
-            let totall = planNum + emergencyTotal + sourceTotal
+            let totall = planFinsh + emergencyFinsh + sourceFinsh
             
             if planNum != 0{
                 
@@ -198,6 +202,16 @@ class YQReportFormDetailVC: UIViewController {
             self.planFinishLabal.text = "\(Int(planFinsh))"
             self.emergencyFinishLabel.text = "\(Int(emergencyFinsh))"
             self.spontaneousFinishLabel.text = "\(Int(sourceFinsh))"
+            
+            let s1 = String(format: "%.1f",planScale * 100)
+            self.planSacleLabel.text = s1 + "%"
+            
+            let s2 = String(format: "%.1f",emergencyScale * 100)
+            self.emeSacleLabel.text = s2 + "%"
+            
+            let s3 = String(format: "%.1f",sourceScale * 100)
+            self.snaSacleLabel.text = s3 + "%"
+
             
             //重绘一下
             self.darwView.setNeedsDisplay()
@@ -340,6 +354,33 @@ extension YQReportFormDetailVC : YQReportFromPersonListDelegate{
         
         
     }
+
+}
+
+extension YQReportFormDetailVC : UISearchBarDelegate{
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+        searchBar.endEditing(true)
+    
+    }
     
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.endEditing(true)
+        self.getWorkUnitPersonListData(personName: searchBar.text!)
+        
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        self.view.endEditing(true)
+        searchBar.text = ""
+        self.getWorkUnitPersonListData()
+        
+    }
+
+
 }

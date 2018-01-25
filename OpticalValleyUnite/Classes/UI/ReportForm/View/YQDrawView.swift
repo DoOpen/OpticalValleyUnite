@@ -35,7 +35,7 @@ class YQDrawView: UIView {
             
             var startAngle =  CGFloat(3*Double.pi/2)
             //画 计划
-            var color = UIColor.blue
+            var color = UIColor.init(red: 103 / 255.0, green: 201 / 255.0, blue: 250 / 255.0, alpha: 1)
             color.set() // 设置线条颜色
             
             var aPath = UIBezierPath.init(arcCenter: center, radius: CGFloat(radius),startAngle: startAngle, endAngle: startAngle + CGFloat(2*Double.pi) * self.planScale, clockwise: true)
@@ -69,13 +69,13 @@ class YQDrawView: UIView {
              startAngle += CGFloat(2*Double.pi) * self.emergencyScale
             
             //未完成
-            color = UIColor.gray
-            color.set()
-            
-            aPath = UIBezierPath.init(arcCenter: center, radius: CGFloat(radius), startAngle: startAngle, endAngle: CGFloat(3*Double.pi / 2), clockwise: true)
-            
-            aPath.lineWidth = 23.0
-            aPath.stroke()
+//            color = UIColor.gray
+//            color.set()
+//            
+//            aPath = UIBezierPath.init(arcCenter: center, radius: CGFloat(radius), startAngle: startAngle, endAngle: CGFloat(3*Double.pi / 2), clockwise: true)
+//            
+//            aPath.lineWidth = 23.0
+//            aPath.stroke()
 
             
         }

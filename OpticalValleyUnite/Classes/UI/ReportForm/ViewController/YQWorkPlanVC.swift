@@ -21,7 +21,7 @@ class YQWorkPlanVC: UIViewController {
     
     var id : Int = 0
     var parkID = ""
-    
+
     
     override func viewDidLoad() {
         
@@ -123,6 +123,25 @@ class YQWorkPlanVC: UIViewController {
 
     }
     
+    //MARK: - 删除workPlanList的方法
+    func deleteWorkPlanListButtonClick(){
+    
+        self.view.endEditing(true)
+        
+        if self.dataArray.count <= 1 {
+            self.dataArray.removeAll()
+            
+            self.tableView.reloadData()
+            return
+            
+        }
+        
+        self.dataArray.remove(at: self.dataArray.count - 1)
+    
+        self.tableView.reloadData()
+    }
+    
+    
     // MARK: - 添加默认的项目选择方法
     func setUpProjectNameLable() -> String{
         
@@ -174,14 +193,24 @@ extension YQWorkPlanVC : UITableViewDataSource,UITableViewDelegate {
         let view = UIView()
 //        view.backgroundColor = UIColor.blue
         let boutton = UIButton()
-        boutton.setTitleColor(UIColor.brown, for: .normal)
-        boutton.setTitle("添加", for: .normal)
+        boutton.setImage(UIImage.init(name: "icon_edd"), for: .normal)
+        
         boutton.addTarget(self, action: #selector(addWorkPlanListButtonClick), for: .touchUpInside)
         
+        let bouttonRight = UIButton()
+        bouttonRight.setImage(UIImage.init(name: "icon_del"), for: .normal)
+        bouttonRight.addTarget(self, action: #selector(deleteWorkPlanListButtonClick), for: .touchUpInside)
+        
         view.addSubview(boutton)
+        view.addSubview(bouttonRight)
+        
         boutton.snp.makeConstraints { (maker) in
             maker.right.bottom.top.equalToSuperview()
-            maker.width.equalTo(80)
+            maker.width.equalTo(60)
+        }
+        bouttonRight.snp.makeConstraints { (maker) in
+            maker.left.bottom.top.equalToSuperview()
+            maker.width.equalTo(60)
         }
         
         

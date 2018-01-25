@@ -49,15 +49,19 @@ class YQReportFromViewController: UIViewController {
 
         self.title = selectTitle
         
-        let _ = setUpProjectNameLable()
-        
         //添加上下拉的刷新
         addRefirsh()
         
-        self.getTypeReportFromData(type: type!)
     
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let _ = setUpProjectNameLable()
+        
+        self.getTypeReportFromData(type: type!)
+        
+    }
+   
  
     // MARK: - 添加时间的click方法
     @IBAction func timeLabelClick(_ sender: UIButton) {
@@ -74,7 +78,7 @@ class YQReportFromViewController: UIViewController {
             par["startTime"] = self.startTimeButtonClick.titleLabel?.text
         }
         
-        getTypeReportFromData(type: type!, par: par)
+        getTypeReportFromData(type: type!, parmeter: par)
         
     }
     
@@ -138,7 +142,7 @@ class YQReportFromViewController: UIViewController {
             }
 
 
-            self.getTypeReportFromData(type: self.type!, pageIndex: 0, pageSize: 20,par: par)
+            self.getTypeReportFromData(type: self.type!, pageIndex: 0, pageSize: 20,parmeter: par)
             
         })
         
@@ -157,7 +161,7 @@ class YQReportFromViewController: UIViewController {
                 par["startTime"] = self.startTimeButtonClick.titleLabel?.text
             }
 
-            self.getTypeReportFromData(type: self.type!, pageIndex: self.currentIndex + 1, pageSize: 20,par: par)
+            self.getTypeReportFromData(type: self.type!, pageIndex: self.currentIndex + 1, pageSize: 20,parmeter: par)
             
         })
         
@@ -166,14 +170,24 @@ class YQReportFromViewController: UIViewController {
    
     
     // MARK: - 获取type对应的数据
-    func getTypeReportFromData(type : Int ,pageIndex : Int = 0,pageSize : Int = 20,par : [String : Any] = [String : Any]()){
+    func getTypeReportFromData(type : Int ,pageIndex : Int = 0,pageSize : Int = 20,parmeter : [String : Any] = [String : Any]()){
         var par = [String : Any]()
         par["reportType"] = type
         par["parkId"] = parkID
         par["pageIndex"] = pageIndex
         par["pageSize"] = pageSize
         
-        for (key,value) in par{
+        if parkID == ""{
+        
+            self.alert(message: "请选择项目!", doneBlock: { (action) in
+                
+                let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+                self.navigationController?.pushViewController(project, animated: true)
+            })
+        }
+        
+        
+        for (key,value) in parmeter{
             
             par[key] = value
         }
@@ -198,6 +212,8 @@ class YQReportFromViewController: UIViewController {
                 temp.append(YQReportFormDetailModel.init(dict: dic))
                 
             }
+            
+            
             //添加上拉下拉刷新的情况
             if pageIndex == 0 {
                 

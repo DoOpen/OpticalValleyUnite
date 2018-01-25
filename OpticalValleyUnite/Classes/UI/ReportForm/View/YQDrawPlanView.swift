@@ -45,13 +45,13 @@ class YQDrawPlanView: UIView {
             
             if self.planScale >= 1.0 {
                 
-                endAngle = 0.0
+                endAngle = 0.0001
                 clockwise = false
             }
 
             
             //画 计划
-            var color = UIColor.blue
+            var color = UIColor.init(red: 103 / 255.0, green: 201 / 255.0, blue: 250 / 255.0, alpha: 1)
             color.set() // 设置线条颜色
             
             var aPath = UIBezierPath.init(arcCenter: center, radius: CGFloat(radius),startAngle: startAngle, endAngle: startAngle + endAngle, clockwise: clockwise)

@@ -45,6 +45,9 @@ class ExecutingViewConttroller: UIViewController {
     
     var parmate: [String: Any]?
     
+    //确定保存的bool判断
+    var maketrueSave : Bool = false
+    
     
     @IBOutlet weak var saveBtn: UIButton!
     
@@ -330,6 +333,8 @@ class ExecutingViewConttroller: UIViewController {
                 self.saveBtn.isSelected = false
                 self.saveBtn.isUserInteractionEnabled = true
                 
+                self.maketrueSave = true
+                
                 self.tableView.reloadData()
                 //查看模型的转变的情况!
             }
@@ -598,6 +603,18 @@ class ExecutingViewConttroller: UIViewController {
            
         }
 
+        if !self.maketrueSave {
+            
+            self.alert(message: "请确认先点击保存数据!") { (action) in
+                
+                //注意的是:这里都做好,提示添加保存完成
+                //数据保存的接口调用
+                self.saveBtnClick()
+                
+            }
+
+            return
+        }
        
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单
             var parmat = [String: Any]()
@@ -606,13 +623,7 @@ class ExecutingViewConttroller: UIViewController {
             parmat["SUCCESS_TEXT"] = self.RemarksTextView.text
             
             //设置添加配件库的模型数据进来
-            
-            self.alert(message: "整个工单已经完成?完成工单之前必须先点击保存按钮提交内容?") { (action) in
-                
-                //注意的是:这里都做好,提示添加保存完成
-                //数据保存的接口调用
-                self.upload(parmat)
-            }
+            self.upload(parmat)
             
         }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单的保存,保存实现原理不同
             parmate?["stepId"] = "yingji"

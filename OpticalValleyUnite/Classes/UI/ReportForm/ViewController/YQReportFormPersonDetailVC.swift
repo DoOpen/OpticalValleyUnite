@@ -240,17 +240,17 @@ class YQReportFormPersonDetailVC: UIViewController {
                 }
                 
                 self.planLabel.text = "\(Int(planFinsh) + Int(planNoFinsh))"
-                self.planCompleteLabel.text = "\(planFinsh)"
+                self.planCompleteLabel.text = "\(Int(planFinsh))"
                 let s = String(format: "%.1f", self.planView.planScale * 100)
                 self.planScale.text = s + "%"
                 
                 self.emelabel.text = "\(Int(emergencyFinsh) + Int(emergencyNoFinsh))"
-                self.emeCompleteLabel.text = "\(emergencyFinsh)"
+                self.emeCompleteLabel.text = "\(Int(emergencyFinsh))"
                 let s1 = String(format: "%.1f", self.emergencyView.emergencyScale * 100)
                 self.emeScale.text = s1 + "%"
                 
                 self.sponLabel.text = "\(Int(allFinshTotal) + Int(allNoFinshTotal))"
-                self.sponCompleteLabel.text = "\(allFinshTotal)"
+                self.sponCompleteLabel.text = "\(Int(allFinshTotal))"
                 let s2 = String(format: "%.1f", self.spontaneousView.sourceScale * 100)
                 self.sponScale.text =  s2 + "%"
                 

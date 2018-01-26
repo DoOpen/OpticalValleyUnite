@@ -184,6 +184,8 @@ class YQReportFromViewController: UIViewController {
                 let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
                 self.navigationController?.pushViewController(project, animated: true)
             })
+            
+            return
         }
         
         
@@ -202,6 +204,8 @@ class YQReportFromViewController: UIViewController {
             
             if array == nil {
                 SVProgressHUD.showError(withStatus: "没有更多的数据!")
+                
+                self.dataArray.removeAll()
                 return
             }
             

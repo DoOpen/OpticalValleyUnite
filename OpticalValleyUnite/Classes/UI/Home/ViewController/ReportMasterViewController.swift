@@ -591,19 +591,20 @@ class ReportMasterViewController: UIViewController {
         
             if brokerBtn.isSelected {
                 
-                //待客
-                if ownerNameTextField.text == "" {
-                    SVProgressHUD.showError(withStatus: "请输入业主名字")
-                    return
-                }
+                //待客 添加选题项目
+//                if ownerNameTextField.text == "" {
+//                    SVProgressHUD.showError(withStatus: "请输入业主名字")
+//                    return
+//                }
 //                            if OwnerAddressTextField.text == "" {
 //                                SVProgressHUD.showError(withStatus: "请输入业主地址")
 //                                return
 //                            }
-                if ownerPhoneTextField.text == "" {
-                    SVProgressHUD.showError(withStatus: "请输入业主电话")
-                    return
-                }
+                //添加 业主电话进行选填
+//                if ownerPhoneTextField.text == "" {
+//                    SVProgressHUD.showError(withStatus: "请输入业主电话")
+//                    return
+//                }
                 
                 //待客模式
                 parmarReport["EVENT_TYPE"] = 1

@@ -76,6 +76,11 @@ class YQAllProjectSelectVC: UIViewController {
             
         }else{
             
+            if projectData.isEmpty {
+                
+                return
+            }
+            
             self.tableView.deselectRow(at: currentSelecIndex!, animated: true)
             
             if let index = currentSelecIndex?.row{
@@ -108,7 +113,7 @@ class YQAllProjectSelectVC: UIViewController {
     }
 
     // MARK: - 获取项目data的数据
-    private func getProjectData(){
+    func getProjectData(){
         
         HttpClient.instance.get(path: URLPath.getParkList, parameters: nil, success: { (response) in
             
@@ -262,6 +267,8 @@ extension YQAllProjectSelectVC : UISearchBarDelegate{
         if let text = searchBar.text{
             //自定义的模糊查询的方法
             self.fuzzyQueryMethod(text: text)
+            
+            self.currentSelecIndex = nil
         }
     }
     
@@ -270,8 +277,8 @@ extension YQAllProjectSelectVC : UISearchBarDelegate{
         self.view.endEditing(true)
         
         searchBar.text = nil
+        self.getProjectData()
         
-        tableView.reloadData()
     }
     
 

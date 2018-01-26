@@ -77,6 +77,13 @@ class ChooseHouseViewController: UIViewController {
         
         if let _ = currentSelectCell {
             
+            if (currentLevel == 1){
+                if selectParkHandel != nil{
+                    
+                    selectParkHandel!(currentParkInfoModel[index])
+                }
+            }
+            
             if currentLevel + 1 != arry.count{
                 
                 if currentParkInfoModel[index].child != nil{
@@ -233,6 +240,7 @@ extension ChooseHouseViewController: UITableViewDelegate, UITableViewDataSource{
             
             
             let index = indexPath.row
+            
             if selectParkHandel != nil{
                 
                 selectParkHandel!(currentParkInfoModel[index])
@@ -251,31 +259,34 @@ extension ChooseHouseViewController: UITableViewDelegate, UITableViewDataSource{
                 
 //                let index = indexPath.row
                 
-                if selectParkHandel != nil{
-                    
-                    selectParkHandel!(currentParkInfoModel[0])
-                    
-                }
+//                if selectParkHandel != nil{
+//                    
+//                    selectParkHandel!(currentParkInfoModel[index])
+//                    
+//                }
 
                 tableView.reloadData()
             }
             
             currentLevel += 1
 
-        }else{
+        }else {
             
             currentSelectCell?.setSelectCellClick(false)
             
             currentSelectCell = tableView.cellForRow(at: indexPath) as! ChooseHouseCell?
             
             currentSelectCell?.setSelectCellClick(true)
-            
+        
             if (currentSelectCell?.isSelected)! {
                 
                 nextBtnHeightConstraint.constant = 54.0
             }
             
             index = indexPath.row
+            
+            
+            
         }
     }
     

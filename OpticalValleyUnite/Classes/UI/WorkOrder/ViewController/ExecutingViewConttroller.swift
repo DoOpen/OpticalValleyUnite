@@ -603,23 +603,25 @@ class ExecutingViewConttroller: UIViewController {
            
         }
 
-        if !self.maketrueSave {
-            
-            self.alert(message: "请确认先点击保存数据!") { (action) in
-                
-                //注意的是:这里都做好,提示添加保存完成
-                //数据保存的接口调用
-                self.saveBtnClick()
-            }
-
-            return
-        }
-       
+        
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单
             var parmat = [String: Any]()
             parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
             parmat["UNIT_STATUS"] = 7
             parmat["SUCCESS_TEXT"] = self.RemarksTextView.text
+            
+            if !self.maketrueSave {
+                
+                self.alert(message: "请确认先点击保存数据!") { (action) in
+                    
+                    //注意的是:这里都做好,提示添加保存完成
+                    //数据保存的接口调用
+                    self.saveBtnClick()
+                }
+                
+                return
+            }
+
             
             //设置添加配件库的模型数据进来
             self.upload(parmat)

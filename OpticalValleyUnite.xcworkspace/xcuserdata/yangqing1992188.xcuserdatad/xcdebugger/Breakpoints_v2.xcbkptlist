@@ -98,12 +98,12 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
-                  timestampString = "538569000.446093"
+                  timestampString = "538646790.796258"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "689"
                   endingLineNumber = "689"
-                  offsetFromSymbolStart = "2697">
+                  offsetFromSymbolStart = "2152">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -113,12 +113,12 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/VideoPatrol/ViewController/YQVideoPatrolViewController.swift"
-                  timestampString = "538569000.449109"
+                  timestampString = "538646790.797909"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "689"
                   endingLineNumber = "689"
-                  offsetFromSymbolStart = "4464">
+                  offsetFromSymbolStart = "3576">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -129,13 +129,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineFirstWorkOrderVC.swift"
-            timestampString = "538482563.03416"
+            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ExecutingViewConttroller.swift"
+            timestampString = "538629518.570859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "workOrderUpButtonClick(_:)"
+            startingLineNumber = "593"
+            endingLineNumber = "593"
+            landmarkName = "doneBtnClick()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -146,27 +146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineFirstWorkOrderVC.swift"
-            timestampString = "538552213.035676"
+            timestampString = "538645438.983705"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "workOrderUpButtonClick(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineFirstWorkOrderVC.swift"
-            timestampString = "538552217.6095231"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
             landmarkName = "workOrderUpButtonClick(_:)"
             landmarkType = "7">
             <Locations>
@@ -174,145 +158,33 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQOffLineFirstWorkOrderVC.workOrderUpButtonClick (__ObjC.UIButton) -&gt; ()"
+                  symbolName = "OpticalValleyUnite.YQOffLineFirstWorkOrderVC.(workOrderUpButtonClick (__ObjC.UIButton) -&gt; ()).(closure #2)"
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineFirstWorkOrderVC.swift"
-                  timestampString = "538569000.46968"
+                  timestampString = "538646790.804379"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "149"
-                  endingLineNumber = "149"
-                  offsetFromSymbolStart = "4410">
+                  startingLineNumber = "303"
+                  endingLineNumber = "303"
+                  offsetFromSymbolStart = "5832">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQOffLineFirstWorkOrderVC.(workOrderUpButtonClick (__ObjC.UIButton) -&gt; ()).(closure #3)"
+                  symbolName = "OpticalValleyUnite.YQOffLineFirstWorkOrderVC.(workOrderUpButtonClick (__ObjC.UIButton) -&gt; ()).(closure #2).(closure #7)"
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineFirstWorkOrderVC.swift"
-                  timestampString = "538569000.472988"
+                  timestampString = "538646790.80607"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "49">
+                  startingLineNumber = "304"
+                  endingLineNumber = "304"
+                  offsetFromSymbolStart = "52">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineFirstWorkOrderVC.swift"
-            timestampString = "538553053.3839509"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "workOrderUpButtonClick(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQOffLineFirstWorkOrderVC.workOrderUpButtonClick (__ObjC.UIButton) -&gt; ()"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineFirstWorkOrderVC.swift"
-                  timestampString = "538569000.481281"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "188"
-                  endingLineNumber = "188"
-                  offsetFromSymbolStart = "7342">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQOffLineFirstWorkOrderVC.(workOrderUpButtonClick (__ObjC.UIButton) -&gt; ()).(closure #5)"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineFirstWorkOrderVC.swift"
-                  timestampString = "538569000.4883"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "190"
-                  endingLineNumber = "190"
-                  offsetFromSymbolStart = "49">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineFirstWorkOrderVC.swift"
-            timestampString = "538553060.337116"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "workOrderUpButtonClick(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQOffLineFirstWorkOrderVC.workOrderUpButtonClick (__ObjC.UIButton) -&gt; ()"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineFirstWorkOrderVC.swift"
-                  timestampString = "538569000.495271"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "212"
-                  endingLineNumber = "212"
-                  offsetFromSymbolStart = "9377">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQOffLineFirstWorkOrderVC.(workOrderUpButtonClick (__ObjC.UIButton) -&gt; ()).(closure #7)"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/OffLineWorkOrder/ViewController/YQOffLineFirstWorkOrderVC.swift"
-                  timestampString = "538569000.497907"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "213"
-                  endingLineNumber = "213"
-                  offsetFromSymbolStart = "49">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/WorkOrderProgressViewController.swift"
-            timestampString = "538557979.199645"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
-            landmarkName = "reloadStatus(status:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

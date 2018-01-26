@@ -682,8 +682,6 @@ class ExecutingViewConttroller: UIViewController {
         
         }
         
-
-        
     }
     
     
@@ -834,8 +832,7 @@ class ExecutingViewConttroller: UIViewController {
         //移除通知监听
         NotificationCenter.default.removeObserver(self)
         //清空沙盒缓存
-        
-        
+    
     }
     
     
@@ -1081,12 +1078,25 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
     func ExecNewCellMakePhotoFunction(view: YQExecNewCell, currentRow: IndexPath,image : UIImage) {
         
         let model = models[(currentRow.section)].childs[currentRow.row]
+        
         //离线工单的图片保存
         if backDB {
             
+
             self.offLineImageSave(image, stepId: model.id)
+            
+            let realm = try! Realm()
+            realm.beginWrite()
+            
+            model.imageValue = "计划工单图片"
+            
+            models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
+            
             //单行刷新列表
             self.tableView.reloadRows(at: [currentRow], with: .automatic)
+            
+            try! realm.commitWrite()
+            
             return
         }
 
@@ -1141,9 +1151,9 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
                 realm.delete(delete)
             }
             
-            model.imageValue = "add_jihua_picture"
-            
-            models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
+//            model.imageValue = "add_jihua_picture"
+//            
+//            models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
             
             //单行刷新列表
             self.tableView.reloadRows(at: [currentRow], with: .automatic)
@@ -1239,11 +1249,11 @@ extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCD
             
             let model = models[(currentSelectIndexPath?.section)!].childs[(currentSelectIndexPath?.row)!]
             
+            let realm = try! Realm()
+            realm.beginWrite()
+            
             if let str = str{
-                
-                let realm = try! Realm()
-                realm.beginWrite()
-                
+            
                 self.navigationController?.popViewController(animated: false)
                 
                 //校验二维码的情况
@@ -1267,9 +1277,11 @@ extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCD
 //                    self.tableView.reloadRows(at: [currentSelectIndexPath!], with: .automatic)
 
                 }
-                
-                try! realm.commitWrite()
             }
+            
+            models[(currentSelectIndexPath?.section)!].childs.replace(index: (currentSelectIndexPath?.row)!, object: model)
+            
+            try! realm.commitWrite()
             
         }else{
             

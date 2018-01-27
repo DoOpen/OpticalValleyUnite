@@ -28,6 +28,9 @@ class ChooseDeviceViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
 
         title = "选择报事设备"
         

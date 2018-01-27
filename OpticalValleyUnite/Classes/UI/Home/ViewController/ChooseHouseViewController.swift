@@ -55,6 +55,9 @@ class ChooseHouseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
+        
         title = "请选择报事房屋"
         
         setupTopView()

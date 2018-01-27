@@ -43,6 +43,9 @@ class WorkOrderTypeChooseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
+        
         let _ = ["弱电", "土建维修","给排水", "强电","消防", "工程"]
         projectTagsView.editable = false
         projectTagsView.selectable = true

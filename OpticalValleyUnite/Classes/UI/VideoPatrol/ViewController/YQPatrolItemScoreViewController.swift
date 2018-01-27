@@ -262,6 +262,8 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomNextViewDelegate{
         par["pointType"] = prameterDict?["pointType"]
             
         par["checkType"] = self.model?.checkType
+        
+        
         if self.selectStarsBtn == nil {
             par["score"] = 1
             
@@ -357,6 +359,7 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomLastViewDelegate{
         par["pointType"] = prameterDict?["pointType"]
         
         par["checkType"] = self.model?.checkType
+        
         if self.selectStarsBtn == nil {
             par["score"] = 1
             

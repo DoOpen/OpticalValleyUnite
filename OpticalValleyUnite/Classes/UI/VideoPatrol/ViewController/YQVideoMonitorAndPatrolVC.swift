@@ -163,7 +163,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                 //获取视频地址,显示播放
                 let urlArray = respose as? NSArray
                 
-                if (urlArray?.count)! < 1{
+                if urlArray == nil{
                     
                     SVProgressHUD.showError(withStatus: "没有视频源!")
                     

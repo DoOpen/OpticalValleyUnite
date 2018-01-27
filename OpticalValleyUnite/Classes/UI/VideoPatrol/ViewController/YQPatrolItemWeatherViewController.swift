@@ -239,6 +239,7 @@ extension YQPatrolItemWeatherViewController : YQPatrolBottomNextViewDelegate{
         par["pointType"] = prameterDict?["pointType"]
         
         par["checkType"] = self.model?.checkType
+        
         if self.yesButton.isSelected {
             par["score"] = 1
             

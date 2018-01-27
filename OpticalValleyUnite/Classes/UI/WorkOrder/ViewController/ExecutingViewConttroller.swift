@@ -657,7 +657,7 @@ class ExecutingViewConttroller: UIViewController {
                         
                         //设置添加配件库的模型数据进来
                         //                    self.alert(message: "整个工单已经完成?") { (action) in
-                        
+                        parmat["photo"] = url
                         //接着是调用了数据保存的接口
                         //数据保存的接口调用
                         self.upload(parmat)

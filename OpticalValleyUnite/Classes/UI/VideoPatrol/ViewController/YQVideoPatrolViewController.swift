@@ -109,6 +109,8 @@ class YQVideoPatrolViewController: UIViewController {
         //2. 获取map数据
         let _ = setUpProjectNameLable()
         
+        mapViewSetup()
+        
         if self.parkId == "" {
             
             let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
@@ -128,11 +130,15 @@ class YQVideoPatrolViewController: UIViewController {
         //获取项目parkID的情况
         let _ = setUpProjectNameLable()
         
-        
-
-        mapViewSetup()
-        
     }
+    
+    // MARK: - 重定位buttonClick 
+    
+    @IBAction func RepositionButtonClick(_ sender: UIButton) {
+        
+        mapViewSetup()
+    }
+    
     
     
     
@@ -259,7 +265,7 @@ class YQVideoPatrolViewController: UIViewController {
         mapView.showsUserLocation = true;
         mapView.userTrackingMode = .none;
         mapView.delegate = self as MAMapViewDelegate
-        mapView.zoomLevel = 10.0 //地图的缩放的级别比例
+        mapView.zoomLevel = 15.0 //地图的缩放的级别比例
         
         // 带逆地理信息的一次定位（返回坐标和地址信息）
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -597,6 +603,12 @@ class YQVideoPatrolViewController: UIViewController {
             //只是重新的打点的情况
             self.videoMapPointModel = tempModel
             
+            let model = tempModel.first
+            let Coordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees((model?.latitude)!)!, CLLocationDegrees((model?.longitude)!)!)
+            
+            self.mapView.setCenter(Coordinate2D, animated: true)
+            
+
             //划线
             let polyline: MAPolyline = MAPolyline(coordinates: &videoMapLayWays, count: UInt(videoMapLayWays.count))
             overlays.append(polyline)

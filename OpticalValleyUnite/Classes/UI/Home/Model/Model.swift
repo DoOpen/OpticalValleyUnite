@@ -642,7 +642,7 @@ class EquimentModel : Object{
         if let stage_name = parmart["stage_name"] as? String,let house_name = parmart["house_name"] as? String,let floor_name = parmart["floor_name"] as? String{
             
             //地址
-            parkAddress = stage_name + house_name + floor_name
+            parkAddress = stage_name + floor_name + house_name
             
         }
         

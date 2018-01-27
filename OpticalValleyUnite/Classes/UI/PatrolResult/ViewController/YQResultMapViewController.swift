@@ -60,6 +60,15 @@ class YQResultMapViewController: UIViewController {
         }
     }
     
+    // MARK: - 重定位buttonClick
+    @IBAction func RepositionButtonClick(_ sender: UIButton) {
+        
+        mapViewSetup()
+        
+    }
+    
+    
+    
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //        
@@ -115,7 +124,7 @@ class YQResultMapViewController: UIViewController {
         mapView.showsUserLocation = true;
         mapView.userTrackingMode = .none;
         mapView.delegate = self as MAMapViewDelegate
-        mapView.zoomLevel = 10.0 //地图的缩放的级别比例
+        mapView.zoomLevel = 15.0 //地图的缩放的级别比例
         
         // 带逆地理信息的一次定位（返回坐标和地址信息）
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -193,6 +202,8 @@ class YQResultMapViewController: UIViewController {
                             
                         }
                         
+                        self.mapView.setCenter(executeWayArray.first!, animated: true)
+                        
                         //执行画线的方法
                         //划线
                         let polyline: MAPolyline = MAPolyline(coordinates: &executeWayArray, count: UInt(executeWayArray.count))
@@ -225,6 +236,8 @@ class YQResultMapViewController: UIViewController {
                             
                         }
                         
+                        
+                         self.mapView.setCenter(designWayArray.first!, animated: true)
                         //执行画线的方法
                         //划线
                         let polyline: MAPolyline = MAPolyline(coordinates: &designWayArray, count: UInt(designWayArray.count))
@@ -258,6 +271,8 @@ class YQResultMapViewController: UIViewController {
                             realWayArray.append(CLLocationCoordinate2D)
                             
                         }
+                        
+                        self.mapView.setCenter(realWayArray.first!, animated: true)
                         
                         //执行画线的方法
                         //划线

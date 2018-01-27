@@ -48,11 +48,24 @@
                                 <rect key="frame" x="0.0" y="124" width="375" height="543"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyf-iE-rEW">
+                                <rect key="frame" x="5" y="129" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="F76-2W-zqK"/>
+                                    <constraint firstAttribute="height" constant="40" id="Lxg-yz-SDj"/>
+                                </constraints>
+                                <state key="normal" image="icon_map_location"/>
+                                <connections>
+                                    <action selector="RepositionButtonClick:" destination="gTC-38-O2U" eventType="touchUpInside" id="1AD-Kz-3yJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DdC-kj-vOp" secondAttribute="trailing" id="BS4-ch-7jO"/>
+                            <constraint firstItem="qyf-iE-rEW" firstAttribute="leading" secondItem="qPR-L2-vtd" secondAttribute="leading" constant="5" id="BWg-iO-gYF"/>
                             <constraint firstItem="DdC-kj-vOp" firstAttribute="top" secondItem="hvI-Ue-Gfn" secondAttribute="bottom" id="Nmt-nW-i6K"/>
+                            <constraint firstItem="qyf-iE-rEW" firstAttribute="top" secondItem="DdC-kj-vOp" secondAttribute="bottom" constant="5" id="Vrl-Pa-pwG"/>
                             <constraint firstItem="DdC-kj-vOp" firstAttribute="leading" secondItem="qPR-L2-vtd" secondAttribute="leading" id="YcG-Yj-WgM"/>
                             <constraint firstItem="QP9-C7-7UW" firstAttribute="top" secondItem="DdC-kj-vOp" secondAttribute="bottom" id="Z64-fH-Kdj"/>
                             <constraint firstAttribute="trailing" secondItem="QP9-C7-7UW" secondAttribute="trailing" id="gmr-SM-5zK"/>
@@ -71,4 +84,7 @@
             <point key="canvasLocation" x="-322" y="54"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_map_location" width="22" height="22"/>
+    </resources>
 </document>

@@ -133,10 +133,10 @@ class YQResultDetailViewController: UIViewController {
             switch type {
                 
             case 1:
-                 self.typeLabel.text = "室内"
+                 self.patrolPointType.text = "室内"
                 break
             case 2:
-                 self.typeLabel.text = "室外"
+                 self.patrolPointType.text = "室外"
                 break
             default:
                 break
@@ -147,10 +147,10 @@ class YQResultDetailViewController: UIViewController {
             switch insType {
                 
             case 1:
-                self.patrolPointType.text = "视频巡查"
+                self.typeLabel.text = "视频巡查"
                 break
             case 2:
-                self.patrolPointType.text = "人工巡查"
+                self.typeLabel.text = "人工巡查"
                 break
             default:
                 break

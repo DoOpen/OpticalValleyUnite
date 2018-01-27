@@ -119,8 +119,10 @@ class WorkOrderViewController: UIViewController {
             
             if parmat.isEmpty{//为空的话
                 
+                self.siftsiftParmat = nil
                 //在闭包的 回调中 拿到了选择的参数, 进行重新的网络请求,数据的刷新
                 self.getWorkOrder(type: self.currentIndex,indexPage: 0,dic: self.siftParmat!)
+                
 
             }else{
                 

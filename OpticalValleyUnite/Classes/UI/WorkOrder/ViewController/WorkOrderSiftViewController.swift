@@ -260,7 +260,12 @@ class WorkOrderSiftViewController: UIViewController {
         
         //重置没有清空缓存,可以考虑的是重置之后,就清除缓存
 //        UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
-
+        
+        if let block = doenBtnClickHandel{
+            //通过的是block的回调来进行的传值,如果是需要保存的话,要求保存paramert 的参数
+            block([String : Any]())
+        }
+        
     }
     
     // MARK: - 获取项目的网络接口

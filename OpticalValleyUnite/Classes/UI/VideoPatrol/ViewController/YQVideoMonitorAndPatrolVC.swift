@@ -23,6 +23,9 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
     
     @IBOutlet weak var backImageView: UIImageView!
     
+    @IBOutlet weak var webView: UIWebView!
+    
+    
     /// 传递的属性
     var prameterDict : NSDictionary?
     
@@ -157,6 +160,18 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         
             var par = [String : Any]()
             par["equipmentId"] = "\(insPointId)"
+            
+            let baseUrl = URLPath.basicPath
+            let tempUrl = "mobile/mobileVideo.html?equipmentIds="
+            let url = baseUrl + tempUrl + "\(insPointId)"
+            
+            let nowurl = URL(string: url)
+            let request = URLRequest(url: nowurl!)
+            
+            self.webView.loadRequest(request)
+            
+            return
+           //////////////////////////////////////////////////////////////
                 
             HttpClient.instance.post(path: URLPath.getVideogetLive, parameters: par, success: { (respose) in
                 
@@ -169,13 +184,23 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
                     
                     return
                 }
-                //增加需求来进行设置调试设置配置
-                let urlDict = urlArray?[0] as? NSDictionary
-                let url = urlDict?["interM3u8"] as? String
+                
+               
+                
+                //增加需求来进行设置调试设置配置,多个设备进行拼接处理
+                for temp in urlArray!{
+                
+                    let urlDict = temp as? NSDictionary
+                    let url = urlDict?["interM3u8"] as? String
+                
+                }
                 
                 DispatchQueue.main.async {
                     //获取url 来进行创建
-                    self.addMediaPlayerViewMethod(urlString: url!)
+                    // 原生播放器 退出使用 self.addMediaPlayerViewMethod(urlString: url!)
+                   
+                    
+                    
                 }
                 
             }) { (error) in
@@ -185,7 +210,7 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
         
         }else{
             //没有视频播放情况
-            self.backImageView.image = UIImage.init(name: "")
+//            self.backImageView.image = UIImage.init(name: "")
         }
     }
     

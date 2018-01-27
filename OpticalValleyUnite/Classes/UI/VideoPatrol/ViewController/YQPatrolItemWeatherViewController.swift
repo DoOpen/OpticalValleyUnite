@@ -75,6 +75,7 @@ class YQPatrolItemWeatherViewController: UIViewController {
         self.patrolItemLabel.text = model?.name
         self.descriptionLabel.text = model?.descriptionString
         self.itemNumLabel.text = "共" + "\(count)" + "项"
+        self.noButton.isSelected = true
         
         if model?.imgPath != nil{
             

@@ -68,16 +68,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQd-lM-xDa" userLabel="VideoView">
                                 <rect key="frame" x="0.0" y="84" width="375" height="583"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a3D-qQ-dvw">
+                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n36-D5-32H">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
-                                    </imageView>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </webView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="a3D-qQ-dvw" secondAttribute="bottom" id="BnO-vY-PdW"/>
-                                    <constraint firstItem="a3D-qQ-dvw" firstAttribute="top" secondItem="mQd-lM-xDa" secondAttribute="top" id="Mzn-cL-MXP"/>
-                                    <constraint firstItem="a3D-qQ-dvw" firstAttribute="leading" secondItem="mQd-lM-xDa" secondAttribute="leading" id="NzN-Nd-G8u"/>
-                                    <constraint firstAttribute="trailing" secondItem="a3D-qQ-dvw" secondAttribute="trailing" id="lA1-7b-gCY"/>
+                                    <constraint firstAttribute="bottom" secondItem="n36-D5-32H" secondAttribute="bottom" id="8Sc-Mo-utA"/>
+                                    <constraint firstItem="n36-D5-32H" firstAttribute="top" secondItem="mQd-lM-xDa" secondAttribute="top" id="Gj0-yY-qG7"/>
+                                    <constraint firstAttribute="trailing" secondItem="n36-D5-32H" secondAttribute="trailing" id="rMd-Yx-rsc"/>
+                                    <constraint firstItem="n36-D5-32H" firstAttribute="leading" secondItem="mQd-lM-xDa" secondAttribute="leading" id="wyn-3o-7Rz"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -97,11 +98,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backImageView" destination="a3D-qQ-dvw" id="8er-x5-FAI"/>
                         <outlet property="contentScrollView" destination="Ova-f5-M8c" id="M6Z-IK-Yl6"/>
                         <outlet property="patrolButton" destination="2kJ-wv-RE5" id="Fj3-qe-TRD"/>
                         <outlet property="videoButton" destination="zar-24-ovr" id="tt1-Pi-fFt"/>
                         <outlet property="videoView" destination="mQd-lM-xDa" id="96L-JV-g3h"/>
+                        <outlet property="webView" destination="n36-D5-32H" id="4eO-CH-OxJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SBr-Bm-oAv" userLabel="First Responder" sceneMemberID="firstResponder"/>

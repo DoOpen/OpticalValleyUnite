@@ -122,22 +122,30 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         UIApplication.shared.applicationIconBadgeNumber += 1
     }
     
+    
     //iOS10新增：处理后台点击通知的代理方法(点击通知执行的方法)
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let userInfo = response.notification.request.content.userInfo
         
+        /// 这个是应用处在后台时候的推送执行的方法
+        if let body = userInfo["aps"] as? [String : Any]{
+            
+            let voiceText = body["alert"] as? String
+            //添加语音推送的消息内容
+            startTranslattion(voicessss: voiceText!)
+        }
+
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
             
-            /// 这个是应用处在后台时候的推送执行的方法
+            UMessage.didReceiveRemoteNotification(userInfo)
+            
             // 接受通知执行界面的跳转功能
             noticHandel(userInfo: userInfo)
-            UMessage.didReceiveRemoteNotification(userInfo)
             
         }else{
             //应用处于后台时的本地推送接受
-            
         }
         
     }

@@ -168,6 +168,8 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
             
             let nowurl = URL(string: url)
             let request = URLRequest(url: nowurl!)
+            self.webView.allowsInlineMediaPlayback = true
+            self.webView.mediaPlaybackRequiresUserAction = false
             
             self.webView.loadRequest(request)
             

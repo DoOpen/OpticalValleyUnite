@@ -38,7 +38,7 @@ class YQWorkHighlightsDetailCell: UITableViewCell {
         
         didSet{
             //1.设置亮点的图片
-            self.highlightImageV.image = UIImage.init(name: "")
+            self.highlightImageV.image = UIImage.init(name: "img_light")
             highlightLabel.text = "亮点" + "\((indexPath?.row)! + 1)"
             
             if model?.imgPaths != "" {
@@ -51,12 +51,12 @@ class YQWorkHighlightsDetailCell: UITableViewCell {
                     
                     if (tempIndex.contains("http")){
                         
-                        temp.append((model?.imgPaths)!)
+                        temp.append((tempIndex))
                         
                     }else {
                         
                         let basicPath = URLPath.systemSelectionURL
-                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.imgPaths)!
+                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (tempIndex)
                         temp.append(imageValue)
                     }
                     

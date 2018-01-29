@@ -445,7 +445,6 @@ extension YQPedometerViewController : UITableViewDelegate,UITableViewDataSource{
 extension YQPedometerViewController : YQStepHeadViewDelegate {
 
     func stepHeadViewAllButtonClick(view: YQStepHeadView, button: UIButton) {
-        
         //通过tag 来进行的传递type 来进行操作
         self.type = button.tag
         
@@ -461,7 +460,6 @@ extension YQPedometerViewController : YQStepHeadViewDelegate {
         }
         
         self.getRankForAllData(dic: dict)
-        
     }
     
     
@@ -486,13 +484,15 @@ extension YQPedometerViewController : YQStepStatisticsViewDelegate {
         
         //调用实现点赞的功能
         HttpClient.instance.post(path: URLPath.getPedometerZan, parameters: par, success: { (respose) in
-            
+
             var par = [String : Any]()
             par["type"] = self.type
             par["date"] = self.yesterday
             
             //要求的是,重新的刷新所有的表格
             self.getRankForAllData(dic : par)
+            
+            
             
         }) { (error) in
             

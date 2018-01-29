@@ -213,8 +213,8 @@ class YQReportFormPersonDetailVC: UIViewController {
                 let emergencyFinsh = dataDict?["emergencyFinsh"] as? CGFloat ?? 0
                 let emergencyNoFinsh = dataDict?["emergencyNoFinsh"] as? CGFloat ?? 0
                 //巡检工单
-                let allFinshTotal = dataDict?["allFinshTotal"] as? CGFloat ?? 0
-                let allNoFinshTotal = dataDict?["allNoFinshTotal"] as? CGFloat ?? 0
+                let allFinshTotal = dataDict?["allFinsh"] as? CGFloat ?? 0
+                let allNoFinshTotal = dataDict?["allNoFinsh"] as? CGFloat ?? 0
                 
                 
                 if Int(planFinsh) > 0 {

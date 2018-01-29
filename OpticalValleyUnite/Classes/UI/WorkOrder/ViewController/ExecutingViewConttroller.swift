@@ -351,6 +351,7 @@ class ExecutingViewConttroller: UIViewController {
     @IBAction func saveBtnClick() {
         
         /*重新梳理逻辑: 
+         
          应用线程加锁的 等待的情况来实现先下载,然后上传图片
          1.先放到 同步的下载
          2.拿到字面量,异步上传
@@ -365,6 +366,15 @@ class ExecutingViewConttroller: UIViewController {
             
             let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
             let realm = try! Realm()
+            
+            let id = parmate?["WORKUNIT_ID"] as? String
+            
+            let result = realm.objects(WorkOrderModel2.self).filter("id == %@", id!).first
+            
+            realm.beginWrite()
+            result?.save = true
+            try! realm.commitWrite()
+
             
             try! realm.write {
                 
@@ -562,6 +572,16 @@ class ExecutingViewConttroller: UIViewController {
     
     // MARK: - 离线工单的图片保存的方法
     func offLineImageSave(_ images: UIImage, stepId : String){
+        
+        let realm = try! Realm()
+        let id = parmate?["WORKUNIT_ID"] as? String
+        
+        let result = realm.objects(WorkOrderModel2.self).filter("id == %@", id!).first
+        
+        realm.beginWrite()
+        result?.save = true
+        try! realm.commitWrite()
+        
         //将图片数据分别进行本地的保存列表选项的数据表中
         //保存图片到数据库中:
         var dict = [String : Any]()
@@ -571,9 +591,10 @@ class ExecutingViewConttroller: UIViewController {
         dict["id"] = parmate?["WORKUNIT_ID"]
         dict["type"] = self.orderType//不是工单里面的,而是步骤里面的
         
+//        let offModelTeamp =
+        
         let model = offLineWorkOrderUpDatePictrueModel.init(parmart: dict)
         
-        let realm = try! Realm()
         
         try! realm.write {
             
@@ -688,6 +709,15 @@ class ExecutingViewConttroller: UIViewController {
         
             let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
             let realm = try! Realm()
+            
+            let id = parmate?["WORKUNIT_ID"] as? String
+            
+            let result = realm.objects(WorkOrderModel2.self).filter("id == %@", id!).first
+            
+            realm.beginWrite()
+            result?.complete = true
+            try! realm.commitWrite()
+
             
             try! realm.write {
                 

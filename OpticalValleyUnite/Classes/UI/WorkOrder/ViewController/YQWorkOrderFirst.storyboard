@@ -259,6 +259,17 @@
                                     <outlet property="delegate" destination="htl-h4-ZeR" id="Mpi-PK-Gdj"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OcT-p5-17b">
+                                <rect key="frame" x="305" y="597" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="DFD-fE-JOO"/>
+                                    <constraint firstAttribute="width" constant="60" id="hZM-bm-1DL"/>
+                                </constraints>
+                                <state key="normal" image="btn_home__up_nor_lx"/>
+                                <connections>
+                                    <action selector="jumpToOffLineWorkOrderVC:" destination="htl-h4-ZeR" eventType="touchUpInside" id="47a-GW-ViR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.89411764709999997" green="0.92156862750000001" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -266,7 +277,9 @@
                             <constraint firstItem="8s9-3B-zJB" firstAttribute="leading" secondItem="ngs-vh-tS0" secondAttribute="leading" id="7pz-Bc-GsG"/>
                             <constraint firstItem="F3W-9D-dkM" firstAttribute="leading" secondItem="ngs-vh-tS0" secondAttribute="leading" id="EJf-N5-aDQ"/>
                             <constraint firstAttribute="trailing" secondItem="F3W-9D-dkM" secondAttribute="trailing" id="IiS-9E-7TE"/>
+                            <constraint firstAttribute="trailing" secondItem="OcT-p5-17b" secondAttribute="trailing" constant="10" id="Ipz-3f-tGI"/>
                             <constraint firstItem="F3W-9D-dkM" firstAttribute="top" secondItem="ewg-HH-Tkr" secondAttribute="bottom" id="JA2-44-47p"/>
+                            <constraint firstItem="KlJ-r5-wOT" firstAttribute="top" secondItem="OcT-p5-17b" secondAttribute="bottom" constant="10" id="LwI-bP-Uqo"/>
                             <constraint firstItem="KlJ-r5-wOT" firstAttribute="top" secondItem="8s9-3B-zJB" secondAttribute="bottom" id="Rns-6M-t0M"/>
                             <constraint firstAttribute="trailing" secondItem="8s9-3B-zJB" secondAttribute="trailing" id="vIb-Np-J7s"/>
                         </constraints>
@@ -287,10 +300,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZT-cp-L7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2218.840579710145" y="876.35869565217399"/>
+            <point key="canvasLocation" x="2218.4000000000001" y="875.71214392803608"/>
         </scene>
     </scenes>
     <resources>
+        <image name="btn_home__up_nor_lx" width="58" height="58"/>
         <image name="shebei" width="14" height="14"/>
         <image name="time" width="15" height="15"/>
     </resources>

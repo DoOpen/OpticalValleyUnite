@@ -27,7 +27,6 @@ class SystemMessageViewController: UIViewController {
 
         titleView.text = model?.title
         timeLabel.text = model?.time
-//        contentLabel.text = model?.content
         departmentLabel.text = model?.department
         
         let text = model!.content
@@ -37,18 +36,18 @@ class SystemMessageViewController: UIViewController {
             contentLabel.attributedText = str
         }
         
+        view.setNeedsLayout()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        self.contantViewHeightConstraint.constant  = self.timeLabel.maxY
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         view.setNeedsLayout()
         
-    }
+        self.contantViewHeightConstraint.constant  = self.contentLabel.maxY + 150
 
+    }
 
 
 }

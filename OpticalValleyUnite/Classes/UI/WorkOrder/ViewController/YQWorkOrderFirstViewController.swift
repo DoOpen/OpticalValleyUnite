@@ -76,6 +76,16 @@ class YQWorkOrderFirstViewController: UIViewController {
 
     }
     
+    
+    @IBAction func jumpToOffLineWorkOrderVC(_ sender: UIButton) {
+        
+        let offlineVC = UIStoryboard.instantiateInitialViewController(name: "YQOffLineFirst") as? YQOffLineFirstWorkOrderVC
+        
+        self.navigationController?.pushViewController(offlineVC!, animated: true)
+        
+    }
+    
+    
     // MARK: - rightBar点击实现的方法
     @IBAction func rightBarItemClick(_ sender: Any) {
         

@@ -26,6 +26,8 @@ class WorkOrder2Cell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
 
     
+    @IBOutlet weak var saveLabel: UILabel!
+    @IBOutlet weak var compelteLabel: UILabel!
 
     
     var model: WorkOrderModel?{
@@ -93,6 +95,9 @@ class WorkOrder2Cell: UITableViewCell {
     var model2: WorkOrderModel2?{
         didSet{
             
+            saveLabel.isHidden = true
+            compelteLabel.isHidden = true
+                
             workOrderIdLabel.text = model2?.workOrderId
             contentLabel.text = model2?.content
             timeLabel.text = model2?.time
@@ -101,6 +106,19 @@ class WorkOrder2Cell: UITableViewCell {
             creatLabel.text = model2?.reportPeopleName
             
             deviceBtn.isHidden =  model2!.is_equip != 1
+            
+            if (model2?.save)! {
+                
+                saveLabel.isHidden = false
+                compelteLabel.isHidden = true
+            }
+            
+            if (model2?.complete)! {
+                
+                saveLabel.isHidden = true
+                compelteLabel.isHidden = false
+            }
+
             
             switch model2!.status {
             case 0://待派发

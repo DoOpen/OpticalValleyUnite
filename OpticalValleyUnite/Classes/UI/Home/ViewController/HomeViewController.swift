@@ -627,7 +627,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     }
     
     
-    // MARK: - 添加按钮悬浮
+    // MARK: - 添加按钮悬浮的点击事件
     @IBAction func suspendButtonClick(_ sender: Any) {
         
         let data = UserDefaults.standard.object(forKey: Const.YQTotallData) as? NSArray

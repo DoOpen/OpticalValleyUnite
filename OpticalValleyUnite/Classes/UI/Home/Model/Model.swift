@@ -84,6 +84,7 @@ class WorkOrderModel: Object {
     dynamic var type = ""
     dynamic var type2 = ""
     
+    
     convenience init(parmart: [String: Any]) {
         self.init()
         content = parmart["DESCRIPTION"] as? String ?? ""
@@ -174,6 +175,11 @@ class WorkOrderModel2: Object {
     var is_equip = -1
     dynamic var type = ""
     dynamic var type2 = ""
+    
+    
+    dynamic var save = false
+    dynamic var complete = false
+
     
     convenience init(parmart: [String: Any]) {
         self.init()

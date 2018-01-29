@@ -19,7 +19,10 @@ class WorkOrderCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var creatLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
-
+    
+    ///新添加的离线的已经保存和 已经完成选项
+    @IBOutlet weak var alreadySave: UILabel!
+    @IBOutlet weak var alreadyCompelte: UILabel!
     
     var model: WorkOrderModel?{
         didSet{
@@ -29,6 +32,7 @@ class WorkOrderCell: UITableViewCell {
             
             creatLabel.text = model?.reportPeopleName
             
+                       
             switch model!.status {
             case 0://待派发
                 backView.backgroundColor = UIColor.red

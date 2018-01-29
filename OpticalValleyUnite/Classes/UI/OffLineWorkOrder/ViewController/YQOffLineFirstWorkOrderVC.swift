@@ -54,14 +54,17 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
         
-        //数据库来拿数据的列表
-        screenWithDataFromRealm()
+        
       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+        //数据库来拿数据的列表
+        screenWithDataFromRealm()
+        
         //初始调用的方法
         clickButtonEvent(currentStatusBtn!)
         

@@ -1882,50 +1882,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="春节放假通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfq-rW-03h">
-                                <rect key="frame" x="152" y="40" width="111" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUJ-m9-d3K">
-                                <rect key="frame" x="20" y="82" width="374" height="61"/>
-                                <string key="text">今年过年安排如下:
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zO0-cR-Ar2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quk-jg-EmE">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="春节放假通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfq-rW-03h">
+                                                <rect key="frame" x="152" y="30" width="111" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUJ-m9-d3K">
+                                                <rect key="frame" x="20" y="72" width="374" height="61"/>
+                                                <string key="text">今年过年安排如下:
 放假安排1月20日 - 1月26日,请大家知晓.
 </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行政部" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1M-ay-CED">
-                                <rect key="frame" x="20" y="163" width="374" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年12月22日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJ9-Dr-JzW">
-                                <rect key="frame" x="280" y="186" width="114" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行政部" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1M-ay-CED">
+                                                <rect key="frame" x="20" y="153" width="374" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年12月22日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJ9-Dr-JzW">
+                                                <rect key="frame" x="280" y="176" width="114" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="700" id="Bfr-hi-gXG"/>
+                                            <constraint firstItem="gfq-rW-03h" firstAttribute="top" secondItem="quk-jg-EmE" secondAttribute="top" constant="30" id="Cb0-YP-2oK"/>
+                                            <constraint firstItem="S1M-ay-CED" firstAttribute="trailing" secondItem="EUJ-m9-d3K" secondAttribute="trailing" id="EhQ-VP-hKg"/>
+                                            <constraint firstItem="S1M-ay-CED" firstAttribute="top" secondItem="EUJ-m9-d3K" secondAttribute="bottom" constant="20" id="OWc-TJ-e4f"/>
+                                            <constraint firstItem="tJ9-Dr-JzW" firstAttribute="top" secondItem="S1M-ay-CED" secondAttribute="bottom" constant="5" id="YSx-LO-SFs"/>
+                                            <constraint firstAttribute="trailing" secondItem="EUJ-m9-d3K" secondAttribute="trailing" constant="20" id="Zgt-uj-o3f"/>
+                                            <constraint firstItem="EUJ-m9-d3K" firstAttribute="top" secondItem="gfq-rW-03h" secondAttribute="bottom" constant="20" id="ZrA-Xh-a8j"/>
+                                            <constraint firstItem="tJ9-Dr-JzW" firstAttribute="trailing" secondItem="S1M-ay-CED" secondAttribute="trailing" id="ae6-5X-MNX"/>
+                                            <constraint firstItem="EUJ-m9-d3K" firstAttribute="leading" secondItem="quk-jg-EmE" secondAttribute="leading" constant="20" id="fEO-Pa-jqO"/>
+                                            <constraint firstItem="gfq-rW-03h" firstAttribute="centerX" secondItem="quk-jg-EmE" secondAttribute="centerX" id="w46-6M-tMN"/>
+                                            <constraint firstItem="S1M-ay-CED" firstAttribute="centerX" secondItem="quk-jg-EmE" secondAttribute="centerX" id="zzk-74-509"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="quk-jg-EmE" firstAttribute="top" secondItem="zO0-cR-Ar2" secondAttribute="top" id="QTd-Vu-KHS"/>
+                                    <constraint firstAttribute="trailing" secondItem="quk-jg-EmE" secondAttribute="trailing" id="d60-I5-ZSb"/>
+                                    <constraint firstItem="quk-jg-EmE" firstAttribute="leading" secondItem="zO0-cR-Ar2" secondAttribute="leading" id="vOe-3E-AkM"/>
+                                    <constraint firstAttribute="bottom" secondItem="quk-jg-EmE" secondAttribute="bottom" id="x19-tK-KdS"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="S1M-ay-CED" firstAttribute="top" secondItem="EUJ-m9-d3K" secondAttribute="bottom" constant="20" id="0ne-eT-Oen"/>
-                            <constraint firstAttribute="trailing" secondItem="EUJ-m9-d3K" secondAttribute="trailing" constant="20" id="7Kb-Tc-sFJ"/>
-                            <constraint firstItem="tJ9-Dr-JzW" firstAttribute="top" secondItem="S1M-ay-CED" secondAttribute="bottom" constant="5" id="Jhr-j8-ir3"/>
-                            <constraint firstItem="S1M-ay-CED" firstAttribute="trailing" secondItem="EUJ-m9-d3K" secondAttribute="trailing" id="WLo-in-vRq"/>
-                            <constraint firstItem="EUJ-m9-d3K" firstAttribute="top" secondItem="gfq-rW-03h" secondAttribute="bottom" constant="20" id="X3D-6E-4zu"/>
-                            <constraint firstItem="EUJ-m9-d3K" firstAttribute="leading" secondItem="56L-y5-mkS" secondAttribute="leading" constant="20" id="iW9-4F-6yi"/>
-                            <constraint firstItem="tJ9-Dr-JzW" firstAttribute="trailing" secondItem="S1M-ay-CED" secondAttribute="trailing" id="ifh-4g-3Rc"/>
-                            <constraint firstItem="gfq-rW-03h" firstAttribute="centerX" secondItem="56L-y5-mkS" secondAttribute="centerX" id="l4P-Wr-Qpc"/>
-                            <constraint firstItem="gfq-rW-03h" firstAttribute="top" secondItem="OHV-HY-XIF" secondAttribute="bottom" constant="20" id="q05-c7-Hxj"/>
-                            <constraint firstItem="S1M-ay-CED" firstAttribute="centerX" secondItem="56L-y5-mkS" secondAttribute="centerX" id="sZZ-xy-gYK"/>
+                            <constraint firstItem="dTs-69-lhj" firstAttribute="top" secondItem="zO0-cR-Ar2" secondAttribute="bottom" id="2NF-Mc-4xD"/>
+                            <constraint firstItem="zO0-cR-Ar2" firstAttribute="top" secondItem="56L-y5-mkS" secondAttribute="top" id="2PJ-B5-Bnm"/>
+                            <constraint firstItem="zO0-cR-Ar2" firstAttribute="leading" secondItem="56L-y5-mkS" secondAttribute="leading" id="9N2-eA-ee1"/>
+                            <constraint firstAttribute="trailing" secondItem="zO0-cR-Ar2" secondAttribute="trailing" id="dOP-o5-b3q"/>
+                            <constraint firstItem="quk-jg-EmE" firstAttribute="centerX" secondItem="56L-y5-mkS" secondAttribute="centerX" id="dlm-KC-UkQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="通知详情" id="qZ8-wJ-NJ3"/>
                     <connections>
+                        <outlet property="contantViewHeightConstraint" destination="Bfr-hi-gXG" id="aco-AX-Koc"/>
                         <outlet property="contentLabel" destination="EUJ-m9-d3K" id="aTK-0v-gHS"/>
                         <outlet property="departmentLabel" destination="S1M-ay-CED" id="xse-hu-cle"/>
                         <outlet property="timeLabel" destination="tJ9-Dr-JzW" id="TP8-y9-Gl0"/>
@@ -1934,7 +1960,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGt-UV-3fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2742" y="1155"/>
+            <point key="canvasLocation" x="2740.579710144928" y="1154.3478260869565"/>
         </scene>
         <!--首页-->
         <scene sceneID="IOi-UT-7JV">

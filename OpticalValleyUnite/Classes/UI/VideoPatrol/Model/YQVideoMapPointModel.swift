@@ -29,7 +29,7 @@ class YQVideoMapPointModel: NSObject {
 //    var videoConfigId : Int = 0
     
     //设备摄像头id
-    var equipmentId : Int = 0
+    var equipmentId : Int64 = 0
     
     //新增的是否是巡查过的点
     var isIns : Int = 0

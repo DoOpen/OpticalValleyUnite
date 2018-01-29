@@ -17,6 +17,9 @@ class SystemMessageViewController: UIViewController {
     @IBOutlet weak var departmentLabel: UILabel!
     
     var model: SystemMessageModel?
+    
+    @IBOutlet weak var contantViewHeightConstraint: NSLayoutConstraint!
+    
 
     
     override func viewDidLoad() {
@@ -34,11 +37,17 @@ class SystemMessageViewController: UIViewController {
             contentLabel.attributedText = str
         }
         
-        
-        
     }
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        self.contantViewHeightConstraint.constant  = self.timeLabel.maxY
+        
+        view.setNeedsLayout()
+        
+    }
 
 
 

@@ -155,13 +155,14 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
     // MARK: - 网络获取相应的数据的情况
     func getMediaPlayerData(){
         
-        let insPointId = prameterDict?["videoConfigId"] as? Int ?? 0
+        let insPointId = prameterDict?["videoConfigId"] as? Int64 ?? 0
+        
         if insPointId != 0{
         
             var par = [String : Any]()
             par["equipmentId"] = "\(insPointId)"
             
-            let baseUrl = URLPath.basicPath
+            let baseUrl = "http://192.168.0.21/"
             let tempUrl = "mobile/mobileVideo.html?equipmentIds="
             let url = baseUrl + tempUrl + "\(insPointId)"
             
@@ -171,42 +172,37 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
             self.webView.loadRequest(request)
             
             return
-           //////////////////////////////////////////////////////////////
-                
-            HttpClient.instance.post(path: URLPath.getVideogetLive, parameters: par, success: { (respose) in
-                
-                //获取视频地址,显示播放
-                let urlArray = respose as? NSArray
-                
-                if urlArray == nil{
-                    
-                    SVProgressHUD.showError(withStatus: "没有视频源!")
-                    
-                    return
-                }
-                
-               
-                
-                //增加需求来进行设置调试设置配置,多个设备进行拼接处理
-                for temp in urlArray!{
-                
-                    let urlDict = temp as? NSDictionary
-                    let url = urlDict?["interM3u8"] as? String
-                
-                }
-                
-                DispatchQueue.main.async {
-                    //获取url 来进行创建
-                    // 原生播放器 退出使用 self.addMediaPlayerViewMethod(urlString: url!)
-                   
-                    
-                    
-                }
-                
-            }) { (error) in
-                
-                SVProgressHUD.showError(withStatus: "视频失败,请检查网络!")
-            }
+            ///////////////////////////////////////////////////////////
+            //废弃的请求
+//            HttpClient.instance.post(path: URLPath.getVideogetLive, parameters: par, success: { (respose) in
+//                
+//                //获取视频地址,显示播放
+//                let urlArray = respose as? NSArray
+//                
+//                if urlArray == nil{
+//                    
+//                    SVProgressHUD.showError(withStatus: "没有视频源!")
+//                    
+//                    return
+//                }
+//                
+//                //增加需求来进行设置调试设置配置,多个设备进行拼接处理
+//                for temp in urlArray!{
+//                
+//                    let urlDict = temp as? NSDictionary
+//                    let url = urlDict?["interM3u8"] as? String
+//                
+//                }
+//                
+//                DispatchQueue.main.async {
+//                    //获取url 来进行创建
+//                    // 原生播放器 退出使用 self.addMediaPlayerViewMethod(urlString: url!)
+//                }
+//                
+//            }) { (error) in
+//                
+//                SVProgressHUD.showError(withStatus: "视频失败,请检查网络!")
+//            }
         
         }else{
             //没有视频播放情况

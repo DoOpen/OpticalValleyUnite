@@ -31,13 +31,14 @@ struct URLPath {
 //    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
     ///新版测试服务器的域名 http://172.16.19.98:8091
     ///新版正式服 : http://116.62.117.82:2018
-    ///元元 : http://172.16.11.81
+    ///元元 : http://172.16.11.76
     
     //服务器的basic 地址:
-    static let basicPath = "http://172.16.19.98:8091/ovu-pcos/api/"
-
+    static let basicPath = "http://192.168.0.21/ovu-pcos/api/"
+    static let basicVideoURLPath = "http://192.168.0.21/"
+    
     //服务器拆分的接口 newbasicPath
-    static let newbasicPath = "http://172.16.19.98:8091/ovu-base/api/"
+    static let newbasicPath = "http://192.168.0.21/ovu-base/api/"
     
     static let login = "user/login.do"
     static let systemMessage = "message/importentMsg.do"
@@ -54,7 +55,7 @@ struct URLPath {
     static let getWorkTypeList = "workunit/getWorkTypeList.do"
     
     //子系统选择图片服务器的地址(所有的图片)(子系统选择和 图片上传所有的图片URL)
-    static let systemSelectionURL = "http://172.16.19.98:8091/ovu-base/"
+    static let systemSelectionURL = "http://192.168.0.21/ovu-base/"
 
 
     //获取配件库主页数据接口

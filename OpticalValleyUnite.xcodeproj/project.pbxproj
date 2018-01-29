@@ -2513,7 +2513,10 @@
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/UMessage_Sdk_1.5.0a",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/RfmFrameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2549,7 +2552,10 @@
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/UMessage_Sdk_1.5.0a",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/RfmFrameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

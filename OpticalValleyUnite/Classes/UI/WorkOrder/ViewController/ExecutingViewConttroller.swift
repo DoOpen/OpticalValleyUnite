@@ -361,6 +361,8 @@ class ExecutingViewConttroller: UIViewController {
         
             SVProgressHUD.showSuccess(withStatus: "保存数据成功!")
             
+            maketrueSave = true
+            
             let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
             let realm = try! Realm()
             

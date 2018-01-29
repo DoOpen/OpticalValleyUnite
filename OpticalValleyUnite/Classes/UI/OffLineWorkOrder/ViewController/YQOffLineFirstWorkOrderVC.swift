@@ -92,12 +92,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
             
         } else {
             
-            let toallPictrue = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
             
-            if toallPictrue.isEmpty {
-                
-                return
-            }
             var parmart = [String : Any]()
             
             
@@ -190,11 +185,20 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     print("转换错误 ")
                 }
                 
-                
+    
                 HttpClient.instance.post(path: URLPath.getUploadOfflineUnits, parameters: parameters, success: { (response) in
                     
                     SVProgressHUD.dismiss()
                     SVProgressHUD.showSuccess(withStatus: "工单保存成功!")
+                    
+                    let toallPictrue = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
+                    
+                    if toallPictrue.isEmpty {
+                        
+                        return
+                    }
+
+                    
                     
                     // 工单上传成功之后,再上传图片
                     SVProgressHUD.show(withStatus: "上传图片中...")
@@ -338,6 +342,9 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     
                     SVProgressHUD.showError(withStatus: "工单保存失败,请检查网络!")
                 })
+            }else{
+            
+                SVProgressHUD.showError(withStatus: "没有完成的工单可以上传!")
             }
             
         }

@@ -260,14 +260,14 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9I-C7-0sC">
-                                <rect key="frame" x="305" y="607" width="60" height="50"/>
+                                <rect key="frame" x="305" y="597" width="60" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="dKP-fU-kQ3"/>
+                                    <constraint firstAttribute="height" constant="60" id="dKP-fU-kQ3"/>
                                     <constraint firstAttribute="width" constant="60" id="s8B-mi-hC8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="工单下载">
+                                <state key="normal" title="工单下载" image="btn_home__down_nor">
                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -275,7 +275,7 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -286,16 +286,16 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ijh-kc-bLP">
-                                <rect key="frame" x="305" y="547" width="60" height="50"/>
+                                <rect key="frame" x="305" y="527" width="60" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Mmn-Z2-7pS"/>
-                                    <constraint firstAttribute="height" constant="50" id="POL-xs-tsA"/>
+                                    <constraint firstAttribute="height" constant="60" id="POL-xs-tsA"/>
                                     <constraint firstAttribute="width" constant="60" id="oq7-4L-jyx"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="xpf-wB-7x5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="工单上传">
+                                <state key="normal" title="工单上传" image="btn_home__up_nor">
                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -303,7 +303,7 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -343,6 +343,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btn_home__down_nor" width="58" height="58"/>
+        <image name="btn_home__up_nor" width="58" height="58"/>
         <image name="shebei" width="14" height="14"/>
         <image name="time" width="15" height="15"/>
     </resources>

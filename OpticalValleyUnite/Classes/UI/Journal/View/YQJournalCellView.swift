@@ -45,9 +45,21 @@ class YQJournalCellView: UITableViewCell{
             
             tempTimeLabel.text = (model?.createTime?.substring(to: index!))! + "工作日志"
             
-            if model?.avatar != nil {
+            if model?.avatar != "" {
                 
-                imageV.kf.setImage(with:URL(string : (model?.avatar)!) , placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
+                if (model?.avatar?.contains("http"))!{
+                    
+                    imageV.kf.setImage(with:URL(string : (model?.avatar)!) , placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
+                    
+                    
+                }else{
+                    
+                    let basicPath = URLPath.systemSelectionURL
+                    let newString = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.avatar)!
+                    
+                    imageV.kf.setImage(with:URL(string : newString) , placeholder: UIImage(named: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
+                }
+                
                 
             }else{
                 

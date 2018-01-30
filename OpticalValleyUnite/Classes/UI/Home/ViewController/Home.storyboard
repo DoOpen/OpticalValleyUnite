@@ -420,6 +420,7 @@
                         <outlet property="donw3BtnView" destination="heH-Cf-e0j" id="4Ai-Kk-dk0"/>
                         <outlet property="messageBtn" destination="VWM-dt-8AB" id="SjM-Zp-hQq"/>
                         <outlet property="scanBtn" destination="AWV-ab-LBm" id="nNr-9t-nJU"/>
+                        <outlet property="subsystemBtn" destination="ItE-1g-Tdh" id="GLu-DM-uCo"/>
                         <outlet property="tableView" destination="eJ7-xV-TzL" id="q6W-6d-RbE"/>
                         <outlet property="top1BtnView" destination="522-aS-wj6" id="HeG-uj-jat"/>
                         <outlet property="top2BtnView" destination="5J9-1o-pYA" id="phx-As-mZr"/>

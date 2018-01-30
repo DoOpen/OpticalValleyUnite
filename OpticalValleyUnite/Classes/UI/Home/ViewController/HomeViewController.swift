@@ -56,6 +56,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     /// tabelView的拖线的指针
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var subsystemBtn: UIButton!
+    
+    
     
     ///计步器的功能模块属性
     //设置注册 计步设备的
@@ -72,7 +75,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         super.viewDidLoad()
 
-        
         
         //分别设置两个(上下)按钮数组
         topBtnViewArray = [top1BtnView,top2BtnView,top3BtnView,top4BtnView]
@@ -180,11 +182,17 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     // MARK: - 获取不同管理员权限的方法,首页数据获取核心方法 getModules的接口
     func getPermission(){
         
-        let data = UserDefaults.standard.object(forKey: Const.YQSystemSelectData)
+        let data = UserDefaults.standard.object(forKey: Const.YQTotallData) as? NSArray
         if data == nil {
             
             return
         }
+        
+        if data?.count == 1 {
+            
+            self.subsystemBtn.isHidden = true
+        }
+
     
         //注意的是:通过的是子系统选择的界面功能取消   URLPath.getModules 的网络请求
         systemSelection = UserDefaults.standard.object(forKey: Const.YQSystemSelectData) as! NSDictionary

@@ -138,17 +138,18 @@ class YQStepStatisticsView: UITableViewCell {
     
     
     
-    @IBAction func helpButtonClick(_ sender: Any) {
+    @IBAction func helpButtonClick(_ sender: UIButton) {
         //点赞按钮点击的触发的事件, 注意的是还有一个重复点赞的情况
         if self.model == nil {
             return
         }
         
+        sender.isUserInteractionEnabled = false
+        
         self.helpButton.isSelected = !self.helpButton.isSelected
         
         self.delegate?.StepStatisticsViewHelpButtonClick(view: self
             , indexPath: indepathrow, isZan: self.helpButton.isSelected)
-        
     }
     
     // MARK: - 定义的圆形图框的内容

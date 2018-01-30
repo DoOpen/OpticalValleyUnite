@@ -48,6 +48,8 @@ class SignInViewController: UIViewController {
     
         mapSetup()
         
+         getSignCount()
+        
     }
     
     func getSignCount(){
@@ -67,13 +69,6 @@ class SignInViewController: UIViewController {
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-       getSignCount()
-
-    }
-
 
     @IBAction func signInBtnClick() {
         
@@ -117,6 +112,8 @@ class SignInViewController: UIViewController {
             print("签到成功")
             SVProgressHUD.showSuccess(withStatus: "签到成功")
             self.showList()
+            //添加累计,签到次数
+            self.getSignCount()
             
         }) { (error) in
             

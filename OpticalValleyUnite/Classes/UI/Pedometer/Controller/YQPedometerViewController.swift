@@ -68,6 +68,9 @@ class YQPedometerViewController: UIViewController {
         return yes
         
     }()
+    
+    //缓存点赞button
+    var tempHelpBtn : UIButton?
 
 
     
@@ -311,6 +314,9 @@ class YQPedometerViewController: UIViewController {
         HttpClient.instance.post(path: URLPath.getRankPedometer, parameters: parmat, success: { (respose) in
             
             SVProgressHUD.dismiss()
+            
+            self.tempHelpBtn?.isUserInteractionEnabled = true
+            
             //字典转模型,读取相应的数据
             var temp = [YQStepShowModel]()
             
@@ -482,6 +488,8 @@ extension YQPedometerViewController : YQStepStatisticsViewDelegate {
         par["date"] = yesterday
         par["userid"] = self.rankData[indexPath].userid
         
+        self.tempHelpBtn = view.helpButton
+        
         //调用实现点赞的功能
         HttpClient.instance.post(path: URLPath.getPedometerZan, parameters: par, success: { (respose) in
 
@@ -491,8 +499,7 @@ extension YQPedometerViewController : YQStepStatisticsViewDelegate {
             
             //要求的是,重新的刷新所有的表格
             self.getRankForAllData(dic : par)
-            
-            
+
             
         }) { (error) in
             

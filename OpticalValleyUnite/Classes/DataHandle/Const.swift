@@ -19,6 +19,7 @@ struct Const {
 //    static let SJUMPushKey = "5979b30eaed1793e5d0002c1" //com.test
 
     static let SJUMPushKey = "5976ad34677baa2de60006dc"//企业打包
+//    static let SJUMPushKey = "598ad9d5aed17922bc001225"
     
     static let SJToken = "SJToken"
     static let YQParkID = "YQParkID"

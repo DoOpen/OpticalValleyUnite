@@ -1189,6 +1189,11 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
             
             // 检索 Realm 数据库，找到小于 2 岁 的所有狗狗
             let deleteArray = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@", id)
+            if deleteArray.isEmpty{
+                
+                return
+            }
+            
             let delete = deleteArray[buttonTag]
 
             try! realm.write {

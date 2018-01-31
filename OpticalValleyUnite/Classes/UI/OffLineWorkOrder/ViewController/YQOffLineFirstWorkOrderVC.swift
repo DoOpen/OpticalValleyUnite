@@ -117,6 +117,8 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     let id = model.WORKUNIT_ID
                     let stepid = model.stepId
                     
+//                    let emeCompelte = realm.objects(WorkOrderDetailModel.self).filter("stepId == %@","yingji")
+                    
                     if stepid == "yingji" {
                         
                         var par = [String: Any]()
@@ -163,6 +165,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     parmat["ID"] = json0["ID"]
                     parmat["DESCRIPTION"] = json0["DESCRIPTION"]
                     parmat["FINISH_STATUS"] = 1 //代表的完成的情况!
+                    parmat["SUCCESS_TEXT"] = ""
                     
                     arrayDict.append(parmat)
                 }
@@ -285,7 +288,6 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                             if stepID != model.stepId {
                                 HttpClient.instance.uploadOffWorkLineImages(filerArray , param: parmart, succses: { (url) in
                                     
-                                    SVProgressHUD.dismiss()
                                     
                                 }, failure: { (error) in
                                     
@@ -293,9 +295,13 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                                     
                                 })
                                 
+                                filerArray.removeAll()
                                 stepID = model.stepId
                                 parmart["stepId"] = stepID
-                                filerArray.removeAll()
+                                
+                                let data = model.pictureData
+                                let image = UIImage.init(data: data!)
+                                filerArray.append(image!)
                                 
                             }else{
                                 
@@ -334,6 +340,8 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                             
                             //清空所有,然后再进行的添加
                             realm.delete(compelte)//注意的是,这里的是,清空的完成表的情况
+                            realm.delete(plan)
+                            realm.delete(emergency)
                             
                             self.screenWithDataFromRealm()
                         }

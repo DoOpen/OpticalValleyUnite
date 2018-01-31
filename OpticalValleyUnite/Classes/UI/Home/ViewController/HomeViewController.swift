@@ -212,9 +212,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             var sortArray : NSMutableArray = {return NSMutableArray()}()
             
             //解决bug: 需要通过的是 "SORT" : 2 的值来进行对数据来重新排序
-            for xxxx in 0..<tempArray.count {
+            for _ in 0..<tempArray.count {
                 
-                for yyyy in xxxx..<tempArray.count - 1 {
+                for yyyy in 0..<tempArray.count - 1 {
                 
                     let sortTemp = tempArray[yyyy] as! [String : Any]
                     let SORT = sortTemp["SORT"] as? Int
@@ -227,12 +227,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                         tempArray.exchangeObject(at: yyyy, withObjectAt: yyyy + 1)
                         
                     }
-                    
                 }
-                
-                sortArray = tempArray
-                
             }
+            
+            sortArray = tempArray
             
             self.setPermission(arry: sortArray as! Array<[String : Any]> )
             

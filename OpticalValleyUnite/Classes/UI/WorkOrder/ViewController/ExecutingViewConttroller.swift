@@ -718,7 +718,6 @@ class ExecutingViewConttroller: UIViewController {
             result?.complete = true
             try! realm.commitWrite()
 
-            
             try! realm.write {
                 
                 realm.add(saveAndCompelete)
@@ -1008,11 +1007,14 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
                 
                 cell = Bundle.main.loadNibNamed("YQExecNew", owner: nil, options: nil)?[0] as? YQExecNewCell
             }
+            let modeltemp = models[indexPath.section]
+            
             cell?.delegate = self
             
             //添加图片缓存数组
             cell?.currentIndex = indexPath
             cell?.backDB = self.backDB
+            cell?.id = modeltemp.workOrderId
             
             cell?.model = model
 //            currentSelectIndexPath = indexPath

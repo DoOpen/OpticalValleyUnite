@@ -52,6 +52,8 @@ class YQExecNewCell: UITableViewCell {
     
     //是否是离线
     var backDB : Bool?
+    //工单id
+    var id : String!
     
     //数据模型
     var model : ExecChild?{
@@ -76,22 +78,22 @@ class YQExecNewCell: UITableViewCell {
                 
             }
             
-            let id =  model?.id
+            let stepId =  model?.id
             //走离线工单的情况
             if self.backDB! {//离线工单的图片获取情况
                 //获取stepid的数据库的表数据来查图片
                 //查图片库的数据表
                 let realm = try! Realm()
                 
-                let model = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@", id!)
-                if model.count == 3 {
+                let modeltemp = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId = %@ AND id = %@", stepId!,id)
+                if modeltemp.count == 3 {
                     self.addButton.isHidden = true
                 }
                 
-                for PicIndex in 0..<model.count{
+                for PicIndex in 0..<modeltemp.count{
                     
                     let imageV =  self.pictureArray[PicIndex]
-                    let picModel = model[PicIndex]
+                    let picModel = modeltemp[PicIndex]
                     imageV.image = UIImage.init(data: picModel.pictureData!)
                     
                 }

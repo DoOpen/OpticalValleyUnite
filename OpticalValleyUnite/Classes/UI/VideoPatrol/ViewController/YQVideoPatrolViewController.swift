@@ -16,9 +16,15 @@ class YQVideoPatrolViewController: UIViewController {
     
     @IBOutlet weak var mapView: MAMapView!
     
-    
     /// 项目parkID 的属性
-    var parkId = ""
+    var parkId = ""{
+    
+        didSet{
+        
+           makeMapLocationData()
+        }
+    
+    }
     
     /// 是否有室内点的情况
     var isIndoorPoint : Bool?
@@ -111,12 +117,6 @@ class YQVideoPatrolViewController: UIViewController {
         
         mapViewSetup()
         
-        if self.parkId == "" {
-            
-            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
-            self.navigationController?.pushViewController(project, animated: true)
-        }
-        
         makeMapLocationData()
 
         //3.接受通知赋值
@@ -130,10 +130,10 @@ class YQVideoPatrolViewController: UIViewController {
         //获取项目parkID的情况
         let _ = setUpProjectNameLable()
         
+    
     }
     
-    // MARK: - 重定位buttonClick 
-    
+    // MARK: - 重定位buttonClick
     @IBAction func RepositionButtonClick(_ sender: UIButton) {
         
         mapViewSetup()
@@ -201,15 +201,17 @@ class YQVideoPatrolViewController: UIViewController {
     // MARK: - 地图加载数据,打点的功能
     func makeMapLocationData(){
         //1.获取parkID
-        _ = self.setUpProjectNameLable()
+//        _ = self.setUpProjectNameLable()
         
         var parameter = [String : Any]()
         parameter["parkId"] = self.parkId
         
-//        if self.parkId == "" {
-//            
-//            
-//        }
+        if self.parkId == "" {
+            
+            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+            self.navigationController?.pushViewController(project, animated: true)
+            return
+        }
         
         //2.网络数据的请求
         SVProgressHUD.show()
@@ -314,7 +316,6 @@ class YQVideoPatrolViewController: UIViewController {
     
         mapView.addAnnotation(annotation)
         
-        
     }
     
     
@@ -384,15 +385,18 @@ class YQVideoPatrolViewController: UIViewController {
             
         }else{//室外点,直接调用
             
-            if  mapViewModel.equipmentId != 0 {
-                
-                videoAllSelectParmeter["videoConfigId"] = mapViewModel.equipmentId
-            }
-
+            
             self.videoAllSelectParmeter["type"] = mapViewModel.type
             
             self.CheckBeginDataStart()
         }
+        
+        //不管是室内点和 室外点的 设备,摄像头ID 是必传的
+        if  mapViewModel.equipmentId != 0 {
+            
+            videoAllSelectParmeter["videoConfigId"] = mapViewModel.equipmentId
+        }
+
         
     }
     
@@ -562,9 +566,12 @@ class YQVideoPatrolViewController: UIViewController {
     func videoLoadWaysNoties(noties : Notification){
         
         mapView.removeOverlays(overlays)
+//        mapView.removeAnnotation(mapView.annotations as! MAAnnotation)
+        
         overlays.removeAll()
         
-        let loadWays = noties.userInfo?["VideoLoadWaysArray"] as? NSArray
+        let loadWays = noties.userInfo?[
+            "VideoLoadWaysArray"] as? NSArray
         
         if loadWays == nil {
             //调用首页的初始点的接口

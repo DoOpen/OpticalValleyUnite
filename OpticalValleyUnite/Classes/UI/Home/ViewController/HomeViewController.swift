@@ -206,53 +206,32 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             
             let array : NSArray = systemSelection["app_res"] as! [[String : Any]] as NSArray
-            let sortArray : NSMutableArray = {return NSMutableArray()}()
+            let tempArray = NSMutableArray()
+            tempArray.addObjects(from: array as! [Any])
+            
+            var sortArray : NSMutableArray = {return NSMutableArray()}()
             
             //解决bug: 需要通过的是 "SORT" : 2 的值来进行对数据来重新排序
-            for xxxx in 0..<array.count {
+            for xxxx in 0..<tempArray.count {
                 
-                for temp in array {
+                for yyyy in xxxx..<tempArray.count - 1 {
+                
+                    let sortTemp = tempArray[yyyy] as! [String : Any]
+                    let SORT = sortTemp["SORT"] as? Int
                     
-                    let sortTemp = temp as! [String : Any]
-                    var SORT = sortTemp["SORT"] as? Int
-                    
-                    if SORT == 9 {
-                        
-                        SORT = 6 //计步器的功能数组
-                    }
-                    
-                    if SORT == 10 {
-                        
-                        SORT = 7 //重新对sort进行赋值的操作
-                    }
-                    
-                    if SORT == 11 {
-                        
-                        SORT = 8 //门禁
-                    }
-                    
-                    if SORT == 12 {
-                        
-                        SORT = 9 //视频巡查
-                    }
+                    let sortTemp1 = tempArray[yyyy + 1] as! [String : Any]
+                    let SORT1 = sortTemp1["SORT"] as? Int
 
-                    if SORT == 13 {
+                    if SORT! > SORT1! {
+                        //交换元素
+                        tempArray.exchangeObject(at: yyyy, withObjectAt: yyyy + 1)
                         
-                        SORT = 10 //巡查结果
                     }
                     
-                    if SORT == 14 {
-                        
-                        SORT = 11 //工作报告
-                    }
-                    
-                    if xxxx == SORT {
-                        
-                        //前台的数据重写逻辑!
-                        sortArray.add(temp)
-                        
-                    }
                 }
+                
+                sortArray = tempArray
+                
             }
             
             self.setPermission(arry: sortArray as! Array<[String : Any]> )
@@ -266,8 +245,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 
                 //设置保存电梯和普通的报事全局保存
                 UserDefaults.standard.set(reportName, forKey: Const.YQReportName)
-//                print(reportName)
-                
+
             }
         
             do {

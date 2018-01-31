@@ -20,14 +20,13 @@ class YQVideoIndoorPatorlModel: NSObject {
 //    var videoConfigId : Int = 0
     
     // 摄像头设备ID
-    var equipmentId : Int = 0
+    var equipmentId : Int64 = 0
     
     
     init(dic : [String : Any]) {
         super.init()
         
          setValuesForKeys(dic)
-        
     }
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {

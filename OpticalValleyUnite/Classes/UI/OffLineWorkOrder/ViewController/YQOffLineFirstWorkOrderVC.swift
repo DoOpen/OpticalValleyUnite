@@ -301,8 +301,9 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                                         group.leave()
                                         
                                     }, failure: { (error) in
-                                        group.leave()
+                                        
                                         SVProgressHUD.showError(withStatus: "图片上传失败,请检查网络!")
+                                        group.leave()
                                         
                                     })
                                     
@@ -320,32 +321,31 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                                     let image = UIImage.init(data: data!)
                                     filerArray.append(image!)
                                     
-                                    
-                                    if planWorkOIndex == planResult.count - 1 {
-                                        
-                                        group.enter()
-                                        //上传一次计划工单图片的情况
-                                        HttpClient.instance.uploadOffWorkLineImages(filerArray , param: parmart, succses: { (url) in
-                                            
-                                            SVProgressHUD.showSuccess(withStatus: "所有图片上传成功!")
-                                            
-                                            group.leave()
-                                            
-                                        }, failure: { (error) in
-                                            
-                                            SVProgressHUD.showError(withStatus: "图片上传失败,请检查网络!")
-                                            group.leave()
-                                        })
-                                    }
                                 }
+                                
+                                if planWorkOIndex == planResult.count - 1 {
+                                    
+                                    group.enter()
+                                    //上传一次计划工单图片的情况
+                                    HttpClient.instance.uploadOffWorkLineImages(filerArray , param: parmart, succses: { (url) in
+                                        
+                                        SVProgressHUD.showSuccess(withStatus: "所有图片上传成功!")
+                                        
+                                        group.leave()
+                                        
+                                    }, failure: { (error) in
+                                        
+                                        SVProgressHUD.showError(withStatus: "图片上传失败,请检查网络!")
+                                        group.leave()
+                                    })
+                                    
+                                }
+
                             }
                         }
                     
-                    
                     //移除上传完成的工单
-                     group.notify(queue: DispatchQueue.main){
-                        
-                        SVProgressHUD.dismiss()
+                    group.notify(queue: DispatchQueue.main){
                         
                         try! realm.write {
                             
@@ -364,10 +364,11 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                             
                             self.screenWithDataFromRealm()
                             
+                            SVProgressHUD.dismiss()
+                            
                         }
-                }
+                    }
                     
-                
                 }, failure: { (error) in
                     
                     SVProgressHUD.showError(withStatus: "工单保存失败,请检查网络!")

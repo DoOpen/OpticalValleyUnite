@@ -408,8 +408,21 @@ class ExecutingViewConttroller: UIViewController {
         
         if backDB {//保存按钮只有 计划工单才有执行
         
-            SVProgressHUD.showSuccess(withStatus: "保存数据成功!")
-            
+            autoreleasepool{//先要删除保存,上次的重复的数据
+                
+                let realm = try! Realm()
+                let id = parmate?["WORKUNIT_ID"] as? String
+                let testArray = realm.objects(saveAndCompelteWorkIDModel.self).filter("stepId != %@ AND WORKUNIT_ID == %@","yingji",id!)
+                
+                if !testArray.isEmpty{
+                    
+                    try! realm.write {
+                        
+                        realm.delete(testArray)
+                    }
+                }
+            }
+
             maketrueSave = true
             
             parmate?["SUCCESS_TEXT"] = self.RemarksTextView.text
@@ -425,10 +438,10 @@ class ExecutingViewConttroller: UIViewController {
             result?.save = true
             try! realm.commitWrite()
 
-            
             try! realm.write {
                 
                 realm.add(saveAndCompelete)
+                SVProgressHUD.showSuccess(withStatus: "保存数据成功!")
             }
 
             return
@@ -697,8 +710,6 @@ class ExecutingViewConttroller: UIViewController {
             
             if backDB {
                 
-                parmate?["SUCCESS_TEXT"] = self.RemarksTextView.text
-                
                 let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
                 let realm = try! Realm()
                 
@@ -735,6 +746,7 @@ class ExecutingViewConttroller: UIViewController {
                     let realm = try! Realm()
                     let id = parmate?["WORKUNIT_ID"] as? String
                     let imageArray = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@ AND id == %@","yingji",id!)
+                    let testArray = realm.objects(saveAndCompelteWorkIDModel.self).filter("stepId == %@ AND WORKUNIT_ID == %@","yingji",id!)
                     if !imageArray.isEmpty{
                         
                         try! realm.write {
@@ -742,6 +754,15 @@ class ExecutingViewConttroller: UIViewController {
                             realm.delete(imageArray)
                         }
                     }
+                    
+                    if !testArray.isEmpty{
+                        
+                        try! realm.write {
+                            
+                            realm.delete(testArray)
+                        }
+                    }
+                    
                 }
                 //保存的数据的接口的重调!
                 var parmat = [String: Any]()
@@ -1293,18 +1314,23 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
                 return
             }
             
-            let delete = deleteArray[buttonTag]
-
-            try! realm.write {
-                realm.delete(delete)
+            if buttonTag <= deleteArray.count - 1 {
+                
+                let delete = deleteArray[buttonTag]
+                
+                try! realm.write {
+                    realm.delete(delete)
+                }
+                
+                self.tableView.reloadRows(at: [currentRow], with: .automatic)
             }
             
+            
 //            model.imageValue = "add_jihua_picture"
-//            
+//
 //            models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
             
             //单行刷新列表
-            self.tableView.reloadRows(at: [currentRow], with: .automatic)
             return
         }
         

@@ -50,8 +50,7 @@ class YQReportFormFirstVC: UIViewController {
         
         
         navigationController?.pushViewController(reportVC!, animated: true)
-        
-        
+    
     }
     
     // MARK: - 添加默认的项目选择方法

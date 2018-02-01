@@ -143,6 +143,10 @@ class saveAndCompelteWorkIDModel : Object{
     dynamic var WORKUNIT_ID  = ""
     dynamic var stepId = ""
     
+    //备注信息
+    dynamic var SUCCESS_TEXT = ""
+    
+    
     convenience init(parmart: [String: Any]) {
         
         self.init()

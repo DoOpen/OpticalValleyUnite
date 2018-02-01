@@ -147,6 +147,40 @@ class ExecutingViewConttroller: UIViewController {
                 emergencyView.isUserInteractionEnabled = false
             }
             
+            autoreleasepool {
+                //补充添加备注,信息的显示的情况
+                let id = parmate?["WORKUNIT_ID"] as? String
+                let realm = try! Realm()
+                
+                let saveModel = realm.objects(saveAndCompelteWorkIDModel.self).filter("WORKUNIT_ID == %@", id!).first
+                if saveModel != nil {
+                    
+                    let text = saveModel?.SUCCESS_TEXT
+                    
+                    if text != "" {
+                        
+                        self.textView.placeHolder = ""
+                        
+                    }
+                    self.textView.text = text
+                    
+                }
+                
+                //查询的是应急工单的添加的回显的图片
+                let imageArray = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@ AND id == %@","yingji",id!)
+                if !imageArray.isEmpty{
+                    
+                    for temp in imageArray{
+                        
+                        let image = UIImage.init(data: temp.pictureData!)
+                        
+                        addPhoneView.addImage(AddViewModel(image: image!))
+                    }
+                }
+            }
+            
+
+            
         }
         
         if let model = hisriyModel{
@@ -167,7 +201,7 @@ class ExecutingViewConttroller: UIViewController {
     }
     
     
-    //MARK: -获取工单步骤信息
+    //MARK: -获取计划工单步骤信息
     func getData(){
         
         if backDB {
@@ -183,6 +217,20 @@ class ExecutingViewConttroller: UIViewController {
                     
                     self.models.append(temp)
                     
+                }
+                //补充添加备注,信息的显示的情况
+                let saveModel = realm.objects(saveAndCompelteWorkIDModel.self).filter("WORKUNIT_ID == %@", id!).first
+                if saveModel != nil {
+                    
+                    let text = saveModel?.SUCCESS_TEXT
+                    
+                    if text != "" {
+                        
+                        self.RemarksTextView.placeHolder = ""
+                        
+                    }
+                    self.RemarksTextView.text = text
+
                 }
                 
                 self.tableView.reloadData()
@@ -358,11 +406,13 @@ class ExecutingViewConttroller: UIViewController {
          
          */
         
-        if backDB {
+        if backDB {//保存按钮只有 计划工单才有执行
         
             SVProgressHUD.showSuccess(withStatus: "保存数据成功!")
             
             maketrueSave = true
+            
+            parmate?["SUCCESS_TEXT"] = self.RemarksTextView.text
             
             let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
             let realm = try! Realm()
@@ -644,8 +694,29 @@ class ExecutingViewConttroller: UIViewController {
                 
                 return
             }
-
             
+            if backDB {
+                
+                parmate?["SUCCESS_TEXT"] = self.RemarksTextView.text
+                
+                let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
+                let realm = try! Realm()
+                
+                let id = parmate?["WORKUNIT_ID"] as? String
+                
+                let result = realm.objects(WorkOrderModel2.self).filter("id == %@", id!).first
+                
+                realm.beginWrite()
+                result?.complete = true
+                try! realm.commitWrite()
+                
+                try! realm.write {
+                    
+                    realm.add(saveAndCompelete)
+                }
+                
+            }
+
             //设置添加配件库的模型数据进来
             self.upload(parmat)
             
@@ -658,6 +729,20 @@ class ExecutingViewConttroller: UIViewController {
             }
             
             if images.count > 0 {
+                //应急工单,保存之前,数据要更新重置
+                autoreleasepool{
+                    
+                    let realm = try! Realm()
+                    let id = parmate?["WORKUNIT_ID"] as? String
+                    let imageArray = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@ AND id == %@","yingji",id!)
+                    if !imageArray.isEmpty{
+                        
+                        try! realm.write {
+                            
+                            realm.delete(imageArray)
+                        }
+                    }
+                }
                 //保存的数据的接口的重调!
                 var parmat = [String: Any]()
                 parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
@@ -703,27 +788,37 @@ class ExecutingViewConttroller: UIViewController {
                     self.upload(parmat)
                 }
             }
-        }
-        
-        if backDB {
-        
-            let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
-            let realm = try! Realm()
             
-            let id = parmate?["WORKUNIT_ID"] as? String
-            
-            let result = realm.objects(WorkOrderModel2.self).filter("id == %@", id!).first
-            
-            realm.beginWrite()
-            result?.complete = true
-            try! realm.commitWrite()
-
-            try! realm.write {
+            if backDB {
                 
-                realm.add(saveAndCompelete)
+                parmate?["SUCCESS_TEXT"] = self.textView.text
+                
+                let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
+                
+                autoreleasepool{
+                    
+                    let realm = try! Realm()
+                    
+                    let id = parmate?["WORKUNIT_ID"] as? String
+                    
+                    let result = realm.objects(WorkOrderModel2.self).filter("id == %@", id!).first
+                    
+                    realm.beginWrite()
+                    result?.complete = true
+                    try! realm.commitWrite()
+                    
+                    try! realm.write {
+                        
+                        realm.add(saveAndCompelete)
+                    }
+                    
+                    
+                }
+                
             }
-        
+
         }
+        
         
     }
     
@@ -735,6 +830,8 @@ class ExecutingViewConttroller: UIViewController {
             
             SVProgressHUD.showSuccess(withStatus: "离线操作成功!")
             self.ProgressVC?.reloadStatus(status: 7)
+            //添加备注信息的保存情况
+            
             
             self.navigationController?.popViewController(animated: true)
 

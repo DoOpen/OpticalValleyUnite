@@ -1081,6 +1081,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let model = models[indexPath.section].childs[indexPath.row]
+        let modeltemp = models[indexPath.section]
         
         if model.type == "3"{//选择事项 cell
             
@@ -1125,7 +1126,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
                 
                 cell = Bundle.main.loadNibNamed("YQExecNew", owner: nil, options: nil)?[0] as? YQExecNewCell
             }
-            let modeltemp = models[indexPath.section]
+            
             
             cell?.delegate = self
             
@@ -1160,9 +1161,12 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
                 cell = Bundle.main.loadNibNamed("YQExecScanCell", owner: nil, options: nil)?[0] as? YQExecScanCell
             }
             
-            cell?.model = model
+            cell?.backDB = self.backDB
             cell?.delegate = self
             cell?.indexPath = indexPath.row
+            cell?.id = modeltemp.workOrderId
+            
+            cell?.model = model
     
             return cell!
         }

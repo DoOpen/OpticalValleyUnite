@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 protocol YQExecScanCellDelegate : class {
     
@@ -36,6 +38,10 @@ class YQExecScanCell: UITableViewCell {
         
     }
     
+    //工单id
+    var id : String!
+    
+    var backDB : Bool = false
     
     //数据模型
     var model : ExecChild?{
@@ -53,10 +59,14 @@ class YQExecScanCell: UITableViewCell {
                     
                     self.scanLabel.textColor = UIColor.red
                     
+                    
                 }else if (model?.value.contains("已匹配"))!{
                     
                     self.scanLabel.textColor = UIColor.green
                 }
+                
+                self.scanLabel.text = model?.value
+
             }
         }
     }

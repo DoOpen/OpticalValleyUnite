@@ -22,6 +22,12 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    //工单上传和下载的按钮
+    @IBOutlet weak var uploadButton: UIButton!
+    
+    @IBOutlet weak var downloadButton: UIButton!
+    
+    
     var currentIndex = 0{
         didSet{
             //重新查表,赋值currentDatas
@@ -54,8 +60,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
         
-        
-      
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -194,8 +199,8 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
     
                 HttpClient.instance.post(path: URLPath.getUploadOfflineUnits, parameters: parameters, success: { (response) in
                     
-                    SVProgressHUD.dismiss()
                     SVProgressHUD.showSuccess(withStatus: "工单保存成功!")
+                    SVProgressHUD.dismiss()
                     
                     let toallPictrue = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
                     
@@ -204,6 +209,8 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                         return
                     }
 
+                    self.downloadButton.isUserInteractionEnabled = false
+                    self.uploadButton.isUserInteractionEnabled = false
                     
                     let group = DispatchGroup()
                     
@@ -290,7 +297,9 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                         let planResult =  realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId != %@","yingji")
                         //注意的是: 计划工单的多个执行步骤要求分开上传
                         var stepID = planResult.first?.stepId
+                        var ID = planResult.first?.id
                         parmart["stepId"] = stepID
+                        parmart["id"] = ID
                         
                         //执行上传图片的异步,串行的执行队列
 //                        let pictureD = DispatchQueue.init(label: "pictureQueue")
@@ -299,9 +308,8 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                             for planWorkOIndex in 0..<planResult.count {
                                 
                                 let model = planResult[planWorkOIndex]
-                                parmart["id"] = model.id
                                 
-                                if stepID != model.stepId {
+                                if (stepID != model.stepId) || (ID != model.id) {
                                     
                                     group.enter()
                                     
@@ -317,7 +325,9 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                                     
                                     filerArray.removeAll()
                                     stepID = model.stepId
+                                    ID = model.id
                                     parmart["stepId"] = stepID
+                                    parmart["id"] = model.id
                                     
                                     let data = model.pictureData
                                     let image = UIImage.init(data: data!)
@@ -325,6 +335,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                                     
                                 }else{
                                     
+
                                     let data = model.pictureData
                                     let image = UIImage.init(data: data!)
                                     filerArray.append(image!)
@@ -375,10 +386,15 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                             SVProgressHUD.dismiss()
                             
                         }
+                        
+                        self.downloadButton.isUserInteractionEnabled = true
+                        self.uploadButton.isUserInteractionEnabled = true
                     }
                     
                 }, failure: { (error) in
                     
+                    self.downloadButton.isUserInteractionEnabled = true
+                    self.uploadButton.isUserInteractionEnabled = true
                     SVProgressHUD.showError(withStatus: "工单保存失败,请检查网络!")
                 })
                 

@@ -350,9 +350,11 @@
                     <navigationItem key="navigationItem" title="工单" id="8Rr-su-gdF"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="downloadButton" destination="y9I-C7-0sC" id="liM-aE-qfT"/>
                         <outlet property="emergencyWorkOrderButton" destination="vRJ-2V-nSG" id="43R-Kb-vox"/>
                         <outlet property="planWorkOrderButton" destination="Dkw-4p-UZw" id="ITg-25-0Ag"/>
                         <outlet property="tableView" destination="okh-fZ-SN5" id="EV5-Co-YCt"/>
+                        <outlet property="uploadButton" destination="Ijh-kc-bLP" id="oAU-gI-UBF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xIy-r0-zgI" userLabel="First Responder" sceneMemberID="firstResponder"/>

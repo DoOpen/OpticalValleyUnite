@@ -45,7 +45,7 @@ class YQJournalCellView: UITableViewCell{
             
             tempTimeLabel.text = (model?.createTime?.substring(to: index!))! + "工作日志"
             
-            if model?.avatar != "" {
+            if model?.avatar != nil {
                 
                 if (model?.avatar?.contains("http"))!{
                     

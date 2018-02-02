@@ -64,7 +64,6 @@ class AppraisalViewController: UIViewController {
         }else{
         
             self.putEvaluateButton.isUserInteractionEnabled = false
-        
         }
 
         

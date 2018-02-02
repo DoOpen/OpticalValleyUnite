@@ -58,7 +58,6 @@ class YQJournalViewController: UIViewController {
         //3.注册原型cell
         tableView.rowHeight = UITableViewAutomaticDimension
 //        tableView.estimatedRowHeight = 100
-//        
 //        let nib = UINib.init(nibName: "YQJournalCell", bundle: nil)
 //        tableView.register(nib, forCellReuseIdentifier: cellID)
 
@@ -93,6 +92,7 @@ class YQJournalViewController: UIViewController {
         paramerters["pageSize"] = 20
         
         SVProgressHUD.show(withStatus: "数据加载中...")
+        
         HttpClient.instance.get(path: URLPath.getWorklogList, parameters: paramerters, success: { (response) in
             
             SVProgressHUD.dismiss()
@@ -106,8 +106,6 @@ class YQJournalViewController: UIViewController {
                     
                     modelArray.append(YQWorkLogListModel.init(dic: temp as! [String : Any]))
                 }
-                
-                
                 
                 if indexPage == 0{
                     

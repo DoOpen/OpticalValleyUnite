@@ -427,20 +427,23 @@ class YQIntoDoorViewController: UIViewController {
         let device = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
         if device != nil {
             
-            
             let status = PHPhotoLibrary.authorizationStatus()
             if status == .authorized{
                 let vc = SGScanningQRCodeVC()
                 //设置代理
                 vc.delegate = self
                 navigationController?.pushViewController(vc, animated: true)
+                
             }else if status == .notDetermined{
+                
                 PHPhotoLibrary.requestAuthorization({ (authorizationStatus) in
                     
                 })
+                
             }else{
                 self.alert(message: "授权失败")
             }
+            
         }
     }
 

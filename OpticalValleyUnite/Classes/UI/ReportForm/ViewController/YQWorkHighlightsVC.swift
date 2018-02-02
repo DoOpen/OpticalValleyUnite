@@ -60,14 +60,15 @@ class YQWorkHighlightsVC: UIViewController {
         var par = [String : Any]()
         par["id"] = id
         par["parkId"] = self.parkID
-        
-        
+    
         var array = Array<[String : Any]>()
         
-        let group = DispatchGroup()
+        sender.isUserInteractionEnabled = false
         
         SVProgressHUD.show()
         
+        let group = DispatchGroup()
+    
         for view in self.childsArray{
             
             var dict = [String : Any]()
@@ -121,11 +122,15 @@ class YQWorkHighlightsVC: UIViewController {
             HttpClient.instance.post(path: URLPath.getReportAdd, parameters: fristParmerte, success: { (response) in
                 SVProgressHUD.dismiss()
                 SVProgressHUD.showSuccess(withStatus: "上传成功!")
+                sender.isUserInteractionEnabled = true
+                
                 self.navigationController?.popViewController(animated: true)
                 
             }) { (error) in
                 
                 SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
+                sender.isUserInteractionEnabled = true
+                
             }
         }
         

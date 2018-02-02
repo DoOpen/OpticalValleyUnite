@@ -37,11 +37,11 @@ struct URLPath {
     ///测试服的域名链接: http://ovuems.com/ovu-base
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://172.16.19.98:8091"
+    static let basicBasic = "http://test.ovuems.com"
     
     //服务器的basic 地址:
     static let basicPath = basicBasic + "/ovu-pcos/api/"
-    static let basicVideoURLPath = "http://172.16.19.98:8091/"
+    static let basicVideoURLPath = "http://test.ovuems.com/"
     
     //服务器拆分的接口 newbasicPath
     static let newbasicPath = basicBasic + "/ovu-base/api/"

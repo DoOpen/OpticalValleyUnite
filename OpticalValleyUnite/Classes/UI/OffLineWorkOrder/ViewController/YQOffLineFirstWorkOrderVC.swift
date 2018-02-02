@@ -243,6 +243,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                                 })
                                 
                                 id = model.id
+                                parmart["id"] = id
                                 filerArray.removeAll()
                                 
                                 let data = model.pictureData

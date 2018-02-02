@@ -147,40 +147,45 @@ class ExecutingViewConttroller: UIViewController {
                 emergencyView.isUserInteractionEnabled = false
             }
             
-            autoreleasepool {
-                //补充添加备注,信息的显示的情况
-                let id = parmate?["WORKUNIT_ID"] as? String
-                let realm = try! Realm()
+            
+            if backDB {
                 
-                let saveModel = realm.objects(saveAndCompelteWorkIDModel.self).filter("WORKUNIT_ID == %@", id!).first
-                if saveModel != nil {
+                autoreleasepool {
+                    //补充添加备注,信息的显示的情况
+                    let id = parmate?["WORKUNIT_ID"] as? String
+                    let realm = try! Realm()
                     
-                    let text = saveModel?.SUCCESS_TEXT
+                    let saveModel = realm.objects(saveAndCompelteWorkIDModel.self).filter("WORKUNIT_ID == %@", id!).first
                     
-                    if text != "" {
+                    if saveModel != nil {
                         
-                        self.textView.placeHolder = ""
+                        let text = saveModel?.SUCCESS_TEXT
+                        
+                        if text != "" {
+                            
+                            self.textView.placeHolder = ""
+                            
+                        }
+                        self.textView.text = text
                         
                     }
-                    self.textView.text = text
                     
-                }
-                
-                //查询的是应急工单的添加的回显的图片
-                let imageArray = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@ AND id == %@","yingji",id!)
-                if !imageArray.isEmpty{
-                    
-                    for temp in imageArray{
+                    //查询的是应急工单的添加的回显的图片
+                    let imageArray = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@ AND id == %@","yingji",id!)
+                    if !imageArray.isEmpty{
                         
-                        let image = UIImage.init(data: temp.pictureData!)
-                        
-                        addPhoneView.addImage(AddViewModel(image: image!))
+                        for temp in imageArray{
+                            
+                            let image = UIImage.init(data: temp.pictureData!)
+                            
+                            addPhoneView.addImage(AddViewModel(image: image!))
+                        }
                     }
                 }
+                
             }
             
-
-            
+    
         }
         
         if let model = hisriyModel{
@@ -389,7 +394,16 @@ class ExecutingViewConttroller: UIViewController {
 
         }) { (error) in
             
-            print(error)
+            SVProgressHUD.dismiss()
+            SVProgressHUD.showSuccess(withStatus: "保存失败,请重试!")
+            
+            DispatchQueue.main.async {
+                
+                self.saveBtn.isSelected = false
+                self.saveBtn.isUserInteractionEnabled = true
+                
+            }
+
         }
         
     }
@@ -740,27 +754,33 @@ class ExecutingViewConttroller: UIViewController {
             }
             
             if images.count > 0 {
-                //应急工单,保存之前,数据要更新重置
-                autoreleasepool{
+                
+                
+                if backDB {
                     
-                    let realm = try! Realm()
-                    let id = parmate?["WORKUNIT_ID"] as? String
-                    let imageArray = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@ AND id == %@","yingji",id!)
-                    let testArray = realm.objects(saveAndCompelteWorkIDModel.self).filter("stepId == %@ AND WORKUNIT_ID == %@","yingji",id!)
-                    if !imageArray.isEmpty{
+                    //应急工单,保存之前,数据要更新重置
+                    autoreleasepool{
                         
-                        try! realm.write {
+                        let realm = try! Realm()
+                        let id = parmate?["WORKUNIT_ID"] as? String
+                        let imageArray = realm.objects(offLineWorkOrderUpDatePictrueModel.self).filter("stepId == %@ AND id == %@","yingji",id!)
+                        let testArray = realm.objects(saveAndCompelteWorkIDModel.self).filter("stepId == %@ AND WORKUNIT_ID == %@","yingji",id!)
+                        if !imageArray.isEmpty{
                             
-                            realm.delete(imageArray)
+                            try! realm.write {
+                                
+                                realm.delete(imageArray)
+                            }
                         }
-                    }
-                    
-                    if !testArray.isEmpty{
                         
-                        try! realm.write {
+                        if !testArray.isEmpty{
                             
-                            realm.delete(testArray)
+                            try! realm.write {
+                                
+                                realm.delete(testArray)
+                            }
                         }
+                        
                     }
                     
                 }

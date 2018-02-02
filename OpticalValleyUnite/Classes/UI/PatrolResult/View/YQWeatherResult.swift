@@ -81,9 +81,16 @@ class YQWeatherResult: UIView {
                 
                 for url in images!{
                     
-                    let basicPath = URLPath.systemSelectionURL
-                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
-                    temp.append(imageValue)
+                    if url.contains("http"){
+                        
+                        temp.append(url)
+                        
+                    }else{
+                        
+                        let basicPath = URLPath.systemSelectionURL
+                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                        temp.append(imageValue)
+                    }
                 }
                 
                 itemImageView.showImageUrls(temp)

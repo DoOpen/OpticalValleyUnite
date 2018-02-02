@@ -939,7 +939,7 @@
             </objects>
             <point key="canvasLocation" x="-150" y="64"/>
         </scene>
-        <!--工单类型-->
+        <!--工作分类-->
         <scene sceneID="43f-sO-rHr">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="9zn-D6-U3M" customClass="WorkOrderTypeChooseViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
@@ -1053,7 +1053,7 @@
                             <constraint firstItem="0Tg-V9-Rch" firstAttribute="top" secondItem="ZY9-qS-egp" secondAttribute="bottom" id="tNu-kT-pLe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="工单类型" id="mod-fY-PpX">
+                    <navigationItem key="navigationItem" title="工作分类" id="mod-fY-PpX">
                         <barButtonItem key="rightBarButtonItem" title="完成" id="6hZ-uo-tZs">
                             <connections>
                                 <action selector="rightBtnClick:" destination="9zn-D6-U3M" id="RPj-JO-7Xy"/>

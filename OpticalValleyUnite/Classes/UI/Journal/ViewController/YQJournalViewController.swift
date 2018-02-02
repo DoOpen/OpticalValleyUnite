@@ -97,6 +97,14 @@ class YQJournalViewController: UIViewController {
             
             SVProgressHUD.dismiss()
             
+            let data = response["data"]
+            
+            if data == nil {
+                
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
+            }
+            
             //字典转模型,实现数据获取情况
             if let data = response["data"] as? NSArray{
                 

@@ -124,12 +124,19 @@
                         <action selector="forgotPasswordBtnClick:" destination="-1" eventType="touchUpInside" id="F2x-1m-rKa"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="试点版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC9-kV-mSn">
+                    <rect key="frame" x="166" y="650" width="43" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="VH9-uh-fvG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="5c0-MB-YF1"/>
                 <constraint firstItem="t81-m7-Kbz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7Qz-im-mMp"/>
                 <constraint firstItem="sOI-BK-Qds" firstAttribute="top" secondItem="VH9-uh-fvG" secondAttribute="bottom" constant="20" id="J6i-zd-Qpm"/>
+                <constraint firstItem="nC9-kV-mSn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JFh-74-nav"/>
                 <constraint firstItem="64x-oZ-eQU" firstAttribute="top" secondItem="sOI-BK-Qds" secondAttribute="bottom" constant="15" id="Kz2-nl-hCv"/>
                 <constraint firstAttribute="trailing" secondItem="d3g-Wh-NVd" secondAttribute="trailing" constant="50" id="NGO-Ad-qSH"/>
                 <constraint firstItem="t81-m7-Kbz" firstAttribute="top" secondItem="Qgi-0s-q40" secondAttribute="bottom" constant="24" id="QKL-UE-kaD"/>
@@ -140,6 +147,7 @@
                 <constraint firstItem="sOI-BK-Qds" firstAttribute="leading" secondItem="VH9-uh-fvG" secondAttribute="leading" id="aSS-uh-olx"/>
                 <constraint firstItem="d3g-Wh-NVd" firstAttribute="top" secondItem="sOI-BK-Qds" secondAttribute="bottom" constant="62" id="c1g-Ke-rAP"/>
                 <constraint firstItem="VH9-uh-fvG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ebb-z0-4aO"/>
+                <constraint firstAttribute="bottom" secondItem="nC9-kV-mSn" secondAttribute="bottom" id="iyW-Bb-PT9"/>
                 <constraint firstItem="Qgi-0s-q40" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pTG-UR-KiF"/>
                 <constraint firstItem="sOI-BK-Qds" firstAttribute="trailing" secondItem="VH9-uh-fvG" secondAttribute="trailing" id="zSg-7h-uNz"/>
             </constraints>

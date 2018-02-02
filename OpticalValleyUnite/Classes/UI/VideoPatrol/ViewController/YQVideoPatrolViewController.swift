@@ -16,15 +16,11 @@ class YQVideoPatrolViewController: UIViewController {
     
     @IBOutlet weak var mapView: MAMapView!
     
+    var parkName : String = ""
+    
     /// 项目parkID 的属性
-    var parkId = ""{
+    var parkId = ""
     
-        didSet{
-        
-           makeMapLocationData()
-        }
-    
-    }
     
     /// 是否有室内点的情况
     var isIndoorPoint : Bool?
@@ -36,7 +32,6 @@ class YQVideoPatrolViewController: UIViewController {
     var videoMapPointModel = [YQVideoMapPointModel](){
         didSet{
             
-            mapView.removeAnnotations(mapView.annotations)
             //调用地图渲染,打点的方法(有多少个模型,就需要多少个标记)
             for model in videoMapPointModel{
                 
@@ -128,7 +123,14 @@ class YQVideoPatrolViewController: UIViewController {
         super.viewWillAppear(animated)
         
         //获取项目parkID的情况
-        let _ = setUpProjectNameLable()
+        let packname = setUpProjectNameLable()
+        
+        if self.parkName != packname {
+        
+            makeMapLocationData()
+            self.parkName = packname
+            
+        }
         
     
     }
@@ -566,7 +568,7 @@ class YQVideoPatrolViewController: UIViewController {
     func videoLoadWaysNoties(noties : Notification){
         
         mapView.removeOverlays(overlays)
-//        mapView.removeAnnotation(mapView.annotations as! MAAnnotation)
+        mapView.removeAnnotations(mapView.annotations)
         
         overlays.removeAll()
         

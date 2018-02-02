@@ -305,17 +305,6 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWV-ab-LBm">
-                                                <rect key="frame" x="379" y="5" width="35" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="35" id="VGa-VV-2Jf"/>
-                                                    <constraint firstAttribute="height" constant="35" id="bIQ-it-DNC"/>
-                                                </constraints>
-                                                <state key="normal" image="larr12"/>
-                                                <connections>
-                                                    <action selector="scanBtnClick" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lct-yQ-Fgh"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWM-dt-8AB">
                                                 <rect key="frame" x="12" y="10" width="40" height="34"/>
                                                 <constraints>
@@ -334,11 +323,15 @@
                                             <constraint firstAttribute="height" constant="44" id="Y2S-cC-VAT"/>
                                             <constraint firstItem="VWM-dt-8AB" firstAttribute="leading" secondItem="eyu-dr-Wog" secondAttribute="leading" constant="12" id="bQ8-vJ-Kv8"/>
                                             <constraint firstItem="sTN-ax-yYg" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="max-h9-jFs"/>
-                                            <constraint firstItem="AWV-ab-LBm" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="mdT-Ru-dq2"/>
-                                            <constraint firstAttribute="trailing" secondItem="AWV-ab-LBm" secondAttribute="trailing" id="ryv-G7-YID"/>
                                             <constraint firstItem="sTN-ax-yYg" firstAttribute="centerX" secondItem="eyu-dr-Wog" secondAttribute="centerX" id="ziC-TR-S2X"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="试点版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8g-UX-c40">
+                                        <rect key="frame" x="371" y="33.666666666666664" width="43" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5J9-1o-pYA" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                         <rect key="frame" x="135" y="64" width="40" height="95"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -377,8 +370,10 @@
                                     <constraint firstAttribute="bottom" secondItem="5J9-1o-pYA" secondAttribute="bottom" id="FBl-6E-VQd"/>
                                     <constraint firstItem="eyu-dr-Wog" firstAttribute="top" secondItem="Qtx-ni-0hT" secondAttribute="top" constant="20" id="FMD-bS-x3N"/>
                                     <constraint firstItem="vQU-WI-BZd" firstAttribute="centerX" secondItem="Qtx-ni-0hT" secondAttribute="centerX" multiplier="5/4" id="Mg0-BE-lAL"/>
+                                    <constraint firstAttribute="trailing" secondItem="L8g-UX-c40" secondAttribute="trailing" id="MnN-6m-qU5"/>
                                     <constraint firstItem="5J9-1o-pYA" firstAttribute="bottom" secondItem="522-aS-wj6" secondAttribute="bottom" id="SKU-VG-kAe"/>
                                     <constraint firstItem="522-aS-wj6" firstAttribute="centerX" secondItem="Qtx-ni-0hT" secondAttribute="centerX" multiplier="1/4" id="WSN-bt-kJF"/>
+                                    <constraint firstItem="L8g-UX-c40" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="ZAz-2R-sEd"/>
                                     <constraint firstItem="5J9-1o-pYA" firstAttribute="centerX" secondItem="Qtx-ni-0hT" secondAttribute="centerX" multiplier="3/4" id="eZM-EP-wLj"/>
                                     <constraint firstAttribute="trailing" secondItem="eyu-dr-Wog" secondAttribute="trailing" id="fOi-sP-X64"/>
                                     <constraint firstItem="5J9-1o-pYA" firstAttribute="top" secondItem="522-aS-wj6" secondAttribute="top" id="h0s-Fs-g2m"/>
@@ -419,7 +414,6 @@
                         <outlet property="donw2BtnView" destination="8SK-bd-dhs" id="pwP-bo-ueV"/>
                         <outlet property="donw3BtnView" destination="heH-Cf-e0j" id="4Ai-Kk-dk0"/>
                         <outlet property="messageBtn" destination="VWM-dt-8AB" id="SjM-Zp-hQq"/>
-                        <outlet property="scanBtn" destination="AWV-ab-LBm" id="nNr-9t-nJU"/>
                         <outlet property="subsystemBtn" destination="ItE-1g-Tdh" id="GLu-DM-uCo"/>
                         <outlet property="tableView" destination="eJ7-xV-TzL" id="q6W-6d-RbE"/>
                         <outlet property="top1BtnView" destination="522-aS-wj6" id="HeG-uj-jat"/>
@@ -2019,7 +2013,6 @@
         <image name="home_normal" width="19" height="20"/>
         <image name="ic_door" width="30" height="30"/>
         <image name="ion-android-volume-up - Ionicons" width="14" height="14"/>
-        <image name="larr12" width="90" height="90"/>
         <image name="mess" width="24" height="24"/>
         <image name="qiandao" width="30" height="30"/>
         <image name="xinzhengb" width="32" height="32"/>

@@ -83,10 +83,10 @@ class YQReportFormPersonDetailVC: UIViewController {
             
             let button = UIButton()
             button.frame = CGRect.init(x: 0, y: 0, width: 40, height: 40)
-            button.setTitle("工作计划", for: .normal)
+            button.setTitle("工作日志", for: .normal)
             button.setTitleColor(UIColor.gray, for: .normal)
             button.sizeToFit()
-            button.addTarget(self, action: #selector(jumpToWorkPlanVC), for: .touchUpInside)
+            button.addTarget(self, action: #selector(jumpToShowWorkJournal), for: .touchUpInside)
             
             let barItem = UIBarButtonItem()
             barItem.customView = button

@@ -52,8 +52,21 @@ class AppraisalViewController: UIViewController {
     // MARK: - 提交评价按钮的点击
     @IBAction func doneBtnClick() {
         
+        let reachability = Reachability()!
         
-        self.putEvaluateButton.isUserInteractionEnabled = false
+        if reachability.connection == .none {
+            
+            SVProgressHUD.showError(withStatus: "没有可用网络,请检查!")
+            self.putEvaluateButton.isUserInteractionEnabled = true
+            
+            return
+
+        }else{
+        
+            self.putEvaluateButton.isUserInteractionEnabled = false
+        
+        }
+
         
         var parmat = [String: Any]()
         parmat["WORKUNIT_ID"] = model?.id
@@ -90,8 +103,13 @@ class AppraisalViewController: UIViewController {
                     
                     SVProgressHUD.showSuccess(withStatus: "评价成功")
                     _ = self.navigationController?.popViewController(animated: true)
+                    self.putEvaluateButton.isUserInteractionEnabled = true
+
                     
                 }) { (error) in
+                    
+                    SVProgressHUD.showError(withStatus: "评论图片上传失败,请重试!")
+                    self.putEvaluateButton.isUserInteractionEnabled = true
                     
                 }
                 

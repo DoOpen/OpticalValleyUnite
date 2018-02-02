@@ -376,7 +376,7 @@ extension YQReportFormDetailVC : UISearchBarDelegate{
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-        self.view.endEditing(true)
+        searchBar.endEditing(true)
         searchBar.text = ""
         self.getWorkUnitPersonListData()
         

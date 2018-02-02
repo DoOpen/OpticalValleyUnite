@@ -578,6 +578,8 @@ class YQVideoPatrolViewController: UIViewController {
         if loadWays == nil {
             //调用首页的初始点的接口
             // viewWill的方法再次进行调用实现了,重置打点的情况!
+            makeMapLocationData()
+            
             return
         }
         

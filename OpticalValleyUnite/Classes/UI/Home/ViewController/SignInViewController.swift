@@ -48,9 +48,14 @@ class SignInViewController: UIViewController {
     
         mapSetup()
         
-         getSignCount()
-        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getSignCount()
+    }
+    
     
     func getSignCount(){
         var paramet = [String: Any]()
@@ -78,9 +83,12 @@ class SignInViewController: UIViewController {
     func sign(){
         
         var parmat = [String: Any]()
+        
         if let loction = loction,hasAddress == true{
+            
             parmat["MAP_LNG"] = loction.coordinate.longitude
             parmat["MAP_LAT"] = loction.coordinate.latitude
+            
         }else{
             self.alert(message: "请开启定位,或者正在定位中")
             return
@@ -88,6 +96,7 @@ class SignInViewController: UIViewController {
         
         
         if isPaskAddress{
+            
            updateSige()
             
         }else{

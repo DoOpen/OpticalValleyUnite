@@ -105,6 +105,8 @@
 		2F57891D2011D4F400C1C5DF /* YQWorkHighlightsDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F57891B2011D4F400C1C5DF /* YQWorkHighlightsDetailCell.xib */; };
 		2F57D7E21FFF4A0300207E98 /* YQOffLineFirstWorkOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57D7E11FFF4A0300207E98 /* YQOffLineFirstWorkOrderVC.swift */; };
 		2F57D7E41FFF4A3300207E98 /* YQOffLineFirst.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F57D7E31FFF4A3300207E98 /* YQOffLineFirst.storyboard */; };
+		2F58658E20286EEE00839655 /* YQDecorationHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F58658D20286EEE00839655 /* YQDecorationHomeVC.swift */; };
+		2F58659020286F0F00839655 /* YQDecorationHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F58658F20286F0F00839655 /* YQDecorationHome.storyboard */; };
 		2F5A3D591FE8DFE50069ABE1 /* RfmAccessControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5A3D581FE8DFE50069ABE1 /* RfmAccessControl.framework */; };
 		2F5A3D5C1FE8ED7F0069ABE1 /* YQBluetoothCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5A3D5A1FE8ED7F0069ABE1 /* YQBluetoothCell.swift */; };
 		2F5A3D5D1FE8ED7F0069ABE1 /* YQBluetoothCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5A3D5B1FE8ED7F0069ABE1 /* YQBluetoothCell.xib */; };
@@ -473,6 +475,8 @@
 		2F57891B2011D4F400C1C5DF /* YQWorkHighlightsDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWorkHighlightsDetailCell.xib; sourceTree = "<group>"; };
 		2F57D7E11FFF4A0300207E98 /* YQOffLineFirstWorkOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQOffLineFirstWorkOrderVC.swift; sourceTree = "<group>"; };
 		2F57D7E31FFF4A3300207E98 /* YQOffLineFirst.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQOffLineFirst.storyboard; sourceTree = "<group>"; };
+		2F58658D20286EEE00839655 /* YQDecorationHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDecorationHomeVC.swift; sourceTree = "<group>"; };
+		2F58658F20286F0F00839655 /* YQDecorationHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQDecorationHome.storyboard; sourceTree = "<group>"; };
 		2F5A3D561FE8DBAD0069ABE1 /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
 		2F5A3D581FE8DFE50069ABE1 /* RfmAccessControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RfmAccessControl.framework; sourceTree = "<group>"; };
 		2F5A3D5A1FE8ED7F0069ABE1 /* YQBluetoothCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQBluetoothCell.swift; sourceTree = "<group>"; };
@@ -1068,6 +1072,39 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		2F58658920286EAE00839655 /* DecorationAdmin */ = {
+			isa = PBXGroup;
+			children = (
+				2F58658A20286EAE00839655 /* Model */,
+				2F58658B20286EAE00839655 /* View */,
+				2F58658C20286EAE00839655 /* ViewController */,
+			);
+			path = DecorationAdmin;
+			sourceTree = "<group>";
+		};
+		2F58658A20286EAE00839655 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2F58658B20286EAE00839655 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F58658C20286EAE00839655 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2F58658D20286EEE00839655 /* YQDecorationHomeVC.swift */,
+				2F58658F20286F0F00839655 /* YQDecorationHome.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		2F5D27691F998D940022F7D6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1580,6 +1617,7 @@
 		4BD4B9221E272EA600AE2BC9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2F58658920286EAE00839655 /* DecorationAdmin */,
 				2F7DC8E0200D997C0087E2FC /* ReportForm */,
 				2F45F7F41FFDD39700293A23 /* OffLineWorkOrder */,
 				2F68BED71FE2856C0079B2AF /* IntoDoorAdminis */,
@@ -1968,6 +2006,7 @@
 				2F4A658E1F945AC300F4C72A /* YQJournalAddEvent.storyboard in Resources */,
 				2F2F957C1F8DF7C800870DC8 /* YQJournalCell.xib in Resources */,
 				2F5A3D611FE8EDC90069ABE1 /* YQScanCell.xib in Resources */,
+				2F58659020286F0F00839655 /* YQDecorationHome.storyboard in Resources */,
 				4B3952001E28D2B900E2642F /* WorkOrderDistributionCell.xib in Resources */,
 				2F07A0121FDB97AB0064556D /* YQPatrolBottomLastView.xib in Resources */,
 				2F6A43901F6A52CA003E10C9 /* YQFireControl.storyboard in Resources */,
@@ -2267,6 +2306,7 @@
 				2F57D7E21FFF4A0300207E98 /* YQOffLineFirstWorkOrderVC.swift in Sources */,
 				4B6E64FD1EEAEFCF00BA23E4 /* PhotoTransition.swift in Sources */,
 				2F5A3D641FE8EF770069ABE1 /* YQDynamicPasswordCell.swift in Sources */,
+				2F58658E20286EEE00839655 /* YQDecorationHomeVC.swift in Sources */,
 				2F2F957A1F8DF74800870DC8 /* YQJournalCellView.swift in Sources */,
 				2F94A2831F73B46B00455162 /* YQImplementFeedbackVC.swift in Sources */,
 				4BD4A0E21EE2B18300F044C1 /* AppraisalCell.swift in Sources */,

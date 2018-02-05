@@ -22,6 +22,13 @@ class WorkOrderDetailsCell: UITableViewCell {
 
     @IBOutlet weak var workOrderNameLabel: UILabel!
     
+    //工单类型 label
+    @IBOutlet weak var workReportTypeLable: UILabel!
+    @IBOutlet weak var workReportLabelHieghtConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var workReportHightConstraint: NSLayoutConstraint!
+    
+    //工单类型 显示值
     @IBOutlet weak var reportTypeLabel: UILabel!
     @IBOutlet weak var urgentDegreeLabel: UILabel!
     @IBOutlet weak var projectNameLabel: UILabel!

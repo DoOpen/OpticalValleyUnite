@@ -505,6 +505,9 @@
                 <outlet property="usePeople" destination="PCt-Il-szU" id="yCN-Ux-ReV"/>
                 <outlet property="workIdLabel" destination="RnW-2E-hzq" id="JN9-i4-G6f"/>
                 <outlet property="workOrderNameLabel" destination="Bto-VT-f6y" id="c9z-rK-gvy"/>
+                <outlet property="workReportHightConstraint" destination="oP6-u2-D0O" id="5k3-sI-Orh"/>
+                <outlet property="workReportLabelHieghtConstraint" destination="8G4-qk-ySb" id="dWA-4J-O3q"/>
+                <outlet property="workReportTypeLable" destination="May-xw-fgM" id="dIK-61-QyR"/>
             </connections>
             <point key="canvasLocation" x="-20" y="74"/>
         </tableViewCell>

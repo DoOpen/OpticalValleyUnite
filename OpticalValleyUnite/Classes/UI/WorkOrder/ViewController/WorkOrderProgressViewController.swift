@@ -831,6 +831,15 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
                 cell = DetailsCell
                 detailsCell = DetailsCell
                 
+                if workOrderDetalModel?.orderType == "计划工单"{//计划工单
+                    
+                    DetailsCell.reportTypeLabel.isHidden = true
+                    DetailsCell.workReportTypeLable.isHidden = true
+                    DetailsCell.workReportLabelHieghtConstraint.constant  = 0
+                    DetailsCell.workReportHightConstraint.constant = -12
+                    
+                }
+                
                 DetailsCell.changedHeight = {
                     
                     tableView.reloadData()

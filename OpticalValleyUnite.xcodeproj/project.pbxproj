@@ -13,6 +13,8 @@
 		2F0223B81FA9A3E60090822F /* YQParkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0223B71FA9A3E60090822F /* YQParkTableViewCell.swift */; };
 		2F0223BA1FA9C2030090822F /* YQWorkOrderCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0223B91FA9C2030090822F /* YQWorkOrderCompleteVC.swift */; };
 		2F0223BC1FA9C2330090822F /* YQWorkOderComplete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F0223BB1FA9C2330090822F /* YQWorkOderComplete.storyboard */; };
+		2F0532842025AAF300DB334A /* YQPartXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0532832025AAF300DB334A /* YQPartXibView.swift */; };
+		2F0532862025AB1800DB334A /* YQPartXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0532852025AB1800DB334A /* YQPartXib.xib */; };
 		2F079A6F1FF25F63009D204D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F079A6E1FF25F63009D204D /* Alamofire.framework */; };
 		2F07A00C1FDB97100064556D /* YQPatrolBottomNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07A00B1FDB97100064556D /* YQPatrolBottomNextView.swift */; };
 		2F07A00E1FDB97350064556D /* YQPatrolBottomNextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F07A00D1FDB97350064556D /* YQPatrolBottomNextView.xib */; };
@@ -378,6 +380,8 @@
 		2F0223B71FA9A3E60090822F /* YQParkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQParkTableViewCell.swift; sourceTree = "<group>"; };
 		2F0223B91FA9C2030090822F /* YQWorkOrderCompleteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkOrderCompleteVC.swift; sourceTree = "<group>"; };
 		2F0223BB1FA9C2330090822F /* YQWorkOderComplete.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQWorkOderComplete.storyboard; sourceTree = "<group>"; };
+		2F0532832025AAF300DB334A /* YQPartXibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartXibView.swift; sourceTree = "<group>"; };
+		2F0532852025AB1800DB334A /* YQPartXib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartXib.xib; sourceTree = "<group>"; };
 		2F079A6E1FF25F63009D204D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/OpticalValleyUnite-alypomjpbjsfhydtyataweazvxfb/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		2F07A00B1FDB97100064556D /* YQPatrolBottomNextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPatrolBottomNextView.swift; sourceTree = "<group>"; };
 		2F07A00D1FDB97350064556D /* YQPatrolBottomNextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPatrolBottomNextView.xib; sourceTree = "<group>"; };
@@ -1824,6 +1828,8 @@
 				2F5E8C551F595F7000007717 /* YQPartDataAll.xib */,
 				2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */,
 				2F5E8C571F595FED00007717 /* YQPartDataSelect.xib */,
+				2F0532832025AAF300DB334A /* YQPartXibView.swift */,
+				2F0532852025AB1800DB334A /* YQPartXib.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1977,6 +1983,7 @@
 				2FC167591F90B4BE001CEACD /* YQReseaseJournalFooter.xib in Resources */,
 				2F3B96091F6BCD0E0008AFEB /* YQJoinTotallHead.xib in Resources */,
 				2F7DC8EF200DDDD60087E2FC /* YQReportFormDetail.storyboard in Resources */,
+				2F0532862025AB1800DB334A /* YQPartXib.xib in Resources */,
 				2F7E0AA71FB595BF00344D4E /* YQPedometerVC.storyboard in Resources */,
 				4B4BAFC31E5C62F500C9C549 /* OprationConfirmationView.xib in Resources */,
 				4B5AF64B1E36F73B00844F3D /* LoginViewController.xib in Resources */,
@@ -2249,6 +2256,7 @@
 				4B1DEC681E31F5D1000917D2 /* SlotViewController.swift in Sources */,
 				2FDF32A51F792975008EDEB4 /* CommonUtility.m in Sources */,
 				2FC1674D1F906BC2001CEACD /* YQJournalDetailHeadView.swift in Sources */,
+				2F0532842025AAF300DB334A /* YQPartXibView.swift in Sources */,
 				2FBDEFC82008A70F006C5C69 /* Reachability.swift in Sources */,
 				4BBBEC9E1E2CB34500F60313 /* SJAddView.swift in Sources */,
 				2F4217351FDA86F800B42BB3 /* YQPatrolItemScoreViewController.swift in Sources */,

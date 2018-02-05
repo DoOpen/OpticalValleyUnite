@@ -11,15 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="157" id="KGk-i7-Jjw" customClass="ExecutDetailCell" customModule="OpticalValleyUnite" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="147"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="214" id="KGk-i7-Jjw" customClass="ExecutDetailCell" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="415" height="204"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="146.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="415" height="203.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="leV-G1-6P1">
-                        <rect key="frame" x="40" y="46.5" width="280" height="50"/>
+                        <rect key="frame" x="40" y="78.5" width="375" height="50"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="UVU-GF-lGw"/>
@@ -30,13 +30,13 @@
                         </connections>
                     </tableView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已执行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8W-BA-EvH">
-                        <rect key="frame" x="50" y="8" width="43" height="33.5"/>
+                        <rect key="frame" x="50" y="8" width="43" height="65.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="25h-RL-mWH">
-                        <rect key="frame" x="20" y="0.0" width="1" height="146.5"/>
+                        <rect key="frame" x="20" y="0.0" width="1" height="203.5"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="UFn-mv-hBY"/>
@@ -56,38 +56,60 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bao-FU-MlI" customClass="SJTextView">
-                        <rect key="frame" x="50" y="96.5" width="265" height="45"/>
+                        <rect key="frame" x="40" y="158.5" width="370" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="45" id="vxy-7d-bXw"/>
+                            <constraint firstAttribute="height" constant="45" id="Yi2-Gh-9d7"/>
                         </constraints>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PcN-ze-6Ze">
+                        <rect key="frame" x="40" y="128.5" width="375" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="配件:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUb-3O-4gq">
+                                <rect key="frame" x="10" y="0.0" width="35" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nUb-3O-4gq" firstAttribute="top" secondItem="PcN-ze-6Ze" secondAttribute="top" id="TRB-AF-u1q"/>
+                            <constraint firstAttribute="height" constant="30" id="Tum-ps-BSr"/>
+                            <constraint firstItem="nUb-3O-4gq" firstAttribute="leading" secondItem="PcN-ze-6Ze" secondAttribute="leading" constant="10" id="mFA-R9-mEP"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="PcN-ze-6Ze" firstAttribute="leading" secondItem="leV-G1-6P1" secondAttribute="leading" id="2cR-T3-uQ6"/>
                     <constraint firstAttribute="bottom" secondItem="25h-RL-mWH" secondAttribute="bottom" id="2fS-aZ-Oir"/>
                     <constraint firstAttribute="trailing" secondItem="bao-FU-MlI" secondAttribute="trailing" constant="5" id="4BJ-NP-j9o"/>
-                    <constraint firstAttribute="bottom" secondItem="bao-FU-MlI" secondAttribute="bottom" constant="5" id="9zc-Fv-ujQ"/>
+                    <constraint firstAttribute="bottom" secondItem="bao-FU-MlI" secondAttribute="bottom" id="9zc-Fv-ujQ"/>
+                    <constraint firstAttribute="trailing" secondItem="PcN-ze-6Ze" secondAttribute="trailing" id="AJF-3X-Dk0"/>
                     <constraint firstItem="leV-G1-6P1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="BcY-Ft-Hak"/>
                     <constraint firstItem="vq9-de-xoR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="DHc-JS-o6K"/>
+                    <constraint firstItem="PcN-ze-6Ze" firstAttribute="top" secondItem="leV-G1-6P1" secondAttribute="bottom" id="Dzz-Cb-rLx"/>
                     <constraint firstItem="25h-RL-mWH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ISO-K5-jni"/>
-                    <constraint firstItem="bao-FU-MlI" firstAttribute="top" secondItem="leV-G1-6P1" secondAttribute="bottom" id="LtT-3b-W9j"/>
+                    <constraint firstItem="bao-FU-MlI" firstAttribute="top" secondItem="PcN-ze-6Ze" secondAttribute="bottom" id="NrN-VN-ltU"/>
                     <constraint firstItem="25h-RL-mWH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="SlX-MA-FRX"/>
                     <constraint firstItem="f8W-BA-EvH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="Tou-WR-msv"/>
                     <constraint firstItem="leV-G1-6P1" firstAttribute="top" secondItem="f8W-BA-EvH" secondAttribute="bottom" constant="5" id="ZVK-m6-hZM"/>
                     <constraint firstItem="vq9-de-xoR" firstAttribute="centerX" secondItem="25h-RL-mWH" secondAttribute="centerX" id="cdX-X8-hK2"/>
                     <constraint firstAttribute="trailing" secondItem="leV-G1-6P1" secondAttribute="trailing" id="iVl-mb-1VK"/>
                     <constraint firstItem="f8W-BA-EvH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="jsC-QH-JXe"/>
-                    <constraint firstItem="bao-FU-MlI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="z1J-Dj-KmY"/>
+                    <constraint firstItem="bao-FU-MlI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="z1J-Dj-KmY"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="partContentView" destination="PcN-ze-6Ze" id="pVw-Mh-DQg"/>
+                <outlet property="partviewheight" destination="Tum-ps-BSr" id="m5S-c9-yo7"/>
                 <outlet property="remarkTextView" destination="bao-FU-MlI" id="zC8-oF-8Ss"/>
                 <outlet property="tableView" destination="leV-G1-6P1" id="Rx6-EX-5Yi"/>
                 <outlet property="tableViewHeightConstaint" destination="UVU-GF-lGw" id="r5E-qW-XQt"/>
             </connections>
-            <point key="canvasLocation" x="-242" y="21.5"/>
+            <point key="canvasLocation" x="-194.5" y="50"/>
         </tableViewCell>
     </objects>
 </document>

@@ -88,17 +88,6 @@ class YQPartsLibaryViewController: UIViewController {
 
         SVProgressHUD.show(withStatus: "加载任务中")
         
-        /// 网络数据请求框架,有bug 网络请求无法使用
-//        HttpClient.instance.get(path: URLPath.getPartsHome, parameters: parmat, success: { (response) in
-//            SVProgressHUD.dismiss()
-//            
-//            
-//        }) { (error) in
-            
-//            print(error)
-//            
-//        }
-        
         Alamofire.request(URLPath.basicPath + URLPath.getPartsHome,  parameters: parmat).responseJSON { (response) in
             
             SVProgressHUD.dismiss()
@@ -188,13 +177,14 @@ class YQPartsLibaryViewController: UIViewController {
     // MARK: - 点击右边完成按钮
      func rightBarButtonClick(){
         
+        self.view.endEditing(true)
+        
         //使用通知来进行的传值
         let center = NotificationCenter.default
         //定义添加一个字典
         var data = [String : Any]()
         data["partData"] = self.selectData
         center.post(name:  NSNotification.Name(rawValue: "partsSelectionPassValue"), object: nil, userInfo: data)
-        
         
         //直接调去保存接口进行实现
         // dimiss 需要传递的 已选的数据配件库的数据!
@@ -267,7 +257,6 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
             if cell.switch.isSelected {
                 
 //                let numIndex = indexPath.row
-//                
 //                if (selectData?[indexPath.row]) != nil {
 //                    
 //                    let temp : PartsModel = selectData![indexPath.row]
@@ -392,10 +381,67 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
         self.searchBar.endEditing(true)
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //设置为关闭
+        self.searchBar.text = nil
+        self.searchBar.endEditing(true)
+        
+        parmat["partName"] = ""
+        
+        SVProgressHUD.show()
+        
+        Alamofire.request(URLPath.basicPath + URLPath.getPartsHome,  parameters: parmat).responseJSON { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            switch response.result {
+                
+            case .success(_):
+                
+                if let value = response.result.value as? [String: Any] {
+                    
+                    if let data:NSDictionary = value["data"] as? NSDictionary {
+                        
+                        if let partList:NSArray = data["list"] as? NSArray {
+                            //  遍历数组,字典转模型,最核心的是,将字典数组,转化成模型来进行
+                            //  print(partList)
+                            var model = [PartsModel]()
+                            
+                            for dic in partList{
+                                
+                                var d = dic as! [String : AnyObject]
+                                //没有的键值就是 新增
+                                d["partNum"] = "0" as AnyObject
+                                
+                                model.append(PartsModel(dict: d))
+                            }
+                            //模型赋值 传值!
+                            self.dataPart = model
+                            self.tableViewFrist.reloadData()
+                        }
+                        break
+                    }
+                    break
+                }
+                break
+                
+            case .failure(let error):
+                
+                debugPrint(error)
+                break
+            }
+        }
+
+        
+    }
+    
+    
     // MARK: - scrollView的代理方法,滚动执行的方法
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
+//        self.view.endEditing(true)
         self.scrollViewDidEndScrollingAnimation(scrollView)
+        
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
@@ -414,7 +460,7 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //判断显示的子view来展示
-        self.view.endEditing(true)
+//        self.view.endEditing(true)
         
     }
     
@@ -457,17 +503,6 @@ extension YQPartsLibaryViewController : UITableViewDataSource,UITableViewDelegat
     
     func partDataCellSwitchDelegateMoveModel(numIndex: Int, model: PartsModel) {
         
-//        var dic = [String: PartsModel]()
-//        for dict in self.selectData{
-//            //移除指定内容的 model
-////            print(dict)
-//            dic = dict as! [String : PartsModel]
-//            dic.removeValue(forKey: "\(numIndex)")
-        
-//        }
-        
-//        self.selectIndex = numIndex
-//        self.tableViewSecond.reloadData()
 
     }
     

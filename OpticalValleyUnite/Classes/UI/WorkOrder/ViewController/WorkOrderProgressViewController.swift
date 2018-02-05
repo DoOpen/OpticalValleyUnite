@@ -44,6 +44,8 @@ class WorkOrderProgressViewController: UIViewController {
     //缓存taskRemark的信息
     var taskRemarkText : String?
     
+    var partListData : NSArray?
+    
     
     @IBOutlet weak var dubanBtn: UIButton!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
@@ -507,6 +509,7 @@ class WorkOrderProgressViewController: UIViewController {
                 if let cell = self.taskCell{
                     
                     cell.models = self.taskModels
+                    
                     //查一下detail的数据项的表
                     let offLineWorkerDetail = realm.objects(offLineWorkOrderDetailModel.self).filter("ID == %@", id!).first
                     cell.remarkTextView.text = offLineWorkerDetail?.REMARKS
@@ -522,8 +525,6 @@ class WorkOrderProgressViewController: UIViewController {
             
             return
         }
-        
-        
         
         
 //        var parmat = [String: Any]()
@@ -549,10 +550,15 @@ class WorkOrderProgressViewController: UIViewController {
             self.taskModels = temp
             self.taskRemarkText = response["remark"] as? String
             
+            let partList = response["partsList"] as? NSArray
+            self.partListData = partList
+            
             if let cell = self.taskCell{
-                cell.models = temp
-                cell.remarkTextView.text = response["remark"] as? String
                 
+                cell.models = temp
+                cell.partList = partList
+
+                cell.remarkTextView.text = response["remark"] as? String
             }
             
             if let cell = self.detailsCell{
@@ -616,6 +622,11 @@ class WorkOrderProgressViewController: UIViewController {
                 cell2.remarkTest = self.taskRemarkText
                 
                 cell2.models = self.taskModels
+                
+                if taskCell == nil {
+                    
+                    cell2.partList = self.partListData
+                }
                 
                 
                 taskCell = cell2

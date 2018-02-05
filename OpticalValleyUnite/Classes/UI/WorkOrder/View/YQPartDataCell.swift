@@ -83,6 +83,8 @@ extension YQPartDataCell : UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
+        self.isEditing = false
+        
         //合成模型:
         var dict = [String : Any]()
         dict["position"] = self.part.text
@@ -97,5 +99,8 @@ extension YQPartDataCell : UITextFieldDelegate{
         self.delegate?.partDataCellSwitchDelegate(tableView: tableView, numIndex: self.indexPath, model: newModel)
         
     }
-   
+    
+    
+
+    
 }

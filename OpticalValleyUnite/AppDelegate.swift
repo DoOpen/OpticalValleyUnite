@@ -202,6 +202,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         print(error)
         
         }
+    
+    
 }
 
 
@@ -211,8 +213,7 @@ extension AppDelegate{
     
     // MARK: - 点击推送工单执行的方法--->(关联后台的参数值来解析) 进行相应的跳转传值
     func noticHandel(userInfo: [AnyHashable : Any]){
-        
-        
+    
         if !User.isLogin(){
             
             print("没有登录")

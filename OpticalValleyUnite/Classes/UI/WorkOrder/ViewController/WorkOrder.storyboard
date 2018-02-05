@@ -900,7 +900,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRq-Rl-l5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2220" y="1544"/>
+            <point key="canvasLocation" x="2201" y="1513"/>
         </scene>
         <!--派发工单-->
         <scene sceneID="LgV-F2-vaE">

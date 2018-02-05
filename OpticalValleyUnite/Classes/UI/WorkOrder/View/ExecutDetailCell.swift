@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ExecutDetailCell: UITableViewCell {
     var tabHeight: CGFloat = 0.0
@@ -17,6 +18,9 @@ class ExecutDetailCell: UITableViewCell {
             tableView.reloadData()
         }
     }
+    
+    @IBOutlet weak var partviewheight: NSLayoutConstraint!
+    
     
     var remarkTest : String? {
         
@@ -33,6 +37,67 @@ class ExecutDetailCell: UITableViewCell {
         
     }
     
+    var partList : NSArray?{
+        
+        didSet{
+            
+            if partList != nil {
+                
+                for temp in 0..<(partList?.count)! {
+                    
+                    let dict = partList?[temp] as? [String : Any]
+                    
+                    //通过的是,配件库的添加信息显示布局
+                    let view = Bundle.main.loadNibNamed("YQPartXib", owner: nil, options: nil)?[0] as! YQPartXibView
+                    view.part.text = dict?["partsName"] as? String
+                    view.partName.text = dict?["position"] as? String
+                    
+                    let num = dict?["amount"] as? Int ?? 0
+                    
+                    view.numberLabel.text = "\(num)"
+                    
+                    self.partArrayView.append(view)
+                    self.partContentView.addSubview(view)
+                    
+                    if temp == 0 {
+                        
+                        view.snp.makeConstraints({ (maker) in
+                            
+                            maker.top.equalTo(20)
+                            maker.left.right.equalToSuperview()
+                            maker.height.equalTo(20)
+                            
+                        })
+                        
+                    }else{
+                        
+                        let tempV = self.partArrayView[temp - 1]
+                        
+                        view.snp.makeConstraints({ (maker) in
+                            
+                            maker.top.equalTo(tempV.snp.bottom)
+                            maker.left.right.equalToSuperview()
+                            maker.height.equalTo(20)
+                            
+                        })
+                        
+                    }
+                }
+            }
+            
+            partviewheight.constant = CGFloat(25 + (partList?.count)! * 20)
+//            tableViewHeightConstaint.constant = CGFloat(125 + (partList?.count)! * 20)
+            self.setNeedsDisplay()
+            
+        }
+        
+    }
+    
+    
+    var partArrayView = [YQPartXibView]()
+    
+    
+    @IBOutlet weak var partContentView: UIView!
     
     @IBOutlet weak var tableViewHeightConstaint: NSLayoutConstraint!
     
@@ -60,10 +125,11 @@ class ExecutDetailCell: UITableViewCell {
         if self.remarkTextView.text == "" {
             
             self.remarkTextView.placeHolder = "备注:"
-            
         }
         
         self.remarkTextView.isEditable = false
+        
+        
         
         
     }
@@ -111,6 +177,8 @@ class ExecutDetailCell: UITableViewCell {
     }
 
 }
+
+
 
 extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
     

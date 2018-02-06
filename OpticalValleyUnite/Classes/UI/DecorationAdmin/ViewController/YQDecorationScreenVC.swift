@@ -19,7 +19,7 @@ class YQDecorationScreenVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     /// 模拟的cell的数据
-    var dataArray = [Any]()
+    var dataArray = ["区/期","栋","单元","房号"]
     
     
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class YQDecorationScreenVC: UIViewController {
     
     @IBAction func cancelButtonSelect(_ sender: UIButton) {
         
-      
+      navigationController?.popViewController(animated: true)
         
     }
   

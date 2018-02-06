@@ -8,7 +8,7 @@
 
 import UIKit
 import MJRefresh
-
+import SVProgressHUD
 
 
 class YQDecorationHomeVC: UIViewController {
@@ -100,9 +100,30 @@ class YQDecorationHomeVC: UIViewController {
     }
     
     // MARK: - 获取list数据的内容方法
-    func getDataListFunction(tag : Int = 1,currentIndex : Int = 0,pageSize : Int = 20,pramert : [String : Any] = [String : Any]()){
+    func getDataListFunction(tag : Int = 0,currentIndex : Int = 0,pageSize : Int = 20,pramert : [String : Any] = [String : Any]()){
     
-    
+        var par = [String : Any]()
+        par["parkId"] = self.parkID
+        par["pageSize"] = pageSize
+        par["pageIndex"] = currentIndex
+        par["operateType"] = "\(tag)"
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getDecorationList, parameters: par, success: { (response) in
+            SVProgressHUD.dismiss()
+            
+            let data = response as? Array<[String : Any]>
+            //字典转模型,数据拼接累加
+            
+            
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: error.description)
+            
+        }
+        
     
     }
 

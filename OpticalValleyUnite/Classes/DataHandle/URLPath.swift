@@ -32,6 +32,8 @@ struct URLPath {
     ///新版测试服务器的域名 http://172.16.19.98:8091
     ///新版正式服 : http://116.62.117.82:2018
     ///元元 : http://172.16.11.76
+    ///谢俊杰: http://172.16.11.63:8080
+    
     
     ///正式服的域名链接: http://ovuems.com
     ///测试服的域名链接: http://ovuems.com/ovu-base
@@ -288,6 +290,10 @@ struct URLPath {
     static let getReportWorkHighlights = "report/get"
     //工作计划添加或工作亮点
     static let getReportAdd = "report/add"
+    
+    ///装修管理的接口列表
+    //首页的list列表接口
+    static let getDecorationList = "decorationworkunit/list"
     
     
     

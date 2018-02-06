@@ -873,7 +873,6 @@ class ExecutingViewConttroller: UIViewController {
             self.ProgressVC?.reloadStatus(status: 7)
             //添加备注信息的保存情况
             
-            
             self.navigationController?.popViewController(animated: true)
 
             return

@@ -11,8 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQDecorationScreenVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
-                <outlet property="decorationAcceptButton" destination="Ahq-CM-3hC" id="0M3-Fn-6vL"/>
-                <outlet property="decorationRoutButton" destination="hJC-a9-Y1K" id="J4T-LR-X0g"/>
+                <outlet property="decorationAcceptButton" destination="Ahq-CM-3hC" id="4wQ-7i-eb3"/>
+                <outlet property="decorationRoutButton" destination="hJC-a9-Y1K" id="g2y-eC-5cK"/>
                 <outlet property="tableView" destination="JWk-Cj-PvK" id="ihc-o8-xJY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

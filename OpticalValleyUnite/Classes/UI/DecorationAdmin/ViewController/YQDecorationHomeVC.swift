@@ -108,21 +108,21 @@ class YQDecorationHomeVC: UIViewController {
         par["pageIndex"] = currentIndex
         par["operateType"] = "\(tag)"
         
-        SVProgressHUD.show()
-        
-        HttpClient.instance.post(path: URLPath.getDecorationList, parameters: par, success: { (response) in
-            SVProgressHUD.dismiss()
-            
-            let data = response as? Array<[String : Any]>
-            //字典转模型,数据拼接累加
-            
-            
-            
-        }) { (error) in
-            
-            SVProgressHUD.showError(withStatus: error.description)
-            
-        }
+//        SVProgressHUD.show()
+//        
+//        HttpClient.instance.post(path: URLPath.getDecorationList, parameters: par, success: { (response) in
+//            SVProgressHUD.dismiss()
+//            
+//            let data = response as? Array<[String : Any]>
+//            //字典转模型,数据拼接累加
+//            
+//            
+//            
+//        }) { (error) in
+//            
+//            SVProgressHUD.showError(withStatus: error.description)
+//            
+//        }
         
     
     }

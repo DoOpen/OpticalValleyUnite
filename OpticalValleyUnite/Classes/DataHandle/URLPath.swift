@@ -39,7 +39,7 @@ struct URLPath {
     ///测试服的域名链接: http://ovuems.com/ovu-base
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://172.16.19.98:8091"
+    static let basicBasic = "http://test.ovuems.com"
     
     //服务器的basic 地址:
     static let basicPath = basicBasic + "/ovu-pcos/api/"
@@ -294,7 +294,13 @@ struct URLPath {
     ///装修管理的接口列表
     //首页的list列表接口
     static let getDecorationList = "decorationworkunit/list"
-    
-    
+    //查询项目期的接口
+    static let getDecorationStage = "decorationworkunit/stage"
+    //查询获取期下的楼栋信息
+    static let getDecorationFloor = "decorationworkunit/floor"
+    //获取楼栋下的房屋信息
+    static let getDecorationHouse = "decorationworkunit/house"
+    //获取单元号的房屋信息
+    static let getDecorationUnitNo =  "decorationworkunit/unitNo"
     
 }

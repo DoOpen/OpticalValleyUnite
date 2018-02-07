@@ -20,16 +20,20 @@ class YQDecorationScreenVC: UIViewController {
     
     /// 模拟的cell的数据
     var dataArray = ["区/期","栋","单元","房号"]
-    
+    var cellID = "decorationScreenCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "筛选"
-        decorationRoutButton.isSelected = true
-        self.currentSelectBtn = decorationRoutButton
+//        decorationRoutButton.isSelected = true
+//        self.currentSelectBtn = decorationRoutButton
         self.automaticallyAdjustsScrollViewInsets = false
         
+        //注册原型cell
+        let nib = UINib.init(nibName: "YQDecorationScreenCell", bundle: nil)
+        
+        tableView.register(nib, forCellReuseIdentifier: cellID)
     
     }
     
@@ -40,7 +44,6 @@ class YQDecorationScreenVC: UIViewController {
         currentSelectBtn?.isSelected = false
         sender.isSelected = true
         currentSelectBtn = sender
-
         
     }
     
@@ -68,7 +71,23 @@ extension YQDecorationScreenVC : UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! YQDecorationScreenCell
+        cell.staticLabel.text = self.dataArray[indexPath.row]
+        
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detail = YQLocationDetailsVC.init(nibName: "YQLocationDetailsVC", bundle: nil) as? YQLocationDetailsVC
+        
+        detail?.titile = self.dataArray[indexPath.row]
+        
+        navigationController?.pushViewController(detail!, animated: true)
+        
+        
+        
     }
 
 }

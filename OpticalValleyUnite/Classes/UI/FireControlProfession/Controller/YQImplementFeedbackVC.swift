@@ -156,6 +156,8 @@ class YQImplementFeedbackVC: UIViewController {
                 for model in models {
                     
                     self.resolve.ImplementPersonTextField.text = self.resolve.ImplementPersonTextField.text! + model.name + ","
+                    
+                    self.resolve.implementPersonID = self.resolve.implementPersonID + model.id + ","
                 }
                 
             }else if self.tempView.isKind(of: YQFalsePositiveView.self){
@@ -163,7 +165,7 @@ class YQImplementFeedbackVC: UIViewController {
                 for model in models {
                     
                     self.falsePositive.addNameTextField.text = self.falsePositive.addNameTextField.text! + model.name + ","
-                    
+                    self.falsePositive.implementPersonID = self.falsePositive.implementPersonID + model.id + ","
                 }
             }
         }
@@ -173,6 +175,8 @@ class YQImplementFeedbackVC: UIViewController {
             for model in models {
                 
                 self.resolve.cooperatePersonTextField.text = self.resolve.cooperatePersonTextField.text! + model.name + ","
+                
+                self.resolve.cooperatePersonID = self.resolve.cooperatePersonID + model.id + ","
             }
 
         }
@@ -186,7 +190,7 @@ class YQImplementFeedbackVC: UIViewController {
 extension YQImplementFeedbackVC : YQResolvedViewDelegate{
     
     // MARK: - resolve保存按钮点击
-    func resolvedViewSaveButtonClick(view :YQResolvedView ,images : NSArray) {
+    func resolvedViewSaveButtonClick(view :YQResolvedView ,images : NSArray,type : Int) {
         
         //已解决:   误报:  1:已解决 2:误报
         if resolve.ImplementPersonTextField.text == nil {
@@ -206,9 +210,9 @@ extension YQImplementFeedbackVC : YQResolvedViewDelegate{
         
         var par = [String : Any]()
         par["firePointId"] = fireModel.firePointId
-        par["type"] = 1
-        par["execPersonId"] = resolve.ImplementPersonTextField.text
-        par["coopPersonIds"] = resolve.cooperatePersonTextField.text
+        par["type"] = type
+        par["execPersonId"] = resolve.implementPersonID
+        par["coopPersonIds"] = resolve.cooperatePersonID
         par["reason"] = resolve.reasonTextField.text
         par["imgPaths"] = ""
         
@@ -224,18 +228,37 @@ extension YQImplementFeedbackVC : YQResolvedViewDelegate{
                      par["imgPaths"] =   par["imgPaths"] as! String + "," + url
                 }
                 
+                SVProgressHUD.show(withStatus: "正在保存中...")
+                
+                HttpClient.instance.post(path: URLPath.getFirefeedback, parameters: par, success: { (respose) in
+                    
+                    SVProgressHUD.dismiss()
+                    SVProgressHUD.showSuccess(withStatus: "保存成功!")
+                    self.navigationController?.popViewController(animated: true)
+                    
+                }) { (error) in
+                    
+                    SVProgressHUD.showError(withStatus: "保存失败!")
+                }
+
             })
+            
+        }else{
+        
+        
+            SVProgressHUD.show(withStatus: "正在保存中...")
+            HttpClient.instance.post(path: URLPath.getFirefeedback, parameters: par, success: { (respose) in
+                
+                SVProgressHUD.dismiss()
+                SVProgressHUD.showSuccess(withStatus: "保存成功!")
+                self.navigationController?.popViewController(animated: true)
+                
+            }) { (error) in
+                SVProgressHUD.showError(withStatus: "保存失败!")
+            }
+        
         }
 
-        SVProgressHUD.show(withStatus: "正在保存中...")
-        HttpClient.instance.post(path: URLPath.getFirefeedback, parameters: par, success: { (respose) in
-            
-            SVProgressHUD.dismiss()
-            self.navigationController?.popViewController(animated: true)
-            
-        }) { (error) in
-            SVProgressHUD.showError(withStatus: "保存失败!")
-        }
 
     }
     
@@ -268,10 +291,11 @@ extension YQImplementFeedbackVC : YQFalsePositiveViewDelegate{
         
         self.pushPersonListVC(type: 0)
         self.tempView = view
+        
     }
     
     // MARK: - false保存按钮的点击
-    func falsePositiveViewSaveButtonClick(view :YQFalsePositiveView, images: NSArray) {
+    func falsePositiveViewSaveButtonClick(view :YQFalsePositiveView, images: NSArray,type : Int ) {
         //已解决:   误报:  1:已解决 2:误报
         if falsePositive.addNameTextField.text == nil {
             SVProgressHUD.showError(withStatus: "请选择执行人")
@@ -291,8 +315,8 @@ extension YQImplementFeedbackVC : YQFalsePositiveViewDelegate{
         var par = [String : Any]()
         
         par["firePointId"] = fireModel.firePointId
-        par["type"] = 0
-        par["execPersonId"] = falsePositive.addNameTextField.text
+        par["type"] = type
+        par["execPersonId"] = falsePositive.implementPersonID
         par["reason"] = falsePositive.reasonTextField.text
         par["imgPaths"] = ""
         
@@ -308,19 +332,37 @@ extension YQImplementFeedbackVC : YQFalsePositiveViewDelegate{
                     par["imgPaths"] =   par["imgPaths"] as! String + "," + url
                 }
                 
-            })
-        }
+                SVProgressHUD.show(withStatus: "正在保存中...")
+                
+                HttpClient.instance.post(path: URLPath.getFirefeedback, parameters: par, success: { (respose) in
+                    
+                    SVProgressHUD.dismiss()
+                    SVProgressHUD.showSuccess(withStatus: "保存成功!")
 
-        SVProgressHUD.show(withStatus: "正在保存中...")
-        HttpClient.instance.post(path: URLPath.getFirefeedback, parameters: par, success: { (respose) in
+                    self.navigationController?.popViewController(animated: true)
+                    
+                }) { (error) in
+                    SVProgressHUD.showError(withStatus: "保存失败!")
+                }
+
+            })
             
-            SVProgressHUD.dismiss()
-            self.navigationController?.popViewController(animated: true)
-            
-        }) { (error) in
-            SVProgressHUD.showError(withStatus: "保存失败!")
-        }
+        }else{
         
+            SVProgressHUD.show(withStatus: "正在保存中...")
+            HttpClient.instance.post(path: URLPath.getFirefeedback, parameters: par, success: { (respose) in
+                
+                SVProgressHUD.dismiss()
+                
+                SVProgressHUD.showSuccess(withStatus: "保存成功!")
+                
+                self.navigationController?.popViewController(animated: true)
+                
+            }) { (error) in
+                SVProgressHUD.showError(withStatus: "保存失败!")
+            }
+        
+        }
     }
 
 }

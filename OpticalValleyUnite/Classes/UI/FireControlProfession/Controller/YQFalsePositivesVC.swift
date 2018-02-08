@@ -17,12 +17,9 @@ class YQFalsePositivesVC: UIViewController {
     
     @IBOutlet weak var handleTime: UITextField!
 
-    @IBOutlet weak var addPhotoView: SJAddView!
-    
-    @IBOutlet weak var editButton: UIButton!
-    
     @IBOutlet weak var proveImageV: UIImageView!
     
+    @IBOutlet weak var imagesView: ShowImageView!
     
     //获取详细信息的接口
     var workunitID : Int = -1
@@ -34,14 +31,8 @@ class YQFalsePositivesVC: UIViewController {
 
         falsePositivesData()
         
-        
     }
-
-    // MARK: - 编辑按钮的点击的实现
-    @IBAction func editButtonClick(_ sender: Any) {
-        
-        
-    }
+   
     
     func falsePositivesData(){
         
@@ -81,13 +72,42 @@ class YQFalsePositivesVC: UIViewController {
 //                            }
 //                            
 //                            self.dataArray = model
+                            
                             self.handlePerson.text = dataList["execPersonName"] as? String
                             self.handleTime.text = dataList["coopPersonName"] as? String
                         
-                            //setImage
-                            let url = URL(string : dataList["imgPaths"] as! String)
+                           
                             
-                            self.proveImageV.kf.setImage(with: url, placeholder: UIImage(named: "avatar"), options: nil, progressBlock: nil, completionHandler: nil)
+                            let imageString = dataList["imgPaths"] as! String
+                            //通过的是逗号拼接的
+                            if imageString != "" {
+                                
+                                var temp = [String]()
+                                
+                                let array =  imageString.components(separatedBy: ",")
+                                
+                                for tempIndex in array{
+                                    
+                                    if (tempIndex.contains("http")){
+                                        
+                                        temp.append((tempIndex))
+                                        
+                                    }else {
+                                        
+                                        let basicPath = URLPath.systemSelectionURL
+                                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (tempIndex)
+                                        temp.append(imageValue)
+                                    }
+                                    
+                                }
+                                
+                                self.imagesView.showImageUrls(temp)
+                                
+                                self.imagesView.didClickHandle = { index, image in
+                                    
+                                    CoverView.show(image: image)
+                                }
+                            }
 
                         }
                     }

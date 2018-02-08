@@ -14,7 +14,7 @@ protocol YQFalsePositiveViewDelegate : class{
     
     func falsePositiveViewAddPersonClick(view :YQFalsePositiveView)
     
-    func falsePositiveViewSaveButtonClick(view :YQFalsePositiveView, images: NSArray)
+    func falsePositiveViewSaveButtonClick(view :YQFalsePositiveView, images: NSArray ,type : Int)
 }
 
 class YQFalsePositiveView: UIView {
@@ -25,6 +25,7 @@ class YQFalsePositiveView: UIView {
     
     //添加执行人的name
     @IBOutlet weak var addNameTextField: UITextField!
+    var implementPersonID = ""
     
     //执行原因
     @IBOutlet weak var reasonTextField: UITextField!
@@ -49,7 +50,7 @@ class YQFalsePositiveView: UIView {
         }
         
        
-        self.delegate?.falsePositiveViewSaveButtonClick(view: self, images: images as NSArray)
+        self.delegate?.falsePositiveViewSaveButtonClick(view: self, images: images as NSArray,type : 2)
     
     }
     

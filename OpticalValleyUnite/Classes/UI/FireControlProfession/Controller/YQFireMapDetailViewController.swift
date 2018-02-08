@@ -17,11 +17,10 @@ class YQFireMapDetailViewController: UIViewController {
     var fireModel : YQFireLocationModel!{
         
         didSet{
-            
             //调用展示详情list的数据
             self.makeImplementTableViewData(model : (self.fireModel)!)
-            
         }
+        
     }
     
     //startCoordinate
@@ -128,6 +127,8 @@ class YQFireMapDetailViewController: UIViewController {
         //跳转到立即反馈的界面进行操作
         let feedBack = UIStoryboard.instantiateInitialViewController(name: "YQImplementFeedback") as! YQImplementFeedbackVC
         
+        feedBack.fireModel = self.fireModel
+        
         self.navigationController?.pushViewController(feedBack, animated: true)
     }
     
@@ -173,7 +174,6 @@ class YQFireMapDetailViewController: UIViewController {
     }
     
     // MARK: - 手动添加定位按钮点击方法
-    
     @IBAction func manualLocationBtnClick(_ sender: Any) {
         
         
@@ -313,7 +313,7 @@ class YQFireMapDetailViewController: UIViewController {
                 self?.showRoute()
             }
             
-            })
+        })
     }
     
     // MARK: - 设置底部的footer的显示状态的方法

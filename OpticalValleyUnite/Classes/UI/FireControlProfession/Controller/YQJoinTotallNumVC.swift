@@ -45,6 +45,12 @@ class YQJoinTotallNumVC:UIViewController{
         
         //初始设置内容
         titleButton.setTitle(self.title, for: .normal)
+        //时间初始化
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateString = formatter.string(from: Date())
+        
+        timeButton.setTitle(dateString, for: .normal)
         
         //添加leftBar属性
         self.setUpLeftBar()
@@ -102,7 +108,7 @@ class YQJoinTotallNumVC:UIViewController{
     // MARK: - allProjectPickerView的展示
     @IBAction func allProjectPickerButtonClick(_ sender: Any) {
         view.endEditing(true)
-        let temp = ["参与总单量","火警单","误报单"]
+        let temp = ["总单量","火警单","误报单"]
         
 //        SJPickerView.show(withDataArry2: temp, didSlected: { [weak self] index in
 //            self?.projectBtn.setTitle(temp[index].title, for: .normal)
@@ -110,15 +116,13 @@ class YQJoinTotallNumVC:UIViewController{
 //        })
         SJPickerView.show(withDataArry: temp, didSlected: { [weak self] index in
             
-            if index == 0 {
-                self?.titleButton .setTitle("总单量", for: .normal)
-            }else{
-                self?.titleButton .setTitle(temp[index], for: .normal)
-            }
             
             self?.selectProject = temp[index]
+            self?.titleButton.setTitle(self?.selectProject, for: .normal)
+            
+            
             // 调用筛选的接口
-            self?.requestFireDetailData(title: (self?.titleButton.titleLabel?.text)!, time: self?.timeButton.titleLabel?.text, location:self?
+            self?.requestFireDetailData(title: (self?.selectProject)!, time: self?.timeButton.titleLabel?.text, location:self?
                 .seachTextField?.text )
             
         })
@@ -257,20 +261,25 @@ extension YQJoinTotallNumVC : YQFireDetailCellDeleage {
         switch model.type {
             case 1:
                 //跳入火警详情
-                let fireAlarm = YQFireAlarmDetailViewController(nibName : "YQFireAlarmDetailViewController" , bundle: nil)
-                navigationController?.pushViewController(fireAlarm, animated: true)
+                let fireAlarm = YQFireAlarmDetailViewController.init(nibName: "YQFireAlarmDetailViewController", bundle: nil)
+                
                 fireAlarm.workunitID = model.workunitId
                 fireAlarm.type = model.type
                 
+                navigationController?.pushViewController(fireAlarm, animated: true)
                 break
+            
             case 2:
                 //跳入误报详情
-                let falsePositives = YQFalsePositivesVC(nibName : "YQFalsePositivesVC" , bundle: nil)
-                navigationController?.pushViewController(falsePositives, animated: true)
+                let falsePositives = YQFalsePositivesVC.init(nibName: "YQFalsePositives", bundle: nil)
                 falsePositives.workunitID = model.workunitId
                 falsePositives.type = model.type
                 
+                navigationController?.pushViewController(falsePositives, animated: true)
+//                self.present(falsePositives, animated: true, completion: nil)
+                
                 break
+            
             default:
                 break
         }

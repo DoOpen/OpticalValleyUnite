@@ -15,7 +15,7 @@ protocol YQResolvedViewDelegate : class{
     
     func resolvedViewAddCooperatePerson(view :YQResolvedView )
     
-    func resolvedViewSaveButtonClick(view :YQResolvedView ,images : NSArray)
+    func resolvedViewSaveButtonClick(view :YQResolvedView ,images : NSArray, type : Int)
     
 }
 
@@ -23,9 +23,11 @@ class YQResolvedView: UIView {
     
     //执行人的textField
     @IBOutlet weak var ImplementPersonTextField: UITextField!
+    var implementPersonID  = ""
     
     //配合人的textField
     @IBOutlet weak var cooperatePersonTextField: UITextField!
+    var cooperatePersonID = ""
     
     //原因 textField
     @IBOutlet weak var reasonTextField: UITextField!
@@ -58,7 +60,7 @@ class YQResolvedView: UIView {
         }
         
         
-        self.delegate?.resolvedViewSaveButtonClick(view: self, images: images as NSArray)
+        self.delegate?.resolvedViewSaveButtonClick(view: self, images: images as NSArray, type : 1)
         
     }
     

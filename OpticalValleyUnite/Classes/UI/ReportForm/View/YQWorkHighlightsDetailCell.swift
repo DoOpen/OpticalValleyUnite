@@ -68,7 +68,6 @@ class YQWorkHighlightsDetailCell: UITableViewCell {
                     
                     CoverView.show(image: image)
                 }
-
             }
             
             lightspotTitleLabel.text = model?.lightspotTitle

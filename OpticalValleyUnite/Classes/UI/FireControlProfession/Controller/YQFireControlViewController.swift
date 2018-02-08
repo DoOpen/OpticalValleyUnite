@@ -524,10 +524,11 @@ class YQFireControlViewController: UIViewController {
                     
                     let detailVC = UIStoryboard.instantiateInitialViewController(name: "YQFireMapDetail") as! YQFireMapDetailViewController
                     
-                    self.navigationController?.pushViewController(detailVC, animated: true)
-                    
                     // 直接进行model 的传值 发送通知来执行
                     detailVC.fireModel = self.currentMapPointAnnotation.pointModel
+                    
+                    self.navigationController?.pushViewController(detailVC, animated: true)
+                    
                     
                     // 调用通知是多余的操作
                     //        NotificationCenter.default.post(

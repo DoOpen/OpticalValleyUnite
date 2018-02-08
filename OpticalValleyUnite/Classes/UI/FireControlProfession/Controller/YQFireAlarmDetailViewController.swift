@@ -28,6 +28,7 @@ class YQFireAlarmDetailViewController: UIViewController {
     
     @IBOutlet weak var proveImageV: UIImageView!
     
+    @IBOutlet weak var imagePathsView: ShowImageView!
     
     //获取详细信息的接口
     var workunitID : Int = -1
@@ -40,11 +41,7 @@ class YQFireAlarmDetailViewController: UIViewController {
         fireAlarmDetailData()
     }
 
-    // MARK: - 编辑按钮的点击的实现
-    @IBAction func editButtonClick(_ sender: Any) {
-        
-        
-    }
+   
     
     // MARK: - 获取网络接口数据
     func fireAlarmDetailData(){
@@ -90,9 +87,38 @@ class YQFireAlarmDetailViewController: UIViewController {
                             self.resultText.text = dataList["reason"] as? String
                             
                             //setImage
-                            let url = URL(string : dataList["imgPaths"] as! String)
-                            self.proveImageV.kf.setImage(with: url, placeholder: UIImage(named: "avatar"), options: nil, progressBlock: nil, completionHandler: nil)
-                            
+//                            let url = URL(string : dataList["imgPaths"] as! String)
+//                            self.proveImageV.kf.setImage(with: url, placeholder: UIImage(named: "avatar"), options: nil, progressBlock: nil, completionHandler: nil)
+                            let imageString = dataList["imgPaths"] as! String
+                            //通过的是逗号拼接的
+                            if imageString != "" {
+                                
+                                var temp = [String]()
+                                
+                                let array =  imageString.components(separatedBy: ",")
+                                
+                                for tempIndex in array{
+                                    
+                                    if (tempIndex.contains("http")){
+                                        
+                                        temp.append((tempIndex))
+                                        
+                                    }else {
+                                        
+                                        let basicPath = URLPath.systemSelectionURL
+                                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (tempIndex)
+                                        temp.append(imageValue)
+                                    }
+                                    
+                                }
+                                
+                                self.imagePathsView.showImageUrls(temp)
+                                
+                                self.imagePathsView.didClickHandle = { index, image in
+                                    
+                                    CoverView.show(image: image)
+                                }
+                            }
                             
                         }
                     }

@@ -13,6 +13,7 @@ class YQDecorationScreenCell: UITableViewCell {
     
     @IBOutlet weak var staticLabel: UILabel!
     
+    @IBOutlet weak var locationLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

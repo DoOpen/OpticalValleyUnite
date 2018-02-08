@@ -31,15 +31,24 @@
                             <constraint firstAttribute="height" constant="25" id="cbu-B1-wjG"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Km-k2-8Ag">
+                        <rect key="frame" x="291" y="29.5" width="38" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="d5Q-bc-yir" secondAttribute="trailing" constant="5" id="5xh-fO-hk8"/>
+                    <constraint firstItem="9Km-k2-8Ag" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8oj-YS-kOV"/>
+                    <constraint firstItem="d5Q-bc-yir" firstAttribute="leading" secondItem="9Km-k2-8Ag" secondAttribute="trailing" constant="5" id="D9o-r4-W5e"/>
                     <constraint firstItem="O8r-Xc-8Nq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RBw-zA-NaD"/>
                     <constraint firstItem="d5Q-bc-yir" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UmT-nd-SjU"/>
                     <constraint firstItem="O8r-Xc-8Nq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="lF5-ri-W1E"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="locationLabel" destination="9Km-k2-8Ag" id="cL6-Tl-G6e"/>
                 <outlet property="staticLabel" destination="O8r-Xc-8Nq" id="wko-cF-NW1"/>
             </connections>
             <point key="canvasLocation" x="36" y="68.5"/>

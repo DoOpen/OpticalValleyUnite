@@ -31,7 +31,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="6Lf-xU-zLv" firstAttribute="leading" secondItem="1te-l2-da7" secondAttribute="leading" constant="15" id="ILY-iD-Zk7"/>
                         <constraint firstItem="6Lf-xU-zLv" firstAttribute="centerY" secondItem="1te-l2-da7" secondAttribute="centerY" id="TLu-om-763"/>
@@ -41,12 +41,17 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kee-2d-bbU">
                     <rect key="frame" x="0.0" y="109" width="375" height="513"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="v9Y-7f-JWM"/>
+                        <outlet property="delegate" destination="-1" id="JWC-Ra-T76"/>
+                    </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjc-Xa-VCq">
                     <rect key="frame" x="0.0" y="622" width="375" height="45"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0N-9H-9Jk">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="确定">
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>

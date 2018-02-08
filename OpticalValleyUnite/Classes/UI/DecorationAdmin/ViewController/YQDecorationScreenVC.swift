@@ -22,6 +22,8 @@ class YQDecorationScreenVC: UIViewController {
     var dataArray = ["区/期","栋","单元","房号"]
     var cellID = "decorationScreenCell"
     
+    var selectePrameter = [String : Any]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,8 +34,10 @@ class YQDecorationScreenVC: UIViewController {
         
         //注册原型cell
         let nib = UINib.init(nibName: "YQDecorationScreenCell", bundle: nil)
-        
         tableView.register(nib, forCellReuseIdentifier: cellID)
+        
+        //接受通知的方法
+        addNoticeMethod()
     
     }
     
@@ -58,6 +62,24 @@ class YQDecorationScreenVC: UIViewController {
         
         
     }
+    
+    // MARK: - 接受通知的方法
+    func addNoticeMethod(){
+        
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "selectLocationNoties")
+    
+        center.addObserver(self, selector: #selector(selectLocationParmeter(info:)), name: notiesName, object: nil)
+    }
+    
+    func selectLocationParmeter(info: NSNotification){
+        
+        let value = info.userInfo?["selectLocation"] as! [String : Any]
+        self.selectePrameter = value
+        
+        self.tableView.reloadData()
+        
+    }
 
 
 }
@@ -74,17 +96,42 @@ extension YQDecorationScreenVC : UITableViewDataSource,UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! YQDecorationScreenCell
         cell.staticLabel.text = self.dataArray[indexPath.row]
         
+        switch (cell.staticLabel.text)! {
+        case "区/期":
+            
+            let model = self.selectePrameter["stage"] as? YQDecorationStageModel
+            cell.locationLabel.text = model?.stageName ?? ""
+            break
+        case "栋":
+             let model = self.selectePrameter["floor"] as? YQDecorationFloorModel
+            cell.locationLabel.text = model?.floorName ?? ""
+            break
+        case "单元":
+            let model = self.selectePrameter["unitNo"] as? YQDecorationUnitNoModel
+            
+            cell.locationLabel.text = model?.unitNo ?? ""
+            break
+        case "房号":
+            let model = self.selectePrameter["house"] as? YQDecorationHouseModel
+            
+            cell.locationLabel.text = model?.houseName ?? ""
+            break
+        
+        default:
+            break
+        }
+        
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let detail = YQLocationDetailsVC.init(nibName: "YQLocationDetailsVC", bundle: nil) as? YQLocationDetailsVC
+        let detail = YQLocationDetailsVC.init(nibName: "YQLocationDetailsVC", bundle: nil)
+        detail.selectDict = self.selectePrameter
+        detail.titile = self.dataArray[indexPath.row]
         
-        detail?.titile = self.dataArray[indexPath.row]
-        
-        navigationController?.pushViewController(detail!, animated: true)
+        navigationController?.pushViewController(detail, animated: true)
         
         
         

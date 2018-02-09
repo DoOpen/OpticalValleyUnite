@@ -58,8 +58,27 @@ class YQDecorationScreenVC: UIViewController {
     }
   
     @IBAction func makeSureButtonClick(_ sender: UIButton) {
+        //选择houseid才能确定
+        let model = self.selectePrameter["house"] as? YQDecorationHouseModel
+        if model == nil {
+            self.alert(message: "请选择房屋号!")
+            return
+        }
+    
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "selectHouseNoties")
+        if currentSelectBtn != nil {
+            
+            center.post(name: notiesName, object: nil, userInfo: [ "selectLocation": (model?.houseId)!,"decorationType" : (currentSelectBtn?.tag)!])
+        }else{
         
+            center.post(name: notiesName, object: nil, userInfo: [ "selectLocation": (model?.houseId)!])
+
         
+        }
+        
+
+        navigationController?.popViewController(animated: true)
         
     }
     
@@ -79,6 +98,12 @@ class YQDecorationScreenVC: UIViewController {
         
         self.tableView.reloadData()
         
+    }
+    
+    deinit {
+        
+        let center = NotificationCenter.default
+        center.removeObserver(self)
     }
 
 
@@ -133,8 +158,7 @@ extension YQDecorationScreenVC : UITableViewDataSource,UITableViewDelegate{
         
         navigationController?.pushViewController(detail, animated: true)
         
-        
-        
+    
     }
 
 }

@@ -24,16 +24,42 @@ class YQDecorationHomeCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    //项目
+    var parkName = ""
 
-    }
-
-    var model : Any?{
+    var model : YQDecorationHomeModel?{
         
         didSet{
+            
+            switch (model?.decoration_type)! {
+            case 2://巡检工单
+                workTypeLabel.text = "巡检"
+                break
+            case 3://验收工单
+                workTypeLabel.text = "验收"
+                break
+            default:
+                break
+
+            }
+            
+            self.workOrderNameLabel.text = model?.WORKUNIT_NAME
+            
+            if model?.unitStatusNameE != ""{
+                 self.workStateLabel.setTitle(model?.unitStatusNameE, for: .normal)
+                
+            }else if (model?.unitStatusNameW != ""){
+                
+                 self.workStateLabel.setTitle(model?.unitStatusNameW, for: .normal)
+            }
+            
+            self.workDescribetionLabel.text = model?.DESCRIPTION
         
-        
+            self.projectNameLabel.text = parkName
+            
+            self.timeLabel.text = model?.CREATE_DATE
+            self.nameLabel.text = model?.SOURCE_PERSON_NAME
+            
         }
         
     }

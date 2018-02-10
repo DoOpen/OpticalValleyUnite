@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Fe4-aQ-npJ" customClass="YQHouseLocationScreenView" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wVx-0S-wSL">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="1aF-2S-HdU"/>
+                        <outlet property="delegate" destination="-1" id="g8o-es-V7O"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WjD-UA-ZL2">
+                    <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bj0-8u-7Jl">
+                            <rect key="frame" x="5" y="0.0" width="365" height="45"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="查询"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="checkoutButtonClick:" destination="Fe4-aQ-npJ" eventType="touchUpInside" id="hsj-4t-jBw"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Bj0-8u-7Jl" firstAttribute="leading" secondItem="WjD-UA-ZL2" secondAttribute="leading" constant="5" id="Dwh-kr-5FD"/>
+                        <constraint firstAttribute="height" constant="45" id="Qyu-LU-2Tb"/>
+                        <constraint firstAttribute="trailing" secondItem="Bj0-8u-7Jl" secondAttribute="trailing" constant="5" id="WpE-FO-BGc"/>
+                        <constraint firstAttribute="bottom" secondItem="Bj0-8u-7Jl" secondAttribute="bottom" id="jdV-gJ-tQQ"/>
+                        <constraint firstItem="Bj0-8u-7Jl" firstAttribute="top" secondItem="WjD-UA-ZL2" secondAttribute="top" id="zw1-k2-OlS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="WjD-UA-ZL2" firstAttribute="top" secondItem="wVx-0S-wSL" secondAttribute="bottom" id="105-j0-Nya"/>
+                <constraint firstItem="wVx-0S-wSL" firstAttribute="top" secondItem="Fe4-aQ-npJ" secondAttribute="top" id="4wZ-po-Otk"/>
+                <constraint firstAttribute="bottom" secondItem="WjD-UA-ZL2" secondAttribute="bottom" id="BXz-lQ-bY1"/>
+                <constraint firstAttribute="trailing" secondItem="WjD-UA-ZL2" secondAttribute="trailing" id="Tix-pv-dgH"/>
+                <constraint firstItem="wVx-0S-wSL" firstAttribute="leading" secondItem="Fe4-aQ-npJ" secondAttribute="leading" id="Vke-hm-eTf"/>
+                <constraint firstAttribute="trailing" secondItem="wVx-0S-wSL" secondAttribute="trailing" id="kiU-Oc-rp9"/>
+                <constraint firstItem="WjD-UA-ZL2" firstAttribute="leading" secondItem="Fe4-aQ-npJ" secondAttribute="leading" id="pxA-aL-Boy"/>
+            </constraints>
+            <connections>
+                <outlet property="tableView" destination="wVx-0S-wSL" id="fEP-vX-B8o"/>
+            </connections>
+            <point key="canvasLocation" x="6" y="-10"/>
+        </view>
+    </objects>
+</document>

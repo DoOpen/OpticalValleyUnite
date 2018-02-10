@@ -33,13 +33,14 @@ struct URLPath {
     ///新版正式服 : http://116.62.117.82:2018
     ///元元 : http://172.16.11.76
     ///谢俊杰: http://172.16.11.63:8080  xiejunjie
+    ///建丰 : http://172.16.11.57:80
     
     
     ///正式服的域名链接: http://ovuems.com
     ///测试服的域名链接: http://ovuems.com/ovu-base
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://172.16.11.63:8080"
+    static let basicBasic = "http://172.16.11.57:80"
     
     //服务器的basic 地址:
     static let basicPath = basicBasic + "/ovu-pcos/api/"
@@ -302,5 +303,12 @@ struct URLPath {
     static let getDecorationHouse = "decorationworkunit/house"
     //获取单元号的房屋信息
     static let getDecorationUnitNo =  "decorationworkunit/unitNo"
+    
+    ///房屋查询接口列表
+    //首页list列表接口
+    static let getHouseList = "owner/list"
+    //筛选条件的接口
+    
+    
     
 }

@@ -317,10 +317,17 @@ class YQSystemSelectionVC: UIViewController {
 //            
 //            SJKeyWindow?.rootViewController = sjnav
             
-            // 装修管理的跳转
-            let decoration = UIStoryboard.instantiateInitialViewController(name: "YQDecorationHome")
-            let sjnav =  SJNavigationController.init(rootViewController: decoration)
-            SJKeyWindow?.rootViewController = sjnav
+//            // 装修管理的跳转
+//            let decoration = UIStoryboard.instantiateInitialViewController(name: "YQDecorationHome")
+//            let sjnav =  SJNavigationController.init(rootViewController: decoration)
+//            SJKeyWindow?.rootViewController = sjnav
+            
+            // 房屋查询的跳转
+            let house = UIStoryboard.instantiateInitialViewController(name: "YQHouseHome")
+            let sjnav =  SJNavigationController.init(rootViewController: house)
+            
+             SJKeyWindow?.rootViewController = sjnav
+
             
         }else if tap.tapIndex == fireindex {//消防的界面的跳转的情况
             

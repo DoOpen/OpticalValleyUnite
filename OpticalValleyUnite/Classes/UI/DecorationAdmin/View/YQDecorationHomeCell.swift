@@ -24,8 +24,17 @@ class YQDecorationHomeCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     
+    override func awakeFromNib() {
+        
+        self.workStateLabel.setTitle("", for: .normal)
+    
+    }
+    
     //项目
     var parkName = ""
+    
+    //indexID 
+     var indexID = -1
 
     var model : YQDecorationHomeModel?{
         
@@ -45,17 +54,17 @@ class YQDecorationHomeCell: UITableViewCell {
             
             self.workOrderNameLabel.text = model?.WORKUNIT_NAME
             
-            if model?.unitStatusNameE != ""{
+            if self.indexID == 1{
                  self.workStateLabel.setTitle(model?.unitStatusNameE, for: .normal)
                 
-            }else if (model?.unitStatusNameW != ""){
+            }else if (self.indexID == 0){
                 
                  self.workStateLabel.setTitle(model?.unitStatusNameW, for: .normal)
             }
             
             self.workDescribetionLabel.text = model?.DESCRIPTION
         
-            self.projectNameLabel.text = parkName
+            self.projectNameLabel.text = "所属项目 " + parkName
             
             self.timeLabel.text = model?.CREATE_DATE
             self.nameLabel.text = model?.SOURCE_PERSON_NAME

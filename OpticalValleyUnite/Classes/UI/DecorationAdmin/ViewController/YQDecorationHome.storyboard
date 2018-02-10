@@ -65,7 +65,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YMC-AP-VsA">
-                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="bwr-kx-YXr" id="50t-13-Evh"/>
@@ -73,13 +73,13 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wui-m3-48e" firstAttribute="top" secondItem="YMC-AP-VsA" secondAttribute="bottom" id="2CT-pR-jXH"/>
                             <constraint firstItem="A5N-dH-UYu" firstAttribute="top" secondItem="HSq-Ok-mb7" secondAttribute="bottom" id="2iG-Aw-MgX"/>
                             <constraint firstItem="YMC-AP-VsA" firstAttribute="leading" secondItem="n5i-rg-fLE" secondAttribute="leading" id="AIK-kS-9mk"/>
                             <constraint firstItem="A5N-dH-UYu" firstAttribute="leading" secondItem="n5i-rg-fLE" secondAttribute="leading" id="W8E-Rt-3Qk"/>
-                            <constraint firstItem="YMC-AP-VsA" firstAttribute="top" secondItem="A5N-dH-UYu" secondAttribute="bottom" id="Wik-vn-AnB"/>
+                            <constraint firstItem="YMC-AP-VsA" firstAttribute="top" secondItem="A5N-dH-UYu" secondAttribute="bottom" constant="2" id="Wik-vn-AnB"/>
                             <constraint firstAttribute="trailing" secondItem="A5N-dH-UYu" secondAttribute="trailing" id="eqR-ag-fxh"/>
                             <constraint firstAttribute="trailing" secondItem="YMC-AP-VsA" secondAttribute="trailing" id="zQU-jO-fNa"/>
                         </constraints>

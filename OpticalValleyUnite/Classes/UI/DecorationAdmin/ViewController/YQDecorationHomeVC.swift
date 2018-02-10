@@ -100,6 +100,8 @@ class YQDecorationHomeVC: UIViewController {
         sender.isSelected = true
         selectButton = sender
         
+        self.dataArray.removeAll()
+        
         getDataListFunction(tag: (selectButton?.tag)!)
         
     }
@@ -358,6 +360,7 @@ extension YQDecorationHomeVC : UITableViewDelegate, UITableViewDataSource{
             
         }
         
+        cell?.indexID = (self.selectButton?.tag)!
         cell?.parkName = self.parkName
         cell?.model = self.dataArray[indexPath.row]
         

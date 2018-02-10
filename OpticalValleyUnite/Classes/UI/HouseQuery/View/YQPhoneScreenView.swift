@@ -8,14 +8,21 @@
 
 import UIKit
 
+protocol YQPhoneScreenViewDelegate : class {
+    
+    func phoneScreenViewCheckOutClick()
+
+}
+
 class YQPhoneScreenView: UIView {
 
-   
     @IBOutlet weak var phoneText: UITextField!
+    
+    var delegate : YQPhoneScreenViewDelegate?
     
     @IBAction func checkoutButtonClick(_ sender: UIButton) {
         
-        
+        self.delegate?.phoneScreenViewCheckOutClick()
         
     }
     

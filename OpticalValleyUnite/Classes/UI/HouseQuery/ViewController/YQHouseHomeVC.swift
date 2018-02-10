@@ -12,7 +12,20 @@ import SVProgressHUD
 
 class YQHouseHomeVC: UIViewController {
 
+    var currentIndex = -1
     
+    var dataArray = [YQHouseQueryHomeModel](){
+        
+        didSet {
+            
+            self.tableView.reloadData()
+        }
+        
+    }
+    
+    var cellID = "houseHomeCell"
+    
+    var notiesPramert : [String : Any]?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,6 +33,7 @@ class YQHouseHomeVC: UIViewController {
         super.viewDidLoad()
         
         self.title = "房屋查询"
+        self.automaticallyAdjustsScrollViewInsets = false
 
         //1.添加左右bar
         addRightBarButtonItem()
@@ -54,23 +68,66 @@ class YQHouseHomeVC: UIViewController {
     func screenToHouseVC(){
         
         let screenHouse = YQHouseScreenVC.init(nibName: "YQHouseScreenVC", bundle: nil)
-        
         navigationController?.pushViewController(screenHouse, animated: true)
+        
     }
     
     // MARK: - 获取list的数据的接口
-    func getDataForList(){
+    func getDataForList(pageIndex : Int = 0,pageSize : Int = 20 ,par : [String : Any] = [String : Any]()){
 
         var parmeter = [String : Any]()
+        parmeter["pageSize"] = pageSize
+        parmeter["pageIndex"] = pageIndex
+        
+        for (key,value) in par {
+            
+            parmeter[key] = value
+        }
         
         SVProgressHUD.show()
         
         HttpClient.instance.post(path: URLPath.getHouseList, parameters: parmeter, success: { (reponse) in
             
             SVProgressHUD.dismiss()
+            
             let data = reponse["data"] as? Array<[String : Any]>
             
+            var tempModel = [YQHouseQueryHomeModel]()
             
+            for dict in data! {
+            
+                tempModel.append(YQHouseQueryHomeModel.init(dict: dict))
+            }
+            
+            //添加上拉下拉刷新的情况
+            if pageIndex == 0 {
+                
+                if reponse["data"] as? NSArray == nil {
+                    
+                    self.dataArray.removeAll()
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.endRefreshing()
+                    
+                    return
+                }
+                
+                self.dataArray = tempModel
+                self.tableView.mj_header.endRefreshing()
+                
+            }else{
+                
+                if tempModel.count > 0{
+                    
+                    self.currentIndex = pageIndex
+                    
+                    self.dataArray.append(contentsOf: tempModel)
+                    
+                }
+                
+                self.tableView.mj_footer.endRefreshing()
+                
+            }
+
             
             
         }) { (error) in
@@ -88,16 +145,15 @@ class YQHouseHomeVC: UIViewController {
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             
             var par = [String : Any]()
-//            
-//            if self.notiesPramert != nil{
-//                
-//                for (key,value) in self.notiesPramert! {
-//                    
-//                    par[key] = value
-//                }
-//            }
-//            
-//            self.getDataListFunction(tag: (self.selectButton?.tag)!, currentIndex: 0, pramert: par)
+            
+            if self.notiesPramert != nil{
+                
+                for (key,value) in self.notiesPramert! {
+                    par[key] = value
+                }
+            }
+            
+            self.getDataForList( par: par)
             
         })
         
@@ -105,16 +161,15 @@ class YQHouseHomeVC: UIViewController {
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
             var par = [String : Any]()
-            
-//            if self.notiesPramert != nil{
-//                
-//                for (key,value) in self.notiesPramert! {
-//                    
-//                    par[key] = value
-//                }
-//            }
-//            
-//            self.getDataListFunction(tag: (self.selectButton?.tag)!, currentIndex: self.currentIndex + 1, pramert: par)
+            if self.notiesPramert != nil{
+                
+                for (key,value) in self.notiesPramert! {
+                    
+                    par[key] = value
+                }
+            }
+
+            self.getDataForList( pageIndex: self.currentIndex + 1,par: par)
             
         })
         
@@ -126,17 +181,21 @@ extension YQHouseHomeVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return self.dataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? YQHouseHomeCell
+        
+        cell?.model = self.dataArray[indexPath.row]
+        
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 150
+        return 60
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

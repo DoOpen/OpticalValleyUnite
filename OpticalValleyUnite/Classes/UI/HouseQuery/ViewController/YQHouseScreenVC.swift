@@ -52,6 +52,7 @@ class YQHouseScreenVC: UIViewController {
     func addScrollView(){
         
         phoneView = Bundle.main.loadNibNamed("YQPhoneScreen", owner: nil, options: nil)?[0] as! YQPhoneScreenView
+        phoneView.delegate = self
         
         locationView = Bundle.main.loadNibNamed("YQHouseLocationScreen", owner: nil, options: nil)?[0] as? YQHouseLocationScreenView
         locationView.delegate = self
@@ -126,7 +127,7 @@ extension YQHouseScreenVC : UIScrollViewDelegate{
 
 }
 
-extension YQHouseScreenVC : YQHouseLocationScreenViewDelegate{
+extension YQHouseScreenVC : YQHouseLocationScreenViewDelegate,YQPhoneScreenViewDelegate{
 
     func houseLocationScreenViewJumpToLocation(selecteTitile : String, indexPathRow : Int) {
     
@@ -145,6 +146,21 @@ extension YQHouseScreenVC : YQHouseLocationScreenViewDelegate{
             navigationController?.pushViewController(detail, animated: true)
         
         }
+    }
+    
+    func houseCheckOutClickDelegate() {
+        //传值,关闭vc
+        
+        
+        navigationController?.popViewController(animated: true)
+        
+    }
+    
+    func phoneScreenViewCheckOutClick(){
+        //传值,释放
+        
+        navigationController?.popViewController(animated: true)
+
     }
     
     

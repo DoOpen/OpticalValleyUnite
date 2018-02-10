@@ -12,6 +12,7 @@ protocol YQHouseLocationScreenViewDelegate : class {
     
     func houseLocationScreenViewJumpToLocation(selecteTitile : String ,indexPathRow : Int)
     
+    func houseCheckOutClickDelegate()
 }
 
 class YQHouseLocationScreenView: UIView {
@@ -37,7 +38,7 @@ class YQHouseLocationScreenView: UIView {
     
     @IBAction func checkoutButtonClick(_ sender: UIButton) {
         
-        
+        self.delegate?.houseCheckOutClickDelegate()
     }
     
     // MARK: - 添加默认的项目选择方法

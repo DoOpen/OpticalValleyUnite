@@ -166,6 +166,8 @@
 		2F7945191FE795190085E803 /* NSData+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7945151FE795190085E803 /* NSData+YYExtend.m */; };
 		2F79451A1FE795190085E803 /* NSString+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7945171FE795190085E803 /* NSString+YYExtend.m */; };
 		2F79451C1FE7C4CD0085E803 /* YQBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79451B1FE7C4CD0085E803 /* YQBluetooth.swift */; };
+		2F7B8C6F202EEB0B000C66AA /* YQHouseQueryHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B8C6E202EEB0B000C66AA /* YQHouseQueryHomeModel.swift */; };
+		2F7B8C71202EF37F000C66AA /* YQHouseHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B8C70202EF37F000C66AA /* YQHouseHomeCell.swift */; };
 		2F7DC8E6200D99D60087E2FC /* YQReportFormFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DC8E4200D99D60087E2FC /* YQReportFormFirstVC.swift */; };
 		2F7DC8E7200D99D60087E2FC /* YQReportFormFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7DC8E5200D99D60087E2FC /* YQReportFormFirstVC.xib */; };
 		2F7DC8E9200D9F500087E2FC /* YQReportFromViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DC8E8200D9F500087E2FC /* YQReportFromViewController.swift */; };
@@ -561,6 +563,8 @@
 		2F7945171FE795190085E803 /* NSString+YYExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YYExtend.m"; sourceTree = "<group>"; };
 		2F7945181FE795190085E803 /* YYCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCategory.h; sourceTree = "<group>"; };
 		2F79451B1FE7C4CD0085E803 /* YQBluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQBluetooth.swift; sourceTree = "<group>"; };
+		2F7B8C6E202EEB0B000C66AA /* YQHouseQueryHomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHouseQueryHomeModel.swift; sourceTree = "<group>"; };
+		2F7B8C70202EF37F000C66AA /* YQHouseHomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHouseHomeCell.swift; sourceTree = "<group>"; };
 		2F7DC8E4200D99D60087E2FC /* YQReportFormFirstVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQReportFormFirstVC.swift; sourceTree = "<group>"; };
 		2F7DC8E5200D99D60087E2FC /* YQReportFormFirstVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQReportFormFirstVC.xib; sourceTree = "<group>"; };
 		2F7DC8E8200D9F500087E2FC /* YQReportFromViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQReportFromViewController.swift; sourceTree = "<group>"; };
@@ -1431,6 +1435,7 @@
 		2FC989FA202D85800080D1BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2F7B8C6E202EEB0B000C66AA /* YQHouseQueryHomeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1442,6 +1447,7 @@
 				2FC98A09202D97F80080D1BE /* YQPhoneScreen.xib */,
 				2FC98A07202D97A10080D1BE /* YQHouseLocationScreenView.swift */,
 				2FC98A0B202D99350080D1BE /* YQHouseLocationScreen.xib */,
+				2F7B8C70202EF37F000C66AA /* YQHouseHomeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2308,6 +2314,7 @@
 				4BF807011F0E27AD0047E129 /* DeriveCell.swift in Sources */,
 				4BFD07C81E5D31A3004AF998 /* ExecutingViewConttroller.swift in Sources */,
 				4B1DEC5D1E31B646000917D2 /* SGScanningQRCodeView.m in Sources */,
+				2F7B8C71202EF37F000C66AA /* YQHouseHomeCell.swift in Sources */,
 				2F54BF0B1FCBF7C7006B4DCF /* YQExecTextCell.swift in Sources */,
 				2F94A28B1F73BA0000455162 /* YQResolvedView.swift in Sources */,
 				4BBBEC981E2CAAE200F60313 /* BoPhotoPickerViewController.m in Sources */,
@@ -2345,6 +2352,7 @@
 				4B7A59C31E35DB27002E96B6 /* URLPath.swift in Sources */,
 				4BD4B9501E272EA600AE2BC9 /* SignInViewController.swift in Sources */,
 				2F40D9941FB9A802007971D1 /* YQStepHeadView.swift in Sources */,
+				2F7B8C6F202EEB0B000C66AA /* YQHouseQueryHomeModel.swift in Sources */,
 				4B3951CE1E277D8600E2642F /* RKTagsView.m in Sources */,
 				2F2F95761F8DAE9000870DC8 /* YQJournalViewController.swift in Sources */,
 				2F07A0201FDBF4E90064556D /* YQResultMapViewController.swift in Sources */,

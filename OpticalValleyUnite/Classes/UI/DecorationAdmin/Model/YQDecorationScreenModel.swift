@@ -57,9 +57,11 @@ class YQDecorationFloorModel : NSObject {
 class YQDecorationUnitNoModel : NSObject {
     
     //楼层ID
-    var floorId = ""
+//    var floorId = ""
     //单元号
-    var unitNo = ""
+    var unitNuName = ""
+    //单元数
+    var unitNu = -1
     
     init(dict : [String : Any]) {
         super.init()
@@ -71,6 +73,28 @@ class YQDecorationUnitNoModel : NSObject {
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
         
     }
+}
+
+
+class YQDecorationGroundNoModel : NSObject {
+    
+    //楼号id
+    var groundNo = -1
+    //楼
+    var groundNoName = ""
+    
+    
+    init(dict : [String : Any]) {
+        super.init()
+        
+        setValuesForKeys(dict)
+    }
+    
+    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        
+    }
+
 }
 
 

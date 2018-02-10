@@ -308,7 +308,16 @@ struct URLPath {
     //首页list列表接口
     static let getHouseList = "owner/list"
     //筛选条件的接口
-    
+    //根据项目id 查项目区期数
+    static let getParkStage = "owner/park/stage"
+    //根据查询期数下的楼栋
+    static let getParkFloor = "owner/park/floor"
+    //查询楼栋下的单元
+    static let getParkUnitNu = "owner/park/unitNu"
+    //查询单元下楼层
+    static let getParkGroundNo = "owner/park/groundNo"
+    //查询楼层下房屋
+    static let getParkHouse = "owner/park/house"
     
     
 }

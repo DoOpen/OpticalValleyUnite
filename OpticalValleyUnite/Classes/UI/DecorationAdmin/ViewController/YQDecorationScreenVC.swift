@@ -19,7 +19,7 @@ class YQDecorationScreenVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     /// 模拟的cell的数据
-    var dataArray = ["区/期","栋","单元","房号"]
+    var dataArray = ["区/期","栋","单元","楼","房号"]
     var cellID = "decorationScreenCell"
     
     var selectePrameter = [String : Any]()
@@ -134,8 +134,15 @@ extension YQDecorationScreenVC : UITableViewDataSource,UITableViewDelegate{
         case "单元":
             let model = self.selectePrameter["unitNo"] as? YQDecorationUnitNoModel
             
-            cell.locationLabel.text = model?.unitNo ?? ""
+            cell.locationLabel.text = model?.unitNuName ?? ""
             break
+            
+        case "楼":
+            
+            let model = self.selectePrameter["groupNo"] as? YQDecorationGroundNoModel
+            cell.locationLabel.text = model?.groundNoName ?? ""
+            break
+
         case "房号":
             let model = self.selectePrameter["house"] as? YQDecorationHouseModel
             

@@ -15,6 +15,14 @@ class YQHouseScreenVC: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var selectePrameter = [String : Any](){
+        didSet{
+            
+            locationView.selectePrameter = selectePrameter
+        }
+    
+    }
+    
     /// content属性
     var phoneView : YQPhoneScreenView!
     var locationView : YQHouseLocationScreenView!
@@ -25,6 +33,18 @@ class YQHouseScreenVC: UIViewController {
         self.title = "房屋查询"
         
         addScrollView()
+        //添加通知
+        addNoticeMethod()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let parkName = setUpProjectNameLable()
+        if parkName != "请选择默认项目"{
+        
+            locationView.tableView.reloadData()
+        }
         
     }
     
@@ -34,15 +54,18 @@ class YQHouseScreenVC: UIViewController {
         phoneView = Bundle.main.loadNibNamed("YQPhoneScreen", owner: nil, options: nil)?[0] as! YQPhoneScreenView
         
         locationView = Bundle.main.loadNibNamed("YQHouseLocationScreen", owner: nil, options: nil)?[0] as? YQHouseLocationScreenView
+        locationView.delegate = self
+        locationView.tableView.dataSource = locationView
+        locationView.tableView.delegate = locationView
+        locationView.tableView.reloadData()
         
-        phoneView.frame = CGRect.init(x: 0, y: 0, width: SJScreeW, height: scrollView.height)
-        locationView.frame = CGRect.init(x: SJScreeW, y: 0, width: SJScreeW, height: scrollView.height)
-        self.scrollView.addSubview(phoneView)
+        locationView.frame = CGRect.init(x: 0, y: 0, width: SJScreeW, height: scrollView.height)
+        phoneView.frame = CGRect.init(x: SJScreeW, y: 0, width: SJScreeW, height: scrollView.height)
         self.scrollView.addSubview(locationView)
+        self.scrollView.addSubview(phoneView)
         
         self.scrollView.contentSize = CGSize.init(width: locationView.maxX, height: 0)
         
-    
     }
 
     @IBAction func screenSegmentClick(_ sender: UISegmentedControl) {
@@ -50,6 +73,43 @@ class YQHouseScreenVC: UIViewController {
         self.scrollView.setContentOffset(CGPoint.init(x: CGFloat (sender.selectedSegmentIndex)  * SJScreeW, y: 0), animated: true)
         
     }
+    
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            
+            projectName = dic?["PARK_NAME"] as! String
+            
+        }else{
+            
+            projectName = "请选择默认项目"
+        }
+        
+        return projectName
+    }
+
+    
+    // MARK: - 接受通知的方法
+    func addNoticeMethod(){
+        
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "selectLocationNoties")
+        
+        center.addObserver(self, selector: #selector(selectLocationParmeter(info:)), name: notiesName, object: nil)
+    }
+    
+    func selectLocationParmeter(info: NSNotification){
+        
+        let value = info.userInfo?["selectLocation"] as! [String : Any]
+        self.selectePrameter = value
+        
+    }
+
 
     
 }
@@ -64,6 +124,30 @@ extension YQHouseScreenVC : UIScrollViewDelegate{
         
     }
 
+}
+
+extension YQHouseScreenVC : YQHouseLocationScreenViewDelegate{
+
+    func houseLocationScreenViewJumpToLocation(selecteTitile : String, indexPathRow : Int) {
+    
+        if indexPathRow == 0 {
+        
+            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+            self.navigationController?.pushViewController(project, animated: true)
+            
+        
+        }else{
+        
+            let detail = YQLocationDetailsVC.init(nibName: "YQLocationDetailsVC", bundle: nil)
+            detail.selectDict = self.selectePrameter
+            detail.titile = selecteTitile
+            
+            navigationController?.pushViewController(detail, animated: true)
+        
+        }
+    }
+    
+    
 }
 
 

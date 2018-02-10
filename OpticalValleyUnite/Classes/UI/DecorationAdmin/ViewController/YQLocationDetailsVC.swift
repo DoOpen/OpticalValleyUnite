@@ -29,6 +29,8 @@ class YQLocationDetailsVC: UIViewController {
     
     var UnitNo = [YQDecorationUnitNoModel]()
     
+    var groupNo = [YQDecorationGroundNoModel]()
+    
     var House = [YQDecorationHouseModel]()
     
     ///选择的位置字典
@@ -50,6 +52,7 @@ class YQLocationDetailsVC: UIViewController {
         
     }
     
+    
     @IBAction func makeSureButtonClick(_ sender: UIButton) {
         //确定按钮的点击执行的操作
         let center = NotificationCenter.default
@@ -66,9 +69,16 @@ class YQLocationDetailsVC: UIViewController {
         var par = [String : Any]()
         
         switch titile {
+                        
             case "区/期":
                 
                 par["parkId"] = self.parkID
+                
+                if self.parkID == "" {
+                
+                    self.alert(message: "请先选择项目")
+                    return
+                }
                 
                 SVProgressHUD.show()
                 self.getStageData(par : par)
@@ -107,20 +117,40 @@ class YQLocationDetailsVC: UIViewController {
                 self.getUnitNoData(par: par)
                 
                 break
-                
-            case "房号":
-                
+            
+            case "楼":
                 let model = selectDict["unitNo"] as? YQDecorationUnitNoModel
+                let model1 = selectDict["floor"] as? YQDecorationFloorModel
                 
                 if model == nil {
                     
                     self.alert(message: "请先选择单元信息")
                     return
-
+                    
                 }
+                par["floorId"] = model1?.floorId
+                par["unitNu"] = model?.unitNu
+            
+                self.getGroundNoData(par: par)
                 
-                par["floorId"] = model?.floorId
-                par["unitNo"] = model?.unitNo
+                break
+                
+            case "房号":
+                
+                let model = selectDict["unitNo"] as? YQDecorationUnitNoModel
+                let model1 = selectDict["groupNo"] as? YQDecorationGroundNoModel
+                let model2 = selectDict["floor"] as? YQDecorationFloorModel
+                
+                if model == nil {
+                    
+                    self.alert(message: "请先选择楼层信息")
+                    return
+                    
+                }
+                par["floorId"] = model2?.floorId
+                par["unitNu"] = model?.unitNu
+                par["groundNo"] = model1?.groundNo
+                
                 self.getHouseData(par: par)
                
                 break
@@ -173,7 +203,7 @@ class YQLocationDetailsVC: UIViewController {
     // MARK: - 获取各个信息的数据情况
     func getStageData( par : [String : Any] ){
     
-        HttpClient.instance.post(path: URLPath.getDecorationStage, parameters: par, success: { (response) in
+        HttpClient.instance.post(path: URLPath.getParkStage, parameters: par, success: { (response) in
             SVProgressHUD.dismiss()
             
             let array = response as? Array<[String : Any]>
@@ -204,7 +234,7 @@ class YQLocationDetailsVC: UIViewController {
         
         SVProgressHUD.show()
         
-        HttpClient.instance.post(path: URLPath.getDecorationUnitNo, parameters: par, success: { (response) in
+        HttpClient.instance.post(path: URLPath.getParkUnitNu, parameters: par, success: { (response) in
             
             SVProgressHUD.dismiss()
             let array = response as? Array<[String : Any]>
@@ -236,7 +266,7 @@ class YQLocationDetailsVC: UIViewController {
         
         SVProgressHUD.show()
         
-        HttpClient.instance.post(path: URLPath.getDecorationFloor, parameters: par, success: { (response) in
+        HttpClient.instance.post(path: URLPath.getParkFloor, parameters: par, success: { (response) in
             
             SVProgressHUD.dismiss()
             let array = response as? Array<[String : Any]>
@@ -263,11 +293,44 @@ class YQLocationDetailsVC: UIViewController {
 
     }
     
+    func getGroundNoData(par : [String : Any]){
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getParkGroundNo, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            let array = response as? Array<[String : Any]>
+            
+            if (array?.isEmpty)! {
+                
+                SVProgressHUD.showError(withStatus: "没有加载到更多数据!")
+                return
+            }
+            
+            var tempModel = [YQDecorationGroundNoModel]()
+            for temp in array! {
+                
+                tempModel.append(YQDecorationGroundNoModel.init(dict: temp))
+            }
+            
+            self.groupNo = tempModel
+            self.tableView.reloadData()
+
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "楼层信息查询失败,请检查网络!")
+        }
+    
+    }
+    
     func getHouseData(par : [String : Any]){
         
         SVProgressHUD.show()
         
-        HttpClient.instance.post(path: URLPath.getDecorationHouse, parameters: par, success: { (response) in
+        HttpClient.instance.post(path: URLPath.getParkHouse, parameters: par, success: { (response) in
             
             SVProgressHUD.dismiss()
             let array = response as? Array<[String : Any]>
@@ -294,8 +357,6 @@ class YQLocationDetailsVC: UIViewController {
         })
 
     }
-    
-    
 
 }
 
@@ -313,6 +374,9 @@ extension YQLocationDetailsVC : UITableViewDelegate,UITableViewDataSource{
             
             case "单元":
                 return UnitNo.count
+            
+            case "楼":
+                return groupNo.count
             
             case "房号":
                 return House.count
@@ -343,7 +407,11 @@ extension YQLocationDetailsVC : UITableViewDelegate,UITableViewDataSource{
                 break
             
             case "单元":
-                cell?.textLabel?.text = UnitNo[indexPath.row].unitNo
+                cell?.textLabel?.text = UnitNo[indexPath.row].unitNuName
+                break
+            
+            case "楼":
+                cell?.textLabel?.text = groupNo[indexPath.row].groundNoName
                 break
             
             case "房号":
@@ -361,26 +429,35 @@ extension YQLocationDetailsVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch self.titile {
+            
+            
             case "区/期":
                 
                 self.selectDict.removeAll()
                 self.selectDict["stage"] =  Stage[indexPath.row]
-                
                 break
                 
             case "栋":
                 
                 self.selectDict.removeValue(forKey: "unitNo")
                 self.selectDict.removeValue(forKey: "house")
+                self.selectDict.removeValue(forKey: "groupNo")
                 self.selectDict["floor"] = Floor[indexPath.row]
                 break
                 
             case "单元":
                 
                 self.selectDict.removeValue(forKey: "house")
+                self.selectDict.removeValue(forKey: "groupNo")
                 self.selectDict["unitNo"] = UnitNo[indexPath.row]
                 break
+            
+            case "楼":
                 
+                self.selectDict.removeValue(forKey: "house")
+                self.selectDict["groupNo"] = groupNo[indexPath.row]
+                break
+            
             case "房号":
                 self.selectDict["house"] = House[indexPath.row]
                 break

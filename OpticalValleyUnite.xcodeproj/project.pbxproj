@@ -99,6 +99,20 @@
 		2F4EB2991FD532590004A532 /* YQVideoDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4EB2971FD532590004A532 /* YQVideoDrawerViewController.swift */; };
 		2F4EB29A1FD532590004A532 /* YQVideoDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4EB2981FD532590004A532 /* YQVideoDrawerViewController.xib */; };
 		2F4EB29C1FD549340004A532 /* YQVideoMapPointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4EB29B1FD549340004A532 /* YQVideoMapPointModel.swift */; };
+		2F51CCBC203AA0CA005723E8 /* YQHouseHomeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51CCBB203AA0CA005723E8 /* YQHouseHomeDetailVC.swift */; };
+		2F51CCBE203AA0F8005723E8 /* YQHouseHomeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F51CCBD203AA0F8005723E8 /* YQHouseHomeDetail.storyboard */; };
+		2F51CCC5203AB511005723E8 /* YQEquipmentListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51CCC3203AB511005723E8 /* YQEquipmentListTVC.swift */; };
+		2F51CCC6203AB511005723E8 /* YQEquipmentListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F51CCC4203AB511005723E8 /* YQEquipmentListTVC.xib */; };
+		2F51CCC8203AB582005723E8 /* YQHouseRelativesAndTenantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51CCC7203AB582005723E8 /* YQHouseRelativesAndTenantVC.swift */; };
+		2F51CCCA203AB599005723E8 /* YQHouseRelativesAndTenant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F51CCC9203AB599005723E8 /* YQHouseRelativesAndTenant.storyboard */; };
+		2F51CCCC203AB5E8005723E8 /* YQWorkListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51CCCB203AB5E8005723E8 /* YQWorkListVC.swift */; };
+		2F51CCCE203AB622005723E8 /* YQWorkListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F51CCCD203AB622005723E8 /* YQWorkListVC.storyboard */; };
+		2F51CCD1203C2AAB005723E8 /* YQEquipmentListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51CCCF203C2AAB005723E8 /* YQEquipmentListCell.swift */; };
+		2F51CCD2203C2AAB005723E8 /* YQEquipmentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F51CCD0203C2AAB005723E8 /* YQEquipmentListCell.xib */; };
+		2F51CCD5203C2B13005723E8 /* YQWorkListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51CCD3203C2B13005723E8 /* YQWorkListCell.swift */; };
+		2F51CCD6203C2B13005723E8 /* YQWorkListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F51CCD4203C2B13005723E8 /* YQWorkListCell.xib */; };
+		2F51CCD9203C2B7D005723E8 /* YQOwnerAndTenantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51CCD7203C2B7D005723E8 /* YQOwnerAndTenantCell.swift */; };
+		2F51CCDA203C2B7D005723E8 /* YQOwnerAndTenantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F51CCD8203C2B7D005723E8 /* YQOwnerAndTenantCell.xib */; };
 		2F51D3DC1FEB8B0D00BC7B04 /* YQScanImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51D3DA1FEB8B0D00BC7B04 /* YQScanImageViewController.swift */; };
 		2F51D3DD1FEB8B0D00BC7B04 /* YQScanImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F51D3DB1FEB8B0D00BC7B04 /* YQScanImageViewController.xib */; };
 		2F54BF0B1FCBF7C7006B4DCF /* YQExecTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */; };
@@ -489,6 +503,20 @@
 		2F4EB2971FD532590004A532 /* YQVideoDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQVideoDrawerViewController.swift; sourceTree = "<group>"; };
 		2F4EB2981FD532590004A532 /* YQVideoDrawerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQVideoDrawerViewController.xib; sourceTree = "<group>"; };
 		2F4EB29B1FD549340004A532 /* YQVideoMapPointModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQVideoMapPointModel.swift; sourceTree = "<group>"; };
+		2F51CCBB203AA0CA005723E8 /* YQHouseHomeDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHouseHomeDetailVC.swift; sourceTree = "<group>"; };
+		2F51CCBD203AA0F8005723E8 /* YQHouseHomeDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQHouseHomeDetail.storyboard; sourceTree = "<group>"; };
+		2F51CCC3203AB511005723E8 /* YQEquipmentListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQEquipmentListTVC.swift; sourceTree = "<group>"; };
+		2F51CCC4203AB511005723E8 /* YQEquipmentListTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQEquipmentListTVC.xib; sourceTree = "<group>"; };
+		2F51CCC7203AB582005723E8 /* YQHouseRelativesAndTenantVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHouseRelativesAndTenantVC.swift; sourceTree = "<group>"; };
+		2F51CCC9203AB599005723E8 /* YQHouseRelativesAndTenant.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQHouseRelativesAndTenant.storyboard; sourceTree = "<group>"; };
+		2F51CCCB203AB5E8005723E8 /* YQWorkListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkListVC.swift; sourceTree = "<group>"; };
+		2F51CCCD203AB622005723E8 /* YQWorkListVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQWorkListVC.storyboard; sourceTree = "<group>"; };
+		2F51CCCF203C2AAB005723E8 /* YQEquipmentListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQEquipmentListCell.swift; sourceTree = "<group>"; };
+		2F51CCD0203C2AAB005723E8 /* YQEquipmentListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQEquipmentListCell.xib; sourceTree = "<group>"; };
+		2F51CCD3203C2B13005723E8 /* YQWorkListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkListCell.swift; sourceTree = "<group>"; };
+		2F51CCD4203C2B13005723E8 /* YQWorkListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWorkListCell.xib; sourceTree = "<group>"; };
+		2F51CCD7203C2B7D005723E8 /* YQOwnerAndTenantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQOwnerAndTenantCell.swift; sourceTree = "<group>"; };
+		2F51CCD8203C2B7D005723E8 /* YQOwnerAndTenantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQOwnerAndTenantCell.xib; sourceTree = "<group>"; };
 		2F51D3DA1FEB8B0D00BC7B04 /* YQScanImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQScanImageViewController.swift; sourceTree = "<group>"; };
 		2F51D3DB1FEB8B0D00BC7B04 /* YQScanImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQScanImageViewController.xib; sourceTree = "<group>"; };
 		2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQExecTextCell.swift; sourceTree = "<group>"; };
@@ -1448,6 +1476,12 @@
 				2FC98A07202D97A10080D1BE /* YQHouseLocationScreenView.swift */,
 				2FC98A0B202D99350080D1BE /* YQHouseLocationScreen.xib */,
 				2F7B8C70202EF37F000C66AA /* YQHouseHomeCell.swift */,
+				2F51CCCF203C2AAB005723E8 /* YQEquipmentListCell.swift */,
+				2F51CCD0203C2AAB005723E8 /* YQEquipmentListCell.xib */,
+				2F51CCD3203C2B13005723E8 /* YQWorkListCell.swift */,
+				2F51CCD4203C2B13005723E8 /* YQWorkListCell.xib */,
+				2F51CCD7203C2B7D005723E8 /* YQOwnerAndTenantCell.swift */,
+				2F51CCD8203C2B7D005723E8 /* YQOwnerAndTenantCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1457,8 +1491,16 @@
 			children = (
 				2FC989FD202D86010080D1BE /* YQHouseHomeVC.swift */,
 				2FC989FF202D86210080D1BE /* YQHouseHome.storyboard */,
+				2F51CCBB203AA0CA005723E8 /* YQHouseHomeDetailVC.swift */,
+				2F51CCBD203AA0F8005723E8 /* YQHouseHomeDetail.storyboard */,
 				2FC98A01202D93ED0080D1BE /* YQHouseScreenVC.swift */,
 				2FC98A02202D93ED0080D1BE /* YQHouseScreenVC.xib */,
+				2F51CCC7203AB582005723E8 /* YQHouseRelativesAndTenantVC.swift */,
+				2F51CCC9203AB599005723E8 /* YQHouseRelativesAndTenant.storyboard */,
+				2F51CCC3203AB511005723E8 /* YQEquipmentListTVC.swift */,
+				2F51CCC4203AB511005723E8 /* YQEquipmentListTVC.xib */,
+				2F51CCCB203AB5E8005723E8 /* YQWorkListVC.swift */,
+				2F51CCCD203AB622005723E8 /* YQWorkListVC.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2073,10 +2115,12 @@
 				2FEB0E811F6E614A0002DEE8 /* YQUpdataPSW.storyboard in Resources */,
 				4B3951E71E27DE0A00E2642F /* AMap.bundle in Resources */,
 				4B6E64E81EEA821900BA23E4 /* ExecutEmergencyCell.xib in Resources */,
+				2F51CCD2203C2AAB005723E8 /* YQEquipmentListCell.xib in Resources */,
 				2FF2169F1FDD697D00978A56 /* YQResultCellHead.xib in Resources */,
 				4BD4B94C1E272EA600AE2BC9 /* MessageView.xib in Resources */,
 				2F94A28F1F73BA4F00455162 /* YQResolved.xib in Resources */,
 				2F4BB4231FC3CB960007BD08 /* YQExecNew.xib in Resources */,
+				2F51CCD6203C2B13005723E8 /* YQWorkListCell.xib in Resources */,
 				2F7EF82320107A7D0029D38D /* YQWorkHighlightsVC.xib in Resources */,
 				4BD4B94D1E272EA600AE2BC9 /* Home.storyboard in Resources */,
 				2FC167531F90A977001CEACD /* YQFilterJournal.storyboard in Resources */,
@@ -2106,8 +2150,10 @@
 				2F07A0121FDB97AB0064556D /* YQPatrolBottomLastView.xib in Resources */,
 				2F6A43901F6A52CA003E10C9 /* YQFireControl.storyboard in Resources */,
 				2F3C09411F7262C200036547 /* YQImplementDetailHead.xib in Resources */,
+				2F51CCCE203AB622005723E8 /* YQWorkListVC.storyboard in Resources */,
 				2F07A01E1FDBEEDA0064556D /* YQpatrolResultDrawerViewController.xib in Resources */,
 				2F4A65921F9462FE00F4C72A /* YQWorkRecord.storyboard in Resources */,
+				2F51CCCA203AB599005723E8 /* YQHouseRelativesAndTenant.storyboard in Resources */,
 				4BD4B9611E2763D500AE2BC9 /* DateView.xib in Resources */,
 				2F07A00E1FDB97350064556D /* YQPatrolBottomNextView.xib in Resources */,
 				2F5D276E1F998E0C0022F7D6 /* YQProjectSelectFooter.xib in Resources */,
@@ -2136,8 +2182,10 @@
 				2F7550F91FA6C24700A5E242 /* YQObject.storyboard in Resources */,
 				2F07A0281FDBF69B0064556D /* YQResultDetail.storyboard in Resources */,
 				2F57891D2011D4F400C1C5DF /* YQWorkHighlightsDetailCell.xib in Resources */,
+				2F51CCDA203C2B7D005723E8 /* YQOwnerAndTenantCell.xib in Resources */,
 				2F7DC8F5200DEB440087E2FC /* YQWorkPlanVC.xib in Resources */,
 				2F94A2851F73B49C00455162 /* YQImplementFeedback.storyboard in Resources */,
+				2F51CCC6203AB511005723E8 /* YQEquipmentListTVC.xib in Resources */,
 				2FC98A00202D86210080D1BE /* YQHouseHome.storyboard in Resources */,
 				4BE88A611E88D242003D9179 /* SigninCell.xib in Resources */,
 				2F1F443B202A8E6300F9F51C /* YQDecorationScreenCell.xib in Resources */,
@@ -2168,6 +2216,7 @@
 				2F5A3D5D1FE8ED7F0069ABE1 /* YQBluetoothCell.xib in Resources */,
 				2F7EF82B201082F40029D38D /* YQAddHighlights.xib in Resources */,
 				2F70DC2E1FDFA659003B9938 /* YQScoreResult.xib in Resources */,
+				2F51CCBE203AA0F8005723E8 /* YQHouseHomeDetail.storyboard in Resources */,
 				4B5854E91EB072160087CFF0 /* ProcessingCell.xib in Resources */,
 				4BD4B94F1E272EA600AE2BC9 /* SignIn.storyboard in Resources */,
 				4BFD07CC1E5D3ACC004AF998 /* ExecutingSectionView.xib in Resources */,
@@ -2315,12 +2364,14 @@
 				4BFD07C81E5D31A3004AF998 /* ExecutingViewConttroller.swift in Sources */,
 				4B1DEC5D1E31B646000917D2 /* SGScanningQRCodeView.m in Sources */,
 				2F7B8C71202EF37F000C66AA /* YQHouseHomeCell.swift in Sources */,
+				2F51CCD5203C2B13005723E8 /* YQWorkListCell.swift in Sources */,
 				2F54BF0B1FCBF7C7006B4DCF /* YQExecTextCell.swift in Sources */,
 				2F94A28B1F73BA0000455162 /* YQResolvedView.swift in Sources */,
 				4BBBEC981E2CAAE200F60313 /* BoPhotoPickerViewController.m in Sources */,
 				4B6E64FB1EEAEFCF00BA23E4 /* PhotoCell.swift in Sources */,
 				2F40D9901FB94253007971D1 /* YQStepStatisticsView.swift in Sources */,
 				2F4EB2991FD532590004A532 /* YQVideoDrawerViewController.swift in Sources */,
+				2F51CCC8203AB582005723E8 /* YQHouseRelativesAndTenantVC.swift in Sources */,
 				4B751BD31E5B301C00C0CEC0 /* AddScrollerView.swift in Sources */,
 				2F3B96001F6B68BE0008AFEB /* YQDrawerViewController.swift in Sources */,
 				2F70DC2C1FDFA63F003B9938 /* YQScoreResult.swift in Sources */,
@@ -2332,6 +2383,7 @@
 				4B3951FC1E28CF5000E2642F /* WorkOrderDetailsCell.swift in Sources */,
 				2F3AC6AA1FD6937D0029AEE3 /* YQVideoIndoorPatorlModel.swift in Sources */,
 				2F5993F22029905B00AE124C /* YQDecorationScreenVC.swift in Sources */,
+				2F51CCD9203C2B7D005723E8 /* YQOwnerAndTenantCell.swift in Sources */,
 				4B3951FA1E28CF1F00E2642F /* WorkOrderStutasCell.swift in Sources */,
 				2F70DC2A1FDF7FE6003B9938 /* YQResultDetailModel.swift in Sources */,
 				2F4EB29C1FD549340004A532 /* YQVideoMapPointModel.swift in Sources */,
@@ -2453,6 +2505,7 @@
 				4B39520A1E29D25D00E2642F /* SJUpButton.m in Sources */,
 				2F07A01D1FDBEEDA0064556D /* YQpatrolResultDrawerViewController.swift in Sources */,
 				4B1558AF1F131AA70023F14D /* DeviceView.swift in Sources */,
+				2F51CCBC203AA0CA005723E8 /* YQHouseHomeDetailVC.swift in Sources */,
 				4BD4B95D1E27603400AE2BC9 /* DateChooseView.swift in Sources */,
 				2F7550F71FA6C1F600A5E242 /* YQObjectTableViewController.swift in Sources */,
 				2F4A658C1F945A9700F4C72A /* YQJournalAddEventViewController.swift in Sources */,
@@ -2484,6 +2537,7 @@
 				2F94A2891F73B9D800455162 /* YQFalsePositiveView.swift in Sources */,
 				4B8EE7761F17047400A59F8D /* WorkOrderCell.swift in Sources */,
 				2F5F9ABC1FF3ADCE00630271 /* YQAddView.swift in Sources */,
+				2F51CCC5203AB511005723E8 /* YQEquipmentListTVC.swift in Sources */,
 				2FEB0E871F6E710B0002DEE8 /* YQFalsePositivesVC.swift in Sources */,
 				4BD4B94A1E272EA600AE2BC9 /* SJTabBarViewController.swift in Sources */,
 				2FC1674F1F90A840001CEACD /* YQFilterJournalViewController.swift in Sources */,
@@ -2526,11 +2580,13 @@
 				2F73073A1FA85DFA0067BC4D /* YQWorkLogListModel.swift in Sources */,
 				4B6E64FA1EEAEFCF00BA23E4 /* PhotoBrowser.swift in Sources */,
 				2F3AC6A81FD645100029AEE3 /* YQVideoPatrolAnnotation.swift in Sources */,
+				2F51CCD1203C2AAB005723E8 /* YQEquipmentListCell.swift in Sources */,
 				4BBBEC991E2CAAE200F60313 /* BoTapAssetView.m in Sources */,
 				2F3B96031F6BC15B0008AFEB /* YQJoinTotallNumVC.swift in Sources */,
 				2F51D3DC1FEB8B0D00BC7B04 /* YQScanImageViewController.swift in Sources */,
 				4BE922661EE84BA100FDEFE1 /* ExecuteDetailSubCell.swift in Sources */,
 				4BD4B9591E2747F000AE2BC9 /* SJTextView.m in Sources */,
+				2F51CCCC203AB5E8005723E8 /* YQWorkListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

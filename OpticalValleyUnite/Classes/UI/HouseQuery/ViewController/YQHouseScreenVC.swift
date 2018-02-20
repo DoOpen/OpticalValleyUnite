@@ -31,8 +31,9 @@ class YQHouseScreenVC: UIViewController {
         super.viewDidLoad()
 
         self.title = "房屋查询"
-        
+        //添加滚动框的视图
         addScrollView()
+        
         //添加通知
         addNoticeMethod()
         

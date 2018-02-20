@@ -31,6 +31,7 @@ class YQHouseHomeCell: UITableViewCell {
             houseNum.text = model?.houseCode
             
             if model?.ownerIds != "" {
+                //通过判断来进行的缓存行高的选项
                 
                 ownerNameLabel.text = model?.ownerName
                 ownerPhoneLabel.text = model?.phone

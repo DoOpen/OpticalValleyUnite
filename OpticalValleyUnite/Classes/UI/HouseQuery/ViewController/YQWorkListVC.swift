@@ -10,16 +10,18 @@ import UIKit
 
 class YQWorkListVC: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    var houseID : String?
     
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.title = "工单列表"
+
+    }
+    
+    
+    
+    
 }

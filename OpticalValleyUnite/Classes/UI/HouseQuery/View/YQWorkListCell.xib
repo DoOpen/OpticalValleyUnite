@@ -123,6 +123,14 @@
                     <constraint firstAttribute="trailing" secondItem="FdJ-OH-qQ7" secondAttribute="trailing" id="lFr-lO-Fob"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="kvB-Iq-aaY" id="fHj-Pd-NhH"/>
+                <outlet property="projectLabel" destination="ktd-Xo-dl4" id="gzb-fA-udB"/>
+                <outlet property="timeLabel" destination="wfj-bI-bS3" id="gqc-Ix-6tx"/>
+                <outlet property="workDescribeTextView" destination="1pL-PT-Pxc" id="Hf2-IU-4EI"/>
+                <outlet property="workNameLabel" destination="xBI-w4-qza" id="L6Z-ap-W8M"/>
+                <outlet property="workStateButton" destination="Wlx-eL-ySd" id="gc4-Hz-s1G"/>
+            </connections>
             <point key="canvasLocation" x="18.5" y="81"/>
         </tableViewCell>
     </objects>

@@ -102,7 +102,6 @@
 		2F51CCBC203AA0CA005723E8 /* YQHouseHomeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51CCBB203AA0CA005723E8 /* YQHouseHomeDetailVC.swift */; };
 		2F51CCBE203AA0F8005723E8 /* YQHouseHomeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F51CCBD203AA0F8005723E8 /* YQHouseHomeDetail.storyboard */; };
 		2F51CCC5203AB511005723E8 /* YQEquipmentListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51CCC3203AB511005723E8 /* YQEquipmentListTVC.swift */; };
-		2F51CCC6203AB511005723E8 /* YQEquipmentListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F51CCC4203AB511005723E8 /* YQEquipmentListTVC.xib */; };
 		2F51CCC8203AB582005723E8 /* YQHouseRelativesAndTenantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51CCC7203AB582005723E8 /* YQHouseRelativesAndTenantVC.swift */; };
 		2F51CCCA203AB599005723E8 /* YQHouseRelativesAndTenant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F51CCC9203AB599005723E8 /* YQHouseRelativesAndTenant.storyboard */; };
 		2F51CCCC203AB5E8005723E8 /* YQWorkListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F51CCCB203AB5E8005723E8 /* YQWorkListVC.swift */; };
@@ -208,6 +207,7 @@
 		2F94A28B1F73BA0000455162 /* YQResolvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A28A1F73BA0000455162 /* YQResolvedView.swift */; };
 		2F94A28D1F73BA2D00455162 /* YQFalsePositive.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A28C1F73BA2D00455162 /* YQFalsePositive.xib */; };
 		2F94A28F1F73BA4F00455162 /* YQResolved.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A28E1F73BA4F00455162 /* YQResolved.xib */; };
+		2F9E25152043E00500035D8B /* YQEquipmentListTVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F9E25142043E00500035D8B /* YQEquipmentListTVC.storyboard */; };
 		2FAA64221FB04B7F00A34311 /* YQDeviceCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA64201FB04B7F00A34311 /* YQDeviceCell2.swift */; };
 		2FAA64231FB04B7F00A34311 /* YQDeviceCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */; };
 		2FB180761FE69BEF00BC1A40 /* YQIntoDoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB180751FE69BEF00BC1A40 /* YQIntoDoorViewController.swift */; };
@@ -506,7 +506,6 @@
 		2F51CCBB203AA0CA005723E8 /* YQHouseHomeDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHouseHomeDetailVC.swift; sourceTree = "<group>"; };
 		2F51CCBD203AA0F8005723E8 /* YQHouseHomeDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQHouseHomeDetail.storyboard; sourceTree = "<group>"; };
 		2F51CCC3203AB511005723E8 /* YQEquipmentListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQEquipmentListTVC.swift; sourceTree = "<group>"; };
-		2F51CCC4203AB511005723E8 /* YQEquipmentListTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQEquipmentListTVC.xib; sourceTree = "<group>"; };
 		2F51CCC7203AB582005723E8 /* YQHouseRelativesAndTenantVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHouseRelativesAndTenantVC.swift; sourceTree = "<group>"; };
 		2F51CCC9203AB599005723E8 /* YQHouseRelativesAndTenant.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQHouseRelativesAndTenant.storyboard; sourceTree = "<group>"; };
 		2F51CCCB203AB5E8005723E8 /* YQWorkListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkListVC.swift; sourceTree = "<group>"; };
@@ -619,6 +618,7 @@
 		2F94A28A1F73BA0000455162 /* YQResolvedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQResolvedView.swift; sourceTree = "<group>"; };
 		2F94A28C1F73BA2D00455162 /* YQFalsePositive.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQFalsePositive.xib; sourceTree = "<group>"; };
 		2F94A28E1F73BA4F00455162 /* YQResolved.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQResolved.xib; sourceTree = "<group>"; };
+		2F9E25142043E00500035D8B /* YQEquipmentListTVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQEquipmentListTVC.storyboard; sourceTree = "<group>"; };
 		2FAA64201FB04B7F00A34311 /* YQDeviceCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDeviceCell2.swift; sourceTree = "<group>"; };
 		2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDeviceCell2.xib; sourceTree = "<group>"; };
 		2FB180751FE69BEF00BC1A40 /* YQIntoDoorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQIntoDoorViewController.swift; sourceTree = "<group>"; };
@@ -1498,7 +1498,7 @@
 				2F51CCC7203AB582005723E8 /* YQHouseRelativesAndTenantVC.swift */,
 				2F51CCC9203AB599005723E8 /* YQHouseRelativesAndTenant.storyboard */,
 				2F51CCC3203AB511005723E8 /* YQEquipmentListTVC.swift */,
-				2F51CCC4203AB511005723E8 /* YQEquipmentListTVC.xib */,
+				2F9E25142043E00500035D8B /* YQEquipmentListTVC.storyboard */,
 				2F51CCCB203AB5E8005723E8 /* YQWorkListVC.swift */,
 				2F51CCCD203AB622005723E8 /* YQWorkListVC.storyboard */,
 			);
@@ -2128,6 +2128,7 @@
 				2F7DC8EB200D9F780087E2FC /* YQReportForm.storyboard in Resources */,
 				2F4AAD7C1FD9543E00697E51 /* YQVideoMonitorAndPatrol.storyboard in Resources */,
 				2F0F877C1F56D23F0030A6DB /* YQPartsLibary.storyboard in Resources */,
+				2F9E25152043E00500035D8B /* YQEquipmentListTVC.storyboard in Resources */,
 				2F39D746200F2FF100074B83 /* YQSelectTime.xib in Resources */,
 				4B3952071E29CE1F00E2642F /* WorkOrderOprationCell.xib in Resources */,
 				2F5E8C581F595FED00007717 /* YQPartDataSelect.xib in Resources */,
@@ -2185,7 +2186,6 @@
 				2F51CCDA203C2B7D005723E8 /* YQOwnerAndTenantCell.xib in Resources */,
 				2F7DC8F5200DEB440087E2FC /* YQWorkPlanVC.xib in Resources */,
 				2F94A2851F73B49C00455162 /* YQImplementFeedback.storyboard in Resources */,
-				2F51CCC6203AB511005723E8 /* YQEquipmentListTVC.xib in Resources */,
 				2FC98A00202D86210080D1BE /* YQHouseHome.storyboard in Resources */,
 				4BE88A611E88D242003D9179 /* SigninCell.xib in Resources */,
 				2F1F443B202A8E6300F9F51C /* YQDecorationScreenCell.xib in Resources */,

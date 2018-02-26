@@ -30,6 +30,7 @@ class YQHouseHomeVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.title = "房屋查询"
@@ -129,7 +130,6 @@ class YQHouseHomeVC: UIViewController {
             }
 
             
-            
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: error.description)
@@ -199,7 +199,11 @@ extension YQHouseHomeVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //界面的跳转情况
+        
+        //界面的跳转到 业主信息的详情
+        let houseDetail = UIStoryboard.instantiateInitialViewController(name: "YQHouseHomeDetail") as! YQHouseHomeDetailVC
+        houseDetail.houseModel = self.dataArray[indexPath.row]
+        navigationController?.pushViewController(houseDetail, animated: true)
         
     }
     

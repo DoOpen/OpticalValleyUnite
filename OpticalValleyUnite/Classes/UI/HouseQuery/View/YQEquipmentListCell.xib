@@ -50,26 +50,26 @@
                             <constraint firstAttribute="height" constant="1" id="gpv-YF-kLS"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYR-Hi-C3n">
-                        <rect key="frame" x="10" y="51" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备分类:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYR-Hi-C3n">
+                        <rect key="frame" x="10" y="51" width="74" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xe0-8y-F73">
-                        <rect key="frame" x="10" y="82" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备状态:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xe0-8y-F73">
+                        <rect key="frame" x="10" y="82" width="74" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhy-br-8d8">
-                        <rect key="frame" x="57" y="51" width="42" height="21"/>
+                        <rect key="frame" x="89" y="51" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzt-ZZ-gcH">
-                        <rect key="frame" x="57" y="82" width="42" height="21"/>
+                        <rect key="frame" x="89" y="82" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -92,6 +92,12 @@
                     <constraint firstAttribute="trailing" secondItem="CeL-3x-MvL" secondAttribute="trailing" constant="8" id="p62-yI-P5r"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="equipmentCategory" destination="Hhy-br-8d8" id="e9w-cY-Vvl"/>
+                <outlet property="equipmentName" destination="XnI-70-KDY" id="KyW-g3-fR0"/>
+                <outlet property="equipmentNum" destination="4lT-3d-BNO" id="bZ5-qJ-CjO"/>
+                <outlet property="equpmentState" destination="qzt-ZZ-gcH" id="Sqx-XX-YJS"/>
+            </connections>
             <point key="canvasLocation" x="53.5" y="87.5"/>
         </tableViewCell>
     </objects>

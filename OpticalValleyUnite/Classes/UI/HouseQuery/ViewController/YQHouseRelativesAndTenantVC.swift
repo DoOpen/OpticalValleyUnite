@@ -14,17 +14,21 @@ class YQHouseRelativesAndTenantVC: UIViewController {
     
     @IBOutlet weak var tenantButton: UIButton!
     var currentSelectButton : UIButton?
-
+    
+    //houseID
+    var houseID : String?
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
-
+        self.title = "业主亲属&租户"
+        
 
     }
 
     // MARK: - 选择的按钮的点击事件
-    
     @IBAction func selectButtonClick(_ sender: UIButton) {
         
         currentSelectButton?.isSelected = false

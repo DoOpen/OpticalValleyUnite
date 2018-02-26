@@ -10,6 +10,15 @@ import UIKit
 
 class YQOwnerAndTenantCell: UITableViewCell {
 
+    
+    @IBOutlet weak var relationshipLabel: UILabel!
+    
+    @IBOutlet weak var nameLabel: UIView!
+    
+    @IBOutlet weak var telLabel: UILabel!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -47,7 +47,7 @@
                         <constraint firstItem="y8Q-Gq-f8W" firstAttribute="centerX" secondItem="RlE-M4-Dnd" secondAttribute="centerX" id="xer-6A-qwf"/>
                     </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pSe-6q-gqN">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSe-6q-gqN">
                     <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="ucc-f3-pbP"/>

@@ -19,15 +19,25 @@ class YQHouseHomeDetailVC: UIViewController {
     @IBOutlet weak var ownerName: UILabel!
     @IBOutlet weak var ownerTel: UILabel!
     
+    var houseModel : YQHouseQueryHomeModel?
+    
     var cellID = "houseDetailCell"
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         self.title = "房屋巡查详情"
 
-    
-    
+        //通过模型来进行设置
+        if houseModel != nil {
+            
+            houseNum.text = houseModel?.houseCode
+            ownerName.text = houseModel?.ownerName
+            ownerTel.text = houseModel?.phone
+            
+        }
+        
+
     }
     
     // MARK: - 查询按钮的点击事件
@@ -46,7 +56,38 @@ extension YQHouseHomeDetailVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //点击的跳转到详情的界面
+        
+        //点击的跳转到详情的界面  (注意的是:这些的条件的查询 都是需要houseID来进行的实现的)
+        switch self.dataArray[indexPath.row] {
+            
+            case "业主亲属&租户":
+                let relativesTenantVC = UIStoryboard.instantiateInitialViewController(name: "YQHouseRelativesAndTenant") as! YQHouseRelativesAndTenantVC
+                
+                relativesTenantVC.houseID =  self.houseModel?.id
+                
+                navigationController?.pushViewController(relativesTenantVC, animated: true)
+                break
+            
+            case "设备清单":
+                
+                let equipmentVC = UIStoryboard.instantiateInitialViewController(name: "YQEquipmentListTVC") as! YQEquipmentListTVC
+                
+                equipmentVC.houseID = self.houseModel?.id
+                navigationController?.pushViewController(equipmentVC, animated: true)
+                
+                break
+            
+            case "工单列表":
+                
+                let workVC = UIStoryboard.instantiateInitialViewController(name: "YQWorkListVC") as! YQWorkListVC
+                workVC.houseID = self.houseModel?.id
+                
+                navigationController?.pushViewController(workVC, animated: true)
+                break
+            
+            default:
+                break
+        }
         
         
     }
@@ -61,7 +102,8 @@ extension YQHouseHomeDetailVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        
+        return 60
     }
     
 

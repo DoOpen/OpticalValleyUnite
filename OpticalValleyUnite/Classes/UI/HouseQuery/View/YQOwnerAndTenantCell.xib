@@ -70,6 +70,11 @@
                     <constraint firstItem="JEE-Dn-WrP" firstAttribute="leading" secondItem="STQ-LQ-w8a" secondAttribute="trailing" constant="10" id="tvY-ys-OxU"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="H2p-sc-9uM" id="Lzy-4k-7UK"/>
+                <outlet property="relationshipLabel" destination="JEE-Dn-WrP" id="nLv-ef-tCc"/>
+                <outlet property="telLabel" destination="X69-FW-t5S" id="600-2z-FCD"/>
+            </connections>
             <point key="canvasLocation" x="63.5" y="79"/>
         </tableViewCell>
     </objects>

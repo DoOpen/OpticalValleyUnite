@@ -319,5 +319,11 @@ struct URLPath {
     //查询楼层下房屋
     static let getParkHouse = "owner/park/house"
     
+    //业主信息的查询
+    static let getHouseGet = "owner/house/get"
+    
+    //业主信息的详情查询
+    static let getRelativeList  =  "owner/relative/list"
+    
     
 }

@@ -151,14 +151,17 @@ extension YQHouseScreenVC : YQHouseLocationScreenViewDelegate,YQPhoneScreenViewD
     
     func houseCheckOutClickDelegate() {
         //传值,关闭vc
-        
-        
+        //通知传值
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "screenConditionNoties")
+        center.post(name: notiesName, object: nil, userInfo: self.selectePrameter)
         navigationController?.popViewController(animated: true)
         
     }
     
     func phoneScreenViewCheckOutClick(){
         //传值,释放
+        //通知传值
         
         navigationController?.popViewController(animated: true)
 

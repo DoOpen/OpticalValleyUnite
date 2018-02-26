@@ -44,6 +44,9 @@ class YQHouseHomeVC: UIViewController {
         
         //3.获取list数据
         getDataForList()
+        
+        //4.接受通知的方法
+        getNotes()
     
     }
 
@@ -174,6 +177,43 @@ class YQHouseHomeVC: UIViewController {
         })
         
     }
+    
+    // MARK: - 接受通知的方法
+    func getNotes(){
+    
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "screenConditionNoties")
+        center.addObserver(self, selector: #selector(screenToData(info :)), name: notiesName, object: nil)
+        
+    }
+    
+    func screenToData(info : NSNotification){
+        
+        let dict = info.userInfo as! [String : Any]
+        let stage = dict["stage"] as? YQDecorationStageModel
+        let floor = dict["floor"] as? YQDecorationFloorModel
+        let unitNo = dict["unitNo"] as? YQDecorationUnitNoModel
+        let groupNo = dict["groupNo"] as? YQDecorationGroundNoModel
+        let house = dict["house"] as? YQDecorationHouseModel
+        
+        var par = [String : Any]()
+        par["stageId"] = stage?.stageId
+        par["floorId"] = floor?.floorId
+        par["unitNu"] = unitNo?.unitNu
+        par["groundNo"] = groupNo?.groundNo
+        par["houseId"] = house?.houseId
+        
+        self.notiesPramert = par
+        
+        self.getDataForList( par: par)
+
+    }
+    
+    deinit {
+        
+       NotificationCenter.default.removeObserver(self)
+        
+    }
 
 }
 
@@ -195,7 +235,18 @@ extension YQHouseHomeVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 60
+        let model = self.dataArray[indexPath.row]
+        
+        if model.ownerIds != "" {
+            
+            return 200
+            
+        }else{
+            
+            return 60
+            
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

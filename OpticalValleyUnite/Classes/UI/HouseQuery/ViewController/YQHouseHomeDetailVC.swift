@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+
 
 class YQHouseHomeDetailVC: UIViewController {
 
@@ -29,15 +31,32 @@ class YQHouseHomeDetailVC: UIViewController {
         self.title = "房屋巡查详情"
 
         //通过模型来进行设置
-        if houseModel != nil {
+        getOwerDetail()
+        
+    }
+    
+    func getOwerDetail(){
+        
+        var par = [String : Any]()
+        
+        par["houseId"] = self.houseModel?.id
+        self.houseNum.text = self.houseModel?.houseCode
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getHouseGet, parameters: par, success: { (response) in
             
-            houseNum.text = houseModel?.houseCode
-            ownerName.text = houseModel?.ownerName
-            ownerTel.text = houseModel?.phone
+            SVProgressHUD.dismiss()
             
+            let data = response as? [String : Any]
+            self.ownerName.text = data?["ownerName"] as? String
+            self.ownerTel.text = data?["phone"] as? String
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "数据查询失败,请检查网络!")
         }
         
-
     }
     
     // MARK: - 查询按钮的点击事件

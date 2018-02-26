@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXx-lG-PSd">
                                 <rect key="frame" x="0.0" y="20" width="375" height="45"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ty6-yp-0rU">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ty6-yp-0rU">
                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="45"/>
                                         <state key="normal" title="亲属">
                                             <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,7 +36,7 @@
                                             <action selector="selectButtonClick:" destination="4Dw-4t-44E" eventType="touchUpInside" id="vGl-d6-e2e"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5D-2N-QAe">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5D-2N-QAe">
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="45"/>
                                         <state key="normal" title="租户">
                                             <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,6 +68,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Pd-Si-llk">
                                 <rect key="frame" x="0.0" y="65" width="375" height="602"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="4Dw-4t-44E" id="pEC-8d-4MG"/>
+                                    <outlet property="delegate" destination="4Dw-4t-44E" id="Enf-l6-Snr"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -83,6 +87,7 @@
                     </view>
                     <connections>
                         <outlet property="relativesButton" destination="Ty6-yp-0rU" id="RQl-Ei-gb1"/>
+                        <outlet property="tableView" destination="6Pd-Si-llk" id="MMg-Az-6fe"/>
                         <outlet property="tenantButton" destination="T5D-2N-QAe" id="egF-Fg-UtM"/>
                     </connections>
                 </viewController>

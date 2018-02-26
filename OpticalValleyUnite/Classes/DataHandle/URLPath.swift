@@ -323,7 +323,10 @@ struct URLPath {
     static let getHouseGet = "owner/house/get"
     
     //业主信息的详情查询
-    static let getRelativeList  =  "owner/relative/list"
+    static let getRelativeList  = "owner/relative/list"
+    //设备信息的接口的查询
+    static let getEquipList = "owner/equip/list"
+    
     
     
 }

@@ -23,7 +23,23 @@ class YQEquipmentListCell: UITableViewCell {
         // Initialization code
     }
 
-  
+    var model : YQEquipmentListModel?{
+        
+        didSet{
+            
+            self.equipmentName.text = model?.name
+            
+            self.equipmentNum.text = model?.equipName
+            
+            
+            self.equipmentCategory.text = model?.typeName
+            
+            self.equpmentState.text = model?.equipStatus
+            
+            
+        }
+
+    }
     
     
 }

@@ -196,12 +196,16 @@ class YQHouseHomeVC: UIViewController {
         let groupNo = dict["groupNo"] as? YQDecorationGroundNoModel
         let house = dict["house"] as? YQDecorationHouseModel
         
+        //补充的查询电话的消息
+        let phone = dict["phone"] as? String
+        
         var par = [String : Any]()
         par["stageId"] = stage?.stageId
         par["floorId"] = floor?.floorId
         par["unitNu"] = unitNo?.unitNu
         par["groundNo"] = groupNo?.groundNo
         par["houseId"] = house?.houseId
+        par["phone"] = phone
         
         self.notiesPramert = par
         

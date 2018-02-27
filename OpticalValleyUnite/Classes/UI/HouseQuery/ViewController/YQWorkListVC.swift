@@ -50,8 +50,7 @@ class YQWorkListVC: UIViewController {
         
         //上拉,下拉刷新
         addRefirsh()
-
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

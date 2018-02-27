@@ -165,6 +165,7 @@ class YQDecorationHomeVC: UIViewController {
                 SVProgressHUD.showError(withStatus: "没有更多数据!")
                 self.tableView.mj_header.endRefreshing()
                 self.tableView.mj_footer.endRefreshing()
+                self.dataArray.removeAll()
                 
                 return
             }
@@ -178,15 +179,6 @@ class YQDecorationHomeVC: UIViewController {
             
             //添加上拉下拉刷新的情况
             if currentIndex == 0 {
-                
-                if response["data"] as? NSArray == nil {
-                    
-                    self.dataArray.removeAll()
-                    self.tableView.mj_header.endRefreshing()
-                    self.tableView.mj_footer.endRefreshing()
-                    
-                    return
-                }
                 
                 self.dataArray = tempModel
                 self.tableView.mj_header.endRefreshing()

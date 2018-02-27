@@ -12,7 +12,7 @@ import SVProgressHUD
 
 class YQHouseHomeVC: UIViewController {
 
-    var currentIndex = -1
+    var currentIndex = 0
     
     var dataArray = [YQHouseQueryHomeModel](){
         
@@ -98,6 +98,16 @@ class YQHouseHomeVC: UIViewController {
             
             var tempModel = [YQHouseQueryHomeModel]()
             
+            if data == nil {
+                
+                SVProgressHUD.showError(withStatus: "没有更多数据")
+                self.dataArray.removeAll()
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
+                
+                return
+            }
+            
             for dict in data! {
             
                 tempModel.append(YQHouseQueryHomeModel.init(dict: dict))
@@ -106,14 +116,6 @@ class YQHouseHomeVC: UIViewController {
             //添加上拉下拉刷新的情况
             if pageIndex == 0 {
                 
-                if reponse["data"] as? NSArray == nil {
-                    
-                    self.dataArray.removeAll()
-                    self.tableView.mj_header.endRefreshing()
-                    self.tableView.mj_footer.endRefreshing()
-                    
-                    return
-                }
                 
                 self.dataArray = tempModel
                 self.tableView.mj_header.endRefreshing()
@@ -123,13 +125,10 @@ class YQHouseHomeVC: UIViewController {
                 if tempModel.count > 0{
                     
                     self.currentIndex = pageIndex
-                    
                     self.dataArray.append(contentsOf: tempModel)
-                    
                 }
                 
                 self.tableView.mj_footer.endRefreshing()
-                
             }
 
             

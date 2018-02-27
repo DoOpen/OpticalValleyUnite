@@ -16,19 +16,19 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wVx-0S-wSL">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WjD-UA-ZL2">
-                    <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                    <rect key="frame" x="0.0" y="612" width="375" height="55"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bj0-8u-7Jl">
-                            <rect key="frame" x="5" y="0.0" width="365" height="45"/>
+                            <rect key="frame" x="5" y="0.0" width="365" height="50"/>
                             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="查询"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="5"/>
+                                    <real key="value" value="10"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                     <real key="value" value="1"/>
@@ -45,9 +45,9 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Bj0-8u-7Jl" firstAttribute="leading" secondItem="WjD-UA-ZL2" secondAttribute="leading" constant="5" id="Dwh-kr-5FD"/>
-                        <constraint firstAttribute="height" constant="45" id="Qyu-LU-2Tb"/>
+                        <constraint firstAttribute="height" constant="55" id="Qyu-LU-2Tb"/>
                         <constraint firstAttribute="trailing" secondItem="Bj0-8u-7Jl" secondAttribute="trailing" constant="5" id="WpE-FO-BGc"/>
-                        <constraint firstAttribute="bottom" secondItem="Bj0-8u-7Jl" secondAttribute="bottom" id="jdV-gJ-tQQ"/>
+                        <constraint firstAttribute="bottom" secondItem="Bj0-8u-7Jl" secondAttribute="bottom" constant="5" id="jdV-gJ-tQQ"/>
                         <constraint firstItem="Bj0-8u-7Jl" firstAttribute="top" secondItem="WjD-UA-ZL2" secondAttribute="top" id="zw1-k2-OlS"/>
                     </constraints>
                 </view>

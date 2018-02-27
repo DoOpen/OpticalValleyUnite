@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class YQHouseScreenVC: UIViewController {
 
@@ -61,12 +62,19 @@ class YQHouseScreenVC: UIViewController {
         locationView.tableView.delegate = locationView
         locationView.tableView.reloadData()
         
-        locationView.frame = CGRect.init(x: 0, y: 0, width: SJScreeW, height: scrollView.height)
-        phoneView.frame = CGRect.init(x: SJScreeW, y: 0, width: SJScreeW, height: scrollView.height)
+        locationView.frame = CGRect.init(x: 0, y: 0, width: SJScreeW, height: SJScreeH - 64 - 50)
+        
+        
+        phoneView.frame = CGRect.init(x: SJScreeW, y: 0, width: SJScreeW, height: SJScreeH - 64 - 50)
+        
         self.scrollView.addSubview(locationView)
         self.scrollView.addSubview(phoneView)
         
-        self.scrollView.contentSize = CGSize.init(width: locationView.maxX, height: 0)
+//        locationView.snp.makeConstraints { (maker) in
+//            maker.left.right.top.bottom.equalToSuperview()
+//        }
+        
+        self.scrollView.contentSize = CGSize.init(width: phoneView.maxX, height: 0)
         
     }
 

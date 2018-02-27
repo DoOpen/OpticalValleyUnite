@@ -16,9 +16,9 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入业主手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WCZ-p6-Rsw">
-                    <rect key="frame" x="20" y="84" width="335" height="30"/>
+                    <rect key="frame" x="20" y="84" width="335" height="45"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="gek-U5-pep"/>
+                        <constraint firstAttribute="height" constant="45" id="gek-U5-pep"/>
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -36,15 +36,15 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpU-4N-1fn">
-                    <rect key="frame" x="25" y="134" width="325" height="40"/>
+                    <rect key="frame" x="25" y="149" width="325" height="50"/>
                     <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="q05-nY-KXh"/>
+                        <constraint firstAttribute="height" constant="50" id="q05-nY-KXh"/>
                     </constraints>
                     <state key="normal" title="查询"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="5"/>
+                            <real key="value" value="10"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                             <real key="value" value="1"/>

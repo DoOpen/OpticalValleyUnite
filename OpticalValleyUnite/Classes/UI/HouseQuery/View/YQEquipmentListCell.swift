@@ -31,10 +31,9 @@ class YQEquipmentListCell: UITableViewCell {
             
             self.equipmentNum.text = model?.equipName
             
-            
             self.equipmentCategory.text = model?.typeName
             
-            self.equpmentState.text = model?.equipStatus
+            self.equpmentState.text = model?.equipStatusName
             
             
         }

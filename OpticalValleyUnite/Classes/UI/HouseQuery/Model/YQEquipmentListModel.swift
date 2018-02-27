@@ -20,7 +20,7 @@ class YQEquipmentListModel: NSObject {
     var typeName = ""
     
     //设备状态 [[1,"运行"],[2,"停用"],[3,"故障"],[4,"报废"]]
-    var equipStatus = ""
+    var equipStatus = -1
     
     //设备状态名称
     var equipStatusName = ""

@@ -24,13 +24,41 @@ class YQWorkListCell: UITableViewCell {
     //项目label
     @IBOutlet weak var projectLabel: UILabel!
     
+    var selectTag = -1
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-  
+    var model : YQWorkListModel?{
+        didSet{
+            
+            self.workNameLabel.text = model?.workunitName
+            
+            switch selectTag {
+                case 1:
+                    self.workStateButton.setTitle(model?.unitStatusName, for: .normal)
+                    break
+                case 2:
+                    self.workStateButton.setTitle(model?.applyStatusName, for: .normal)
+                    break
+                case 3:
+                    self.workStateButton.setTitle(model?.unitStatusName, for: .normal)
+                    break
+                default:
+                    break
+            }
+            
+            self.timeLabel.text = model?.createDate
+            self.nameLabel.text = model?.personName
+            
+            self.projectLabel.text = model?.parkName
+            self.workDescribeTextView.text = ""
+            
+        }
+    
+    }
     
     
 }

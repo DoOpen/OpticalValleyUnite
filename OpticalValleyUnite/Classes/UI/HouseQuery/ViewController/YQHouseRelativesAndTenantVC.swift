@@ -8,7 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-
+import MJRefresh
 
 class YQHouseRelativesAndTenantVC: UIViewController {
     
@@ -20,7 +20,14 @@ class YQHouseRelativesAndTenantVC: UIViewController {
     //houseID
     var houseID : String?
     
-    var dataAarry = [YQHouseRelativeModel]()
+    var dataAarry = [YQHouseRelativeModel](){
+        didSet {
+        
+            self.tableView.reloadData()
+            
+        }
+    
+    }
     
     var currentIndex = 0
     
@@ -42,6 +49,9 @@ class YQHouseRelativesAndTenantVC: UIViewController {
         self.tableView.register(nib, forCellReuseIdentifier: cellID)
         
         getData(tag: (currentSelectButton?.tag)!)
+        
+        //上拉,下拉刷新
+        addRefirsh()
         
     }
 
@@ -77,6 +87,10 @@ class YQHouseRelativesAndTenantVC: UIViewController {
             if data == nil {
                 
                 SVProgressHUD.showError(withStatus: "没有更多数据")
+                self.dataAarry.removeAll()
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
+                
                 return
             }
             
@@ -86,17 +100,51 @@ class YQHouseRelativesAndTenantVC: UIViewController {
             
             }
             
-            self.dataAarry = tempData
-            self.tableView.reloadData()
-            
-            
+            //添加上拉下拉刷新的情况
+            if pageIndex == 0 {
+                
+                
+                self.dataAarry = tempData
+                self.tableView.mj_header.endRefreshing()
+                
+            }else{
+                
+                if tempData.count > 0{
+                    
+                    self.currentIndex = pageIndex
+                    
+                    self.dataAarry.append(contentsOf: tempData)
+                    
+                }
+                
+                self.tableView.mj_footer.endRefreshing()
+                
+            }
+
+    
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "数据查询失败,请检查网络!")
         }
     }
     
-    
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            self.getData(tag: (self.currentSelectButton?.tag)!)
+        })
+        
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+            self.getData(pageIndex: self.currentIndex + 1, tag: (self.currentSelectButton?.tag)!)
+                       
+        })
+        
+    }
+
 
  
 }

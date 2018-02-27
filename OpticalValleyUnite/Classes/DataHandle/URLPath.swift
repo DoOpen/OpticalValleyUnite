@@ -326,7 +326,8 @@ struct URLPath {
     static let getRelativeList  = "owner/relative/list"
     //设备信息的接口的查询
     static let getEquipList = "owner/equip/list"
-    
+    //工单的设备的显示
+    static let getSourchUnit = "owner/sourchUnit/list"
     
     
 }

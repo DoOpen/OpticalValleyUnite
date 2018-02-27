@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import MJRefresh
 
 class YQEquipmentListTVC: UIViewController {
     
@@ -17,7 +18,15 @@ class YQEquipmentListTVC: UIViewController {
     
     var cellID = "EquipmentListCell"
     
-    var dataArray = [YQEquipmentListModel]()
+    var dataArray = [YQEquipmentListModel](){
+        didSet{
+        
+            self.tableView.reloadData()
+        }
+    
+    }
+    
+    var currentIndex = 0
     
     override func viewDidLoad() {
         
@@ -32,6 +41,9 @@ class YQEquipmentListTVC: UIViewController {
         
         getData()
         
+        //上拉,下拉刷新
+        addRefirsh()
+
         
     }
     
@@ -49,7 +61,12 @@ class YQEquipmentListTVC: UIViewController {
             var tempData = [YQEquipmentListModel]()
             
             if data == nil {
+                
                 SVProgressHUD.showError(withStatus: "没有更多数据")
+                self.dataArray.removeAll()
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
+
                 return
             }
 
@@ -59,9 +76,25 @@ class YQEquipmentListTVC: UIViewController {
                 
             }
             
-            self.dataArray = tempData
-            self.tableView.reloadData()
-            
+            //添加上拉下拉刷新的情况
+            if pageIndex == 0 {
+                
+                self.dataArray = tempData
+                self.tableView.mj_header.endRefreshing()
+                
+            }else{
+                
+                if tempData.count > 0{
+                    
+                    self.currentIndex = pageIndex
+                    
+                    self.dataArray.append(contentsOf: tempData)
+                    
+                }
+                
+                self.tableView.mj_footer.endRefreshing()
+                
+            }
             
         }) { (error) in
             
@@ -70,7 +103,24 @@ class YQEquipmentListTVC: UIViewController {
     
     }
 
- 
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            self.getData()
+            
+        })
+        
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+            self.getData(pageIndex: self.currentIndex + 1)
+          
+        })
+        
+    }
+
    
     
 }

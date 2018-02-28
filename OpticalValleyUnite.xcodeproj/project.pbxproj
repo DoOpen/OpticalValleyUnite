@@ -53,6 +53,8 @@
 		2F2F95781F8DAECD00870DC8 /* YQJournal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F95771F8DAECD00870DC8 /* YQJournal.storyboard */; };
 		2F2F957A1F8DF74800870DC8 /* YQJournalCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F95791F8DF74800870DC8 /* YQJournalCellView.swift */; };
 		2F2F957C1F8DF7C800870DC8 /* YQJournalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F957B1F8DF7C800870DC8 /* YQJournalCell.xib */; };
+		2F34E86420468720006EBAF8 /* YQEquipTypeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F34E86320468720006EBAF8 /* YQEquipTypeTVC.swift */; };
+		2F34E86620468763006EBAF8 /* YQEquipTypeTVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F34E86520468763006EBAF8 /* YQEquipTypeTVC.storyboard */; };
 		2F35356C1F95AE0C00E8E77C /* YQWorkOrderFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35356B1F95AE0C00E8E77C /* YQWorkOrderFirstViewController.swift */; };
 		2F35356E1F95AE3300E8E77C /* YQWorkOrderFirst.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F35356D1F95AE3300E8E77C /* YQWorkOrderFirst.storyboard */; };
 		2F39D73E200EF52000074B83 /* YQReportFormDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39D73D200EF52000074B83 /* YQReportFormDetailModel.swift */; };
@@ -470,6 +472,8 @@
 		2F2F95771F8DAECD00870DC8 /* YQJournal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJournal.storyboard; sourceTree = "<group>"; };
 		2F2F95791F8DF74800870DC8 /* YQJournalCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalCellView.swift; sourceTree = "<group>"; };
 		2F2F957B1F8DF7C800870DC8 /* YQJournalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQJournalCell.xib; sourceTree = "<group>"; };
+		2F34E86320468720006EBAF8 /* YQEquipTypeTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQEquipTypeTVC.swift; sourceTree = "<group>"; };
+		2F34E86520468763006EBAF8 /* YQEquipTypeTVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQEquipTypeTVC.storyboard; sourceTree = "<group>"; };
 		2F35356B1F95AE0C00E8E77C /* YQWorkOrderFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkOrderFirstViewController.swift; sourceTree = "<group>"; };
 		2F35356D1F95AE3300E8E77C /* YQWorkOrderFirst.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQWorkOrderFirst.storyboard; sourceTree = "<group>"; };
 		2F39D73D200EF52000074B83 /* YQReportFormDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQReportFormDetailModel.swift; sourceTree = "<group>"; };
@@ -1287,6 +1291,8 @@
 				2F6273492045449A00D36F14 /* YQEquipmentFristVC.xib */,
 				2F62734C20454B3000D36F14 /* YQEquipmentListHomeVC.swift */,
 				2F62735020454C1900D36F14 /* YQEquipmentList.storyboard */,
+				2F34E86320468720006EBAF8 /* YQEquipTypeTVC.swift */,
+				2F34E86520468763006EBAF8 /* YQEquipTypeTVC.storyboard */,
 				2F62735C204573C800D36F14 /* YQEquipmentDetailListVC.swift */,
 				2F62735E204573F500D36F14 /* YQEquipmentDetailList.storyboard */,
 				2F62734E20454B7C00D36F14 /* YQEquipmentWorkOrderVC.swift */,
@@ -2209,6 +2215,7 @@
 				2F62734B2045449A00D36F14 /* YQEquipmentFristVC.xib in Resources */,
 				2F54BF0C1FCBF7C7006B4DCF /* YQExecTextCell.xib in Resources */,
 				2FCBC0212014859A003F1556 /* YQReportPersonDetail.storyboard in Resources */,
+				2F34E86620468763006EBAF8 /* YQEquipTypeTVC.storyboard in Resources */,
 				2F2A2BB61F989E46003015E9 /* YQAllProjectSelect.storyboard in Resources */,
 				4BD4B9541E272EA600AE2BC9 /* WorkOrder.storyboard in Resources */,
 				2FC98A04202D93ED0080D1BE /* YQHouseScreenVC.xib in Resources */,
@@ -2448,6 +2455,7 @@
 				2F40D9901FB94253007971D1 /* YQStepStatisticsView.swift in Sources */,
 				2F4EB2991FD532590004A532 /* YQVideoDrawerViewController.swift in Sources */,
 				2F51CCC8203AB582005723E8 /* YQHouseRelativesAndTenantVC.swift in Sources */,
+				2F34E86420468720006EBAF8 /* YQEquipTypeTVC.swift in Sources */,
 				4B751BD31E5B301C00C0CEC0 /* AddScrollerView.swift in Sources */,
 				2F3B96001F6B68BE0008AFEB /* YQDrawerViewController.swift in Sources */,
 				2F70DC2C1FDFA63F003B9938 /* YQScoreResult.swift in Sources */,

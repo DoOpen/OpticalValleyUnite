@@ -48,7 +48,6 @@ class WorkOrderViewController: UIViewController {
     @IBOutlet weak var alreadyProcessed: UIButton!
     
     
-    
     var siftVc: WorkOrderSiftViewController?
     var siftParmat: [String: Any]?
     var siftsiftParmat : [String : Any]?

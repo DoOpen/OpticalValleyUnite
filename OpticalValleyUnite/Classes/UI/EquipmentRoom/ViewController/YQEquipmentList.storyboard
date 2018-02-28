@@ -70,7 +70,7 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -129,6 +129,7 @@
                     <connections>
                         <outlet property="imageView" destination="Bh5-g6-3oB" id="NjV-fA-JME"/>
                         <outlet property="searchTextField" destination="5BI-hO-x1p" id="Qxj-Qe-N6I"/>
+                        <outlet property="siftView" destination="ANr-dG-fxp" id="n03-W5-BO3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55P-If-5ev" userLabel="First Responder" sceneMemberID="firstResponder"/>

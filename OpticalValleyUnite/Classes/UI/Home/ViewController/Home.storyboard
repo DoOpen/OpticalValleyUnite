@@ -327,7 +327,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="试点版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8g-UX-c40">
-                                        <rect key="frame" x="371" y="33.666666666666664" width="43" height="17"/>
+                                        <rect key="frame" x="371" y="34" width="43" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1012,7 +1012,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCC-ZT-58t">
                                         <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                         <subviews>
-                                            <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiw-Ch-hyM" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                                            <view tag="13" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiw-Ch-hyM" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEe-dI-ytD">
@@ -1051,7 +1051,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIm-8E-VPn">
                                         <rect key="frame" x="104" y="0.0" width="104" height="89"/>
                                         <subviews>
-                                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDs-pI-LOQ" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                                            <view tag="14" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDs-pI-LOQ" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vuz-eJ-Bgg">
@@ -1090,7 +1090,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KiK-1Q-eJn">
                                         <rect key="frame" x="208" y="0.0" width="104" height="89"/>
                                         <subviews>
-                                            <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Dz-ur-Clf" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                                            <view tag="15" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Dz-ur-Clf" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="104" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1wf-wm-5Iu">
@@ -1129,7 +1129,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42z-Hy-Hex">
                                         <rect key="frame" x="312" y="0.0" width="102" height="89"/>
                                         <subviews>
-                                            <view tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4tX-tq-dlw" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                                            <view tag="16" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4tX-tq-dlw" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="102" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wW-nS-jmg">
@@ -1226,7 +1226,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ghK-ko-MM1">
-                                        <rect key="frame" x="206.66666666666666" y="2" width="1" height="55"/>
+                                        <rect key="frame" x="207" y="2" width="1" height="55"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="Ib4-yY-7F6"/>
@@ -1234,7 +1234,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEy-aw-etE">
-                                        <rect key="frame" x="0.0" y="0.0" width="206.66666666666666" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="60"/>
                                         <state key="normal" title="设备详情">
                                             <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -1246,7 +1246,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJP-Xg-3eP">
-                                        <rect key="frame" x="207.66666666666663" y="0.0" width="206.33333333333337" height="60"/>
+                                        <rect key="frame" x="208" y="0.0" width="206" height="60"/>
                                         <state key="normal" title="工单">
                                             <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>

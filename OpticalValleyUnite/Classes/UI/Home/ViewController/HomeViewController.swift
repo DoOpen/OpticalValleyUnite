@@ -378,7 +378,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
 
     func settopArry(topArry:[PermissionModel],donwArry: [PermissionModel]){
-        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","门禁": "intodoor","丽岛学院": "xueyuan","电梯报事":"报事","日志":"日志","计步器":"step","视频巡查" : "xuncha","巡查结果" : "xunguan","工作报告" : "more_icon_work_report","房屋查询" : "房屋查询","设备房" : "设备房","装修管理" : "装修管理"]
+        let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","门禁": "intodoor","丽岛学院": "xueyuan","电梯报事":"报事","日志":"日志","计步器":"step","视频巡查" : "xuncha","巡查结果" : "xunguan","工作报告" : "more_icon_work_report","房屋管理" : "房屋查询","设备房" : "设备房","装修管理" : "装修管理"]
         for (index,model) in topArry.enumerated(){
             
             if index >= 4{
@@ -523,7 +523,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             let report = YQReportFormFirstVC.init(nibName: "YQReportFormFirstVC", bundle: nil)
             self.navigationController?.pushViewController(report, animated: true)
         
-        case "房屋查询" :
+        case "房屋管理" :
             let house = UIStoryboard.instantiateInitialViewController(name: "YQHouseHome")
             self.navigationController?.pushViewController(house, animated: true)
             

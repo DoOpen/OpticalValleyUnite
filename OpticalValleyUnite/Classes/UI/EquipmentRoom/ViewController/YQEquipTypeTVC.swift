@@ -17,6 +17,8 @@ class YQEquipTypeTVC: UITableViewController {
     //回调函数
     var selectCellClickHandel: (([String: Any]) -> ())?
 
+    //已选的selectTypeString
+    var selectTypeString  : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +70,13 @@ class YQEquipTypeTVC: UITableViewController {
         let dict = self.dataArray[indexPath.row]
         
         cell.textLabel?.text = dict["equipTypeName"] as? String
-
+        let type = dict["equipTypeId"] as? Int
+        
+        if (type == selectTypeString) {//相同的选中项 设置相同
+            
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
+        }
+        
         return cell
         
     }
@@ -82,5 +90,7 @@ class YQEquipTypeTVC: UITableViewController {
         
         selectCellClickHandel = nil
     }
+    
+    
   
 }

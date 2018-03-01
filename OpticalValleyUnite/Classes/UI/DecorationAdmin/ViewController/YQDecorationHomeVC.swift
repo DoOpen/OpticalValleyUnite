@@ -59,11 +59,14 @@ class YQDecorationHomeVC: UIViewController {
         //0.默认要求选择项目
         self.parkName = setUpProjectNameLable()
         
-        if self.parkID == "" {
-            
-            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
-            self.navigationController?.pushViewController(project, animated: true)
-        }
+//        if self.parkID == "" {
+//            
+//            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+//            self.navigationController?.pushViewController(project, animated: true)
+//        }
+        
+        //0.默认获取数据
+        getDataListFunction(tag: (selectButton?.tag)!,pramert : [String : Any]())
 
         //1.设置leftRightBar按钮
         addRightBarButtonItem()
@@ -321,7 +324,7 @@ extension YQDecorationHomeVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 180
+        return 140
     }
     
     
@@ -336,6 +339,7 @@ extension YQDecorationHomeVC : UITableViewDelegate, UITableViewDataSource{
         parmat["EXEC_PERSON_ID"] = model.EXEC_PERSON_ID
         parmat["WORKUNIT_ID"] = model.ID
         
+        vc.parmate = parmat
         
         navigationController?.pushViewController(vc, animated: true)
         

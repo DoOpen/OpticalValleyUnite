@@ -340,7 +340,10 @@ struct URLPath {
     static let getInnerEquip = "equiphouse/getInnerEquip"
     //设备详情typeList
     static let getEquipTypeList = "equiphouse/getEquipTypeList"
-    
+    //设备详情设备房传感器参数
+    static let getHouseSensorData = "equiphouse/getHouseSensorData"
+    //获取摄像头直播地址
+    static let getHouseVideo = "equiphouse/getHouseVideo"
     
     
 }

@@ -26,6 +26,8 @@ class YQEquipHomeListCell: UITableViewCell {
     var model : YQEquipHomeListModel?{
         didSet{
             
+            self.sensorViewArray.removeAll()
+
             //文本
             showContentView.text = model?.equipHouseName
             //图片
@@ -116,23 +118,130 @@ class YQEquipHomeListCell: UITableViewCell {
                         
                     }else{//已经执行
                         
-                        let name = dict?["name"] as? String
-                        let val = dict?["val"] as? String
-                        let unit = dict?["unit"] as? String
+                        let name = dict?["name"] as? String ?? ""
+                        let val = dict?["val"] as? String ?? ""
+                        let unit = dict?["unit"] as? String ?? ""
                         
-                        tempV?.sensorLabel2.text = name! + ":" + val! + unit!
+                        tempV?.sensorLabel2.text = name + ":" + val + unit
                         
                     }
                     
-                    
                 }
-                
                 
             }
         
             self.setNeedsLayout()
         }
+    
+    }
+    
+    
+    var detailModel : YQEquipDetailListModel?{
         
+        didSet{
+            self.sensorViewArray.removeAll()
+            
+            //文本
+            showContentView.text = detailModel?.equipName
+            //图片
+            
+            if !(detailModel?.houseImgs.isEmpty)! {//数组不为空的情况
+                
+//                let basicPath = URLPath.systemSelectionURL
+//                
+//                if (model?.screenUrl.contains("http"))! {
+//                    
+//                    showImageView.showImageUrls([(model?.screenUrl)!])
+//                    
+//                }else{
+//                    
+//                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.screenUrl)!
+//                    
+//                    showImageView.showImageUrls([imageValue])
+//                    
+//                }
+                
+            }
+            
+            showImageView.didClickHandle = { _,image in
+                
+                CoverView.show(image: image)
+            }
+            
+            
+            if (detailModel?.sensorData.isEmpty)! {
+                //没有传感器数据
+                return
+                
+            }else{
+                
+                var tempV : YQSensorPart?
+                
+                //动态添加传感器的数据值
+                for indexxxx in 0..<(detailModel?.sensorData.count)! {
+                    
+                    let dict = detailModel?.sensorData[indexxxx]
+                    
+                    if indexxxx % 2 == 0 {
+                        //重新创建
+                        let sensorV = Bundle.main.loadNibNamed( "YQSensorPart", owner: nil, options: nil)?[0] as! YQSensorPart
+                        tempV = sensorV
+                        
+                        self.addSubview(sensorV)
+                        
+                        if indexxxx == 0 {
+                            
+                            tempV?.snp.makeConstraints({ (maker) in
+                                
+                                maker.left.equalTo(self.showContentView.snp.left)
+                                
+                                maker.right.equalTo(self.showContentView.snp.right)
+                                
+                                maker.top.equalTo(self.showContentView.snp.bottom).offset(10)
+                                maker.height.equalTo(20)
+                            })
+                            
+                        }else{
+                            
+                            let lastView = self.sensorViewArray.last
+                            
+                            tempV?.snp.makeConstraints({ (maker) in
+                                
+                                maker.left.equalTo(self.showContentView.snp.left)
+                                
+                                maker.right.equalTo(self.showContentView.snp.right)
+                                
+                                maker.top.equalTo((lastView?.snp.bottom)!).offset(5)
+                                maker.height.equalTo(20)
+                            })
+                            
+                            
+                        }
+                        
+                        sensorViewArray.append(sensorV)
+                        
+                        let name = dict?["name"] as? String ?? ""
+                        let val = dict?["val"] as? String ?? ""
+                        let unit = dict?["unit"] as? String ?? ""
+                        
+                        tempV?.sensorLabel.text = name + ":" + val + unit
+                        
+                    }else{//已经执行
+                        
+                        let name = dict?["name"] as? String ?? ""
+                        let val = dict?["val"] as? String ?? ""
+                        let unit = dict?["unit"] as? String ?? ""
+                        
+                        tempV?.sensorLabel2.text = name + ":" + val + unit
+                        
+                    }
+                    
+                }
+              
+            }
+            
+            self.setNeedsLayout()
+        }
         
     }
 
@@ -141,8 +250,10 @@ class YQEquipHomeListCell: UITableViewCell {
     // MARK: - 返回非等高cell的height方法
     func cellForHeight() -> CGFloat {
         
-        if let lastView = self.sensorViewArray.last{
+        if let lastView = self.sensorViewArray.last {
         
+        
+            
             return lastView.maxY > self.showImageView.maxY ? lastView.maxY + 15 : self.showImageView.maxY + 15
             
         }else{

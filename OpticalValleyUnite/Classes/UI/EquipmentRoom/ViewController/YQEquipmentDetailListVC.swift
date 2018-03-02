@@ -13,6 +13,9 @@ import SVProgressHUD
 
 class YQEquipmentDetailListVC: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    
     @IBOutlet weak var headScrollView: UIScrollView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -22,7 +25,7 @@ class YQEquipmentDetailListVC: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     
-    var dataArray = [YQEquipHomeListModel](){
+    var dataArray = [YQEquipDetailListModel](){
         didSet{
         
             self.tableView.reloadData()
@@ -119,6 +122,7 @@ class YQEquipmentDetailListVC: UIViewController {
                     maker.top.equalTo(self.siftView.snp.bottom)
                     maker.left.right.equalToSuperview()
                     maker.height.equalTo(280)
+                    
                 })
                 
             })
@@ -165,7 +169,7 @@ class YQEquipmentDetailListVC: UIViewController {
             
             getDataForServer( searchText: textField.text!)
             
-        }else {
+        }else{
             
             getDataForServer( type: selectType, searchText: textField.text!)
         }
@@ -176,10 +180,67 @@ class YQEquipmentDetailListVC: UIViewController {
         
         //跳转到 视频相应的界面
         let video = YQWebVideoVC.init(nibName: "YQWebVideoVC", bundle: nil)
-    
+        video.equipHouseId = "\(self.equipHouseId)"
+        
         navigationController?.pushViewController(video, animated: true)
         
     }
+    
+    
+    // MARK: - 获取头部的数据相应方法
+    func getHeadDataForServer(){
+    
+        var par = [String : Any]()
+        par["equipHouseId"] = self.equipHouseId
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getHouseSensorData, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            let data = response as? Array<[String : Any]>
+            
+            if data == nil {
+                
+                SVProgressHUD.showError(withStatus: "没有加载更多数据!")
+                
+            }else{
+                
+                //scorllView 添加滚动的数据
+                for dict in data! {
+                    
+                    let sensorV = Bundle.main.loadNibNamed("", owner: nil, options: nil)?[0] as! YQSensorDetailView
+                    
+                    let name = dict["name"] as? String ?? ""
+                    let val = dict["val"] as? String ?? ""
+                    let unit = dict["unit"] as? String ?? ""
+                    
+                    sensorV.nameLabel.text = name
+                    sensorV.valueLabel.text = val + unit
+                    //设置约束
+                    
+                    self.headScrollView.addSubview(sensorV)
+                    
+                    //设置scrollView的contentsize 来体现滚动效果
+                    
+                    
+                }
+                
+            
+            }
+            
+            
+            
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "网络数据加载失败,请检查网络!")
+
+        }
+    
+    }
+    
     
     // MARK: - 获取数据的相应方法
     func getDataForServer(pageIndex : Int = 0, pageSize : Int = 20, type : Int = 0, searchText : String = ""){
@@ -214,25 +275,25 @@ class YQEquipmentDetailListVC: UIViewController {
             if data == nil {
                 
                 SVProgressHUD.showError(withStatus: "没有获取更多数据")
-                self.tableView.mj_header.endRefreshing()
-                self.tableView.mj_footer.endRefreshing()
+                self.scrollView.mj_header.endRefreshing()
+                self.scrollView.mj_footer.endRefreshing()
                 self.dataArray.removeAll()
                 
                 return
             }
             
-            var tempData = [YQEquipHomeListModel]()
+            var tempData = [YQEquipDetailListModel]()
             
             for dict in data! {
                 
-                tempData.append(YQEquipHomeListModel.init(dict: dict))
+                tempData.append(YQEquipDetailListModel.init(dict: dict))
             }
             
             //添加上拉下拉刷新的情况
             if pageIndex == 0 {
                 
                 self.dataArray = tempData
-                self.tableView.mj_header.endRefreshing()
+                self.scrollView.mj_header.endRefreshing()
                 
             }else{
                 
@@ -242,7 +303,7 @@ class YQEquipmentDetailListVC: UIViewController {
                     self.dataArray.append(contentsOf: tempData)
                 }
                 
-                self.tableView.mj_footer.endRefreshing()
+                self.scrollView.mj_footer.endRefreshing()
             }
             
             
@@ -257,7 +318,7 @@ class YQEquipmentDetailListVC: UIViewController {
     // MARK: - 上下拉的刷新的界面情况
     func addRefirsh(){
         
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+        scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             
             if self.selectType == 0 {
                 
@@ -270,7 +331,7 @@ class YQEquipmentDetailListVC: UIViewController {
             
         })
         
-        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+        scrollView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
             if self.selectType == 0 {
                 
@@ -290,7 +351,8 @@ class YQEquipmentDetailListVC: UIViewController {
 extension YQEquipmentDetailListVC : UITableViewDataSource,UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        
+        return 200
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -311,7 +373,7 @@ extension YQEquipmentDetailListVC : UITableViewDataSource,UITableViewDelegate{
             cell = Bundle.main.loadNibNamed("YQEquipHomeListCell", owner: nil, options: nil)?[0] as? YQEquipHomeListCell
         }
         
-        cell?.model = self.dataArray[indexPath.row]
+        cell?.detailModel = self.dataArray[indexPath.row]
         
         //强制更新cell的布局高度
         cell?.layoutIfNeeded()

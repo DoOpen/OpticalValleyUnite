@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="5m2-Uf-2ep" customClass="YQSensorPart" customModule="OpticalValleyUnite" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="382" height="31"/>
+            <rect key="frame" x="0.0" y="0.0" width="240" height="31"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdR-3h-QrV">
@@ -21,8 +21,8 @@
                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAc-Jd-NKd">
-                    <rect key="frame" x="349" y="0.0" width="33" height="31"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAc-Jd-NKd">
+                    <rect key="frame" x="240" y="0.0" width="0.0" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                 <outlet property="sensorLabel" destination="VdR-3h-QrV" id="hP5-0O-JLI"/>
                 <outlet property="sensorLabel2" destination="oAc-Jd-NKd" id="yvj-5a-Taa"/>
             </connections>
-            <point key="canvasLocation" x="-160" y="-416"/>
+            <point key="canvasLocation" x="-231" y="-416.5"/>
         </view>
     </objects>
 </document>

@@ -14,7 +14,7 @@ class YQEquipHomeListCell: UITableViewCell {
     ///属性列表项
     @IBOutlet weak var showImageView: ShowImageView!
     
-    @IBOutlet weak var showContentView: UITextView!
+    @IBOutlet weak var showContentView: UILabel!
     
     var sensorViewArray = [YQSensorPart]()
     
@@ -137,5 +137,21 @@ class YQEquipHomeListCell: UITableViewCell {
     }
 
     
+    
+    // MARK: - 返回非等高cell的height方法
+    func cellForHeight() -> CGFloat {
+        
+        if let lastView = self.sensorViewArray.last{
+        
+            return lastView.maxY > self.showImageView.maxY ? lastView.maxY + 15 : self.showImageView.maxY + 15
+            
+        }else{
+        
+            return  self.showImageView.maxY + 15
+            
+        }
+        
+    }
+
     
 }

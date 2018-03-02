@@ -37,13 +37,17 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LT7-Cg-QHG">
-                                                        <rect key="frame" x="50" y="11" width="54" height="28"/>
+                                                        <rect key="frame" x="50" y="5" width="65" height="40"/>
                                                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="cMu-Wi-J2f"/>
+                                                            <constraint firstAttribute="width" constant="65" id="rla-PE-mRY"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <state key="normal" title="查看视频"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="8"/>
+                                                                <real key="value" value="4"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -62,8 +66,17 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nq4-mU-ZZr">
                                                 <rect key="frame" x="0.0" y="55" width="375" height="100"/>
+                                                <subviews>
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OcZ-kB-Vju">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                                    </scrollView>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="OcZ-kB-Vju" secondAttribute="trailing" id="D31-9t-BJv"/>
+                                                    <constraint firstItem="OcZ-kB-Vju" firstAttribute="top" secondItem="Nq4-mU-ZZr" secondAttribute="top" id="FJl-y8-Bk4"/>
+                                                    <constraint firstItem="OcZ-kB-Vju" firstAttribute="leading" secondItem="Nq4-mU-ZZr" secondAttribute="leading" id="OBm-xl-FJd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="OcZ-kB-Vju" secondAttribute="bottom" id="j9V-9L-CsC"/>
                                                     <constraint firstAttribute="height" constant="100" id="mcE-lS-xjv"/>
                                                 </constraints>
                                             </view>
@@ -74,7 +87,7 @@
                                                         <rect key="frame" x="123" y="10" width="242" height="30"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle4" translatesAutoresizingMaskIntoConstraints="NO" id="Dk9-37-nCg">
-                                                                <rect key="frame" x="202" y="10" width="40" height="10"/>
+                                                                <rect key="frame" x="202" y="0.0" width="40" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="0Vd-0x-2pV"/>
                                                                 </constraints>
@@ -103,10 +116,10 @@
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="6mW-kW-QHs" secondAttribute="bottom" id="DXN-GM-6gH"/>
                                                             <constraint firstItem="Dk9-37-nCg" firstAttribute="leading" secondItem="afe-mJ-XQ0" secondAttribute="trailing" id="G2J-du-TLD"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Dk9-37-nCg" secondAttribute="bottom" constant="10" id="HnE-fj-dHV"/>
                                                             <constraint firstAttribute="trailing" secondItem="6mW-kW-QHs" secondAttribute="trailing" id="Thw-oG-IUE"/>
                                                             <constraint firstItem="afe-mJ-XQ0" firstAttribute="centerY" secondItem="vhR-Dn-9rb" secondAttribute="centerY" id="Vs9-BH-9Xi"/>
-                                                            <constraint firstItem="Dk9-37-nCg" firstAttribute="top" secondItem="vhR-Dn-9rb" secondAttribute="top" constant="10" id="Yyb-3a-hBx"/>
+                                                            <constraint firstItem="Dk9-37-nCg" firstAttribute="top" secondItem="vhR-Dn-9rb" secondAttribute="top" id="Yx5-VC-E1A"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Dk9-37-nCg" secondAttribute="bottom" id="fb3-eA-u93"/>
                                                             <constraint firstAttribute="trailing" secondItem="Dk9-37-nCg" secondAttribute="trailing" id="n5s-87-6bW"/>
                                                             <constraint firstItem="6mW-kW-QHs" firstAttribute="top" secondItem="vhR-Dn-9rb" secondAttribute="top" id="tcv-LI-m2b"/>
                                                             <constraint firstItem="afe-mJ-XQ0" firstAttribute="leading" secondItem="vhR-Dn-9rb" secondAttribute="leading" id="w5I-fr-BdB"/>
@@ -197,13 +210,16 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="headScrollView" destination="OcZ-kB-Vju" id="IvP-Xa-DqZ"/>
+                        <outlet property="imageView" destination="0uu-HC-vJn" id="JeF-7s-hL0"/>
+                        <outlet property="siftView" destination="wbY-NL-lXO" id="bPQ-0V-FgD"/>
                         <outlet property="tableView" destination="xwq-w5-9JJ" id="WBI-Qn-Arl"/>
                         <outlet property="textField" destination="afe-mJ-XQ0" id="sXP-EH-2ik"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejm-Se-Olf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-49" y="-5"/>
+            <point key="canvasLocation" x="-50.399999999999999" y="-5.8470764617691158"/>
         </scene>
     </scenes>
     <resources>

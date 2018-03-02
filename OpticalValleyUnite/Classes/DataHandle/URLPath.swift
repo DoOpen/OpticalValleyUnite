@@ -336,4 +336,11 @@ struct URLPath {
     //设备typelist
     static let getHouseTypeList = "equiphouse/getHouseTypeList"
     
+    //设备详情list
+    static let getInnerEquip = "equiphouse/getInnerEquip"
+    //设备详情typeList
+    static let getEquipTypeList = "equiphouse/getEquipTypeList"
+    
+    
+    
 }

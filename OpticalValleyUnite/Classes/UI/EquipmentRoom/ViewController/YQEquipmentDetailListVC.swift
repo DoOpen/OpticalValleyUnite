@@ -7,19 +7,62 @@
 //
 
 import UIKit
+import MJRefresh
+import SVProgressHUD
+
 
 class YQEquipmentDetailListVC: UIViewController {
     
-    
+    @IBOutlet weak var headScrollView: UIScrollView!
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var textField: UITextField!
     
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
+    var dataArray = [YQEquipHomeListModel](){
+        didSet{
+        
+            self.tableView.reloadData()
+        }
+    
+    }
+    
+    var equipHouseId = 0
+    
+    var currentIndex = 0
+    
+    //选择的type
+    var selectType : Int = 0
+    //弹簧变量
+    var selectBool = false
+    
+    var coverView : UIView?
+    
+    var siftVc: YQEquipTypeTVC?
+    //行高缓存
+    var heightDict = [String : Any]()
+    var cellID = "EquipHomeListCell"
+    
+    //传值空间id
+    var houseId = ""
+
+    @IBOutlet weak var siftView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "设备房详情"
+        
+        //1.获取默认的项目
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        //2.获取网络数据
+        getDataForServer()
+        
+        //3.上拉下拉刷新
+        addRefirsh()
         
         
     }
@@ -27,13 +70,105 @@ class YQEquipmentDetailListVC: UIViewController {
     // MARK: - button点击的事件
     @IBAction func equipTypeClick(_ sender: UIButton) {
         
+        //点击弹出tableView.图片转化
+        selectBool = !selectBool
+        
+        if selectBool {
+            
+            self.imageView.image = UIImage.init(name: "caret_up")
+            
+            //创建蒙版视图
+            let coverV = UIView()
+            coverV.backgroundColor = UIColor.init(red: 180/255.0, green: 180/255.0, blue: 180/255.0, alpha: 0.7)
+            self.coverView = coverV
+            
+            self.view.addSubview(coverV)
+            
+            self.coverView?.snp.makeConstraints({ (maker) in
+                
+                maker.top.equalTo(self.siftView.snp.bottom)
+                maker.left.right.bottom.equalToSuperview()
+                
+            })
+            
+            //创建siftVC选择控制器
+            let siftTypeVC = UIStoryboard.instantiateInitialViewController(name: "YQEquipTypeTVC") as! YQEquipTypeTVC
+            siftTypeVC.selectTypeString = selectType
+            siftTypeVC.isDetail = true
+            siftTypeVC.houseId = self.houseId
+            
+            self.siftVc = siftTypeVC
+            let v =  siftTypeVC.view
+            
+            self.view.addSubview(v!)
+            
+            v?.snp.makeConstraints({ (maker) in
+                
+                maker.bottom.equalTo(self.view.snp.top)
+                maker.left.right.equalToSuperview()
+                maker.height.equalTo(280)
+                
+            })
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                
+                v?.snp.removeConstraints()
+                
+                v?.snp.makeConstraints({ (maker) in
+                    
+                    maker.top.equalTo(self.siftView.snp.bottom)
+                    maker.left.right.equalToSuperview()
+                    maker.height.equalTo(280)
+                })
+                
+            })
+            
+            
+        }else{
+            
+            self.imageView.image = UIImage.init(name: "caret_down")
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                
+                self.siftVc?.view.snp.removeConstraints()
+                
+                self.siftVc?.view.snp.makeConstraints({ (maker) in
+                    
+                    maker.bottom.equalTo(self.view.snp.top)
+                    maker.left.right.equalToSuperview()
+                    maker.height.equalTo(200)
+                })
+                
+            }, completion: { (Bool) in
+                
+                self.coverView?.removeFromSuperview()
+                
+                self.siftVc?.view.removeFromSuperview()
+                
+            })
+            
+        }
         
         
+        //选择sift的控制器要求回调函数
+        self.siftVc?.selectCellClickHandel = { parmat in
+            
+            //拿出id 进行筛选调整
+            self.selectType = (parmat["equipTypeId"] as? Int)!
+        }
+
     }
     
     @IBAction func searchButtonClick(_ sender: UIButton) {
         
-        
+        if selectType == 0 {
+            
+            getDataForServer( searchText: textField.text!)
+            
+        }else {
+            
+            getDataForServer( type: selectType, searchText: textField.text!)
+        }
         
     }
     
@@ -41,10 +176,153 @@ class YQEquipmentDetailListVC: UIViewController {
         
         //跳转到 视频相应的界面
         let video = YQWebVideoVC.init(nibName: "YQWebVideoVC", bundle: nil)
+    
         navigationController?.pushViewController(video, animated: true)
         
     }
     
-  
+    // MARK: - 获取数据的相应方法
+    func getDataForServer(pageIndex : Int = 0, pageSize : Int = 20, type : Int = 0, searchText : String = ""){
+        
+        var par = [String : Any]()
+        
+        par["houseId"] = self.houseId
+        if type != 0 {
+            
+            par["equipTypeId"] = type
+        }
+        
+        if searchText != "" {
+            
+            par["equipHouseName"] = searchText
+        }
+        
+        
+        par["pageIndex"] = pageIndex
+        par["pageSize"] = pageSize
+        
+        par["equipHouseId"] = self.equipHouseId
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getInnerEquip, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            let data = response["data"] as? Array<[String : Any]>
+            
+            if data == nil {
+                
+                SVProgressHUD.showError(withStatus: "没有获取更多数据")
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
+                self.dataArray.removeAll()
+                
+                return
+            }
+            
+            var tempData = [YQEquipHomeListModel]()
+            
+            for dict in data! {
+                
+                tempData.append(YQEquipHomeListModel.init(dict: dict))
+            }
+            
+            //添加上拉下拉刷新的情况
+            if pageIndex == 0 {
+                
+                self.dataArray = tempData
+                self.tableView.mj_header.endRefreshing()
+                
+            }else{
+                
+                if tempData.count > 0{
+                    
+                    self.currentIndex = pageIndex
+                    self.dataArray.append(contentsOf: tempData)
+                }
+                
+                self.tableView.mj_footer.endRefreshing()
+            }
+            
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "网络数据加载失败,请检查网络!")
+        }
     
+    }
+
+
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            if self.selectType == 0 {
+                
+                self.getDataForServer( searchText: self.textField.text!)
+                
+            }else {
+                
+                self.getDataForServer( type: self.selectType, searchText: self.textField.text!)
+            }
+            
+        })
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+            if self.selectType == 0 {
+                
+                self.getDataForServer( pageIndex : self.currentIndex + 1,searchText: self.textField.text!)
+                
+            }else {
+                
+                self.getDataForServer( pageIndex : self.currentIndex + 1,type: self.selectType, searchText: self.textField.text!)
+            }
+        })
+    }
+
+    
+
+}
+
+extension YQEquipmentDetailListVC : UITableViewDataSource,UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return heightDict["\(indexPath.row)"] as! CGFloat
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.dataArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? YQEquipHomeListCell
+        
+        if cell == nil {
+            
+            cell = Bundle.main.loadNibNamed("YQEquipHomeListCell", owner: nil, options: nil)?[0] as? YQEquipHomeListCell
+        }
+        
+        cell?.model = self.dataArray[indexPath.row]
+        
+        //强制更新cell的布局高度
+        cell?.layoutIfNeeded()
+        
+        //缓存 行高
+        //要求的定义的是 一个可变的字典的类型的来赋值
+        heightDict["\(indexPath.row)"] = cell?.cellForHeight()
+
+        return cell!
+
+    }
+    
+
 }

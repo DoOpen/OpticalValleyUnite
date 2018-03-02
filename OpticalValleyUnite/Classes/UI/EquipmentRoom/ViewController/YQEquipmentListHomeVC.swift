@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 import SVProgressHUD
-
+import MJRefresh
 
 class YQEquipmentListHomeVC: UIViewController {
     
@@ -37,6 +37,8 @@ class YQEquipmentListHomeVC: UIViewController {
     var heightDict = [String : Any]()
     var cellID = "EquipHomeListCell"
     
+    var currentIndex = 0
+    
     var dataArray = [YQEquipHomeListModel](){
         didSet{
             
@@ -53,6 +55,9 @@ class YQEquipmentListHomeVC: UIViewController {
         
         //1.list 数据获取
         getDataForServer()
+        
+        //2.上拉,下拉数据刷新
+        addRefirsh()
         
         
     }
@@ -110,10 +115,8 @@ class YQEquipmentListHomeVC: UIViewController {
             self.siftVc = siftTypeVC
             let v =  siftTypeVC.view
             
-            
             self.view.addSubview(v!)
 
-            
             v?.snp.makeConstraints({ (maker) in
                 
                 maker.bottom.equalTo(self.view.snp.top)
@@ -158,8 +161,6 @@ class YQEquipmentListHomeVC: UIViewController {
                 self.siftVc?.view.removeFromSuperview()
                 
             })
-
-            
         }
         
         
@@ -169,8 +170,6 @@ class YQEquipmentListHomeVC: UIViewController {
             //拿出id 进行筛选调整
             self.selectType = (parmat["equipTypeId"] as? Int)!
         }
-
-        
         
     }
     
@@ -215,6 +214,10 @@ class YQEquipmentListHomeVC: UIViewController {
             if data == nil {
                 
                 SVProgressHUD.showError(withStatus: "没有获取更多数据")
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
+                self.dataArray.removeAll()
+                
                 return
             }
             
@@ -225,7 +228,23 @@ class YQEquipmentListHomeVC: UIViewController {
                 tempData.append(YQEquipHomeListModel.init(dict: dict))
             }
             
-            self.dataArray = tempData
+            //添加上拉下拉刷新的情况
+            if pageIndex == 0 {
+                
+                self.dataArray = tempData
+                self.tableView.mj_header.endRefreshing()
+                
+            }else{
+                
+                if tempData.count > 0{
+                    
+                    self.currentIndex = pageIndex
+                    self.dataArray.append(contentsOf: tempData)
+                }
+                
+                self.tableView.mj_footer.endRefreshing()
+            }
+
             
         }) { (error) in
             
@@ -254,6 +273,38 @@ class YQEquipmentListHomeVC: UIViewController {
         
         return projectName
     }
+    
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            if self.selectType == 0 {
+                
+                self.getDataForServer( searchText: self.searchTextField.text!)
+                
+            }else {
+                
+                self.getDataForServer( type: self.selectType, searchText: self.searchTextField.text!)
+            }
+
+        })
+        
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+            if self.selectType == 0 {
+                
+                self.getDataForServer( pageIndex : self.currentIndex + 1,searchText: self.searchTextField.text!)
+                
+            }else {
+                
+                self.getDataForServer( pageIndex : self.currentIndex + 1,type: self.selectType, searchText: self.searchTextField.text!)
+            }
+        })
+        
+    }
+
 
 }
 
@@ -267,6 +318,14 @@ extension YQEquipmentListHomeVC : UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        //跳转到详情的界面
+        let detail = UIStoryboard.instantiateInitialViewController(name: "YQEquipmentDetailList") as! YQEquipmentDetailListVC
+        
+        detail.houseId = self.dataArray[indexPath.row].houseId
+        detail.equipHouseId = self.dataArray[indexPath.row].equipHouseId
+        
+        navigationController?.pushViewController(detail, animated: true)
+        
     }
 
     
@@ -277,20 +336,23 @@ extension YQEquipmentListHomeVC : UITableViewDataSource,UITableViewDelegate{
         if cell == nil {
             
             cell = Bundle.main.loadNibNamed("YQEquipHomeListCell", owner: nil, options: nil)?[0] as? YQEquipHomeListCell
-            
         }
         
         cell?.model = self.dataArray[indexPath.row]
         
-        //获取行高,添加缓存
+        //强制更新cell的布局高度
+        cell?.layoutIfNeeded()
         
-        
+        //缓存 行高
+        //要求的定义的是 一个可变的字典的类型的来赋值
+        heightDict["\(indexPath.row)"] = cell?.cellForHeight()
+    
         return cell!
     }
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 200
+        return heightDict["\(indexPath.row)"] as! CGFloat
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

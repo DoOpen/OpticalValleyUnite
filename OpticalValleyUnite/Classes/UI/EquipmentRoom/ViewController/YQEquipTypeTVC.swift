@@ -20,6 +20,10 @@ class YQEquipTypeTVC: UITableViewController {
     //已选的selectTypeString
     var selectTypeString  : Int?
     
+    //是否是详情
+    var isDetail  = false
+    var houseId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,28 +35,57 @@ class YQEquipTypeTVC: UITableViewController {
     // MARK: - 获取数据的方法
     func getData(){
     
-        let par = [String : Any]()
+        var par = [String : Any]()
         
         SVProgressHUD.show()
         
-        HttpClient.instance.post(path: URLPath.getHouseTypeList, parameters: par, success: { (response) in
-            SVProgressHUD.dismiss()
+        if isDetail {
             
-            let data = response as? Array<[String : Any]>
-            
-            if data == nil {
-                SVProgressHUD.showError(withStatus: "没有更多的数据!")
-                return
+            par["houseId"] = self.houseId
+            //detail详情的数据展示接口
+            HttpClient.instance.post(path: URLPath.getEquipTypeList, parameters: par, success: { (response) in
+                SVProgressHUD.dismiss()
+                
+                let data = response as? Array<[String : Any]>
+                
+                if data == nil {
+                    SVProgressHUD.showError(withStatus: "没有更多的数据!")
+                    return
+                }
+                
+                self.dataArray = data!
+                self.tableView.reloadData()
+                
+            }) { (error) in
+                
+                SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
             }
             
-            self.dataArray = data!
-            self.tableView.reloadData()
-            
-        }) { (error) in
-            
-            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+
+        
+        }else{
+        
+            //首页详情的接口
+            HttpClient.instance.post(path: URLPath.getHouseTypeList, parameters: par, success: { (response) in
+                SVProgressHUD.dismiss()
+                
+                let data = response as? Array<[String : Any]>
+                
+                if data == nil {
+                    SVProgressHUD.showError(withStatus: "没有更多的数据!")
+                    return
+                }
+                
+                self.dataArray = data!
+                self.tableView.reloadData()
+                
+            }) { (error) in
+                
+                SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+            }
+        
         }
-    
+        
     }
     
 

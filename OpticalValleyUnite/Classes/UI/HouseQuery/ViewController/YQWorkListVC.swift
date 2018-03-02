@@ -45,8 +45,11 @@ class YQWorkListVC: UIViewController {
         let nib = UINib.init(nibName: "YQWorkListCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: cellID)
         
+        //默认选择的是 第一个报事的类型
         self.reportBtn.isSelected = true
         currentSelecte = self.reportBtn
+        getData(tag: (currentSelecte?.tag)!)
+        
         
         //上拉,下拉刷新
         addRefirsh()
@@ -66,6 +69,7 @@ class YQWorkListVC: UIViewController {
         sender.isSelected = true
         self.currentSelecte = sender
         
+        self.dataArray.removeAll()
         //刷新数据
         getData(tag: sender.tag)
         
@@ -206,7 +210,7 @@ extension YQWorkListVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 80
+        return 120
     }
 
     

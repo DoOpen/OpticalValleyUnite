@@ -9,8 +9,8 @@
 import UIKit
 
 class YQEquipmentDetailListVC: UIViewController {
-
-    @IBOutlet weak var webView: UIWebView!
+    
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,6 +18,8 @@ class YQEquipmentDetailListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "设备房详情"
         
         
     }
@@ -35,6 +37,13 @@ class YQEquipmentDetailListVC: UIViewController {
         
     }
     
+    @IBAction func lookOutVideoClick(_ sender: UIButton) {
+        
+        //跳转到 视频相应的界面
+        let video = YQWebVideoVC.init(nibName: "YQWebVideoVC", bundle: nil)
+        navigationController?.pushViewController(video, animated: true)
+        
+    }
     
   
     

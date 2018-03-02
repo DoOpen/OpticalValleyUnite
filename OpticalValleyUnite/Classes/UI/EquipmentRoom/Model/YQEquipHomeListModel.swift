@@ -26,8 +26,6 @@ class YQEquipHomeListModel: NSObject {
     var sensorId = ""
     
     
-    
-    
     //参数名
     var name = ""
     //值
@@ -37,7 +35,9 @@ class YQEquipHomeListModel: NSObject {
     //是否异常
     var isRegular = ""
     //图片集合
-    var houseImgs = ""
+    var houseImgs = Array<String>()
+    
+    
     //图片地址
     var screenUrl = ""
     //截图时间

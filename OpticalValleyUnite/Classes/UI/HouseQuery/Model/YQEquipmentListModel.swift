@@ -11,7 +11,7 @@ import UIKit
 class YQEquipmentListModel: NSObject {
     
     //设备id
-    var id = ""
+    var id : Int64 = 0
     
     //设备编码
     var equipName = ""

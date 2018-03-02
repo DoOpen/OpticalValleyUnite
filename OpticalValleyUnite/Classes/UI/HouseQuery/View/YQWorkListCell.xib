@@ -21,10 +21,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRQ-Li-0Pd">
                         <rect key="frame" x="0.0" y="0.0" width="307" height="35"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBI-w4-qza">
-                                <rect key="frame" x="8" y="7" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBI-w4-qza">
+                                <rect key="frame" x="10" y="8" width="39.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -54,7 +53,9 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Wlx-eL-ySd" secondAttribute="bottom" constant="5" id="3sl-fu-eWB"/>
                             <constraint firstAttribute="trailing" secondItem="Wlx-eL-ySd" secondAttribute="trailing" constant="10" id="8SP-6V-8US"/>
+                            <constraint firstItem="xBI-w4-qza" firstAttribute="leading" secondItem="pRQ-Li-0Pd" secondAttribute="leading" constant="10" id="RaH-af-tKM"/>
                             <constraint firstItem="Wlx-eL-ySd" firstAttribute="top" secondItem="pRQ-Li-0Pd" secondAttribute="top" constant="5" id="XBt-18-d6N"/>
+                            <constraint firstItem="xBI-w4-qza" firstAttribute="centerY" secondItem="pRQ-Li-0Pd" secondAttribute="centerY" id="aT9-iR-0Ua"/>
                             <constraint firstAttribute="height" constant="35" id="s3u-gM-PQl"/>
                         </constraints>
                     </view>
@@ -67,8 +68,8 @@
                                 <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1pL-PT-Pxc">
-                                <rect key="frame" x="10" y="0.0" width="287" height="13.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1pL-PT-Pxc">
+                                <rect key="frame" x="10" y="0.0" width="197" height="13.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -81,7 +82,7 @@
                             <constraint firstItem="1pL-PT-Pxc" firstAttribute="leading" secondItem="FdJ-OH-qQ7" secondAttribute="leading" constant="10" id="Wvi-hx-4d3"/>
                             <constraint firstItem="ktd-Xo-dl4" firstAttribute="leading" secondItem="FdJ-OH-qQ7" secondAttribute="leading" constant="5" id="Z0G-wF-wSa"/>
                             <constraint firstAttribute="bottom" secondItem="ktd-Xo-dl4" secondAttribute="bottom" constant="5" id="ksm-dW-0Z1"/>
-                            <constraint firstAttribute="trailing" secondItem="1pL-PT-Pxc" secondAttribute="trailing" constant="10" id="tbT-oB-ihf"/>
+                            <constraint firstAttribute="trailing" secondItem="1pL-PT-Pxc" secondAttribute="trailing" constant="100" id="tbT-oB-ihf"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lD6-2i-zLR">
@@ -131,7 +132,7 @@
                 <outlet property="workNameLabel" destination="xBI-w4-qza" id="L6Z-ap-W8M"/>
                 <outlet property="workStateButton" destination="Wlx-eL-ySd" id="gc4-Hz-s1G"/>
             </connections>
-            <point key="canvasLocation" x="18.5" y="81"/>
+            <point key="canvasLocation" x="-142" y="72"/>
         </tableViewCell>
     </objects>
 </document>

@@ -28,7 +28,7 @@ class YQWorkListModel: NSObject {
     
     
     //2.报装属性
-    var applyStatus = ""
+    var applyStatus = -1
     //审核状态名称
     var applyStatusName = ""
     

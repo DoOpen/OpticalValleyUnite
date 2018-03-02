@@ -27,6 +27,8 @@ class YQHouseHomeVC: UIViewController {
     
     var notiesPramert : [String : Any]?
     
+    var parkID = ""
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -48,6 +50,14 @@ class YQHouseHomeVC: UIViewController {
         //4.接受通知的方法
         getNotes()
     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        let _ = setUpProjectNameLable()
+        
     }
 
  
@@ -82,6 +92,7 @@ class YQHouseHomeVC: UIViewController {
         var parmeter = [String : Any]()
         parmeter["pageSize"] = pageSize
         parmeter["pageIndex"] = pageIndex
+        parmeter["parkId"] = self.parkID
         
         for (key,value) in par {
             
@@ -176,6 +187,28 @@ class YQHouseHomeVC: UIViewController {
         })
         
     }
+    
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            
+            projectName = dic?["PARK_NAME"] as! String
+            self.parkID = dic?["ID"] as! String
+            
+        }else{
+            
+            projectName = "请选择默认项目"
+        }
+        
+        return projectName
+    }
+
+    
     
     // MARK: - 接受通知的方法
     func getNotes(){

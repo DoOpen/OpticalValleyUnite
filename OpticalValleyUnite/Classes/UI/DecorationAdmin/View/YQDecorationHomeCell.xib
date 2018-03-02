@@ -107,7 +107,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="工单描述" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qd0-y2-9Zt">
-                                <rect key="frame" x="5" y="0.0" width="521" height="85.5"/>
+                                <rect key="frame" x="20" y="0.0" width="411" height="85.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -119,8 +119,8 @@
                             <constraint firstItem="ihd-1o-dsq" firstAttribute="top" secondItem="Qd0-y2-9Zt" secondAttribute="bottom" id="E5o-W7-44X"/>
                             <constraint firstItem="Qd0-y2-9Zt" firstAttribute="top" secondItem="LKl-5x-Fjx" secondAttribute="top" id="FD6-YL-rui"/>
                             <constraint firstAttribute="bottom" secondItem="ihd-1o-dsq" secondAttribute="bottom" id="FXW-D0-d7g"/>
-                            <constraint firstAttribute="trailing" secondItem="Qd0-y2-9Zt" secondAttribute="trailing" constant="5" id="HtO-zH-aYB"/>
-                            <constraint firstItem="Qd0-y2-9Zt" firstAttribute="leading" secondItem="LKl-5x-Fjx" secondAttribute="leading" constant="5" id="o6H-yG-kvt"/>
+                            <constraint firstAttribute="trailing" secondItem="Qd0-y2-9Zt" secondAttribute="trailing" constant="100" id="HtO-zH-aYB"/>
+                            <constraint firstItem="Qd0-y2-9Zt" firstAttribute="leading" secondItem="LKl-5x-Fjx" secondAttribute="leading" constant="20" id="o6H-yG-kvt"/>
                             <constraint firstAttribute="trailing" secondItem="ihd-1o-dsq" secondAttribute="trailing" constant="5" id="rXN-jE-DK8"/>
                             <constraint firstItem="ihd-1o-dsq" firstAttribute="leading" secondItem="LKl-5x-Fjx" secondAttribute="leading" constant="5" id="zaG-qt-jMD"/>
                         </constraints>

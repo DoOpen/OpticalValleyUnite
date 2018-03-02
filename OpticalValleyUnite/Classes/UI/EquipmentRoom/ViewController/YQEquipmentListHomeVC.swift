@@ -20,6 +20,7 @@ class YQEquipmentListHomeVC: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var tableView: UITableView!
     
     var siftVc: YQEquipTypeTVC?
     var coverView : UIView?
@@ -32,6 +33,16 @@ class YQEquipmentListHomeVC: UIViewController {
     //parkID
     var parkID = ""
     
+    //行高缓存
+    var heightDict = [String : Any]()
+    var cellID = "EquipHomeListCell"
+    
+    var dataArray = [YQEquipHomeListModel](){
+        didSet{
+            
+            self.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         
@@ -42,8 +53,6 @@ class YQEquipmentListHomeVC: UIViewController {
         
         //1.list 数据获取
         getDataForServer()
-        
-        
         
         
     }
@@ -65,7 +74,7 @@ class YQEquipmentListHomeVC: UIViewController {
             getDataForServer( searchText: searchTextField.text!)
         
         }else {
-        
+            
             getDataForServer( type: selectType, searchText: searchTextField.text!)
         }
         
@@ -179,6 +188,12 @@ class YQEquipmentListHomeVC: UIViewController {
             par["equipHouseName"] = searchText
         }
         
+        
+        par["pageIndex"] = pageIndex
+        par["pageSize"] = pageSize
+        
+        
+        self.parkID = "e6388b87df9846ed96a315b5653bf9b3"
         par["parkId"] = self.parkID
         
         if self.parkID == "" {
@@ -194,7 +209,8 @@ class YQEquipmentListHomeVC: UIViewController {
         HttpClient.instance.post(path: URLPath.getEquiphouseList, parameters: par, success: { (response) in
             
             SVProgressHUD.dismiss()
-            let data = response as? Array<[String : Any]>
+            
+            let data = response["data"] as? Array<[String : Any]>
             
             if data == nil {
                 
@@ -202,9 +218,14 @@ class YQEquipmentListHomeVC: UIViewController {
                 return
             }
             
+            var tempData = [YQEquipHomeListModel]()
             
+            for dict in data! {
+                
+                tempData.append(YQEquipHomeListModel.init(dict: dict))
+            }
             
-            
+            self.dataArray = tempData
             
         }) { (error) in
             
@@ -234,7 +255,48 @@ class YQEquipmentListHomeVC: UIViewController {
         return projectName
     }
 
+}
+
+
+extension YQEquipmentListHomeVC : UITableViewDataSource,UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.dataArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? YQEquipHomeListCell
+        
+        if cell == nil {
+            
+            cell = Bundle.main.loadNibNamed("YQEquipHomeListCell", owner: nil, options: nil)?[0] as? YQEquipHomeListCell
+            
+        }
+        
+        cell?.model = self.dataArray[indexPath.row]
+        
+        //获取行高,添加缓存
+        
+        
+        return cell!
+    }
    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 100
+    }
     
     
 }

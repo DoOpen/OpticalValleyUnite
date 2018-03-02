@@ -28,31 +28,47 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="680"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ouQ-oN-08J">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                 <subviews>
-                                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xh-Et-wVr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
-                                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </webView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="视频" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kx-0K-O6o">
+                                                        <rect key="frame" x="5" y="15" width="35" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LT7-Cg-QHG">
+                                                        <rect key="frame" x="50" y="11" width="54" height="28"/>
+                                                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <state key="normal" title="查看视频"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="lookOutVideoClick:" destination="IXR-HW-Rd8" eventType="touchUpInside" id="kUX-0j-B2z"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="4Xh-Et-wVr" secondAttribute="trailing" id="3SO-jL-uOt"/>
-                                                    <constraint firstAttribute="height" constant="150" id="7fI-3W-UCQ"/>
-                                                    <constraint firstItem="4Xh-Et-wVr" firstAttribute="leading" secondItem="ouQ-oN-08J" secondAttribute="leading" id="SBv-uS-FDH"/>
-                                                    <constraint firstItem="4Xh-Et-wVr" firstAttribute="top" secondItem="ouQ-oN-08J" secondAttribute="top" id="XYs-gL-9Cg"/>
-                                                    <constraint firstAttribute="bottom" secondItem="4Xh-Et-wVr" secondAttribute="bottom" id="qJT-M6-gsg"/>
+                                                    <constraint firstAttribute="height" constant="50" id="7fI-3W-UCQ"/>
+                                                    <constraint firstItem="LT7-Cg-QHG" firstAttribute="leading" secondItem="5kx-0K-O6o" secondAttribute="trailing" constant="10" id="FgQ-VS-HRy"/>
+                                                    <constraint firstItem="5kx-0K-O6o" firstAttribute="leading" secondItem="ouQ-oN-08J" secondAttribute="leading" constant="5" id="cHW-o8-lbJ"/>
+                                                    <constraint firstItem="LT7-Cg-QHG" firstAttribute="centerY" secondItem="ouQ-oN-08J" secondAttribute="centerY" id="eU6-BG-ojU"/>
+                                                    <constraint firstItem="5kx-0K-O6o" firstAttribute="centerY" secondItem="ouQ-oN-08J" secondAttribute="centerY" id="yVC-Rw-ddy"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nq4-mU-ZZr">
-                                                <rect key="frame" x="0.0" y="155" width="375" height="100"/>
+                                                <rect key="frame" x="0.0" y="55" width="375" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="mcE-lS-xjv"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-NL-lXO">
-                                                <rect key="frame" x="0.0" y="260" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="160" width="375" height="50"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhR-Dn-9rb">
                                                         <rect key="frame" x="123" y="10" width="242" height="30"/>
@@ -141,7 +157,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xwq-w5-9JJ">
-                                                <rect key="frame" x="0.0" y="310" width="375" height="370"/>
+                                                <rect key="frame" x="0.0" y="210" width="375" height="470"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </tableView>
                                         </subviews>
@@ -183,7 +199,6 @@
                     <connections>
                         <outlet property="tableView" destination="xwq-w5-9JJ" id="WBI-Qn-Arl"/>
                         <outlet property="textField" destination="afe-mJ-XQ0" id="sXP-EH-2ik"/>
-                        <outlet property="webView" destination="4Xh-Et-wVr" id="jjH-jg-0e7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejm-Se-Olf" userLabel="First Responder" sceneMemberID="firstResponder"/>

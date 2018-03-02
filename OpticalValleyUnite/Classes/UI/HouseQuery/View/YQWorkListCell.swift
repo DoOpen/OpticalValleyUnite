@@ -34,7 +34,8 @@ class YQWorkListCell: UITableViewCell {
     var model : YQWorkListModel?{
         didSet{
             
-            self.workNameLabel.text = model?.workunitName
+            //工单编号
+            self.workNameLabel.text = model?.id
             
             switch selectTag {
                 case 1:
@@ -50,11 +51,12 @@ class YQWorkListCell: UITableViewCell {
                     break
             }
             
-            self.timeLabel.text = model?.createDate
-            self.nameLabel.text = model?.personName
+            self.timeLabel.text = "执行人:" +  (model?.personName)!
+            self.nameLabel.text = "执行时间:" +  (model?.createDate)!
+
             
-            self.projectLabel.text = model?.parkName
-            self.workDescribeTextView.text = ""
+            self.projectLabel.text = "所属项目:" +  (model?.parkName)!
+            self.workDescribeTextView.text = model?.workunitName
             
         }
     

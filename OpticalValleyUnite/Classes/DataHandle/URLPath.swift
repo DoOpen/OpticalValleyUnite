@@ -41,7 +41,7 @@ struct URLPath {
     
     //服务器的basicBasicPath
 
-    static let basicBasic = "http://172.16.19.98:8091"
+    static let basicBasic = "http://172.16.11.68"
     
     //服务器的basic 地址:
     static let basicPath = basicBasic + "/ovu-pcos/api/"
@@ -345,6 +345,9 @@ struct URLPath {
     static let getHouseSensorData = "equiphouse/getHouseSensorData"
     //获取摄像头直播地址
     static let getHouseVideo = "equiphouse/getHouseVideo"
+    
+    //获取设备房工单
+    static let getEquipWorkunitList = "equiphouse/workunitList"
     
     
 }

@@ -160,9 +160,6 @@ class WorkOrderViewController: UIViewController {
         
     }
     
-//    func rightBtnClick(){
-//        let vc = worksif
-//    }
 
     @IBAction func statusBtnClick(_ sender: UIButton) {
         
@@ -292,6 +289,7 @@ class WorkOrderViewController: UIViewController {
             
         }) { (error) in
             
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
 //            SVProgressHUD.dismiss()
 //            let models = self.getWorkOrderFormDataDB(type: array[type], indexPage: 0)
 //            self.currentDatas = models

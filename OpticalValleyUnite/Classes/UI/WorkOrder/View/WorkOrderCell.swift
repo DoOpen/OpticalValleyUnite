@@ -25,6 +25,7 @@ class WorkOrderCell: UITableViewCell {
     @IBOutlet weak var alreadyCompelte: UILabel!
     
     var model: WorkOrderModel?{
+        
         didSet{
             workOrderIdLabel.text = model?.workOrderId
             contentLabel.text = model?.content
@@ -70,8 +71,10 @@ class WorkOrderCell: UITableViewCell {
             
             
             if model?.type2 == "1"{
+                
                 typeLabel.text = "计划工单"
             }else{
+                
                 typeLabel.text = "应急工单"
             }
             
@@ -82,6 +85,8 @@ class WorkOrderCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    
 }
 
 class SurveillanceWorkOrderCell: UITableViewCell {

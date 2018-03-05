@@ -51,6 +51,8 @@ class YQEquipmentDetailListVC: UIViewController {
     
     //传值空间id
     var houseId = ""
+    
+
 
     @IBOutlet weak var siftView: UIView!
     
@@ -63,6 +65,9 @@ class YQEquipmentDetailListVC: UIViewController {
         
         //2.获取网络数据
         getDataForServer()
+        
+        //2.1获取传感器数据
+        getHeadDataForServer()
         
         //3.上拉下拉刷新
         addRefirsh()
@@ -208,22 +213,30 @@ class YQEquipmentDetailListVC: UIViewController {
             }else{
                 
                 //scorllView 添加滚动的数据
-                for dict in data! {
+                for indexxx in 0..<(data?.count)! {
                     
-                    let sensorV = Bundle.main.loadNibNamed("", owner: nil, options: nil)?[0] as! YQSensorDetailView
+                    let dict = data?[indexxx]
                     
-                    let name = dict["name"] as? String ?? ""
-                    let val = dict["val"] as? String ?? ""
-                    let unit = dict["unit"] as? String ?? ""
+                    let sensorV = Bundle.main.loadNibNamed("YQSensorDetailView", owner: nil, options: nil)?[0] as! YQSensorDetailView
+                    
+                    let name = dict?["name"] as? String ?? ""
+                    let val = dict?["val"] as? String ?? ""
+                    let unit = dict?["unit"] as? String ?? ""
                     
                     sensorV.nameLabel.text = name
                     sensorV.valueLabel.text = val + unit
+                    
                     //设置约束
+                    sensorV.frame = CGRect.init(x: indexxx * 80, y: 0, width: 80, height: 80)
                     
                     self.headScrollView.addSubview(sensorV)
                     
                     //设置scrollView的contentsize 来体现滚动效果
+                    if indexxx == (data?.count)! - 1 {
                     
+                        self.headScrollView.contentSize = CGSize.init(width: (data?.count)! * 80 , height: 0)
+                        
+                    }
                     
                 }
                 

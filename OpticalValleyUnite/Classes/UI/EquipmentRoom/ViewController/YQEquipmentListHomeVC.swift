@@ -32,6 +32,7 @@ class YQEquipmentListHomeVC: UIViewController {
     var selectType : Int = 0
     //parkID
     var parkID = ""
+    var parkName = ""
     
     //行高缓存
     var heightDict = [String : Any]()
@@ -51,12 +52,7 @@ class YQEquipmentListHomeVC: UIViewController {
         super.viewDidLoad()
         self.title = "设备房列表"
         
-        let _ = setUpProjectNameLable()
-        
-        //1.list 数据获取
-        getDataForServer()
-        
-        //2.上拉,下拉数据刷新
+        //1.上拉,下拉数据刷新
         addRefirsh()
         
         
@@ -66,7 +62,14 @@ class YQEquipmentListHomeVC: UIViewController {
         
         super.viewWillAppear(animated)
     
-        let _ = setUpProjectNameLable()
+        let newName = setUpProjectNameLable()
+        
+        if self.parkName != newName {
+        
+            getDataForServer()
+            self.parkName = newName
+
+        }
         
     }
     
@@ -192,7 +195,6 @@ class YQEquipmentListHomeVC: UIViewController {
         par["pageSize"] = pageSize
         
         
-        self.parkID = "e6388b87df9846ed96a315b5653bf9b3"
         par["parkId"] = self.parkID
         
         if self.parkID == "" {

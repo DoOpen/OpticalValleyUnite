@@ -139,6 +139,7 @@ class YQEquipHomeListCell: UITableViewCell {
     var detailModel : YQEquipDetailListModel?{
         
         didSet{
+            
             self.sensorViewArray.removeAll()
             
             //文本
@@ -147,20 +148,26 @@ class YQEquipHomeListCell: UITableViewCell {
             
             if !(detailModel?.houseImgs.isEmpty)! {//数组不为空的情况
                 
-//                let basicPath = URLPath.systemSelectionURL
-//                
-//                if (model?.screenUrl.contains("http"))! {
-//                    
-//                    showImageView.showImageUrls([(model?.screenUrl)!])
-//                    
-//                }else{
-//                    
-//                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.screenUrl)!
-//                    
-//                    showImageView.showImageUrls([imageValue])
-//                    
-//                }
+                let basicPath = URLPath.systemSelectionURL
                 
+                var imageArray = [String]()
+                
+                for image in (detailModel?.houseImgs)!{
+                
+                    if (image.contains("http")) {
+                        
+                        imageArray.append(image)
+                        
+                    }else{
+                        
+                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + image
+                        
+                        imageArray.append(imageValue)
+                    }
+                
+                }
+                
+                showImageView.showImageUrls(imageArray)
             }
             
             showImageView.didClickHandle = { _,image in

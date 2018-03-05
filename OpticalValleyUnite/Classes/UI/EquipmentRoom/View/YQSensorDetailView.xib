@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="121" height="118"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view tag="13" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HX1-w1-cIl" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
+                <view tag="13" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HX1-w1-cIl">
                     <rect key="frame" x="0.0" y="0.0" width="121" height="118"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="智能开门" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXr-vS-OEr">

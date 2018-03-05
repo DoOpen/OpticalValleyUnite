@@ -139,7 +139,8 @@
                                                             <constraint firstAttribute="width" constant="95" id="FFB-2s-3mk"/>
                                                             <constraint firstAttribute="height" constant="35" id="qbf-hC-bN6"/>
                                                         </constraints>
-                                                        <state key="normal" title="设备房类别">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <state key="normal" title="设备房设备类别">
                                                             <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>

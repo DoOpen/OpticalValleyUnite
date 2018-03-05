@@ -13,7 +13,10 @@ class YQEquipmentWorkOrderVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
+        self.title = "设备房工单列表"
+        
+        
 
     }
 

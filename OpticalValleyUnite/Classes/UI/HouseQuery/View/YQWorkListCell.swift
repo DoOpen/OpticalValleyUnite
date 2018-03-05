@@ -37,19 +37,22 @@ class YQWorkListCell: UITableViewCell {
             //工单编号
             self.workNameLabel.text = model?.id
             
-            switch selectTag {
-                case 1:
-                    self.workStateButton.setTitle(model?.unitStatusName, for: .normal)
-                    break
-                case 2:
-                    self.workStateButton.setTitle(model?.applyStatusName, for: .normal)
-                    break
-                case 3:
-                    self.workStateButton.setTitle(model?.unitStatusName, for: .normal)
-                    break
-                default:
-                    break
-            }
+//            switch selectTag {
+//                
+//                case 1:
+//                    self.workStateButton.setTitle(model?.unitStatusName, for: .normal)
+//                    break
+//                case 2:
+//                    self.workStateButton.setTitle(model?.applyStatusName, for: .normal)
+//                    break
+//                case 3:
+//                    self.workStateButton.setTitle(model?.unitStatusName, for: .normal)
+//                    break
+//                default:
+//                    break
+//            }
+            
+            self.workStateButton.setTitle(model?.unitStatusName, for: .normal)
             
             self.timeLabel.text = "执行人:" +  (model?.personName)!
             self.nameLabel.text = "执行时间:" +  (model?.createDate)!

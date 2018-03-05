@@ -23,14 +23,14 @@ class YQWorkListModel: NSObject {
     var createDate = ""
     //执行人
     var personName = ""
-    //工单状态名称
+    //工单状态名称, //审核状态名称
     var unitStatusName = ""
     
     
     //2.报装属性
     var applyStatus = -1
-    //审核状态名称
-    var applyStatusName = ""
+    
+    
     
     //3.工单执行
     //项名称

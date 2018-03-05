@@ -20,6 +20,9 @@ class YQWebVideoVC: UIViewController {
 
         self.title = "查看视频"
         
+        //调去摄像头设备
+        self.getVideoIDForServer()
+        
     }
     
     

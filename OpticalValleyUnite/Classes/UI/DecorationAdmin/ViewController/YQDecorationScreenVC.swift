@@ -60,23 +60,26 @@ class YQDecorationScreenVC: UIViewController {
     @IBAction func makeSureButtonClick(_ sender: UIButton) {
         //选择houseid才能确定
         let model = self.selectePrameter["house"] as? YQDecorationHouseModel
-        if model == nil {
-            self.alert(message: "请选择房屋号!")
+        if model == nil  && currentSelectBtn == nil {
+            self.alert(message: "请选择房屋号或者类型!")
             return
         }
     
         let center = NotificationCenter.default
         let notiesName = NSNotification.Name(rawValue: "selectHouseNoties")
-        if currentSelectBtn != nil {
+        
+        if currentSelectBtn != nil && model != nil {
             
             center.post(name: notiesName, object: nil, userInfo: [ "selectLocation": (model?.houseId)!,"decorationType" : (currentSelectBtn?.tag)!])
-        }else{
+            
+        }else if(model == nil ){
         
-            center.post(name: notiesName, object: nil, userInfo: [ "selectLocation": (model?.houseId)!])
+            center.post(name: notiesName, object: nil, userInfo: [ "decorationType": (currentSelectBtn?.tag)!])
 
-        
+        }else if (currentSelectBtn == nil){
+            
+            center.post(name: notiesName, object: nil, userInfo: [ "selectLocation": (model?.houseId)!])
         }
-        
 
         navigationController?.popViewController(animated: true)
         

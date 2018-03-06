@@ -16,7 +16,7 @@ class YQDecorationHomeCell: UITableViewCell {
     
     @IBOutlet weak var workStateLabel: UIButton!
     
-    @IBOutlet weak var workDescribetionLabel: UITextView!
+    @IBOutlet weak var workDescribetionLabel: UILabel!
     
     @IBOutlet weak var projectNameLabel: UILabel!
     

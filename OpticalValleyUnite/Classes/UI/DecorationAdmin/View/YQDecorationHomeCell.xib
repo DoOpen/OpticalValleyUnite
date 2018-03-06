@@ -102,27 +102,29 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihd-1o-dsq">
                                 <rect key="frame" x="5" y="85.5" width="521" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="t6F-ze-0U0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="工单描述" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qd0-y2-9Zt">
-                                <rect key="frame" x="20" y="0.0" width="411" height="85.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工单内容" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ze2-pw-omO">
+                                <rect key="frame" x="8" y="0.0" width="515" height="85.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ihd-1o-dsq" firstAttribute="top" secondItem="Qd0-y2-9Zt" secondAttribute="bottom" id="E5o-W7-44X"/>
-                            <constraint firstItem="Qd0-y2-9Zt" firstAttribute="top" secondItem="LKl-5x-Fjx" secondAttribute="top" id="FD6-YL-rui"/>
                             <constraint firstAttribute="bottom" secondItem="ihd-1o-dsq" secondAttribute="bottom" id="FXW-D0-d7g"/>
-                            <constraint firstAttribute="trailing" secondItem="Qd0-y2-9Zt" secondAttribute="trailing" constant="100" id="HtO-zH-aYB"/>
-                            <constraint firstItem="Qd0-y2-9Zt" firstAttribute="leading" secondItem="LKl-5x-Fjx" secondAttribute="leading" constant="20" id="o6H-yG-kvt"/>
+                            <constraint firstItem="ze2-pw-omO" firstAttribute="top" secondItem="LKl-5x-Fjx" secondAttribute="top" id="S3K-6w-Z23"/>
+                            <constraint firstItem="ze2-pw-omO" firstAttribute="leading" secondItem="LKl-5x-Fjx" secondAttribute="leading" constant="8" id="n1J-2v-jhH"/>
                             <constraint firstAttribute="trailing" secondItem="ihd-1o-dsq" secondAttribute="trailing" constant="5" id="rXN-jE-DK8"/>
+                            <constraint firstItem="ihd-1o-dsq" firstAttribute="top" secondItem="ze2-pw-omO" secondAttribute="bottom" id="wwm-tg-l9h"/>
                             <constraint firstItem="ihd-1o-dsq" firstAttribute="leading" secondItem="LKl-5x-Fjx" secondAttribute="leading" constant="5" id="zaG-qt-jMD"/>
+                            <constraint firstAttribute="trailing" secondItem="ze2-pw-omO" secondAttribute="trailing" constant="8" id="zpy-ME-qww"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaL-YT-FBc">
@@ -182,7 +184,7 @@
                 <outlet property="nameLabel" destination="WEx-Hs-ccH" id="9cG-qq-Dtz"/>
                 <outlet property="projectNameLabel" destination="ihd-1o-dsq" id="O9l-n1-lsf"/>
                 <outlet property="timeLabel" destination="KZI-cE-Ge7" id="bUs-2I-GBk"/>
-                <outlet property="workDescribetionLabel" destination="Qd0-y2-9Zt" id="Bps-s9-8HF"/>
+                <outlet property="workDescribetionLabel" destination="ze2-pw-omO" id="tNe-Wl-GDc"/>
                 <outlet property="workOrderNameLabel" destination="iQa-6f-RhH" id="dcn-48-KLm"/>
                 <outlet property="workStateLabel" destination="a4G-tH-CI4" id="K4P-m5-94v"/>
                 <outlet property="workTypeLabel" destination="Bia-Ml-TbX" id="QKJ-es-rhe"/>

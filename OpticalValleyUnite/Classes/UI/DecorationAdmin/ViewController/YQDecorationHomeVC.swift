@@ -288,11 +288,15 @@ class YQDecorationHomeVC: UIViewController {
     
     func getScreenHouseID(info : Notification){
         
-        let value = info.userInfo?["selectLocation"] as! String
+        let value = info.userInfo?["selectLocation"] as? String
         let value2 = info.userInfo?["decorationType"] as? Int
         
         var pramert = [String : Any]()
-        pramert["houseId"] = value
+        
+        if value != nil {
+
+            pramert["houseId"] = value
+        }
         
         if value2 != nil {
         

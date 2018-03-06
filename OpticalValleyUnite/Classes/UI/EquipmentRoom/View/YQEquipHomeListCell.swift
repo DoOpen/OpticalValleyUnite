@@ -21,10 +21,17 @@ class YQEquipHomeListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
        
+       
     }
     
     var model : YQEquipHomeListModel?{
         didSet{
+            
+            for view in self.sensorViewArray{
+                
+                view.removeFromSuperview()
+                
+            }
             
             self.sensorViewArray.removeAll()
 
@@ -130,7 +137,7 @@ class YQEquipHomeListCell: UITableViewCell {
                 
             }
         
-            self.setNeedsLayout()
+           
         }
     
     }
@@ -140,7 +147,13 @@ class YQEquipHomeListCell: UITableViewCell {
         
         didSet{
             
+            for view in self.sensorViewArray{
+                
+                view.removeFromSuperview()
+            }
+            
             self.sensorViewArray.removeAll()
+
             
             //文本
             showContentView.text = detailModel?.equipName
@@ -207,7 +220,7 @@ class YQEquipHomeListCell: UITableViewCell {
                                 maker.top.equalTo(self.showContentView.snp.bottom).offset(10)
                                 maker.height.equalTo(20)
                             })
-                            
+            
                         }else{
                             
                             let lastView = self.sensorViewArray.last
@@ -221,8 +234,7 @@ class YQEquipHomeListCell: UITableViewCell {
                                 maker.top.equalTo((lastView?.snp.bottom)!).offset(5)
                                 maker.height.equalTo(20)
                             })
-                            
-                            
+                 
                         }
                         
                         sensorViewArray.append(sensorV)
@@ -247,7 +259,6 @@ class YQEquipHomeListCell: UITableViewCell {
               
             }
             
-            self.setNeedsLayout()
         }
         
     }
@@ -257,11 +268,13 @@ class YQEquipHomeListCell: UITableViewCell {
     // MARK: - 返回非等高cell的height方法
     func cellForHeight() -> CGFloat {
         
-        if let lastView = self.sensorViewArray.last {
+        setNeedsLayout()
         
-        
+        if self.sensorViewArray.last != nil {
+    
+            let maxY = self.showContentView.maxY + CGFloat(self.sensorViewArray.count * 30)
             
-            return lastView.maxY > self.showImageView.maxY ? lastView.maxY + 15 : self.showImageView.maxY + 15
+            return maxY > self.showImageView.maxY ? maxY + 10 : self.showImageView.maxY + 15
             
         }else{
         

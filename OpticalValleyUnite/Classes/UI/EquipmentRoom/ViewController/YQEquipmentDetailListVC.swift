@@ -240,7 +240,6 @@ class YQEquipmentDetailListVC: UIViewController {
                     
                 }
                 
-            
             }
             
             
@@ -370,6 +369,8 @@ extension YQEquipmentDetailListVC : UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+//        let value = heightDict["\(indexPath.row)"] as! CGFloat
+        
         return heightDict["\(indexPath.row)"] as! CGFloat
     }
     
@@ -391,10 +392,11 @@ extension YQEquipmentDetailListVC : UITableViewDataSource,UITableViewDelegate{
         //强制更新cell的布局高度
         cell?.layoutIfNeeded()
         
+        
         //缓存 行高
         //要求的定义的是 一个可变的字典的类型的来赋值
-        heightDict["\(indexPath.row)"] = cell?.cellForHeight()
-
+        self.heightDict["\(indexPath.row)"] = cell?.cellForHeight()
+        
         return cell!
 
     }

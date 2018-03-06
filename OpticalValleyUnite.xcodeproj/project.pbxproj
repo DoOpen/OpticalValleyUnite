@@ -216,6 +216,8 @@
 		2F7EF829201082D10029D38D /* YQAddHighlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7EF828201082D10029D38D /* YQAddHighlights.swift */; };
 		2F7EF82B201082F40029D38D /* YQAddHighlights.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7EF82A201082F40029D38D /* YQAddHighlights.xib */; };
 		2F7EF82D20109A530029D38D /* YQAddWorkPlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7EF82C20109A530029D38D /* YQAddWorkPlanModel.swift */; };
+		2F86DCC3204E83430029E54A /* YQAllWorkUnitHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F86DCC2204E83430029E54A /* YQAllWorkUnitHomeVC.swift */; };
+		2F86DCC5204E838C0029E54A /* YQAllWorkUnitHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F86DCC4204E838C0029E54A /* YQAllWorkUnitHome.storyboard */; };
 		2F92B2601FBB03D500168FC6 /* YQStepShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92B25F1FBB03D500168FC6 /* YQStepShowModel.swift */; };
 		2F94A27F1F73A5C500455162 /* YQFireMapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */; };
 		2F94A2811F73A5F500455162 /* YQFireMapDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */; };
@@ -650,6 +652,8 @@
 		2F7EF828201082D10029D38D /* YQAddHighlights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQAddHighlights.swift; sourceTree = "<group>"; };
 		2F7EF82A201082F40029D38D /* YQAddHighlights.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQAddHighlights.xib; sourceTree = "<group>"; };
 		2F7EF82C20109A530029D38D /* YQAddWorkPlanModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQAddWorkPlanModel.swift; sourceTree = "<group>"; };
+		2F86DCC2204E83430029E54A /* YQAllWorkUnitHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQAllWorkUnitHomeVC.swift; sourceTree = "<group>"; };
+		2F86DCC4204E838C0029E54A /* YQAllWorkUnitHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQAllWorkUnitHome.storyboard; sourceTree = "<group>"; };
 		2F92B25F1FBB03D500168FC6 /* YQStepShowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStepShowModel.swift; sourceTree = "<group>"; };
 		2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireMapDetailViewController.swift; sourceTree = "<group>"; };
 		2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireMapDetail.storyboard; sourceTree = "<group>"; };
@@ -1537,6 +1541,31 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		2F86DCBF204E82DA0029E54A /* AllWorkUnitQuery */ = {
+			isa = PBXGroup;
+			children = (
+				2F86DCC0204E82DA0029E54A /* View */,
+				2F86DCC1204E82DA0029E54A /* ViewController */,
+			);
+			path = AllWorkUnitQuery;
+			sourceTree = "<group>";
+		};
+		2F86DCC0204E82DA0029E54A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F86DCC1204E82DA0029E54A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2F86DCC2204E83430029E54A /* YQAllWorkUnitHomeVC.swift */,
+				2F86DCC4204E838C0029E54A /* YQAllWorkUnitHome.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		2FBDEFC32008A70F006C5C69 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -1850,6 +1879,7 @@
 		4BD4B9221E272EA600AE2BC9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2F86DCBF204E82DA0029E54A /* AllWorkUnitQuery */,
 				2F6273442045434300D36F14 /* EquipmentRoom */,
 				2FC989F9202D85800080D1BE /* HouseQuery */,
 				2F58658920286EAE00839655 /* DecorationAdmin */,
@@ -2308,6 +2338,7 @@
 				2F40D98E1FB93AEA007971D1 /* YQStepScreen.storyboard in Resources */,
 				4B3951ED1E28718200E2642F /* ReportMaster.storyboard in Resources */,
 				2F45F7FC1FFDD45D00293A23 /* YQOffLineWorkOrder.storyboard in Resources */,
+				2F86DCC5204E838C0029E54A /* YQAllWorkUnitHome.storyboard in Resources */,
 				4BD4B90B1E272E0C00AE2BC9 /* LaunchScreen.storyboard in Resources */,
 				2F94A2811F73A5F500455162 /* YQFireMapDetail.storyboard in Resources */,
 				4B1DEC5F1E31BD27000917D2 /* Map.storyboard in Resources */,
@@ -2688,6 +2719,7 @@
 				2FCBC01D20146E16003F1556 /* YQWorkHighlightsDetailShowModel.swift in Sources */,
 				2FE08F2B1F5F8A0A00D6F51D /* YQSystemView.swift in Sources */,
 				4B1DEC581E31B646000917D2 /* SGGenerateQRCodeVC.m in Sources */,
+				2F86DCC3204E83430029E54A /* YQAllWorkUnitHomeVC.swift in Sources */,
 				4B6E64F91EEAEFCF00BA23E4 /* Photo.swift in Sources */,
 				2F7EF82220107A7D0029D38D /* YQWorkHighlightsVC.swift in Sources */,
 				2FDED33E1F711DF000E4BA2E /* YQFireLocationModel.swift in Sources */,

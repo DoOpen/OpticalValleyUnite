@@ -530,7 +530,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         case "装修管理" :
             let decoration = UIStoryboard.instantiateInitialViewController(name: "YQDecorationHome")
             self.navigationController?.pushViewController(decoration, animated: true)
-    
+        
+        case "设备房" :
+            let equipVC = YQEquipmentFristVC.init(nibName: "YQEquipmentFristVC", bundle: nil)
+             self.navigationController?.pushViewController(equipVC, animated: true)
         
         default: break
             

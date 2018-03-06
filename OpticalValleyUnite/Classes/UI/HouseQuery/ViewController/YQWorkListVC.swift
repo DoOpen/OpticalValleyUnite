@@ -133,14 +133,11 @@ class YQWorkListVC: UIViewController {
                     self.currentIndex = pageIndex
                     
                     self.dataArray.append(contentsOf: tempData)
-                    
                 }
                 
                 self.tableView.mj_footer.endRefreshing()
-                
             }
 
-            
             
         }) { (error) in
             

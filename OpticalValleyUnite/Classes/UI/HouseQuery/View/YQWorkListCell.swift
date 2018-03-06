@@ -20,7 +20,7 @@ class YQWorkListCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     //描述textView
-    @IBOutlet weak var workDescribeTextView: UITextView!
+    @IBOutlet weak var workDescribeTextView: UILabel!
     //项目label
     @IBOutlet weak var projectLabel: UILabel!
     

@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import SVProgressHUD
+import MJRefresh
 
 class YQAllWorkUnitHomeVC: UIViewController {
 
+    
+    @IBOutlet weak var totallBtn: UIButton!
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var waitHandleBtn: UIButton!
@@ -26,6 +31,10 @@ class YQAllWorkUnitHomeVC: UIViewController {
     
     var siftVc: WorkOrderSiftViewController?
     
+    //项目id
+    var parkID = ""
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +45,36 @@ class YQAllWorkUnitHomeVC: UIViewController {
         
         self.automaticallyAdjustsScrollViewInsets = false
         
-        //获取网络数据请求
+        //添加上拉,下拉
+        addRefirsh()
         
+        //注册cell
+        let nib = UINib(nibName: "WorkOrder2Cell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "cell")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100.0
+        
+        //1.添加rightBarButton
+        addLeftRightBarButtonFunction()
+        
+        //2.默认的调取处理的数据
+        self.getDataForServer(tag: self.currentBtn.tag)
+
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //通过项目来进行获取项目情况
+        let newParkID = setUpProjectNameLable()
+        
+        //获取网络数据请求
+        if newParkID != self.parkID {
+            
+            self.parkID = newParkID
+            
+            self.getDataForServer(tag: self.currentBtn.tag)
+        }
+        
     }
     
     
@@ -50,8 +86,22 @@ class YQAllWorkUnitHomeVC: UIViewController {
         self.currentBtn = sender
         
         //设置选中的btn的网络数据请求
+        self.getDataForServer(tag: self.currentBtn.tag)
         
+    }
+    
+    
+    // MARK: - 添加左右barItem的情况
+    func addLeftRightBarButtonFunction(){
         
+        let rightBtn = UIButton()
+        rightBtn.frame = CGRect.init(x: 0, y: 0, width: 40, height: 40)
+        rightBtn.setImage(UIImage.init(name: "筛选"), for: .normal)
+//        rightBtn.addTarget(self, action: #selector(rightBarButtonClick), for: .touchUpInside)
+        let batItem2 = UIBarButtonItem()
+        batItem2.customView = rightBtn
+        
+        self.navigationItem.rightBarButtonItem = batItem2
         
     }
     
@@ -59,10 +109,135 @@ class YQAllWorkUnitHomeVC: UIViewController {
     // MARK: - 获取网络数据详情方法
     func getDataForServer(tag : Int, pageSize : Int = 20, pageIndex : Int = 0,dict : [String : Any] = [String : Any]()){
         
+        //通过项目来进行的必填parkID
+        var par = [String : Any]()
+        par["pageIndex"] = pageIndex
+        par["pageSize"] = pageSize
+        par["PARK_ID"] = self.parkID
+        par["isClosed"] = tag
         
+        if self.parkID == "" {
+            
+            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+            self.navigationController?.pushViewController(project, animated: true)
+            return
+            
+        }
+        
+        for (key,value) in dict{
+            
+            par[key] = value
+        }
+
+        
+        SVProgressHUD.show()
+        //其余的都是,相应的筛选条件
+        HttpClient.instance.post(path: URLPath.getAllworkunitList, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            let totalCount = response["totalCount"] as? Int ?? 0
+            
+            switch tag {
+                case 1://已完成
+                    self.totallBtn.setTitle("已处理工单总数: " + "\(totalCount)", for: .normal)
+                    break
+                
+                case 2://未完成
+                    self.totallBtn.setTitle("待处理工单总数: " + "\(totalCount)", for: .normal)
+                    break
+                
+                default:
+                    break
+            }
+
+            
+            let data = response["data"] as? Array<[String: Any]>
+            
+            if data == nil {
+                
+                SVProgressHUD.showError(withStatus: "没有更多数据!")
+                self.currentDatas.removeAll()
+                
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
+                
+                return
+            }
+
+            var temp = [WorkOrderModel2]()
+            
+            
+            for dic in data!  {
+                
+                let model = WorkOrderModel2(parmart: dic)
+                
+                temp.append(model)
+            }
+            
+            if pageIndex == 0{
+                
+                self.pageNo = 0
+                self.currentDatas = temp
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.resetNoMoreData()
+                
+            }else{
+                
+                if temp.count > 0{
+                    
+                    self.pageNo = pageIndex
+                    self.currentDatas.append(contentsOf: temp)
+                    self.tableView.mj_footer.endRefreshing()
+                    
+                }else{
+                    
+                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    
+                }
+            }
+            
+            self.tableView.reloadData()
+
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "网络数据加载失败,请检查网络!")
+        }
         
     }
     
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectId  = ""
+        
+        if dic != nil {
+            
+            projectId = (dic?["ID"] as? String)!
+        }
+        
+        return projectId
+    }
+
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            
+        })
+        
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+           
+        
+        })
+        
+    }
+
 
    
 }

@@ -224,7 +224,6 @@ class YQEquipmentWorkOrderVC: UIViewController {
             
             var temp = [WorkOrderModel2]()
             
-            
             for dic in data!  {
                 
                 let model = WorkOrderModel2(parmart: dic)

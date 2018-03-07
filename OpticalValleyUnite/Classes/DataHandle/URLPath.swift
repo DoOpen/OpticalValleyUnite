@@ -349,5 +349,8 @@ struct URLPath {
     //获取设备房工单
     static let getEquipWorkunitList = "equiphouse/workunitList"
     
+    ///全局的工单的查询接口
+    static let getAllworkunitList = "workunit/workunitList"
+    
     
 }

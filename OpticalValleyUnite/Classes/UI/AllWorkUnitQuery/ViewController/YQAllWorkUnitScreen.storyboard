@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V25-LM-q3n">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Work Order Sift View Controller-->
+        <!--All Work Unit ScreenVC-->
         <scene sceneID="dz1-up-uSj">
             <objects>
-                <viewController storyboardIdentifier="WorkOrderSiftViewController" id="V25-LM-q3n" customClass="WorkOrderSiftViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorkOrderSiftViewController" id="V25-LM-q3n" customClass="YQAllWorkUnitScreenVC" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zgk-rD-RiF"/>
                         <viewControllerLayoutGuide type="bottom" id="hCF-cZ-kNZ"/>
@@ -452,7 +452,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="beginBtnClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="Jc7-Cc-dd7"/>
+                                                    <action selector="beginBtnClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="edY-8G-Tau"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIZ-hw-O55">
@@ -472,7 +472,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="endBtnClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="pJr-oq-DP5"/>
+                                                    <action selector="endBtnClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="s4k-I7-f8T"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Zb-Ke-aeA">
@@ -542,6 +542,7 @@
                                         </state>
                                         <connections>
                                             <action selector="resetBtnClick" destination="V25-LM-q3n" eventType="touchUpInside" id="BpX-KQ-Oyv"/>
+                                            <action selector="resetBtnClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="cpU-wa-KFy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-70-1Hg">
@@ -552,6 +553,7 @@
                                         </state>
                                         <connections>
                                             <action selector="doenBtnClick" destination="V25-LM-q3n" eventType="touchUpInside" id="IDI-zA-u1j"/>
+                                            <action selector="doenBtnClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="aSA-Xa-muP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -589,17 +591,18 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="1500"/>
                     <connections>
-                        <outlet property="deviceTagsView" destination="9g2-UK-eYT" id="f89-sK-PCP"/>
-                        <outlet property="endBtn" destination="sIZ-hw-O55" id="h5K-ZQ-EsB"/>
-                        <outlet property="projectTagsView" destination="XOh-bP-hZ5" id="o3v-gt-VGM"/>
-                        <outlet property="reportTypeTagsView" destination="A9h-bP-f3D" id="XqG-2y-ZcM"/>
-                        <outlet property="sourceTagsView" destination="BTr-SI-rYS" id="UGl-h0-cV7"/>
-                        <outlet property="startBtn" destination="Dhk-ml-jK3" id="2Fu-tE-aGg"/>
-                        <outlet property="workNumberLabel" destination="fsQ-8C-5uK" id="8Oz-9t-ZjD"/>
-                        <outlet property="workOrderNameLabel" destination="MsU-O6-sUE" id="Cpp-di-Ux3"/>
-                        <outlet property="workOrderSourcePersonLabel" destination="eJK-Uq-SAS" id="Gn9-7K-1mP"/>
-                        <outlet property="workStatusTagView" destination="fHl-mZ-hIs" id="PBH-71-4xE"/>
-                        <outlet property="workTypeTagsView" destination="df1-zW-PIE" id="JRp-NG-5us"/>
+                        <outlet property="deviceTagsView" destination="9g2-UK-eYT" id="bZh-zZ-kVL"/>
+                        <outlet property="endBtn" destination="sIZ-hw-O55" id="gfy-26-jpy"/>
+                        <outlet property="projectTagsView" destination="XOh-bP-hZ5" id="ezf-8W-QUB"/>
+                        <outlet property="reportTypeTagsView" destination="A9h-bP-f3D" id="kXy-qy-D16"/>
+                        <outlet property="sourceTagsView" destination="BTr-SI-rYS" id="DTt-9f-gUP"/>
+                        <outlet property="spontaneousTagsView" destination="iab-vk-nUw" id="8NY-8b-WDa"/>
+                        <outlet property="startBtn" destination="Dhk-ml-jK3" id="dm3-iB-pn7"/>
+                        <outlet property="workNumberLabel" destination="fsQ-8C-5uK" id="2ZI-xs-WtL"/>
+                        <outlet property="workOrderNameLabel" destination="MsU-O6-sUE" id="tXj-gX-OMu"/>
+                        <outlet property="workOrderSourcePersonLabel" destination="eJK-Uq-SAS" id="ND0-HK-rY3"/>
+                        <outlet property="workStatusTagView" destination="fHl-mZ-hIs" id="lvN-Pi-Ife"/>
+                        <outlet property="workTypeTagsView" destination="df1-zW-PIE" id="TaE-Jd-XIf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJF-89-4ZH" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -29,7 +29,7 @@ class YQAllWorkUnitHomeVC: UIViewController {
     
     var siftsiftParmat : [String : Any]?
     
-    var siftVc: WorkOrderSiftViewController?
+    var siftVc: YQAllWorkUnitScreenVC?
     
     //项目id
     var parkID = ""
@@ -58,7 +58,9 @@ class YQAllWorkUnitHomeVC: UIViewController {
         addLeftRightBarButtonFunction()
         
         //2.默认的调取处理的数据
+        self.parkID = setUpProjectNameLable()
         self.getDataForServer(tag: self.currentBtn.tag)
+        
 
     }
     
@@ -97,13 +99,52 @@ class YQAllWorkUnitHomeVC: UIViewController {
         let rightBtn = UIButton()
         rightBtn.frame = CGRect.init(x: 0, y: 0, width: 40, height: 40)
         rightBtn.setImage(UIImage.init(name: "筛选"), for: .normal)
-//        rightBtn.addTarget(self, action: #selector(rightBarButtonClick), for: .touchUpInside)
+        rightBtn.addTarget(self, action: #selector(rightBarButtonClick), for: .touchUpInside)
         let batItem2 = UIBarButtonItem()
         batItem2.customView = rightBtn
         
         self.navigationItem.rightBarButtonItem = batItem2
         
     }
+    
+    func rightBarButtonClick(){
+        //跳转到筛选的界面情况
+        let vc = UIStoryboard.instantiateInitialViewController(name: "YQAllWorkUnitScreen") as! YQAllWorkUnitScreenVC
+        
+        //传递筛选条件,进行缓存和保存
+        vc.siftParmat = self.siftsiftParmat
+        
+        siftVc = vc
+        
+        let subView = vc.view
+        subView?.frame = CGRect(x: 100, y: 0, width: SJScreeW - 100, height: SJScreeH)
+        CoverView.show(view: subView!)
+        
+        //点击筛选的完成的 block的回调的情况
+        /*
+         实现的思路是: 综合拼接响应的筛选的结果
+         */
+        vc.doenBtnClickHandel = { parmat in
+            
+            if parmat.isEmpty{//为空的话
+                
+                self.siftsiftParmat = nil
+                //在闭包的 回调中 拿到了选择的参数, 进行重新的网络请求,数据的刷新
+                self.getDataForServer(tag: (self.currentBtn?.tag)!)
+                
+            }else{
+                
+                self.getDataForServer(tag: (self.currentBtn?.tag)!)
+                self.siftsiftParmat = parmat
+                
+            }
+            
+            subView?.superview?.removeFromSuperview()
+            self.siftVc = nil
+        }
+
+    }
+
     
     
     // MARK: - 获取网络数据详情方法
@@ -124,9 +165,13 @@ class YQAllWorkUnitHomeVC: UIViewController {
             
         }
         
-        for (key,value) in dict{
-            
-            par[key] = value
+
+        //经过筛选项,筛选的条件
+        if let dic = siftsiftParmat{
+            for (key,value) in dic{
+                
+                par[key] = value
+            }
         }
 
         
@@ -226,14 +271,14 @@ class YQAllWorkUnitHomeVC: UIViewController {
         
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             
-            
+            self.getDataForServer(tag: self.currentBtn.tag)
         })
         
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
-           
-        
+            self.getDataForServer(tag: self.currentBtn.tag,pageIndex : self.pageNo + 1)
+
         })
         
     }

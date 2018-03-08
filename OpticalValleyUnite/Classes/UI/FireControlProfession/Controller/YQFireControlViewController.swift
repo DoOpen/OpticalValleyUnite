@@ -317,7 +317,7 @@ class YQFireControlViewController: UIViewController {
                     guard value["CODE"] as! String == "0" else{
                         let message = value["MSG"] as! String
                         
-                        self.alert(message: message)
+                        print(message)
                         return
                     }
                     

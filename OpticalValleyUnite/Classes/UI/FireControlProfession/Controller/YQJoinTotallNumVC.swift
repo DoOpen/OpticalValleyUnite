@@ -129,7 +129,6 @@ class YQJoinTotallNumVC:UIViewController{
     }
     
     // MARK: - 点击搜索执行的方法
-    
     @IBAction func searchImageClick(_ sender: Any) {
         
         self.view.endEditing(true)
@@ -138,6 +137,7 @@ class YQJoinTotallNumVC:UIViewController{
             .seachTextField?.text )
         
     }
+    
     
     // MARK: - 获取接口数据的方法
     func requestFireDetailData(title : String, time : String?, location : String?){
@@ -177,9 +177,11 @@ class YQJoinTotallNumVC:UIViewController{
                 if let value = response.result.value as? [String: Any] {
                     
                     guard value["CODE"] as! String == "0" else{
+                        
                         let message = value["MSG"] as! String
                         
-                        self.alert(message: message)
+                        print(message)
+                        
                         return
                     }
                     

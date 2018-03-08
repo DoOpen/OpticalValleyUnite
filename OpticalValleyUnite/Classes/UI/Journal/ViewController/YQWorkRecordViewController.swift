@@ -92,17 +92,21 @@ class YQWorkRecordViewController: UIViewController {
         //添加刷新
         addRefirsh()
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
+        //获取数据list
         
         dic["worklogId"] = self.workLogID
         // 工作记录 传递 自发工单
         dic["self"] = "1"
         
         getWorkOrder(dic: dic)
+
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
         
     }
     
@@ -317,10 +321,23 @@ extension YQWorkRecordViewController: UITableViewDataSource,UITableViewDelegate{
             self.tableView.reloadRows(at: [indexPath], with: .none)
             
             self.currentDatas.replaceSubrange((indexPath.row)...(indexPath.row), with: [model])
-            
-            
-            
+
         }
+        
+        let vc = WorkOrderProgressViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderProgressViewController
+        //        vc.workModelId = currentDatas[indexPath.row].workOrderId
+        let model = currentDatas[indexPath.row]
+        
+        var parmat = [String: Any]()
+        parmat["UNIT_STATUS"] = model.status
+        parmat["PERSONTYPE"] = model.PERSONTYPE
+        parmat["EXEC_PERSON_ID"] = model.execPersionId
+        parmat["WORKUNIT_ID"] = model.workOrderId
+        
+        vc.parmate = parmat
+        // 执行的工单的 回退之后 进行的list的刷新, 要求的补全逻辑的代码
+        //    vc.listVc = self
+        navigationController?.pushViewController(vc, animated: true)
 
         
     }

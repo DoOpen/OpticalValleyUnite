@@ -18,6 +18,7 @@ class YQAllWorkUnitHomeVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var waitHandleBtn: UIButton!
+    
     var currentBtn : UIButton!
     
     ///
@@ -124,8 +125,8 @@ class YQAllWorkUnitHomeVC: UIViewController {
         /*
          实现的思路是: 综合拼接响应的筛选的结果
          */
-        vc.doenBtnClickHandel = { parmat in
-            
+        vc.doneBtnClickHandel = { parmat in
+
             if parmat.isEmpty{//为空的话
                 
                 self.siftsiftParmat = nil
@@ -134,8 +135,8 @@ class YQAllWorkUnitHomeVC: UIViewController {
                 
             }else{
                 
-                self.getDataForServer(tag: (self.currentBtn?.tag)!)
                 self.siftsiftParmat = parmat
+                self.getDataForServer(tag: (self.currentBtn?.tag)!)
                 
             }
             

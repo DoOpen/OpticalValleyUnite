@@ -56,17 +56,27 @@
                                             <action selector="selectButtonClickAction:" destination="vQH-xc-wau" eventType="touchUpInside" id="veI-M4-yaf"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fP5-O0-GVi">
+                                        <rect key="frame" x="186.5" y="5" width="1" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="pbn-is-1S4"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="SSh-iv-vCk" firstAttribute="width" secondItem="FZp-Ei-ZlZ" secondAttribute="width" id="3VJ-u6-cVG"/>
                                     <constraint firstItem="FZp-Ei-ZlZ" firstAttribute="top" secondItem="Hcn-zi-Ctg" secondAttribute="top" id="47J-2C-8vm"/>
                                     <constraint firstAttribute="bottom" secondItem="SSh-iv-vCk" secondAttribute="bottom" id="DD3-Iw-WJc"/>
+                                    <constraint firstAttribute="bottom" secondItem="fP5-O0-GVi" secondAttribute="bottom" constant="5" id="Rg5-5x-RdO"/>
                                     <constraint firstItem="SSh-iv-vCk" firstAttribute="leading" secondItem="FZp-Ei-ZlZ" secondAttribute="trailing" id="VYN-uJ-zPm"/>
                                     <constraint firstItem="FZp-Ei-ZlZ" firstAttribute="leading" secondItem="Hcn-zi-Ctg" secondAttribute="leading" id="We8-TV-QD6"/>
                                     <constraint firstAttribute="trailing" secondItem="SSh-iv-vCk" secondAttribute="trailing" id="YTW-Xc-Vf3"/>
                                     <constraint firstAttribute="bottom" secondItem="FZp-Ei-ZlZ" secondAttribute="bottom" id="b8E-4a-ur9"/>
+                                    <constraint firstItem="fP5-O0-GVi" firstAttribute="top" secondItem="Hcn-zi-Ctg" secondAttribute="top" constant="5" id="eij-1a-o2e"/>
                                     <constraint firstAttribute="height" constant="50" id="kdT-c7-XS1"/>
+                                    <constraint firstItem="SSh-iv-vCk" firstAttribute="leading" secondItem="fP5-O0-GVi" secondAttribute="trailing" id="laQ-Tl-mTR"/>
                                     <constraint firstItem="SSh-iv-vCk" firstAttribute="top" secondItem="Hcn-zi-Ctg" secondAttribute="top" id="xn1-Sf-X92"/>
                                 </constraints>
                             </view>

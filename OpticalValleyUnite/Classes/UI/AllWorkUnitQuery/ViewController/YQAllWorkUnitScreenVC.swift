@@ -124,10 +124,10 @@ class YQAllWorkUnitScreenVC: UIViewController {
         }
     }
     
-    var doenBtnClickHandel: (([String: Any]) -> ())?
+    
+    var doneBtnClickHandel: (([String: Any]) -> ())?
 
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -141,6 +141,14 @@ class YQAllWorkUnitScreenVC: UIViewController {
         
         // reportType 的设置
         setTagsView(tagsView: reportTypeTagsView,tags: ["计划工单","应急工单"])
+        
+        let reportTypeIndex = self.siftParmat?["WORKUNIT_TYPE"] as? Int ?? -1
+        if reportTypeIndex != -1 {
+        
+            self.reportTypeTagsView.selectTag(at: reportTypeIndex - 1)
+        }
+        
+        
         setTagsView(tagsView: deviceTagsView,tags: ["是","否"])
         
         let is_equip = self.siftParmat?["is_equip"] as? Int ?? -1
@@ -157,9 +165,50 @@ class YQAllWorkUnitScreenVC: UIViewController {
         // spontaneousTagsView 的设置 自发和非自发的情况
         setTagsView(tagsView: spontaneousTagsView, tags: ["自发工单","非自发工单"])
         
-        // workStatus 的设置
+        let spontaneous = self.siftParmat?["self"] as? Int ?? -1
+        switch spontaneous {
+            case 1:
+                self.spontaneousTagsView.selectTag(at: spontaneous - 1)
+                break
+            case 2:
+                self.spontaneousTagsView.selectTag(at: spontaneous - 1)
+                break
+            default:
+                break
+        }
+        
+        // workStatus 的设置(工单的设置的状态的添加)
         setTagsView(tagsView: workStatusTagView,tags: workStatus )
         
+        let workS = self.siftParmat?["operateType"] as? Int ?? -1
+        
+        //let dic = ["待派发": 11,"待执行" : 22, "待评价": 31,"待接收": 21,"已处理": 7,"协助查看": 5]
+        //["待派发","待接收","协助查看","待执行","待评价","已关闭"]
+        switch workS {
+        case 11:
+            self.workStatusTagView.selectTag(at: 0)
+            break
+        case 22:
+            self.workStatusTagView.selectTag(at: 3)
+            break
+        case 31:
+            self.workStatusTagView.selectTag(at: 4)
+            break
+        case 21:
+            self.workStatusTagView.selectTag(at: 1)
+            break
+        case 7:
+            self.workStatusTagView.selectTag(at: 5)
+            break
+        case 5:
+            self.workStatusTagView.selectTag(at: 2)
+            break
+        default:
+            break
+        }
+        
+        
+            
         setTagsView(tagsView: sourceTagsView,tags: ["系统后台","员工app","业主app"])
         
         let sourse = self.siftParmat?["is_equip"] as? Int ?? -1
@@ -257,7 +306,7 @@ class YQAllWorkUnitScreenVC: UIViewController {
         //重置没有清空缓存,可以考虑的是重置之后,就清除缓存
         //        UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
         
-        if let block = doenBtnClickHandel{
+        if let block = doneBtnClickHandel{
             //通过的是block的回调来进行的传值,如果是需要保存的话,要求保存paramert 的参数
             block([String : Any]())
         }
@@ -275,7 +324,9 @@ class YQAllWorkUnitScreenVC: UIViewController {
         let reportTypeTagsViewIndex = reportTypeTagsView.selectedTagIndexes.first?.intValue
         
         let deviceTagsViewIndex = deviceTagsView.selectedTagIndexes.first?.intValue
+        
         let workStatusTagsViewIndex = workStatusTagView.selectedTagIndexes.first?.intValue
+        
         let sourceTagsViewIndex = sourceTagsView.selectedTagIndexes.first?.intValue
         
         let spontaneousTagsViewIndex = spontaneousTagsView.selectedTagIndexes.first?.intValue
@@ -299,8 +350,8 @@ class YQAllWorkUnitScreenVC: UIViewController {
         /*
          要求实现的是 将工单类型的筛选条件也拿出来到最外层,这里是不显示,不传值的
          */
-        
         if let index = reportTypeTagsViewIndex{
+            
             paramert["WORKUNIT_TYPE"] = index + 1
             
         }
@@ -316,8 +367,7 @@ class YQAllWorkUnitScreenVC: UIViewController {
          还有的是,应急工单和  计划工单也是拿出来进行筛选了
         */
         if let index = workStatusTagsViewIndex{
-            
-            
+
             let dic = ["待派发": 11,"待执行" : 22, "待评价": 31,"待接收": 21,"已处理": 7, "已接受": 5,"协助查看": 5]
             
             paramert["operateType"] = dic[workStatus[index]]
@@ -352,12 +402,12 @@ class YQAllWorkUnitScreenVC: UIViewController {
         }
         
         
-        if let block = doenBtnClickHandel{
+        if let block = doneBtnClickHandel{
             //通过的是block的回调来进行的传值,如果是需要保存的话,要求保存paramert 的参数
             block(paramert)
         }
         
-        doenBtnClickHandel = nil
+        doneBtnClickHandel = nil
 
         
     }

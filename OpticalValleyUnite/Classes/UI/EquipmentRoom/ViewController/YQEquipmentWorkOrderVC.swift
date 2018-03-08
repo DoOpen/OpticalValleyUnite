@@ -114,8 +114,8 @@ class YQEquipmentWorkOrderVC: UIViewController {
                 
             }else{
                 
-                self.getWorkOrderForServer(tag: (self.currentSelectBtn?.tag)!)
                 self.siftsiftParmat = parmat
+                self.getWorkOrderForServer(tag: (self.currentSelectBtn?.tag)!)
                 
             }
             

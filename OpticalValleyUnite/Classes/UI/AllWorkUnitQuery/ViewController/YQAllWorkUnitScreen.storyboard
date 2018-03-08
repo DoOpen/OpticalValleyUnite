@@ -541,8 +541,7 @@
                                             <color key="titleColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="resetBtnClick" destination="V25-LM-q3n" eventType="touchUpInside" id="BpX-KQ-Oyv"/>
-                                            <action selector="resetBtnClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="cpU-wa-KFy"/>
+                                            <action selector="resetBtnClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="eqq-Jj-Mef"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-70-1Hg">
@@ -552,8 +551,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="doenBtnClick" destination="V25-LM-q3n" eventType="touchUpInside" id="IDI-zA-u1j"/>
-                                            <action selector="doenBtnClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="aSA-Xa-muP"/>
+                                            <action selector="doenBtnClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="dRn-RQ-9bG"/>
                                         </connections>
                                     </button>
                                 </subviews>

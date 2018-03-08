@@ -19,21 +19,40 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2i-7O-sSC">
-                    <rect key="frame" x="20" y="80" width="147.5" height="150"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="设备列表" translatesAutoresizingMaskIntoConstraints="NO" id="dv9-NO-nk8">
+                    <rect key="frame" x="58.5" y="90" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="5Rb-Mz-NWJ"/>
+                        <constraint firstAttribute="width" constant="80" id="cKh-Kl-n7t"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备列表" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pz-cW-l5r">
+                    <rect key="frame" x="63.5" y="175" width="69.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="设备工单" translatesAutoresizingMaskIntoConstraints="NO" id="UC8-ob-7aJ">
+                    <rect key="frame" x="236.5" y="90" width="80" height="80"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备工单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1c-Rf-kUX">
+                    <rect key="frame" x="242" y="175" width="69.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2i-7O-sSC">
+                    <rect key="frame" x="20" y="80" width="157.5" height="150"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="tAK-bH-xX3"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="设备列表"/>
                     <connections>
                         <action selector="equipmentListButtonClick:" destination="-1" eventType="touchUpInside" id="c9n-BA-dRL"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="853-k3-Ke4">
-                    <rect key="frame" x="207.5" y="80" width="147.5" height="150"/>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="853-k3-Ke4">
+                    <rect key="frame" x="197.5" y="80" width="157.5" height="150"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="设备工单"/>
                     <connections>
                         <action selector="equipmentWorkOrderClick:" destination="-1" eventType="touchUpInside" id="ODg-SK-TIy"/>
                     </connections>
@@ -41,14 +60,29 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="853-k3-Ke4" firstAttribute="leading" secondItem="d2i-7O-sSC" secondAttribute="trailing" constant="40" id="CJu-ad-U2L"/>
+                <constraint firstItem="T1c-Rf-kUX" firstAttribute="centerX" secondItem="UC8-ob-7aJ" secondAttribute="centerX" id="43o-ea-oNO"/>
+                <constraint firstItem="853-k3-Ke4" firstAttribute="leading" secondItem="d2i-7O-sSC" secondAttribute="trailing" constant="20" id="CJu-ad-U2L"/>
                 <constraint firstItem="853-k3-Ke4" firstAttribute="width" secondItem="d2i-7O-sSC" secondAttribute="width" id="Cr2-AU-gcU"/>
                 <constraint firstItem="853-k3-Ke4" firstAttribute="top" secondItem="d2i-7O-sSC" secondAttribute="top" id="E5l-fZ-mlF"/>
+                <constraint firstItem="UC8-ob-7aJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="K4p-Se-OaL"/>
                 <constraint firstItem="d2i-7O-sSC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="OSX-9c-Jc2"/>
+                <constraint firstItem="dv9-NO-nk8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="PgB-Ue-V1S"/>
+                <constraint firstItem="UC8-ob-7aJ" firstAttribute="centerX" secondItem="853-k3-Ke4" secondAttribute="centerX" id="QyL-Pa-oN4"/>
                 <constraint firstItem="d2i-7O-sSC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="WNE-9Z-y4f"/>
+                <constraint firstItem="T1c-Rf-kUX" firstAttribute="top" secondItem="UC8-ob-7aJ" secondAttribute="bottom" constant="5" id="Xam-3c-wq7"/>
+                <constraint firstItem="1pz-cW-l5r" firstAttribute="centerX" secondItem="dv9-NO-nk8" secondAttribute="centerX" id="fTP-Gx-Nnw"/>
                 <constraint firstAttribute="trailing" secondItem="853-k3-Ke4" secondAttribute="trailing" constant="20" id="gc9-B4-3z1"/>
                 <constraint firstItem="853-k3-Ke4" firstAttribute="height" secondItem="d2i-7O-sSC" secondAttribute="height" id="j2D-iM-XAE"/>
+                <constraint firstItem="1pz-cW-l5r" firstAttribute="top" secondItem="dv9-NO-nk8" secondAttribute="bottom" constant="5" id="qoU-jh-Mpu"/>
+                <constraint firstItem="dv9-NO-nk8" firstAttribute="centerX" secondItem="d2i-7O-sSC" secondAttribute="centerX" id="qsj-Vb-J5r"/>
+                <constraint firstItem="UC8-ob-7aJ" firstAttribute="width" secondItem="dv9-NO-nk8" secondAttribute="width" id="vwd-yy-KlP"/>
+                <constraint firstItem="UC8-ob-7aJ" firstAttribute="height" secondItem="dv9-NO-nk8" secondAttribute="height" id="wtb-3R-Q9k"/>
             </constraints>
+            <point key="canvasLocation" x="25.5" y="51.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="设备列表" width="34" height="34"/>
+        <image name="设备工单" width="34" height="34"/>
+    </resources>
 </document>

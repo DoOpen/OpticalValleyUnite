@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import AudioToolbox
 
 class SignInViewController: UIViewController {
 
@@ -16,6 +17,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var countLabel: UILabel!
     
     @IBOutlet weak var mapView: MAMapView!
+    
+    @IBOutlet weak var signButtonView: UIButton!
+    
     
     var loction: CLLocation?
     var reGeocode: AMapLocationReGeocode?
@@ -54,6 +58,14 @@ class SignInViewController: UIViewController {
         super.viewWillAppear(animated)
         
         getSignCount()
+        
+        //签到功能的逻辑实现:
+        //添加自动签到的功能,签到进入当前的范围
+        //1.先地图定位,执行签到的范围
+        //2.然后自动签到
+        //3.弹出小框,进入签到范围
+        //4.签到成功,振动效果
+        
     }
     
     
@@ -112,6 +124,7 @@ class SignInViewController: UIViewController {
     
     
     func updateSige(){
+        
         var parmat = [String: Any]()
         parmat["ADDRESS"] = addressLabel.text
         parmat["SIGN_TYPE"] = 1
@@ -119,7 +132,11 @@ class SignInViewController: UIViewController {
         parmat["MAP_LAT"] = loction!.coordinate.latitude
         HttpClient.instance.post(path: URLPath.sign, parameters: parmat, success: { (respose) in
             print("签到成功")
+            
             SVProgressHUD.showSuccess(withStatus: "签到成功")
+            //振动添加
+            self.showVibration()
+            
             self.showList()
             //添加累计,签到次数
             self.getSignCount()
@@ -128,6 +145,13 @@ class SignInViewController: UIViewController {
             
         }
     }
+    
+    // MARK: - 添加振动的API方法
+    private func showVibration(){
+    
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
+    
     
     private func showList(){
         var parmat = [String: Any]()
@@ -175,6 +199,8 @@ class SignInViewController: UIViewController {
 //    }
     
     func getParkAddress(){
+        
+        
         var paramet = [String: Any]()
         paramet["MAP_LNG"] = loction?.coordinate.longitude
         paramet["MAP_LAT"] = loction?.coordinate.latitude
@@ -188,7 +214,10 @@ class SignInViewController: UIViewController {
                     
                     self.addressLabel.text = address
                     
+                    self.signButtonView.isHidden = false
+                    
                     if !self.isPaskAddress {
+                        
                         self.updateSige()
                     }
                     
@@ -204,6 +233,8 @@ class SignInViewController: UIViewController {
                 }else{
                     
                     if let regeocode = self.reGeocode{
+                        
+                        
                         print(regeocode)
                         self.addressLabel.text = regeocode.formattedAddress
                         self.mapView.setCenter((self.loction?.coordinate)!, animated: true)
@@ -212,6 +243,7 @@ class SignInViewController: UIViewController {
             }
             
         }) { (error) in
+            
             print(error)
         }
     }

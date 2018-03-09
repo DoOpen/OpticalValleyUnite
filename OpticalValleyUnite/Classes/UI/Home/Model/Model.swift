@@ -1108,13 +1108,14 @@ class CallbackModel : Object{
 }
 
 class PersonInfo {
+    
     var picture = ""
     var sex = ""
     var name = ""
     var job_code = ""
     var partin_day = ""
     var birthday = ""
-//    var name = ""
+    var year = ""
     
     convenience init(parmart: [String: Any]) {
         self.init()
@@ -1124,6 +1125,7 @@ class PersonInfo {
         job_code = parmart["job_code"] as? String ?? ""
         partin_day = parmart["partin_day"] as? String ?? ""
         birthday = parmart["birthday"] as? String ?? ""
+        year = parmart["year"] as? String ?? ""
         
     }
 }

@@ -33,11 +33,18 @@ class PersonDetailViewController: UITableViewController{
                     ageLabel.text = String(compont.year!) + "岁"
                 }
                 
-                if model.partin_day != ""{
-                    let date = Date.dateFromString(dateStr: model.partin_day, formetStr: "yyyy-MM-dd")
-                    let compont = Calendar.current.dateComponents(
-                        [.year], from: date, to: Date())
-                    yearLabel.text = String(compont.year!) + "岁"
+//                if model.partin_day != ""{
+//                    let date = Date.dateFromString(dateStr: model.partin_day, formetStr: "yyyy-MM-dd")
+//                    let compont = Calendar.current.dateComponents(
+//                        [.year], from: date, to: Date())
+//                    yearLabel.text = String(compont.year!) + "岁"
+//                }
+                
+                
+                if model.year != "" {
+                    
+                    yearLabel.text = model.year
+                    
                 }
                 
                 

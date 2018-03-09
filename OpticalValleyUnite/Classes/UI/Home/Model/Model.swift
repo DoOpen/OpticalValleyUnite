@@ -248,13 +248,19 @@ class PersonModel{
     var id = ""
     var selected = false
     
+    var deptList : Array<[String : Any]>?
+    
     convenience init(parmart: [String: Any]) {
         self.init()
         name = parmart["NAME"] as? String ?? ""
         icon = parmart["PICTURE"] as? String ?? ""
         id = parmart["ID"] as? String ?? ""
 
+        deptList = parmart["deptList"] as? Array<[String : Any]>
+        
     }
+    
+    
 }
 
 class WorkStaticModel{

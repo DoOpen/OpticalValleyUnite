@@ -15,8 +15,12 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
      add 协助人的按钮的点击的 执行的block代码块的情况
      */
     @IBOutlet weak var addManageerView: AddScrollerView!
+    
     @IBOutlet weak var execPeopleBtn: SJUpButton!
+    @IBOutlet weak var execProjectLabel: UILabel!
+    
     @IBOutlet weak var managePeopleBtn: SJUpButton!
+    @IBOutlet weak var manageProjectLabel: UILabel!
     
     //添加输入框备注框
     @IBOutlet weak var remarksTextView: SJTextView!
@@ -37,7 +41,8 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
         vc.type = sender.tag
         vc.parkId = self.parkId
         vc.doneBtnClickHandel = didSelecte
-            navigationController?.pushViewController(vc, animated: true)
+        
+        navigationController?.pushViewController(vc, animated: true)
         
         
     }
@@ -114,15 +119,45 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
         if type == 0 {
             
             execPeopleBtn.setTitle(models.first?.name, for: .normal)
+            self.execProjectLabel.text = models.first?.deptList?.first?["dept_names"] as? String ?? ""
             
-            if let url = URL(string: (models.first?.icon)!){
+            let iconString = models.first?.icon
+            
+            if iconString != "" {
                 
-                execPeopleBtn.kf.setImage(with: url, for: .normal)
+                if (iconString?.contains("http"))!{
+                    
+                    if let url = URL(string: (models.first?.icon)!){
+                        
+                        execPeopleBtn.kf.setImage(with: url, for: .normal)
+                        
+                    }else{
+                        
+                        execPeopleBtn.setImage(UIImage.normalImageIcon(), for: .normal)
+                    }
+                    
+                }else{
+                    
+                    let basicPath = URLPath.systemSelectionURL
+                    let newString = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (iconString)!
+                    
+                    if let url = URL(string: newString){
+                        
+                        execPeopleBtn.kf.setImage(with: url, for: .normal)
+                        
+                    }else{
+                        
+                        execPeopleBtn.setImage(UIImage.normalImageIcon(), for: .normal)
+                    }
+                    
+                }
+
+            }else {
                 
-            }else{
+                 execPeopleBtn.setImage(UIImage.normalImageIcon(), for: .normal)
                 
-                execPeopleBtn.setImage(UIImage.normalImageIcon(), for: .normal)
             }
+            
             
             execPeopleBtn.isHidden = false
             execPeopleModel = models.first
@@ -130,17 +165,51 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
         }else if type == 1{
             
             managePeopleBtn.setTitle(models.first?.name, for: .normal)
+            manageProjectLabel.text = models.first?.deptList?.first?["dept_names"] as? String ?? ""
             
-            managePeopleBtn.kf.setImage(with: URL(string: (models.first?.icon)!), for: .normal)
-            managePeopleBtn.isHidden = false
-            managePeopleModel = models.first
             
-            if let url = URL(string: (models.first?.icon)!){
-                managePeopleBtn.kf.setImage(with: url, for: .normal)
+            
+            let iconString = models.first?.icon
+            
+            if iconString != "" {
+                
+                if (iconString?.contains("http"))!{
+                    
+                    if let url = URL(string: (iconString)!){
+                        
+                        managePeopleBtn.kf.setImage(with: url, for: .normal)
+                        
+                    }else{
+                        
+                        managePeopleBtn.setImage(UIImage.normalImageIcon(), for: .normal)
+                    }
+                    
+                }else{
+                    
+                    let basicPath = URLPath.systemSelectionURL
+                    let newString = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (iconString)!
+                    
+                    if let url = URL(string: (newString)){
+                        
+                        managePeopleBtn.kf.setImage(with: url, for: .normal)
+                        
+                    }else{
+                        managePeopleBtn.setImage(UIImage.normalImageIcon(), for: .normal)
+                    }
+                    
+                }
+
+               
             }else{
+                
                 managePeopleBtn.setImage(UIImage.normalImageIcon(), for: .normal)
+                
             }
             
+            managePeopleBtn.isHidden = false
+            managePeopleModel = models.first
+
+           
         }else if type == 2{
             
             addManageerView.models = models
@@ -153,8 +222,11 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
     func viewShloudPop(){
         
         if let _ = execPeopleModel, let _ = managePeopleModel, let _ = assePeopleModel{
+            
             _ = navigationController?.popViewController(animated: true)
+            
         }else{
+            
             self.alert(message: "还没有选择人员派发,是否确认要退出", doneBlock: { (action) in
                 _ = self.navigationController?.popViewController(animated: true)
             })

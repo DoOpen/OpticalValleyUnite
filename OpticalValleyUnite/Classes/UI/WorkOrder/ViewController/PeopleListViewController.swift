@@ -27,6 +27,9 @@ class PeopleListViewController: UIViewController {
     var parkId = ""
     var personType = ""
     
+    //添加部门显示字段:
+    
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var type = 0 {
@@ -99,7 +102,7 @@ class PeopleListViewController: UIViewController {
             
             SVProgressHUD.dismiss()
             
-            let data = response["list"] as? Array<[String: Any]>
+            let data = response["data"] as? Array<[String: Any]>
             
             if data == nil {
                 

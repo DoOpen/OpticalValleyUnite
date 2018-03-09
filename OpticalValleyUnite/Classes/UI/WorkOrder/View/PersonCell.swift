@@ -15,6 +15,10 @@ class PersonCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var selectedBtn: UIButton!
     
+    
+    @IBOutlet weak var departmentLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,6 +29,7 @@ class PersonCell: UITableViewCell {
         didSet{
             
             if let model = model {
+                
                 nameLabel.text = model.name
                 
                 if let url = URL(string: model.icon) {
@@ -32,6 +37,14 @@ class PersonCell: UITableViewCell {
                 }else{
                     iconView.image = UIImage(named: "avatar")
                 }
+                
+                if let dict = model.deptList?.first{
+                    
+                    let string =  dict["dept_name"] as? String ?? ""
+                    departmentLabel.text = "(" + string + ")"
+                    
+                }
+
                 selectedBtn.isSelected = model.selected
                 
             }

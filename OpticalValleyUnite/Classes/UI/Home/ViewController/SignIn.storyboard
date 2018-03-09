@@ -105,12 +105,12 @@
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBX-Oh-WNt">
-                                <rect key="frame" x="105" y="322" width="130" height="40"/>
+                                <rect key="frame" x="95" y="322" width="130" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="pBZ-ZC-L1U"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="进入签到范围" backgroundImage="ic_fire_window">
+                                <state key="normal" backgroundImage="qiandao-2">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -133,7 +133,7 @@
                             <constraint firstItem="yuk-4V-8w1" firstAttribute="leading" secondItem="yeM-eT-gGS" secondAttribute="leading" id="cHI-GH-B3b"/>
                             <constraint firstItem="2Hr-C4-ZHI" firstAttribute="centerX" secondItem="AGs-pq-Gqw" secondAttribute="centerX" id="d0L-iC-X4X"/>
                             <constraint firstItem="DFs-bT-8iD" firstAttribute="top" relation="lessThanOrEqual" secondItem="yuk-4V-8w1" secondAttribute="bottom" constant="30" id="ewP-TU-JrM"/>
-                            <constraint firstItem="SBX-Oh-WNt" firstAttribute="centerX" secondItem="lEz-tA-3Ts" secondAttribute="centerX" constant="10" id="fCP-hh-0gO"/>
+                            <constraint firstItem="SBX-Oh-WNt" firstAttribute="centerX" secondItem="lEz-tA-3Ts" secondAttribute="centerX" id="fCP-hh-0gO"/>
                             <constraint firstItem="B7g-U9-tg2" firstAttribute="centerY" secondItem="87O-Jm-ko6" secondAttribute="centerY" id="fVW-rt-KKM"/>
                             <constraint firstItem="yuk-4V-8w1" firstAttribute="centerX" secondItem="AGs-pq-Gqw" secondAttribute="centerX" id="ivg-Y9-bUh"/>
                             <constraint firstItem="lEz-tA-3Ts" firstAttribute="centerX" secondItem="AGs-pq-Gqw" secondAttribute="centerX" id="lG5-KH-JyV"/>
@@ -381,8 +381,8 @@
     <resources>
         <image name="btn_addphoto" width="60" height="60"/>
         <image name="check" width="16" height="16"/>
-        <image name="ic_fire_window" width="116" height="70"/>
         <image name="location" width="15" height="15"/>
+        <image name="qiandao-2" width="65" height="20"/>
         <image name="time" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>

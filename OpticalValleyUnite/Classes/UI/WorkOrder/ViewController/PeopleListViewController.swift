@@ -96,9 +96,19 @@ class PeopleListViewController: UIViewController {
         parmat["personType"] = personType
         
         HttpClient.instance.get(path: URLPath.getPersonList, parameters: parmat, success: { (response) in
+            
             SVProgressHUD.dismiss()
+            
+            let data = response["list"] as? Array<[String: Any]>
+            
+            if data == nil {
+                
+                SVProgressHUD.showError(withStatus: "没有更多数据!")
+                return
+            }
+            
             var temp = [PersonModel]()
-            for dic in response["list"] as! Array<[String: Any]>{
+            for dic in data! {
                 temp.append(PersonModel(parmart: dic))
             }
            
@@ -111,8 +121,7 @@ class PeopleListViewController: UIViewController {
                 self.pageNo = 0
                 self.models = temp
                 self.tableView.mj_header.endRefreshing()
-                
-                
+
             }else{
                 
                 if temp.count > 0{

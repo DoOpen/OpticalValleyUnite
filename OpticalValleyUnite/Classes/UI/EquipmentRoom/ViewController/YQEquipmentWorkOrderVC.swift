@@ -164,6 +164,8 @@ class YQEquipmentWorkOrderVC: UIViewController {
         var par = [String : Any]()
         
         par["isEquipHouse"] = 1
+        par["pageSize"] = pageSize
+        par["pageIndex"] = pageIndex
         
         par["PARK_ID"] = self.parkID
         

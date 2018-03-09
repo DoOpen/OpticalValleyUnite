@@ -164,6 +164,11 @@ class YQEquipmentDetailListVC: UIViewController {
             
             //拿出id 进行筛选调整
             self.selectType = (parmat["equipTypeId"] as? Int)!
+            //退出选项
+            self.equipTypeClick(UIButton())
+            //查询数据
+            self.searchButtonClick(UIButton())
+            
         }
 
     }
@@ -260,6 +265,7 @@ class YQEquipmentDetailListVC: UIViewController {
         var par = [String : Any]()
         
         par["houseId"] = self.houseId
+        
         if type != 0 {
             
             par["equipTypeId"] = type
@@ -267,7 +273,7 @@ class YQEquipmentDetailListVC: UIViewController {
         
         if searchText != "" {
             
-            par["equipHouseName"] = searchText
+            par["equipName"] = searchText
         }
         
         

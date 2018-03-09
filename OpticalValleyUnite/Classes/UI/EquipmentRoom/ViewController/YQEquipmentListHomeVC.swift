@@ -172,6 +172,11 @@ class YQEquipmentListHomeVC: UIViewController {
             
             //拿出id 进行筛选调整
             self.selectType = (parmat["equipTypeId"] as? Int)!
+            
+            //退出选项
+            self.equipmentTypeClick(UIButton())
+            //查询数据
+            self.searchButtonClick(UIButton())
         }
         
     }

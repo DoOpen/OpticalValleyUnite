@@ -213,6 +213,7 @@ class YQWorkRecordViewController: UIViewController {
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
             self.getWorkOrder(type: self.currentIndex , indexPage: self.pageNo + 1, dic : self.dic)
+            
         })
     }
 
@@ -268,9 +269,7 @@ class YQWorkRecordViewController: UIViewController {
             }
         
         }
-        
-        
-        
+
         return str
     }
 

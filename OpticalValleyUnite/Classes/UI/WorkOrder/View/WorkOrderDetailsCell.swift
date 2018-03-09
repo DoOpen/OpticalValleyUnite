@@ -35,7 +35,10 @@ class WorkOrderDetailsCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var workIdLabel: UILabel!
     @IBOutlet weak var stutasLabel: UILabel!
+    //回访记录 按钮 情况
     @IBOutlet weak var callBackBtn: UIButton!
+    
+    //查看照片 按钮 情况
     @IBOutlet weak var seePhotpBtn: UIButton!
     @IBOutlet weak var parkNameLabel: UILabel!
     
@@ -50,6 +53,9 @@ class WorkOrderDetailsCell: UITableViewCell {
     @IBOutlet weak var usePark: UILabel!
     @IBOutlet weak var parkAddress: UILabel!
     @IBOutlet weak var mark: UILabel!
+    
+    //传入父控制器
+    var superVC : UIViewController?
     
     
     var equipmentModel: EquimentModel?{
@@ -222,7 +228,10 @@ class WorkOrderDetailsCell: UITableViewCell {
     
     
     @IBAction func seephotoBtnClick() {
+        
+        
         if let model = model{
+            
             if model.picture != ""{
                 
                 var photos = [Photo]()
@@ -253,7 +262,7 @@ class WorkOrderDetailsCell: UITableViewCell {
                 pb.indicatorStyle = .pageControl
 
                 
-                SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
+                superVC?.present(pb, animated: true, completion: nil)
             }
         }
 

@@ -828,6 +828,8 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
                 let DetailsCell = tableView.dequeueReusableCell(withIdentifier: "xiangqing") as! WorkOrderDetailsCell
                 DetailsCell.model = self.workOrderDetalModel
                 DetailsCell.hasCallBackList = callbackModels.count != 0
+                DetailsCell.superVC = self
+                
                 cell = DetailsCell
                 detailsCell = DetailsCell
                 

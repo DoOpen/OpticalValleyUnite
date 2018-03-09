@@ -509,7 +509,7 @@
                 <outlet property="workReportLabelHieghtConstraint" destination="8G4-qk-ySb" id="dWA-4J-O3q"/>
                 <outlet property="workReportTypeLable" destination="May-xw-fgM" id="dIK-61-QyR"/>
             </connections>
-            <point key="canvasLocation" x="-20" y="74"/>
+            <point key="canvasLocation" x="-56" y="-6"/>
         </tableViewCell>
     </objects>
 </document>

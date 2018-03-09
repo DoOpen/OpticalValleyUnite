@@ -13,7 +13,7 @@ import Alamofire
 import SnapKit
 import CoreMotion
 
-let KDistence = 100.0
+let KDistence = 25.0
 let KTime = 60 * 15
 
 class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
@@ -80,14 +80,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         topBtnViewArray = [top1BtnView,top2BtnView,top3BtnView,top4BtnView]
         downBtnViewArray = [donw1BtnView,donw2BtnView,donw3BtnView]
         
-        //接受服务消息通知
-        getNotice()
-        
         
         //接受新的数据来显示
         getPermission()
 
-        
         //接受VC的数据通知
         receiveNotes()
         
@@ -107,6 +103,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         //设置定位
         setUpLocation()
         
+        //接受服务消息通知
+        getNotice()
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -118,7 +117,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     }
     
     
-    // MARK: - 接受服务器系统消息
+    // MARK: - 接受服务器系统推送消息
     func getSystemMessage(){
         
         HttpClient.instance.get(path: URLPath.systemMessage, parameters: nil, success: { (respose) in
@@ -135,7 +134,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
     }
     
-    // MARK: - 接受服务消息通知
+    // MARK: - 接受服务系统推送消息通知
     func getNotice(){
         
         HttpClient.instance.get(path: URLPath.getNoticeList, parameters: nil, success: { (respose) in

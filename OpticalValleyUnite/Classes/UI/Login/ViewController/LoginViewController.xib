@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
                 <outlet property="passwordTextField" destination="K45-iH-rtq" id="bSu-kc-Qjo"/>
+                <outlet property="selectRememberPWDBtn" destination="vVT-ng-r70" id="jkF-Nq-MEA"/>
                 <outlet property="userNameTextField" destination="nJd-Nd-gHv" id="zHe-mL-H68"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -112,12 +113,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64x-oZ-eQU">
-                    <rect key="frame" x="150" y="258" width="75" height="20"/>
+                    <rect key="frame" x="100" y="258" width="75" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="75" id="Ygy-YD-Yjt"/>
                         <constraint firstAttribute="height" constant="20" id="k6P-TI-b2w"/>
                     </constraints>
-                    <state key="normal" title="忘记密码&gt;">
+                    <state key="normal" title="记住密码">
                         <color key="titleColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
@@ -130,6 +131,18 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVT-ng-r70">
+                    <rect key="frame" x="75" y="253" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="9JD-8r-he1"/>
+                        <constraint firstAttribute="width" constant="30" id="eKD-nJ-FcE"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="Oval"/>
+                    <state key="selected" image="ovalcheck"/>
+                    <connections>
+                        <action selector="rememberPWDClick:" destination="-1" eventType="touchUpInside" id="0wW-3I-iG5"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -142,15 +155,21 @@
                 <constraint firstItem="t81-m7-Kbz" firstAttribute="top" secondItem="Qgi-0s-q40" secondAttribute="bottom" constant="24" id="QKL-UE-kaD"/>
                 <constraint firstItem="d3g-Wh-NVd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="Qru-uv-C2E"/>
                 <constraint firstItem="VH9-uh-fvG" firstAttribute="top" secondItem="Qgi-0s-q40" secondAttribute="bottom" constant="84" id="Seo-Ra-3fs"/>
-                <constraint firstItem="64x-oZ-eQU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SfL-i4-mfX"/>
+                <constraint firstItem="64x-oZ-eQU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-50" id="SfL-i4-mfX"/>
+                <constraint firstItem="vVT-ng-r70" firstAttribute="centerY" secondItem="64x-oZ-eQU" secondAttribute="centerY" id="VzI-LQ-Tmq"/>
                 <constraint firstItem="Qgi-0s-q40" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="29" id="ZQv-il-w3h"/>
                 <constraint firstItem="sOI-BK-Qds" firstAttribute="leading" secondItem="VH9-uh-fvG" secondAttribute="leading" id="aSS-uh-olx"/>
                 <constraint firstItem="d3g-Wh-NVd" firstAttribute="top" secondItem="sOI-BK-Qds" secondAttribute="bottom" constant="62" id="c1g-Ke-rAP"/>
                 <constraint firstItem="VH9-uh-fvG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ebb-z0-4aO"/>
                 <constraint firstAttribute="bottom" secondItem="nC9-kV-mSn" secondAttribute="bottom" id="iyW-Bb-PT9"/>
                 <constraint firstItem="Qgi-0s-q40" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pTG-UR-KiF"/>
+                <constraint firstItem="64x-oZ-eQU" firstAttribute="leading" secondItem="vVT-ng-r70" secondAttribute="trailing" constant="-5" id="rvI-lL-BO3"/>
                 <constraint firstItem="sOI-BK-Qds" firstAttribute="trailing" secondItem="VH9-uh-fvG" secondAttribute="trailing" id="zSg-7h-uNz"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="Oval" width="22" height="22"/>
+        <image name="ovalcheck" width="20" height="20"/>
+    </resources>
 </document>

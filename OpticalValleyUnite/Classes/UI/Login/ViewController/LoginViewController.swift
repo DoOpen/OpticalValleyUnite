@@ -16,9 +16,18 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    //记住密码
+    @IBOutlet weak var selectRememberPWDBtn: UIButton!
+    
+    //是否记住密码
+    var isRemember = false
+    //是否已经保存md5
+    var isMd5 = false
+    
     
     //首先读取的是systemSelection的数据
     var systemDataArray:NSArray = { return NSArray() }(){
+        
         didSet{
             
             self.pushToSystemSelectionVC()
@@ -33,6 +42,24 @@ class LoginViewController: UIViewController {
         
         super.viewDidLoad()
         
+        //1.获取偏好设置的用户名和 密码
+        userNameTextField.text = UserDefaults.standard.object(forKey: Const.standardUserName) as? String ?? ""
+        
+        passwordTextField.text = UserDefaults.standard.object(forKey: Const.standardUserPwd) as? String ?? ""
+        
+        if passwordTextField.text != "" {
+            
+            //1.设置按钮状态
+            isRemember = true
+            self.selectRememberPWDBtn.isSelected = true
+            
+            //2.有md5
+            isMd5 = true
+            
+            //3.只显示六位数
+            passwordTextField.text = "xxxxxx"//模拟的加密密码
+            
+        }
         
     }
     
@@ -56,7 +83,39 @@ class LoginViewController: UIViewController {
         var parameters = [String : Any]()
 //        parameters["token"] = "123"
         parameters["LOGIN_NAME"] = user
-        parameters["PASSWORD"] = password?.md5()
+
+        
+        //保存用户名和密码的情况
+        UserDefaults.standard.set(user, forKey: Const.standardUserName)
+        
+        if self.isRemember {
+        
+            if self.isMd5 {
+            
+                parameters["PASSWORD"] = UserDefaults.standard.object(forKey: Const.standardUserPwd)
+                
+            }else{
+            
+                parameters["PASSWORD"] = password?.md5()
+                
+                UserDefaults.standard.set(password?.md5(), forKey: Const.standardUserPwd)
+            }
+            
+        }else{
+        
+            if self.isMd5 {
+                
+                parameters["PASSWORD"] = UserDefaults.standard.object(forKey: Const.standardUserPwd)
+                
+            }else{
+                
+                parameters["PASSWORD"] = password?.md5()
+            
+            }
+            
+            UserDefaults.standard.removeObject(forKey: Const.standardUserPwd)
+        }
+        
         
         if let token = UserDefaults.standard.object(forKey: "SJDeviceToken") as? String{
             
@@ -124,6 +183,24 @@ class LoginViewController: UIViewController {
         //忘记密码的功能接口的
         
     }
+    
+    // MARK: - 记住密码的点击功能的实现
+    @IBAction func rememberPWDClick(_ sender: UIButton) {
+        
+        sender.isSelected = !sender.isSelected
+        
+//        if sender.isSelected {//记住密码
+//  
+//            
+//        }else{//不记住,清空密码单
+//        
+//        
+//        }
+        
+        self.isRemember = sender.isSelected
+        
+    }
+    
     
     
 

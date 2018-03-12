@@ -119,7 +119,7 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
         if type == 0 {
             
             execPeopleBtn.setTitle(models.first?.name, for: .normal)
-            self.execProjectLabel.text = models.first?.deptList?.first?["dept_names"] as? String ?? ""
+            self.execProjectLabel.text = models.first?.deptList?.first?["dept_name"] as? String ?? ""
             
             let iconString = models.first?.icon
             
@@ -165,7 +165,7 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
         }else if type == 1{
             
             managePeopleBtn.setTitle(models.first?.name, for: .normal)
-            manageProjectLabel.text = models.first?.deptList?.first?["dept_names"] as? String ?? ""
+            manageProjectLabel.text = models.first?.deptList?.first?["dept_name"] as? String ?? ""
             
             
             

@@ -30,6 +30,11 @@ struct Const {
     static let YQProjectModel = "YQProjectModel"
     
     static let YQReportName = "YQReportName"
+    
+    //用户名和 密码(加密)
+    static let standardUserName = "YQstandardUserName"
+    
+    static let standardUserPwd = "YQstandardUserPwd"
 
     #if TARGET_IPHONE_SIMULATOR
     

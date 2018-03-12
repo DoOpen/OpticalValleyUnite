@@ -741,6 +741,11 @@ class WorkOrderProgressViewController: UIViewController {
         
         vc.ProgressVC = self
         
+        //添加新增是否有 查看工单的详情
+        let emergencyTrue = self.workOrderDetalModel?.picture != "" ? true : false
+       
+        vc.emergencyWorkOrderIsTrue = emergencyTrue
+        
         navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -829,6 +834,7 @@ extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDel
                 DetailsCell.model = self.workOrderDetalModel
                 DetailsCell.hasCallBackList = callbackModels.count != 0
                 DetailsCell.superVC = self
+                
                 
                 cell = DetailsCell
                 detailsCell = DetailsCell

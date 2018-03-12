@@ -48,6 +48,9 @@ class ExecutingViewConttroller: UIViewController {
     //确定保存的bool判断
     var maketrueSave : Bool = false
     
+    //添加的是: 应急工单的执行是必 添加的执行照片情况
+    var emergencyWorkOrderIsTrue = false
+    
     
     @IBOutlet weak var saveBtn: UIButton!
     
@@ -746,6 +749,8 @@ class ExecutingViewConttroller: UIViewController {
             self.upload(parmat)
             
         }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单的保存,保存实现原理不同
+
+            
             parmate?["stepId"] = "yingji"
             
             let images = addPhoneView.photos.map { (image) -> UIImage in
@@ -753,8 +758,17 @@ class ExecutingViewConttroller: UIViewController {
                 return image.image
             }
             
-            if images.count > 0 {
+            
+            if emergencyWorkOrderIsTrue  && images.count <= 0 {
+                //必传的报事 图片
+                self.alert(message: "请添加应急工单执行图片!")
                 
+                return
+            }
+
+            
+            if images.count > 0 {
+
                 
                 if backDB {
                     
@@ -782,7 +796,7 @@ class ExecutingViewConttroller: UIViewController {
                         }
                         
                     }
-                    
+
                 }
                 //保存的数据的接口的重调!
                 var parmat = [String: Any]()
@@ -859,7 +873,6 @@ class ExecutingViewConttroller: UIViewController {
             }
 
         }
-        
         
     }
     
@@ -985,6 +998,7 @@ class ExecutingViewConttroller: UIViewController {
             }else{
                 self.alert(message: "授权失败")
             }
+            
         }
     }
 

@@ -79,6 +79,7 @@ class YQEquipmentListHomeVC: UIViewController {
         
         if selectType == 0 {
             
+            //查全部
             getDataForServer( searchText: searchTextField.text!)
         
         }else {

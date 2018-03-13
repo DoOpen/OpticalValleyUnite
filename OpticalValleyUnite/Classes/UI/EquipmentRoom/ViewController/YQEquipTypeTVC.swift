@@ -27,8 +27,14 @@ class YQEquipTypeTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getData()
+        var par = [String : Any]()
+        par["equipTypeName"] = "全部"
+        par["equipTypeId"] = 0
         
+        dataArray.append(par)
+        
+        
+        getData()
         
     }
 
@@ -53,7 +59,12 @@ class YQEquipTypeTVC: UITableViewController {
                     return
                 }
                 
-                self.dataArray = data!
+                for dict in data! {
+
+                    self.dataArray.append(dict)
+                    
+                }
+
                 self.tableView.reloadData()
                 
             }) { (error) in
@@ -76,7 +87,11 @@ class YQEquipTypeTVC: UITableViewController {
                     return
                 }
                 
-                self.dataArray = data!
+                for dict in data! {
+                
+                    self.dataArray.append(dict)
+                }
+                
                 self.tableView.reloadData()
                 
             }) { (error) in

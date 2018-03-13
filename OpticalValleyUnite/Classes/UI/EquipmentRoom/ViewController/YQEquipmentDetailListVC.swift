@@ -38,7 +38,7 @@ class YQEquipmentDetailListVC: UIViewController {
     var currentIndex = 0
     
     //选择的type
-    var selectType : Int = 0
+    var selectType : Int64 = 0
     //弹簧变量
     var selectBool = false
     
@@ -163,7 +163,7 @@ class YQEquipmentDetailListVC: UIViewController {
         self.siftVc?.selectCellClickHandel = { parmat in
             
             //拿出id 进行筛选调整
-            self.selectType = (parmat["equipTypeId"] as? Int)!
+            self.selectType = (parmat["equipTypeId"] as? Int64 ?? 0)!
             //退出选项
             self.equipTypeClick(UIButton())
             //查询数据
@@ -259,7 +259,7 @@ class YQEquipmentDetailListVC: UIViewController {
     
     
     // MARK: - 获取数据的相应方法
-    func getDataForServer(pageIndex : Int = 0, pageSize : Int = 20, type : Int = 0, searchText : String = ""){
+    func getDataForServer(pageIndex : Int = 0, pageSize : Int = 20, type : Int64 = 0, searchText : String = ""){
         
         var par = [String : Any]()
         

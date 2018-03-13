@@ -195,7 +195,7 @@ class WorkOrderSiftViewController: UIViewController {
             
             workOrderNameLabel.text = text
         }
-        if let text = self.siftParmat?["SOURCE_PERSON_NAME"] as? String,text != ""{
+        if let text = self.siftParmat?["SOURCE_PERSON_NAME"] as? String,text != ""{// SOURCE_PERSON_NAME
             
             workOrderSourcePersonLabel.text = text
         }
@@ -379,6 +379,7 @@ class WorkOrderSiftViewController: UIViewController {
             paramert["NAME"] = text
         }
         if let text = workOrderSourcePersonLabel.text,text != ""{
+            
             paramert["SOURCE_PERSON_NAME"] = text
         }
         

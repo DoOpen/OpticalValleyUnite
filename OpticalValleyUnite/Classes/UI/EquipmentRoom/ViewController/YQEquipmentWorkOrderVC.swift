@@ -29,7 +29,7 @@ class YQEquipmentWorkOrderVC: UIViewController {
     var currentSelectBtn : UIButton?
     
     //项目id
-    var parkID = ""
+    var parkID = "parkID"
     
     override func viewDidLoad() {
         

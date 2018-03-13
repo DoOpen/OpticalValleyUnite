@@ -18,7 +18,7 @@ class YQEquipTypeTVC: UITableViewController {
     var selectCellClickHandel: (([String: Any]) -> ())?
 
     //已选的selectTypeString
-    var selectTypeString  : Int?
+    var selectTypeString  : Int64?
     
     //是否是详情
     var isDetail  = false
@@ -29,7 +29,7 @@ class YQEquipTypeTVC: UITableViewController {
 
         var par = [String : Any]()
         par["equipTypeName"] = "全部"
-        par["equipTypeId"] = 0
+        par["equipTypeId"] = 0 
         
         dataArray.append(par)
         
@@ -118,7 +118,7 @@ class YQEquipTypeTVC: UITableViewController {
         let dict = self.dataArray[indexPath.row]
         
         cell.textLabel?.text = dict["equipTypeName"] as? String
-        let type = dict["equipTypeId"] as? Int
+        let type = dict["equipTypeId"] as? Int64
         
         if (type == selectTypeString) {//相同的选中项 设置相同
             

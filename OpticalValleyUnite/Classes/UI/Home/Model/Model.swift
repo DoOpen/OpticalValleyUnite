@@ -39,7 +39,9 @@ class ProjectModel: NSObject{
     var selected = false
     
     convenience init(parmart: [String: Any]) {
+        
         self.init()
+        
         projectName = parmart["PARK_NAME"] as? String ?? ""
         projectId = parmart["ID"] as? String ?? ""
 
@@ -143,6 +145,8 @@ class WorkOrderModel: Object {
     override static func primaryKey() -> String? {
         return "workOrderId"
     }
+    
+    
 }
 
 class WorkOrderModel2: Object {
@@ -183,6 +187,7 @@ class WorkOrderModel2: Object {
     
     convenience init(parmart: [String: Any]) {
         self.init()
+        
         content = parmart["DESCRIPTION"] as? String ?? ""
         
         if content == ""{

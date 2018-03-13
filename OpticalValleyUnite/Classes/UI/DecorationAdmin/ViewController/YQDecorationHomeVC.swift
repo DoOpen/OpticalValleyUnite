@@ -105,7 +105,17 @@ class YQDecorationHomeVC: UIViewController {
         
         self.dataArray.removeAll()
         
-        getDataListFunction(tag: (selectButton?.tag)!)
+        
+        var par = [String : Any]()
+        if self.notiesPramert != nil{
+            
+            for (key,value) in self.notiesPramert! {
+                
+                par[key] = value
+            }
+        }
+
+        getDataListFunction(tag: (selectButton?.tag)!,pramert : par)
         
     }
     
@@ -129,6 +139,8 @@ class YQDecorationHomeVC: UIViewController {
         
         return projectName
     }
+    
+    
     
     // MARK: - 获取list数据的内容方法
     func getDataListFunction(tag : Int = 0,currentIndex : Int = 0,pageSize : Int = 20,pramert : [String : Any] = [String : Any]()){
@@ -281,9 +293,17 @@ class YQDecorationHomeVC: UIViewController {
     
         let center = NotificationCenter.default
         let notiesName = NSNotification.Name(rawValue: "selectHouseNoties")
+        let notiesName1 = NSNotification.Name(rawValue: "resetHouseNoties")
         center.addObserver(self, selector: #selector(getScreenHouseID(info :)), name: notiesName, object: nil)
+        center.addObserver(self, selector: #selector(resetScreenHousePramerter), name: notiesName1, object: nil)
         
+    }
+    
+    func resetScreenHousePramerter(){
+    
+        self.notiesPramert = nil
         
+        self.getDataListFunction(tag: (self.selectButton?.tag)!)
     }
     
     func getScreenHouseID(info : Notification){
@@ -303,7 +323,8 @@ class YQDecorationHomeVC: UIViewController {
             pramert["decorationType"] = "\(value2!)"
         }
         
-    
+        self.notiesPramert = pramert
+        
         //刷新数据
         getDataListFunction(pramert: pramert)
         

@@ -53,7 +53,14 @@ class YQDecorationScreenVC: UIViewController {
     
     @IBAction func cancelButtonSelect(_ sender: UIButton) {
         
-      navigationController?.popViewController(animated: true)
+        //要求的是,重置筛选按钮
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "resetHouseNoties")
+
+        center.post(name: notiesName, object: nil)
+        
+        
+        navigationController?.popViewController(animated: true)
         
     }
   

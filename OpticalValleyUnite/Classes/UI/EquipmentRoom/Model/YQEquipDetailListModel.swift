@@ -35,6 +35,9 @@ class YQEquipDetailListModel: NSObject {
 
     var equipCode = ""
     
+    //图片地址:
+    var logUrl = ""
+    
     
     init(dict : [String : Any]) {
         

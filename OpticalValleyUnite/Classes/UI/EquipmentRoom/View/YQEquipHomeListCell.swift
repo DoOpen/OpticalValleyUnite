@@ -154,30 +154,27 @@ class YQEquipHomeListCell: UITableViewCell {
             
             self.sensorViewArray.removeAll()
 
-            
             //文本
             showContentView.text = detailModel?.equipName
-            //图片
             
-            if !(detailModel?.houseImgs.isEmpty)! {//数组不为空的情况
+            //图片
+            if (detailModel?.logUrl != "") {//数组不为空的情况
                 
                 let basicPath = URLPath.systemSelectionURL
                 
                 var imageArray = [String]()
                 
-                for image in (detailModel?.houseImgs)!{
+                let image = (detailModel?.logUrl)!
                 
-                    if (image.contains("http")) {
-                        
-                        imageArray.append(image)
-                        
-                    }else{
-                        
-                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + image
-                        
-                        imageArray.append(imageValue)
-                    }
-                
+                if (image.contains("http")) {
+                    
+                    imageArray.append(image)
+                    
+                }else{
+                    
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + image
+                    
+                    imageArray.append(imageValue)
                 }
                 
                 showImageView.showImageUrls(imageArray)

@@ -248,9 +248,7 @@ class YQEquipmentDetailListVC: UIViewController {
                 
             }
             
-            
-            
-            
+
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "网络数据加载失败,请检查网络!")

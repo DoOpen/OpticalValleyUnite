@@ -94,6 +94,8 @@ class LoginViewController: UIViewController {
             
                 parameters["PASSWORD"] = UserDefaults.standard.object(forKey: Const.standardUserPwd)
                 
+                self.isMd5 = false
+                
             }else{
             
                 parameters["PASSWORD"] = password?.md5()
@@ -103,6 +105,7 @@ class LoginViewController: UIViewController {
             
         }else{
         
+            
             if self.isMd5 {
                 
                 parameters["PASSWORD"] = UserDefaults.standard.object(forKey: Const.standardUserPwd)
@@ -169,7 +172,8 @@ class LoginViewController: UIViewController {
             case .failure(let error):
                 
                 SVProgressHUD.showError(withStatus: "网络连接失败,请重试!")
-                
+                self.isMd5 = false
+
                 debugPrint(error)
                 
                 break

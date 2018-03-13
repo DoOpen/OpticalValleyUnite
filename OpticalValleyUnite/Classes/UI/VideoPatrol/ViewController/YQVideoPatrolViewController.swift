@@ -16,7 +16,7 @@ class YQVideoPatrolViewController: UIViewController {
     
     @IBOutlet weak var mapView: MAMapView!
     
-    var parkName : String = ""
+    var parkName : String = "请选择默认项目"
     
     /// 项目parkID 的属性
     var parkId = ""
@@ -301,7 +301,7 @@ class YQVideoPatrolViewController: UIViewController {
         //进行判空的情况
         if model.latitude == "" || model.longitude == "" {
             
-            SVProgressHUD.showError(withStatus: "点位信息为空!")
+            SVProgressHUD.showError(withStatus: "点位位置信息为空!")
             return
         }
         
@@ -338,12 +338,31 @@ class YQVideoPatrolViewController: UIViewController {
             HttpClient.instance.post(path: URLPath.getVideoPatrolFloorNum, parameters: parameter, success: { (respose) in
                 
                 SVProgressHUD.dismiss()
-                let num = respose as! Int
+                
+                let num = respose["floor"] as? [String : Any]
+                
+                if num == nil {
+                    
+                    SVProgressHUD.showError(withStatus: "没有更多的数据!")
+                    
+                    return
+                }
+                
                 var floorArray = [String]()
                 
-                for indexNum in 1...num {
+                for (key,value) in num!  {
                     
-                    floorArray.append("\(indexNum)" + "层")
+                    if key == "uGroundNum"{//地上层
+                    
+                        floorArray.append("\(value)" + "层")
+                        
+                    }else{ //地下层
+                    
+                        let str = "-" + "\(value)" + "层"
+                        floorArray.append(str)
+                        
+                    }
+                    
                     
                 }
                 

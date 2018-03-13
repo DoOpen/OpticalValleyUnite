@@ -317,10 +317,18 @@ class YQPedometerViewController: UIViewController {
             
             self.tempHelpBtn?.isUserInteractionEnabled = true
             
+            let data = respose as? NSArray
+            
+            if data == nil {
+                
+                SVProgressHUD.showError(withStatus: "没有更多数据!")
+                return
+            }
+            
             //字典转模型,读取相应的数据
             var temp = [YQStepShowModel]()
             
-            for dic in respose as! NSArray {
+            for dic in data! {
                 
                 temp.append(YQStepShowModel.init(dict: dic as! [String : Any]))
             }

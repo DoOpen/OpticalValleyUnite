@@ -43,14 +43,20 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李雪梅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j80-QC-wGd">
-                        <rect key="frame" x="109" y="16.5" width="52" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="109" y="16.5" width="100" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="BPE-tt-HhF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPk-ki-idu">
-                        <rect key="frame" x="109" y="42.5" width="37.5" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="109" y="42.5" width="120" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="yyR-ye-iEj"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -92,7 +98,7 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="pPk-ki-idu" firstAttribute="top" secondItem="j80-QC-wGd" secondAttribute="bottom" constant="5" id="6YA-CG-jWR"/>
+                    <constraint firstItem="pPk-ki-idu" firstAttribute="top" secondItem="j80-QC-wGd" secondAttribute="bottom" constant="8" id="6YA-CG-jWR"/>
                     <constraint firstItem="Z3Q-Yu-Y7G" firstAttribute="centerY" secondItem="Ce8-CR-Vfi" secondAttribute="centerY" id="730-UG-1j2"/>
                     <constraint firstItem="eTp-qK-whM" firstAttribute="centerY" secondItem="y4K-LF-OPW" secondAttribute="centerY" id="8Or-QA-bIF"/>
                     <constraint firstItem="qWi-CF-hS2" firstAttribute="centerY" secondItem="y4K-LF-OPW" secondAttribute="centerY" id="ESH-cN-wWq"/>
@@ -126,7 +132,7 @@
                 <outlet property="userNameLabel" destination="j80-QC-wGd" id="eVc-Wc-iU5"/>
                 <outlet property="yesterdayImage" destination="Z3Q-Yu-Y7G" id="rMg-II-i5G"/>
             </connections>
-            <point key="canvasLocation" x="123" y="-70"/>
+            <point key="canvasLocation" x="44" y="-56"/>
         </tableViewCell>
     </objects>
     <resources>

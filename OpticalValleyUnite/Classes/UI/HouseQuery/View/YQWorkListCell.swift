@@ -55,10 +55,19 @@ class YQWorkListCell: UITableViewCell {
             self.workStateButton.setTitle(model?.unitStatusName, for: .normal)
             
             self.timeLabel.text = "执行人:" +  (model?.personName)!
-            self.nameLabel.text = "执行时间:" +  (model?.createDate)!
+            self.nameLabel.text = "时间:" +  (model?.createDate)!
 
+            if model?.parkName == "" {
+                
+                self.projectLabel.isHidden = true
+                
+            }else{
+                
+                self.projectLabel.isHidden = false
+                self.projectLabel.text = "所属项目:" +  (model?.parkName)!
+                
+            }
             
-            self.projectLabel.text = "所属项目:" +  (model?.parkName)!
             self.workDescribeTextView.text = model?.workunitName
             
         }

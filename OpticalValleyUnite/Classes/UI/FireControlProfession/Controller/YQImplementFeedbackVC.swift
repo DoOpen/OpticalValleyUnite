@@ -234,6 +234,7 @@ extension YQImplementFeedbackVC : YQResolvedViewDelegate{
                     
                     SVProgressHUD.dismiss()
                     SVProgressHUD.showSuccess(withStatus: "保存成功!")
+                    
                     self.navigationController?.popViewController(animated: true)
                     
                 }) { (error) in
@@ -245,8 +246,8 @@ extension YQImplementFeedbackVC : YQResolvedViewDelegate{
             
         }else{
         
-        
             SVProgressHUD.show(withStatus: "正在保存中...")
+            
             HttpClient.instance.post(path: URLPath.getFirefeedback, parameters: par, success: { (respose) in
                 
                 SVProgressHUD.dismiss()

@@ -13,6 +13,7 @@ class ChooseHouseViewController: UIViewController {
 
     var currentLevel = 0{
         didSet{
+            
             (tempView.subviews[currentLevel] as! UILabel).textColor = Const.SJThemeColor
             
 //            let index = tableView.indexPath(for: currentSelectCell!)!.row

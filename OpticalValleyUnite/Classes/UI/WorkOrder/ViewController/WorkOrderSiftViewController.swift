@@ -153,7 +153,7 @@ class WorkOrderSiftViewController: UIViewController {
         
         setTagsView(tagsView: sourceTagsView,tags: ["系统后台","员工app","业主app"])
         
-        let sourse = self.siftParmat?["is_equip"] as? Int ?? -1
+        let sourse = self.siftParmat?["sourse"] as? Int ?? -1
         switch sourse {
             case 1:
                 sourceTagsView.selectTag(at: 0)

@@ -207,7 +207,16 @@ extension YQWorkListVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 150
+        if self.currentSelecte?.tag == 3 {
+        
+            return 150
+            
+        }else {
+        
+            return 100
+        
+        }
+        
     }
 
     

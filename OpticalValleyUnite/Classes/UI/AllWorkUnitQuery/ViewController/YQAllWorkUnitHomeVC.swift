@@ -160,7 +160,9 @@ class YQAllWorkUnitHomeVC: UIViewController {
         
         if self.parkID == "" {
             
-            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect") as! YQAllProjectSelectVC
+            project.isAll = 1 //查所有项目
+            
             self.navigationController?.pushViewController(project, animated: true)
             
             //这里是不选项目直接查全部的工单

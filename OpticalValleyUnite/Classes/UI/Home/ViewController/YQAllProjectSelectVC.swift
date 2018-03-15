@@ -41,6 +41,8 @@ class YQAllProjectSelectVC: UIViewController {
         }
     }
     
+    var isAll : Int = 2 // 默认是关联自己的
+    
     
     // MARK: - 控制器加载的方法
     override func viewDidLoad() {
@@ -114,6 +116,10 @@ class YQAllProjectSelectVC: UIViewController {
 
     // MARK: - 获取项目data的数据
     func getProjectData(){
+        
+        var par = [String : Any]()
+        
+        par["isAll"] = self.isAll // 1是查全部的项目; 2是关联自己的项目
         
         HttpClient.instance.get(path: URLPath.getParkList, parameters: nil, success: { (response) in
             

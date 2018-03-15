@@ -27,6 +27,7 @@ import Foundation
 
 
 struct URLPath {
+    
 //    static let basicPath = "http://112.74.80.111:8888/ovu-pcos/api/"
     ///主机地址
 //    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
@@ -352,7 +353,7 @@ struct URLPath {
     static let getEquipWorkunitList = "equiphouse/workunitList"
     
     ///全局的工单的查询接口
-    static let getAllworkunitList = "workunit/workunitList"
+    static let getAllworkunitList = "workunit/searchWorkunit"
     
     
 }

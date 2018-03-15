@@ -53,7 +53,7 @@ class YQAllWorkUnitScreenVC: UIViewController {
     @IBOutlet weak var endBtn: UIButton!
     
     // "待派发","待接收","协助查看","待执行","待评价","已关闭"
-    let workStatus = ["待派发","待接收","协助查看","待执行","待评价","已关闭"] //暂时设置为nil,字面量的赋值取消
+    let workStatus = ["待派发","待接收","已退回","待执行","待评价","已关闭"] //暂时设置为nil,字面量的赋值取消
     
     var startTime: String?
     var endTime: String?
@@ -160,11 +160,11 @@ class YQAllWorkUnitScreenVC: UIViewController {
         
         let is_equip = self.siftParmat?["is_equip"] as? Int ?? -1
         
-        if is_equip == 1 {
+        if is_equip == 1 { //是 设备
             
             deviceTagsView.selectTag(at: 0)
             
-        }else if is_equip == 2 {
+        }else if is_equip == 2 { //否 设备
             
             deviceTagsView.selectTag(at: 1)
         }
@@ -187,27 +187,28 @@ class YQAllWorkUnitScreenVC: UIViewController {
         // workStatus 的设置(工单的设置的状态的添加)
         setTagsView(tagsView: workStatusTagView,tags: workStatus )
         
-        let workS = self.siftParmat?["operateType"] as? Int ?? -1
+        let workS = self.siftParmat?["UNIT_STATUS"] as? Int ?? -1
         
-        //let dic = ["待派发": 11,"待执行" : 22, "待评价": 31,"待接收": 21,"已处理": 7,"协助查看": 5]
-        //["待派发","待接收","协助查看","待执行","待评价","已关闭"]
+        //查询的工单的显示和 执行的工单不一样的情况
+        //let dic = ["待派发": 0,"待执行" : 5, "待评价": 7,"待接收": 1,"已关闭": 8,"已退回" : 4]
+        //["待派发","待接收","已退回","待执行","待评价","已关闭"]
         switch workS {
-        case 11:
+        case 0://待派发
             self.workStatusTagView.selectTag(at: 0)
             break
-        case 22:
+        case 5://待执行
             self.workStatusTagView.selectTag(at: 3)
             break
-        case 31:
+        case 7://待评价
             self.workStatusTagView.selectTag(at: 4)
             break
-        case 21:
+        case 1://待接受
             self.workStatusTagView.selectTag(at: 1)
             break
-        case 7:
+        case 8://已关闭
             self.workStatusTagView.selectTag(at: 5)
             break
-        case 5:
+        case 4://已退回
             self.workStatusTagView.selectTag(at: 2)
             break
         default:
@@ -218,7 +219,7 @@ class YQAllWorkUnitScreenVC: UIViewController {
             
         setTagsView(tagsView: sourceTagsView,tags: ["系统后台","员工app","业主app"])
         
-        let sourse = self.siftParmat?["is_equip"] as? Int ?? -1
+        let sourse = self.siftParmat?["sourse"] as? Int ?? -1
         switch sourse {
         case 1:
             sourceTagsView.selectTag(at: 0)
@@ -297,13 +298,17 @@ class YQAllWorkUnitScreenVC: UIViewController {
     // MARK: - 重置,确定按钮的点击执行事件
     @IBAction func resetBtnClick(_ sender: UIButton) {
         
+        //项目重置,移除归档
         projectTagsView.deselectAll()
+        UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
+        
         workTypeTagsView.deselectAll()
         reportTypeTagsView.deselectAll()
         deviceTagsView.deselectAll()
         workStatusTagView.deselectAll()
         sourceTagsView.deselectAll()
         spontaneousTagsView.deselectAll()
+        
         
         
         workOrderNameLabel.text = ""
@@ -355,6 +360,10 @@ class YQAllWorkUnitScreenVC: UIViewController {
             
             UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
             
+        }else {//重置全局的项目选择
+            
+            UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
+        
         }
         
         if let index = workTypeTagsViewIndex{
@@ -382,9 +391,9 @@ class YQAllWorkUnitScreenVC: UIViewController {
         */
         if let index = workStatusTagsViewIndex{
 
-            let dic = ["待派发": 11,"待执行" : 22, "待评价": 31,"待接收": 21,"已处理": 7, "已接受": 5,"协助查看": 5]
+           let dic = ["待派发": 0,"待执行" : 5, "待评价": 7,"待接收": 1,"已关闭": 8,"已退回" : 4]
             
-            paramert["operateType"] = dic[workStatus[index]]
+            paramert["UNIT_STATUS"] = dic[workStatus[index]]
             
         }
         

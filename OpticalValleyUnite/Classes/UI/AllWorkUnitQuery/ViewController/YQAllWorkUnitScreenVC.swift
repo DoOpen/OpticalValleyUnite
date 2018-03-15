@@ -42,6 +42,11 @@ class YQAllWorkUnitScreenVC: UIViewController {
     //工单编号
     @IBOutlet weak var workNumberLabel: UITextField!
     
+    //新增的工单执行人
+    //工单执行人
+    @IBOutlet weak var workOrderImplementPersonTextField: UITextField!
+    
+    
     ///开始和 结束的 按钮的
     @IBOutlet weak var startBtn: UIButton!
     
@@ -53,6 +58,8 @@ class YQAllWorkUnitScreenVC: UIViewController {
     var startTime: String?
     var endTime: String?
     var status = ""
+    
+    var isAll = 2
     
     
     /// 父级的筛选条件的
@@ -258,6 +265,11 @@ class YQAllWorkUnitScreenVC: UIViewController {
             workOrderSourcePersonLabel.text = text
         }
         
+        if let text = self.siftParmat?["EXEC_PERSON_NAME"] as? String,text != ""{
+            
+            workOrderImplementPersonTextField.text = text
+        }
+        
         
     }
     
@@ -297,6 +309,8 @@ class YQAllWorkUnitScreenVC: UIViewController {
         workOrderNameLabel.text = ""
         workOrderSourcePersonLabel.text = ""
         workNumberLabel.text = ""
+        workOrderImplementPersonTextField.text = ""
+        
         
         startTime = ""
         endTime = ""
@@ -400,6 +414,10 @@ class YQAllWorkUnitScreenVC: UIViewController {
         if let text = workOrderSourcePersonLabel.text,text != ""{
             paramert["SOURCE_PERSON_NAME"] = text
         }
+        if let text = workOrderImplementPersonTextField.text,text != ""{
+            paramert["EXEC_PERSON_NAME"] = text
+        }
+        
         
         
         if let block = doneBtnClickHandel{
@@ -428,6 +446,7 @@ class YQAllWorkUnitScreenVC: UIViewController {
     }
 
     private func setTagsView(tagsView: RKTagsView,tags: [String]? = nil){
+        
         tagsView.editable = false
         tagsView.selectable = true
         tagsView.lineSpacing = 15
@@ -445,7 +464,26 @@ class YQAllWorkUnitScreenVC: UIViewController {
     // MARK: - 获取项目的网络接口
     private func getProjectData(){
         
-        HttpClient.instance.get(path: URLPath.getParkList, parameters: nil, success: { (response) in
+        var par = [String : Any]()
+        
+        //获取集团和 项目版的参数
+        let isgroup = UserDefaults.standard.object(forKey: Const.YQIs_Group) as? Int ?? -1
+        
+        //根据需求来进行的查询区分, 集团版和 项目版的
+        if self.isAll == 1 {
+            
+            if isgroup == 2 {//集团版
+                
+                par["isAll"] = 1 // 1是查全部的项目; 2是关联自己的项目
+                
+            }else{//项目版
+                
+                par["isAll"] = 2
+            }
+            
+        }
+
+        HttpClient.instance.get(path: URLPath.getParkList, parameters: par, success: { (response) in
             
             
             var temp = [ProjectModel]()

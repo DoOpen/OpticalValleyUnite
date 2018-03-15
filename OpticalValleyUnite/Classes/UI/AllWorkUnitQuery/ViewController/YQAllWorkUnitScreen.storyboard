@@ -23,10 +23,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XeH-3o-ilL">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="189"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工单名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sf7-Wl-xYD">
-                                        <rect key="frame" x="12" y="47" width="90" height="21"/>
+                                        <rect key="frame" x="12" y="32" width="90" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="OGG-iu-qEa"/>
                                         </constraints>
@@ -35,7 +35,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MsU-O6-sUE">
-                                        <rect key="frame" x="139" y="40" width="263" height="35"/>
+                                        <rect key="frame" x="139" y="25" width="263" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="uQz-2m-Zba"/>
                                         </constraints>
@@ -49,7 +49,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工单生成人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTM-7w-z8j">
-                                        <rect key="frame" x="12" y="94" width="90" height="21"/>
+                                        <rect key="frame" x="12" y="79" width="90" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="bGu-VN-nl2"/>
                                         </constraints>
@@ -58,7 +58,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eJK-Uq-SAS">
-                                        <rect key="frame" x="139" y="87" width="263" height="35"/>
+                                        <rect key="frame" x="139" y="72" width="263" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="dfe-ys-srA"/>
                                         </constraints>
@@ -72,7 +72,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工单编号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzx-Tg-LHD">
-                                        <rect key="frame" x="12" y="141" width="90" height="21"/>
+                                        <rect key="frame" x="12" y="126" width="90" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="6VO-dp-XaD"/>
                                         </constraints>
@@ -81,9 +81,32 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fsQ-8C-5uK">
-                                        <rect key="frame" x="139" y="134" width="263" height="35"/>
+                                        <rect key="frame" x="139" y="119" width="263" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="ljx-Yb-xP5"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工单执行人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6p-t6-yZF">
+                                        <rect key="frame" x="12" y="176" width="90" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="F90-BE-w36"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bwq-pr-Ipk">
+                                        <rect key="frame" x="139" y="169" width="263" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="66m-Q3-8AA"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -100,25 +123,30 @@
                                     <constraint firstItem="MsU-O6-sUE" firstAttribute="centerY" secondItem="sf7-Wl-xYD" secondAttribute="centerY" id="1jK-b8-qT3"/>
                                     <constraint firstItem="sf7-Wl-xYD" firstAttribute="leading" secondItem="XeH-3o-ilL" secondAttribute="leading" constant="12" id="3SQ-FX-GcP"/>
                                     <constraint firstItem="fsQ-8C-5uK" firstAttribute="leading" secondItem="MsU-O6-sUE" secondAttribute="leading" id="4h8-w0-ItE"/>
-                                    <constraint firstAttribute="bottom" secondItem="fsQ-8C-5uK" secondAttribute="bottom" constant="20" id="6zz-Sh-NLA"/>
-                                    <constraint firstItem="MsU-O6-sUE" firstAttribute="top" secondItem="XeH-3o-ilL" secondAttribute="top" constant="40" id="8eU-FG-Aee"/>
+                                    <constraint firstAttribute="height" constant="220" id="4rK-bt-vSe"/>
+                                    <constraint firstItem="MsU-O6-sUE" firstAttribute="top" secondItem="XeH-3o-ilL" secondAttribute="top" constant="25" id="8eU-FG-Aee"/>
                                     <constraint firstItem="fsQ-8C-5uK" firstAttribute="leading" secondItem="Zzx-Tg-LHD" secondAttribute="trailing" constant="37" id="93d-qr-bRr"/>
+                                    <constraint firstItem="q6p-t6-yZF" firstAttribute="leading" secondItem="Zzx-Tg-LHD" secondAttribute="leading" id="CJA-Ym-RnH"/>
                                     <constraint firstItem="Zzx-Tg-LHD" firstAttribute="leading" secondItem="sf7-Wl-xYD" secondAttribute="leading" id="Dzg-yT-YTX"/>
                                     <constraint firstItem="eJK-Uq-SAS" firstAttribute="top" secondItem="MsU-O6-sUE" secondAttribute="bottom" constant="12" id="Fvx-cG-skj"/>
                                     <constraint firstItem="MsU-O6-sUE" firstAttribute="leading" secondItem="sf7-Wl-xYD" secondAttribute="trailing" constant="37" id="Gdy-KJ-182"/>
                                     <constraint firstItem="eJK-Uq-SAS" firstAttribute="centerY" secondItem="ZTM-7w-z8j" secondAttribute="centerY" id="IgL-5u-qwL"/>
+                                    <constraint firstAttribute="trailing" secondItem="bwq-pr-Ipk" secondAttribute="trailing" constant="12" id="JIZ-3I-t3G"/>
+                                    <constraint firstItem="bwq-pr-Ipk" firstAttribute="top" secondItem="fsQ-8C-5uK" secondAttribute="bottom" constant="15" id="Kie-Yr-FAI"/>
                                     <constraint firstAttribute="trailing" secondItem="MsU-O6-sUE" secondAttribute="trailing" constant="12" id="Kwa-LU-hrE"/>
                                     <constraint firstItem="fsQ-8C-5uK" firstAttribute="centerY" secondItem="Zzx-Tg-LHD" secondAttribute="centerY" id="Lrd-jL-qQH"/>
                                     <constraint firstItem="fsQ-8C-5uK" firstAttribute="top" secondItem="eJK-Uq-SAS" secondAttribute="bottom" constant="12" id="OIN-QN-hL8"/>
                                     <constraint firstItem="eJK-Uq-SAS" firstAttribute="leading" secondItem="MsU-O6-sUE" secondAttribute="leading" id="PNz-CG-QTf"/>
                                     <constraint firstItem="eJK-Uq-SAS" firstAttribute="trailing" secondItem="MsU-O6-sUE" secondAttribute="trailing" id="WHu-CY-kR5"/>
                                     <constraint firstItem="eJK-Uq-SAS" firstAttribute="leading" secondItem="ZTM-7w-z8j" secondAttribute="trailing" constant="37" id="WkA-Yb-vIH"/>
+                                    <constraint firstItem="bwq-pr-Ipk" firstAttribute="centerY" secondItem="q6p-t6-yZF" secondAttribute="centerY" id="exD-jb-O6R"/>
+                                    <constraint firstItem="bwq-pr-Ipk" firstAttribute="leading" secondItem="q6p-t6-yZF" secondAttribute="trailing" constant="37" id="k0N-3h-Wan"/>
                                     <constraint firstItem="ZTM-7w-z8j" firstAttribute="leading" secondItem="sf7-Wl-xYD" secondAttribute="leading" id="kHH-1n-xlm"/>
                                     <constraint firstItem="fsQ-8C-5uK" firstAttribute="trailing" secondItem="MsU-O6-sUE" secondAttribute="trailing" id="w1f-FP-UMw"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEf-t6-gDs">
-                                <rect key="frame" x="0.0" y="189" width="414" height="1311"/>
+                                <rect key="frame" x="0.0" y="220" width="414" height="1280"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IqT-oF-Lrd">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
@@ -597,6 +625,7 @@
                         <outlet property="spontaneousTagsView" destination="iab-vk-nUw" id="8NY-8b-WDa"/>
                         <outlet property="startBtn" destination="Dhk-ml-jK3" id="dm3-iB-pn7"/>
                         <outlet property="workNumberLabel" destination="fsQ-8C-5uK" id="2ZI-xs-WtL"/>
+                        <outlet property="workOrderImplementPersonTextField" destination="bwq-pr-Ipk" id="aOL-UX-EPb"/>
                         <outlet property="workOrderNameLabel" destination="MsU-O6-sUE" id="tXj-gX-OMu"/>
                         <outlet property="workOrderSourcePersonLabel" destination="eJK-Uq-SAS" id="ND0-HK-rY3"/>
                         <outlet property="workStatusTagView" destination="fHl-mZ-hIs" id="lvN-Pi-Ife"/>
@@ -605,7 +634,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJF-89-4ZH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4935" y="687"/>
+            <point key="canvasLocation" x="4934.3999999999996" y="686.35682158920542"/>
         </scene>
     </scenes>
 </document>

@@ -119,9 +119,25 @@ class YQAllProjectSelectVC: UIViewController {
         
         var par = [String : Any]()
         
-        par["isAll"] = self.isAll // 1是查全部的项目; 2是关联自己的项目
+        //获取集团和 项目版的参数
+        let isgroup = UserDefaults.standard.object(forKey: Const.YQIs_Group) as? Int ?? -1
         
-        HttpClient.instance.get(path: URLPath.getParkList, parameters: nil, success: { (response) in
+        //根据需求来进行的查询区分, 集团版和 项目版的
+        if self.isAll == 1 {
+        
+            if isgroup == 2 {//集团版
+                
+                par["isAll"] = 1 // 1是查全部的项目; 2是关联自己的项目
+                
+            }else{//项目版
+                
+                par["isAll"] = 2
+            }
+        
+        }
+
+
+        HttpClient.instance.get(path: URLPath.getParkList, parameters: par, success: { (response) in
             
             
             var temp = [ProjectModel]()

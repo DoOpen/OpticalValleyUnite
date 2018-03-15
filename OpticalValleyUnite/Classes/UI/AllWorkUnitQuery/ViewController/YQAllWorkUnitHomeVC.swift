@@ -124,6 +124,7 @@ class YQAllWorkUnitHomeVC: UIViewController {
     func rightBarButtonClick(){
         //跳转到筛选的界面情况
         let vc = UIStoryboard.instantiateInitialViewController(name: "YQAllWorkUnitScreen") as! YQAllWorkUnitScreenVC
+        vc.isAll = 1
         
         //传递筛选条件,进行缓存和保存
         vc.siftParmat = self.siftsiftParmat
@@ -311,6 +312,26 @@ extension YQAllWorkUnitHomeVC : UITableViewDelegate,UITableViewDataSource{
         return cell
     }
  
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = WorkOrderProgressViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderProgressViewController
+        //        vc.workModelId = currentDatas[indexPath.row].workOrderId
+        let model = currentDatas[indexPath.row]
+        
+        var parmat = [String: Any]()
+        parmat["UNIT_STATUS"] = model.status
+        parmat["PERSONTYPE"] = model.PERSONTYPE
+        parmat["EXEC_PERSON_ID"] = model.execPersionId
+        parmat["WORKUNIT_ID"] = model.workOrderId
+        
+        vc.parmate = parmat
+        // 执行的工单的 回退之后 进行的list的刷新, 要求的补全逻辑的代码
+        //    vc.listVc = self
+        navigationController?.pushViewController(vc, animated: true)
+        
+        
+    }
 
     
 }

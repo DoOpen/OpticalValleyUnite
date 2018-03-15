@@ -47,8 +47,19 @@ class ReportListViewController: UIViewController {
             
             SVProgressHUD.dismiss()
             
+            let data = response["data"] as? Array<[String: Any]>
+            
+            if (data?.isEmpty)! {
+                
+                SVProgressHUD.showError(withStatus: "没有更多数据!")
+                
+                return
+            }
+            
+            
             var temp = [WorkOrderModel]()
-            for dic in response["data"] as! Array<[String: Any]> {
+            for dic in data! {
+                
                 let model = WorkOrderModel(parmart: dic)
                 temp.append(model)
             }

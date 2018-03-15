@@ -122,6 +122,7 @@ class WorkOrderSiftViewController: UIViewController {
     var doenBtnClickHandel: (([String: Any]) -> ())?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         getProjectData()
@@ -241,7 +242,11 @@ class WorkOrderSiftViewController: UIViewController {
     
     // MARK: - 重置按钮的点击
     @IBAction func resetBtnClick() {
+        
+        //关联项目的重置
         projectTagsView.deselectAll()
+        UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
+        
         workTypeTagsView.deselectAll()
         reportTypeTagsView.deselectAll()
         deviceTagsView.deselectAll()
@@ -284,6 +289,7 @@ class WorkOrderSiftViewController: UIViewController {
         }) { (error) in
             
         }
+        
     }
     
     // MARK: - 获取工单类型的网络接口方法
@@ -329,7 +335,12 @@ class WorkOrderSiftViewController: UIViewController {
 
             UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
             
+        }else {//重置全局的项目选择
+            
+            UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
+            
         }
+
         
         if let index = workTypeTagsViewIndex{
             paramert["WORKTYPE_ID"] = workTypeData[index].id

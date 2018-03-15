@@ -349,41 +349,79 @@ class YQVideoPatrolViewController: UIViewController {
                 }
                 
                 var floorArray = [String]()
+                //先取地下层
+                let oGroundNum = num?["oGroundNum"] as? Int ?? 0
+                //地上层
+                let uGroundNum = num?["uGroundNum"] as? Int ?? 0
                 
-                for (key,value) in num!  {
+                if oGroundNum != 0 {
                     
-                    if key == "uGroundNum"{//地上层
+                    let index = oGroundNum * -1
                     
-                        floorArray.append("\(value)" + "层")
-                        
-                    }else{ //地下层
+                    for xx in index ... -1{
                     
-                        let str = "-" + "\(value)" + "层"
-                        floorArray.append(str)
-                        
+                        floorArray.append("\(xx)" + "层")
                     }
-                    
-                    
                 }
+                
+                if uGroundNum != 0 {
+                
+                    for xx in 1 ... uGroundNum{
+                        
+                        floorArray.append("\(xx)" + "层")
+                    }
+
+                
+                }
+                
+                
+               
+                
+//                for (key,value) in num!  {
+//                    
+//                    if key == "uGroundNum"{//地上层
+//                    
+//                        floorArray.append("\(value)" + "层")
+//                        
+//                    }else{ //地下层
+//                    
+//                        let str = "-" + "\(value)" + "层"
+//                        floorArray.append(str)
+//                        
+//                    }
+//                    
+//                    
+//                }
                 
                 //返回直接是一个 层数 ,这里进行的循环遍历
                 SJPickerView.show(withDataArry: floorArray, didSlected: { (indexnum) in
                     
                     //pickerView 点击执行的回调的函数
-                    let floorIndex = indexnum + 1
+                    let floorIndex = floorArray[indexnum]
                     //调用查询点的情况
+                    let floor = NSString.init(string: floorIndex)
+                    let newFloor = floor.substring(to: floor.length - 1)
                     
                     var par = [String : Any]()
                     par["insPointId"] = mapViewModel.insPointId
-                    par["floorNum"] = floorIndex
+                    par["floorNum"] = Int(newFloor)
                     
                 
                     HttpClient.instance.post(path: URLPath.getVideoPatrolPoint, parameters: par, success: { (respose) in
                         
                         var tempArray = [YQVideoIndoorPatorlModel]()
                         
+                        let data = respose as! NSArray
+                        
+                        if data.count <= 0 {
+                            
+                            SVProgressHUD.showError(withStatus: "暂无巡查点信息!")
+                            return
+                            
+                        }
+                        
                         //获取的巡查点的路径来进行 字典转模型
-                        for indoorArray in (respose as! NSArray) {
+                        for indoorArray in data {
                             
                             tempArray.append(YQVideoIndoorPatorlModel.init(dic: indoorArray as! [String : Any]))
                         

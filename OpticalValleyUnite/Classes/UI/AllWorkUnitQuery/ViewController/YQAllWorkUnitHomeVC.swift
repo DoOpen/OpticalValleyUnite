@@ -60,6 +60,19 @@ class YQAllWorkUnitHomeVC: UIViewController {
         
         //2.默认的调取处理的数据
         self.parkID = setUpProjectNameLable()
+        
+        if self.parkID == "" {
+            
+            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect") as! YQAllProjectSelectVC
+            project.isAll = 1 //查所有项目
+            
+            self.navigationController?.pushViewController(project, animated: true)
+            
+            //这里是不选项目直接查全部的工单
+            
+        }
+
+        
         self.getDataForServer(tag: self.currentBtn.tag)
         
 
@@ -158,16 +171,6 @@ class YQAllWorkUnitHomeVC: UIViewController {
         par["PARK_ID"] = self.parkID
         par["isClosed"] = tag
         
-        if self.parkID == "" {
-            
-            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect") as! YQAllProjectSelectVC
-            project.isAll = 1 //查所有项目
-            
-            self.navigationController?.pushViewController(project, animated: true)
-            
-            //这里是不选项目直接查全部的工单
-            
-        }
         
 
         //经过筛选项,筛选的条件

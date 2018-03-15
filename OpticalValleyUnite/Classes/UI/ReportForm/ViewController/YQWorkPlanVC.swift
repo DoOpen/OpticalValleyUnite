@@ -22,6 +22,9 @@ class YQWorkPlanVC: UIViewController {
     var id : Int = 0
     var parkID = ""
 
+    //bottomView
+    @IBOutlet weak var bottomView: UIView!
+    
     
     override func viewDidLoad() {
         
@@ -31,6 +34,9 @@ class YQWorkPlanVC: UIViewController {
         self.title = "工作计划"
         
         let _ = setUpProjectNameLable()
+        
+        //添加底部视图
+        addBottomViewContent()
         
         //注册原型cell 设置cell的每个的行高的情况
         let nib = UINib(nibName: "YQAddWorkPlan", bundle: nil)
@@ -162,6 +168,32 @@ class YQWorkPlanVC: UIViewController {
         return projectName
     }
 
+    // MARK: - 添加bottomView的内容项目
+    func addBottomViewContent(){
+    
+        let boutton = UIButton()
+        boutton.setImage(UIImage.init(name: "icon_edd"), for: .normal)
+        
+        boutton.addTarget(self, action: #selector(addWorkPlanListButtonClick), for: .touchUpInside)
+        
+        let bouttonRight = UIButton()
+        bouttonRight.setImage(UIImage.init(name: "icon_del"), for: .normal)
+        bouttonRight.addTarget(self, action: #selector(deleteWorkPlanListButtonClick), for: .touchUpInside)
+        
+        self.bottomView.addSubview(boutton)
+        self.bottomView.addSubview(bouttonRight)
+        
+        boutton.snp.makeConstraints { (maker) in
+            maker.right.bottom.top.equalToSuperview()
+            maker.width.equalTo(60)
+        }
+        bouttonRight.snp.makeConstraints { (maker) in
+            maker.left.bottom.top.equalToSuperview()
+            maker.width.equalTo(60)
+        }
+
+    
+    }
     
 
 }
@@ -188,40 +220,7 @@ extension YQWorkPlanVC : UITableViewDataSource,UITableViewDelegate {
         return 200
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        let view = UIView()
-//        view.backgroundColor = UIColor.blue
-        let boutton = UIButton()
-        boutton.setImage(UIImage.init(name: "icon_edd"), for: .normal)
-        
-        boutton.addTarget(self, action: #selector(addWorkPlanListButtonClick), for: .touchUpInside)
-        
-        let bouttonRight = UIButton()
-        bouttonRight.setImage(UIImage.init(name: "icon_del"), for: .normal)
-        bouttonRight.addTarget(self, action: #selector(deleteWorkPlanListButtonClick), for: .touchUpInside)
-        
-        view.addSubview(boutton)
-        view.addSubview(bouttonRight)
-        
-        boutton.snp.makeConstraints { (maker) in
-            maker.right.bottom.top.equalToSuperview()
-            maker.width.equalTo(60)
-        }
-        bouttonRight.snp.makeConstraints { (maker) in
-            maker.left.bottom.top.equalToSuperview()
-            maker.width.equalTo(60)
-        }
-        
-        
-        return view
-        
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        
-        return 60
-    }
+
 
     
 }

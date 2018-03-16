@@ -200,6 +200,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
 }
 
 protocol CheckNewBundleVersionProtocol {
+    
     func checkNewBundleVersion(isBlack:Bool) -> ()
 }
 

@@ -77,8 +77,34 @@ class YQFireControlViewController: UIViewController {
         
         //设置leftBar图片和点击事件
         let image = UIImage(named : "icon_fire_admin")
+        
         let bnt = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        bnt.setImage(image, for: .normal)
+
+        let user = User.currentUser()
+        if let url = user?.avatar,url != ""{
+
+            if url.contains("http") {
+                
+                bnt.kf.setImage(with: URL(string: url), for: .normal)
+                
+            }else{
+                
+                let basicPath = URLPath.systemSelectionURL
+                let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                
+                bnt.kf.setImage(with: URL(string: imageValue), for: .normal)
+            }
+            
+        }else {
+            //没有头像的话就是 显示这个占位图
+            bnt.setImage(image, for: .normal)
+        }
+        
+        bnt.layer.cornerRadius = 20
+        bnt.layer.borderColor = UIColor.black.cgColor
+        bnt.layer.borderWidth = 1.0
+        bnt.layer.masksToBounds = true
+        
         bnt.addTarget(self, action:  #selector(leftBarButtonClick), for: UIControlEvents.touchUpInside)
 
         //设置显示原始图片的情况
@@ -136,6 +162,7 @@ class YQFireControlViewController: UIViewController {
         */
         let r = MAUserLocationRepresentation()
         var image = UIImage(named: "icon_fire_position_blue")
+        
         image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
         r.image = image
         fireMapView.update(r)

@@ -19,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="sr2-uI-Lep"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zrz-Hb-gK2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="let-n7-sDG">
@@ -118,7 +118,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58c-xi-nWc">
-                                <rect key="frame" x="0.0" y="209" width="414" height="1291"/>
+                                <rect key="frame" x="0.0" y="209" width="414" height="791"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RhE-Aq-1Vl">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="165"/>
@@ -364,7 +364,7 @@
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uuk-UR-lC8">
-                                <rect key="frame" x="0.0" y="1450" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="950" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pT-lS-LVz">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
@@ -416,7 +416,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="1500"/>
+                    <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="endBtn" destination="RPu-Bd-XzH" id="eet-BT-DR2"/>
                         <outlet property="projectTagsView" destination="8nW-r4-7QK" id="pKg-u0-XU3"/>

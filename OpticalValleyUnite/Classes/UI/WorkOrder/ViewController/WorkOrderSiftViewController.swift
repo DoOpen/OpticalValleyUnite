@@ -148,9 +148,7 @@ class WorkOrderSiftViewController: UIViewController {
             deviceTagsView.selectTag(at: 1)
         }
         
-        
-// workStatus 的设置
-//        setTagsView(tagsView: workStatusTagView,tags: workStatus as! [String])
+    
         
         setTagsView(tagsView: sourceTagsView,tags: ["系统后台","员工app","业主app"])
         
@@ -170,10 +168,6 @@ class WorkOrderSiftViewController: UIViewController {
             break
         }
         
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
-//            let arry = ["丽岛2046","光谷软件园","创意天地"]
-//            
-//        }
         
         //补充选项,开始时间和结束时间
         if let STARTime =  self.siftParmat?["STAR"] as? String {

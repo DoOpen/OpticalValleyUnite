@@ -22,7 +22,7 @@ class YQEquipmentWorkOrderVC: UIViewController {
     
     var siftsiftParmat : [String : Any]?
     
-    var siftVc: WorkOrderSiftViewController?
+    var siftVc: YQEquipmentSiftVC?
     
     
     @IBOutlet weak var waittingHandleBtn: UIButton!
@@ -88,8 +88,9 @@ class YQEquipmentWorkOrderVC: UIViewController {
     }
     
     func rightBarButtonClick(){
+        
         //跳转到筛选的界面情况
-        let vc = WorkOrderSiftViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderSiftViewController
+        let vc = UIStoryboard.instantiateInitialViewController(name: "YQEquipmentSiftVC") as! YQEquipmentSiftVC
         
         //传递筛选条件,进行缓存和保存
         vc.siftParmat = self.siftsiftParmat
@@ -97,6 +98,7 @@ class YQEquipmentWorkOrderVC: UIViewController {
         siftVc = vc
         
         let subView = vc.view
+        
         subView?.frame = CGRect(x: 100, y: 0, width: SJScreeW - 100, height: SJScreeH)
         CoverView.show(view: subView!)
         

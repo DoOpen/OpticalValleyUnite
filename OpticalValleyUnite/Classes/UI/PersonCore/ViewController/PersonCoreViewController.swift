@@ -205,6 +205,7 @@ protocol CheckNewBundleVersionProtocol {
 
 extension CheckNewBundleVersionProtocol{
     func checkNewBundleVersion(isBlack:Bool) -> (){
+        
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         print(" 当前版本号为：\(version)")
         var parmat = [String: Any]()
@@ -216,18 +217,25 @@ extension CheckNewBundleVersionProtocol{
             if let response = response as? String{
                 
                 SJKeyWindow?.rootViewController?.alert(message: "有新的版本,点击确认下载最新版本", doneBlock: { (action) in
+                    
                     let urlString = response
+                    
                     if let url = URL(string: urlString) {
                         //根据iOS系统版本，分别处理
                         if #available(iOS 10, *) {
+                            
                             UIApplication.shared.open(url, options: [:],
                                                       completionHandler: {
                                                         (success) in
                             })
+                            
                         } else {
+                            
                             UIApplication.shared.openURL(url)
                         }
+                        
                     }
+                    
                 }, cancleBlock: {
                     (action) in
                 })
@@ -236,6 +244,7 @@ extension CheckNewBundleVersionProtocol{
                 
                 
             }else{
+                
                 if !isBlack{
                     SJKeyWindow?.rootViewController?.alert(message: "您的版本已经是最新的版本了");
                 }

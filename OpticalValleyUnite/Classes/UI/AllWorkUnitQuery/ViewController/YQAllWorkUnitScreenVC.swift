@@ -271,6 +271,21 @@ class YQAllWorkUnitScreenVC: UIViewController {
             workOrderImplementPersonTextField.text = text
         }
         
+    }
+    
+    // MARK: - 点击的收起,展开的效果
+    @IBAction func springProjectButtonClick(_ sender: UIButton) {
+        
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            sender.setTitle("收起", for: .normal)
+            
+            
+        }else{
+             sender.setTitle("展开", for: .normal)
+            
+        }
+        
         
     }
     

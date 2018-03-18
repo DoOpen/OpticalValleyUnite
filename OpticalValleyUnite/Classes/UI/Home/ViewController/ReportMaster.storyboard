@@ -997,13 +997,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFy-fh-yaP">
-                                <rect key="frame" x="0.0" y="308" width="375" height="314"/>
+                                <rect key="frame" x="0.0" y="308" width="375" height="284"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCS-69-cUp" customClass="RKTagsView">
-                                        <rect key="frame" x="20" y="64" width="355" height="250"/>
+                                        <rect key="frame" x="20" y="64" width="355" height="220"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="Yim-08-TwP"/>
+                                            <constraint firstAttribute="height" constant="220" id="Yim-08-TwP"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPg-hi-Phx">

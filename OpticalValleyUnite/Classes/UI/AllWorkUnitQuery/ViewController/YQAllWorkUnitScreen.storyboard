@@ -160,10 +160,23 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPb-CJ-wOo">
+                                                        <rect key="frame" x="364" y="7" width="40" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="4Bd-Go-lqe"/>
+                                                            <constraint firstAttribute="height" constant="30" id="YJX-VD-A81"/>
+                                                        </constraints>
+                                                        <state key="normal" title="收起"/>
+                                                        <connections>
+                                                            <action selector="springProjectButtonClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="vAa-Pq-wj2"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="4Dr-Z8-uzB" firstAttribute="leading" secondItem="tSe-5m-XZj" secondAttribute="leading" constant="26" id="33K-EM-9h1"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XPb-CJ-wOo" secondAttribute="trailing" constant="10" id="JR1-tx-bTK"/>
+                                                    <constraint firstItem="XPb-CJ-wOo" firstAttribute="centerY" secondItem="tSe-5m-XZj" secondAttribute="centerY" id="Uaz-Z5-dOE"/>
                                                     <constraint firstItem="4Dr-Z8-uzB" firstAttribute="centerY" secondItem="tSe-5m-XZj" secondAttribute="centerY" id="X9S-hj-Nxg"/>
                                                     <constraint firstAttribute="height" constant="45" id="g7u-vP-2ya"/>
                                                 </constraints>

@@ -75,44 +75,8 @@ class YQFireControlViewController: UIViewController {
         
         super.viewDidLoad()
         
-        //设置leftBar图片和点击事件
-        let image = UIImage(named : "icon_fire_admin")
-        
-        let bnt = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-
-        let user = User.currentUser()
-        if let url = user?.avatar,url != ""{
-
-            if url.contains("http") {
-                
-                bnt.kf.setImage(with: URL(string: url), for: .normal)
-                
-            }else{
-                
-                let basicPath = URLPath.systemSelectionURL
-                let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
-                
-                bnt.kf.setImage(with: URL(string: imageValue), for: .normal)
-            }
-            
-        }else {
-            //没有头像的话就是 显示这个占位图
-            bnt.setImage(image, for: .normal)
-        }
-        
-        bnt.layer.cornerRadius = 20
-        bnt.layer.borderColor = UIColor.black.cgColor
-        bnt.layer.borderWidth = 1.0
-        bnt.layer.masksToBounds = true
-        
-        bnt.addTarget(self, action:  #selector(leftBarButtonClick), for: UIControlEvents.touchUpInside)
-
-        //设置显示原始图片的情况
-        // image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        // let item2=UIBarButtonItem(customView: btn1)
-        // self.navigationItem.rightBarButtonItem=item2
-        let left = UIBarButtonItem(customView: bnt)
-        self.navigationItem.leftBarButtonItem = left
+        //添加right_leftbar
+        leftAndRightButtonBarAdd()
         
         self.messageContentV.backgroundColor = UIColor(red: 255.0/255.0, green: 240.0/255.0, blue: 230.0/255.0, alpha: 1.0)
         
@@ -124,9 +88,13 @@ class YQFireControlViewController: UIViewController {
         
         //获取火警状态的信息
         /*消防点信息, 地图打点使用*/
+        
+        //消防需求的添加: 要求的是刷新火警点, 执行完了清除火警点!
         makeMapLocationData()
         
+        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -136,6 +104,8 @@ class YQFireControlViewController: UIViewController {
             
             self.mapView(self.clickMapView, didAnnotationViewCalloutTapped: self.clickAnnotationView)
         }
+        
+
     }
     
     
@@ -186,6 +156,63 @@ class YQFireControlViewController: UIViewController {
     }
     
     
+    // MARK: - leftAndRightBarAdd
+    func leftAndRightButtonBarAdd(){
+    
+        //1.设置leftBar图片和点击事件
+        let image = UIImage(named : "icon_fire_admin")
+        let bnt = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let user = User.currentUser()
+        
+        if let url = user?.avatar,url != ""{
+            
+            if url.contains("http") {
+                
+                bnt.kf.setImage(with: URL(string: url), for: .normal)
+                
+            }else{
+                
+                let basicPath = URLPath.systemSelectionURL
+                let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                
+                bnt.kf.setImage(with: URL(string: imageValue), for: .normal)
+            }
+            
+        }else {
+            
+            //没有头像的话就是 显示这个占位图
+            bnt.setImage(image, for: .normal)
+        }
+        
+        bnt.layer.cornerRadius = 20
+        bnt.layer.borderColor = UIColor.black.cgColor
+        bnt.layer.borderWidth = 1.0
+        bnt.layer.masksToBounds = true
+        
+        bnt.addTarget(self, action:  #selector(leftBarButtonClick), for: UIControlEvents.touchUpInside)
+        
+        //设置显示原始图片的情况
+        // image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        // let item2=UIBarButtonItem(customView: btn1)
+        // self.navigationItem.rightBarButtonItem=item2
+        let left = UIBarButtonItem(customView: bnt)
+        self.navigationItem.leftBarButtonItem = left
+
+        //2.添加右边刷新按钮
+        let btn = UIButton()
+        btn.frame = CGRect.init(x: 0, y: 0, width: 40, height: 40)
+        btn.setTitle("刷新", for: .normal)
+        btn.setTitleColor(UIColor.blue, for: .normal)
+        btn.addTarget(self
+            , action: #selector(rightBarButtonClick), for: .touchUpInside)
+        
+        let right = UIBarButtonItem.init(customView: btn)
+        self.navigationItem.rightBarButtonItem = right
+        
+    
+    }
+    
+    
     // MARK: - leftBarButtonClick
     func leftBarButtonClick(){
         
@@ -194,7 +221,18 @@ class YQFireControlViewController: UIViewController {
             drawerController.setDrawerState(.opened, animated: true)
         }
 
+        
     }
+    
+    
+    // MARK: - rightBarButtonClick
+    func rightBarButtonClick(){
+        
+        //移除刷新,火警点的信息
+        makeMapLocationData()
+        
+    }
+    
     
     // MARK: - 手动添加定位按钮点击方法
     @IBAction func manualLocationBntClick(_ sender: Any) {
@@ -325,6 +363,10 @@ class YQFireControlViewController: UIViewController {
     // MARK: - 获取地图打点的位置坐标
     func makeMapLocationData(){
         
+        //1.移除以前和执行的火警点
+        fireMapView.removeAnnotations(fireMapView.annotations)
+        
+        //2.请求新的火警点的情况
         var parameters = [String : Any]()
         let token = UserDefaults.standard.object(forKey: Const.SJToken)
         parameters["token"] = token
@@ -345,6 +387,9 @@ class YQFireControlViewController: UIViewController {
                         let message = value["MSG"] as! String
                         
                         print(message)
+                        
+                        SVProgressHUD.showError(withStatus: message)
+                        
                         return
                     }
                     
@@ -353,6 +398,14 @@ class YQFireControlViewController: UIViewController {
                         
                         let array = data["firePointList"] as! NSArray
                         var temp = [YQFireLocationModel]()
+                        //添加火警数据的判空情况:
+                        if array.count <= 0 {
+                            
+                            SVProgressHUD.showError(withStatus: "没有火警点数据!")
+                            
+                            return
+                        }
+                        
                         
                         for dict in array{
                             
@@ -368,7 +421,10 @@ class YQFireControlViewController: UIViewController {
             case .failure(let error):
                 
                 debugPrint(error)
-                self.alert(message: "请求失败!")
+                
+                //self.alert(message: "请求失败!")
+                SVProgressHUD.showError(withStatus: "请求失败,没有更多数据!")
+                
                 break
             }
         }
@@ -434,7 +490,9 @@ class YQFireControlViewController: UIViewController {
                     guard value["CODE"] as! String == "0" else{
                         let message = value["MSG"] as! String
                         
-                        self.alert(message: message)
+                        //self.alert(message: message)
+                        SVProgressHUD.showError(withStatus: message)
+                        
                         return
                     }
                     
@@ -462,7 +520,9 @@ class YQFireControlViewController: UIViewController {
             case .failure(let error):
                 
                 debugPrint(error)
-                self.alert(message: "请求失败!")
+                //self.alert(message: "请求失败!")
+                SVProgressHUD.showError(withStatus: "请求失败,没有更多数据!")
+
                 break
             }
         }
@@ -541,7 +601,9 @@ class YQFireControlViewController: UIViewController {
                     guard value["CODE"] as! String == "0" else{
                         let message = value["MSG"] as! String
                         
-                        self.alert(message: message)
+                        //self.alert(message: message)
+                        SVProgressHUD.showError(withStatus: message)
+                        
                         return
                     }
                }
@@ -570,7 +632,9 @@ class YQFireControlViewController: UIViewController {
             case .failure(let error):
                 
                 debugPrint(error)
-                self.alert(message: "火警执行失败!")
+                //self.alert(message: "火警执行失败!")
+                SVProgressHUD.showError(withStatus: "请求失败,没有更多数据!")
+
                 break
             }
         }

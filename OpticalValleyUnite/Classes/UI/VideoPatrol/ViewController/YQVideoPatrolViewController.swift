@@ -327,8 +327,7 @@ class YQVideoPatrolViewController: UIViewController {
         var parameter = [String : Any]()
         parameter["insPointId"] = mapViewModel.insPointId
         videoAllSelectParmeter["insPointId"] = mapViewModel.insPointId
-      
-        
+
         if mapViewModel.type == 1 {//室内点,要求调用两个接口
             
             SVProgressHUD.show()
@@ -371,11 +370,8 @@ class YQVideoPatrolViewController: UIViewController {
                         floorArray.append("\(xx)" + "层")
                     }
 
-                
                 }
-                
-                
-               
+
                 
 //                for (key,value) in num!  {
 //                    

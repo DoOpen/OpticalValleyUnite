@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 protocol ImageProtocol {
     
     var image: UIImage {get}
@@ -184,6 +185,11 @@ class SJPhotpView: UIView {
         imageView.frame = bounds
         deleteBtn.frame = CGRect(x: width - kDeletBtnWH, y: 0, width: kDeletBtnWH, height: kDeletBtnWH)
     }
+    
+    
+    
+    
+    
     
     
 }

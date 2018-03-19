@@ -251,7 +251,8 @@ extension AppDelegate{
                     vc1.makeMapLocationData()
                     
                 }else{
-                    
+                
+                    //跳转到火警的界面
                     pushToFireController()
                 }
 

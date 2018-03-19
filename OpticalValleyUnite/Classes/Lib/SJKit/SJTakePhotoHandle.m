@@ -21,6 +21,7 @@ UIImagePickerControllerDelegate
 @property (nonatomic, copy) void(^selecteImageBlock)(UIImage *image);
 
 @property (nonatomic, weak) UIViewController *rootVc;
+
 @end
 
 @implementation SJTakePhotoHandle
@@ -39,9 +40,10 @@ UIImagePickerControllerDelegate
     view.rootVc = vc;
     
     BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
-    picker.maximumNumberOfSelection = 1;
+    //最多选择的图片张数
+    picker.maximumNumberOfSelection = 3;
+    //picker.minimumNumberOfSelection = 1;
     picker.multipleSelection = YES;
-    picker.multipleSelection = NO;
     picker.assetsFilter = [ALAssetsFilter allPhotos];
     picker.showEmptyGroups = YES;
     picker.delegate = view;
@@ -72,13 +74,13 @@ UIImagePickerControllerDelegate
         
         if (self.selecteImageBlock) {
             self.selecteImageBlock(tempImg);
-            self.selecteImageBlock = nil;
             [self removeFromSuperview];
         }
        
     }
     
     [picker dismissViewControllerAnimated:NO completion:nil];
+    self.selecteImageBlock = nil;
     
 }
 

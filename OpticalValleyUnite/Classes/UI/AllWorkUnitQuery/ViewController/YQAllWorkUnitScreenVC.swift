@@ -52,6 +52,10 @@ class YQAllWorkUnitScreenVC: UIViewController {
     
     @IBOutlet weak var endBtn: UIButton!
     
+    //项目的收起,执行的约束
+    @IBOutlet weak var projectHeightConstraint: NSLayoutConstraint!
+    
+    
     // "待派发","待接收","协助查看","待执行","待评价","已关闭"
     let workStatus = ["待派发","待接收","已退回","待执行","待评价","已关闭"] //暂时设置为nil,字面量的赋值取消
     
@@ -276,16 +280,26 @@ class YQAllWorkUnitScreenVC: UIViewController {
     // MARK: - 点击的收起,展开的效果
     @IBAction func springProjectButtonClick(_ sender: UIButton) {
         
-        sender.isSelected = !sender.isSelected
+
         if sender.isSelected {
-            sender.setTitle("收起", for: .normal)
             
+            //调节死约束
+            sender.setTitle("收起", for: .normal)
+            self.projectHeightConstraint.constant = 100
+            
+            view.setNeedsLayout()
             
         }else{
-             sender.setTitle("展开", for: .normal)
             
+            //设置活约束
+            sender.setTitle("展开", for: .normal)
+            self.projectHeightConstraint.constant = self.projectTagsView.contentSize.height
+            
+            view.setNeedsLayout()
+
         }
         
+        sender.isSelected = !sender.isSelected
         
     }
     

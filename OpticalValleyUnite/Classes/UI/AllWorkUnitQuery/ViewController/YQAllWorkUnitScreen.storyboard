@@ -160,13 +160,16 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPb-CJ-wOo">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPb-CJ-wOo">
                                                         <rect key="frame" x="364" y="7" width="40" height="30"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="40" id="4Bd-Go-lqe"/>
                                                             <constraint firstAttribute="height" constant="30" id="YJX-VD-A81"/>
                                                         </constraints>
-                                                        <state key="normal" title="收起"/>
+                                                        <state key="normal" title="收起">
+                                                            <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="springProjectButtonClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="vAa-Pq-wj2"/>
                                                         </connections>
@@ -185,7 +188,7 @@
                                                 <rect key="frame" x="0.0" y="45" width="414" height="90"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" priority="1" constant="90" id="kdJ-Dk-dUy"/>
+                                                    <constraint firstAttribute="height" constant="90" id="kdJ-Dk-dUy"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -632,6 +635,7 @@
                     <connections>
                         <outlet property="deviceTagsView" destination="9g2-UK-eYT" id="bZh-zZ-kVL"/>
                         <outlet property="endBtn" destination="sIZ-hw-O55" id="gfy-26-jpy"/>
+                        <outlet property="projectHeightConstraint" destination="kdJ-Dk-dUy" id="nHF-UO-elp"/>
                         <outlet property="projectTagsView" destination="XOh-bP-hZ5" id="ezf-8W-QUB"/>
                         <outlet property="reportTypeTagsView" destination="A9h-bP-f3D" id="kXy-qy-D16"/>
                         <outlet property="sourceTagsView" destination="BTr-SI-rYS" id="DTt-9f-gUP"/>

@@ -17,7 +17,6 @@ class YQScoreResult: UIView {
     
     @IBOutlet weak var pictureShowImageView: ShowImageView!
    
-
     @IBOutlet weak var itemPictureView: ShowImageView!
     
     @IBOutlet weak var remarkView: UITextView!
@@ -25,6 +24,9 @@ class YQScoreResult: UIView {
     @IBOutlet weak var starsViews: UIView!
     
     @IBOutlet weak var scoreLabel: UILabel!
+    
+    //要求得到控制器的指针:
+    var superVC : UIViewController?
     
     
     //数据模型
@@ -35,6 +37,11 @@ class YQScoreResult: UIView {
             self.describeLabel.text = model?.descriptionString
             
             if model?.imgPath != ""{
+                
+                var photoImage = [Photo]()
+                
+                var pUrl = Photo()
+
                 
                 var imageValue = ""
                 
@@ -50,13 +57,23 @@ class YQScoreResult: UIView {
                 
                 var temp = [String]()
                 temp.append(imageValue)
+                pUrl = Photo.init(urlString: imageValue)
+                photoImage.append(pUrl)
                 
                 pictureShowImageView.showImageUrls(temp)
                 
                 pictureShowImageView.didClickHandle = { index, image in
                     
-                    CoverView.show(image: image)
+                    //更换框架,添加的是 缩放,滚动,下载保存的框架
+                    //CoverView.show(image: image)
                     
+                    if self.model?.imgPath != ""{
+                        
+                        let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
+                        pb.indicatorStyle = .pageControl
+                        self.superVC?.present(pb, animated: true, completion: nil)
+                    }
+
                 }
             }
             
@@ -95,22 +112,32 @@ class YQScoreResult: UIView {
             //showimages组内容
             if model?.itemImgPath != "" {
                 
+                var photoImage = [Photo]()
+                
+
                 let images = model?.itemImgPath.components(separatedBy: ",")
                 
                 var temp = [String]()
                 
                 for url in images!{
                     
+                    var pUrl = Photo()
+                    
                     if url.contains("http"){
                         
                         temp.append(url)
+                        pUrl = Photo.init(urlString: url)
                         
                     }else{
                         
                         let basicPath = URLPath.systemSelectionURL
                         let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                         temp.append(imageValue)
+                        pUrl = Photo.init(urlString: imageValue)
+
                     }
+                    
+                    photoImage.append(pUrl)
                     
                 }
                 
@@ -118,7 +145,17 @@ class YQScoreResult: UIView {
                 
                 itemPictureView.didClickHandle = { index, image in
                     
-                    CoverView.show(image: image)
+                    //更换的框架; 添加, 滚动,缩放,下载保存
+                    //CoverView.show(image: image)
+                    
+                    if self.model?.itemImgPath != "" {
+                    
+                        let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
+                        pb.indicatorStyle = .pageControl
+                        self.superVC?.present(pb, animated: true, completion: nil)
+                    
+                    }
+
                 }
             }
         }

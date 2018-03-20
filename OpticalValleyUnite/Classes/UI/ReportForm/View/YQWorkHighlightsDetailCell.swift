@@ -43,6 +43,9 @@ class YQWorkHighlightsDetailCell: UITableViewCell {
             
             if model?.imgPaths != "" {
                 
+                var photoImage = [Photo]()
+                var pUrl = Photo()
+
                 var temp = [String]()
                 
                 let array =  model?.imgPaths.components(separatedBy: ",")
@@ -52,21 +55,33 @@ class YQWorkHighlightsDetailCell: UITableViewCell {
                     if (tempIndex.contains("http")){
                         
                         temp.append((tempIndex))
+                        pUrl = Photo.init(urlString: tempIndex)
                         
                     }else {
                         
                         let basicPath = URLPath.systemSelectionURL
                         let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (tempIndex)
                         temp.append(imageValue)
+                        
+                        pUrl = Photo.init(urlString: imageValue)
                     }
                     
+                    photoImage.append(pUrl)
                 }
                 
                 workHighlightImage.showImageUrls(temp)
                 
                 workHighlightImage.didClickHandle = { index, image in
                     
-                    CoverView.show(image: image)
+                    //更换框架情况: 使用的是,下载,保存,滚动缩放框架
+                    //CoverView.show(image: image)
+                    if self.model?.imgPaths != "" {
+                        
+                        let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
+                        pb.indicatorStyle = .pageControl
+                        SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
+                    }
+                    
                 }
             }
             

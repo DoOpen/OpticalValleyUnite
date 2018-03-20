@@ -32,25 +32,34 @@ class ExecutEmergencyCell: UITableViewCell {
                 
                 var temp = [String]()
                 
+                var photoImage = [Photo]()
+                
                 for url in model.pictures{
                     
                     if url == ""{
+                        
                         continue
                     }
+                    
+                    var photo = Photo()
                     
                     let basicPath = URLPath.systemSelectionURL
                     
                     if url.contains("http") {
                         
                         temp.append(url)
+                        photo = Photo.init(urlString: url)
                         
                     }else{
                         
                         let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                         
                         temp.append(imageValue)
-                    
+                        
+                        photo = Photo.init(urlString: imageValue)
                     }
+                    
+                    photoImage.append(photo)
                     
                 }
                 
@@ -66,14 +75,14 @@ class ExecutEmergencyCell: UITableViewCell {
                     showImageView.showImageUrls(temp)
                     
                     showImageView.didClickHandle = { index, image in
-                        CoverView.show(image: image)
-                }
+                        
+                        //框架替换_功能
+                        //CoverView.show(image: image)
+                        let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
+                        pb.indicatorStyle = .pageControl
+                        SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
+                    }
                 
-//                    for constraint in contentLabel.constraints{
-//                        
-//                    }
-                
-
                 }
                 
                 setNeedsLayout()

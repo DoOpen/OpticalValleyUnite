@@ -88,26 +88,39 @@ class YQPatrolItemScoreViewController: UIViewController {
         self.descriptionLabel.text = model?.descriptionString
         self.itemNumLabel.text = "共" + "\(count)" + "项"
         
-        if model?.imgPath != nil{
+        if model?.imgPath != ""{
             
+            
+            var photoImage = [Photo]()
             var imageValue = ""
+            var pUrl = Photo()
             
             if (model?.imgPath.contains("http"))!{
                 
                 imageValue = (model?.imgPath)!
+                pUrl = Photo.init(urlString: model?.imgPath)
                 
             }else{
                 
                 let basicPath = URLPath.systemSelectionURL
                 imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.imgPath)!
+                pUrl = Photo.init(urlString: imageValue)
             }
 
+            photoImage.append(pUrl)
             
             self.imageButton.showImageUrls([imageValue])
             
             self.imageButton.didClickHandle = { index, image in
                 
-                CoverView.show(image: image)
+                //框架改版,应用的是 缩放,下载,保存
+                //CoverView.show(image: image)
+                if self.model?.imgPath != ""{
+                    
+                    let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
+                    pb.indicatorStyle = .pageControl
+                    self.present(pb, animated: true, completion: nil)
+                }
             }
 
         }

@@ -77,24 +77,42 @@ class YQPatrolItemWeatherViewController: UIViewController {
         self.itemNumLabel.text = "共" + "\(count)" + "项"
         self.noButton.isSelected = true
         
-        if model?.imgPath != nil{
+        if model?.imgPath != ""{
             
             var imageValue = ""
+            var photoImage = [Photo]()
+            
+            var pUrl = Photo()
+
             
             if (model?.imgPath.contains("http"))!{
                 
                 imageValue = (model?.imgPath)!
+                pUrl = Photo.init(urlString: model?.imgPath)
                 
             }else{
                 
                 let basicPath = URLPath.systemSelectionURL
                 imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.imgPath)!
+                pUrl = Photo.init(urlString: imageValue)
             }
         
+            photoImage.append(pUrl)
+            
             self.addImageButton.showImageUrls([imageValue])
+            
             self.addImageButton.didClickHandle = { index, image in
                 
-                CoverView.show(image: image)
+                //改版的图片框架,保存,下载,缩放的功能
+                //CoverView.show(image: image)
+                
+                if self.model?.imgPath != ""{
+
+                    let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
+                    pb.indicatorStyle = .pageControl
+                    self.present(pb, animated: true, completion: nil)
+                }
+
             }
 
             

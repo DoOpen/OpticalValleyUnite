@@ -79,25 +79,35 @@ class YQFalsePositivesVC: UIViewController {
                            
                             
                             let imageString = dataList["imgPaths"] as! String
-                            //通过的是逗号拼接的
+                            //通过的是逗号拼接的,图片的显示和加载地址
+                            var photoImage = [Photo]()
+                            
                             if imageString != "" {
                                 
                                 var temp = [String]()
                                 
                                 let array =  imageString.components(separatedBy: ",")
                                 
+                                var pUrl = Photo()
+                                
                                 for tempIndex in array{
+                                    
                                     
                                     if (tempIndex.contains("http")){
                                         
                                         temp.append((tempIndex))
+                                        pUrl = Photo.init(urlString: tempIndex)
                                         
                                     }else {
                                         
                                         let basicPath = URLPath.systemSelectionURL
                                         let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (tempIndex)
                                         temp.append(imageValue)
+                                        
+                                        pUrl = Photo.init(urlString: imageValue)
                                     }
+                                    
+                                    photoImage.append(pUrl)
                                     
                                 }
                                 
@@ -105,10 +115,15 @@ class YQFalsePositivesVC: UIViewController {
                                 
                                 self.imagesView.didClickHandle = { index, image in
                                     
-                                    CoverView.show(image: image)
+                                    //改换框架的使用情况,下载.保存.缩放滚动
+                                    //CoverView.show(image: image)
+                                    let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
+                                    pb.indicatorStyle = .pageControl
+                                    SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
+                                    
                                 }
-                            }
 
+                            }
                         }
                     }
                     

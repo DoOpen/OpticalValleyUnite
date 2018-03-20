@@ -76,14 +76,29 @@ class ExecuteDetailSubImageCell: UITableViewCell {
                         showImageView.showImageUrls(imagesUrls)
                     }
                     
+                    var photo = [Photo]()
                     
-                    showImageView.didClickHandle = { _,image in
+                    for url in imagesUrls {
                         
-                        CoverView.show(image: image)
+                        let p = Photo.init(urlString: url)
+                        photo.append(p)
                         
                     }
                     
-//                    pictureView.kf.setImage(with: URL(string: imageValue))
+                    showImageView.didClickHandle = { _,image in
+                        
+                        //框架的重换操作--> 切换到轮播滚动的下载的操作
+                        //CoverView.show(image: image)
+                        
+                        let pb = PhotoBrowser(photos: photo , currentIndex: 0)
+                        
+                        pb.indicatorStyle = .pageControl
+                        
+                        SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
+
+                    }
+                    
+
                     imageHeightConstrait.constant = 76.0
                     
                 }else{
@@ -101,6 +116,8 @@ class ExecuteDetailSubImageCell: UITableViewCell {
     func imageViewClick() {
         
         if let image = pictureView.image{
+            
+            
             CoverView.show(image: image)
         }
         

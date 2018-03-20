@@ -39,13 +39,16 @@ class YQEquipHomeListCell: UITableViewCell {
             showContentView.text = model?.equipHouseName
             //图片
             
+            var photoImage = [Photo]()
             if model?.screenUrl != "" {//数组为 空的情况
                 
                 let basicPath = URLPath.systemSelectionURL
+                var pUrl = Photo()
                 
                 if (model?.screenUrl.contains("http"))! {
                     
                     showImageView.showImageUrls([(model?.screenUrl)!])
+                    pUrl = Photo.init(urlString: (model?.screenUrl)!)
                     
                 }else{
                     
@@ -53,7 +56,10 @@ class YQEquipHomeListCell: UITableViewCell {
                     
                     showImageView.showImageUrls([imageValue])
                     
+                    pUrl = Photo.init(urlString: imageValue)
                 }
+                
+                photoImage.append(pUrl)
                 
             }else{// 数组不为 空的情况
                 
@@ -62,7 +68,17 @@ class YQEquipHomeListCell: UITableViewCell {
             
             showImageView.didClickHandle = { _,image in
                 
-                CoverView.show(image: image)
+                
+                //改框架
+                //CoverView.show(image: image)
+                if self.model?.screenUrl != "" {
+                    
+                    let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
+                    pb.indicatorStyle = .pageControl
+                    SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
+                    
+                }
+
             }
             
             
@@ -158,6 +174,8 @@ class YQEquipHomeListCell: UITableViewCell {
             showContentView.text = detailModel?.equipName
             
             //图片
+            var photoImage = [Photo]()
+            
             if (detailModel?.logUrl != "") {//数组不为空的情况
                 
                 let basicPath = URLPath.systemSelectionURL
@@ -165,24 +183,38 @@ class YQEquipHomeListCell: UITableViewCell {
                 var imageArray = [String]()
                 
                 let image = (detailModel?.logUrl)!
+                var pUrl = Photo()
                 
                 if (image.contains("http")) {
                     
                     imageArray.append(image)
+                    pUrl = Photo.init(urlString: image)
                     
                 }else{
                     
                     let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + image
                     
                     imageArray.append(imageValue)
+                    
+                    pUrl = Photo.init(urlString: imageValue)
                 }
+                
+                photoImage.append(pUrl)
                 
                 showImageView.showImageUrls(imageArray)
             }
             
             showImageView.didClickHandle = { _,image in
                 
-                CoverView.show(image: image)
+                //改换框架的情况! 滚动,下载,加缩放的情况
+                //CoverView.show(image: image)
+                if self.detailModel?.logUrl != "" {
+                    
+                    let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
+                    pb.indicatorStyle = .pageControl
+                    SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
+                }
+
             }
             
             

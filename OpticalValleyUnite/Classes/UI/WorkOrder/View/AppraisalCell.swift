@@ -82,10 +82,15 @@ class AppraisalCell: UITableViewCell {
                 
                 var temp = [String]()
                 
+                var photoImage = [Photo]()
+                
                 for url in model.pictures{
+                    
+                    var pUrl = Photo.init()
                     
                     if url.contains("http") {
                         
+                        pUrl = Photo.init(urlString: url)
                         temp.append(url)
 
                     }else {
@@ -93,21 +98,29 @@ class AppraisalCell: UITableViewCell {
                         let basicPath = URLPath.systemSelectionURL
                         let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                         temp.append(imageValue)
+                        pUrl = Photo.init(urlString: imageValue)
+                        
                     }
+                    
+                    photoImage.append(pUrl)
                 }
                 
                 photoView.showImageUrls(temp)
                 
                 photoView.didClickHandle = { index, image in
                     
-                    CoverView.show(image: image)
+                    //切换滚动,轮播的图片显示框架
+                    //CoverView.show(image: image)
+                    let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
+                    pb.indicatorStyle = .pageControl
+                    SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
+
                     
                 }
                 
             }
             
             setNeedsLayout()
-            
             setNeedsDisplay()
             
         }

@@ -63,6 +63,7 @@ class YQResultDetailViewController: UIViewController {
                     let weather = Bundle.main.loadNibNamed("YQWeatherResult", owner: nil, options: nil)?[0] as! YQWeatherResult
                     weather.frame = CGRect.init(x: xxx, y: CGFloat(y), width: self.contentScrollView.width, height: self.contentScrollView.height)
                     weather.model = model
+                    weather.superVC = self
                     
                     self.contentScrollView.addSubview(weather)
                     
@@ -74,6 +75,7 @@ class YQResultDetailViewController: UIViewController {
                     
                     Score.frame = CGRect.init(x: xxx, y: CGFloat(y), width: self.contentScrollView.width, height: self.contentScrollView.height)
                     Score.model = model
+                    Score.superVC = self
                     
                     self.contentScrollView.addSubview(Score)
 

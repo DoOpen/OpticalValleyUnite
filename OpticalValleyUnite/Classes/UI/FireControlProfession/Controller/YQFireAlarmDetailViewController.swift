@@ -91,32 +91,45 @@ class YQFireAlarmDetailViewController: UIViewController {
 //                            self.proveImageV.kf.setImage(with: url, placeholder: UIImage(named: "avatar"), options: nil, progressBlock: nil, completionHandler: nil)
                             let imageString = dataList["imgPaths"] as! String
                             //通过的是逗号拼接的
+                            //图片展示
+                            var photoImage = [Photo]()
+                            
                             if imageString != "" {
                                 
                                 var temp = [String]()
                                 
                                 let array =  imageString.components(separatedBy: ",")
-                                
+                                //框架
+                                var pUrl = Photo()
                                 for tempIndex in array{
                                     
                                     if (tempIndex.contains("http")){
                                         
                                         temp.append((tempIndex))
+                                        pUrl = Photo.init(urlString: tempIndex)
+                                        
                                         
                                     }else {
                                         
                                         let basicPath = URLPath.systemSelectionURL
                                         let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (tempIndex)
                                         temp.append(imageValue)
+                                        pUrl = Photo.init(urlString: imageValue)
+
                                     }
+                                    photoImage.append(pUrl)
                                     
                                 }
                                 
                                 self.imagePathsView.showImageUrls(temp)
                                 
                                 self.imagePathsView.didClickHandle = { index, image in
+                                    //改换框架,应用切换保存,缩放,移动的图片框架
+                                    //CoverView.show(image: image)
+                                    let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
+                                    pb.indicatorStyle = .pageControl
+                                    SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
                                     
-                                    CoverView.show(image: image)
                                 }
                             }
                             

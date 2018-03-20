@@ -19,15 +19,9 @@ class SJAddView: UIView {
 
     var maxCount = 3
     
-    var photos = [ImageProtocol](){
-        
-        didSet{
-            
-           
-        
-        }
+    var photoImages = [Photo]()
     
-    }
+    var photos = [ImageProtocol]()
     
     var PhotpView : SJPhotpView?
     
@@ -70,17 +64,19 @@ class SJAddView: UIView {
                     photo.image == image.image
                     }) ?? 0
                 self.photos.remove(at: index)
-                
+                self.photoImages.remove(at: index)
+
             })
 
             photos.append(image)
-            
+            //添加控件的高级用法; 插入子视图, 最后添加最后一个addbutton
             insertSubview(self.PhotpView!, belowSubview: addButton)
             
             if photos.count == maxCount {
                 
                 addButton.removeFromSuperview()
             }
+            
         }
         
         layoutSubviews()
@@ -109,15 +105,32 @@ class SJAddView: UIView {
     }
     
     
+    //点击进行的预览 图片的情况
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
+        let pb = PhotoBrowser(photos: self.photoImages , currentIndex: 0)
+        pb.indicatorStyle = .pageControl
+        
+        SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
+        
+    }
+
+    
     
     @objc private func addBtnClick(){
         
+        //添加关联的index的索引值
+        let index = maxCount - self.photoImages.count
         
         SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
             
             self.addImage(AddViewModel(image: image!))
             
-        }, viewController: (SJKeyWindow?.rootViewController ))
+            let photo = Photo.init(image: image)
+            self.photoImages.append(photo)
+            
+        }, viewController: (SJKeyWindow?.rootViewController ),select : Int32(index))
         
         
     }
@@ -137,7 +150,10 @@ class SJAddView: UIView {
 class SJPhotpView: UIView {
     
     var imageView = UIImageView()
+    
     var deleteBlock: (()->())?
+    
+    var photos = [Photo]()
     
     lazy var deleteBtn: UIButton = {
         
@@ -157,6 +173,7 @@ class SJPhotpView: UIView {
         
         let view = SJPhotpView()
         view.imageView.image = image
+
         view.addSubview(view.imageView)
         view.addSubview(view.deleteBtn)
         view.deleteBlock = deletBtnClickBlock
@@ -179,17 +196,13 @@ class SJPhotpView: UIView {
     }
     
     override func layoutSubviews() {
+        
         super.layoutSubviews()
         
-        let kDeletBtnWH: CGFloat = 15.0
+        let kDeletBtnWH: CGFloat = 20.0
         imageView.frame = bounds
         deleteBtn.frame = CGRect(x: width - kDeletBtnWH, y: 0, width: kDeletBtnWH, height: kDeletBtnWH)
     }
-    
-    
-    
-    
-    
     
     
 }

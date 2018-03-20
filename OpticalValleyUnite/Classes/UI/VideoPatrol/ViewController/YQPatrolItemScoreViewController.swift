@@ -175,6 +175,8 @@ class YQPatrolItemScoreViewController: UIViewController {
     // MARK: - buttonClick的方法
     @IBAction func pictureButtonClick(_ sender: UIButton) {
         
+        let index = addImageView.maxCount - addImageView.photoImages.count
+        
         SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
             
             //直接的上传相应图片
@@ -191,7 +193,7 @@ class YQPatrolItemScoreViewController: UIViewController {
                 
             })
             
-        }, viewController: (SJKeyWindow?.rootViewController ))
+        }, viewController: (SJKeyWindow?.rootViewController ), select: Int32(index))
         
     }
     

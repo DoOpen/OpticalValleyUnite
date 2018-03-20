@@ -104,7 +104,7 @@
         
         self.photo = image;
         
-    } ViewController:vc];
+    } ViewController:vc selectIndex:1];
     
 }
 

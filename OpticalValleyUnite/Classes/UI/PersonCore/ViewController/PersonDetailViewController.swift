@@ -111,7 +111,7 @@ class PersonDetailViewController: UITableViewController{
                 self.uploadImage(image: image)
             }
             
-        }, viewController: self)
+        }, viewController: self, select: 1)// 选择头像的是 1 最大
         
     }
 

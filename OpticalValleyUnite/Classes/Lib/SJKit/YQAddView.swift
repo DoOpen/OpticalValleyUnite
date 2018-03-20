@@ -15,13 +15,11 @@ class YQAddView: UIView {
     
     var maxCount = 3
     
-    var photos = [ImageProtocol](){
-        
-        didSet{
-            
-        }
-        
-    }
+    var photos = [ImageProtocol]()
+    
+    var photoImages = [Photo]()
+    
+    
     
     var PhotpView : SJPhotpView?
     
@@ -103,16 +101,28 @@ class YQAddView: UIView {
     }
     
     
-    
+    //点击进行的预览 图片的情况
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
+        let pb = PhotoBrowser(photos: self.photoImages , currentIndex: 0)
+        pb.indicatorStyle = .pageControl
+        
+        SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
+        
+    }
+
+
     @objc private func addBtnClick(){
         
+        //添加关联的index的索引值
+        let index = maxCount - self.photoImages.count
         
         SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
             
             self.addImage(AddViewModel(image: image!))
             
-        }, viewController: (self.superVC))
-        
+        }, viewController: (self.superVC), select: Int32(index))
         
     }
     

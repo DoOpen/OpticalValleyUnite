@@ -48,12 +48,16 @@ class OprationConfirmationView: UIView {
     }
     
     @IBAction func takePhotpBtnClick() {
+        
         self.superview?.isHidden = true
+        
+        
         SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
             self.superview?.isHidden = false
             self.takePhotoBtn.setBackgroundImage(image, for: .normal)
 
-        }, viewController: (SJKeyWindow?.rootViewController as! UITabBarController).selectedViewController)
+        }, viewController: (SJKeyWindow?.rootViewController as! UITabBarController).selectedViewController, select: 1)//默认是选择1
+        
     }
     
     

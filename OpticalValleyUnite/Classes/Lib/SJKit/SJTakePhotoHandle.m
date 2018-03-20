@@ -30,7 +30,7 @@ UIImagePickerControllerDelegate
     NSLog(@"%s",__func__);
 }
 
-+ (void)takePhotoWithImageBlock:(void (^)(UIImage *))selectedImageBlock ViewController:(UIViewController *)vc{
++ (void)takePhotoWithImageBlock:(void (^)(UIImage *))selectedImageBlock ViewController:(UIViewController *)vc selectIndex :(int)index {
     
     //不让自己被释放了
     UIWindow *SJKeyWindow = [UIApplication sharedApplication].keyWindow;
@@ -41,7 +41,7 @@ UIImagePickerControllerDelegate
     
     BoPhotoPickerViewController *picker = [[BoPhotoPickerViewController alloc] init];
     //最多选择的图片张数
-    picker.maximumNumberOfSelection = 3;
+    picker.maximumNumberOfSelection = index;
     //picker.minimumNumberOfSelection = 1;
     picker.multipleSelection = YES;
     picker.assetsFilter = [ALAssetsFilter allPhotos];

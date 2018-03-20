@@ -148,6 +148,9 @@ class YQPatrolItemWeatherViewController: UIViewController {
     }
     
     @IBAction func addPictureButtonClick(_ sender: UIButton) {
+        
+        let index = self.addImageView.maxCount - self.addImageView.photos.count
+        
         //调用相册选择图片
         SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
             //直接的上传相应图片
@@ -164,7 +167,7 @@ class YQPatrolItemWeatherViewController: UIViewController {
                 
             })
             
-        }, viewController: (SJKeyWindow?.rootViewController ))
+        }, viewController: (SJKeyWindow?.rootViewController ), select: Int32(index))
         
     }
     

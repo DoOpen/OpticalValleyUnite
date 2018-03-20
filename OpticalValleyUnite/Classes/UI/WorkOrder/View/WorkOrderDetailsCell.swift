@@ -220,6 +220,7 @@ class WorkOrderDetailsCell: UITableViewCell {
         try! realm.commitWrite()
         
         if let block = changedHeight{
+            
             block()
         }
         
@@ -228,7 +229,6 @@ class WorkOrderDetailsCell: UITableViewCell {
     
     
     @IBAction func seephotoBtnClick() {
-        
         
         if let model = model{
             
@@ -260,9 +260,8 @@ class WorkOrderDetailsCell: UITableViewCell {
                 
                 let pb = PhotoBrowser(photos: photos, currentIndex: 0)
                 pb.indicatorStyle = .pageControl
-
-                
                 superVC?.present(pb, animated: true, completion: nil)
+                
             }
         }
 

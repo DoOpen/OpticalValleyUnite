@@ -10,6 +10,6 @@
 #import <UIKit/UIKit.h>
 @interface SJTakePhotoHandle : UIView
 
-+ (void)takePhotoWithImageBlock:(void(^)(UIImage *image)) selectedImageBlock ViewController:(UIViewController *)vc;
++ (void)takePhotoWithImageBlock:(void(^)(UIImage *image)) selectedImageBlock ViewController:(UIViewController *)vc selectIndex :(int) index;
 
 @end

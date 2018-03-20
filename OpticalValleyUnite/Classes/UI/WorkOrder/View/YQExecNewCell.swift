@@ -201,7 +201,7 @@ class YQExecNewCell: UITableViewCell {
             }
             
             
-        }, viewController: (SJKeyWindow?.rootViewController ))
+        }, viewController: (SJKeyWindow?.rootViewController ), select: 1)//工单执行的cell的选择是 默认 添加一张的图片
 
     }
     

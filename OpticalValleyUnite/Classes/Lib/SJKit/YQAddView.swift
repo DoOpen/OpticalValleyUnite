@@ -104,7 +104,11 @@ class YQAddView: UIView {
     //点击进行的预览 图片的情况
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        
+        if self.photoImages.count <= 0 {
+            
+            return
+        }
+
         let pb = PhotoBrowser(photos: self.photoImages , currentIndex: 0)
         pb.indicatorStyle = .pageControl
         

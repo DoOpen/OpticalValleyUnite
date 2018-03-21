@@ -59,7 +59,7 @@
                     </state>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qU-Jm-7rI" customClass="SJAddView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="289" width="375" height="100"/>
+                    <rect key="frame" x="10" y="289" width="355" height="100"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="Vkj-vZ-AN5"/>
@@ -111,7 +111,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N95-Pb-Smp">
-                    <rect key="frame" x="115" y="192.5" width="255" height="30"/>
+                    <rect key="frame" x="110" y="192.5" width="260" height="30"/>
                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -139,19 +139,19 @@
                 <constraint firstItem="4qU-Jm-7rI" firstAttribute="top" secondItem="KDl-g2-gLm" secondAttribute="bottom" constant="10" id="1BX-ge-6MW"/>
                 <constraint firstItem="tlf-sG-1BG" firstAttribute="top" secondItem="4qU-Jm-7rI" secondAttribute="bottom" constant="10" id="1xL-Kh-PUK"/>
                 <constraint firstItem="fJw-uH-cxD" firstAttribute="centerY" secondItem="FYD-iw-Kmb" secondAttribute="centerY" id="2EQ-Hb-5Vh"/>
-                <constraint firstAttribute="trailing" secondItem="N95-Pb-Smp" secondAttribute="trailing" constant="5" id="2Uq-dl-WIs"/>
                 <constraint firstItem="KDl-g2-gLm" firstAttribute="trailing" secondItem="WQV-cP-Tqa" secondAttribute="trailing" id="5pb-wV-EHf"/>
                 <constraint firstItem="l2B-ef-fkD" firstAttribute="top" secondItem="dlO-eS-T8Z" secondAttribute="top" constant="20" id="7AF-XZ-gxO"/>
+                <constraint firstAttribute="trailing" secondItem="N95-Pb-Smp" secondAttribute="trailing" constant="5" id="7DD-VK-eFl"/>
                 <constraint firstItem="WQV-cP-Tqa" firstAttribute="top" secondItem="QxI-6h-p81" secondAttribute="bottom" constant="100" id="7Le-I9-70U"/>
                 <constraint firstItem="Unf-Td-gJ7" firstAttribute="centerY" secondItem="QxI-6h-p81" secondAttribute="centerY" id="7ci-0K-maO"/>
                 <constraint firstItem="KDl-g2-gLm" firstAttribute="top" secondItem="WQV-cP-Tqa" secondAttribute="bottom" constant="30" id="7vu-Lx-Wnd"/>
                 <constraint firstItem="WQV-cP-Tqa" firstAttribute="trailing" secondItem="QxI-6h-p81" secondAttribute="trailing" id="9FP-Qm-cDN"/>
                 <constraint firstItem="fJw-uH-cxD" firstAttribute="leading" secondItem="FYD-iw-Kmb" secondAttribute="trailing" constant="10" id="CRP-xT-nSW"/>
-                <constraint firstAttribute="trailing" secondItem="4qU-Jm-7rI" secondAttribute="trailing" id="JGB-eu-dsp"/>
+                <constraint firstAttribute="trailing" secondItem="4qU-Jm-7rI" secondAttribute="trailing" constant="10" id="JGB-eu-dsp"/>
                 <constraint firstItem="FYD-iw-Kmb" firstAttribute="trailing" secondItem="QxI-6h-p81" secondAttribute="trailing" id="Lud-99-eXo"/>
                 <constraint firstItem="0Mn-u0-Oad" firstAttribute="centerY" secondItem="FYD-iw-Kmb" secondAttribute="centerY" id="Nay-Q6-jQc"/>
                 <constraint firstItem="Tnq-30-tIa" firstAttribute="leading" secondItem="Unf-Td-gJ7" secondAttribute="trailing" constant="5" id="TW4-Ho-i6Q"/>
-                <constraint firstItem="4qU-Jm-7rI" firstAttribute="leading" secondItem="dlO-eS-T8Z" secondAttribute="leading" id="YpN-Fa-pgi"/>
+                <constraint firstItem="4qU-Jm-7rI" firstAttribute="leading" secondItem="dlO-eS-T8Z" secondAttribute="leading" constant="10" id="YpN-Fa-pgi"/>
                 <constraint firstItem="N95-Pb-Smp" firstAttribute="centerY" secondItem="WQV-cP-Tqa" secondAttribute="centerY" id="ab9-F3-2m0"/>
                 <constraint firstItem="QxI-6h-p81" firstAttribute="centerX" secondItem="dlO-eS-T8Z" secondAttribute="centerX" constant="-120" id="eN4-2r-Lto"/>
                 <constraint firstItem="Unf-Td-gJ7" firstAttribute="leading" secondItem="QxI-6h-p81" secondAttribute="trailing" constant="10" id="lgl-FM-uh0"/>
@@ -159,7 +159,7 @@
                 <constraint firstItem="0Mn-u0-Oad" firstAttribute="leading" secondItem="fJw-uH-cxD" secondAttribute="trailing" constant="5" id="shW-t3-KNW"/>
                 <constraint firstItem="tlf-sG-1BG" firstAttribute="centerX" secondItem="dlO-eS-T8Z" secondAttribute="centerX" id="w1e-Md-JQX"/>
                 <constraint firstItem="l2B-ef-fkD" firstAttribute="centerX" secondItem="dlO-eS-T8Z" secondAttribute="centerX" id="wjE-xf-2sm"/>
-                <constraint firstItem="N95-Pb-Smp" firstAttribute="leading" secondItem="WQV-cP-Tqa" secondAttribute="trailing" constant="15" id="wqJ-lj-eRn"/>
+                <constraint firstItem="N95-Pb-Smp" firstAttribute="leading" secondItem="WQV-cP-Tqa" secondAttribute="trailing" constant="10" id="wqJ-lj-eRn"/>
                 <constraint firstItem="QxI-6h-p81" firstAttribute="top" secondItem="dlO-eS-T8Z" secondAttribute="top" constant="65" id="zeH-vH-c3l"/>
             </constraints>
             <connections>

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SVProgressHUD
+import MJRefresh
 
 
 class YQJoinTotallNumVC:UIViewController{
@@ -30,14 +31,10 @@ class YQJoinTotallNumVC:UIViewController{
         }
     }
     
+    var currentIndex = 0
+    
     //定义的是模型数组
-    var dataArray :[YQfireMessage]?{
-        didSet{
-            //刷新表格数据
-            self.detailTableV.reloadData()
-        
-        }
-    }
+    var dataArray = [YQfireMessage]()
     
     
     override func viewDidLoad() {
@@ -57,6 +54,9 @@ class YQJoinTotallNumVC:UIViewController{
         
         //添加调用接口数据
         requestFireDetailData(title: self.title!, time: nil, location: nil)
+        
+        //添加上拉下拉刷新界面
+        addRefirsh()
         
     }
     
@@ -140,7 +140,7 @@ class YQJoinTotallNumVC:UIViewController{
     
     
     // MARK: - 获取接口数据的方法
-    func requestFireDetailData(title : String, time : String?, location : String?){
+    func requestFireDetailData(title : String, time : String?, location : String?, pageSize : Int = 20, pageIndex : Int = 0 ){
         
         var type = -1
         
@@ -165,6 +165,8 @@ class YQJoinTotallNumVC:UIViewController{
         parameters["type"] = type
         parameters["time"] = time
         parameters["location"] = location
+        parameters["pageIndex"] = pageIndex
+        parameters["pageSize"] = pageSize
         
         SVProgressHUD.show(withStatus: "加载中...")
         Alamofire.request(URLPath.basicPath + URLPath.getFireList , method: .post, parameters: parameters).responseJSON { (response) in
@@ -178,26 +180,57 @@ class YQJoinTotallNumVC:UIViewController{
                     
                     guard value["CODE"] as! String == "0" else{
                         
-                        let message = value["MSG"] as! String
+                        guard value["MSG"] as? String != "token无效" else{
+                            
+                            LoginViewController.loginOut()
+                            print("token无效")
+                            return
+                        }
+
                         
-                        print(message)
+                        let message = value["MSG"] as! String
+                        SVProgressHUD.showError(withStatus: message)
                         
                         return
                     }
                     
                     if let data = value["data"] as? NSDictionary{
+                        
                         //字典转模型的操作
                         if let dataList:NSArray = data["data"] as? NSArray {
 
-                            var model = [YQfireMessage]()
+                            var tempModel = [YQfireMessage]()
                             
                             for dic in dataList{
                                 
-                                model.append(YQfireMessage.init(dict: dic as! [String : Any]))
+                                tempModel.append(YQfireMessage.init(dict: dic as! [String : Any]))
                             }
                             
-                            self.dataArray = model
-                        
+                            //添加上拉下拉的刷新,选项
+                            if pageIndex == 0{
+                                
+                                self.currentIndex = 0
+                                self.dataArray = tempModel
+                                self.detailTableV.mj_header.endRefreshing()
+                                self.detailTableV.mj_footer.resetNoMoreData()
+                                
+                            }else{
+                                
+                                if tempModel.count > 0{
+                                    
+                                    self.currentIndex = pageIndex
+                                    self.dataArray.append(contentsOf: tempModel)
+                                    self.detailTableV.mj_footer.endRefreshing()
+                                    
+                                }else{
+                                    
+                                    self.detailTableV.mj_footer.endRefreshingWithNoMoreData()
+                                    
+                                }
+                            }
+                            
+                            //刷新表格数据
+                            self.detailTableV.reloadData()
                         }
                         
                     }
@@ -215,21 +248,31 @@ class YQJoinTotallNumVC:UIViewController{
         }
     }
     
-    
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        detailTableV.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            self.requestFireDetailData(title: self.title!, time: self.timeButton.titleLabel?.text, location: self.seachTextField.text)
+        })
+        
+        
+        detailTableV.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+            self.requestFireDetailData(title: self.title!, time: self.timeButton.titleLabel?.text, location: self.seachTextField.text,pageIndex : self.currentIndex + 1)
+            
+        })
+        
+    }
+
 
 }
 
 extension YQJoinTotallNumVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.dataArray == nil{
-            return 0
-            
-        }else{
-            
-            return (dataArray?.count)!
-        }
-        
+       
+        return (dataArray.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -237,13 +280,12 @@ extension YQJoinTotallNumVC : UITableViewDelegate,UITableViewDataSource{
         let cell : YQFireDetailCell = tableView.dequeueReusableCell(withIdentifier: cellIndex, for: indexPath) as! YQFireDetailCell
         cell.deleage = self as YQFireDetailCellDeleage
         
-        cell.fireMessage = self.dataArray?[indexPath.row]
+        cell.fireMessage = self.dataArray[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-//        let view = [Bundle.main.loadNibNamed("YQJoinTotallHead", owner: nil, options: nil)].last as? YQJoinTotallHeadView
+
         
         return Bundle.main.loadNibNamed("YQJoinTotallHead", owner: nil, options: nil)![0] as? UIView
     }

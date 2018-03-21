@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import SnapKit
 
 class YQImplementFeedbackVC: UIViewController {
     
@@ -40,7 +41,7 @@ class YQImplementFeedbackVC: UIViewController {
         in
         
         let resolvedV = Bundle.main.loadNibNamed("YQResolved", owner: nil, options: nil)?[0] as! YQResolvedView
-        resolvedV.frame = self.contentView.bounds
+        
         resolvedV.delegate = self as YQResolvedViewDelegate
         return resolvedV
         
@@ -55,6 +56,12 @@ class YQImplementFeedbackVC: UIViewController {
         
         self.contentView.addSubview(resolve)
         
+        resolve.snp.makeConstraints { (maker) in
+            
+            maker.left.bottom.right.top.equalToSuperview()
+        }
+        
+        
     }
 
     // MARK: - 已解决按钮的点击
@@ -65,7 +72,13 @@ class YQImplementFeedbackVC: UIViewController {
         
         //移除添加
         self.falsePositive.removeFromSuperview()
+        
         contentView.addSubview(resolve)
+        resolve.snp.makeConstraints { (maker) in
+            
+            maker.left.bottom.right.top.equalToSuperview()
+        }
+
         
     }
     
@@ -155,32 +168,61 @@ class YQImplementFeedbackVC: UIViewController {
                 
                 for model in models {
                     
-                    self.resolve.ImplementPersonTextField.text = self.resolve.ImplementPersonTextField.text! + model.name + ","
                     
-                    self.resolve.implementPersonID = self.resolve.implementPersonID + model.id + ","
+                    if self.resolve.ImplementPersonTextField.text == "" {
+                        
+                        self.resolve.ImplementPersonTextField.text = model.name
+                        
+                        self.resolve.implementPersonID = model.id
+                        
+                    }else {
+                        
+                        self.resolve.ImplementPersonTextField.text = self.resolve.ImplementPersonTextField.text! + "," + model.name
+                        
+                        self.resolve.implementPersonID = self.resolve.implementPersonID + "," + model.id
+                        
+                    }
+                    
                 }
                 
             }else if self.tempView.isKind(of: YQFalsePositiveView.self){
                 
                 for model in models {
                     
-                    self.falsePositive.addNameTextField.text = self.falsePositive.addNameTextField.text! + model.name + ","
-                    self.falsePositive.implementPersonID = self.falsePositive.implementPersonID + model.id + ","
+                    if self.falsePositive.addNameTextField.text == "" {
+                        
+                        self.falsePositive.addNameTextField.text = model.name
+                        self.falsePositive.implementPersonID = model.id
+
+                    }else {
+                        
+                        self.falsePositive.addNameTextField.text = self.falsePositive.addNameTextField.text! + "," + model.name
+                        self.falsePositive.implementPersonID = self.falsePositive.implementPersonID + "," + model.id
+                        
+                    }
+                    
                 }
             }
         }
+        
         
         if type == 1 {
             
             for model in models {
                 
-                self.resolve.cooperatePersonTextField.text = self.resolve.cooperatePersonTextField.text! + model.name + ","
-                
-                self.resolve.cooperatePersonID = self.resolve.cooperatePersonID + model.id + ","
+                if self.resolve.cooperatePersonTextField.text == "" {
+                    
+                    self.resolve.cooperatePersonTextField.text = model.name
+                    self.resolve.cooperatePersonID = model.id
+                    
+                }else {
+                    
+                    self.resolve.cooperatePersonTextField.text = self.resolve.cooperatePersonTextField.text! + "," + model.name
+                    
+                    self.resolve.cooperatePersonID = self.resolve.cooperatePersonID + "," + model.id
+                }
             }
-
         }
-        
     }
 
     
@@ -235,7 +277,12 @@ extension YQImplementFeedbackVC : YQResolvedViewDelegate{
                     SVProgressHUD.dismiss()
                     SVProgressHUD.showSuccess(withStatus: "保存成功!")
                     
-                    self.navigationController?.popViewController(animated: true)
+                    self.navigationController?.popToRootViewController(animated: true)
+                    //通知super的关闭弹出执行
+                    let center = NotificationCenter.default
+                    let notiesName = NSNotification.Name(rawValue: "surperFeedbackNoties")
+                    center.post(name: notiesName, object: nil)
+                    
                     
                 }) { (error) in
                     
@@ -252,7 +299,13 @@ extension YQImplementFeedbackVC : YQResolvedViewDelegate{
                 
                 SVProgressHUD.dismiss()
                 SVProgressHUD.showSuccess(withStatus: "保存成功!")
-                self.navigationController?.popViewController(animated: true)
+
+                self.navigationController?.popToRootViewController(animated: true)
+                //通知super的关闭弹出执行
+                let center = NotificationCenter.default
+                let notiesName = NSNotification.Name(rawValue: "surperFeedbackNoties")
+                center.post(name: notiesName, object: nil)
+                
                 
             }) { (error) in
                 SVProgressHUD.showError(withStatus: "保存失败!")
@@ -339,8 +392,13 @@ extension YQImplementFeedbackVC : YQFalsePositiveViewDelegate{
                     
                     SVProgressHUD.dismiss()
                     SVProgressHUD.showSuccess(withStatus: "保存成功!")
-
-                    self.navigationController?.popViewController(animated: true)
+                    
+                    self.navigationController?.popToRootViewController(animated: true)
+                    
+                    //通知super的关闭弹出执行
+                    let center = NotificationCenter.default
+                    let notiesName = NSNotification.Name(rawValue: "surperFeedbackNoties")
+                    center.post(name: notiesName, object: nil)
                     
                 }) { (error) in
                     SVProgressHUD.showError(withStatus: "保存失败!")
@@ -357,9 +415,14 @@ extension YQImplementFeedbackVC : YQFalsePositiveViewDelegate{
                 
                 SVProgressHUD.showSuccess(withStatus: "保存成功!")
                 
-                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
+                //通知super的关闭弹出执行
+                let center = NotificationCenter.default
+                let notiesName = NSNotification.Name(rawValue: "surperFeedbackNoties")
+                center.post(name: notiesName, object: nil)
                 
             }) { (error) in
+                
                 SVProgressHUD.showError(withStatus: "保存失败!")
             }
         

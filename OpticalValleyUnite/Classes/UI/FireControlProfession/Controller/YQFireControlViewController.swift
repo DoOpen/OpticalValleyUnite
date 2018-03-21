@@ -88,9 +88,10 @@ class YQFireControlViewController: UIViewController {
         
         //获取火警状态的信息
         /*消防点信息, 地图打点使用*/
-        
         //消防需求的添加: 要求的是刷新火警点, 执行完了清除火警点!
         makeMapLocationData()
+        
+        
         
         
     }
@@ -99,11 +100,6 @@ class YQFireControlViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
-        
-        if !self.implementView.isHidden {
-            
-            self.mapView(self.clickMapView, didAnnotationViewCalloutTapped: self.clickAnnotationView)
-        }
         
 
     }
@@ -259,6 +255,21 @@ class YQFireControlViewController: UIViewController {
         let center = NotificationCenter.default//创建通知
         center.addObserver(self, selector: #selector(drawerSelectionFunction(info:)), name: NSNotification.Name(rawValue: "drawerDetailNoties"), object: nil)//单个值得传递
         center.addObserver(self, selector: #selector(drawerOpenClick), name: NSNotification.Name(rawValue: "openDrawerNoties"), object: nil)//单个值得传递
+        
+        //添加执行反馈的通知
+        let notiesName = NSNotification.Name(rawValue: "surperFeedbackNoties")
+        center.addObserver(self, selector: #selector(feedBackNoties), name: notiesName, object: nil)
+    
+        
+    }
+    
+    func feedBackNoties(){
+    
+    
+        self.mapView(self.clickMapView, annotationView: self.clickAnnotationView, calloutAccessoryControlTapped: nil)
+        
+        rightBarButtonClick()
+        
     }
     
     // MARK: - 通知打开抽屉
@@ -384,15 +395,22 @@ class YQFireControlViewController: UIViewController {
                 if let value = response.result.value as? [String: Any] {
                     
                     guard value["CODE"] as! String == "0" else{
+                        
+                        guard value["MSG"] as? String != "token无效" else{
+                            
+                            LoginViewController.loginOut()
+                            print("token无效")
+                            return
+                        }
+                        
+                        
                         let message = value["MSG"] as! String
-                        
                         print(message)
-                        
                         SVProgressHUD.showError(withStatus: message)
                         
                         return
                     }
-                    
+                
                     
                     if let data = value["data"] as? NSDictionary{
                         
@@ -490,9 +508,16 @@ class YQFireControlViewController: UIViewController {
                     guard value["CODE"] as! String == "0" else{
                         let message = value["MSG"] as! String
                         
+                        guard value["MSG"] as? String != "token无效" else{
+                            
+                            LoginViewController.loginOut()
+                            print("token无效")
+                            return
+                        }
+
                         //self.alert(message: message)
                         SVProgressHUD.showError(withStatus: message)
-                        
+
                         return
                     }
                     
@@ -601,6 +626,13 @@ class YQFireControlViewController: UIViewController {
                     guard value["CODE"] as! String == "0" else{
                         let message = value["MSG"] as! String
                         
+                        guard value["MSG"] as? String != "token无效" else{
+                            
+                            LoginViewController.loginOut()
+                            print("token无效")
+                            return
+                        }
+
                         //self.alert(message: message)
                         SVProgressHUD.showError(withStatus: message)
                         

@@ -163,9 +163,18 @@ class YQDrawerViewController: UIViewController {
                 if let value = response.result.value as? [String: Any] {
                     
                     guard value["CODE"] as! String == "0" else{
+                        
+                        guard value["MSG"] as? String != "token无效" else{
+                            
+                            LoginViewController.loginOut()
+                            print("token无效")
+                            return
+                        }
+
                         let message = value["MSG"] as! String
                         
-                        self.alert(message: message)
+                        //self.alert(message: message)
+                        SVProgressHUD.showError(withStatus: message)
                         return
                     }
                     

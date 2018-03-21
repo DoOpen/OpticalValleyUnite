@@ -103,7 +103,12 @@ class YQWorkHighlightsDetailCell: UITableViewCell {
             lightsportBottomLabel.text = model?.parkName
             
             createTimeLabel.text = model?.createTime
+            
+            self.layoutIfNeeded()
+            
         }
+        
+        
         
     }
 

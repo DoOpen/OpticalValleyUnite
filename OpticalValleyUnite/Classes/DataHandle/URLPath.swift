@@ -23,6 +23,8 @@ import Foundation
  
  6.新版的测试库环境: http://172.16.19.98:4399/
  
+ 7.新加的正式服务器环境: http://172.16.19.98:3018/
+ 
  */
 
 
@@ -43,7 +45,7 @@ struct URLPath {
     
     //服务器的basicBasicPath
     
-    static let basicBasic = "http://172.16.19.98:8091"
+    static let basicBasic = "http://172.16.19.98:3018"
     
     
     //服务器的basic 地址:

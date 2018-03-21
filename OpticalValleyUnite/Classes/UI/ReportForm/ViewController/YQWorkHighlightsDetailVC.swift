@@ -23,6 +23,9 @@ class YQWorkHighlightsDetailVC: UIViewController {
         
     }
     
+    //行高缓存
+    var heightDict = [String : Any]()
+    
     var cellID = "WorkHighlightsDetailCell"
     
     var parkID = ""
@@ -37,9 +40,6 @@ class YQWorkHighlightsDetailVC: UIViewController {
         
         self.automaticallyAdjustsScrollViewInsets = false
         
-        //注册原型cell 设置cell的每个的行高的情况
-        let nib = UINib(nibName: "YQWorkHighlightsDetailCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: cellID)
         
         let _ = setUpProjectNameLable()
         
@@ -170,17 +170,36 @@ extension YQWorkHighlightsDetailVC : UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! YQWorkHighlightsDetailCell
         
-        cell.indexPath = indexPath
-        cell.model = self.dataArray[indexPath.row]
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? YQWorkHighlightsDetailCell
         
-        return cell
+        if cell == nil {
+            
+            //注册原型cell 设置cell的每个的行高的情况
+            cell = Bundle.main.loadNibNamed("YQWorkHighlightsDetailCell", owner: nil, options: nil)?[0] as? YQWorkHighlightsDetailCell
+            
+        }
+        
+        cell?.indexPath = indexPath
+        cell?.model = self.dataArray[indexPath.row]
+        
+        //强制更新
+        cell?.layoutIfNeeded()
+        
+        //要求的定义的是 一个可变的字典的类型的来赋值
+        heightDict["\(indexPath.row)"] = cell?.cellForHeight()
+        
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 220
+        return heightDict["\(indexPath.row)"] as! CGFloat
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 350
     }
 
 }

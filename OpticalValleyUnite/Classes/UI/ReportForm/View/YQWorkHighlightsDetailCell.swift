@@ -19,11 +19,13 @@ class YQWorkHighlightsDetailCell: UITableViewCell {
     
     @IBOutlet weak var lightspotTitleLabel: UILabel!
     
-    @IBOutlet weak var lightspotContentText: SJTextView!
+    @IBOutlet weak var lightspotContentText: UILabel!
     
     @IBOutlet weak var lightsportBottomLabel: UILabel!
     
     @IBOutlet weak var createTimeLabel: UILabel!
+    
+    @IBOutlet weak var lastImageView: UIImageView!
     
     //传索引
     var indexPath : IndexPath?
@@ -37,9 +39,17 @@ class YQWorkHighlightsDetailCell: UITableViewCell {
     var model : YQWorkHighlightsDetailShowModel?{
         
         didSet{
+            
             //1.设置亮点的图片
             self.highlightImageV.image = UIImage.init(name: "img_light")
             highlightLabel.text = "亮点" + "\((indexPath?.row)! + 1)"
+            
+            workHighlightImage.imageUrls.removeAll()
+            
+            for view  in workHighlightImage.subviews {//移除 相应的缓存情况
+                
+                view.removeFromSuperview()
+            }
             
             if model?.imgPaths != "" {
                 
@@ -98,4 +108,17 @@ class YQWorkHighlightsDetailCell: UITableViewCell {
     }
 
   
+    // MARK: - 添加计算预估,动态行高
+    // MARK: - 返回非等高cell的height方法
+    func cellForHeight() -> CGFloat {
+        
+        print(self.lastImageView.maxY)
+        
+        return self.lastImageView.maxY
+        
+    }
+
+    
+    
+    
 }

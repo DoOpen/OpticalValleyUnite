@@ -42,7 +42,9 @@ class ShowImageView: UIView {
                 let imageString = urls[index] 
                 
                 let url = URL(string: imageString)
-                imageView.kf.setBackgroundImage(with: url, for: .normal)
+//                imageView.kf.setBackgroundImage(with: url, for: .normal)
+                
+                imageView.kf.setBackgroundImage(with: url, for: .normal, placeholder: UIImage.init(name: "camera"), options: nil, progressBlock: nil, completionHandler: nil)
             }
         }
     }

@@ -106,16 +106,6 @@ class ReportMasterViewController: UIViewController {
     
     var deriveChoose = false
     var deviceModel: Equipment?
-    
-    
-    
-//    if let token = UserDefaults.standard.object(forKey: "SJDeviceToken") as? String{
-//        
-//        parameters["UMENG_TOKEN"] = token
-//        
-//    }
-    
-    //缓存电梯报事的按钮组
 
     
     // MARK: - 视图生命周期的方法
@@ -161,6 +151,10 @@ class ReportMasterViewController: UIViewController {
                 // 默认调取了 业主的按钮
                 self.familyBtnClick()
                 
+                //设置默认的紧急的报事情况
+                self.urgentDegreeBtn = self.UrgentMatterlow
+                self.urgentDegreeBtnClick(urgentDegreeBtn!)
+                
             }
             
             
@@ -169,14 +163,48 @@ class ReportMasterViewController: UIViewController {
             
             self.elevatorReportHide()
             
+            if reportListDict != nil {
+                
+                
+                
+            }else{
+                
+                //设置默认的是tel报事
+                self.telBtnClick()
+                
+                //设置默认的紧急的报事情况
+                self.urgentDegreeBtn = self.UrgentMatterlow
+                self.urgentDegreeBtnClick(urgentDegreeBtn!)
+
+            }
+
+            
         }
 
-        //设置默认的紧急的报事情况
-        self.urgentDegreeBtn = self.UrgentMatterlow
-        self.urgentDegreeBtnClick(urgentDegreeBtn!)
-        
-        
+        //获取默认的项目选择
         getUserDefaultsProject()
+        
+        
+        if imageArray != nil {
+            
+            //设置缓存的图片情况
+            var imagePhoto = [Photo]()
+            
+            for data in imageArray!{
+                
+                let d = data as? Data
+                let image = UIImage.init(data: d!)
+                
+                self.addPhotoView.addImage(AddViewModel(image: image!))
+                
+                let photo = Photo.init(image: image)
+                imagePhoto.append(photo)
+            }
+            
+            self.addPhotoView.photoImages = imagePhoto
+            
+        }
+        
         
     }
     
@@ -831,7 +859,7 @@ class ReportMasterViewController: UIViewController {
         brokerBtn.isHidden = true
         selfCheckingBtn.isHidden = true
         spontaneousBtn.isHidden = true
-        self.telBtnClick()
+        
         
         contentHeightConstraint.constant = 0
         contenView.layoutIfNeeded()

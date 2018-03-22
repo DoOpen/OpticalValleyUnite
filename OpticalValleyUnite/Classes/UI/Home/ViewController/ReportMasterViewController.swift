@@ -14,6 +14,8 @@ import Alamofire
 
 class ReportMasterViewController: UIViewController {
     
+    var currentSelectTypeBtn : UIButton?
+    
 /// 普通报事的按钮的情况
     //代客按钮
     @IBOutlet weak var brokerBtn: UIButton!
@@ -66,13 +68,18 @@ class ReportMasterViewController: UIViewController {
     @IBOutlet weak var workTypeLabel: UILabel!
     
     @IBOutlet weak var addressLabel: UILabel!
+    
+    //详细的位置输入框
     @IBOutlet weak var address2Label: UITextField!
+    
+    
     @IBOutlet weak var textView: SJTextView!
     
     @IBOutlet weak var OwnerAddressTextField: UITextField!
     @IBOutlet weak var ownerNameTextField: UITextField!
     @IBOutlet weak var ownerPhoneTextField: UITextField!
     @IBOutlet weak var appointmentTimeLabel: UILabel!
+    
     @IBOutlet weak var addPhotoView: SJAddView!
     
     @IBOutlet weak var chooseAddressLabel: UILabel!
@@ -84,8 +91,10 @@ class ReportMasterViewController: UIViewController {
     @IBOutlet weak var deviceView: DeviceView!
     
 
-/// 紧急报事的情况下的按钮的缓存
+    /// 紧急报事的情况下的按钮的缓存
     var urgentDegreeBtn: UIButton?
+    
+    //紧急程度的按钮选项
     @IBOutlet weak var UrgentMatterlow: UIButton!
     
     var selfCheckingView = UIView()
@@ -113,16 +122,25 @@ class ReportMasterViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        //1.通过判断是普通报事,还是电梯报事
-        //        Alamofire.request(URLPath.basicPath + URLPath.typeOfReportMaster, method: .get, parameters: parameters, encoding: <#T##ParameterEncoding#>, headers: <#T##HTTPHeaders?#>).responseJSON { (response) in
         
+        //0.系统属性的归零处理情况
         navigationController?.setNavigationBarHidden(true, animated: false)
         
+        
+        //1.通过判断是普通报事,还是电梯报事
         if let reportName = UserDefaults.standard.object(forKey: Const.YQReportName){
             
             self.reportName = reportName as! String
             
         }
+        
+        //2.拿取plist的缓存数据
+        let myReport1 = NSHomeDirectory() + "/Documents/myReport/lists.plist"
+        let myReport2 = NSHomeDirectory() + "/Documents/myReport/images.plist"
+        
+        let imageArray = NSArray(contentsOfFile: myReport2)
+        let reportListDict = NSDictionary.init(contentsOfFile: myReport1)
+        
 
         if self.reportName == "报事"{ // 普通报事
             
@@ -130,10 +148,22 @@ class ReportMasterViewController: UIViewController {
             
             // selfCheckingView 直接加载xib的视图
             self.selfCheckingView = Bundle.main.loadNibNamed("ReportMasterView", owner: self, options: nil)![0] as! UIView
-            // 默认调取了 selfCheckingBtnClick
-            self.selfCheckingBtnClick()
-            // 默认调取了 familyBtnClick
-            self.familyBtnClick()
+            
+            if reportListDict != nil {
+                
+                
+                
+            }else{
+                
+                // 默认调取了 自检的按钮
+                self.selfCheckingBtnClick()
+                
+                // 默认调取了 业主的按钮
+                self.familyBtnClick()
+                
+            }
+            
+            
             
         }else{  //电梯报事
             
@@ -141,84 +171,11 @@ class ReportMasterViewController: UIViewController {
             
         }
 
-        
-        
-        //请求参数:
-//        var reportParameter = [String : Any]()
-//        
-//        SVProgressHUD.show(withStatus: "登录中")
-//        reportParameter["token"] = UserDefaults.standard.object(forKey: Const.SJToken)
-//        
-////        UserDefaults.standard.set(token, forKey: Const.SJToken)
-//
-//        
-//        //发送请求:
-//        Alamofire.request(URLPath.basicPath + URLPath.typeOfReportMaster,  parameters: reportParameter).responseJSON { (response) in
-//            
-//            SVProgressHUD.dismiss()
-//
-//            let type = response.result
-//            
-//            print(type)
-//            switch response.result {
-//                
-//                case .success(_):
-//                    
-//                    if let value = response.result.value as? [String: Any] {
-//                        
-//                        if let data:NSArray = value["data"] as? NSArray {
-//                            
-//                            if data.count < 1 {
-//                                
-//                                self.alert(message: "没有显示数据!")
-//                                self.elevatorReportHide()
-//                                
-//                                return
-//                            }
-//                                
-//                            let dict:NSDictionary = (data[0] as? NSDictionary)!
-//                            self.reportName = (dict["APP_MODULE_NAME"] as? String)!
-//                            
-//                            print(self.reportName)
-//                            
-//                            if self.reportName == "报事"{ // 普通报事
-//                                
-//                                self.reportHide()
-//                                
-//                                // selfCheckingView 直接加载xib的视图
-//                                self.selfCheckingView = Bundle.main.loadNibNamed("ReportMasterView", owner: self, options: nil)![0] as! UIView
-//                                // 默认调取了 selfCheckingBtnClick
-//                                self.selfCheckingBtnClick()
-//                                // 默认调取了 familyBtnClick
-//                                self.familyBtnClick()
-//                                
-//                            }else{  //电梯报事
-//                                
-//                                self.elevatorReportHide()
-//                            
-//                            }
-//                            
-//                        }
-//                        
-//                        break
-//                    }
-//                    
-//                    break
-//                
-//                case .failure(let error):
-//                    
-//                    debugPrint(error)
-//                    
-//                    break
-//            }
-//            
-//        }
-        
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "报事记录", style: .plain, target: self, action: "rightBtnClick")
-        
         //设置默认的紧急的报事情况
         self.urgentDegreeBtn = self.UrgentMatterlow
         self.urgentDegreeBtnClick(urgentDegreeBtn!)
+        
+        
         getUserDefaultsProject()
         
     }
@@ -249,6 +206,7 @@ class ReportMasterViewController: UIViewController {
     //MARK: - 报事类型按钮组clickEvents
     ///待客按钮clickEvents
     @IBAction func brokerBtnClick() {
+        
         setBtnSelect(btn: brokerBtn, true)
         setBtnSelect(btn: selfCheckingBtn, false)
         setBtnSelect(btn: spontaneousBtn, false)
@@ -258,6 +216,7 @@ class ReportMasterViewController: UIViewController {
         selfCheckingView.frame = contenView.bounds
         contenView.addSubview(selfCheckingView)
         
+        self.currentSelectTypeBtn = brokerBtn
     }
     
     /// 自检按钮selfCheckingBtnClick方法
@@ -271,6 +230,8 @@ class ReportMasterViewController: UIViewController {
         }
         contentHeightConstraint.constant = 0
         contenView.layoutIfNeeded()
+        
+        self.currentSelectTypeBtn = selfCheckingBtn
     }
     
     /// 自发按钮点击的方法
@@ -285,6 +246,8 @@ class ReportMasterViewController: UIViewController {
         }
         contentHeightConstraint.constant = 0
         contenView.layoutIfNeeded()
+        
+        self.currentSelectTypeBtn = spontaneousBtn
 
     }
 
@@ -295,7 +258,9 @@ class ReportMasterViewController: UIViewController {
         setBtnSelect(btn:maintenanceReportMaster , false)
         setBtnSelect(btn:otherReportMaster , false)
 
+        self.currentSelectTypeBtn = telReportMaster
     }
+    
     /// 维保按钮
     @IBAction func maintenanceBtnClick() {
         
@@ -303,6 +268,7 @@ class ReportMasterViewController: UIViewController {
         setBtnSelect(btn:maintenanceReportMaster , true)
         setBtnSelect(btn:otherReportMaster , false)
         
+        self.currentSelectTypeBtn = maintenanceReportMaster
     }
     
     /// 其它按钮
@@ -311,7 +277,10 @@ class ReportMasterViewController: UIViewController {
         setBtnSelect(btn:telReportMaster , false)
         setBtnSelect(btn:maintenanceReportMaster , false)
         setBtnSelect(btn:otherReportMaster , true)
+        
+        self.currentSelectTypeBtn = otherReportMaster
     }
+    
     
     // MARK: - 待客类型按钮方法点击
     ///(业主按钮)familyBtnClick方法
@@ -340,7 +309,6 @@ class ReportMasterViewController: UIViewController {
         appointmentTimeView.layoutIfNeeded()
     }
 
-    
     func setBtnSelect(btn: UIButton?, _ select: Bool){
         
         if let btn = btn{
@@ -529,6 +497,107 @@ class ReportMasterViewController: UIViewController {
         }
     }
     
+    // MARK: - 新增报事的本地的保存实现
+    @IBAction func saveButtonClick(_ sender: UIButton) {
+        
+        let myReport1 = NSHomeDirectory() + "/Documents/myReport/lists.plist"
+        let myReport2 = NSHomeDirectory() + "/Documents/myReport/images.plist"
+        
+        //报事的本地保存是: 通过实现的是plist 文件来进行的存储!
+        var plistDict = [String : Any]()
+        //工单类型的保存
+        var workType = [String : Any]()
+        workType["id"] = selectWorkType?.id
+        workType["name"] = selectWorkType?.name
+        
+        plistDict["selectWorkType"] = workType
+        //工单描述
+        plistDict["DESCRIPTION"] = textView.text
+        //紧急程度的level
+        plistDict["level"] = urgentDegreeBtn?.tag
+        //报事位置的保存
+        if selectParkInfo?.FLOOR_ID != ""{
+            
+            var reportLocation = [String : Any]()
+            
+            reportLocation["STAGE_ID"] = selectParkInfo?.STAGE_ID
+            reportLocation["FLOOR_ID"] = selectParkInfo?.FLOOR_ID
+            reportLocation["HOUSE_ID"] = selectParkInfo?.id
+                
+            reportLocation["STAGE_Name"] = selectParkInfo?.STAGE_Name
+            reportLocation["FLOOR_Name"] = selectParkInfo?.FLOOR_Name
+            reportLocation["name"] = selectParkInfo?.name
+            
+            plistDict["selectParkInfo"] = reportLocation
+        }
+        
+        //详细位置信息的保存
+        plistDict["EVENT_ADDR"] = address2Label.text
+        
+        //是否是 设备报事情况
+        if deviceModel?.id != -1 {
+            
+            var deviceMessage = [String : Any]()
+            
+            deviceMessage["id"] = deviceModel?.id
+            deviceMessage["equip_code"] = deviceModel?.equip_code
+            deviceMessage["floor_name"] = deviceModel?.floor_name
+            deviceMessage["address"] = deviceModel?.address
+            deviceMessage["brand"] = deviceModel?.brand
+            deviceMessage["ground_num"] = deviceModel?.ground_num
+            deviceMessage["type_name"] = deviceModel?.type_name
+            deviceMessage["model_name"] = deviceModel?.model_name
+            deviceMessage["stage_name"] = deviceModel?.stage_name
+            deviceMessage["name"] = deviceModel?.name
+            deviceMessage["unit_num"] = deviceModel?.unit_num
+
+            //设备id
+            plistDict["deviceModel"] = deviceMessage
+        }
+        
+        plistDict["EVENT_TYPE"] = self.currentSelectTypeBtn?.titleLabel?.text
+        
+        //待客 模式报错的情况
+        if brokerBtn.isSelected {
+            
+            var ValetReport = [String : Any]()
+            
+            ValetReport["CUSTOMER_NAME"] = ownerNameTextField.text
+            ValetReport["CUSTOMER_ADDR"] = OwnerAddressTextField.text
+            
+            ValetReport["CUSTOMER_PHONE"] = ownerPhoneTextField.text
+            
+            ValetReport["REPRE_TYPE"] = !famlyBtn.isSelected
+            
+            ValetReport["EXEC_DATE"] = selectDate?.dataString(dateFormetStr: "yyyy-MM-dd HH:mm:ss")
+            
+            //待客的模块的专用的数据缓存
+            plistDict["brokerBtn"] = ValetReport
+        
+        }
+        
+        NSDictionary.init(dictionary: plistDict).write(toFile: myReport1, atomically: true)
+        
+        //图片的保存plist 数据情况!
+        let images = addPhotoView.photos.map{$0.image}
+        
+        if images.count > 0 {
+            
+            var dataArray = Array<NSData>()
+            
+            for image in images {
+                
+                let data : NSData = UIImageJPEGRepresentation(image, 1.0)! as NSData
+                dataArray.append(data)
+            }
+            
+            NSArray.init(array: dataArray).write(toFile: myReport2, atomically: true)
+        }
+        
+        SVProgressHUD.showSuccess(withStatus: "数据保存成功!")
+        
+    }
+    
     
     // MARK: - 提交-完成buttonClick
     @IBAction func doneBtnClick() {
@@ -542,6 +611,7 @@ class ReportMasterViewController: UIViewController {
             SVProgressHUD.showError(withStatus: "请选择一个工单类型")
             return
         }
+        
 //        if selectParkInfo == nil {
 //            SVProgressHUD.showError(withStatus: "请选择地址")
 //            return
@@ -665,14 +735,31 @@ class ReportMasterViewController: UIViewController {
                 
                     
                     SVProgressHUD.showSuccess(withStatus: "提交成功")
-                    _ = self.navigationController?.popViewController(animated: true)
                     //主线程设置 button可用
                     DispatchQueue.main.async {
+                        
                         self.SubmitBtn.isUserInteractionEnabled = true
                         self.view .layoutIfNeeded()
+                        
+                        //操作文件管理器的类
+                        let fileManager = FileManager.default
+                        let myReport1 = NSHomeDirectory() + "/Documents/myReport/lists.plist"
+                        let myReport2 = NSHomeDirectory() + "/Documents/myReport/images.plist"
+                        
+                        do {
+                            
+                            _ = try fileManager.removeItem(atPath: myReport1)
+                            _ = try fileManager.removeItem(atPath: myReport2)
+                            
+                        } catch  {
+                            
+                            print("文件不存在!")
+                        }
+
                     }
                     
-                    
+                    self.navigationController?.popViewController(animated: true)
+
                 }) { (error) in
                     
                     print(error)
@@ -695,14 +782,33 @@ class ReportMasterViewController: UIViewController {
         HttpClient.instance.post(path: URLPath.reportMaster, parameters: parmarReport, success: { (response) in
             
             SVProgressHUD.showSuccess(withStatus: "提交成功")
-            _ = self.navigationController?.popViewController(animated: true)
             
             //主线程设置 button可用
             DispatchQueue.main.async {
                 
                 self.SubmitBtn.isUserInteractionEnabled = true
                 self.view .layoutIfNeeded()
+                
+                //保存完成后进行移除plist 文件
+                //操作文件管理器的类
+                let fileManager = FileManager.default
+                let myReport1 = NSHomeDirectory() + "/Documents/myReport/lists.plist"
+                let myReport2 = NSHomeDirectory() + "/Documents/myReport/images.plist"
+                
+                do {
+                    
+                    _ = try fileManager.removeItem(atPath: myReport1)
+                    _ = try fileManager.removeItem(atPath: myReport2)
+                    
+                } catch  {
+                    
+                    print("文件不存在!")
+                }
+
             }
+            
+            self.navigationController?.popViewController(animated: true)
+            
             
         }) { (error) in
             
@@ -713,7 +819,6 @@ class ReportMasterViewController: UIViewController {
                 self.view .layoutIfNeeded()
                 
             }
-
         }
         
     }
@@ -722,6 +827,7 @@ class ReportMasterViewController: UIViewController {
     // MARK: - 电梯报事和报事hide方法
     /// 电梯报事
     func elevatorReportHide(){
+        
         brokerBtn.isHidden = true
         selfCheckingBtn.isHidden = true
         spontaneousBtn.isHidden = true
@@ -734,6 +840,7 @@ class ReportMasterViewController: UIViewController {
     
     /// 报事
     func reportHide(){
+        
         telReportMaster.isHidden = true
         maintenanceReportMaster.isHidden = true
         otherReportMaster.isHidden = true

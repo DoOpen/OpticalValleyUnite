@@ -380,6 +380,22 @@ class LoginViewController: UIViewController {
             realm.deleteAll()
         }
         
+        //报事 - 信息保存 退出移除plist的文件
+        //操作文件管理器的类
+        let fileManager = FileManager.default
+        let myReport1 = NSHomeDirectory() + "/Documents/myReport/lists.plist"
+        let myReport2 = NSHomeDirectory() + "/Documents/myReport/images.plist"
+        
+        do {
+            
+            _ = try fileManager.removeItem(atPath: myReport1)
+            _ = try fileManager.removeItem(atPath: myReport2)
+            
+        } catch  {
+            
+            print("文件不存在!")
+        }
+
     }
     
 

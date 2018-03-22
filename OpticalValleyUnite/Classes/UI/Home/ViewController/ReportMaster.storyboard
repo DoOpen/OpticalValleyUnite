@@ -853,7 +853,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzn-j2-1Ro">
-                                        <rect key="frame" x="0.0" y="740" width="375" height="54"/>
+                                        <rect key="frame" x="0.0" y="739" width="375" height="54"/>
                                         <color key="backgroundColor" red="0.19215686269999999" green="0.64705882349999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="rkR-R7-IRG"/>
@@ -866,18 +866,31 @@
                                             <action selector="doneBtnClick" destination="emb-JF-xJq" eventType="touchUpInside" id="N7x-jJ-vLH"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVZ-OI-GnF">
+                                        <rect key="frame" x="305" y="669" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="JWj-lu-J1u"/>
+                                            <constraint firstAttribute="width" constant="60" id="zT9-xx-Q23"/>
+                                        </constraints>
+                                        <state key="normal" image="btn_publish_keep_n"/>
+                                        <connections>
+                                            <action selector="saveButtonClick:" destination="emb-JF-xJq" eventType="touchUpInside" id="aZA-j3-agw"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.95686274510000002" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="ZjG-9r-oRi" firstAttribute="top" secondItem="LJn-83-psO" secondAttribute="top" id="0pb-PF-cs8"/>
+                                    <constraint firstAttribute="trailing" secondItem="oVZ-OI-GnF" secondAttribute="trailing" constant="10" id="7aX-Kf-Gmf"/>
                                     <constraint firstItem="RQh-SQ-5fb" firstAttribute="top" secondItem="ZjG-9r-oRi" secondAttribute="bottom" constant="10" id="7gj-d8-wwM"/>
                                     <constraint firstAttribute="trailing" secondItem="wHW-ow-2GA" secondAttribute="trailing" id="8uK-ad-JzS"/>
                                     <constraint firstAttribute="trailing" secondItem="OQZ-Ns-IHW" secondAttribute="trailing" id="DwS-et-X28"/>
                                     <constraint firstItem="OQZ-Ns-IHW" firstAttribute="leading" secondItem="LJn-83-psO" secondAttribute="leading" id="F7c-MT-uXB"/>
                                     <constraint firstItem="zzn-j2-1Ro" firstAttribute="leading" secondItem="LJn-83-psO" secondAttribute="leading" id="IZo-zE-KLa"/>
                                     <constraint firstAttribute="bottom" secondItem="zzn-j2-1Ro" secondAttribute="bottom" constant="10" id="SwX-pY-nlv"/>
+                                    <constraint firstItem="zzn-j2-1Ro" firstAttribute="top" secondItem="oVZ-OI-GnF" secondAttribute="bottom" constant="10" id="UAn-tV-yFK"/>
                                     <constraint firstItem="RQh-SQ-5fb" firstAttribute="leading" secondItem="LJn-83-psO" secondAttribute="leading" id="Y4J-2A-uXE"/>
-                                    <constraint firstItem="zzn-j2-1Ro" firstAttribute="top" secondItem="OQZ-Ns-IHW" secondAttribute="bottom" constant="11" id="cDz-94-DpO"/>
+                                    <constraint firstItem="zzn-j2-1Ro" firstAttribute="top" secondItem="OQZ-Ns-IHW" secondAttribute="bottom" constant="10" id="cDz-94-DpO"/>
                                     <constraint firstAttribute="trailing" secondItem="RQh-SQ-5fb" secondAttribute="trailing" id="csn-Uu-xLc"/>
                                     <constraint firstItem="OQZ-Ns-IHW" firstAttribute="top" secondItem="wHW-ow-2GA" secondAttribute="bottom" constant="10" id="fgS-ot-wwY"/>
                                     <constraint firstItem="ZjG-9r-oRi" firstAttribute="centerX" secondItem="LJn-83-psO" secondAttribute="centerX" id="lLR-5N-xtV"/>
@@ -937,7 +950,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4oA-lX-4s8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-150" y="64"/>
+            <point key="canvasLocation" x="-151.19999999999999" y="63.868065967016499"/>
         </scene>
         <!--工作分类-->
         <scene sceneID="43f-sO-rHr">
@@ -1745,6 +1758,7 @@
     </scenes>
     <resources>
         <image name="btn_checked_big" width="20" height="20"/>
+        <image name="btn_publish_keep_n" width="65" height="65"/>
         <image name="camera" width="30" height="30"/>
         <image name="chaxu" width="30" height="30"/>
         <image name="chaxu-1" width="30" height="30"/>

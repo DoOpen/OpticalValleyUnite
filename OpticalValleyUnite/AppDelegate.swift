@@ -256,7 +256,15 @@ extension AppDelegate{
                     pushToFireController()
                 }
 
+            }else if type == "日志"{
+            
+                let journalID = userInfo["id"] as! String
+                pushToJournalDetailController(journalId: journalID)
+            
             }
+            
+            
+            
         }
     }
     
@@ -362,6 +370,16 @@ extension AppDelegate{
         
         SJKeyWindow!.rootViewController?.present(drawerController, animated: true, completion: nil)
 //        getNavController()?.pushViewController(drawerController, animated: true)
+        
+    }
+    
+    // MARK: - push到 日志详情界面
+    func pushToJournalDetailController(journalId : String ){
+        
+        let journal = UIStoryboard.instantiateInitialViewController(name: "YQJournalDetail") as! YQJournalDetailViewController
+        journal.workIDid = Int64(journalId)!
+        
+        getNavController()?.pushViewController(journal, animated: true)
         
     }
     

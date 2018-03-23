@@ -129,7 +129,7 @@ class YQLocationDetailsVC: UIViewController {
                     
                 }
                 par["floorId"] = model1?.floorId
-                par["unitNu"] = model?.unitNu
+                par["unitNu"] = model?.unitNo
             
                 self.getGroundNoData(par: par)
                 
@@ -148,7 +148,7 @@ class YQLocationDetailsVC: UIViewController {
                     
                 }
                 par["floorId"] = model2?.floorId
-                par["unitNu"] = model?.unitNu
+                par["unitNu"] = model?.unitNo
                 par["groundNo"] = model1?.groundNo
                 
                 self.getHouseData(par: par)
@@ -407,11 +407,11 @@ extension YQLocationDetailsVC : UITableViewDelegate,UITableViewDataSource{
                 break
             
             case "单元":
-                cell?.textLabel?.text = UnitNo[indexPath.row].unitNuName
+                cell?.textLabel?.text = UnitNo[indexPath.row].unitNoName
                 break
             
             case "楼":
-                cell?.textLabel?.text = groupNo[indexPath.row].groundNoName
+                cell?.textLabel?.text = groupNo[indexPath.row].groundNo
                 break
             
             case "房号":

@@ -234,7 +234,7 @@ class YQHouseHomeVC: UIViewController {
         var par = [String : Any]()
         par["stageId"] = stage?.stageId
         par["floorId"] = floor?.floorId
-        par["unitNu"] = unitNo?.unitNu
+        par["unitNu"] = unitNo?.unitNo
         par["groundNo"] = groupNo?.groundNo
         par["houseId"] = house?.houseId
         par["phone"] = phone

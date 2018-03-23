@@ -59,9 +59,9 @@ class YQDecorationUnitNoModel : NSObject {
     //楼层ID
 //    var floorId = ""
     //单元号
-    var unitNuName = ""
+    var unitNoName = ""
     //单元数
-    var unitNu = -1
+    var unitNo = ""
     
     init(dict : [String : Any]) {
         super.init()
@@ -79,9 +79,9 @@ class YQDecorationUnitNoModel : NSObject {
 class YQDecorationGroundNoModel : NSObject {
     
     //楼号id
-    var groundNo = -1
+    var groundNo = ""
     //楼
-    var groundNoName = ""
+    //var groundNoName = ""
     
     
     init(dict : [String : Any]) {

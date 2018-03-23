@@ -212,12 +212,12 @@ class YQJournalViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = leftBarItem
         
-        //right
-        let right_select_Button = UIButton()
-        right_select_Button.frame = CGRect(x : 0, y : 0, width : 20, height : 40)
-        
-        right_select_Button.setImage(UIImage(named: "筛选"), for: .normal)
-        right_select_Button.addTarget(self, action: #selector(selectRightBarItemButtonClick), for: .touchUpInside)
+        //right  注释 筛选功能项
+//        let right_select_Button = UIButton()
+//        right_select_Button.frame = CGRect(x : 0, y : 0, width : 20, height : 40)
+//        
+//        right_select_Button.setImage(UIImage(named: "筛选"), for: .normal)
+//        right_select_Button.addTarget(self, action: #selector(selectRightBarItemButtonClick), for: .touchUpInside)
         
         let right_add_Button = UIButton()
         right_add_Button.frame = CGRect(x : 0, y : 0, width : 20, height : 40)
@@ -225,12 +225,12 @@ class YQJournalViewController: UIViewController {
         right_add_Button.setImage(UIImage(named: "发布"), for: .normal)
         right_add_Button.addTarget(self, action: #selector(addRightBarItemButtonClick), for: .touchUpInside)
         
-        let  right1Bar = UIBarButtonItem()
-        right1Bar.customView = right_select_Button
+//        let  right1Bar = UIBarButtonItem()
+//        right1Bar.customView = right_select_Button
         let  right2Bar = UIBarButtonItem()
         right2Bar.customView = right_add_Button
         
-        self.navigationItem.rightBarButtonItems = [right1Bar,right2Bar]
+        self.navigationItem.rightBarButtonItems = [right2Bar]
         
     }
     

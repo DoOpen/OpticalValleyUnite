@@ -144,13 +144,13 @@ extension YQDecorationScreenVC : UITableViewDataSource,UITableViewDelegate{
         case "单元":
             let model = self.selectePrameter["unitNo"] as? YQDecorationUnitNoModel
             
-            cell.locationLabel.text = model?.unitNuName ?? ""
+            cell.locationLabel.text = model?.unitNoName ?? ""
             break
             
         case "楼":
             
             let model = self.selectePrameter["groupNo"] as? YQDecorationGroundNoModel
-            cell.locationLabel.text = model?.groundNoName ?? ""
+            cell.locationLabel.text = model?.groundNo ?? ""
             break
 
         case "房号":

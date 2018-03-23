@@ -73,7 +73,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afI-4t-XNC">
                                         <rect key="frame" x="0.0" y="200" width="375" height="45"/>
                                         <subviews>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-Kf-xUU">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-Kf-xUU">
                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="第x名">
@@ -83,7 +83,7 @@
                                                     <action selector="rankDetailJumpClick:" destination="D6u-bk-GSU" eventType="touchUpInside" id="VYx-bq-UNc"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaC-rd-whP">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaC-rd-whP">
                                                 <rect key="frame" x="125" y="0.0" width="125" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="第x名">
@@ -93,7 +93,7 @@
                                                     <action selector="rankDetailJumpClick:" destination="D6u-bk-GSU" eventType="touchUpInside" id="fEt-4Q-4y6"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcZ-ni-pYa" userLabel="groupButton">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcZ-ni-pYa" userLabel="groupButton">
                                                 <rect key="frame" x="250" y="0.0" width="125" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="第x名">
@@ -110,19 +110,19 @@
                                                     <constraint firstAttribute="width" constant="1" id="K7u-hW-rvL"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本项目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ug-D6-3eo" userLabel="项目Label">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本集团" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ug-D6-3eo" userLabel="项目Label">
                                                 <rect key="frame" x="43" y="29" width="40" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本部门" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb3-zy-Spb" userLabel="部门Label">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本项目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb3-zy-Spb" userLabel="部门Label">
                                                 <rect key="frame" x="168" y="29" width="40" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本集团" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcS-Km-jls" userLabel="集团Label">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本部门" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcS-Km-jls" userLabel="集团Label">
                                                 <rect key="frame" x="293" y="29" width="40" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,9 +188,9 @@
                     <connections>
                         <outlet property="backGroudImageV" destination="fa0-HG-ivD" id="Ryc-wR-BDy"/>
                         <outlet property="contentView" destination="Cv4-FQ-OF4" id="xiO-bV-iDM"/>
-                        <outlet property="departmentRankingButton" destination="ZaC-rd-whP" id="9WC-0M-Jne"/>
-                        <outlet property="groupRandingButton" destination="qcZ-ni-pYa" id="0Bq-rS-JxN"/>
-                        <outlet property="projectRankingButton" destination="eRc-Kf-xUU" id="eQb-WK-SgW"/>
+                        <outlet property="departmentRankingButton" destination="qcZ-ni-pYa" id="AkE-D3-7Il"/>
+                        <outlet property="groupRandingButton" destination="eRc-Kf-xUU" id="tP9-wG-FMX"/>
+                        <outlet property="projectRankingButton" destination="ZaC-rd-whP" id="r7R-r1-1A8"/>
                         <outlet property="stepLabel" destination="ccf-OU-N7l" id="OB3-7c-pzX"/>
                         <outlet property="tableView" destination="4Op-ly-kcj" id="yzH-b7-uEL"/>
                         <outlet property="testLabel" destination="vCy-ow-dsM" id="h9k-7i-PJR"/>

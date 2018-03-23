@@ -23,7 +23,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-p9-U3n">
-                    <rect key="frame" x="20" y="26" width="70" height="30"/>
+                    <rect key="frame" x="183.5" y="26" width="70" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="BH3-yq-QBM"/>
@@ -43,7 +43,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tce-on-NNs">
-                    <rect key="frame" x="347" y="26" width="70" height="30"/>
+                    <rect key="frame" x="15" y="26" width="70" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="9VB-aO-1Gs"/>
@@ -63,7 +63,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0q-cs-3rf">
-                    <rect key="frame" x="183" y="26" width="70" height="30"/>
+                    <rect key="frame" x="352" y="26" width="70" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="XP6-Zb-z9K"/>
@@ -86,13 +86,13 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="zZX-Qp-5dW" firstAttribute="top" secondItem="xvv-5A-1MO" secondAttribute="top" constant="1" id="0BI-Bo-boW"/>
-                <constraint firstItem="4cY-p9-U3n" firstAttribute="leading" secondItem="xvv-5A-1MO" secondAttribute="leading" constant="20" id="1YG-UV-CUp"/>
+                <constraint firstItem="Tce-on-NNs" firstAttribute="leading" secondItem="xvv-5A-1MO" secondAttribute="leading" constant="15" id="2A5-Fm-vjL"/>
                 <constraint firstItem="a0q-cs-3rf" firstAttribute="centerY" secondItem="xvv-5A-1MO" secondAttribute="centerY" id="7pO-tr-dKL"/>
                 <constraint firstItem="zZX-Qp-5dW" firstAttribute="leading" secondItem="xvv-5A-1MO" secondAttribute="leading" constant="10" id="A3Z-ch-Udl"/>
-                <constraint firstAttribute="trailing" secondItem="Tce-on-NNs" secondAttribute="trailing" constant="20" id="H5s-94-Dca"/>
                 <constraint firstAttribute="trailing" secondItem="zZX-Qp-5dW" secondAttribute="trailing" constant="10" id="V6W-es-ZDw"/>
-                <constraint firstItem="a0q-cs-3rf" firstAttribute="centerX" secondItem="xvv-5A-1MO" secondAttribute="centerX" id="ben-Gq-i8X"/>
+                <constraint firstItem="4cY-p9-U3n" firstAttribute="centerX" secondItem="xvv-5A-1MO" secondAttribute="centerX" id="fb5-DN-yB3"/>
                 <constraint firstItem="Tce-on-NNs" firstAttribute="centerY" secondItem="xvv-5A-1MO" secondAttribute="centerY" id="heg-jM-GCZ"/>
+                <constraint firstAttribute="trailing" secondItem="a0q-cs-3rf" secondAttribute="trailing" constant="15" id="jSI-9E-rLI"/>
                 <constraint firstItem="4cY-p9-U3n" firstAttribute="centerY" secondItem="xvv-5A-1MO" secondAttribute="centerY" id="pi0-GR-QBw"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -101,7 +101,7 @@
                 <outlet property="groupButton" destination="Tce-on-NNs" id="KtX-wB-gTI"/>
                 <outlet property="projectButton" destination="4cY-p9-U3n" id="Bub-jk-qqD"/>
             </connections>
-            <point key="canvasLocation" x="-221" y="90"/>
+            <point key="canvasLocation" x="-296" y="85"/>
         </view>
     </objects>
     <resources>

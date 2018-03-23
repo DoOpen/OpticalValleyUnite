@@ -33,7 +33,7 @@ class YQEquipmentDetailListVC: UIViewController {
     
     }
     
-    var equipHouseId = 0
+    var equipHouseId : Int64 = 0
     
     var currentIndex = 0
     

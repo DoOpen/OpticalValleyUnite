@@ -11,7 +11,7 @@ import UIKit
 class YQEquipHomeListModel: NSObject {
     
     //设备房id
-    var equipHouseId  = -1
+    var equipHouseId : Int64 = -1
     
     //设备房名称
     var equipHouseName =  ""

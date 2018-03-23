@@ -95,7 +95,16 @@ class ReportMasterViewController: UIViewController {
     var urgentDegreeBtn: UIButton?
     
     //紧急程度的按钮选项
+    //低
     @IBOutlet weak var UrgentMatterlow: UIButton!
+    //中
+    @IBOutlet weak var urgentMatterMiddle: UIButton!
+    //高
+    @IBOutlet weak var urgentMatterHigh: UIButton!
+    
+    //是否是设备按钮
+    @IBOutlet weak var eqiupmentSwitch: UISwitch!
+    
     
     var selfCheckingView = UIView()
     
@@ -141,8 +150,132 @@ class ReportMasterViewController: UIViewController {
             
             if reportListDict != nil {
                 
+                //设置的是报事的 保存信息
+                //工作分类
+                if let workType = reportListDict?["selectWorkType"] as? [String : Any] {
+                
+                    if workType.count > 0 {
+                    
+                        //字典转模型的操作
+                        let model = WorkTypeModel.init(parmart: workType )
+                        
+                        self.workTypeLabel.text = model.name
+                        self.selectWorkType = model
+                    
+                    }
+ 
+                }
+                
+                //紧急程度
+                if let level = reportListDict?["level"] as? Int {
+                
+                    switch level {
+                    case 0://低
+                        self.urgentDegreeBtnClick(self.UrgentMatterlow)
+                        
+                    case 1://中
+                        self.urgentDegreeBtnClick(self.urgentMatterMiddle)
+                        
+                    case 2://高
+                        self.urgentDegreeBtnClick(self.urgentMatterHigh)
+                        
+                    default:
+                        break
+                    }
+                }
+                
+                //详细位置
+                if let locationAddress = reportListDict?["EVENT_ADDR"] as? String {
+                
+                    address2Label.text = locationAddress
+                }
+                
+                //备注详情
+                if let description = reportListDict?["DESCRIPTION"] as? String{
+                
+                    textView.placeHolder = ""
+                    textView.text = description
+                }
+                
+                //报事位置
+                if let ParkInfo = reportListDict?["selectParkInfo"] as? [String : Any]{
+                
+                    if ParkInfo.count > 0 {
+                    
+                        let parkInfoModel = ParkInfoModel.init(parmart: ParkInfo )
+                        
+                        self.selectParkInfo = parkInfoModel
+                        self.addressLabel.text =  ParkInfo["name"] as? String
+                    
+                    }
+                }
                 
                 
+                //是否是设备任务
+                if let deviceModel = reportListDict?["deviceModel"] as? [String : Any] {
+                    
+                    if deviceModel.count > 0 {
+                    
+                        self.eqiupmentSwitch.isOn = true
+                        self.deriveChooseValueChange(self.eqiupmentSwitch)
+                        
+                        let model = Equipment.init(parmart: deviceModel )
+                        
+                        self.deviceModel = model
+                        self.deviceView.model = model
+                    
+                    }
+                }
+                
+                
+                
+                //普通报事的type 的缓存设置
+                if let EVENT_TYPE =  reportListDict?["EVENT_TYPE"] as? String {
+                
+                    switch EVENT_TYPE {
+                    case "自发":
+                        spontaneousBtnClick()
+                        break
+                        
+                    case "自检":
+                        selfCheckingBtnClick()
+                        break
+                        
+                    case "代客":
+                        //如果是待客的情况下: 数据更复杂,要多加载一层
+                        brokerBtnClick()
+                        
+                        if let brokerBtn = reportListDict?["brokerBtn"] {
+                            
+                            var ValetReport  =  brokerBtn as! [String : Any]
+                            
+                            ownerNameTextField.text = ValetReport["CUSTOMER_NAME"] as? String
+                            OwnerAddressTextField.text = ValetReport["CUSTOMER_ADDR"] as? String
+                            
+                            ownerPhoneTextField.text = ValetReport["CUSTOMER_PHONE"] as? String
+                            
+                            famlyBtn.isSelected = ValetReport["REPRE_TYPE"] as! Bool
+                            
+                            if famlyBtn.isSelected {
+                                
+                                familyBtnClick()
+                            
+                                appointmentTimeLabel.text = ValetReport["EXEC_DATE"]as? String
+                            }else {
+                                
+                                publicBtnClick()
+                            }
+                            
+                        }
+                        
+                        break
+                        
+                    default:
+                        break
+                    }
+                }
+                
+    
             }else{
                 
                 // 默认调取了 自检的按钮
@@ -165,7 +298,92 @@ class ReportMasterViewController: UIViewController {
             
             if reportListDict != nil {
                 
+                //设置的是报事的 保存信息
+                //工作分类
+                if let workType = reportListDict?["selectWorkType"] {
+                    
+                    //字典转模型的操作
+                    let model = WorkTypeModel.init(parmart: workType as! [String : Any])
+                    
+                    self.workTypeLabel.text = model.name
+                    self.selectWorkType = model
+                    
+                }
                 
+                //紧急程度
+                if let level = reportListDict?["level"] as? Int {
+                    
+                    switch level {
+                    case 0://低
+                        self.urgentDegreeBtnClick(self.UrgentMatterlow)
+                        
+                    case 1://中
+                        self.urgentDegreeBtnClick(self.urgentMatterMiddle)
+                        
+                    case 2://高
+                        self.urgentDegreeBtnClick(self.urgentMatterHigh)
+                        
+                    default:
+                        break
+                    }
+                }
+                
+                //详细位置
+                if let locationAddress = reportListDict?["EVENT_ADDR"] as? String {
+                    
+                    address2Label.text = locationAddress
+                }
+                
+                //备注详情
+                if let description = reportListDict?["DESCRIPTION"] as? String{
+                    
+                    textView.text = description
+                }
+                
+                //报事位置
+                if let ParkInfo = reportListDict?["selectParkInfo"] {
+                    
+                    let parkInfoModel = ParkInfoModel.init(parmart: ParkInfo as! [String : Any])
+                    
+                    self.selectParkInfo = parkInfoModel
+                    self.addressLabel.text =  parkInfoModel.name
+                }
+                
+                //是否是设备任务
+                if let deviceModel = reportListDict?["deviceModel"] {
+                    
+                    self.eqiupmentSwitch.isOn = true
+                    self.deriveChooseValueChange(self.eqiupmentSwitch)
+                    
+                    let model = Equipment.init(parmart: deviceModel as! [String : Any])
+                    
+                    self.deviceModel = model
+                    self.deviceView.model = model
+                    
+                }
+                
+                //普通报事的type 的缓存设置
+                if let EVENT_TYPE =  reportListDict?["EVENT_TYPE"] as? String {
+                    
+                    switch EVENT_TYPE {
+                    case "电话":
+                        telBtnClick()
+                        break
+                        
+                    case "维保":
+                        maintenanceBtnClick()
+                        break
+                        
+                    case "自发":
+                        otherBtnClick()
+                        break
+                        
+                    default:
+                        break
+                    }
+                    
+                }
+
                 
             }else{
                 
@@ -178,7 +396,6 @@ class ReportMasterViewController: UIViewController {
 
             }
 
-            
         }
 
         //获取默认的项目选择
@@ -313,6 +530,7 @@ class ReportMasterViewController: UIViewController {
     // MARK: - 待客类型按钮方法点击
     ///(业主按钮)familyBtnClick方法
     @IBAction func familyBtnClick() {
+        
         setBtnSelect(btn: famlyBtn, true)
         setBtnSelect(btn: publicBtn, false)
         //更新约束,设置方法
@@ -466,6 +684,7 @@ class ReportMasterViewController: UIViewController {
             
             toVc.didSelectedHandel = { [weak self] model in
                 print(model.name)
+                
                 self?.workTypeLabel.text = model.name
                 self?.selectWorkType = model
             }
@@ -535,26 +754,37 @@ class ReportMasterViewController: UIViewController {
         var plistDict = [String : Any]()
         //工单类型的保存
         var workType = [String : Any]()
-        workType["id"] = selectWorkType?.id
-        workType["name"] = selectWorkType?.name
+        
+        workType["ID"] = selectWorkType?.id
+        workType["WORKTYPE_NAME"] = selectWorkType?.name
         
         plistDict["selectWorkType"] = workType
         //工单描述
         plistDict["DESCRIPTION"] = textView.text
         //紧急程度的level
         plistDict["level"] = urgentDegreeBtn?.tag
+        
         //报事位置的保存
         if selectParkInfo?.FLOOR_ID != ""{
             
             var reportLocation = [String : Any]()
             
-            reportLocation["STAGE_ID"] = selectParkInfo?.STAGE_ID
-            reportLocation["FLOOR_ID"] = selectParkInfo?.FLOOR_ID
-            reportLocation["HOUSE_ID"] = selectParkInfo?.id
+            /*
+             id = parmart["id"] as? String ?? ""
+             STAGE_ID = parmart["app_need_stage"] as? String ?? ""
+             FLOOR_ID = parmart["app_need_floor"] as? String ?? ""
+             tempName = parmart["text"] as? String ?? ""
+             name = tempName
+
+             */
+            
+            reportLocation["app_need_stage"] = selectParkInfo?.STAGE_ID
+            reportLocation["app_need_floor"] = selectParkInfo?.FLOOR_ID
+            reportLocation["id"] = selectParkInfo?.id
                 
             reportLocation["STAGE_Name"] = selectParkInfo?.STAGE_Name
             reportLocation["FLOOR_Name"] = selectParkInfo?.FLOOR_Name
-            reportLocation["name"] = selectParkInfo?.name
+            reportLocation["name"] = self.addressLabel.text
             
             plistDict["selectParkInfo"] = reportLocation
         }

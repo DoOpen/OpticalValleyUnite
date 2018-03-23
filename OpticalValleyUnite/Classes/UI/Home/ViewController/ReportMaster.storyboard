@@ -937,6 +937,7 @@
                         <outlet property="contentHeightConstraint" destination="ccF-IP-8jY" id="dNg-mh-zgM"/>
                         <outlet property="deviceView" destination="aff-uH-c6K" id="cK7-LG-Q8D"/>
                         <outlet property="deviceViewheightConstrnit" destination="iXn-dc-Kwh" id="AQG-Vu-iQA"/>
+                        <outlet property="eqiupmentSwitch" destination="3xP-lu-qgP" id="YU4-e0-EBu"/>
                         <outlet property="maintenanceReportMaster" destination="pBa-oD-nlD" id="SNr-cb-Ce3"/>
                         <outlet property="otherReportMaster" destination="J1N-vI-khv" id="dQL-uf-3gg"/>
                         <outlet property="projectBtn" destination="h1x-uw-R8M" id="O0b-FK-Pew"/>
@@ -945,6 +946,8 @@
                         <outlet property="spontaneousBtn" destination="9qX-Uh-Xqo" id="7zG-rT-6kR"/>
                         <outlet property="telReportMaster" destination="j9d-6d-9L3" id="Pbn-o9-MGR"/>
                         <outlet property="textView" destination="bKd-Ak-j45" id="pz9-YG-Hn0"/>
+                        <outlet property="urgentMatterHigh" destination="uAz-RT-Tud" id="DGS-qY-nVS"/>
+                        <outlet property="urgentMatterMiddle" destination="blz-Q3-MLQ" id="4UF-is-wpM"/>
                         <outlet property="workTypeLabel" destination="LgE-lf-oBG" id="3lt-YI-F58"/>
                     </connections>
                 </viewController>

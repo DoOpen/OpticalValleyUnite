@@ -35,6 +35,9 @@ class YQAllWorkUnitHomeVC: UIViewController {
     //项目id
     var parkID = ""
     
+    //集团版和项目版的情况
+    var isgroup = -1
+    
     
     
     override func viewDidLoad() {
@@ -69,7 +72,17 @@ class YQAllWorkUnitHomeVC: UIViewController {
             self.navigationController?.pushViewController(project, animated: true)
             
             //这里是不选项目直接查全部的工单
-            
+            //新增的需求是: 是项目版的情况,必须要选项项目;集团版,可以不选项目
+            //获取集团和 项目版的参数
+            isgroup = UserDefaults.standard.object(forKey: Const.YQIs_Group) as? Int ?? -1
+
+            if isgroup == 2 {//集团版
+                //允许查全部 所有的
+            }else{//项目版
+                
+                return
+            }
+
         }
 
         
@@ -172,10 +185,27 @@ class YQAllWorkUnitHomeVC: UIViewController {
         par["PARK_ID"] = self.parkID
         par["isClosed"] = tag
         
+        if self.parkID == "" {
         
+            if isgroup != 2{//不是集团版,必须要求选择项目
+                
+                self.alert(message: "请选择查询项目!", doneBlock: { (alerter) in
+                    let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect") as! YQAllProjectSelectVC
+                    project.isAll = 1 //查所有项目
+                    
+                    self.navigationController?.pushViewController(project, animated: true)
+
+                })
+                
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
+                return
+            }
+        }
 
         //经过筛选项,筛选的条件
         if let dic = siftsiftParmat{
+            
             for (key,value) in dic{
                 
                 par[key] = value

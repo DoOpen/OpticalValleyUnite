@@ -61,7 +61,11 @@ class YQReportFromPersonList: UIView {
             for temp in persons!{
                 
                 let name = temp["personName"] as? String
-                self.tagsView.addTag(name!)
+                let post = temp["postName"] as? String
+                
+                let title = name! + " " + post!
+                
+                self.tagsView.addTag(title)
             }
             
         }

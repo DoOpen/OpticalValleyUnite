@@ -223,6 +223,7 @@ class ExecutingViewConttroller: UIViewController {
             autoreleasepool {
                 
                 let realm = try! Realm()
+                
                 let model = realm.objects(ExecSectionModel.self).filter("workOrderId == %@", id!)
                 
                 for temp in model{
@@ -1293,7 +1294,15 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
             let realm = try! Realm()
             realm.beginWrite()
             
-            model.imageValue = "计划工单图片"
+            
+            if model.imageValue == "" {
+                
+                model.imageValue = "计划工单图片"
+                
+            }else{
+                
+                model.imageValue = model.imageValue + "," + "计划工单图片"
+            }
             
             models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
             
@@ -1344,7 +1353,11 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
         
         let id = model.id
         
+        var tempArray =  model.imageValue.components(separatedBy: ",")
+        
+        
         if backDB {
+            
             //删除移除数据库的picter图片
             let realm = try! Realm()
             
@@ -1355,28 +1368,48 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
                 return
             }
             
+            
+            //本地的模型也要进行清除对应的数据
             if buttonTag <= deleteArray.count - 1 {
                 
                 let delete = deleteArray[buttonTag]
                 
+                //移除网络图片
+                tempArray.remove(at: buttonTag)
+                
+                var newimageValue = ""
+                
+                for temp in 0..<tempArray.count {
+                    
+                    if temp == 0 {
+                        
+                        newimageValue = tempArray[temp]
+                        
+                    }else{
+                        
+                        newimageValue = newimageValue + "," + tempArray[temp]
+                    }
+                }
+
                 try! realm.write {
+                    
+                    model.imageValue = newimageValue
+
                     realm.delete(delete)
+                    //重新的逻辑替换
+                    models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
                 }
                 
-                self.tableView.reloadRows(at: [currentRow], with: .automatic)
             }
             
             
-//            model.imageValue = "add_jihua_picture"
-//
-//            models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
-            
+            self.tableView.reloadRows(at: [currentRow], with: .automatic)
             //单行刷新列表
             return
         }
         
-        var tempArray =  model.imageValue.components(separatedBy: ",")
-        
+
+       
         //补充逻辑
         if buttonTag >= tempArray.count {
             
@@ -1390,6 +1423,8 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
 //            }
         
         }else{
+            
+            
             //移除网络图片
             tempArray.remove(at: buttonTag)
             
@@ -1409,11 +1444,12 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
             
             model.imageValue = newimageValue
         
+            //重新的逻辑替换
+            models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
         }
         
-        //重新的逻辑替换
-        models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
         
+
         //单行刷新列表
         self.tableView.reloadRows(at: [currentRow], with: .automatic)
         

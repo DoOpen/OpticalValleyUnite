@@ -79,6 +79,7 @@ class YQExecNewCell: UITableViewCell {
             }
             
             let stepId =  model?.id
+            
             //走离线工单的情况
             if self.backDB! {//离线工单的图片获取情况
                 //获取stepid的数据库的表数据来查图片
@@ -89,6 +90,7 @@ class YQExecNewCell: UITableViewCell {
                 if modeltemp.count == 3 {
                     self.addButton.isHidden = true
                 }
+                
                 
                 for PicIndex in 0..<modeltemp.count{
                     

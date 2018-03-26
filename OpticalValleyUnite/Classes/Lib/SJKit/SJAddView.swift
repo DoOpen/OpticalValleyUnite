@@ -64,6 +64,7 @@ class SJAddView: UIView {
                     photo.image == image.image
                     }) ?? 0
                 self.photos.remove(at: index)
+                //执行离线工单的 数据没有加载过来,导致没有缓存的数据来加载
                 self.photoImages.remove(at: index)
 
             })

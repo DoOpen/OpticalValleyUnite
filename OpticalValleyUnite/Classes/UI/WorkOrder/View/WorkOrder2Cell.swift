@@ -101,6 +101,7 @@ class WorkOrder2Cell: UITableViewCell {
             workOrderIdLabel.text = model2?.workOrderId
             contentLabel.text = model2?.content
             timeLabel.text = model2?.time
+            
             addressLabel.text = model2?.PARK_NAME
             
             creatLabel.text = model2?.reportPeopleName

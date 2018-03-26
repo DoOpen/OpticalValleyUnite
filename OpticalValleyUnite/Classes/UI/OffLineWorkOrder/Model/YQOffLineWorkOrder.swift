@@ -94,6 +94,7 @@ class WorkHistoryModel222  : Object{
         type = parmart["EVALUATE_TYPE"] as? String ?? ""
         
         if let arry = parmart["tasks"] as? Array<[String: Any]>{
+            
             for (index,dic) in arry.enumerated(){
                 if let text = dic["WORKTASK_NAME"] as? String{
                     content += "任务\(index + 1): \(text)"

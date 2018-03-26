@@ -173,10 +173,10 @@ class WorkOrderModel2: Object {
     var selected = false
     
     
-    var PARK_NAME = ""
-    var equipment_id = -1
-    var equipment_name = ""
-    var is_equip = -1
+    dynamic var PARK_NAME = ""
+    dynamic var equipment_id = -1
+    dynamic var equipment_name = ""
+    dynamic var is_equip = -1
     dynamic var type = ""
     dynamic var type2 = ""
     

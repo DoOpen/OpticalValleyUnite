@@ -182,6 +182,10 @@ class ExecutingViewConttroller: UIViewController {
                             let image = UIImage.init(data: temp.pictureData!)
                             
                             addPhoneView.addImage(AddViewModel(image: image!))
+                            
+                            let ph = Photo.init(image: image)
+                            //新添加滚播图片的视图
+                            addPhoneView.photoImages.append(ph)
                         }
                     }
                 }

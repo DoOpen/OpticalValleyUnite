@@ -964,6 +964,7 @@ class ExecutingViewConttroller: UIViewController {
     
     // MARK: - hidden计划工单中的(电梯报事和普通报事)
     func hiddenReportFromWorkOrder(){
+        
         let reportName = UserDefaults.standard.object(forKey: Const.YQReportName) as? String
         if reportName == "报事" {
             //隐藏配件的功能

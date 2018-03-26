@@ -43,7 +43,8 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //showList()
+        //首先,获取签到,定位的执行信息!
+        showList()
         
         addressLabel.text = "地理位置获取中..."
         

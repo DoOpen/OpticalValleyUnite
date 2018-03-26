@@ -98,6 +98,7 @@ class ExecutDetailCell: UITableViewCell {
     
     
     @IBOutlet weak var partContentView: UIView!
+    @IBOutlet weak var partContentViewHeightConstrait: NSLayoutConstraint!
     
     @IBOutlet weak var tableViewHeightConstaint: NSLayoutConstraint!
     
@@ -129,7 +130,14 @@ class ExecutDetailCell: UITableViewCell {
         
         self.remarkTextView.isEditable = false
         
+        //注意的是:添加补充的逻辑的判断,是电梯才显示配件库的信息
+        let reportName = UserDefaults.standard.object(forKey: Const.YQReportName) as? String
+        if reportName == "报事" {//普通报事,要求隐藏功能
         
+            partContentView.isHidden = true
+            partContentViewHeightConstrait.constant = 0.5
+            
+        }
         
         
     }

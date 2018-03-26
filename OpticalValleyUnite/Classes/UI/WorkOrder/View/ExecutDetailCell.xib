@@ -104,6 +104,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="partContentView" destination="PcN-ze-6Ze" id="pVw-Mh-DQg"/>
+                <outlet property="partContentViewHeightConstrait" destination="Tum-ps-BSr" id="Liz-ov-3uG"/>
                 <outlet property="partviewheight" destination="Tum-ps-BSr" id="m5S-c9-yo7"/>
                 <outlet property="remarkTextView" destination="bao-FU-MlI" id="zC8-oF-8Ss"/>
                 <outlet property="tableView" destination="leV-G1-6P1" id="Rx6-EX-5Yi"/>

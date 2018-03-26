@@ -355,7 +355,15 @@ class YQVideoPatrolViewController: UIViewController {
                 
                 if oGroundNum != 0 {
                     
-                    let index = oGroundNum * -1
+                    var index = 0
+                    
+                    if oGroundNum < 0 {//楼栋的信息的数据填写的,混乱的情况!
+                        
+                        index = oGroundNum
+                    }else {
+                        
+                        index = oGroundNum * -1
+                    }
                     
                     for xx in index ... -1{
                     

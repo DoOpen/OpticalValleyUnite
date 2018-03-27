@@ -35,10 +35,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEz-tA-3Ts">
-                                <rect key="frame" x="95" y="362" width="130" height="120"/>
+                                <rect key="frame" x="95" y="352" width="130" height="130"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.70980392156862748" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="rHG-Xx-wJF"/>
+                                    <constraint firstAttribute="height" constant="130" id="rHG-Xx-wJF"/>
                                     <constraint firstAttribute="width" constant="130" id="t2c-xG-0ZJ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -51,13 +51,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签到" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-dk-zS8">
-                                <rect key="frame" x="142" y="396" width="37" height="22"/>
+                                <rect key="frame" x="142" y="386" width="37" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hr-C4-ZHI">
-                                <rect key="frame" x="129" y="423" width="62" height="29"/>
+                                <rect key="frame" x="129" y="413" width="62" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -105,12 +105,9 @@
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBX-Oh-WNt">
-                                <rect key="frame" x="95" y="322" width="130" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="pBZ-ZC-L1U"/>
-                                </constraints>
+                                <rect key="frame" x="95.5" y="310" width="129" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" backgroundImage="qiandao-2">
+                                <state key="normal" backgroundImage="签到范围">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -128,7 +125,6 @@
                             <constraint firstItem="lEz-tA-3Ts" firstAttribute="top" secondItem="SBX-Oh-WNt" secondAttribute="bottom" id="MMB-4P-drJ"/>
                             <constraint firstItem="B7g-U9-tg2" firstAttribute="top" secondItem="lEz-tA-3Ts" secondAttribute="bottom" constant="5" id="MP1-gU-Aqv"/>
                             <constraint firstItem="W4s-dk-zS8" firstAttribute="centerX" secondItem="AGs-pq-Gqw" secondAttribute="centerX" id="V1z-tu-KJ3"/>
-                            <constraint firstItem="SBX-Oh-WNt" firstAttribute="width" secondItem="lEz-tA-3Ts" secondAttribute="width" id="Win-pS-Ody"/>
                             <constraint firstItem="4wQ-Rr-gfp" firstAttribute="top" secondItem="B7g-U9-tg2" secondAttribute="bottom" constant="12" id="YTr-ZJ-CRe"/>
                             <constraint firstItem="yuk-4V-8w1" firstAttribute="leading" secondItem="yeM-eT-gGS" secondAttribute="leading" id="cHI-GH-B3b"/>
                             <constraint firstItem="2Hr-C4-ZHI" firstAttribute="centerX" secondItem="AGs-pq-Gqw" secondAttribute="centerX" id="d0L-iC-X4X"/>
@@ -382,8 +378,8 @@
         <image name="btn_addphoto" width="60" height="60"/>
         <image name="check" width="16" height="16"/>
         <image name="location" width="15" height="15"/>
-        <image name="qiandao-2" width="65" height="20"/>
         <image name="time" width="15" height="15"/>
+        <image name="签到范围" width="129" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Uao-uk-oNl"/>

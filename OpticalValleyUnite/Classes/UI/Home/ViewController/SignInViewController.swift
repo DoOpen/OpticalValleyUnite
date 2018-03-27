@@ -246,6 +246,11 @@ class SignInViewController: UIViewController {
                         
                         print(regeocode)
                         self.addressLabel.text = regeocode.formattedAddress
+                        
+                        //显示button的
+                        self.signButtonView.setBackgroundImage(UIImage.init(name: "外勤签到"), for: UIControlState.normal)
+                        self.signButtonView.isHidden = false
+                        
                         self.mapView.setCenter((self.loction?.coordinate)!, animated: true)
                     }
                 }
@@ -258,6 +263,7 @@ class SignInViewController: UIViewController {
     }
     
     func  mapSetup(){
+        
         AMapServices.shared().enableHTTPS = true
         mapView.showsUserLocation = true;
         mapView.userTrackingMode = .follow;

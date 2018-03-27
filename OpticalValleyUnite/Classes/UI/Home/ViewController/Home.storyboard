@@ -315,10 +315,20 @@
                                                     <action selector="messageBtnClick" destination="BYZ-38-t0r" eventType="touchUpInside" id="nXA-7C-WlT"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfe-z9-7kp">
+                                                <rect key="frame" x="368" y="10" width="41" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <state key="normal" title="天气情况"/>
+                                                <connections>
+                                                    <action selector="weatherButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lIw-Ys-kbq"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="VWM-dt-8AB" secondAttribute="bottom" id="3Xb-k9-adB"/>
+                                            <constraint firstAttribute="trailing" secondItem="mfe-z9-7kp" secondAttribute="trailing" constant="5" id="429-Js-4qO"/>
+                                            <constraint firstItem="mfe-z9-7kp" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="BEA-7s-yRj"/>
                                             <constraint firstItem="VWM-dt-8AB" firstAttribute="top" secondItem="eyu-dr-Wog" secondAttribute="top" constant="10" id="X05-BN-wMT"/>
                                             <constraint firstAttribute="height" constant="44" id="Y2S-cC-VAT"/>
                                             <constraint firstItem="VWM-dt-8AB" firstAttribute="leading" secondItem="eyu-dr-Wog" secondAttribute="leading" constant="12" id="bQ8-vJ-Kv8"/>
@@ -326,12 +336,6 @@
                                             <constraint firstItem="sTN-ax-yYg" firstAttribute="centerX" secondItem="eyu-dr-Wog" secondAttribute="centerX" id="ziC-TR-S2X"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="试点版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8g-UX-c40">
-                                        <rect key="frame" x="371" y="34" width="43" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5J9-1o-pYA" customClass="HomeBtnView" customModule="OpticalValleyUnite" customModuleProvider="target">
                                         <rect key="frame" x="135" y="64" width="40" height="95"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -370,10 +374,8 @@
                                     <constraint firstAttribute="bottom" secondItem="5J9-1o-pYA" secondAttribute="bottom" id="FBl-6E-VQd"/>
                                     <constraint firstItem="eyu-dr-Wog" firstAttribute="top" secondItem="Qtx-ni-0hT" secondAttribute="top" constant="20" id="FMD-bS-x3N"/>
                                     <constraint firstItem="vQU-WI-BZd" firstAttribute="centerX" secondItem="Qtx-ni-0hT" secondAttribute="centerX" multiplier="5/4" id="Mg0-BE-lAL"/>
-                                    <constraint firstAttribute="trailing" secondItem="L8g-UX-c40" secondAttribute="trailing" id="MnN-6m-qU5"/>
                                     <constraint firstItem="5J9-1o-pYA" firstAttribute="bottom" secondItem="522-aS-wj6" secondAttribute="bottom" id="SKU-VG-kAe"/>
                                     <constraint firstItem="522-aS-wj6" firstAttribute="centerX" secondItem="Qtx-ni-0hT" secondAttribute="centerX" multiplier="1/4" id="WSN-bt-kJF"/>
-                                    <constraint firstItem="L8g-UX-c40" firstAttribute="centerY" secondItem="eyu-dr-Wog" secondAttribute="centerY" id="ZAz-2R-sEd"/>
                                     <constraint firstItem="5J9-1o-pYA" firstAttribute="centerX" secondItem="Qtx-ni-0hT" secondAttribute="centerX" multiplier="3/4" id="eZM-EP-wLj"/>
                                     <constraint firstAttribute="trailing" secondItem="eyu-dr-Wog" secondAttribute="trailing" id="fOi-sP-X64"/>
                                     <constraint firstItem="5J9-1o-pYA" firstAttribute="top" secondItem="522-aS-wj6" secondAttribute="top" id="h0s-Fs-g2m"/>
@@ -420,11 +422,12 @@
                         <outlet property="top2BtnView" destination="5J9-1o-pYA" id="phx-As-mZr"/>
                         <outlet property="top3BtnView" destination="vQU-WI-BZd" id="kgR-no-IEr"/>
                         <outlet property="top4BtnView" destination="ACN-td-8Ge" id="J2m-5A-zeU"/>
+                        <outlet property="weatherBtn" destination="mfe-z9-7kp" id="BXF-91-fgD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2887" y="-108"/>
+            <point key="canvasLocation" x="2835" y="-108"/>
         </scene>
         <!--WorkOrder-->
         <scene sceneID="cT2-oD-UIH">
@@ -1226,7 +1229,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ghK-ko-MM1">
-                                        <rect key="frame" x="207" y="2" width="1" height="55"/>
+                                        <rect key="frame" x="206.66666666666666" y="2" width="1" height="55"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="Ib4-yY-7F6"/>
@@ -1234,7 +1237,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEy-aw-etE">
-                                        <rect key="frame" x="0.0" y="0.0" width="207" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="206.66666666666666" height="60"/>
                                         <state key="normal" title="设备详情">
                                             <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -1246,7 +1249,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJP-Xg-3eP">
-                                        <rect key="frame" x="208" y="0.0" width="206" height="60"/>
+                                        <rect key="frame" x="207.66666666666663" y="0.0" width="206.33333333333337" height="60"/>
                                         <state key="normal" title="工单">
                                             <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>

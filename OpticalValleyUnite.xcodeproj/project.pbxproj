@@ -603,6 +603,7 @@
 		2F63436B1F9EE5D6005F930A /* AnimatedAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedAnnotation.m; sourceTree = "<group>"; };
 		2F63436D1F9F4963005F930A /* AnimatedAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedAnnotationView.h; sourceTree = "<group>"; };
 		2F63436E1F9F4963005F930A /* AnimatedAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedAnnotationView.m; sourceTree = "<group>"; };
+		2F637F5A206A3FBF00EFFFF8 /* YQGlobalPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQGlobalPrefixHeader.pch; sourceTree = "<group>"; };
 		2F648DAC1F57A2DC006D51D3 /* PartsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartsModel.swift; sourceTree = "<group>"; };
 		2F648DAE1F57C045006D51D3 /* YQPartDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataCell.swift; sourceTree = "<group>"; };
 		2F648DB01F57C063006D51D3 /* YQPartDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartDataCell.xib; sourceTree = "<group>"; };
@@ -1795,6 +1796,7 @@
 				4B91E89B1F25904B00F63D66 /* OpticalValleyUnite.entitlements */,
 				4BD4B9121E272EA600AE2BC9 /* Classes */,
 				4BD4B9001E272E0C00AE2BC9 /* AppDelegate.swift */,
+				2F637F5A206A3FBF00EFFFF8 /* YQGlobalPrefixHeader.pch */,
 				4BD4B9561E272EB100AE2BC9 /* OpticalValleyUnite-Bridging-Header.h */,
 				4BD4B9041E272E0C00AE2BC9 /* Main.storyboard */,
 				4BD4B9071E272E0C00AE2BC9 /* Assets.xcassets */,
@@ -2893,6 +2895,8 @@
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/RfmFrameworks",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/OpticalValleyUnite/YQGlobalPrefixHeader.pch";
 				INFOPLIST_FILE = OpticalValleyUnite/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2932,6 +2936,8 @@
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/Map",
 					"$(PROJECT_DIR)/OpticalValleyUnite/Classes/Lib/RfmFrameworks",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/OpticalValleyUnite/YQGlobalPrefixHeader.pch";
 				INFOPLIST_FILE = OpticalValleyUnite/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

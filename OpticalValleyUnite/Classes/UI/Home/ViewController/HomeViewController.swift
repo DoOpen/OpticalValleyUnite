@@ -23,25 +23,26 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     var eixtButton : UIButton! = nil
     
-/// 子系统选择的数据
+    /// 子系统选择的数据
     var systemSelection : NSDictionary = {return NSDictionary() }()
     
     
-/// 模型的数据解析model.swift中的类
+    /// 模型的数据解析model.swift中的类
     var datas = [SystemMessageModel]()
     
     var locationManager = AMapLocationManager()
+    
     var lastUpdateTime = Date().addingTimeInterval(-6.0 * 60.0)
     var workCount = 0
     var dubanCount = 0
     
-/// 上面的4个按钮的拖线的事件
+    /// 上面的4个按钮的拖线的事件
     @IBOutlet weak var top1BtnView: HomeBtnView!
     @IBOutlet weak var top2BtnView: HomeBtnView!
     @IBOutlet weak var top3BtnView: HomeBtnView!
     @IBOutlet weak var top4BtnView: HomeBtnView!
  
-/// 下面的3个按钮的拖线的事件
+    /// 下面的3个按钮的拖线的事件
     @IBOutlet weak var donw1BtnView: HomeBtnView!
     @IBOutlet weak var donw2BtnView: HomeBtnView!
     @IBOutlet weak var donw3BtnView: HomeBtnView!
@@ -58,7 +59,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     @IBOutlet weak var subsystemBtn: UIButton!
     
+    /// 天气button显示:
+    @IBOutlet weak var weatherBtn: UIButton!
     
+    /// 搜索情况
+    var search: AMapSearchAPI!
+    var locaCity : String = ""
     
     ///计步器的功能模块属性
     //设置注册 计步设备的
@@ -75,11 +81,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         super.viewDidLoad()
 
-        
         //分别设置两个(上下)按钮数组
         topBtnViewArray = [top1BtnView,top2BtnView,top3BtnView,top4BtnView]
         downBtnViewArray = [donw1BtnView,donw2BtnView,donw3BtnView]
-        
         
         //接受新的数据来显示
         getPermission()
@@ -106,6 +110,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         //接受服务消息通知
         getNotice()
         
+        //搜索
+        initSearch()
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -115,6 +122,14 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         getStaticWorkunitDB()
         
     }
+    
+    // MARK: - 搜索天气功能
+    func initSearch() {
+        
+        search = AMapSearchAPI()
+        search.delegate = self
+    }
+
     
     
     // MARK: - 接受服务器系统推送消息
@@ -337,7 +352,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     // MARK: - 通知实现的方法
      func systemSelectionreceiveValue(info:NSNotification){
-//        print(info.userInfo)
         
         let dic = info.userInfo! as NSDictionary
         self.systemSelection = dic
@@ -364,7 +378,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                     DispatchQueue.main.async {
                         //设置 系统app的显示的图标的选项的情况
                         UIApplication.shared.applicationIconBadgeNumber = tatolCount
-                        
                     }
                 }
             }
@@ -448,18 +461,22 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     //MARK: - 设置定位的方法;
     func setUpLocation() {
         
-        locationManager.delegate = self
         locationManager.distanceFilter = KDistence
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.locatingWithReGeocode = true
+        locationManager.reGeocodeTimeout = KTime
         locationManager.locationTimeout = KTime
         
         if Double(UIDevice.current.systemVersion.components(separatedBy: ".").first!)! >= 9.0{
+            
             locationManager.allowsBackgroundLocationUpdates = true
             
         }else{
+            
             locationManager.pausesLocationUpdatesAutomatically = false
         }
+        
+        locationManager.delegate = self
     
         locationManager.startUpdatingLocation()
         
@@ -559,8 +576,16 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             }
 //        }
     }
-  
- 
+    
+    // MARK: - 天气按钮的点击情况
+    @IBAction func weatherButtonClick(_ sender: UIButton) {
+        
+        //加载未来的信息
+        
+        
+    }
+    
+
     // MARK: - leftbar消息按钮的点击事件
 /// leftbar消息按钮的点击事件的
     @IBAction func messageBtnClick() {
@@ -591,9 +616,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             MessageView.show(workOrderCount: workCount, surveillanceWorkOrder: dubanCount)
         }
-        
-        
-        
+
     }
     
   
@@ -703,6 +726,27 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     }
     
     
+    // MARK: - 获取当前的天气接口
+    func searchLiveWeather( city : String) {
+        
+        let req:AMapWeatherSearchRequest! = AMapWeatherSearchRequest.init()
+        req.city = city
+        req.type = AMapWeatherType.live
+        
+        self.search.aMapWeatherSearch(req)
+    }
+
+    // MARK: - 获取未来的天气接口
+    func searchForcastWeather( city : String ) {
+        
+        let req:AMapWeatherSearchRequest! = AMapWeatherSearchRequest.init()
+        
+        req.city = city
+        req.type = AMapWeatherType.forecast
+        
+        self.search.aMapWeatherSearch(req)
+    }
+   
     
     // MARK: - 控制器dealloc的方法
     deinit{
@@ -746,11 +790,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 
-extension HomeViewController: AMapLocationManagerDelegate{
-
+extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
+    
+    // MARK: - 连续地理定位的执行操作
     func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!, reGeocode: AMapLocationReGeocode!) {
         
-        print("location:lat:\(location.coordinate.latitude); lon:\(location.coordinate.longitude)")
+        print("location:lat:\(location.coordinate.latitude); lon:\(location.coordinate.longitude); reGeocode:\(reGeocode)")
         
         var parmet = [String: Any]()
         parmet["MAP_LAT"] = location.coordinate.latitude
@@ -760,6 +805,7 @@ extension HomeViewController: AMapLocationManagerDelegate{
             
             return
         }
+        
         
         if let latitude = UserDefaults.standard.object(forKey: "SJlatitude") as? CLLocationDegrees,let longitude = UserDefaults.standard.object(forKey: "SJlongitude") as? CLLocationDegrees{
             
@@ -777,23 +823,77 @@ extension HomeViewController: AMapLocationManagerDelegate{
             UserDefaults.standard.set(location.coordinate.longitude, forKey: "SJlongitude")
         }
         
-        
+        //获取的是 逆地理的信息情况(各种的应用的参数)
+        //self.searchForcastWeather(city: "武汉")
+        self.searchLiveWeather(city: "武汉")
+
         if reGeocode != nil
         {
             parmet["RESERVER"] = reGeocode.formattedAddress
             uploadLocation(parmat: parmet)
             
+            
         }else{
             
+            
             HttpClient.instance.getAddress(lat: location.coordinate.latitude, lon: location.coordinate.longitude, succses: { (address) in
+                
                 if let address = address{
                     
                     parmet["RESERVER"] = address
                     self.uploadLocation(parmat: parmet)
                 }
             })
+            
+            
         }
     }
+    
+    //MARK: - AMapSearchDelegate
+    func aMapSearchRequest(_ request: Any!, didFailWithError error: Error!) {
+        
+        let _:NSError? = error as NSError
+        NSLog("Error:\(error)")
+    }
+    
+    func onWeatherSearchDone(_ request: AMapWeatherSearchRequest!, response: AMapWeatherSearchResponse!) {
+        
+        if (request.type == AMapWeatherType.live)
+        {
+            if (response.lives.count == 0)
+            {
+                return;
+            }
+            
+            let liveWeather:AMapLocalWeatherLive! = response.lives.first
+            
+            if (liveWeather != nil)
+            {
+                //数据是 liveWeather
+                
+                
+            }
+            
+        } else {
+            
+            if (response.forecasts.count == 0)
+            {
+                return;
+            }
+            
+            let forecast:AMapLocalWeatherForecast! = response.forecasts.first
+            
+            if (forecast != nil)
+            {
+                //数据是 forecast
+
+            
+            }
+        }
+        
+    }
+
+    
 }
 
 

@@ -16,7 +16,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星期" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVk-ap-j2Y">
-                    <rect key="frame" x="168" y="25.5" width="35" height="20.5"/>
+                    <rect key="frame" x="138" y="25.5" width="35" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天气" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgK-rS-QGO">
+                    <rect key="frame" x="198" y="25" width="35" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -28,7 +34,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日期" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xho-qb-i13">
-                    <rect key="frame" x="78" y="25.5" width="35" height="20.5"/>
+                    <rect key="frame" x="68" y="25.5" width="35" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -37,14 +43,16 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="iVk-ap-j2Y" firstAttribute="centerY" secondItem="386-ZZ-SqR" secondAttribute="centerY" id="7SE-s1-QcO"/>
+                <constraint firstItem="YgK-rS-QGO" firstAttribute="centerY" secondItem="386-ZZ-SqR" secondAttribute="centerY" id="P0v-jG-aF0"/>
                 <constraint firstItem="Xho-qb-i13" firstAttribute="centerY" secondItem="386-ZZ-SqR" secondAttribute="centerY" id="Vwp-C7-mrp"/>
                 <constraint firstItem="hJS-ub-5Qc" firstAttribute="centerY" secondItem="386-ZZ-SqR" secondAttribute="centerY" id="cdo-ku-yjQ"/>
                 <constraint firstItem="hJS-ub-5Qc" firstAttribute="centerX" secondItem="386-ZZ-SqR" secondAttribute="centerX" constant="100" id="eYm-aa-xnr"/>
-                <constraint firstItem="iVk-ap-j2Y" firstAttribute="centerX" secondItem="386-ZZ-SqR" secondAttribute="centerX" id="pbf-NX-A8M"/>
-                <constraint firstItem="Xho-qb-i13" firstAttribute="centerX" secondItem="386-ZZ-SqR" secondAttribute="centerX" constant="-90" id="qrf-Tw-2mG"/>
+                <constraint firstItem="YgK-rS-QGO" firstAttribute="centerX" secondItem="386-ZZ-SqR" secondAttribute="centerX" constant="30" id="iNr-rj-XCb"/>
+                <constraint firstItem="iVk-ap-j2Y" firstAttribute="centerX" secondItem="386-ZZ-SqR" secondAttribute="centerX" constant="-30" id="pbf-NX-A8M"/>
+                <constraint firstItem="Xho-qb-i13" firstAttribute="centerX" secondItem="386-ZZ-SqR" secondAttribute="centerX" constant="-100" id="qrf-Tw-2mG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-201.5" y="-240"/>
+            <point key="canvasLocation" x="-310" y="-274"/>
         </view>
     </objects>
 </document>

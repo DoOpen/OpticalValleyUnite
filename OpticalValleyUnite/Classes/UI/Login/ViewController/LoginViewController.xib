@@ -126,7 +126,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="试点版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC9-kV-mSn">
-                    <rect key="frame" x="166" y="650" width="43" height="17"/>
+                    <rect key="frame" x="166" y="640" width="43" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -161,7 +161,7 @@
                 <constraint firstItem="sOI-BK-Qds" firstAttribute="leading" secondItem="VH9-uh-fvG" secondAttribute="leading" id="aSS-uh-olx"/>
                 <constraint firstItem="d3g-Wh-NVd" firstAttribute="top" secondItem="sOI-BK-Qds" secondAttribute="bottom" constant="62" id="c1g-Ke-rAP"/>
                 <constraint firstItem="VH9-uh-fvG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ebb-z0-4aO"/>
-                <constraint firstAttribute="bottom" secondItem="nC9-kV-mSn" secondAttribute="bottom" id="iyW-Bb-PT9"/>
+                <constraint firstAttribute="bottom" secondItem="nC9-kV-mSn" secondAttribute="bottom" constant="10" id="iyW-Bb-PT9"/>
                 <constraint firstItem="Qgi-0s-q40" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pTG-UR-KiF"/>
                 <constraint firstItem="64x-oZ-eQU" firstAttribute="leading" secondItem="vVT-ng-r70" secondAttribute="trailing" constant="-5" id="rvI-lL-BO3"/>
                 <constraint firstItem="sOI-BK-Qds" firstAttribute="trailing" secondItem="VH9-uh-fvG" secondAttribute="trailing" id="zSg-7h-uNz"/>

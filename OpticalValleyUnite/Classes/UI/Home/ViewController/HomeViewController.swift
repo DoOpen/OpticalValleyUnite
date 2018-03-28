@@ -907,12 +907,12 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
                 self.weatherTvc = weatherV
                 let subView = weatherV.view
                 
-                subView?.frame = CGRect.init(x: 25, y: 200, width: SJScreeW - 50, height: SJScreeH - 400)
+                subView?.frame = CGRect.init(x: 10, y: 200, width: SJScreeW - 20, height: SJScreeH - 400)
                 
                 CoverView.show(view: subView!)
                 
 //                self.view.addSubview(subView!)
-//                
+                
 //                subView?.snp.makeConstraints({ (maker) in
 //                    
 //                    maker.top.bottom.equalToSuperview().offset(100)

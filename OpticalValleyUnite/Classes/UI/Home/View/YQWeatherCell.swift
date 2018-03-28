@@ -16,6 +16,10 @@ class YQWeatherCell: UITableViewCell {
     
     @IBOutlet weak var temperatureLabel: UILabel!
     
+    @IBOutlet weak var weatherLabel: UILabel!
+  
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -26,6 +30,8 @@ class YQWeatherCell: UITableViewCell {
             
             dateLabel.text = weatherModel?.date
             weekLabel.text = weatherModel?.week
+
+            weatherLabel.text = (weatherModel?.dayWeather)! + "/" + (weatherModel?.nightWeather)!
             
             let high = weatherModel?.dayTemp
             let low = weatherModel?.nightTemp

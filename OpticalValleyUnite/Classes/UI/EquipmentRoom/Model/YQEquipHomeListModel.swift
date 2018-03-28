@@ -35,7 +35,7 @@ class YQEquipHomeListModel: NSObject {
     //是否异常
     var isRegular = ""
     //图片集合
-    var houseImgs = Array<String>()
+    var houseImgs = Array<[String : Any]>()
     
     
     //图片地址

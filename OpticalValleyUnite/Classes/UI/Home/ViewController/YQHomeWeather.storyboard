@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n5d-Pl-Q79">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home WeatherTVC-->
+        <scene sceneID="dPL-Nb-1H4">
+            <objects>
+                <tableViewController id="n5d-Pl-Q79" customClass="YQHomeWeatherTVC" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" id="UMp-Sv-XPc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="weatherCell" rowHeight="68" id="No0-yK-chy" customClass="YQWeatherCell" customModule="OpticalValleyUnite" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="68"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="No0-yK-chy" id="I3Y-mb-yim">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日期" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSH-KJ-qmd">
+                                            <rect key="frame" x="82" y="25" width="31" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星期" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPG-wC-hES">
+                                            <rect key="frame" x="172" y="25" width="31" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高/低" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltb-b3-0u9">
+                                            <rect key="frame" x="269.5" y="25" width="36" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="aSH-KJ-qmd" firstAttribute="centerX" secondItem="I3Y-mb-yim" secondAttribute="centerX" constant="-90" id="Pw7-0l-OgZ"/>
+                                        <constraint firstItem="Ltb-b3-0u9" firstAttribute="centerX" secondItem="I3Y-mb-yim" secondAttribute="centerX" constant="100" id="fb2-66-zVI"/>
+                                        <constraint firstItem="VPG-wC-hES" firstAttribute="centerY" secondItem="I3Y-mb-yim" secondAttribute="centerY" id="pCE-qE-0dL"/>
+                                        <constraint firstItem="VPG-wC-hES" firstAttribute="centerX" secondItem="I3Y-mb-yim" secondAttribute="centerX" id="tWZ-PG-Olf"/>
+                                        <constraint firstItem="aSH-KJ-qmd" firstAttribute="centerY" secondItem="I3Y-mb-yim" secondAttribute="centerY" id="tch-i1-CNj"/>
+                                        <constraint firstItem="Ltb-b3-0u9" firstAttribute="centerY" secondItem="I3Y-mb-yim" secondAttribute="centerY" id="u7F-cd-Pz3"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="aSH-KJ-qmd" id="QG7-8t-09l"/>
+                                    <outlet property="temperatureLabel" destination="Ltb-b3-0u9" id="fu0-yv-2ig"/>
+                                    <outlet property="weekLabel" destination="VPG-wC-hES" id="AI7-mm-VcT"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="n5d-Pl-Q79" id="BFc-bB-tnx"/>
+                            <outlet property="delegate" destination="n5d-Pl-Q79" id="4xc-c5-g3c"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aN5-ok-9f2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-458" y="131"/>
+        </scene>
+    </scenes>
+</document>

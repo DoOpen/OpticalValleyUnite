@@ -65,6 +65,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     /// 搜索情况
     var search: AMapSearchAPI!
     var locaCity : String = ""
+    var weatherTvc : UITableViewController?
     
     ///计步器的功能模块属性
     //设置注册 计步设备的
@@ -464,7 +465,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         locationManager.distanceFilter = KDistence
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.locatingWithReGeocode = true
-        locationManager.reGeocodeTimeout = KTime
+//        locationManager.reGeocodeTimeout = KTime
         locationManager.locationTimeout = KTime
         
         if Double(UIDevice.current.systemVersion.components(separatedBy: ".").first!)! >= 9.0{
@@ -581,13 +582,13 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     @IBAction func weatherButtonClick(_ sender: UIButton) {
         
         //加载未来的信息
-        
+        self.searchForcastWeather( city : self.locaCity )
         
     }
     
 
     // MARK: - leftbar消息按钮的点击事件
-/// leftbar消息按钮的点击事件的
+    /// leftbar消息按钮的点击事件的
     @IBAction func messageBtnClick() {
         
         let bool1 = allPermissionModels.contains { (model) -> Bool in
@@ -620,7 +621,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     }
     
   
-/// rightBar扫描二维码的事件的点击:
+    /// rightBar扫描二维码的事件的点击:
     @IBAction func scanBtnClick() {
         
 //        pushToDeviceViewController()
@@ -731,6 +732,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         let req:AMapWeatherSearchRequest! = AMapWeatherSearchRequest.init()
         req.city = city
+        self.locaCity = city
+        
         req.type = AMapWeatherType.live
         
         self.search.aMapWeatherSearch(req)
@@ -823,29 +826,36 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
             UserDefaults.standard.set(location.coordinate.longitude, forKey: "SJlongitude")
         }
         
-        //获取的是 逆地理的信息情况(各种的应用的参数)
-        //self.searchForcastWeather(city: "武汉")
-        self.searchLiveWeather(city: "武汉")
+        
+        
 
         if reGeocode != nil
         {
             parmet["RESERVER"] = reGeocode.formattedAddress
             uploadLocation(parmat: parmet)
-            
+            //获取的是 逆地理的信息情况(各种的应用的参数)
+            self.searchLiveWeather(city: reGeocode.city!)
             
         }else{
-            
             
             HttpClient.instance.getAddress(lat: location.coordinate.latitude, lon: location.coordinate.longitude, succses: { (address) in
                 
                 if let address = address{
                     
                     parmet["RESERVER"] = address
+                    let str = NSString.init(string: address)
+                    let cityRange = str.range(of: "市")
+                    let newRange = NSRange.init(location: 0, length: cityRange.location + 1)
+                    let cityString = str.substring(with: newRange)
+                    let newCityArray = cityString.components(separatedBy: "省")
+                    let newCityString = newCityArray.last
+                    
+                    self.searchLiveWeather(city: newCityString!)
+                    
                     self.uploadLocation(parmat: parmet)
                 }
             })
-            
-            
+
         }
     }
     
@@ -870,7 +880,11 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
             if (liveWeather != nil)
             {
                 //数据是 liveWeather
+                let weather = liveWeather.weather
+                let temperature = liveWeather.temperature
+                let all = weather! + " " + temperature! + "℃"
                 
+                self.weatherBtn.setTitle(all, for: .normal)
                 
             }
             
@@ -886,7 +900,24 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
             if (forecast != nil)
             {
                 //数据是 forecast
-
+                //创建coverView 来添加天气内容框
+                let weatherV =  UIStoryboard.instantiateInitialViewController(name: "YQHomeWeather") as! YQHomeWeatherTVC
+                weatherV.dataArray = forecast.casts
+                
+                self.weatherTvc = weatherV
+                let subView = weatherV.view
+                
+                subView?.frame = CGRect.init(x: 25, y: 200, width: SJScreeW - 50, height: SJScreeH - 400)
+                
+                CoverView.show(view: subView!)
+                
+//                self.view.addSubview(subView!)
+//                
+//                subView?.snp.makeConstraints({ (maker) in
+//                    
+//                    maker.top.bottom.equalToSuperview().offset(100)
+//                    maker.left.right.equalToSuperview().offset(25)
+//                })
             
             }
         }

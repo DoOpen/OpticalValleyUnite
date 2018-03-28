@@ -43,6 +43,7 @@
 		2F236B701F6FADF700F1B0DF /* YQPersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */; };
 		2F236B721F6FE40300F1B0DF /* YQfireMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */; };
 		2F236B741F6FEA1B00F1B0DF /* YQFireDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */; };
+		2F24960E206B338600D5F61C /* YQWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24960D206B338600D5F61C /* YQWeatherCell.swift */; };
 		2F24CEBC1FBE7EB900EC6AF7 /* YQHistoryStepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24CEBB1FBE7EB900EC6AF7 /* YQHistoryStepModel.swift */; };
 		2F24CEBE1FBE89A000EC6AF7 /* YQHomeStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24CEBD1FBE89A000EC6AF7 /* YQHomeStepView.swift */; };
 		2F2A2BB41F989E1D003015E9 /* YQAllProjectSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A2BB31F989E1C003015E9 /* YQAllProjectSelectVC.swift */; };
@@ -167,6 +168,10 @@
 		2F62735F204573F500D36F14 /* YQEquipmentDetailList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F62735E204573F500D36F14 /* YQEquipmentDetailList.storyboard */; };
 		2F63436C1F9EE5D6005F930A /* AnimatedAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63436B1F9EE5D6005F930A /* AnimatedAnnotation.m */; };
 		2F63436F1F9F4963005F930A /* AnimatedAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63436E1F9F4963005F930A /* AnimatedAnnotationView.m */; };
+		2F637F5C206A813D00EFFFF8 /* YQHomeWeatherTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F637F5B206A813D00EFFFF8 /* YQHomeWeatherTVC.swift */; };
+		2F637F5E206A82CB00EFFFF8 /* YQHomeWeather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F637F5D206A82CB00EFFFF8 /* YQHomeWeather.storyboard */; };
+		2F637F60206A86AB00EFFFF8 /* YQWeatherHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F637F5F206A86AB00EFFFF8 /* YQWeatherHeadView.swift */; };
+		2F637F62206A86DA00EFFFF8 /* YQWeatherHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F637F61206A86DA00EFFFF8 /* YQWeatherHeadView.xib */; };
 		2F648DAD1F57A2DC006D51D3 /* PartsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F648DAC1F57A2DC006D51D3 /* PartsModel.swift */; };
 		2F648DAF1F57C045006D51D3 /* YQPartDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F648DAE1F57C045006D51D3 /* YQPartDataCell.swift */; };
 		2F648DB11F57C063006D51D3 /* YQPartDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F648DB01F57C063006D51D3 /* YQPartDataCell.xib */; };
@@ -475,6 +480,7 @@
 		2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPersonDetail.storyboard; sourceTree = "<group>"; };
 		2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQfireMessage.swift; sourceTree = "<group>"; };
 		2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireDetailCell.swift; sourceTree = "<group>"; };
+		2F24960D206B338600D5F61C /* YQWeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWeatherCell.swift; sourceTree = "<group>"; };
 		2F24CEBB1FBE7EB900EC6AF7 /* YQHistoryStepModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHistoryStepModel.swift; sourceTree = "<group>"; };
 		2F24CEBD1FBE89A000EC6AF7 /* YQHomeStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHomeStepView.swift; sourceTree = "<group>"; };
 		2F2892321F70FDC1000F879A /* Development-3.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Development-3.mobileprovision"; sourceTree = "<group>"; };
@@ -604,6 +610,10 @@
 		2F63436D1F9F4963005F930A /* AnimatedAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedAnnotationView.h; sourceTree = "<group>"; };
 		2F63436E1F9F4963005F930A /* AnimatedAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedAnnotationView.m; sourceTree = "<group>"; };
 		2F637F5A206A3FBF00EFFFF8 /* YQGlobalPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQGlobalPrefixHeader.pch; sourceTree = "<group>"; };
+		2F637F5B206A813D00EFFFF8 /* YQHomeWeatherTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHomeWeatherTVC.swift; sourceTree = "<group>"; };
+		2F637F5D206A82CB00EFFFF8 /* YQHomeWeather.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQHomeWeather.storyboard; sourceTree = "<group>"; };
+		2F637F5F206A86AB00EFFFF8 /* YQWeatherHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWeatherHeadView.swift; sourceTree = "<group>"; };
+		2F637F61206A86DA00EFFFF8 /* YQWeatherHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWeatherHeadView.xib; sourceTree = "<group>"; };
 		2F648DAC1F57A2DC006D51D3 /* PartsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartsModel.swift; sourceTree = "<group>"; };
 		2F648DAE1F57C045006D51D3 /* YQPartDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataCell.swift; sourceTree = "<group>"; };
 		2F648DB01F57C063006D51D3 /* YQPartDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartDataCell.xib; sourceTree = "<group>"; };
@@ -1955,6 +1965,9 @@
 				2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */,
 				4B5E43C21F2ECEFE00DCE5AC /* SiginCellView.swift */,
 				4B5E43C01F2ECEE000DCE5AC /* SiginCellView.xib */,
+				2F637F5F206A86AB00EFFFF8 /* YQWeatherHeadView.swift */,
+				2F637F61206A86DA00EFFFF8 /* YQWeatherHeadView.xib */,
+				2F24960D206B338600D5F61C /* YQWeatherCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1980,6 +1993,8 @@
 				4B30780E1E29FBF500FB4007 /* ChooseHouseViewController.swift */,
 				4BF807021F0E28D00047E129 /* ChooseDeviceViewController.swift */,
 				4BB53FEC1F14B9C30061190F /* DeviceViewController.swift */,
+				2F637F5B206A813D00EFFFF8 /* YQHomeWeatherTVC.swift */,
+				2F637F5D206A82CB00EFFFF8 /* YQHomeWeather.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2267,6 +2282,7 @@
 				2F94A28F1F73BA4F00455162 /* YQResolved.xib in Resources */,
 				2F4BB4231FC3CB960007BD08 /* YQExecNew.xib in Resources */,
 				2F51CCD6203C2B13005723E8 /* YQWorkListCell.xib in Resources */,
+				2F637F62206A86DA00EFFFF8 /* YQWeatherHeadView.xib in Resources */,
 				2F7EF82320107A7D0029D38D /* YQWorkHighlightsVC.xib in Resources */,
 				4BD4B94D1E272EA600AE2BC9 /* Home.storyboard in Resources */,
 				2F62735F204573F500D36F14 /* YQEquipmentDetailList.storyboard in Resources */,
@@ -2293,6 +2309,7 @@
 				2F4EB2961FD51B070004A532 /* YQVideoPatrol.storyboard in Resources */,
 				2F5993ED20294B7700AE124C /* YQDecorationHomeCell.xib in Resources */,
 				2FC98A0C202D99350080D1BE /* YQHouseLocationScreen.xib in Resources */,
+				2F637F5E206A82CB00EFFFF8 /* YQHomeWeather.storyboard in Resources */,
 				2F4A658E1F945AC300F4C72A /* YQJournalAddEvent.storyboard in Resources */,
 				2F616577205A97F100EB0B53 /* YQEquipmentSiftVC.storyboard in Resources */,
 				2F9F61102047CFF200CD9B75 /* YQSensorPart.xib in Resources */,
@@ -2571,6 +2588,7 @@
 				4B3951F31E28B38D00E2642F /* AddSignInViewController.swift in Sources */,
 				4BA520361E8E0F8000398F34 /* ExexSwithCell.swift in Sources */,
 				2FCBC0272014951A003F1556 /* YQDrawPlanView.swift in Sources */,
+				2F637F5C206A813D00EFFFF8 /* YQHomeWeatherTVC.swift in Sources */,
 				2F4217321FDA793A00B42BB3 /* YQPatrolItemModel.swift in Sources */,
 				4BAA134A1E5D7F7800E54534 /* ExecCell.swift in Sources */,
 				2F6FCB19202BFC5F00B20AC3 /* YQDecorationScreenModel.swift in Sources */,
@@ -2621,6 +2639,7 @@
 				4B3951FF1E28D2B900E2642F /* WorkOrderDistributionCell.swift in Sources */,
 				4BD4B95B1E275BDB00AE2BC9 /* SignInListViewController.swift in Sources */,
 				4BBBEC951E2CAAE200F60313 /* BoPhotoListCell.m in Sources */,
+				2F637F60206A86AB00EFFFF8 /* YQWeatherHeadView.swift in Sources */,
 				2F57D7E21FFF4A0300207E98 /* YQOffLineFirstWorkOrderVC.swift in Sources */,
 				4B6E64FD1EEAEFCF00BA23E4 /* PhotoTransition.swift in Sources */,
 				2F5A3D641FE8EF770069ABE1 /* YQDynamicPasswordCell.swift in Sources */,
@@ -2735,6 +2754,7 @@
 				4B1DEC641E31BE01000917D2 /* MapViewController.swift in Sources */,
 				2F7EF82520107D690029D38D /* YQAddWorkPlan.swift in Sources */,
 				2FCBC01D20146E16003F1556 /* YQWorkHighlightsDetailShowModel.swift in Sources */,
+				2F24960E206B338600D5F61C /* YQWeatherCell.swift in Sources */,
 				2FE08F2B1F5F8A0A00D6F51D /* YQSystemView.swift in Sources */,
 				4B1DEC581E31B646000917D2 /* SGGenerateQRCodeVC.m in Sources */,
 				2F86DCC3204E83430029E54A /* YQAllWorkUnitHomeVC.swift in Sources */,

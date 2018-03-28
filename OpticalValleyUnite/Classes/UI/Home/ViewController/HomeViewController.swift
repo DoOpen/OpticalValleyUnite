@@ -379,6 +379,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                     DispatchQueue.main.async {
                         //设置 系统app的显示的图标的选项的情况
                         UIApplication.shared.applicationIconBadgeNumber = tatolCount
+                        //偏好的保存: badgeNumber
+                        UserDefaults.standard.set(tatolCount, forKey: Const.YQBadgeNumber)
+                        
                     }
                 }
             }
@@ -911,14 +914,6 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
                 
                 CoverView.show(view: subView!)
                 
-//                self.view.addSubview(subView!)
-                
-//                subView?.snp.makeConstraints({ (maker) in
-//                    
-//                    maker.top.bottom.equalToSuperview().offset(100)
-//                    maker.left.right.equalToSuperview().offset(25)
-//                })
-            
             }
         }
         

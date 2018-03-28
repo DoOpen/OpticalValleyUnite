@@ -31,6 +31,8 @@ struct Const {
     
     static let YQReportName = "YQReportName"
     
+    static let YQBadgeNumber = "YQBadgeNumber"
+    
     //用户名和 密码(加密)
     static let standardUserName = "YQstandardUserName"
     

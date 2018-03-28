@@ -333,7 +333,6 @@ class LoginViewController: UIViewController {
         }else{
             
             let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
-//            vc.view.backgroundColor = UIColor.red
             SJKeyWindow?.rootViewController = vc
         }
     }
@@ -349,9 +348,7 @@ class LoginViewController: UIViewController {
         
         HttpClient.instance.post(path: URLPath.logOut, parameters: paramet, success: { (data) in
             
-//            SVProgressHUD.dismiss()
             UIApplication.shared.applicationIconBadgeNumber = 0
-
 
         }) { (error) in
             
@@ -369,6 +366,8 @@ class LoginViewController: UIViewController {
         UserDefaults.standard.removeObject(forKey: Const.YQIs_Group)
         UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
         UserDefaults.standard.removeObject(forKey: Const.YQReportName)
+        
+        UserDefaults.standard.removeObject(forKey: Const.YQBadgeNumber)
         
         User.removeUser()
         UserDefaults.standard.set(nil, forKey: Const.SJToken)

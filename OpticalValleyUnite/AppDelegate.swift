@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UMessage.start(withAppkey: Const.SJUMPushKey, launchOptions: launchOptions)
         //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
         UMessage.registerForRemoteNotifications()
-        UMessage.setBadgeClear(false)
+        UMessage.setBadgeClear(true)
         UIApplication.shared.applicationIconBadgeNumber = 0 //首次的appIconBadgeNumber 要求清零,保证用户没有登录的情况下,app首次下载的情况下,没有消息值
 
         // 3.如果是ios10 必须加上 如下的代码
@@ -80,8 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        let num = UserDefaults.standard.object(forKey: Const.YQBadgeNumber) as?Int ?? 0
+        
+        UIApplication.shared.applicationIconBadgeNumber = num
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -116,7 +119,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
             startTranslattion(voicessss: voiceText!)
         }
 
-        
         noticHandel(userInfo: userInfo)
         
         UIApplication.shared.applicationIconBadgeNumber += 1

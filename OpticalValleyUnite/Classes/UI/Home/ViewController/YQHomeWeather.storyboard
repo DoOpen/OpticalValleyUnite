@@ -69,6 +69,11 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="n5d-Pl-Q79" id="BFc-bB-tnx"/>
                             <outlet property="delegate" destination="n5d-Pl-Q79" id="4xc-c5-g3c"/>

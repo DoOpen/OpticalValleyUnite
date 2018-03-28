@@ -658,8 +658,6 @@ class WorkOrderProgressViewController: UIViewController {
         
     }
     
-
-    
     
     //MARK: - 操作按钮点击
     //派单按钮点击
@@ -798,13 +796,15 @@ class WorkOrderProgressViewController: UIViewController {
     }
 
 
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        if let vc = segue.destination as? CallBackListViewController{
+//            
+//            
+//        }
+//    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? CallBackListViewController{
-            vc.workOrderDetalModel = workOrderDetalModel
-            vc.callBackModels = callbackModels
-        }
-    }
+
 }
 
 extension WorkOrderProgressViewController: UITableViewDataSource, UITableViewDelegate{

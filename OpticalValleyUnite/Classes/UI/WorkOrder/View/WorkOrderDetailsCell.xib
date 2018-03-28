@@ -391,7 +391,6 @@
                                 <rect key="frame" x="301" y="217" width="62" height="30"/>
                                 <state key="normal" title="查看照片"/>
                                 <connections>
-                                    <action selector="callBackBtnClick" destination="5ML-kY-bH3" eventType="touchUpInside" id="xdg-Q8-D1K"/>
                                     <action selector="seephotoBtnClick" destination="5ML-kY-bH3" eventType="touchUpInside" id="4RX-ql-xTM"/>
                                 </connections>
                             </button>

@@ -13,9 +13,11 @@ class CallBackListViewController: UITableViewController {
     
     var callBackModels = [CallbackModel](){
         didSet{
+            
             tableView.reloadData()
         }
     }
+    
     var workOrderDetalModel: WorkOrderDetailModel?
     
     override func viewDidLoad() {
@@ -38,17 +40,23 @@ class CallBackListViewController: UITableViewController {
 }
 
 extension CallBackListViewController{
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return callBackModels.count + 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "xiangqing") as! WorkOrderDetailsCell
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "callBackxiangqing") as! WorkOrderDetailsCell
             
             cell.model = workOrderDetalModel
+            
             return cell
+            
         }else{
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "callBackCell") as! CallBackCell
             cell.model = callBackModels[indexPath.row - 1]
             

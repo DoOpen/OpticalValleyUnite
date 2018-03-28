@@ -55,7 +55,7 @@ class WorkOrderDetailsCell: UITableViewCell {
     @IBOutlet weak var mark: UILabel!
     
     //传入父控制器
-    var superVC : UIViewController?
+    var superVC : WorkOrderProgressViewController?
     
     
     var equipmentModel: EquimentModel?{
@@ -149,9 +149,8 @@ class WorkOrderDetailsCell: UITableViewCell {
                 }
                 
                 
-                
-                
                 switch model.status {
+                    
                 case 10:
                     stutasLabel.text = "待督办"
                     
@@ -196,15 +195,23 @@ class WorkOrderDetailsCell: UITableViewCell {
                 default:
                     stutasLabel.text = "工单生成"
             }
-                
+            
+            //注意:注意的 问题!!!!
+            //这里的回访的记录的 查看照片,会造成循环引用的问题
             seePhotpBtn.isHidden = model.picture == ""
-       
         }
+            
         }
     }
     
     
     @IBAction func callBackBtnClick() {
+        
+        //跳转进行的回访的工单的信息的界面
+        let  vc = CallBackListViewController.loadFromStoryboard(name: "WorkOrder") as! CallBackListViewController
+        vc.workOrderDetalModel = superVC?.workOrderDetalModel
+        vc.callBackModels = (superVC?.callbackModels)!
+        superVC?.navigationController?.pushViewController(vc, animated: true)
         
     }
     

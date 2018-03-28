@@ -40,38 +40,53 @@ class YQEquipHomeListCell: UITableViewCell {
             //图片
             
             var photoImage = [Photo]()
-            if model?.screenUrl != "" {//数组为 空的情况
+            
+            if (model?.houseImgs.count)! >= 1 {//数组为 空的情况
                 
                 let basicPath = URLPath.systemSelectionURL
                 var pUrl = Photo()
                 
-                if (model?.screenUrl.contains("http"))! {
+                for xxxxx in 0..<(model?.houseImgs.count)! {
                     
-                    showImageView.showImageUrls([(model?.screenUrl)!])
-                    pUrl = Photo.init(urlString: (model?.screenUrl)!)
+                    let screenUrl = model?.houseImgs[xxxxx]["screenUrl"] as? String ?? ""
+                
+                    if (screenUrl.contains("http")) {
+                        
+                        if xxxxx == 0 {
+                        
+                            showImageView.showImageUrls([(screenUrl)])
+                        }
+                        
+                        
+                        pUrl = Photo.init(urlString: (screenUrl))
+                        
+                    }else{
+                        
+                        let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (screenUrl)
+                        
+                        if xxxxx == 0 {
+                            
+                            showImageView.showImageUrls([imageValue])
+                        }
+                        
+                        pUrl = Photo.init(urlString: imageValue)
+                    }
                     
-                }else{
-                    
-                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + (model?.screenUrl)!
-                    
-                    showImageView.showImageUrls([imageValue])
-                    
-                    pUrl = Photo.init(urlString: imageValue)
+                    photoImage.append(pUrl)
+                
                 }
                 
-                photoImage.append(pUrl)
                 
-            }else{// 数组不为 空的情况
+            }else{// 数组为空的情况,传空显示的是 占位图片
                 
-                showImageView.showImageUrls([(model?.screenUrl)!])
+                showImageView.showImageUrls([])
             }
             
             showImageView.didClickHandle = { _,image in
                 
-                
                 //改框架
                 //CoverView.show(image: image)
-                if self.model?.screenUrl != "" {
+                if (self.model?.houseImgs.count)! > 0 {
                     
                     let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
                     pb.indicatorStyle = .pageControl

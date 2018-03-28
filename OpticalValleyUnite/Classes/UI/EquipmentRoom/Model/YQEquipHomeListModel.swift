@@ -37,11 +37,11 @@ class YQEquipHomeListModel: NSObject {
     //图片集合
     var houseImgs = Array<[String : Any]>()
     
-    
-    //图片地址
-    var screenUrl = ""
-    //截图时间
-    var screenTime = ""
+//  接口的图片的改动 ---> 全部的是从 数组中添加
+//    //图片地址
+//    var screenUrl = ""
+//    //截图时间
+//    var screenTime = ""
     
 
     init(dict : [String : Any]) {

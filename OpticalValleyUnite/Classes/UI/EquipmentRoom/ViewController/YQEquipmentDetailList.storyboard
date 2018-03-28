@@ -87,7 +87,7 @@
                                                         <rect key="frame" x="123" y="10" width="242" height="40"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle4" translatesAutoresizingMaskIntoConstraints="NO" id="Dk9-37-nCg">
-                                                                <rect key="frame" x="202" y="5" width="40" height="30"/>
+                                                                <rect key="frame" x="202" y="10" width="40" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="0Vd-0x-2pV"/>
                                                                 </constraints>
@@ -118,8 +118,8 @@
                                                             <constraint firstItem="Dk9-37-nCg" firstAttribute="leading" secondItem="afe-mJ-XQ0" secondAttribute="trailing" id="G2J-du-TLD"/>
                                                             <constraint firstAttribute="trailing" secondItem="6mW-kW-QHs" secondAttribute="trailing" id="Thw-oG-IUE"/>
                                                             <constraint firstItem="afe-mJ-XQ0" firstAttribute="centerY" secondItem="vhR-Dn-9rb" secondAttribute="centerY" id="Vs9-BH-9Xi"/>
-                                                            <constraint firstItem="Dk9-37-nCg" firstAttribute="top" secondItem="vhR-Dn-9rb" secondAttribute="top" constant="5" id="Yx5-VC-E1A"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Dk9-37-nCg" secondAttribute="bottom" constant="5" id="fb3-eA-u93"/>
+                                                            <constraint firstItem="Dk9-37-nCg" firstAttribute="top" secondItem="vhR-Dn-9rb" secondAttribute="top" constant="10" id="Yx5-VC-E1A"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Dk9-37-nCg" secondAttribute="bottom" constant="10" id="fb3-eA-u93"/>
                                                             <constraint firstAttribute="trailing" secondItem="Dk9-37-nCg" secondAttribute="trailing" id="n5s-87-6bW"/>
                                                             <constraint firstItem="6mW-kW-QHs" firstAttribute="top" secondItem="vhR-Dn-9rb" secondAttribute="top" id="tcv-LI-m2b"/>
                                                             <constraint firstItem="afe-mJ-XQ0" firstAttribute="leading" secondItem="vhR-Dn-9rb" secondAttribute="leading" id="w5I-fr-BdB"/>

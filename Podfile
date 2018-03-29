@@ -8,7 +8,6 @@ use_frameworks!
 target "OpticalValleyUnite" do
 
 pod 'Alamofire’, '~> 4.5.0’
-#pod 'Kingfisher', '~> 3.2.4'
 pod 'IQKeyboardManager', '~> 4.0.0'
 pod 'Masonry', '~> 1.0.1'
 pod 'SVProgressHUD'

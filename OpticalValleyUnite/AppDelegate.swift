@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         LoginViewController.chooseRootViewController()
-        
+                
         AMapServices.shared().apiKey = Const.SJMapKey
         IQKeyboardManager.shared().isEnabled = true
         SVProgressHUD.setMaximumDismissTimeInterval(2)

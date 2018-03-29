@@ -51,6 +51,7 @@ extension CallBackListViewController{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "callBackxiangqing") as! WorkOrderDetailsCell
             
+            cell.callBackCell = true
             cell.model = workOrderDetalModel
             
             return cell
@@ -60,20 +61,21 @@ extension CallBackListViewController{
             let cell = tableView.dequeueReusableCell(withIdentifier: "callBackCell") as! CallBackCell
             cell.model = callBackModels[indexPath.row - 1]
             
+            cell.upLineView.isHidden = false
+            cell.downLineView.isHidden = false
+            
             if indexPath.row == 1{
-                cell.upLineView.isHidden = true
-                cell.downLineView.isHidden = false
+                
                 cell.circleView.backgroundColor = UIColor.blue
+                
             }else if indexPath.row == callBackModels.count{
-                cell.upLineView.isHidden = false
-                cell.downLineView.isHidden = true
+                
                 cell.circleView.backgroundColor = UIColor.colorFromRGB(rgbValue: 0xcccccc)
+                
             }else{
-                cell.upLineView.isHidden = false
-                cell.downLineView.isHidden = false
+                
                 cell.circleView.backgroundColor = UIColor.colorFromRGB(rgbValue: 0xcccccc)
             }
-            
             
             return cell
         }

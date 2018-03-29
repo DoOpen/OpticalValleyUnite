@@ -19,6 +19,7 @@ class CallBackCell: UITableViewCell {
     
     var model: CallbackModel?{
         didSet{
+            
             if let model = model{
                 nameLabel.text = "回访人: " + model.name
                 timeLabel.text = "回访时间: " + model.time

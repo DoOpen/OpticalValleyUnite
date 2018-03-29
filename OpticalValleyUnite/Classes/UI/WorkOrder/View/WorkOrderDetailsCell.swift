@@ -57,6 +57,10 @@ class WorkOrderDetailsCell: UITableViewCell {
     //传入父控制器
     var superVC : WorkOrderProgressViewController?
     
+    //回看的属性的回调
+    var callBackCell : Bool = false
+    
+    
     
     var equipmentModel: EquimentModel?{
         didSet{
@@ -115,26 +119,34 @@ class WorkOrderDetailsCell: UITableViewCell {
 //                }else if model.orderType == "应急工单"{
 //                    
 //                }
-                if model.equipment_id == -1{
-                    DeviceView.isHidden = true
-                    DeviceHeightConstraint.constant = 0
-                }else{
-                    if model.isOpen {
-                        DeviceView.isHidden = false
-                        DeviceHeightConstraint.constant = 365.0
+                    
+                if !callBackCell {//回访的消息不显示 设备信息的问题
+                    
+                    if model.equipment_id == -1{
                         
-                        subDeviceView.isHidden = false
-                        subDeviceHeightConstraint.constant = 278.0
+                        DeviceView.isHidden = true
+                        DeviceHeightConstraint.constant = 0
                         
                     }else{
-                        DeviceView.isHidden = false
-                        DeviceHeightConstraint.constant = 87.0
                         
-                        subDeviceView.isHidden = true
-                        subDeviceHeightConstraint.constant = 0.0
+                        if model.isOpen {
+                            DeviceView.isHidden = false
+                            DeviceHeightConstraint.constant = 365.0
+                            
+                            subDeviceView.isHidden = false
+                            subDeviceHeightConstraint.constant = 278.0
+                            
+                        }else{
+                            DeviceView.isHidden = false
+                            DeviceHeightConstraint.constant = 87.0
+                            
+                            subDeviceView.isHidden = true
+                            subDeviceHeightConstraint.constant = 0.0
+                        }
+                        
                     }
+                    
                 }
-                
                 
                 
                 switch model.importentLivel {
@@ -198,7 +210,12 @@ class WorkOrderDetailsCell: UITableViewCell {
             
             //注意:注意的 问题!!!!
             //这里的回访的记录的 查看照片,会造成循环引用的问题
-            seePhotpBtn.isHidden = model.picture == ""
+            if !callBackCell {
+            
+                seePhotpBtn.isHidden = model.picture == ""
+            
+            }
+                
         }
             
         }

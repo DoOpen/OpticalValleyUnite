@@ -389,7 +389,6 @@ class WorkOrderProgressViewController: UIViewController {
                 
                 self.equimentModel = model
                 
-                
                 //总体赋值,刷新列表项目
                 self.models = tempppp
                 self.tableView.reloadData()
@@ -404,10 +403,14 @@ class WorkOrderProgressViewController: UIViewController {
         
         HttpClient.instance.get(path: URLPath.getWorkDetail, parameters: parmate, success: { (respose) in
             
-//            print(respose)
-            
             SVProgressHUD.dismiss()
             
+            if respose as? [String : Any] == nil {
+                
+                SVProgressHUD.showError(withStatus: "没有更多数据")
+                return
+                
+            }
             //添加收藏 parkid的 缓存
             //  respose["PARK_ID"] 的值是需要的情况
             let PackId = respose["PARK_ID"] as! String
@@ -535,18 +538,17 @@ class WorkOrderProgressViewController: UIViewController {
 //            SVProgressHUD.dismiss()
             var temp = [ExecSectionModel]()
             
-            //注意的后台的数据结构的调整,以前是应用的数组集合来放字典,现在的是直接放了一个字典,没有数组了
-//            for dic in (response as! Array<[String: Any]>){
-                let dic = response["task"] as! [String: Any]
-                let model = ExecSectionModel(parmart: dic)
-//                model.workOrderId = (self.workOrderDetalModel?.id)!
-                temp.append(model)
+            if response["task"] as? [String: Any] == nil{
                 
-//            }
-            
-            if temp.count == 0{
-//                SVProgressHUD.showSuccess(withStatus: "没有待执行任务")
+                SVProgressHUD.showError(withStatus: "加载任务失败!")
+                return
             }
+            
+            //注意的后台的数据结构的调整,以前是应用的数组集合来放字典,现在的是直接放了一个字典,没有数组了
+            let dic = response["task"] as! [String: Any]
+            let model = ExecSectionModel(parmart: dic)
+            temp.append(model)
+
             self.taskModels = temp
             self.taskRemarkText = response["remark"] as? String
             

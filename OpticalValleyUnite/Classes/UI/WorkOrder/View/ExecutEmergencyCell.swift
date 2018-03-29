@@ -19,6 +19,7 @@ class ExecutEmergencyCell: UITableViewCell {
     
     @IBOutlet weak var remaskDetailLabel: UILabel!
     
+    @IBOutlet weak var placeholderImageView: UIImageView!
     
     var detailModel :WorkOrderDetailModel?
     var model: WorkHistoryModel?{
@@ -33,6 +34,11 @@ class ExecutEmergencyCell: UITableViewCell {
                 var temp = [String]()
                 
                 var photoImage = [Photo]()
+                
+                if model.pictures.isEmpty {
+                
+                    self.placeholderImageView.isHidden = false
+                }
                 
                 for url in model.pictures{
                     

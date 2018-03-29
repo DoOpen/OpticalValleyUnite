@@ -109,7 +109,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="r87-Hv-0QA">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="r87-Hv-0QA">
                         <rect key="frame" x="51" y="89" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="BmB-s0-Te8"/>
@@ -134,6 +134,7 @@
             <connections>
                 <outlet property="contentLabel" destination="CoC-gk-c3v" id="QxI-VE-5dO"/>
                 <outlet property="nameLabel" destination="Ll4-gg-Esu" id="kKJ-t8-rXc"/>
+                <outlet property="placeholderImageView" destination="r87-Hv-0QA" id="RbW-w3-jew"/>
                 <outlet property="remaskDetailLabel" destination="9gs-M0-rje" id="QqN-rt-4pd"/>
                 <outlet property="showImageView" destination="Vug-bc-x9b" id="cyL-qZ-RiT"/>
                 <outlet property="showImageviewHeithConstraint" destination="hE7-Hc-wTP" id="0kE-wZ-L0P"/>

@@ -31,12 +31,16 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         self.navigationItem.title = "我的设置"
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
         //写死的项目发版的时间
         bundleVersionLabel.text = bundleVersionLabel.text! + "(\(version))"
+        
+        //添加leftRightBar功能
+        setupRightAndLeftBarItem()
         
     }
     
@@ -75,6 +79,32 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             }
         }
     }
+    
+    // MARK: - 自定义的right_left barItem
+    func setupRightAndLeftBarItem(){
+        
+        let right_add_Button = UIButton()
+        
+        right_add_Button.frame = CGRect(x : 0, y : 0, width : 40, height : 40)
+        right_add_Button.setImage(UIImage(named: "反馈"), for: .normal)
+        right_add_Button.setTitle("反馈", for: .normal)
+        right_add_Button.addTarget(self, action: #selector(addRightBarItemButtonClick), for: .touchUpInside)
+        
+        let  right2Bar = UIBarButtonItem()
+        right2Bar.customView = right_add_Button
+        
+        self.navigationItem.rightBarButtonItems = [right2Bar]
+        
+    }
+    
+    //MARK: - leftBarItemButtonClick方法
+    func addRightBarItemButtonClick(){
+        
+        //跳转到反馈的界面
+        
+        
+    }
+
     
     
     // MARK: - 添加默认的项目选择方法
@@ -115,7 +145,6 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         
     }
     
-    
     // MARK: - 个人详情信息的界面跳转
     @IBAction func PersonDetailButtonClick(_ sender: Any) {
         
@@ -133,6 +162,15 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     
         
     }
+    
+    // MARK: - 分享界面的点击和跳转
+    @IBAction func shareButtonClick(_ sender: UIButton) {
+        
+        
+        
+        
+    }
+    
     
 
     @IBAction func checkNewBtnClick() {

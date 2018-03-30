@@ -231,6 +231,54 @@
                                     <outletCollection property="gestureRecognizers" destination="4bm-4g-K4P" appends="YES" id="D5w-JZ-uGM"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EUL-mJ-Wjk">
+                                <rect key="frame" x="0.0" y="368" width="375" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXU-hF-nWf">
+                                        <rect key="frame" x="45" y="12" width="35" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="larr" translatesAutoresizingMaskIntoConstraints="NO" id="gmp-0I-Apd">
+                                        <rect key="frame" x="320" y="2" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="02q-fy-vLI"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="GKw-HL-WXn"/>
+                                            <constraint firstAttribute="width" constant="40" id="ZYg-jk-N8C"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="oXP-uv-cLt"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_select_projects" translatesAutoresizingMaskIntoConstraints="NO" id="ORf-1E-WrN">
+                                        <rect key="frame" x="12" y="9.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="MVm-HJ-EOh"/>
+                                            <constraint firstAttribute="height" constant="25" id="nfo-CM-7Id"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NK-Fp-1ML">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <connections>
+                                            <action selector="shareButtonClick:" destination="GTU-aq-x3y" eventType="touchUpInside" id="c1a-CK-6cj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="QNu-81-atf"/>
+                                    <constraint firstItem="ORf-1E-WrN" firstAttribute="centerY" secondItem="EUL-mJ-Wjk" secondAttribute="centerY" id="QTz-0D-1yZ"/>
+                                    <constraint firstItem="5NK-Fp-1ML" firstAttribute="leading" secondItem="EUL-mJ-Wjk" secondAttribute="leading" id="VkK-lQ-azZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="5NK-Fp-1ML" secondAttribute="bottom" id="cE4-9h-kTw"/>
+                                    <constraint firstAttribute="trailing" secondItem="gmp-0I-Apd" secondAttribute="trailing" constant="15" id="dE2-8L-T5A"/>
+                                    <constraint firstItem="5NK-Fp-1ML" firstAttribute="top" secondItem="EUL-mJ-Wjk" secondAttribute="top" id="gyy-c3-Mbe"/>
+                                    <constraint firstAttribute="trailing" secondItem="5NK-Fp-1ML" secondAttribute="trailing" id="k8B-L2-CLI"/>
+                                    <constraint firstItem="gmp-0I-Apd" firstAttribute="centerY" secondItem="EUL-mJ-Wjk" secondAttribute="centerY" id="oLK-kz-Uk6"/>
+                                    <constraint firstItem="fXU-hF-nWf" firstAttribute="centerY" secondItem="EUL-mJ-Wjk" secondAttribute="centerY" id="sLw-7A-XfJ"/>
+                                    <constraint firstItem="fXU-hF-nWf" firstAttribute="leading" secondItem="EUL-mJ-Wjk" secondAttribute="leading" constant="45" id="t4k-Ys-WI1"/>
+                                    <constraint firstItem="ORf-1E-WrN" firstAttribute="leading" secondItem="EUL-mJ-Wjk" secondAttribute="leading" constant="12" id="vrm-1U-pk1"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rwy-xP-mT0">
                                 <rect key="frame" x="0.0" y="322" width="375" height="44"/>
                                 <subviews>
@@ -295,9 +343,12 @@
                             <constraint firstAttribute="trailing" secondItem="kBF-LV-Tp6" secondAttribute="trailing" id="J5n-yC-2lP"/>
                             <constraint firstItem="YhN-kq-U4F" firstAttribute="leading" secondItem="S78-Oq-mnY" secondAttribute="leading" id="LJH-Hc-3rc"/>
                             <constraint firstAttribute="trailing" secondItem="Ll6-HV-QUM" secondAttribute="trailing" id="MDO-la-jpV"/>
+                            <constraint firstItem="EUL-mJ-Wjk" firstAttribute="leading" secondItem="S78-Oq-mnY" secondAttribute="leading" id="Njt-Nl-qoy"/>
                             <constraint firstItem="67S-20-wfZ" firstAttribute="top" secondItem="Ll6-HV-QUM" secondAttribute="bottom" id="Oql-bB-xaq"/>
                             <constraint firstAttribute="trailing" secondItem="YhN-kq-U4F" secondAttribute="trailing" id="Wr6-jf-4fz"/>
+                            <constraint firstItem="EUL-mJ-Wjk" firstAttribute="top" secondItem="rwy-xP-mT0" secondAttribute="bottom" constant="2" id="aIR-zu-f9a"/>
                             <constraint firstItem="kBF-LV-Tp6" firstAttribute="top" secondItem="t2E-xR-dmq" secondAttribute="bottom" constant="1" id="bqo-Wv-wEs"/>
+                            <constraint firstAttribute="trailing" secondItem="EUL-mJ-Wjk" secondAttribute="trailing" id="cu5-uD-KzH"/>
                             <constraint firstItem="YhN-kq-U4F" firstAttribute="top" secondItem="ZPd-py-GWq" secondAttribute="bottom" constant="20" id="dS0-EG-T8e"/>
                             <constraint firstAttribute="trailing" secondItem="rwy-xP-mT0" secondAttribute="trailing" id="dds-qh-S0N"/>
                             <constraint firstItem="qpz-Vi-Xvw" firstAttribute="top" secondItem="zd7-xf-n4r" secondAttribute="bottom" constant="5" id="eal-gH-F5k"/>
@@ -325,7 +376,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="506" y="761"/>
+            <point key="canvasLocation" x="504.80000000000001" y="760.56971514242889"/>
         </scene>
         <!--我的统计-->
         <scene sceneID="3U1-0P-sJ6">

@@ -28,17 +28,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         LoginViewController.chooseRootViewController()
-                
-        AMapServices.shared().apiKey = Const.SJMapKey
+        
         IQKeyboardManager.shared().isEnabled = true
         SVProgressHUD.setMaximumDismissTimeInterval(2)
         
+        if isProjectBate {//bate 环境的内容情况
+        
+            AMapServices.shared().apiKey = Const.YQMapKey
+            
+            UMessage.start(withAppkey: Const.YQUMPushKey, launchOptions: launchOptions)
+
+        }else { // 正式 环境的内容情况
+        
+            AMapServices.shared().apiKey = Const.SJMapKey
+            
+            UMessage.start(withAppkey: Const.SJUMPushKey, launchOptions: launchOptions)
+        
+        }
         
         /*
          1. 集成友盟的sdk,步骤方法
          2. 通过的是 适配Https
          */
-        UMessage.start(withAppkey: Const.SJUMPushKey, launchOptions: launchOptions)
         //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
         UMessage.registerForRemoteNotifications()
         UMessage.setBadgeClear(true)
@@ -71,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UMessage.openDebugMode(true)
         
         return true
+        
     }
     
     

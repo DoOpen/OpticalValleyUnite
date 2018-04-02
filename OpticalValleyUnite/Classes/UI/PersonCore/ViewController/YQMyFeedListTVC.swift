@@ -37,6 +37,15 @@ class YQMyFeedListTVC: UITableViewController {
         return cell
     }
  
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = YQFeedDetailVC.init(nibName: "YQFeedDetailVC", bundle: nil)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+    }
 
 
 }

@@ -64,22 +64,22 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qa-pS-4zK" customClass="ShowImageView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="292" width="375" height="150"/>
+                    <rect key="frame" x="10" y="292" width="355" height="100"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="150" id="Tj4-Mo-Xcm"/>
+                        <constraint firstAttribute="height" constant="100" id="Tj4-Mo-Xcm"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="3qa-pS-4zK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2BO-35-kBs"/>
+                <constraint firstItem="3qa-pS-4zK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="2BO-35-kBs"/>
                 <constraint firstItem="bdk-mS-0Cq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HGB-fY-5SG"/>
                 <constraint firstItem="bdk-mS-0Cq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VlZ-sB-1ks"/>
                 <constraint firstItem="ODP-yK-CVB" firstAttribute="top" secondItem="bdk-mS-0Cq" secondAttribute="bottom" constant="1" id="Zbm-PO-xtP"/>
                 <constraint firstAttribute="trailing" secondItem="bdk-mS-0Cq" secondAttribute="trailing" id="bqa-J5-ipC"/>
                 <constraint firstItem="3qa-pS-4zK" firstAttribute="top" secondItem="Tjf-bB-uqT" secondAttribute="bottom" constant="5" id="f57-YZ-32b"/>
-                <constraint firstAttribute="trailing" secondItem="3qa-pS-4zK" secondAttribute="trailing" id="kCw-uZ-kjJ"/>
+                <constraint firstAttribute="trailing" secondItem="3qa-pS-4zK" secondAttribute="trailing" constant="10" id="kCw-uZ-kjJ"/>
                 <constraint firstItem="Tjf-bB-uqT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="lcA-78-fWe"/>
                 <constraint firstAttribute="trailing" secondItem="ODP-yK-CVB" secondAttribute="trailing" id="r1U-bT-bgc"/>
                 <constraint firstItem="Tjf-bB-uqT" firstAttribute="top" secondItem="ODP-yK-CVB" secondAttribute="bottom" constant="5" id="w2y-nc-yL7"/>

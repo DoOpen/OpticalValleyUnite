@@ -101,7 +101,9 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     func addRightBarItemButtonClick(){
         
         //跳转到反馈的界面
+        let vc = UIStoryboard.instantiateInitialViewController(name: "YQFeedBackVC")
         
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
 
@@ -166,8 +168,9 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     // MARK: - 分享界面的点击和跳转
     @IBAction func shareButtonClick(_ sender: UIButton) {
         
+        let vc = YQShareViewController.init(nibName: "YQShareViewController", bundle: nil)
         
-        
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

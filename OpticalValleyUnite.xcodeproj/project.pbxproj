@@ -189,6 +189,9 @@
 		2F6A438E1F6A528D003E10C9 /* YQFireControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */; };
 		2F6A43901F6A52CA003E10C9 /* YQFireControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */; };
 		2F6A83911F5CE073002BB61C /* YQPartDataSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */; };
+		2F6C202C2073786B00EEA98F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F6C202B2073786B00EEA98F /* libsqlite3.tbd */; };
+		2F6C202E2073787C00EEA98F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F6C202D2073787C00EEA98F /* CoreGraphics.framework */; };
+		2F6C2030207378E200EEA98F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F6C202F207378E200EEA98F /* ImageIO.framework */; };
 		2F6FCB19202BFC5F00B20AC3 /* YQDecorationScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FCB18202BFC5F00B20AC3 /* YQDecorationScreenModel.swift */; };
 		2F70DC2A1FDF7FE6003B9938 /* YQResultDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70DC291FDF7FE6003B9938 /* YQResultDetailModel.swift */; };
 		2F70DC2C1FDFA63F003B9938 /* YQScoreResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70DC2B1FDFA63F003B9938 /* YQScoreResult.swift */; };
@@ -642,6 +645,9 @@
 		2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireControlViewController.swift; sourceTree = "<group>"; };
 		2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireControl.storyboard; sourceTree = "<group>"; };
 		2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataSelectCell.swift; sourceTree = "<group>"; };
+		2F6C202B2073786B00EEA98F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		2F6C202D2073787C00EEA98F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2F6C202F207378E200EEA98F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		2F6FCB18202BFC5F00B20AC3 /* YQDecorationScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDecorationScreenModel.swift; sourceTree = "<group>"; };
 		2F70DC291FDF7FE6003B9938 /* YQResultDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQResultDetailModel.swift; sourceTree = "<group>"; };
 		2F70DC2B1FDFA63F003B9938 /* YQScoreResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQScoreResult.swift; sourceTree = "<group>"; };
@@ -953,20 +959,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F6C2030207378E200EEA98F /* ImageIO.framework in Frameworks */,
+				4B3951DB1E27D8A800E2642F /* SystemConfiguration.framework in Frameworks */,
+				4B3951E91E27DFA800E2642F /* CoreTelephony.framework in Frameworks */,
+				2F6C202E2073787C00EEA98F /* CoreGraphics.framework in Frameworks */,
+				2F6C202C2073786B00EEA98F /* libsqlite3.tbd in Frameworks */,
 				2F079A6F1FF25F63009D204D /* Alamofire.framework in Frameworks */,
 				4B3951DD1E27D8D300E2642F /* libz.tbd in Frameworks */,
 				2F73FA671F74CE8600D37FDA /* CoreLocation.framework in Frameworks */,
 				2F73FA651F74CE1300D37FDA /* GLKit.framework in Frameworks */,
 				2F5A3D591FE8DFE50069ABE1 /* RfmAccessControl.framework in Frameworks */,
 				4B91E89A1F258BB200F63D66 /* UserNotifications.framework in Frameworks */,
-				4B3951E91E27DFA800E2642F /* CoreTelephony.framework in Frameworks */,
 				4B3951E31E27D8F900E2642F /* Security.framework in Frameworks */,
 				4B3951E11E27D8EE00E2642F /* libstdc++.6.0.9.tbd in Frameworks */,
 				4B91E8981F258B1E00F63D66 /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
 				4B3951DF1E27D8E200E2642F /* libc++.tbd in Frameworks */,
 				4B3951E51E27DDCE00E2642F /* MAMapKit.framework in Frameworks */,
 				2F73FA631F74C0B600D37FDA /* AMapSearchKit.framework in Frameworks */,
-				4B3951DB1E27D8A800E2642F /* SystemConfiguration.framework in Frameworks */,
 				4B3951D91E27D88A00E2642F /* JavaScriptCore.framework in Frameworks */,
 				4B3951D71E27D85B00E2642F /* AMapLocationKit.framework in Frameworks */,
 				5088FE3EA7730E4D5AAA3D73 /* Pods_OpticalValleyUnite.framework in Frameworks */,
@@ -980,6 +989,9 @@
 		2DE0C4DE5B1BF48FFA401773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F6C202F207378E200EEA98F /* ImageIO.framework */,
+				2F6C202D2073787C00EEA98F /* CoreGraphics.framework */,
+				2F6C202B2073786B00EEA98F /* libsqlite3.tbd */,
 				2F079A6E1FF25F63009D204D /* Alamofire.framework */,
 				2F5A3D561FE8DBAD0069ABE1 /* libc.tbd */,
 				2F73FA661F74CE8600D37FDA /* CoreLocation.framework */,
@@ -2538,9 +2550,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-OpticalValleyUnite/Pods-OpticalValleyUnite-resources.sh",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

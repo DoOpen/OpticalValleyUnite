@@ -9,10 +9,16 @@
 import UIKit
 import SnapKit
 
+let cellHight  = 100
+
 class ExecutDetailCell: UITableViewCell {
+    
     var tabHeight: CGFloat = 0.0
+    
     @IBOutlet weak var tableView: UITableView!
+    
     weak var  superTableView: UITableView?
+    
     var models = [ExecSectionModel](){
         didSet{
             tableView.reloadData()
@@ -32,7 +38,7 @@ class ExecutDetailCell: UITableViewCell {
                 remarkTest = ""
             }
             self.remarkTextView.text = "备注:" + remarkTest!
-            
+
         }
         
     }
@@ -119,7 +125,7 @@ class ExecutDetailCell: UITableViewCell {
         tableView.estimatedRowHeight = 80.0
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
-        tableViewHeightConstaint.constant = 80
+        tableViewHeightConstaint.constant = CGFloat(cellHight)
         
 //        tableView.tableFooterView = UIView()
         
@@ -212,7 +218,6 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "ExecuteDetailSubImageCell", for: indexPath) as! ExecuteDetailSubImageCell
             let cell = Bundle.main.loadNibNamed("ExecuteDetailSubImageCell", owner: nil, options: nil)?[0] as? ExecuteDetailSubImageCell
             
-            
             cell?.index = indexPath.row + 1
             cell?.model = model
             return cell!
@@ -229,7 +234,8 @@ extension ExecutDetailCell: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        
+        return CGFloat(cellHight)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

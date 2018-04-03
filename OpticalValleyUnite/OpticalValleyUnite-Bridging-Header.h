@@ -30,3 +30,9 @@
 #import <RfmAccessControl/RfmAccessControl.h>
 #import "NSData+YYExtend.h"
 #import "NSString+YYExtend.h"
+
+// U-Share核心SDK
+//#import <UIShare>
+
+// U-Share分享面板SDK，未添加分享面板SDK可将此行去掉
+#import <UShareUI/UShareUI.h>

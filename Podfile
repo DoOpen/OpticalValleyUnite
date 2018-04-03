@@ -7,7 +7,15 @@ use_frameworks!
 
 target "OpticalValleyUnite" do
 
-pod 'Alamofire’, '~> 4.5.0’
+# U-Share SDK UI模块（分享面板，建议添加）
+pod 'UMengUShare/UI'
+# 集成微信(精简版0.2M)
+pod 'UMengUShare/Social/ReducedWeChat'
+# 集成QQ(精简版0.5M)
+pod 'UMengUShare/Social/ReducedQQ'
+# 集成新浪微博(精简版1M)
+pod 'UMengUShare/Social/ReducedSina'
+pod 'Alamofire’, '~> 4.5.0'
 pod 'IQKeyboardManager', '~> 4.0.0'
 pod 'Masonry', '~> 1.0.1'
 pod 'SVProgressHUD'

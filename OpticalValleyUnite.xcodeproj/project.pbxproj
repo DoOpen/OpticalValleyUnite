@@ -1659,6 +1659,37 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		2FC7468020738E9600556E1A /* GeneralManagerMailbox */ = {
+			isa = PBXGroup;
+			children = (
+				2FC7468120738E9600556E1A /* Model */,
+				2FC7468220738E9600556E1A /* View */,
+				2FC7468320738E9600556E1A /* ViewController */,
+			);
+			path = GeneralManagerMailbox;
+			sourceTree = "<group>";
+		};
+		2FC7468120738E9600556E1A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FC7468220738E9600556E1A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FC7468320738E9600556E1A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		2FC989F9202D85800080D1BE /* HouseQuery */ = {
 			isa = PBXGroup;
 			children = (
@@ -1963,6 +1994,7 @@
 		4BD4B9221E272EA600AE2BC9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2FC7468020738E9600556E1A /* GeneralManagerMailbox */,
 				2F5F9452206E109C000DC20A /* EditText */,
 				2F86DCBF204E82DA0029E54A /* AllWorkUnitQuery */,
 				2F6273442045434300D36F14 /* EquipmentRoom */,

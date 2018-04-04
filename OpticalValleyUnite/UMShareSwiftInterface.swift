@@ -56,13 +56,6 @@ class UMShareSwiftInterface: NSObject {
     //设置预定义平台
     //备注:preDefinePlatforms为[NSNumber]的类型
     static func setPreDefinePlatforms(_ preDefinePlatforms: [Any]!) -> Void {
-        //调用setPreDefinePlatforms的示例
-        //        UMSocialUIManager.setPreDefinePlatforms(
-        //            [NSNumber(integerLiteral:UMSocialPlatformType.wechatSession.rawValue)
-        //            ,NSNumber(integerLiteral:UMSocialPlatformType.QQ.rawValue)
-        //            ,NSNumber(integerLiteral:UMSocialPlatformType.sina.rawValue)
-        //            ]
-        //        )
-        UMSocialUIManager.setPreDefinePlatforms(preDefinePlatforms)
+                UMSocialUIManager.setPreDefinePlatforms(preDefinePlatforms)
     }
 }

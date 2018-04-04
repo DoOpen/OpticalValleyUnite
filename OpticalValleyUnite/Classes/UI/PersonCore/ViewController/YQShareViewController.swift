@@ -40,11 +40,18 @@ class YQShareViewController: UIViewController {
     //MARK: - leftBarItemButtonClick方法
     func addRightBarItemButtonClick(){
         
-        //调用的是友盟分享的接口
-        UMShareSwiftInterface.showShareMenuViewInWindowWithPlatformSelectionBlock { (platformType, userInfo) in
+        //调用setPreDefinePlatforms的示例
+        UMSocialUIManager.setPreDefinePlatforms(
+            [NSNumber(integerLiteral:UMSocialPlatformType.wechatSession.rawValue)
+                ,NSNumber(integerLiteral:UMSocialPlatformType.QQ.rawValue)
+                ,NSNumber(integerLiteral:UMSocialPlatformType.sina.rawValue)
+            ]
+        )
+
+        UMShareSwiftInterface.showShareMenuViewInWindowWithPlatformSelectionBlock { (UMSocialPlatformType_UnKnown, nil) in
+            
             
         }
-        
         
     }
 

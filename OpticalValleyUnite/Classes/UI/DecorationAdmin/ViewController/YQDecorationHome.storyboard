@@ -50,6 +50,13 @@
                                             <action selector="stateButtonClick:" destination="bwr-kx-YXr" eventType="touchUpInside" id="NqS-v7-Z0r"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p1I-2t-dTY">
+                                        <rect key="frame" x="186.5" y="3" width="1" height="44"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="9RA-nP-aOX"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -58,7 +65,10 @@
                                     <constraint firstAttribute="bottom" secondItem="e0g-xO-9zc" secondAttribute="bottom" id="CRC-hg-lIH"/>
                                     <constraint firstItem="1p6-Hc-Q0E" firstAttribute="top" secondItem="A5N-dH-UYu" secondAttribute="top" id="Ddr-xX-ak6"/>
                                     <constraint firstItem="1p6-Hc-Q0E" firstAttribute="leading" secondItem="e0g-xO-9zc" secondAttribute="trailing" id="Ebf-oo-AgX"/>
+                                    <constraint firstItem="p1I-2t-dTY" firstAttribute="top" secondItem="A5N-dH-UYu" secondAttribute="top" constant="3" id="L9I-2A-MYG"/>
+                                    <constraint firstAttribute="bottom" secondItem="p1I-2t-dTY" secondAttribute="bottom" constant="3" id="OVs-2d-NdM"/>
                                     <constraint firstAttribute="trailing" secondItem="1p6-Hc-Q0E" secondAttribute="trailing" id="QOh-Nl-Nqr"/>
+                                    <constraint firstItem="1p6-Hc-Q0E" firstAttribute="leading" secondItem="p1I-2t-dTY" secondAttribute="trailing" id="iML-xS-knm"/>
                                     <constraint firstItem="1p6-Hc-Q0E" firstAttribute="width" secondItem="e0g-xO-9zc" secondAttribute="width" id="kgc-Cf-brA"/>
                                     <constraint firstItem="e0g-xO-9zc" firstAttribute="top" secondItem="A5N-dH-UYu" secondAttribute="top" id="nSd-NW-tpu"/>
                                     <constraint firstAttribute="height" constant="50" id="wcP-dE-hgi"/>
@@ -92,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5S8-Pq-BL3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="126" y="55"/>
+            <point key="canvasLocation" x="125.59999999999999" y="54.422788605697157"/>
         </scene>
     </scenes>
 </document>

@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
         UMessage.registerForRemoteNotifications()
         UMessage.setBadgeClear(true)
-        UIApplication.shared.applicationIconBadgeNumber = 0 //首次的appIconBadgeNumber 要求清零,保证用户没有登录的情况下,app首次下载的情况下,没有消息值
+        UIApplication.shared.applicationIconBadgeNumber = -1 //首次的appIconBadgeNumber 要求清零,保证用户没有登录的情况下,app首次下载的情况下,没有消息值
 
         // 3.如果是ios10 必须加上 如下的代码
         if #available(iOS 10.0, *) {

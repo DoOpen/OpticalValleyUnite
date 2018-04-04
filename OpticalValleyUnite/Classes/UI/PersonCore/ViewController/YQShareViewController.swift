@@ -41,7 +41,9 @@ class YQShareViewController: UIViewController {
     func addRightBarItemButtonClick(){
         
         //调用的是友盟分享的接口
-        
+        UMShareSwiftInterface.showShareMenuViewInWindowWithPlatformSelectionBlock { (platformType, userInfo) in
+            
+        }
         
         
     }

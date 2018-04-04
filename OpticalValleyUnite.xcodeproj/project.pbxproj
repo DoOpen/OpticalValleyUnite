@@ -272,6 +272,7 @@
 		2FC167551F90A9DB001CEACD /* YQReleaseJournal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC167541F90A9DB001CEACD /* YQReleaseJournal.storyboard */; };
 		2FC167571F90B45B001CEACD /* YQReleaseJournalFooterV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC167561F90B45B001CEACD /* YQReleaseJournalFooterV.swift */; };
 		2FC167591F90B4BE001CEACD /* YQReseaseJournalFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC167581F90B4BE001CEACD /* YQReseaseJournalFooter.xib */; };
+		2FC74685207393E000556E1A /* UMShareSwiftInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC74684207393E000556E1A /* UMShareSwiftInterface.swift */; };
 		2FC989FE202D86010080D1BE /* YQHouseHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC989FD202D86010080D1BE /* YQHouseHomeVC.swift */; };
 		2FC98A00202D86210080D1BE /* YQHouseHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC989FF202D86210080D1BE /* YQHouseHome.storyboard */; };
 		2FC98A03202D93ED0080D1BE /* YQHouseScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC98A01202D93ED0080D1BE /* YQHouseScreenVC.swift */; };
@@ -733,6 +734,7 @@
 		2FC167541F90A9DB001CEACD /* YQReleaseJournal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQReleaseJournal.storyboard; sourceTree = "<group>"; };
 		2FC167561F90B45B001CEACD /* YQReleaseJournalFooterV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQReleaseJournalFooterV.swift; sourceTree = "<group>"; };
 		2FC167581F90B4BE001CEACD /* YQReseaseJournalFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQReseaseJournalFooter.xib; sourceTree = "<group>"; };
+		2FC74684207393E000556E1A /* UMShareSwiftInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UMShareSwiftInterface.swift; sourceTree = "<group>"; };
 		2FC989FD202D86010080D1BE /* YQHouseHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHouseHomeVC.swift; sourceTree = "<group>"; };
 		2FC989FF202D86210080D1BE /* YQHouseHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQHouseHome.storyboard; sourceTree = "<group>"; };
 		2FC98A01202D93ED0080D1BE /* YQHouseScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQHouseScreenVC.swift; sourceTree = "<group>"; };
@@ -1897,6 +1899,7 @@
 				4B91E89B1F25904B00F63D66 /* OpticalValleyUnite.entitlements */,
 				4BD4B9121E272EA600AE2BC9 /* Classes */,
 				4BD4B9001E272E0C00AE2BC9 /* AppDelegate.swift */,
+				2FC74684207393E000556E1A /* UMShareSwiftInterface.swift */,
 				2F637F5A206A3FBF00EFFFF8 /* YQGlobalPrefixHeader.pch */,
 				4BD4B9561E272EB100AE2BC9 /* OpticalValleyUnite-Bridging-Header.h */,
 				4BD4B9041E272E0C00AE2BC9 /* Main.storyboard */,
@@ -2710,6 +2713,7 @@
 				2F7DC8E6200D99D60087E2FC /* YQReportFormFirstVC.swift in Sources */,
 				2FCBC02320149440003F1556 /* YQDrawEmergencyView.swift in Sources */,
 				4BE922621EE7EEA900FDEFE1 /* ExecutDetailCell.swift in Sources */,
+				2FC74685207393E000556E1A /* UMShareSwiftInterface.swift in Sources */,
 				2F7307381FA858910067BC4D /* YQToDoListModel.swift in Sources */,
 				4B1DEC571E31B646000917D2 /* ScanSuccessJumpVC.m in Sources */,
 				2F5A3D5C1FE8ED7F0069ABE1 /* YQBluetoothCell.swift in Sources */,

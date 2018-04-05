@@ -13,17 +13,6 @@ PODS:
     - Realm (= 3.0.2)
   - SnapKit (3.2.0)
   - SVProgressHUD (2.2.5)
-  - UMengUShare/Core (6.4.8.2):
-    - UMengUShare/Network
-  - UMengUShare/Network (6.4.8.2)
-  - UMengUShare/Social/ReducedQQ (6.4.8.2):
-    - UMengUShare/Core
-  - UMengUShare/Social/ReducedSina (6.4.8.2):
-    - UMengUShare/Core
-  - UMengUShare/Social/ReducedWeChat (6.4.8.2):
-    - UMengUShare/Core
-  - UMengUShare/UI (6.4.8.2):
-    - UMengUShare/Core
 
 DEPENDENCIES:
   - Alamofire (~> 4.5.0)
@@ -36,10 +25,6 @@ DEPENDENCIES:
   - RealmSwift (~> 3.0.1)
   - SnapKit (~> 3.2.0)
   - SVProgressHUD
-  - UMengUShare/Social/ReducedQQ
-  - UMengUShare/Social/ReducedSina
-  - UMengUShare/Social/ReducedWeChat
-  - UMengUShare/UI
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
@@ -53,8 +38,7 @@ SPEC CHECKSUMS:
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
 
-PODFILE CHECKSUM: 7839e64ae79d1c749b5760e4616d8cf0e153c6ac
+PODFILE CHECKSUM: d227f60435769782428b7eb2656bdd20eb4b15da
 
 COCOAPODS: 1.4.0

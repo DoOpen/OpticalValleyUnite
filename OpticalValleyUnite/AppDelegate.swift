@@ -27,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.frame = UIScreen.main.bounds
         window?.makeKeyAndVisible()
         
+        //分享继承框
+        self.configUSharePlatforms()
+       
+        
         LoginViewController.chooseRootViewController()
         
         IQKeyboardManager.shared().isEnabled = true
@@ -37,6 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AMapServices.shared().apiKey = Const.YQMapKey
             
             UMessage.start(withAppkey: Const.YQUMPushKey, launchOptions: launchOptions)
+            //bate 环境
+            UMSocialManager.default().umSocialAppkey = "5abcbc02f29d982d7700011b"
 
         }else { // 正式 环境的内容情况
         
@@ -44,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             UMessage.start(withAppkey: Const.SJUMPushKey, launchOptions: launchOptions)
         
+            //正式环境的 appkey
+            UMSocialManager.default().umSocialAppkey = "5976ad34677baa2de60006dc"
         }
         
         /*
@@ -111,6 +119,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func configUSharePlatforms(){
+        
+        UMSocialManager.default().setPlaform(.wechatSession, appKey: "wxdc1e388c3822c80b", appSecret: "3baf1193c85774b3fd9d18447d76cab0", redirectURL: "http://mobile.umeng.com/social")
+    
+        UMSocialManager.default().setPlaform(.QQ, appKey: "1105821097", appSecret: nil, redirectURL: "http://mobile.umeng.com/social")
+        
+        UMSocialManager.default().setPlaform(.sina, appKey: "3921700954", appSecret: "04b48b094faeb16683c32669824ebdad", redirectURL: "http://mobile.umeng.com/social")
+        
+        UMSocialManager.default().setPlaform(.alipaySession, appKey: "2015111700822536", appSecret: nil, redirectURL: "http://mobile.umeng.com/social")
+        
+        UMSocialManager.default().setPlaform(.dingDing, appKey: "dingoalmlnohc0wggfedpk", appSecret: nil, redirectURL: nil)
+        
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        let result = UMSocialManager.default().handleOpen(url, sourceApplication: sourceApplication, annotation: annotation)
+        if (!result) {
+            // 其他如支付等SDK的回调
+        }
+        
+        return result
+        
+    }
+
+    
     
 }
 
@@ -165,7 +199,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         
     }
     
-//iOS10新增：处理前台收到通知的代理方法(接受通知的方法)
+    //iOS10新增：处理前台收到通知的代理方法(接受通知的方法)
     ////iOS10新增：处理前台收到通知的代理方法
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

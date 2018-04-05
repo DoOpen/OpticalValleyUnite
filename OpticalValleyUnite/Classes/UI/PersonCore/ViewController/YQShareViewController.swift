@@ -41,18 +41,16 @@ class YQShareViewController: UIViewController {
     func addRightBarItemButtonClick(){
         
         //调用setPreDefinePlatforms的示例
-        UMSocialUIManager.setPreDefinePlatforms(
-            [NSNumber(integerLiteral:UMSocialPlatformType.wechatSession.rawValue)
-                ,NSNumber(integerLiteral:UMSocialPlatformType.QQ.rawValue)
-                ,NSNumber(integerLiteral:UMSocialPlatformType.sina.rawValue)
-            ]
-        )
+//        UMSocialUIManager.setPreDefinePlatforms(
+//            [NSNumber(integerLiteral:UMSocialPlatformType.wechatSession.rawValue)
+//                ,NSNumber(integerLiteral:UMSocialPlatformType.QQ.rawValue)
+//                ,NSNumber(integerLiteral:UMSocialPlatformType.sina.rawValue)
+//            ]
+//        )
 
-        UMShareSwiftInterface.showShareMenuViewInWindowWithPlatformSelectionBlock { (UMSocialPlatformType_UnKnown, nil) in
-            
+        UMShareSwiftInterface.showShareMenuViewInWindowWithPlatformSelectionBlock { (_, nil) in
             
         }
-        
     }
 
     

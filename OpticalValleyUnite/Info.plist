@@ -110,6 +110,8 @@
 		<string>yixin</string>
 		<string>yixinopenapi</string>
 		<string>gplus</string>
+        <string>dingtalk</string>
+        <string>dingtalk-open</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

@@ -143,11 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
 
-    
-    
 }
-
-
 
 /// 集成的友盟的接口
 extension AppDelegate: UNUserNotificationCenterDelegate{
@@ -215,7 +211,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
             //应用处于前台时的远程推送接受
             //关闭U-Push自带的弹出框
             UMessage.setAutoAlert(false)
-            
             UMessage.didReceiveRemoteNotification(userInfo)
             
         }else{

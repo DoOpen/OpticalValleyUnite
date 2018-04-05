@@ -110,8 +110,8 @@
 		<string>yixin</string>
 		<string>yixinopenapi</string>
 		<string>gplus</string>
-        <string>dingtalk</string>
-        <string>dingtalk-open</string>
+		<string>dingtalk</string>
+		<string>dingtalk-open</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -130,7 +130,10 @@
 	<string>上传描述图片</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>audio</string>
 		<string>location</string>
+		<string>remote-notification</string>
+		<string>voip</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

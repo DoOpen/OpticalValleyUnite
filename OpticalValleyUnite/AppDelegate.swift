@@ -29,11 +29,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.frame = UIScreen.main.bounds
         window?.makeKeyAndVisible()
         
+        //0.全局的语音的播报的效果
+        do{
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+        } catch {
+            
+            print(error.localizedDescription)
+        }
+
         //分享继承框
         self.configUSharePlatforms()
+        
         //全局语音代理
         synthesizer.delegate = self
-       
+        
         LoginViewController.chooseRootViewController()
         
         IQKeyboardManager.shared().isEnabled = true
@@ -99,6 +109,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        do{
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+        } catch {
+            
+            print(error.localizedDescription)
+        }
+
         
         // 即将进入后台的操作(app 没有被杀死的情况,语音播报是不能处理的)
         do {
@@ -439,16 +457,7 @@ extension AppDelegate{
     // MARK: - 语音播报的内容
     fileprivate func startTranslattion(voicessss : String){
         
-        //0.全局的语音的播报的效果
-        do{
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-        } catch {
-            
-            print(error.localizedDescription)
-        }
-
-        
+       
         //1. 创建需要合成的声音类型
         let voice = AVSpeechSynthesisVoice(language: "zh-CN")
         

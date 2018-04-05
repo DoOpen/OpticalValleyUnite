@@ -128,6 +128,8 @@
 		2F52E5B9204975D40060A2BA /* YQSensorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F52E5B8204975D40060A2BA /* YQSensorDetailView.swift */; };
 		2F52E5BB204975FB0060A2BA /* YQSensorDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52E5BA204975FB0060A2BA /* YQSensorDetailView.xib */; };
 		2F53A10C20760234003F8296 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F53A10B20760234003F8296 /* AudioToolbox.framework */; };
+		2F53A10F20762B8C003F8296 /* YQStarServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53A10D20762B8C003F8296 /* YQStarServiceVC.swift */; };
+		2F53A11020762B8C003F8296 /* YQStarServiceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F53A10E20762B8C003F8296 /* YQStarServiceVC.xib */; };
 		2F54BF0B1FCBF7C7006B4DCF /* YQExecTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */; };
 		2F54BF0C1FCBF7C7006B4DCF /* YQExecTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F54BF0A1FCBF7C7006B4DCF /* YQExecTextCell.xib */; };
 		2F5789182011D43300C1C5DF /* YQWorkHighlightsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5789162011D43300C1C5DF /* YQWorkHighlightsDetailVC.swift */; };
@@ -607,6 +609,8 @@
 		2F52E5B8204975D40060A2BA /* YQSensorDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQSensorDetailView.swift; sourceTree = "<group>"; };
 		2F52E5BA204975FB0060A2BA /* YQSensorDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQSensorDetailView.xib; sourceTree = "<group>"; };
 		2F53A10B20760234003F8296 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2F53A10D20762B8C003F8296 /* YQStarServiceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStarServiceVC.swift; sourceTree = "<group>"; };
+		2F53A10E20762B8C003F8296 /* YQStarServiceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQStarServiceVC.xib; sourceTree = "<group>"; };
 		2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQExecTextCell.swift; sourceTree = "<group>"; };
 		2F54BF0A1FCBF7C7006B4DCF /* YQExecTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQExecTextCell.xib; sourceTree = "<group>"; };
 		2F5789162011D43300C1C5DF /* YQWorkHighlightsDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkHighlightsDetailVC.swift; sourceTree = "<group>"; };
@@ -2468,6 +2472,8 @@
 				2F068C752071C54D00848129 /* YQMyFeedList.storyboard */,
 				2F068C772071CE0B00848129 /* YQFeedDetailVC.swift */,
 				2F068C782071CE0B00848129 /* YQFeedDetailVC.xib */,
+				2F53A10D20762B8C003F8296 /* YQStarServiceVC.swift */,
+				2F53A10E20762B8C003F8296 /* YQStarServiceVC.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2718,6 +2724,7 @@
 				2FCBC0212014859A003F1556 /* YQReportPersonDetail.storyboard in Resources */,
 				2F34E86620468763006EBAF8 /* YQEquipTypeTVC.storyboard in Resources */,
 				2F2A2BB61F989E46003015E9 /* YQAllProjectSelect.storyboard in Resources */,
+				2F53A11020762B8C003F8296 /* YQStarServiceVC.xib in Resources */,
 				4BD4B9541E272EA600AE2BC9 /* WorkOrder.storyboard in Resources */,
 				2FC98A04202D93ED0080D1BE /* YQHouseScreenVC.xib in Resources */,
 				4B3FD0301E8B61AC005D5231 /* exportPlist.plist in Resources */,
@@ -3047,6 +3054,7 @@
 				2F6A83911F5CE073002BB61C /* YQPartDataSelectCell.swift in Sources */,
 				4BD4B94B1E272EA600AE2BC9 /* MessageView.swift in Sources */,
 				4B3951F61E28B64A00E2642F /* UILabel+SJColor.m in Sources */,
+				2F53A10F20762B8C003F8296 /* YQStarServiceVC.swift in Sources */,
 				2FF216A11FDD6BCE00978A56 /* YQResultCellModel.swift in Sources */,
 				4B4BAFC11E5C62E800C9C549 /* OprationConfirmationView.swift in Sources */,
 				2F452E8B1FDE31EE0036DE7A /* YQResultViewCell.swift in Sources */,

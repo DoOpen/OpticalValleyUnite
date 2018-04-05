@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //分享继承框
         self.configUSharePlatforms()
        
-        
         LoginViewController.chooseRootViewController()
         
         IQKeyboardManager.shared().isEnabled = true
@@ -176,19 +175,18 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let userInfo = response.notification.request.content.userInfo
+        /// 这个是应用处在后台时候的推送执行的方法
+        if let body = userInfo["aps"] as? [String : Any]{
+            
+            let voiceText = body["alert"] as? String
+            //添加语音推送的消息内容
+            startTranslattion(voicessss: voiceText!)
+        }
+
         
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
             
             UMessage.didReceiveRemoteNotification(userInfo)
-            
-            /// 这个是应用处在后台时候的推送执行的方法
-            if let body = userInfo["aps"] as? [String : Any]{
-                
-                let voiceText = body["alert"] as? String
-                //添加语音推送的消息内容
-                startTranslattion(voicessss: voiceText!)
-            }
-
             
             // 接受通知执行界面的跳转功能
             noticHandel(userInfo: userInfo)
@@ -213,18 +211,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
             startTranslattion(voicessss: voiceText!)
         }
 
-        
         if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
             //应用处于前台时的远程推送接受
             //关闭U-Push自带的弹出框
             UMessage.setAutoAlert(false)
-//            noticDownstage(userInfo: userInfo)
-//
-//            UMessage.didReceiveRemoteNotification(userInfo)
+            
+            UMessage.didReceiveRemoteNotification(userInfo)
             
         }else{
             //应用处于前台时的本地推送接受
-//            UMessage.
+
         }
         
         UIApplication.shared.applicationIconBadgeNumber += 1

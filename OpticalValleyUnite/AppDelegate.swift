@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     fileprivate let avSpeech = AVSpeechSynthesizer()
-    
+    var synthesizer = AVSpeechSynthesizer()
+    var speechUtterance: AVSpeechUtterance?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         window = UIWindow()
@@ -29,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //分享继承框
         self.configUSharePlatforms()
+        //全局语音代理
+        synthesizer.delegate = self
        
         LoginViewController.chooseRootViewController()
         
@@ -92,10 +96,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
+        // 即将进入后台的操作(app 没有被杀死的情况,语音播报是不能处理的)
+        do {
+            
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .duckOthers)
+            
+        } catch {
+            
+            print(error.localizedDescription)
+            
+        }
+
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -118,6 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    
     func configUSharePlatforms(){
         
         UMSocialManager.default().setPlaform(.wechatSession, appKey: "wxdc1e388c3822c80b", appSecret: "3baf1193c85774b3fd9d18447d76cab0", redirectURL: "http://mobile.umeng.com/social")
@@ -132,6 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
         let result = UMSocialManager.default().handleOpen(url, sourceApplication: sourceApplication, annotation: annotation)
@@ -140,8 +157,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return result
-        
     }
+    
 
 }
 
@@ -301,9 +318,6 @@ extension AppDelegate{
                 pushToJournalDetailController(journalId: journalID)
             
             }
-            
-            
-            
         }
     }
     
@@ -318,7 +332,6 @@ extension AppDelegate{
         //应用处于前台时的远程推送接受
         //这里只是接受了火警的前台接受
 //        if let type = userInfo["type"] as? String{
-//         
 //            if type == "火警"{
                 let vc = SJKeyWindow!.rootViewController
                 
@@ -425,6 +438,17 @@ extension AppDelegate{
     
     // MARK: - 语音播报的内容
     fileprivate func startTranslattion(voicessss : String){
+        
+        //0.全局的语音的播报的效果
+        do{
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+        } catch {
+            
+            print(error.localizedDescription)
+        }
+
+        
         //1. 创建需要合成的声音类型
         let voice = AVSpeechSynthesisVoice(language: "zh-CN")
         
@@ -437,7 +461,31 @@ extension AppDelegate{
         utterance.pitchMultiplier = 1
         //开始播放
         avSpeech.speak(utterance)
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .duckOthers)
+        } catch {
+            
+            print(error.localizedDescription)
+        }
+      
     }
 
 }
+
+extension AppDelegate : AVSpeechSynthesizerDelegate {
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        
+        //语音继承,结束后进行调用关闭
+        do {
+            try AVAudioSession.sharedInstance().setActive(false, with: .notifyOthersOnDeactivation)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        speechUtterance = nil
+    }
+}
+
 

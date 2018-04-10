@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YQShareViewController: UIViewController {
 
+    @IBOutlet weak var scanImageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
         self.title = "分享"
         
+        //1.设置左右leftbar
         setupRightAndLeftBarItem()
+        
+        //2.请求分享的下载地址
+        shareURLwithData()
     }
 
     
@@ -36,6 +44,33 @@ class YQShareViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = [right2Bar]
         
     }
+    
+
+    // MARK: - shareURLwithData分享链接下载
+    func shareURLwithData (){
+    
+        var par = [String : Any]()
+        par["type"] = "ios"
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.get(path: URLPath.getDownloadUrl, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            let qrCode = response["url"] as? String ?? ""
+            
+            self.scanImageView.image = SGQRCodeTool.sg_generate(withLogoQRCodeData: qrCode, logoImageName: "icon-40", logoScaleToSuperView: 0.2)
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
+        }
+        
+        
+        
+    }
+    
     
     //MARK: - leftBarItemButtonClick方法
     func addRightBarItemButtonClick(){

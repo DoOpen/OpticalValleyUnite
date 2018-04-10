@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQShareViewController" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="scanImageView" destination="EHH-ee-ujT" id="PIr-69-ZQ9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

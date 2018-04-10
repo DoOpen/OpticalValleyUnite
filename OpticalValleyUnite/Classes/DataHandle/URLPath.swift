@@ -356,5 +356,9 @@ struct URLPath {
     ///全局的工单的查询接口
     static let getAllworkunitList = "workunit/searchWorkunit"
     
+    ///获取app的下载地址的接口
+    static let getDownloadUrl  = "version/downloadUrl"
+    
+    
     
 }

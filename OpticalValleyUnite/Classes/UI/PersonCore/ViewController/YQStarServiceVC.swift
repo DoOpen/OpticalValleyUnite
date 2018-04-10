@@ -12,8 +12,10 @@ class YQStarServiceVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "星级分"
 
-        // Do any additional setup after loading the view.
+    
     }
 
 

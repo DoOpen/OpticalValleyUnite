@@ -106,8 +106,19 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
-
     
+    //MARK: - star星级评分的按钮点击的事件
+    @IBAction func starServicerButtonClick(_ sender: UIButton) {
+        
+        //界面跳转到
+        let starVc = YQStarServiceVC.init(nibName: "YQStarServiceVC", bundle: nil)
+        
+        self.navigationController?.pushViewController(starVc, animated: true)
+        
+        
+        
+    }
+
     
     // MARK: - 添加默认的项目选择方法
     func setUpProjectNameLable() -> String{

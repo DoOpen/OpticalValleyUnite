@@ -45,7 +45,7 @@ struct URLPath {
     
     //服务器的basicBasicPath
     
-    static let basicBasic = "http://172.16.19.98:8091"
+    static let basicBasic = "http://192.168.5.16"
     
     
     //服务器的basic 地址:
@@ -71,7 +71,6 @@ struct URLPath {
     
     //子系统选择图片服务器的地址(所有的图片)(子系统选择和 图片上传所有的图片URL)
     static let systemSelectionURL = basicBasic + "/ovu-base/"
-
 
     //获取配件库主页数据接口
     static let getPartsHome = "parts/list.do"

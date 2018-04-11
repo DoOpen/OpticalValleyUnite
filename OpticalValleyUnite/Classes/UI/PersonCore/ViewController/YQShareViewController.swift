@@ -67,8 +67,6 @@ class YQShareViewController: UIViewController {
             SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
         }
         
-        
-        
     }
     
     

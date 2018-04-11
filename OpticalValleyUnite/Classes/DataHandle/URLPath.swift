@@ -45,7 +45,7 @@ struct URLPath {
     
     //服务器的basicBasicPath
     
-    static let basicBasic = "http://192.168.5.16"
+    static let basicBasic = "http://ovuems.com"
     
     
     //服务器的basic 地址:

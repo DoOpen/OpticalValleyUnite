@@ -97,7 +97,6 @@ class YQIntoDoorViewController: UIViewController {
         switch sender.tag {
             
             case 0://蓝牙开门
-                
                 bluetoothOpenTheDoor()
                 break
             
@@ -140,6 +139,7 @@ class YQIntoDoorViewController: UIViewController {
         
         
     }
+    
     func leftBarButtonClick() {
 //        //返回子系统选择的界面
 //        //查看是否有缓存的数据

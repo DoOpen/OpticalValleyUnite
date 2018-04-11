@@ -20,10 +20,10 @@ class YQVideoMapPointModel: NSObject {
     var name : String  = ""
     
     //经度
-    var longitude : String = ""
+    var longitude : String = "0"
     
     //纬度
-    var latitude : String = ""
+    var latitude : String = "0"
     
     //摄像头id
 //    var videoConfigId : Int = 0

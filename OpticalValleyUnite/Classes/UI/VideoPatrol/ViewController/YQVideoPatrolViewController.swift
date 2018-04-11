@@ -663,9 +663,9 @@ class YQVideoPatrolViewController: UIViewController {
                 
                 let d = dict as? NSDictionary
                 
-                let longitude = d?["longitude"] as? String
-                let latitude = d?["latitude"] as? String
-                let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude!)!, CLLocationDegrees(longitude!)!)
+                let longitude = d?["longitude"] as? String ?? "0"
+                let latitude = d?["latitude"] as? String ?? "0"
+                let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude)!, CLLocationDegrees(longitude)!)
                 
                 videoMapLayWays.append(CLLocationCoordinate2D)
                 

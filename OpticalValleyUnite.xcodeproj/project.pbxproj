@@ -755,7 +755,6 @@
 		2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWorkRecord.xib; sourceTree = "<group>"; };
 		2F78D94B1FEA388D006F7692 /* YQDynamicPwdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDynamicPwdViewController.swift; sourceTree = "<group>"; };
 		2F78D94C1FEA388D006F7692 /* YQDynamicPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDynamicPwdViewController.xib; sourceTree = "<group>"; };
-		2F7945101FE794E00085E803 /* 立方SDK_3.0.0.ipa */ = {isa = PBXFileReference; lastKnownFileType = file; path = "立方SDK_3.0.0.ipa"; sourceTree = "<group>"; };
 		2F7945141FE795190085E803 /* NSData+YYExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+YYExtend.h"; sourceTree = "<group>"; };
 		2F7945151FE795190085E803 /* NSData+YYExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+YYExtend.m"; sourceTree = "<group>"; };
 		2F7945161FE795190085E803 /* NSString+YYExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YYExtend.h"; sourceTree = "<group>"; };
@@ -1855,7 +1854,6 @@
 			children = (
 				2F5A3D581FE8DFE50069ABE1 /* RfmAccessControl.framework */,
 				2F7945131FE795190085E803 /* Category */,
-				2F7945101FE794E00085E803 /* 立方SDK_3.0.0.ipa */,
 			);
 			path = RfmFrameworks;
 			sourceTree = "<group>";

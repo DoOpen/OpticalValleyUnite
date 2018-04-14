@@ -1,5 +1,5 @@
 //
-//  YQGeneralFeedBackVC.swift
+//  YQGenaralManagerCheckDetailVC.swift
 //  OpticalValleyUnite
 //
 //  Created by 杨庆 on 2018/4/14.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class YQGeneralFeedBackVC: UIViewController {
+class YQGenaralManagerCheckDetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        
     }
 
- 
- 
+
 }

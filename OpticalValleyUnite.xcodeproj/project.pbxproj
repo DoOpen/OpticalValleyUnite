@@ -86,6 +86,8 @@
 		2F40D9921FB942A4007971D1 /* YQStepStatistics.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F40D9911FB942A4007971D1 /* YQStepStatistics.xib */; };
 		2F40D9941FB9A802007971D1 /* YQStepHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D9931FB9A802007971D1 /* YQStepHeadView.swift */; };
 		2F40D9961FB9A820007971D1 /* YQStepHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F40D9951FB9A820007971D1 /* YQStepHead.xib */; };
+		2F41B2A32081A20B00A41E5D /* YQGeneralManagerFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F41B2A12081A20B00A41E5D /* YQGeneralManagerFirstVC.swift */; };
+		2F41B2A42081A20B00A41E5D /* YQGeneralManagerFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F41B2A22081A20B00A41E5D /* YQGeneralManagerFirstVC.xib */; };
 		2F4217321FDA793A00B42BB3 /* YQPatrolItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4217311FDA793A00B42BB3 /* YQPatrolItemModel.swift */; };
 		2F4217351FDA86F800B42BB3 /* YQPatrolItemScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4217331FDA86F800B42BB3 /* YQPatrolItemScoreViewController.swift */; };
 		2F4217361FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4217341FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib */; };
@@ -315,6 +317,8 @@
 		2FCBC02320149440003F1556 /* YQDrawEmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCBC02220149440003F1556 /* YQDrawEmergencyView.swift */; };
 		2FCBC025201494B6003F1556 /* YQDrawSpontaneousView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCBC024201494B6003F1556 /* YQDrawSpontaneousView.swift */; };
 		2FCBC0272014951A003F1556 /* YQDrawPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCBC0262014951A003F1556 /* YQDrawPlanView.swift */; };
+		2FD5227D2081DB7200B62E7D /* YQGeneralFeedBackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD5227C2081DB7200B62E7D /* YQGeneralFeedBackVC.swift */; };
+		2FD5227F2081DBA600B62E7D /* YQGeneralFeedBackVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FD5227E2081DBA600B62E7D /* YQGeneralFeedBackVC.storyboard */; };
 		2FDED33E1F711DF000E4BA2E /* YQFireLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDED33D1F711DF000E4BA2E /* YQFireLocationModel.swift */; };
 		2FDF32981F7926ED008EDEB4 /* MANaviRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF32971F7926ED008EDEB4 /* MANaviRoute.m */; };
 		2FDF329B1F79276B008EDEB4 /* MANaviAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF329A1F79276B008EDEB4 /* MANaviAnnotation.m */; };
@@ -567,6 +571,8 @@
 		2F40D9911FB942A4007971D1 /* YQStepStatistics.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQStepStatistics.xib; sourceTree = "<group>"; };
 		2F40D9931FB9A802007971D1 /* YQStepHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStepHeadView.swift; sourceTree = "<group>"; };
 		2F40D9951FB9A820007971D1 /* YQStepHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQStepHead.xib; sourceTree = "<group>"; };
+		2F41B2A12081A20B00A41E5D /* YQGeneralManagerFirstVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQGeneralManagerFirstVC.swift; sourceTree = "<group>"; };
+		2F41B2A22081A20B00A41E5D /* YQGeneralManagerFirstVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQGeneralManagerFirstVC.xib; sourceTree = "<group>"; };
 		2F4217311FDA793A00B42BB3 /* YQPatrolItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPatrolItemModel.swift; sourceTree = "<group>"; };
 		2F4217331FDA86F800B42BB3 /* YQPatrolItemScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPatrolItemScoreViewController.swift; sourceTree = "<group>"; };
 		2F4217341FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPatrolItemScoreViewController.xib; sourceTree = "<group>"; };
@@ -831,6 +837,8 @@
 		2FCBC02220149440003F1556 /* YQDrawEmergencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDrawEmergencyView.swift; sourceTree = "<group>"; };
 		2FCBC024201494B6003F1556 /* YQDrawSpontaneousView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDrawSpontaneousView.swift; sourceTree = "<group>"; };
 		2FCBC0262014951A003F1556 /* YQDrawPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDrawPlanView.swift; sourceTree = "<group>"; };
+		2FD5227C2081DB7200B62E7D /* YQGeneralFeedBackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQGeneralFeedBackVC.swift; sourceTree = "<group>"; };
+		2FD5227E2081DBA600B62E7D /* YQGeneralFeedBackVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = YQGeneralFeedBackVC.storyboard; sourceTree = "<group>"; };
 		2FDED33D1F711DF000E4BA2E /* YQFireLocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireLocationModel.swift; sourceTree = "<group>"; };
 		2FDF32961F7926ED008EDEB4 /* MANaviRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviRoute.h; sourceTree = "<group>"; };
 		2FDF32971F7926ED008EDEB4 /* MANaviRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviRoute.m; sourceTree = "<group>"; };
@@ -1997,6 +2005,10 @@
 		2FC7468320738E9600556E1A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2F41B2A12081A20B00A41E5D /* YQGeneralManagerFirstVC.swift */,
+				2F41B2A22081A20B00A41E5D /* YQGeneralManagerFirstVC.xib */,
+				2FD5227C2081DB7200B62E7D /* YQGeneralFeedBackVC.swift */,
+				2FD5227E2081DBA600B62E7D /* YQGeneralFeedBackVC.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2644,7 +2656,7 @@
 			attributes = {
 				CLASSPREFIX = YQ;
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = yangqing;
 				TargetAttributes = {
 					4BD4B8FC1E272E0C00AE2BC9 = {
@@ -2773,6 +2785,7 @@
 				4BB53FF11F14D9CA0061190F /* DeviceCell.xib in Resources */,
 				2F71039520158D000051E367 /* YQReportFromPersonList.xib in Resources */,
 				2F35356E1F95AE3300E8E77C /* YQWorkOrderFirst.storyboard in Resources */,
+				2FD5227F2081DBA600B62E7D /* YQGeneralFeedBackVC.storyboard in Resources */,
 				2FC167551F90A9DB001CEACD /* YQReleaseJournal.storyboard in Resources */,
 				2F2F95781F8DAECD00870DC8 /* YQJournal.storyboard in Resources */,
 				2F7550F91FA6C24700A5E242 /* YQObject.storyboard in Resources */,
@@ -2822,6 +2835,7 @@
 				4BD4B94F1E272EA600AE2BC9 /* SignIn.storyboard in Resources */,
 				4BFD07CC1E5D3ACC004AF998 /* ExecutingSectionView.xib in Resources */,
 				2F1F443F202A9E5400F9F51C /* YQLocationDetailsVC.xib in Resources */,
+				2F41B2A42081A20B00A41E5D /* YQGeneralManagerFirstVC.xib in Resources */,
 				2F51D3DD1FEB8B0D00BC7B04 /* YQScanImageViewController.xib in Resources */,
 				2F3B96051F6BC17E0008AFEB /* YQJoinTotall.storyboard in Resources */,
 				2FBDEFC72008A70F006C5C69 /* Info.plist in Resources */,
@@ -3054,6 +3068,7 @@
 				4B3951F61E28B64A00E2642F /* UILabel+SJColor.m in Sources */,
 				2F53A10F20762B8C003F8296 /* YQStarServiceVC.swift in Sources */,
 				2FF216A11FDD6BCE00978A56 /* YQResultCellModel.swift in Sources */,
+				2FD5227D2081DB7200B62E7D /* YQGeneralFeedBackVC.swift in Sources */,
 				4B4BAFC11E5C62E800C9C549 /* OprationConfirmationView.swift in Sources */,
 				2F452E8B1FDE31EE0036DE7A /* YQResultViewCell.swift in Sources */,
 				2F2A2BB41F989E1D003015E9 /* YQAllProjectSelectVC.swift in Sources */,
@@ -3146,6 +3161,7 @@
 				2F0223B81FA9A3E60090822F /* YQParkTableViewCell.swift in Sources */,
 				4B5AF6471E36F14700844F3D /* SystemMessageViewController.swift in Sources */,
 				4B814A811F1DAC3400CDCA9B /* WorkOrderSiftViewController.swift in Sources */,
+				2F41B2A32081A20B00A41E5D /* YQGeneralManagerFirstVC.swift in Sources */,
 				2F1764D51FD01BE500C816A8 /* YQExecScanCell.swift in Sources */,
 				4B3951D21E278F5300E2642F /* APPHandle.swift in Sources */,
 				2F63436F1F9F4963005F930A /* AnimatedAnnotationView.m in Sources */,
@@ -3255,7 +3271,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -3263,7 +3281,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -3305,7 +3327,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -3313,7 +3337,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;

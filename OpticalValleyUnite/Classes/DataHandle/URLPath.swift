@@ -45,12 +45,13 @@ struct URLPath {
     
     //服务器的basicBasicPath
     
-    static let basicBasic = "http://ovuems.com"
+    static let basicBasic = "http://172.16.19.98:8091"
     
     
     //服务器的basic 地址:
     static let basicPath = basicBasic + "/ovu-pcos/api/"
     static let basicVideoURLPath = basicBasic + "/"
+    
     
     //服务器拆分的接口 newbasicPath
     static let newbasicPath = basicBasic + "/ovu-base/api/"
@@ -88,6 +89,7 @@ struct URLPath {
     static let reportMaster = "workunit/workunitEmerSave.do"
     
     static let batchsetSupervisestatus = "workunit/batchsetSupervisestatus.do"
+    
     //获取读完工单数量
     static let getStaticWorkunitDB = "workunit/getStaticWorkunitDB.do"
     

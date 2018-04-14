@@ -6,11 +6,11 @@ PODS:
   - LCNibBridge (1.3.3)
   - Masonry (1.0.2)
   - MJRefresh (3.1.15.3)
-  - Realm (3.0.2):
-    - Realm/Headers (= 3.0.2)
-  - Realm/Headers (3.0.2)
-  - RealmSwift (3.0.2):
-    - Realm (= 3.0.2)
+  - Realm (3.3.2):
+    - Realm/Headers (= 3.3.2)
+  - Realm/Headers (3.3.2)
+  - RealmSwift (3.3.2):
+    - Realm (= 3.3.2)
   - SnapKit (3.2.0)
   - SVProgressHUD (2.2.5)
 
@@ -22,7 +22,7 @@ DEPENDENCIES:
   - LCNibBridge
   - Masonry (~> 1.0.1)
   - MJRefresh
-  - RealmSwift (~> 3.0.1)
+  - RealmSwift (~> 3.3.2)
   - SnapKit (~> 3.2.0)
   - SVProgressHUD
 
@@ -34,11 +34,11 @@ SPEC CHECKSUMS:
   LCNibBridge: 258a836a14a7f3bdd3a964fd17e2150fd06369cf
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
-  Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
-  RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
+  Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
+  RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: d227f60435769782428b7eb2656bdd20eb4b15da
+PODFILE CHECKSUM: 9d174af88afc3ca734e0052953a6c7a296c9427e
 
 COCOAPODS: 1.4.0

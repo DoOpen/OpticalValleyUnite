@@ -110,31 +110,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQImplementFeedbackVC.resolvedViewSaveButtonClick (view : OpticalValleyUnite.YQResolvedView, images : __ObjC.NSArray, type : Swift.Int) -&gt; ()"
+                  symbolName = "OpticalValleyUnite.YQImplementFeedbackVC.resolvedViewSaveButtonClick(view: OpticalValleyUnite.YQResolvedView, images: __ObjC.NSArray, type: Swift.Int) -&gt; ()"
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQImplementFeedbackVC.swift"
-                  timestampString = "545135828.517064"
+                  timestampString = "545386792.713755"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "298"
                   endingLineNumber = "298"
-                  offsetFromSymbolStart = "4936">
+                  offsetFromSymbolStart = "4924">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "OpticalValleyUnite.YQImplementFeedbackVC.(resolvedViewSaveButtonClick (view : OpticalValleyUnite.YQResolvedView, images : __ObjC.NSArray, type : Swift.Int) -&gt; ()).(closure #2)"
+                  symbolName = "closure #2 (Swift.AnyObject) -&gt; () in OpticalValleyUnite.YQImplementFeedbackVC.resolvedViewSaveButtonClick(view: OpticalValleyUnite.YQResolvedView, images: __ObjC.NSArray, type: Swift.Int) -&gt; ()"
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQImplementFeedbackVC.swift"
-                  timestampString = "545135828.518674"
+                  timestampString = "545386792.715601"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "300"
                   endingLineNumber = "300"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "32">
                </Location>
             </Locations>
          </BreakpointContent>

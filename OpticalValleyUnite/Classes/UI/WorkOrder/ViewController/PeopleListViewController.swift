@@ -53,7 +53,9 @@ class PeopleListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //0.系统属性的归零处理情况
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
         getPeople()
         addRefirsh()
     }

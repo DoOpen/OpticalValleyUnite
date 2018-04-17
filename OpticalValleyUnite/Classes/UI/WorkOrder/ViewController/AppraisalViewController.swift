@@ -31,6 +31,10 @@ class AppraisalViewController: UIViewController {
         super.viewDidLoad()
 
         title = "工单评价"
+        
+        //0.系统属性的归零处理情况
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
         setupStartView()
     }
 

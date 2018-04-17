@@ -227,7 +227,7 @@ extension AllViewController :SGScanningQRCodeVCDelegate{
     
     func didScanningText(_ text: String!) {
         
-        if text.contains("设备"){//区分是否是自己的二维码的情况
+        if text.contains("equipment"){//区分是否是自己的二维码的情况
             
             let str = text.components(separatedBy: ":").last
             if let str = str{

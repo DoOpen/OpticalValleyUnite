@@ -1111,7 +1111,7 @@ class ReportMasterViewController: UIViewController {
 extension ReportMasterViewController: SGScanningQRCodeVCDelegate{
     
     func didScanningText(_ text: String!) {
-        if text.contains("设备"){
+        if text.contains("equipment"){
             let str = text.components(separatedBy: ":").last
             
             if let str = str{

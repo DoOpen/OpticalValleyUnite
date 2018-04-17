@@ -80,6 +80,7 @@ class YQIntoDoorViewController: UIViewController {
             self.allButtonClickEvent(self.currentSelectButton!)
             
         }else{
+            
             //默认的是选中第二项 二维码扫描的图片
             self.allButtonClickEvent(self.openQRCode)
         }
@@ -89,6 +90,7 @@ class YQIntoDoorViewController: UIViewController {
     
     // MARK: - allButtonClick传递事件
     @IBAction func allButtonClickEvent(_ sender: UIButton) {
+        
         self.currentSelectButton?.isSelected = false
         sender.isSelected = true
         self.currentSelectButton = sender
@@ -111,8 +113,7 @@ class YQIntoDoorViewController: UIViewController {
             default:
                 break
         }
-        
-        
+ 
     }
     
     // MARK: - 添加左右barItem的情况
@@ -254,6 +255,7 @@ class YQIntoDoorViewController: UIViewController {
                 
                 //通过字典转模型来进行的操作!
                 let array = reponse as? NSArray
+                
                 for dict in array!{
                     
                     temp.append(YQBluetooth.init(dic: dict as! [String : Any]))
@@ -283,8 +285,7 @@ class YQIntoDoorViewController: UIViewController {
         par["appType"] = "2"//设备类型  1 业主 2员工
         par["parkId"] = self.parkID
         par["deviceBlueMac"] = model.deviceBlueMac
-        
-        
+    
         params["data"] = par
         
         //swift 中的 格式化的固定写法语法!
@@ -393,8 +394,6 @@ class YQIntoDoorViewController: UIViewController {
     
     }
     
-    
-    
     // MARK: - 添加默认的项目选择方法
     func setUpProjectNameLable() -> String{
         
@@ -443,7 +442,6 @@ class YQIntoDoorViewController: UIViewController {
             }else{
                 self.alert(message: "授权失败")
             }
-            
         }
     }
 
@@ -461,7 +459,6 @@ class YQIntoDoorViewController: UIViewController {
         par["parkId"] = self.parkID
         par["deviceQrMac"] = deviceMacString
         
-        
         params["data"] = par
         
         //swift 中的 格式化的固定写法语法!
@@ -470,13 +467,10 @@ class YQIntoDoorViewController: UIViewController {
             let jsonData = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
             
             if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8){
-                
                 //格式化的json字典的情况
                 //print(JSONString)
-                
                 //注意的是这里的par 要求序列化json
                 allParams["params"] = JSONString
-                
             }
             
         }catch {
@@ -495,6 +489,7 @@ class YQIntoDoorViewController: UIViewController {
            
             
         }) { (error) in
+            
             print(error)
             SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
             
@@ -510,7 +505,6 @@ class YQIntoDoorViewController: UIViewController {
             return
         }
 
-        
         var par = [String : Any]()
         par["appType"] = "2"//设备类型  1 业主 2员工
         par["parkId"] = self.parkID
@@ -541,7 +535,6 @@ class YQIntoDoorViewController: UIViewController {
             print(error)
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
-    
     }
 
 }
@@ -679,7 +672,7 @@ extension YQIntoDoorViewController : SGScanningQRCodeVCDelegate{
     
     func didScanningText(_ text: String!) {
         
-        if text.contains("设备"){//区分是否是自己的二维码的情况
+        if text.contains("equipment"){//区分是否是自己的二维码的情况
             
             let str = text.components(separatedBy: ":").last
             
@@ -688,15 +681,13 @@ extension YQIntoDoorViewController : SGScanningQRCodeVCDelegate{
                 self.navigationController?.popViewController(animated: false)
                 //拿到了二维码的设备开门的str ---->
                 self.openDoorByQrCodeFunction(deviceMacString: str!)
-                
             }
             
         }else{
-            
             self.alert(message: "非可识别二维码!")
-            
         }
     }
+    
 }
 
 extension YQIntoDoorViewController : YQScanCellDelegate{

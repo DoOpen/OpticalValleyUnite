@@ -19,8 +19,6 @@
 #import "ScanSuccessJumpVC.h"
 #import "SGQRCodeTool.h"
 
-
-
 @interface SGScanningQRCodeVC () <AVCaptureMetadataOutputObjectsDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /** 会话对象 */
 @property (nonatomic, strong) AVCaptureSession *session;

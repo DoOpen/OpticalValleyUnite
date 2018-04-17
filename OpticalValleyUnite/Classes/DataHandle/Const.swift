@@ -51,10 +51,9 @@ struct Const {
     static let standardUserPwd = "YQstandardUserPwd"
 
     #if TARGET_IPHONE_SIMULATOR
-    
-    static let SJIsSIMULATOR = true
+    static let SJIsSIMULATOR = true //真机
     #else
-    static let SJIsSIMULATOR = false
+    static let SJIsSIMULATOR = false //模拟器
     #endif
     
 }

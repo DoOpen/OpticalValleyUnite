@@ -59,8 +59,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             nickNameLabel.text = user.nickname
             userNameLabel.text = "账号: " + user.userName!
-            
-            
+
             if let url = user.avatar,url != ""{
                 
                 
@@ -114,9 +113,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         let starVc = YQStarServiceVC.init(nibName: "YQStarServiceVC", bundle: nil)
         
         self.navigationController?.pushViewController(starVc, animated: true)
-        
-        
-        
+
     }
 
     
@@ -227,8 +224,8 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             self.counter.queryPedometerData(from: nowdate!, to: date as Date , withHandler: { (pedometerData, error) in
                 
                 let num = pedometerData?.numberOfSteps ?? 0
-                //上传前一天的步数
                 
+                //上传前一天的步数
                 DispatchQueue.main.async {
                     
                     var parameter = [String : Any]()
@@ -292,10 +289,7 @@ extension CheckNewBundleVersionProtocol{
                 }, cancleBlock: {
                     (action) in
                 })
-                
-                
-                
-                
+
             }else{
                 
                 if !isBlack{

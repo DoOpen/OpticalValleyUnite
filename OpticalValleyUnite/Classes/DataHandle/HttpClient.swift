@@ -78,6 +78,7 @@ extension HttpClient {
 
             switch response.result {
             case .success(_):
+                
                 if let value = response.result.value as? [String: Any] {
                     
                     guard value["MSG"] as? String != "token无效" else{
@@ -105,6 +106,7 @@ extension HttpClient {
                 }
                 
                 break
+                
             case .failure(let error):
                 failure(error as NSError)
                 debugPrint(error)

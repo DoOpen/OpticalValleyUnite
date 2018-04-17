@@ -90,10 +90,7 @@ class YQFireControlViewController: UIViewController {
         /*消防点信息, 地图打点使用*/
         //消防需求的添加: 要求的是刷新火警点, 执行完了清除火警点!
         makeMapLocationData()
-        
-        
-        
-        
+
     }
     
     

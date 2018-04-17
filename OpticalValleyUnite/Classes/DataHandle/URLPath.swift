@@ -45,7 +45,7 @@ struct URLPath {
     
     //服务器的basicBasicPath
     
-    static let basicBasic = "http://172.16.19.98:8091"
+    static let basicBasic = "http://192.168.5.105:80"
     
     
     //服务器的basic 地址:
@@ -361,6 +361,7 @@ struct URLPath {
     ///获取app的下载地址的接口
     static let getDownloadUrl  = "version/downloadUrl"
     
-    
+    ///星级管家列表接口
+    static let getScoreDetail = "star/getScoreDetail"
     
 }

@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQStarServiceVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="beatContentLabel" destination="ayu-g9-XsC" id="xaE-uY-zQT"/>
+                <outlet property="iconImageView" destination="eRV-an-yxH" id="3kV-gE-G7J"/>
+                <outlet property="increaseContentLabel" destination="9nm-8W-iN0" id="huQ-cz-aXH"/>
+                <outlet property="lastScoreLabel" destination="W8H-qa-uTX" id="wF9-xg-ttb"/>
+                <outlet property="scoreLabel" destination="jEU-Jn-hWu" id="ViZ-7N-6k5"/>
+                <outlet property="star2Label" destination="EHL-8T-V7X" id="4Wt-rK-Ehk"/>
+                <outlet property="star3Label" destination="Ulz-Ao-1cT" id="FKs-nI-vUu"/>
+                <outlet property="star4Label" destination="jv8-kI-5mm" id="vfc-BW-GPx"/>
+                <outlet property="star5Label" destination="876-9a-EEn" id="oRy-6U-sIm"/>
+                <outlet property="starsView" destination="zTc-SP-KFs" id="cFh-u0-MSa"/>
+                <outlet property="useLabel" destination="GOs-ZG-H8w" id="E3G-VW-KYC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,7 +36,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qiH-cQ-vXA">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="666"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eRV-an-yxH">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="eRV-an-yxH">
                                     <rect key="frame" x="127.5" y="30" width="120" height="120"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="SBG-Kj-X42"/>
@@ -375,5 +386,6 @@
     <resources>
         <image name="star拷贝7" width="22" height="22"/>
         <image name="star拷贝8" width="22" height="22"/>
+        <image name="userIcon" width="200" height="200"/>
     </resources>
 </document>

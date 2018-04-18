@@ -65,14 +65,14 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
                 
                 if url.contains("http") {
                     
-                    photoImageView.kf.setImage(with: URL(string: url))
+                    photoImageView.kf.setImage(with: URL(string: url), placeholder: UIImage.init(name: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
 
                 }else{
                 
                     let basicPath = URLPath.systemSelectionURL
                     let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                     
-                    photoImageView.kf.setImage(with: URL(string: imageValue))
+                    photoImageView.kf.setImage(with: URL(string: imageValue), placeholder: UIImage.init(name: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
                 
                 }
             }
@@ -87,6 +87,9 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         right_add_Button.frame = CGRect(x : 0, y : 0, width : 40, height : 40)
         right_add_Button.setImage(UIImage(named: "反馈"), for: .normal)
         right_add_Button.setTitle("反馈", for: .normal)
+        //设置font
+        right_add_Button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        right_add_Button.setTitleColor(UIColor.blue, for: .normal)
         right_add_Button.addTarget(self, action: #selector(addRightBarItemButtonClick), for: .touchUpInside)
         
         let  right2Bar = UIBarButtonItem()

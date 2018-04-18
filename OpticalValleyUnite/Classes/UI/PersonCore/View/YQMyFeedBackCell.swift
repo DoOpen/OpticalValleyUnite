@@ -22,14 +22,16 @@ class YQMyFeedBackCell: UITableViewCell {
     }
 
     
-//    var model : Any {
-//        
-//        didSet{
-//        
-//        
-//        }
-//    
-//    }
+    var model : YQFeedbackListModel? {
+        
+        didSet{
+        
+            self.titleLabel.text = model?.title
+            self.timeLabel.text = model?.createTime
+            
+        }
+    
+    }
 
    
 

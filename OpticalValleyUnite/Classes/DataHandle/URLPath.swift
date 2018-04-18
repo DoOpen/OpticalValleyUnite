@@ -362,6 +362,16 @@ struct URLPath {
     static let getDownloadUrl  = "version/downloadUrl"
     
     ///星级管家列表接口
+    //星级管家的主接口
     static let getScoreDetail = "star/getScoreDetail"
+    
+    ///反馈管理的接口
+    //创建反馈信息
+    static let getFeedbackAdd = "feedback/add"
+    //反馈列表查询
+    static let getFeedbackList = "feedback/list"
+    //反馈详情查询
+    static let getFeedbackDetail = "feedback/detail"
+    
     
 }

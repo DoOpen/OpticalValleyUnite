@@ -36,6 +36,7 @@ class YQShareViewController: UIViewController {
         right_add_Button.frame = CGRect(x : 0, y : 0, width : 40, height : 40)
         right_add_Button.setImage(UIImage(named: "分享"), for: .normal)
         right_add_Button.setTitle("分享", for: .normal)
+        right_add_Button.setTitleColor(UIColor.blue, for: .normal)
         right_add_Button.addTarget(self, action: #selector(addRightBarItemButtonClick), for: .touchUpInside)
         
         let  right2Bar = UIBarButtonItem()

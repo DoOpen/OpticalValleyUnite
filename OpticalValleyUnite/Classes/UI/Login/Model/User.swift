@@ -9,6 +9,7 @@
 import UIKit
 
 public struct UserKey {
+    
     static let UserID = "usrid"
     static let Username = "LOGIN_NAME"
     static let UsernameType = "method"
@@ -64,6 +65,7 @@ class User: NSObject, NSCoding {
     
     
     class func currentUser() -> User?{
+        
         if(User._currentUser == nil){
             
             User._currentUser = NSKeyedUnarchiver.unarchiveObject(withFile: UserKey.UserFileKey) as? User

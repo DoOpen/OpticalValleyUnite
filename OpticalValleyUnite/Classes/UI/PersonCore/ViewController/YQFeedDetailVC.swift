@@ -97,6 +97,7 @@ class YQFeedDetailVC: UIViewController {
                     //CoverView.show(image: image)
                     
                     if imageString != "" {
+                        
                         let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
                         pb.indicatorStyle = .pageControl
                         self.present(pb, animated: true, completion: nil)
@@ -110,7 +111,7 @@ class YQFeedDetailVC: UIViewController {
             
         }) { (error) in
             
-            SVProgressHUD.showError(withStatus: "")
+            SVProgressHUD.showError(withStatus: "网络数据加载失败,请检查网络!")
         }
     }
     

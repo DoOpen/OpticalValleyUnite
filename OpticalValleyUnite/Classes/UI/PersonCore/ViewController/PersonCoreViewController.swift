@@ -13,9 +13,23 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
 
     @IBOutlet weak var bundleVersionLabel: UILabel!
     @IBOutlet weak var nickNameLabel: UILabel!
+    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     
+    @IBOutlet weak var headViewConstraint: NSLayoutConstraint!
+    
+    var userNameMaxY : CGFloat = 0{
+        
+        didSet{
+            //赋值
+            self.headViewConstraint.constant = userNameLabel.maxY > photoImageView.maxY ?  userNameLabel.maxY + 10 : self.headViewConstraint.constant
+            
+            self.view.setNeedsLayout()
+        }
+        
+    }
+
     // MARK: - 项目选择项目的传递
     @IBOutlet weak var projectSelectName: UILabel!
     
@@ -28,8 +42,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         return CMPedometer()
     }()
 
-    
-
+    // MARK: - 生命周期方法
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -42,6 +55,9 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         //添加leftRightBar功能
         setupRightAndLeftBarItem()
         
+        //设置用户信息
+        setupUserData()
+        
     }
     
     
@@ -51,6 +67,22 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         //设置项目选择的lable
         self.projectSelectName.text = setUpProjectNameLable()
+      
+    }
+    
+    override func viewWillLayoutSubviews() {
+
+        super.viewWillLayoutSubviews()
+
+        if (self.userNameMaxY != userNameLabel.maxY){
+            
+            self.userNameMaxY = userNameLabel.maxY
+        }
+    }
+    
+    
+    // MARK: - 添加设置用户信息
+    func setupUserData(){
         
         //解决bug 上传不能更新的头像
         let user = User.currentUser()
@@ -59,23 +91,23 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             nickNameLabel.text = user.nickname
             userNameLabel.text = "账号: " + user.userName!
-
+            
             if let url = user.avatar,url != ""{
-                
                 
                 if url.contains("http") {
                     
                     photoImageView.kf.setImage(with: URL(string: url), placeholder: UIImage.init(name: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
-
+                    
                 }else{
-                
+                    
                     let basicPath = URLPath.systemSelectionURL
                     let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                     
                     photoImageView.kf.setImage(with: URL(string: imageValue), placeholder: UIImage.init(name: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
-                
+                    
                 }
             }
+            
         }
     }
     

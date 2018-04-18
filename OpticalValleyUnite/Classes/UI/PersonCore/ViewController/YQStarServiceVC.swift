@@ -75,11 +75,11 @@ class YQStarServiceVC: UIViewController {
             
             //我的星级分
             let scoreNow = data!["scoreNow"] as? String ?? ""
-            self.scoreLabel.text = scoreNow
+            self.scoreLabel.text = scoreNow + "分"
             
             //距离下一个星级
-            let needScore = data!["needScore"] as? String ?? ""
-            self.lastScoreLabel.text = "距离下一个星级还需要" + needScore + "分"
+            let needScore = data!["needScore"] as? Int ?? 0
+            self.lastScoreLabel.text = "距离下一个星级还需要" + "\(needScore)" + "分"
             
             //显示的星级 数量(设置星级的数量)
             let star = data!["star"] as? Int ?? 0

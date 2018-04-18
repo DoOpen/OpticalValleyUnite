@@ -22,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVm-z9-tkQ">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvV-kx-vPl">
-                                        <rect key="frame" x="20" y="5" width="157.5" height="50"/>
+                                        <rect key="frame" x="20" y="5" width="157.5" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="取消">
                                             <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,7 +46,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgi-qx-Gey">
-                                        <rect key="frame" x="197.5" y="5" width="157.5" height="50"/>
+                                        <rect key="frame" x="197.5" y="5" width="157.5" height="40"/>
                                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="确定"/>
@@ -62,7 +62,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="2hM-Q6-h37"/>
+                                    <constraint firstAttribute="height" constant="50" id="2hM-Q6-h37"/>
                                     <constraint firstItem="IvV-kx-vPl" firstAttribute="top" secondItem="yVm-z9-tkQ" secondAttribute="top" constant="5" id="3Ug-it-gML"/>
                                     <constraint firstAttribute="bottom" secondItem="IvV-kx-vPl" secondAttribute="bottom" constant="5" id="ANI-8j-fm0"/>
                                     <constraint firstItem="IvV-kx-vPl" firstAttribute="leading" secondItem="yVm-z9-tkQ" secondAttribute="leading" constant="20" id="Cu1-wh-hdG"/>
@@ -76,7 +76,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipO-mG-vXV">
-                                <rect key="frame" x="0.0" y="20" width="375" height="587"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awI-uD-f1F">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>

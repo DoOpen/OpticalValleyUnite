@@ -107,8 +107,6 @@ class YQScoreResult: UIView {
             
             self.scoreLabel.text = "\((model?.score)! * 20)" + "分"
 
-            
-            
             //showimages组内容
             if model?.itemImgPath != "" {
                 

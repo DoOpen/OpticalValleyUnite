@@ -19,6 +19,10 @@ class YQFeedBackViewController: UIViewController {
     //图片
     @IBOutlet weak var addImageView: SJAddView!
     
+    //项目label
+    @IBOutlet weak var projectLabel: UILabel!
+    
+    var parkID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,23 @@ class YQFeedBackViewController: UIViewController {
         
         //添加rightBar
         setupRightAndLeftBarItem()
+        
+        //2.获取项目id
+        if self.parkID == ""{
+            
+            let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+            self.navigationController?.pushViewController(project, animated: true)
+            return
+            
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let name = setUpProjectNameLable()
+        self.projectLabel.text = "项目选择:" + name
         
     }
     
@@ -76,6 +97,19 @@ class YQFeedBackViewController: UIViewController {
         var parameter = [String : Any]()
         parameter["content"] = self.contentTextView.text
         parameter["title"] = self.titleTextField.text
+        parameter["parkId"] = self.parkID
+        
+        if self.parkID == "" {
+            
+            self.alert(message: "请选择项目!", doneBlock: { (alert) in
+                
+                let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+                self.navigationController?.pushViewController(project, animated: true)
+                return
+            })
+            return
+        }
+        
         
         //添加标题,内容必传项目
         if self.contentTextView.text == "" || self.titleTextField.text == ""{
@@ -121,10 +155,6 @@ class YQFeedBackViewController: UIViewController {
             }
             
         }
-        
-       
-        
-        
     }
 
     //MARK: - 上传图片的专门的接口
@@ -160,6 +190,31 @@ class YQFeedBackViewController: UIViewController {
         self.uploadDataForService()
         
     }
+    
+    // MARK: - 项目选择的按钮点击
+    @IBAction func projectSelectClick(_ sender: UIButton) {
+        
+        
+        
+    }
+    
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            
+            projectName = dic?["PARK_NAME"] as! String
+            self.parkID = (dic?["ID"] as? String)!
+            
+        }
+        
+        return projectName
+    }
+    
 
 
 }

@@ -109,9 +109,7 @@ class YQEquipmentListTVC: UIViewController {
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             
             self.getData()
-            
         })
-        
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             

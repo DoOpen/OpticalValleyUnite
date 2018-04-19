@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 
+
 class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
 
     @IBOutlet weak var bundleVersionLabel: UILabel!
@@ -18,6 +19,8 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     @IBOutlet weak var photoImageView: UIImageView!
     
     @IBOutlet weak var headViewConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var starView: UIView!
     
     var userNameMaxY : CGFloat = 0{
         
@@ -58,6 +61,8 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         //设置用户信息
         setupUserData()
         
+        //设置星级服务
+        setupStarViewData()
     }
     
     
@@ -109,6 +114,41 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             }
             
         }
+    }
+    
+    // MARK: - 获取添加执行星级管家内容
+    func setupStarViewData(){
+        
+        HttpClient.instance.post(path: URLPath.getScoreDetail, parameters: nil, success: { (response) in
+            
+            let data = response["scoreDetail"] as? [String : Any]
+            
+            if data == nil {
+
+                return
+            }
+            
+            //显示的星级 数量(设置星级的数量)
+            var star = data!["star"] as? Int ?? 0
+            if (star) <= 0 {
+                //解决model.source 的逻辑bug的 情况
+                star = 1
+            }else if (star) > 5{
+                
+                star =  (star) / 2
+            }
+            
+            for i in 0...((star) - 1){
+                
+                let starBtn = self.starView.subviews[i] as! UIButton
+                starBtn.isSelected = true
+            }
+           
+        }) { (error) in
+            
+        }
+        
+        
     }
     
     // MARK: - 自定义的right_left barItem

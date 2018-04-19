@@ -74,9 +74,15 @@ class YQFeedBackViewController: UIViewController {
         }
 
         var parameter = [String : Any]()
-        
         parameter["content"] = self.contentTextView.text
         parameter["title"] = self.titleTextField.text
+        
+        //添加标题,内容必传项目
+        if self.contentTextView.text == "" || self.titleTextField.text == ""{
+            
+            self.alert(message: "请完善反馈标题和内容!")
+            return
+        }
         
         //1.上传图片中
         if images.count > 0 {

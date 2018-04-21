@@ -10,9 +10,13 @@ import UIKit
 
 class YQGenaralManagerCheckDetailVC: UIViewController {
 
+    //用户的权限
+    var UserRule :Int64 = 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "反馈处理"
         
         
     }

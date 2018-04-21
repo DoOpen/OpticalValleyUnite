@@ -7,34 +7,77 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YQGeneralManagerFirstVC: UIViewController {
 
     @IBOutlet weak var baseScrollViewHeightConstast: NSLayoutConstraint!
+    @IBOutlet weak var checkOutView: UIView!
+    @IBOutlet weak var checkOutViewHeight: NSLayoutConstraint!
     
+    //用户的权限
+    var UserRule :Int64 = 2
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         self.title = "总经理邮箱"
-        self.baseScrollViewHeightConstast.constant = SJScreeH + 10
+        self.baseScrollViewHeightConstast.constant = SJScreeH - 54
+        
+        getGeneralRuleForService()
+        
         
     }
+    
+    // MARK: - 获取角色权限的问题
+    func getGeneralRuleForService(){
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getgm_emailRule
+            , parameters: nil, success: { (response) in
+                
+                SVProgressHUD.dismiss()
+                
+                let ruleNum = response as? Int64 ?? 2
+                
+                if (ruleNum == 2){//其他只有反馈功能
+                    self.checkOutView.isHidden = true
+                    self.checkOutViewHeight.constant = 1
+                    
+                }else{//经理和总经理有所有权限
+
+                }
+                
+                self.UserRule = ruleNum
+
+        }) { (error) in
+
+            SVProgressHUD.showError(withStatus: "获取网络数据失败,请检查网络!")
+        }
+        
+    }
+    
 
     // MARK: - 查看反馈用户项的点击的操作
     @IBAction func lookOutButtonClick(_ sender: UIButton) {
         
-        let checkVC = UIStoryboard.init(name: "YQGeneralManagerCheck", bundle: nil).instantiateInitialViewController()
-        self.navigationController?.pushViewController(checkVC!, animated: true)
+        let checkVC = UIStoryboard.init(name: "YQGeneralManagerCheck", bundle: nil).instantiateInitialViewController() as! YQGeneralManagerCheckTVC
+        
+        checkVC.UserRule = self.UserRule
+        self.navigationController?.pushViewController(checkVC, animated: true)
         
     }
     
     @IBAction func feedbackButtonClick(_ sender: UIButton) {
         
         //跳转加载 个人中心的反馈的界面
-        let feedVC = UIStoryboard.init(name: "YQFeedBackVC", bundle: nil).instantiateInitialViewController()
+        let feedVC = UIStoryboard.init(name: "YQFeedBackVC", bundle: nil).instantiateInitialViewController() as! YQFeedBackViewController
         
-        self.navigationController?.pushViewController(feedVC!, animated: true)
+        feedVC.UserRule = self.UserRule
+        
+        self.navigationController?.pushViewController(feedVC, animated: true)
     
     }
     

@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQGeneralManagerFirstVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
                 <outlet property="baseScrollViewHeightConstast" destination="Rx8-b1-8DW" id="Xnp-a5-Sah"/>
+                <outlet property="checkOutView" destination="ZZ7-k1-qhl" id="ixt-Hn-ym0"/>
+                <outlet property="checkOutViewHeight" destination="kEq-GL-mz2" id="q0x-1f-2dn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,7 +32,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择你需要的功能" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQW-HA-2nQ">
-                                            <rect key="frame" x="2" y="12" width="156" height="21"/>
+                                            <rect key="frame" x="5" y="12" width="156" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -40,7 +42,7 @@
                                     <constraints>
                                         <constraint firstItem="wQW-HA-2nQ" firstAttribute="centerY" secondItem="iFt-wx-45L" secondAttribute="centerY" id="Ccv-Jl-Ejp"/>
                                         <constraint firstAttribute="height" constant="44" id="f9O-33-XIQ"/>
-                                        <constraint firstItem="wQW-HA-2nQ" firstAttribute="leading" secondItem="iFt-wx-45L" secondAttribute="leading" constant="2" id="zxC-2h-INS"/>
+                                        <constraint firstItem="wQW-HA-2nQ" firstAttribute="leading" secondItem="iFt-wx-45L" secondAttribute="leading" constant="5" id="zxC-2h-INS"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ7-k1-qhl">

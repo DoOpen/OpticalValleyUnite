@@ -24,6 +24,10 @@ class YQFeedBackViewController: UIViewController {
     
     var parkID = ""
     
+    //用户的权限
+    var UserRule :Int64 = 3
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -125,6 +129,43 @@ class YQFeedBackViewController: UIViewController {
                 
                 parameter["images"] = url
                 SVProgressHUD.show(withStatus: "正在保存...")
+                
+                if (self.UserRule == 3){//用户信息反馈
+                    //2.上传添加数据
+                    HttpClient.instance.post(path: URLPath.getFeedbackAdd, parameters: parameter, success: { (response) in
+                        
+                        SVProgressHUD.dismiss()
+                        SVProgressHUD.showSuccess(withStatus: "保存成功!")
+                        self.navigationController?.popViewController(animated: true)
+                        
+                    }) { (error) in
+                        
+                        SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+                    }
+                    
+                }else {
+                    
+                    HttpClient.instance.post(path: URLPath.getgm_emailAdd, parameters: parameter, success: { (response) in
+                        
+                        SVProgressHUD.dismiss()
+                        SVProgressHUD.showSuccess(withStatus: "保存成功!")
+                        self.navigationController?.popViewController(animated: true)
+                        
+                    }, failure: { (error) in
+                        
+                        SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+                        
+                    })
+                    
+                }
+                
+            })
+            
+        }else{
+            
+            SVProgressHUD.show(withStatus: "正在保存...")
+            
+            if (self.UserRule == 3){//用户信息反馈
                 //2.上传添加数据
                 HttpClient.instance.post(path: URLPath.getFeedbackAdd, parameters: parameter, success: { (response) in
                     
@@ -136,23 +177,22 @@ class YQFeedBackViewController: UIViewController {
                     
                     SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
                 }
-                
-            })
-            
-        }else{
-            
-            SVProgressHUD.show(withStatus: "正在保存...")
-            //2.上传添加数据
-            HttpClient.instance.post(path: URLPath.getFeedbackAdd, parameters: parameter, success: { (response) in
-                
-                SVProgressHUD.dismiss()
-                SVProgressHUD.showSuccess(withStatus: "保存成功!")
-                self.navigationController?.popViewController(animated: true)
-                
-            }) { (error) in
-                
-                SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+
+            } else{//总经理邮箱反馈
+                //3.上传添加总经理的邮箱
+                HttpClient.instance.post(path: URLPath.getgm_emailAdd, parameters: parameter, success: { (response) in
+                    
+                    SVProgressHUD.dismiss()
+                    SVProgressHUD.showSuccess(withStatus: "保存成功!")
+                    self.navigationController?.popViewController(animated: true)
+                    
+                }, failure: { (error) in
+                    
+                    SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+                    
+                })
             }
+            
             
         }
     }
@@ -194,8 +234,8 @@ class YQFeedBackViewController: UIViewController {
     // MARK: - 项目选择的按钮点击
     @IBAction func projectSelectClick(_ sender: UIButton) {
         
-        
-        
+        let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+        self.navigationController?.pushViewController(project, animated: true)
     }
     
     // MARK: - 添加默认的项目选择方法
@@ -209,9 +249,7 @@ class YQFeedBackViewController: UIViewController {
             
             projectName = dic?["PARK_NAME"] as! String
             self.parkID = (dic?["ID"] as? String)!
-            
         }
-        
         return projectName
     }
     

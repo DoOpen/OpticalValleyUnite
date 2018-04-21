@@ -16,7 +16,9 @@ import Foundation
  1.生产环境: http://portal.ovuems.com/
  
  2.演示环境: http://demo.ovuems.com/
+ 
  3.测试环境: http://test.ovuems.com/
+ 
  4.开发环境: http://dev.ovuems.com/
  
  5.新版的试点环境: http://beta.ovuems.com/
@@ -372,6 +374,16 @@ struct URLPath {
     static let getFeedbackList = "feedback/list"
     //反馈详情查询
     static let getFeedbackDetail = "feedback/detail"
+    
+    ///总经理邮箱的接口
+    //人员角色判断接口
+    static let getgm_emailRule = "gm_email/getRule"
+    //创建意见反馈接口
+    static let getgm_emailAdd = "gm_email/add"
+    //反馈列表查询（查看自己的反馈列表）
+    static let getgm_emailList = "my_gm_email/list"
+    //反馈详情查看
+    static let getgm_emailDetail = "gm_email/detail"
     
     
 }

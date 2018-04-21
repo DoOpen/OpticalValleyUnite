@@ -46,6 +46,7 @@ class YQStarServiceVC: UIViewController {
         //2.数据加载
         setUpDataForService()
         
+        setUpCurrentUser()
     }
 
 
@@ -137,14 +138,14 @@ class YQStarServiceVC: UIViewController {
 
                 if url.contains("http") {
                     
-                    iconImageView.kf.setImage(with: URL(string: url))
+                    iconImageView.kf.setImage(with: URL(string: url), placeholder: UIImage.init(name: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
                     
                 }else{
                     
                     let basicPath = URLPath.systemSelectionURL
                     let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                     
-                    iconImageView.kf.setImage(with: URL(string: imageValue))
+                    iconImageView.kf.setImage(with: URL(string: imageValue), placeholder: UIImage.init(name: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
             }
         }

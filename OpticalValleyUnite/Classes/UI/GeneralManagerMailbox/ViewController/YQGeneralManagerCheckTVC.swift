@@ -10,9 +10,13 @@ import UIKit
 
 class YQGeneralManagerCheckTVC: UITableViewController {
 
+    //用户的权限
+    var UserRule :Int64 = 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //1.init
+        self.title = "反馈"
        
     }
 

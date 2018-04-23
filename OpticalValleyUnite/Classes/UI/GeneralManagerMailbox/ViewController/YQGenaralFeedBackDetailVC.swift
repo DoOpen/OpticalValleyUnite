@@ -21,6 +21,7 @@ class YQGenaralFeedBackDetailVC: UIViewController {
     
     @IBOutlet weak var showImageView: ShowImageView!
 
+    @IBOutlet weak var contentView: UIView!
     
     //反馈id
     var id = ""
@@ -95,7 +96,6 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                     
                     //更换的框架; 添加, 滚动,缩放,下载保存
                     //CoverView.show(image: image)
-                    
                     if imageString != "" {
                         
                         let pb = PhotoBrowser(photos: photoImage , currentIndex: 0)
@@ -106,6 +106,19 @@ class YQGenaralFeedBackDetailVC: UIViewController {
             }
             
             //动态加载xib批复内容:
+            if(true){
+                
+                let v = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
+                
+                self.contentView.addSubview(v)
+                
+                v.snp.makeConstraints({ (maker) in
+                    
+                })
+                
+            }
+            
+            
             
             
             

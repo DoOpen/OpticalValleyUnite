@@ -33,7 +33,7 @@ class YQGenaralFeedBackListVC: UIViewController {
         
         SVProgressHUD.show()
         
-        HttpClient.instance.post(path: URLPath.getgm_emailList, parameters: nil
+        HttpClient.instance.post(path: URLPath.getgm_emailMyList, parameters: nil
             , success: { (response) in
                 
                 SVProgressHUD.dismiss()
@@ -82,7 +82,9 @@ extension YQGenaralFeedBackListVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let feedbackDetailVC = YQGenaralFeedBackDetailVC.init(nibName: "YQGenaralFeedBackDetailVC", bundle: nil)
+        
        feedbackDetailVC.id = self.dataArray[indexPath.row].id
+        
         self.navigationController?.pushViewController(feedbackDetailVC, animated: true)
 
     }

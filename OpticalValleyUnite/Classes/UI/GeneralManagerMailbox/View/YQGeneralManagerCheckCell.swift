@@ -10,10 +10,30 @@ import UIKit
 
 class YQGeneralManagerCheckCell: UITableViewCell {
 
+    @IBOutlet weak var titleLable: UILabel!
+    
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    @IBOutlet weak var parkName: UILabel!
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    var model : YQGeneralCheckOutModel? {
+        
+        didSet{
+            
+            self.statusLabel.text = model?.title
+            self.parkName.text = model?.parkName
+            self.timeLabel.text = model?.createTime
+            self.statusLabel.text = model?.status
+            
+        }
+    }
+    
   
 }

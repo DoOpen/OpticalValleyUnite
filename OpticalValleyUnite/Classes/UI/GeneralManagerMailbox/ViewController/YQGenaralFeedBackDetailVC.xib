@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQGenaralFeedBackDetailVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
                 <outlet property="contentTextView" destination="gPo-Qd-2Af" id="5v9-ht-hBl"/>
+                <outlet property="contentView" destination="GFh-uW-LWf" id="6Ei-gT-OIv"/>
                 <outlet property="showImageView" destination="3oP-qK-yH0" id="qVe-2M-xqT"/>
                 <outlet property="timeLabel" destination="q4k-zS-ch3" id="N2y-6d-mLJ"/>
                 <outlet property="titleLabel" destination="BVO-on-E2y" id="o1E-l5-r0K"/>

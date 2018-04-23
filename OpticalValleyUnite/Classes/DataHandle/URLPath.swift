@@ -381,9 +381,13 @@ struct URLPath {
     //创建意见反馈接口
     static let getgm_emailAdd = "gm_email/add"
     //反馈列表查询（查看自己的反馈列表）
-    static let getgm_emailList = "my_gm_email/list"
+    static let getgm_emailMyList = "my_gm_email/myList"
     //反馈详情查看
     static let getgm_emailDetail = "gm_email/detail"
     
+    //反馈列表查询（经理或总经理查看反馈列表）
+    static let getemailList = "gm_email/list"
+    //意见反馈批复接口
+    static let getEmailReply = "gm_email/reply"
     
 }

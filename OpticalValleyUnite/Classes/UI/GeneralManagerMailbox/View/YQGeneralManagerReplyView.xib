@@ -50,7 +50,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQ7-pa-xft">
-                            <rect key="frame" x="354.5" y="28" width="37.5" height="18"/>
+                            <rect key="frame" x="354" y="28" width="38" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -79,7 +79,12 @@
                 <constraint firstItem="64a-p5-EGO" firstAttribute="leading" secondItem="34l-ua-O6u" secondAttribute="leading" id="oI4-68-ZOO"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="20.5" y="-74"/>
+            <connections>
+                <outlet property="contentTitleTextV" destination="B4K-xZ-xwk" id="peo-2J-4b7"/>
+                <outlet property="nameLabel" destination="Qaq-rs-xPO" id="SQ2-Q7-66o"/>
+                <outlet property="timeLabel" destination="LQ7-pa-xft" id="289-Tv-oku"/>
+            </connections>
+            <point key="canvasLocation" x="21.5" y="2"/>
         </view>
     </objects>
 </document>

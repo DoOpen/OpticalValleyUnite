@@ -28,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIF-Tf-3OV">
-                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFh-uW-LWf">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="667"/>
@@ -152,7 +152,7 @@
             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="XIF-Tf-3OV" secondAttribute="trailing" id="Ggq-YO-Jkd"/>
-                <constraint firstItem="XIF-Tf-3OV" firstAttribute="top" secondItem="d68-Ja-Gx1" secondAttribute="top" constant="64" id="S7x-hd-YhL"/>
+                <constraint firstItem="XIF-Tf-3OV" firstAttribute="top" secondItem="d68-Ja-Gx1" secondAttribute="top" id="S7x-hd-YhL"/>
                 <constraint firstItem="GFh-uW-LWf" firstAttribute="centerX" secondItem="d68-Ja-Gx1" secondAttribute="centerX" id="bFx-eQ-T5u"/>
                 <constraint firstItem="XIF-Tf-3OV" firstAttribute="leading" secondItem="d68-Ja-Gx1" secondAttribute="leading" id="gZI-4F-uTY"/>
                 <constraint firstAttribute="bottom" secondItem="XIF-Tf-3OV" secondAttribute="bottom" id="qOb-Q3-kLx"/>

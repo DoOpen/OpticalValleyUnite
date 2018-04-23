@@ -10,14 +10,14 @@ import UIKit
 
 class YQGeneralCheckOutModel: NSObject {
     //id
-    var id = ""
+    var id : Int64 = -1
     //创建时间
     var createTime = ""
     //总经理批复状态 0 未批复 1批复
-    var gmReplyStatus = ""
+    var gmReplyStatus = -1
     
     //经理批复状态 0 未批复 1批复
-    var mReplyStatus = ""
+    var mReplyStatus = -1
     
     //反馈最终状态
     var status = -1

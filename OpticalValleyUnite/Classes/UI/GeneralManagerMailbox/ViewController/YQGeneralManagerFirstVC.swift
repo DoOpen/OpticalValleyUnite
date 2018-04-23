@@ -40,9 +40,10 @@ class YQGeneralManagerFirstVC: UIViewController {
                 
                 SVProgressHUD.dismiss()
                 
-                let ruleNum = response as? Int64 ?? 2
+                let ruleNum = response["role"] as? Int64 ?? 2
                 
                 if (ruleNum == 2){//其他只有反馈功能
+                    
                     self.checkOutView.isHidden = true
                     self.checkOutViewHeight.constant = 1
                     

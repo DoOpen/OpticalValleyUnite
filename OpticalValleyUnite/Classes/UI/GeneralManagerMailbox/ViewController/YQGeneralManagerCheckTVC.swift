@@ -30,6 +30,10 @@ class YQGeneralManagerCheckTVC: UITableViewController {
         //2.添加右边的bar
         setupRightAndLeftBarItem()
         
+        //默认调去全部数据
+        getListDataForService(type: 1)
+        self.selectType = 1
+        
         //3.上拉下拉刷新
         addRefirsh()
        
@@ -40,7 +44,7 @@ class YQGeneralManagerCheckTVC: UITableViewController {
         
         let right_add_Button = UIButton()
         
-        right_add_Button.frame = CGRect(x : 0, y : 0, width : 40, height : 40)
+        right_add_Button.frame = CGRect(x : 0, y : 0, width : 60, height : 40)
         right_add_Button.setTitle("全部", for: .normal)
         
         right_add_Button.setTitle("待处理", for: .selected)
@@ -90,7 +94,7 @@ class YQGeneralManagerCheckTVC: UITableViewController {
             
             SVProgressHUD.dismiss()
             //获取数据,字典转模型的操作
-            let feedBackList = response["feedBackList"] as? [String : Any]
+            let feedBackList = response["feedbackList"] as? [String : Any]
             
             if feedBackList != nil {
                 
@@ -170,8 +174,13 @@ class YQGeneralManagerCheckTVC: UITableViewController {
         
         cell.model = self.dataArray[indexPath.row]
         
-        return UITableViewCell()
+        return cell
         
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 60
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -185,13 +194,13 @@ class YQGeneralManagerCheckTVC: UITableViewController {
             if UserRule == 0{//经理
                 
                 let MDetailVC = YQGenaralManagerCheckDetailVC.init(nibName: "YQGenaralManagerCheckDetailVC", bundle: nil)
-                MDetailVC.id = self.dataArray[indexPath.row].id
+                MDetailVC.id = "\(self.dataArray[indexPath.row].id)"
                 self.navigationController?.pushViewController(MDetailVC, animated: true)
                 
             }else{//总经理
                 
                 let gmDetailVC = YQGenaralManagerCheckAlreadyDetailVC.init(nibName: "YQGenaralManagerCheckAlreadyDetailVC", bundle: nil)
-               gmDetailVC.id = self.dataArray[indexPath.row].id
+               gmDetailVC.id = "\(self.dataArray[indexPath.row].id)"
                 self.navigationController?.pushViewController(gmDetailVC, animated: true)
             }
             
@@ -200,7 +209,7 @@ class YQGeneralManagerCheckTVC: UITableViewController {
             
             let detailVC = YQGenaralFeedBackDetailVC.init(nibName: "YQGenaralFeedBackDetailVC", bundle: nil)
             
-            detailVC.id = self.dataArray[indexPath.row].id
+            detailVC.id = "\(self.dataArray[indexPath.row].id)"
             
             self.navigationController?.pushViewController(detailVC, animated: true)
         }

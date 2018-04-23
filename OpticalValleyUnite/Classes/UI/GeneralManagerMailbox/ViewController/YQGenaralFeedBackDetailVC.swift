@@ -126,7 +126,7 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                 //总经理
                 let gmName = data!["gmName"] as! String
                 let gmReplyContent = data!["gmReplyContent"] as! String
-                let gmReplyTime = data!["gmReplyTime"] as! String
+                let gmReplyTime = data!["gmReplyTime"] as? String ?? ""
                 
                 let v = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
                 
@@ -165,7 +165,7 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                 //经理
                 let mName = data!["mName"] as! String
                 let mReplyContent = data!["mReplyContent"] as! String
-                let mReplyTime = data!["mReplyTime"] as! String
+                let mReplyTime = data!["mReplyTime"] as? String ?? ""
                 let v = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
                 
                 v.contentTitleTextV.text = mReplyContent
@@ -188,7 +188,7 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                 //总经理
                 let gmName = data!["gmName"] as! String
                 let gmReplyContent = data!["gmReplyContent"] as! String
-                let gmReplyTime = data!["gmReplyTime"] as! String
+                let gmReplyTime = data!["gmReplyTime"] as? String ?? ""
                 
                 let gmv = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
                 gmv.contentTitleTextV.text = gmReplyContent
@@ -209,6 +209,7 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                 self.scrollViewHeightConstraint.constant = gmv.maxY + 20
                 
             }else if (mID != "" && gmID != ""){
+                
                 //都没有批复的情况
                 self.contentView.isHidden = false
                 self.NOReplyTextVIEW.placeHolder = "等待处理，未答复，请耐心等候，感谢您的反馈"

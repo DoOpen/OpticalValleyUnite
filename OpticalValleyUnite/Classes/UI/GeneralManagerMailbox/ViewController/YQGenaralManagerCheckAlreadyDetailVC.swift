@@ -70,6 +70,9 @@ class YQGenaralManagerCheckAlreadyDetailVC: UIViewController {
             self.titleLabel.text = data!["title"] as? String
             self.contentTextView.text = data!["content"] as? String
             self.timeLabel.text = data!["createTime"] as? String
+            self.projectLabel.text = data!["parkName"] as? String
+            self.feedBackLabel.text = data!["personName"] as? String
+            
             //回显图片
             let imageString = data!["images"] as? String
             //showimages组内容
@@ -160,10 +163,8 @@ class YQGenaralManagerCheckAlreadyDetailVC: UIViewController {
         
         var par = [String : Any]()
         par["id"] = self.id
-        par["mReplyContent"] =
         par["gmReplyContent"] = self.gmReplyContent.text
-        par["isPush"] =
-            
+        
         SVProgressHUD.show()
         
         HttpClient.instance.post(path: URLPath.getEmailReply, parameters: par, success: { (response) in
@@ -172,6 +173,7 @@ class YQGenaralManagerCheckAlreadyDetailVC: UIViewController {
             self.navigationController?.popViewController(animated: true)
             
         }) { (error) in
+            
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
 

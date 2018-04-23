@@ -47,7 +47,7 @@ struct URLPath {
     
     //服务器的basicBasicPath
     
-    static let basicBasic = "http://172.16.19.98:8091"
+    static let basicBasic = "http://192.168.5.145:80"
     
     
     //服务器的basic 地址:
@@ -377,7 +377,7 @@ struct URLPath {
     
     ///总经理邮箱的接口
     //人员角色判断接口
-    static let getgm_emailRule = "gm_email/getRule"
+    static let getgm_emailRule = "gm_email/getRole"
     //创建意见反馈接口
     static let getgm_emailAdd = "gm_email/add"
     //反馈列表查询（查看自己的反馈列表）

@@ -37,6 +37,7 @@ class YQGenaralFeedBackListVC: UIViewController {
             , success: { (response) in
                 
                 SVProgressHUD.dismiss()
+                
                 let data = response["feedbackList"] as? Array<[String : Any]>
                 
                 if data == nil{

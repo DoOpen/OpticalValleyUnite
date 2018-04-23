@@ -11,8 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQGenaralFeedBackDetailVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="NOReplyTextVIEW" destination="jhW-UU-wEQ" id="tSD-Kc-0ih"/>
                 <outlet property="contentTextView" destination="gPo-Qd-2Af" id="5v9-ht-hBl"/>
-                <outlet property="contentView" destination="GFh-uW-LWf" id="6Ei-gT-OIv"/>
+                <outlet property="contentView" destination="WeH-E8-bVD" id="1ev-2z-gkQ"/>
+                <outlet property="scrollContentView" destination="GFh-uW-LWf" id="5WC-v6-Qdy"/>
+                <outlet property="scrollViewHeightConstraint" destination="TJ7-7l-aST" id="pd3-k6-6CD"/>
                 <outlet property="showImageView" destination="3oP-qK-yH0" id="qVe-2M-xqT"/>
                 <outlet property="timeLabel" destination="q4k-zS-ch3" id="N2y-6d-mLJ"/>
                 <outlet property="titleLabel" destination="BVO-on-E2y" id="o1E-l5-r0K"/>
@@ -56,7 +59,7 @@
                                         <constraint firstItem="BVO-on-E2y" firstAttribute="leading" secondItem="Aa2-e5-6b3" secondAttribute="leading" constant="10" id="t81-uE-yvJ"/>
                                     </constraints>
                                 </view>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gPo-Qd-2Af">
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gPo-Qd-2Af">
                                     <rect key="frame" x="0.0" y="65" width="374" height="200"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -98,7 +101,7 @@
                                                 <constraint firstAttribute="height" constant="40" id="rPR-eQ-SWs"/>
                                             </constraints>
                                         </view>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jhW-UU-wEQ">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jhW-UU-wEQ" customClass="SJTextView">
                                             <rect key="frame" x="0.0" y="40" width="364" height="110"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>

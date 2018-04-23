@@ -176,8 +176,34 @@ class YQGeneralManagerCheckTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //点击跳转详情
+        let status = self.dataArray[indexPath.row].status
         
-        
+        if status == 0{//未处理
+          /*
+             0 经理 1总经理 3其他角色
+             */
+            if UserRule == 0{//经理
+                
+                let MDetailVC = YQGenaralManagerCheckDetailVC.init(nibName: "YQGenaralManagerCheckDetailVC", bundle: nil)
+                MDetailVC.id = self.dataArray[indexPath.row].id
+                self.navigationController?.pushViewController(MDetailVC, animated: true)
+                
+            }else{//总经理
+                
+                let gmDetailVC = YQGenaralManagerCheckAlreadyDetailVC.init(nibName: "YQGenaralManagerCheckAlreadyDetailVC", bundle: nil)
+               gmDetailVC.id = self.dataArray[indexPath.row].id
+                self.navigationController?.pushViewController(gmDetailVC, animated: true)
+            }
+            
+            
+        }else{//已处理
+            
+            let detailVC = YQGenaralFeedBackDetailVC.init(nibName: "YQGenaralFeedBackDetailVC", bundle: nil)
+            
+            detailVC.id = self.dataArray[indexPath.row].id
+            
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
         
         
     }

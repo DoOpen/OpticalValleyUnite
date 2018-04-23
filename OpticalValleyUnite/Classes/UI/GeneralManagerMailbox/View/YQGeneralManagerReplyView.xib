@@ -31,7 +31,7 @@
                         <constraint firstItem="oFh-EJ-lQg" firstAttribute="leading" secondItem="64a-p5-EGO" secondAttribute="leading" constant="15" id="y1E-uS-Sst"/>
                     </constraints>
                 </view>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B4K-xZ-xwk">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B4K-xZ-xwk">
                     <rect key="frame" x="0.0" y="40" width="397" height="120"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>

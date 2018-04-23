@@ -1,43 +1,48 @@
 //
-//  YQGenaralFeedBackDetailVC.swift
+//  YQGenaralManagerCheckAlreadyDetailVC.swift
 //  OpticalValleyUnite
 //
-//  Created by 杨庆 on 2018/4/21.
+//  Created by 杨庆 on 2018/4/23.
 //  Copyright © 2018年 yangqing. All rights reserved.
 //
 
 import UIKit
 import SVProgressHUD
-import SnapKit
 
+class YQGenaralManagerCheckAlreadyDetailVC: UIViewController {
 
-class YQGenaralFeedBackDetailVC: UIViewController {
+    //用户的权限
+    var id = ""
     
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var feedBackLabel: UILabel!
+    
+    @IBOutlet weak var projectLabel: UILabel!
+    
     @IBOutlet weak var contentTextView: UITextView!
     
     @IBOutlet weak var showImageView: ShowImageView!
-
+    
+    
     @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var NOReplyTextVIEW: SJTextView!
-    
     @IBOutlet weak var scrollContentView: UIView!
     
-    //反馈id
-    var id = ""
+    @IBOutlet weak var contentViewTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var gmReplyContent: UITextView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        //1.init
-        self.title = "反馈详情"
-        self.contentView.isHidden = true
+        //1.显示的是 已处理的 执行界面
+        self.title = "反馈处理"
         
         //2.获取网络数据
         self.getGenaralFeedBackDetailData()
@@ -111,56 +116,11 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                     }
                 }
             }
-            
-            let gmID = data!["gmId"] as? String ?? "" //总经理
-            
+
             let mID = data!["mId"] as? String ?? ""//经理
-            
             //添加的是经理和总经理的批复内容的情况
             //动态加载xib批复内容:
-            if(mID != "" && gmID != "" ){//经理 + 总经理
-                //经理
-                let mName = data!["mName"] as! String
-                let mReplyContent = data!["mReplyContent"] as! String
-                let mReplyTime = data!["mReplyTime"] as! String
-                //总经理
-                let gmName = data!["gmName"] as! String
-                let gmReplyContent = data!["gmReplyContent"] as! String
-                let gmReplyTime = data!["gmReplyTime"] as! String
-                
-                let v = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
-                
-                v.contentTitleTextV.text = mReplyContent
-                v.nameLabel.text = "处理人: " + mName
-                v.timeLabel.text = "处理时间: " + mReplyTime
-                
-                self.scrollContentView.addSubview(v)
-                
-                v.snp.makeConstraints({ (maker) in
-                    maker.top.equalTo(self.contentView.snp.top)
-                    maker.left.equalTo(self.contentView.snp.left)
-                    maker.right.equalTo(self.contentView.snp.right)
-                    maker.bottom.equalTo(self.contentView.snp.bottom)
-                })
-                
-                let gmv = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
-                gmv.contentTitleTextV.text = gmReplyContent
-                gmv.nameLabel.text = "处理人: " +  gmName
-                gmv.timeLabel.text = "处理时间: " + gmReplyTime
-                
-                self.scrollContentView.addSubview(gmv)
-                
-                gmv.snp.makeConstraints({ (maker) in
-                    
-                    maker.top.equalTo(v.snp.bottom).offset(10)
-                    maker.left.right.equalToSuperview().offset(5)
-                    maker.height.equalTo(150)
-                    
-                })
-                
-                self.scrollViewHeightConstraint.constant = gmv.maxY + 20
-                
-            } else if (mID != ""){
+            if (mID != ""){
                 //只有经理批复
                 //经理
                 let mName = data!["mName"] as! String
@@ -175,52 +135,63 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                 self.scrollContentView.addSubview(v)
                 
                 v.snp.makeConstraints({ (maker) in
-                    maker.top.equalTo(self.contentView.snp.top)
-                    maker.left.equalTo(self.contentView.snp.left)
-                    maker.right.equalTo(self.contentView.snp.right)
-                    maker.bottom.equalTo(self.contentView.snp.bottom)
-                })
-                
-                self.scrollViewHeightConstraint.constant = v.maxY + 20
-                
-            }else if (gmID != ""){
-                //只有总经理批复
-                //总经理
-                let gmName = data!["gmName"] as! String
-                let gmReplyContent = data!["gmReplyContent"] as! String
-                let gmReplyTime = data!["gmReplyTime"] as! String
-                
-                let gmv = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
-                gmv.contentTitleTextV.text = gmReplyContent
-                gmv.nameLabel.text = "处理人: " +  gmName
-                gmv.timeLabel.text = "处理时间: " + gmReplyTime
-                
-                self.scrollContentView.addSubview(gmv)
-                
-                gmv.snp.makeConstraints({ (maker) in
                     
                     maker.top.equalTo(self.contentView.snp.top)
-                    maker.left.equalTo(self.contentView.snp.left)
-                    maker.right.equalTo(self.contentView.snp.right)
-                    maker.bottom.equalTo(self.contentView.snp.bottom)
+                    maker.left.right.equalToSuperview().offset(10)
+                    maker.height.equalTo(120)
                     
                 })
                 
-                self.scrollViewHeightConstraint.constant = gmv.maxY + 20
-                
-            }else if (mID != "" && gmID != ""){
-                //都没有批复的情况
-                self.contentView.isHidden = false
-                self.NOReplyTextVIEW.placeHolder = "等待处理，未答复，请耐心等候，感谢您的反馈"
-                self.scrollViewHeightConstraint.constant = self.contentView.maxY + 20
+                self.contentViewTopConstraint.constant = 120 + 5
             }
             
-
+            self.scrollViewHeightConstraint.constant = self.contentView.maxY + 20
+            self.view.setNeedsLayout()
+            
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
         
     }
+    
+    // MARK: - 提交批复接口
+    func getReplyToService(){
+        
+        var par = [String : Any]()
+        par["id"] = self.id
+        par["mReplyContent"] =
+        par["gmReplyContent"] = self.gmReplyContent.text
+        par["isPush"] =
+            
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getEmailReply, parameters: par, success: { (response) in
+            SVProgressHUD.dismiss()
+            SVProgressHUD.showSuccess(withStatus: "批复成功!")
+            self.navigationController?.popViewController(animated: true)
+            
+        }) { (error) in
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+        }
+
+    }
+    
+    // MARK: - buttonClick方法
+    @IBAction func makeSureButtonClick(_ sender: UIButton) {
+        
+        //上传保存
+        self.getReplyToService()
+        
+    }
+    
+
+    @IBAction func cancelButtonClick(_ sender: UIButton) {
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+
 
 }

@@ -20,7 +20,7 @@ class YQGeneralCheckOutModel: NSObject {
     var mReplyStatus = ""
     
     //反馈最终状态
-    var status = ""
+    var status = -1
     
     //标题
     var title = ""

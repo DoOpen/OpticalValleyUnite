@@ -30,7 +30,15 @@ class YQGeneralManagerCheckCell: UITableViewCell {
             self.statusLabel.text = model?.title
             self.parkName.text = model?.parkName
             self.timeLabel.text = model?.createTime
-            self.statusLabel.text = model?.status
+            if model?.status == 0{
+                
+                self.statusLabel.text = "待处理"
+                
+            }else{
+                
+                self.statusLabel.text = "已处理"
+            }
+            
             
         }
     }

@@ -29,6 +29,10 @@ class YQGenaralFeedBackDetailVC: UIViewController {
     
     @IBOutlet weak var scrollContentView: UIView!
     
+    var gmV : UIView?
+    var mV : UIView?
+    
+    
     //反馈id
     var id = ""
     
@@ -41,6 +45,12 @@ class YQGenaralFeedBackDetailVC: UIViewController {
         
         //2.获取网络数据
         self.getGenaralFeedBackDetailData()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         
     }
     
@@ -137,11 +147,15 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                 self.scrollContentView.addSubview(v)
                 
                 v.snp.makeConstraints({ (maker) in
+                    
                     maker.top.equalTo(self.contentView.snp.top)
                     maker.left.equalTo(self.contentView.snp.left)
                     maker.right.equalTo(self.contentView.snp.right)
-                    maker.bottom.equalTo(self.contentView.snp.bottom)
+                    maker.height.equalTo(160)
+                    
                 })
+                
+                self.mV = v
                 
                 let gmv = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
                 gmv.contentTitleTextV.text = gmReplyContent
@@ -152,14 +166,16 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                 
                 gmv.snp.makeConstraints({ (maker) in
                     
-                    maker.top.equalTo(v.snp.bottom).offset(10)
+                    maker.top.equalTo(self.contentView.snp.bottom).offset(40)
                     maker.left.right.equalToSuperview().offset(5)
-                    maker.height.equalTo(150)
+                    maker.height.equalTo(160)
                     
                 })
                 
-                self.scrollViewHeightConstraint.constant = gmv.maxY + 20
+                self.gmV = gmv
                 
+                self.view.setNeedsLayout()
+
             } else if (mID != ""){
                 //只有经理批复
                 //经理
@@ -178,11 +194,13 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                     maker.top.equalTo(self.contentView.snp.top)
                     maker.left.equalTo(self.contentView.snp.left)
                     maker.right.equalTo(self.contentView.snp.right)
-                    maker.bottom.equalTo(self.contentView.snp.bottom)
+                    maker.height.equalTo(160)
                 })
                 
-                self.scrollViewHeightConstraint.constant = v.maxY + 20
+                self.view.setNeedsLayout()
                 
+                self.mV = v
+
             }else if (gmID != ""){
                 //只有总经理批复
                 //总经理
@@ -202,17 +220,20 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                     maker.top.equalTo(self.contentView.snp.top)
                     maker.left.equalTo(self.contentView.snp.left)
                     maker.right.equalTo(self.contentView.snp.right)
-                    maker.bottom.equalTo(self.contentView.snp.bottom)
+                    maker.height.equalTo(160)
                     
                 })
                 
-                self.scrollViewHeightConstraint.constant = gmv.maxY + 20
+                self.gmV = gmv
                 
+                self.view.setNeedsLayout()
+
             }else if (mID != "" && gmID != ""){
                 
                 //都没有批复的情况
                 self.contentView.isHidden = false
                 self.NOReplyTextVIEW.placeHolder = "等待处理，未答复，请耐心等候，感谢您的反馈"
+                self.view.setNeedsLayout()
                 self.scrollViewHeightConstraint.constant = self.contentView.maxY + 20
             }
             
@@ -223,5 +244,27 @@ class YQGenaralFeedBackDetailVC: UIViewController {
         }
         
     }
+    
+    
+    override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        
+        if mV != nil && gmV != nil{
+            
+            self.scrollViewHeightConstraint.constant = contentView.maxY + 200 + 60
+            
+        }else if ( mV != nil){
+            
+            self.scrollViewHeightConstraint.constant = contentView.maxY + 60
+            
+        }else if (gmV != nil){
+            
+            self.scrollViewHeightConstraint.constant = contentView.maxY + 60
+        }
+
+    }
+    
+    
 
 }

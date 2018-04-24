@@ -410,13 +410,9 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCy-eW-pxf">
-                                                <rect key="frame" x="304" y="105" width="70" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="70" id="bcs-Le-d3z"/>
-                                                    <constraint firstAttribute="height" constant="30" id="dS1-xB-c8H"/>
-                                                </constraints>
-                                                <state key="normal" title="星级分"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCy-eW-pxf">
+                                                <rect key="frame" x="291" y="101" width="83" height="34"/>
+                                                <state key="normal" image="星级"/>
                                                 <connections>
                                                     <action selector="starServicerButtonClick:" destination="GTU-aq-x3y" eventType="touchUpInside" id="f3m-p4-bht"/>
                                                 </connections>
@@ -484,7 +480,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="769" y="768"/>
+            <point key="canvasLocation" x="626" y="761"/>
         </scene>
         <!--我的统计-->
         <scene sceneID="3U1-0P-sJ6">
@@ -860,5 +856,6 @@
         <image name="star拷贝7" width="22" height="22"/>
         <image name="star拷贝8" width="22" height="22"/>
         <image name="userIcon" width="200" height="200"/>
+        <image name="星级" width="83" height="34"/>
     </resources>
 </document>

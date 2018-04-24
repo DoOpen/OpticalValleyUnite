@@ -34,13 +34,14 @@ class YQGenaralManagerCheckDetailVC: UIViewController {
     
     @IBOutlet weak var lastView: UIView!
     
-    @IBOutlet weak var mReplyContent: UITextView!
+    @IBOutlet weak var mReplyContent: SJTextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //1.显示的执行的未处理的界面,字段
         self.title = "反馈处理"
+        mReplyContent.placeHolder = "意见已收到，已紧急处理，感谢您的反馈。"
         
         //2.获取数据
         getGenaralFeedBackDetailData()
@@ -67,6 +68,9 @@ class YQGenaralManagerCheckDetailVC: UIViewController {
             self.titleLabel.text = data!["title"] as? String
             self.contentTextView.text = data!["content"] as? String
             self.timeLabel.text = data!["createTime"] as? String
+            self.projectLabel.text = data!["parkName"] as? String
+            self.feedBackLabel.text = data!["personName"] as? String
+            
             //回显图片
             let imageString = data!["images"] as? String
             //showimages组内容
@@ -141,12 +145,12 @@ class YQGenaralManagerCheckDetailVC: UIViewController {
         }else{
             
             par["isPush"] = 0 //不推送
-
         }
             
         SVProgressHUD.show()
         
         HttpClient.instance.post(path: URLPath.getEmailReply, parameters: par, success: { (response) in
+            
             SVProgressHUD.dismiss()
             SVProgressHUD.showSuccess(withStatus: "批复成功!")
             self.navigationController?.popViewController(animated: true)

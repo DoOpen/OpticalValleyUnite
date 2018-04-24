@@ -35,7 +35,7 @@ class YQGenaralManagerCheckAlreadyDetailVC: UIViewController {
     
     @IBOutlet weak var contentViewTopConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var gmReplyContent: UITextView!
+    @IBOutlet weak var gmReplyContent: SJTextView!
     
     override func viewDidLoad() {
         
@@ -43,6 +43,7 @@ class YQGenaralManagerCheckAlreadyDetailVC: UIViewController {
         
         //1.显示的是 已处理的 执行界面
         self.title = "反馈处理"
+        self.gmReplyContent.placeHolder = "意见已收到，已紧急处理，感谢您的反馈。"
         
         //2.获取网络数据
         self.getGenaralFeedBackDetailData()

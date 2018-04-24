@@ -39,6 +39,8 @@ class YQFeedBackViewController: UIViewController {
         setupRightAndLeftBarItem()
         
         //2.获取项目id
+        let _ = setUpProjectNameLable()
+        
         if self.parkID == ""{
             
             let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")

@@ -67,7 +67,7 @@
                                                 <action selector="lookOutButtonClick:" destination="-1" eventType="touchUpInside" id="jXx-KB-wc2"/>
                                             </connections>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_password" translatesAutoresizingMaskIntoConstraints="NO" id="OtK-Gv-dwL">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_check" translatesAutoresizingMaskIntoConstraints="NO" id="OtK-Gv-dwL">
                                             <rect key="frame" x="12" y="9.5" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="NId-Ur-Y2m"/>
@@ -112,7 +112,7 @@
                                                 <action selector="feedbackButtonClick:" destination="-1" eventType="touchUpInside" id="QUD-ie-Oxa"/>
                                             </connections>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_password" translatesAutoresizingMaskIntoConstraints="NO" id="BFT-0D-8hm">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_ feedback" translatesAutoresizingMaskIntoConstraints="NO" id="BFT-0D-8hm">
                                             <rect key="frame" x="12" y="9.5" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="0i6-AR-XYR"/>
@@ -171,7 +171,8 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_password" width="14" height="16"/>
+        <image name="icon_ feedback" width="16" height="16"/>
+        <image name="icon_check" width="16" height="16"/>
         <image name="larr" width="30" height="30"/>
     </resources>
 </document>

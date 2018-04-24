@@ -61,6 +61,15 @@ class YQGeneralManagerCheckTVC: UITableViewController {
     }
     
     func addRightBarItemButtonClick(button : UIButton){
+        
+        //经理只能看全部的消息
+        if UserRule == 0 {
+            
+            getListDataForService(type: 1)
+            self.selectType = 1
+            return
+        }
+        
         //选项取反
         button.isSelected = !button.isSelected
         

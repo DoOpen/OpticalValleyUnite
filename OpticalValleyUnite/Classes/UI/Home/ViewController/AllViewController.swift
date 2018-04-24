@@ -13,7 +13,7 @@ import KYDrawerController
 
 class AllViewController: UIViewController {
     
-    var totalCount = 16
+    var totalCount = 20
 
     var btnViews = [HomeBtnView]()
     
@@ -37,7 +37,7 @@ class AllViewController: UIViewController {
         
         let count = [models.count, totalCount].min()!
         
-        let imageDic = ["报事": "baoshi","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","门禁": "intodoor","丽岛学院": "xueyuan","电梯报事":"baoshi","日志":"日志","计步器":"step","视频巡查" : "xuncha","巡查结果" : "xunguan","工作报告" : "more_icon_work_report","房屋管理" : "房屋查询","设备房" : "设备房","装修管理" : "装修管理","工单查询" : "more_icon_demand"]
+        let imageDic = ["报事": "baoshi","工单": "工单2","签到": "签到2","扫描": "扫描2","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","门禁": "intodoor","丽岛学院": "xueyuan","电梯报事":"baoshi","日志":"日志","计步器":"step","视频巡查" : "xuncha","巡查结果" : "xunguan","工作报告" : "more_icon_work_report","房屋管理" : "房屋查询","设备房" : "设备房","装修管理" : "装修管理","工单查询" : "more_icon_demand","总经理邮箱" : "gmMail"]
         
         for index in 0..<count{
             
@@ -151,6 +151,11 @@ class AllViewController: UIViewController {
             let allWorkUnit = UIStoryboard.instantiateInitialViewController(name: "YQAllWorkUnitHome")
             self.navigationController?.pushViewController(allWorkUnit, animated: true)
             
+        case "总经理邮箱" :
+            
+            let generalMailVC = YQGeneralManagerFirstVC.init(nibName: "YQGeneralManagerFirstVC", bundle: nil)
+            self.navigationController?.pushViewController(generalMailVC, animated: true)
+            
         default: break
             
         }
@@ -206,9 +211,11 @@ class AllViewController: UIViewController {
 
 extension UIView{
     func sj_viewWithTag(tag: Int) -> UIView?{
+        
         if self.tag == tag{
            return self
         }
+        
         for subView in subviews{
             if subView.tag == tag{
                 return subView
@@ -218,6 +225,7 @@ extension UIView{
                 return reslutView
             }
         }
+        
         return nil
     }
 }

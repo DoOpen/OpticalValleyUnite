@@ -63,7 +63,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ndz-r5-xbA">
-                                    <rect key="frame" x="0.0" y="50" width="381" height="200"/>
+                                    <rect key="frame" x="0.0" y="50" width="381" height="180"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="svs-1H-o8y">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="50"/>
@@ -91,7 +91,7 @@
                                             </constraints>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rxI-zm-Eep">
-                                            <rect key="frame" x="10" y="60" width="361" height="130"/>
+                                            <rect key="frame" x="10" y="60" width="361" height="110"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -113,7 +113,7 @@
                                         <constraint firstAttribute="trailing" secondItem="svs-1H-o8y" secondAttribute="trailing" id="AFq-RZ-J8J"/>
                                         <constraint firstItem="rxI-zm-Eep" firstAttribute="top" secondItem="svs-1H-o8y" secondAttribute="bottom" constant="10" id="TzE-W3-V3q"/>
                                         <constraint firstItem="svs-1H-o8y" firstAttribute="top" secondItem="ndz-r5-xbA" secondAttribute="top" id="eCB-Qa-reE"/>
-                                        <constraint firstAttribute="height" constant="200" id="ecQ-4M-YRz"/>
+                                        <constraint firstAttribute="height" constant="180" id="ecQ-4M-YRz"/>
                                         <constraint firstAttribute="trailing" secondItem="rxI-zm-Eep" secondAttribute="trailing" constant="10" id="hSc-uc-yIB"/>
                                         <constraint firstItem="rxI-zm-Eep" firstAttribute="leading" secondItem="ndz-r5-xbA" secondAttribute="leading" constant="10" id="k8f-rY-e3o"/>
                                         <constraint firstItem="svs-1H-o8y" firstAttribute="leading" secondItem="ndz-r5-xbA" secondAttribute="leading" id="qDY-yf-SlE"/>
@@ -121,7 +121,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRc-Ej-5V4">
-                                    <rect key="frame" x="0.0" y="250" width="381" height="135"/>
+                                    <rect key="frame" x="0.0" y="230" width="381" height="135"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请提供相关信息的截图或照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZr-WC-9lD">
                                             <rect key="frame" x="5" y="3" width="226" height="20.5"/>
@@ -130,7 +130,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Gg-im-fhX" customClass="ShowImageView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                            <rect key="frame" x="5" y="28.5" width="371" height="100"/>
+                                            <rect key="frame" x="10" y="28.5" width="361" height="100"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="0Ks-KB-qzc"/>
@@ -142,19 +142,30 @@
                                         <constraint firstAttribute="height" constant="135" id="5DN-Sm-G8c"/>
                                         <constraint firstItem="PZr-WC-9lD" firstAttribute="top" secondItem="KRc-Ej-5V4" secondAttribute="top" constant="3" id="hcs-7v-cOJ"/>
                                         <constraint firstItem="6Gg-im-fhX" firstAttribute="top" secondItem="PZr-WC-9lD" secondAttribute="bottom" constant="5" id="hqY-Zh-hN1"/>
-                                        <constraint firstItem="6Gg-im-fhX" firstAttribute="leading" secondItem="KRc-Ej-5V4" secondAttribute="leading" constant="5" id="kYg-wF-0MW"/>
-                                        <constraint firstAttribute="trailing" secondItem="6Gg-im-fhX" secondAttribute="trailing" constant="5" id="oR6-2S-ofj"/>
+                                        <constraint firstItem="6Gg-im-fhX" firstAttribute="leading" secondItem="KRc-Ej-5V4" secondAttribute="leading" constant="10" id="kYg-wF-0MW"/>
+                                        <constraint firstAttribute="trailing" secondItem="6Gg-im-fhX" secondAttribute="trailing" constant="10" id="oR6-2S-ofj"/>
                                         <constraint firstItem="PZr-WC-9lD" firstAttribute="leading" secondItem="KRc-Ej-5V4" secondAttribute="leading" constant="5" id="y5r-Ia-sza"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMG-L5-lul">
-                                    <rect key="frame" x="0.0" y="425" width="381" height="150"/>
+                                    <rect key="frame" x="0.0" y="405" width="381" height="150"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aSp-jA-pb6">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aSp-jA-pb6" customClass="SJTextView">
                                             <rect key="frame" x="10" y="34" width="361" height="111"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <color key="value" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="处理答复" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t46-Yt-oOw">
                                             <rect key="frame" x="10" y="8" width="70" height="21"/>

@@ -63,7 +63,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbs-8A-Gjf">
-                                    <rect key="frame" x="0.0" y="50" width="374" height="200"/>
+                                    <rect key="frame" x="0.0" y="50" width="374" height="180"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yQQ-KN-rbe">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -91,7 +91,7 @@
                                             </constraints>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bXK-uy-ZQd">
-                                            <rect key="frame" x="10" y="60" width="354" height="130"/>
+                                            <rect key="frame" x="10" y="60" width="354" height="110"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -114,14 +114,14 @@
                                         <constraint firstItem="bXK-uy-ZQd" firstAttribute="top" secondItem="yQQ-KN-rbe" secondAttribute="bottom" constant="10" id="8V9-yg-8qc"/>
                                         <constraint firstAttribute="trailing" secondItem="yQQ-KN-rbe" secondAttribute="trailing" id="AYk-oH-T3u"/>
                                         <constraint firstAttribute="bottom" secondItem="bXK-uy-ZQd" secondAttribute="bottom" constant="10" id="S5C-Fw-c71"/>
-                                        <constraint firstAttribute="height" constant="200" id="ew4-xx-ogo"/>
+                                        <constraint firstAttribute="height" constant="180" id="ew4-xx-ogo"/>
                                         <constraint firstAttribute="trailing" secondItem="bXK-uy-ZQd" secondAttribute="trailing" constant="10" id="lTW-hc-lmY"/>
                                         <constraint firstItem="yQQ-KN-rbe" firstAttribute="top" secondItem="Xbs-8A-Gjf" secondAttribute="top" id="p7f-ph-8ce"/>
                                         <constraint firstItem="bXK-uy-ZQd" firstAttribute="leading" secondItem="Xbs-8A-Gjf" secondAttribute="leading" constant="10" id="sD1-10-HOy"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91g-G9-fBE">
-                                    <rect key="frame" x="0.0" y="250" width="374" height="135"/>
+                                    <rect key="frame" x="0.0" y="230" width="374" height="125"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请提供相关信息的截图或照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0D-0E-KhF">
                                             <rect key="frame" x="5" y="3" width="226" height="20.5"/>
@@ -130,31 +130,42 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoX-vP-2oh" customClass="ShowImageView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                            <rect key="frame" x="5" y="28.5" width="364" height="100"/>
+                                            <rect key="frame" x="10" y="28.5" width="354" height="90"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="o0m-0H-ddJ"/>
+                                                <constraint firstAttribute="height" constant="90" id="o0m-0H-ddJ"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="135" id="89b-ai-3DI"/>
+                                        <constraint firstAttribute="height" constant="125" id="89b-ai-3DI"/>
                                         <constraint firstItem="c0D-0E-KhF" firstAttribute="top" secondItem="91g-G9-fBE" secondAttribute="top" constant="3" id="EDg-3k-VLn"/>
                                         <constraint firstItem="FoX-vP-2oh" firstAttribute="top" secondItem="c0D-0E-KhF" secondAttribute="bottom" constant="5" id="IJK-A7-pFZ"/>
                                         <constraint firstItem="c0D-0E-KhF" firstAttribute="leading" secondItem="91g-G9-fBE" secondAttribute="leading" constant="5" id="dI5-NZ-TtG"/>
-                                        <constraint firstAttribute="trailing" secondItem="FoX-vP-2oh" secondAttribute="trailing" constant="5" id="oic-dK-CvP"/>
-                                        <constraint firstItem="FoX-vP-2oh" firstAttribute="leading" secondItem="91g-G9-fBE" secondAttribute="leading" constant="5" id="oyg-Mo-RQg"/>
+                                        <constraint firstAttribute="trailing" secondItem="FoX-vP-2oh" secondAttribute="trailing" constant="10" id="oic-dK-CvP"/>
+                                        <constraint firstItem="FoX-vP-2oh" firstAttribute="leading" secondItem="91g-G9-fBE" secondAttribute="leading" constant="10" id="oyg-Mo-RQg"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abx-OJ-FCJ">
-                                    <rect key="frame" x="0.0" y="385" width="374" height="150"/>
+                                    <rect key="frame" x="0.0" y="355" width="374" height="150"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kAf-GV-BTo">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kAf-GV-BTo" customClass="SJTextView">
                                             <rect key="frame" x="10" y="34" width="354" height="111"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <color key="value" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="处理答复" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FW-KT-th1">
                                             <rect key="frame" x="10" y="8" width="70" height="21"/>
@@ -175,7 +186,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVs-g9-bNr">
-                                    <rect key="frame" x="0.0" y="535" width="374" height="30"/>
+                                    <rect key="frame" x="0.0" y="505" width="374" height="30"/>
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t3j-cC-lVg">
                                             <rect key="frame" x="310" y="0.0" width="51" height="30"/>

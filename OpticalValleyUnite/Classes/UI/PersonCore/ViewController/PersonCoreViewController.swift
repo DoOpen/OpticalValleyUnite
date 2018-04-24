@@ -61,7 +61,6 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         //添加leftRightBar功能
         setupRightAndLeftBarItem()
         
-
         //设置星级服务
         setupStarViewData()
     }
@@ -116,13 +115,12 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
                     
                 }
             }
-            
         }
     }
     
+    
     // MARK: - 获取添加执行星级管家内容
     func setupStarViewData(){
-        
         
         HttpClient.instance.post(path: URLPath.getScoreDetail, parameters: nil, success: { (response) in
             
@@ -172,7 +170,6 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         }) { (error) in
             
         }
- 
     }
     
     // MARK: - 自定义的right_left barItem

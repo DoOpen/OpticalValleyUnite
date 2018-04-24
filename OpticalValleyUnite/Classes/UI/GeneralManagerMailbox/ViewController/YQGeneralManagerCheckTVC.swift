@@ -27,10 +27,18 @@ class YQGeneralManagerCheckTVC: UITableViewController {
         //1.init
         self.title = "反馈"
         
-        //2.添加右边的bar
-        setupRightAndLeftBarItem()
-        //2.默认的设置的select的选项
-        self.selectType = 1
+        //2.总经理/经理的执行权限的判断
+        if self.UserRule == 1 {//总经理
+            
+            //2.添加右边的bar
+            setupRightAndLeftBarItem()
+            //2.默认的设置的select的选项
+            self.selectType = 0
+            
+        }else{//经理
+            
+            self.selectType = 1
+        }
         
         //3.上拉下拉刷新
         addRefirsh()
@@ -50,9 +58,8 @@ class YQGeneralManagerCheckTVC: UITableViewController {
         let right_add_Button = UIButton()
         
         right_add_Button.frame = CGRect(x : 0, y : 0, width : 60, height : 40)
-        right_add_Button.setTitle("全部", for: .normal)
-        
-        right_add_Button.setTitle("待处理", for: .selected)
+        right_add_Button.setTitle("待处理", for: .normal)
+        right_add_Button.setTitle("全部", for: .selected)
         
         //设置font
         right_add_Button.titleLabel?.font = UIFont.systemFont(ofSize: 14)

@@ -23,10 +23,20 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q0Z-53-bfc">
+                            <rect key="frame" x="0.0" y="0.0" width="412" height="1"/>
+                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="een-OC-nmY"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="Q0Z-53-bfc" firstAttribute="top" secondItem="64a-p5-EGO" secondAttribute="top" id="TBs-iR-jQM"/>
                         <constraint firstAttribute="height" constant="40" id="UO1-q5-xyh"/>
+                        <constraint firstItem="Q0Z-53-bfc" firstAttribute="leading" secondItem="64a-p5-EGO" secondAttribute="leading" id="ZqR-Hq-XWA"/>
+                        <constraint firstAttribute="trailing" secondItem="Q0Z-53-bfc" secondAttribute="trailing" id="fJp-5p-bwr"/>
                         <constraint firstItem="oFh-EJ-lQg" firstAttribute="centerY" secondItem="64a-p5-EGO" secondAttribute="centerY" id="lyt-Bw-wBD"/>
                         <constraint firstItem="oFh-EJ-lQg" firstAttribute="leading" secondItem="64a-p5-EGO" secondAttribute="leading" constant="15" id="y1E-uS-Sst"/>
                     </constraints>
@@ -75,12 +85,22 @@
                         <constraint firstItem="Qaq-rs-xPO" firstAttribute="top" secondItem="tIa-Pu-YpD" secondAttribute="top" constant="5" id="peX-N8-ool"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sz8-Pr-6Ca">
+                    <rect key="frame" x="0.0" y="194" width="412" height="1"/>
+                    <color key="backgroundColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="10V-2N-YPN"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="sz8-Pr-6Ca" secondAttribute="trailing" id="6Mw-sH-z1N"/>
                 <constraint firstAttribute="trailing" secondItem="64a-p5-EGO" secondAttribute="trailing" id="9e7-ea-pdu"/>
                 <constraint firstAttribute="trailing" secondItem="tIa-Pu-YpD" secondAttribute="trailing" id="CbN-jA-6CS"/>
+                <constraint firstAttribute="bottom" secondItem="sz8-Pr-6Ca" secondAttribute="bottom" id="FEq-yA-aLv"/>
                 <constraint firstItem="tIa-Pu-YpD" firstAttribute="leading" secondItem="34l-ua-O6u" secondAttribute="leading" id="FpJ-oD-js1"/>
+                <constraint firstItem="sz8-Pr-6Ca" firstAttribute="leading" secondItem="34l-ua-O6u" secondAttribute="leading" id="Q5B-9N-IVd"/>
                 <constraint firstItem="B4K-xZ-xwk" firstAttribute="leading" secondItem="34l-ua-O6u" secondAttribute="leading" id="Vpj-Yh-Z5X"/>
                 <constraint firstItem="64a-p5-EGO" firstAttribute="top" secondItem="34l-ua-O6u" secondAttribute="top" id="Wuc-eP-8Us"/>
                 <constraint firstAttribute="bottom" secondItem="tIa-Pu-YpD" secondAttribute="bottom" id="bP1-90-8cv"/>

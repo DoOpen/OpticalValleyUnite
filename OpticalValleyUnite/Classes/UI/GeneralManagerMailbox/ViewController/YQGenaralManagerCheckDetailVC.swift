@@ -36,6 +36,14 @@ class YQGenaralManagerCheckDetailVC: UIViewController {
     
     @IBOutlet weak var mReplyContent: SJTextView!
     
+    @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet weak var scrollContentView: UIView!
+    
+    
+    @IBOutlet weak var bottomButtonView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,9 +126,41 @@ class YQGenaralManagerCheckDetailVC: UIViewController {
                 }
             }
             
+            let mId = data!["mId"] as? String ?? ""
             
-            self.scrollViewHeightConstraint.constant = self.lastView.maxY + 30
-            self.view.setNeedsLayout()
+            if mId != "" {
+                
+                let mName = data!["mName"] as? String ?? ""
+                let mReplyContent  = data!["mReplyContent"] as? String ?? ""
+                let mReplyTime = data!["mReplyTime"] as? String ?? ""
+                
+                let v = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
+                
+                v.contentTitleTextV.text = mReplyContent
+                v.nameLabel.text = "处理人: " +  mName
+                v.timeLabel.text = "处理时间: " + mReplyTime
+                
+                self.scrollContentView.addSubview(v)
+                
+                v.snp.makeConstraints({ (maker) in
+                    
+                    maker.top.equalTo(self.contentView.snp.top)
+                    maker.left.equalTo(self.contentView.snp.left)
+                    maker.right.equalTo(self.contentView.snp.right)
+                    maker.height.equalTo(200)
+                })
+                
+                self.bottomButtonView.isHidden = true
+                
+                 self.scrollViewHeightConstraint.constant = self.lastView.maxY + 60
+            }else{
+                
+                self.scrollViewHeightConstraint.constant = self.lastView.maxY + 30
+                self.view.setNeedsLayout()
+                
+            }
+            
+        
             
         }) { (error) in
             

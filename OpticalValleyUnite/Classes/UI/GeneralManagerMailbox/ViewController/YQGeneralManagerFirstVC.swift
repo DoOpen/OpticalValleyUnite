@@ -45,7 +45,7 @@ class YQGeneralManagerFirstVC: UIViewController {
                 
                 let ruleNum = response["role"] as? Int64 ?? 2
                 
-                if (ruleNum == 2){//其他只有反馈功能
+                if (ruleNum == 3){//其他只有反馈功能
                     
                     self.checkOutView.isHidden = true
                     self.checkOutViewHeight.constant = 1

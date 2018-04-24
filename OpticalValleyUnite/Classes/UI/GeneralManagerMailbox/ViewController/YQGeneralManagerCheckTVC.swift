@@ -29,14 +29,19 @@ class YQGeneralManagerCheckTVC: UITableViewController {
         
         //2.添加右边的bar
         setupRightAndLeftBarItem()
-        
-        //默认调去全部数据
-        getListDataForService(type: 1)
+        //2.默认的设置的select的选项
         self.selectType = 1
         
         //3.上拉下拉刷新
         addRefirsh()
        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //默认调去全部数据
+        getListDataForService(type: self.selectType)
     }
     
     // MARK: - 自定义的right_left barItem
@@ -96,6 +101,8 @@ class YQGeneralManagerCheckTVC: UITableViewController {
         
         var par = [String : Any]()
         par["status"] = type
+        par["pageIndex"] = pageIndex
+        par["pageSize"] = pageSize
         
         SVProgressHUD.show()
         
@@ -140,10 +147,7 @@ class YQGeneralManagerCheckTVC: UITableViewController {
                         self.tableView.mj_footer.endRefreshing()
                     }
                     
-                    self.dataArray = tempModel
-                    
                     self.tableView.reloadData()
-                    
                 }
             }
 

@@ -11,13 +11,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQGenaralManagerCheckDetailVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="bottomButtonView" destination="QBB-UK-OGe" id="OXk-CQ-fGt"/>
                 <outlet property="contentTextView" destination="bXK-uy-ZQd" id="5iw-dr-bZS"/>
+                <outlet property="contentView" destination="abx-OJ-FCJ" id="hYF-1c-YpL"/>
                 <outlet property="feedBackLabel" destination="EBf-0h-glA" id="ncq-RA-Zoc"/>
                 <outlet property="isOnGmSwitch" destination="t3j-cC-lVg" id="NQd-47-eov"/>
                 <outlet property="lastView" destination="jVs-g9-bNr" id="JK8-31-D0z"/>
                 <outlet property="mReplyContent" destination="kAf-GV-BTo" id="peY-9W-5HN"/>
                 <outlet property="projectLabel" destination="WCC-j1-cR0" id="QPM-Yb-34p"/>
                 <outlet property="replyTextView" destination="kAf-GV-BTo" id="KF3-mb-gDw"/>
+                <outlet property="scrollContentView" destination="7NK-2x-bcW" id="i6H-dU-w0n"/>
                 <outlet property="scrollViewHeightConstraint" destination="gdW-lK-1WT" id="jKl-Kl-4fc"/>
                 <outlet property="showImageView" destination="FoX-vP-2oh" id="DoN-cD-TXw"/>
                 <outlet property="timeLabel" destination="KXd-8l-Z0G" id="hm2-ke-qON"/>

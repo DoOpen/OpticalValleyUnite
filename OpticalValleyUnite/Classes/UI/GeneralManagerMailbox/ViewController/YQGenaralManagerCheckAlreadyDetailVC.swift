@@ -140,17 +140,19 @@ class YQGenaralManagerCheckAlreadyDetailVC: UIViewController {
                 
                 v.snp.makeConstraints({ (maker) in
                     
-                    maker.top.equalTo(self.contentView.snp.top)
+                maker.top.equalTo(self.showImageView.snp.bottom).offset(20)
                     maker.left.right.equalToSuperview().offset(10)
-                    maker.height.equalTo(120)
+                    maker.right.equalToSuperview().offset(-10)
+                    maker.height.equalTo(200)
                     
                 })
                 
-                self.contentViewTopConstraint.constant = 120 + 5
+                self.contentViewTopConstraint.constant = 220 + 5
             }
             
-            self.scrollViewHeightConstraint.constant = self.contentView.maxY + 20
             self.view.setNeedsLayout()
+            
+            self.scrollViewHeightConstraint.constant = self.contentView.maxY + 200
             
         }) { (error) in
             

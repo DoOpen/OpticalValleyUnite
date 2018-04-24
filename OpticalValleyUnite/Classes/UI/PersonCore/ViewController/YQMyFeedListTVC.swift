@@ -18,6 +18,7 @@ class YQMyFeedListTVC: UITableViewController {
     
     var pageNo = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,6 +78,7 @@ class YQMyFeedListTVC: UITableViewController {
                         }
                         
                         self.tableView.mj_footer.endRefreshing()
+                        
                     }
                     self.tableView.reloadData()
                     

@@ -135,7 +135,7 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                 let mReplyTime = data!["mReplyTime"] as! String
                 //总经理
                 let gmName = data!["gmName"] as! String
-                let gmReplyContent = data!["gmReplyContent"] as! String
+                let gmReplyContent = data!["gmReplyContent"] as? String ?? ""
                 let gmReplyTime = data!["gmReplyTime"] as? String ?? ""
                 
                 let v = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
@@ -151,7 +151,7 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                     maker.top.equalTo(self.contentView.snp.top)
                     maker.left.equalTo(self.contentView.snp.left)
                     maker.right.equalTo(self.contentView.snp.right)
-                    maker.height.equalTo(160)
+                    maker.height.equalTo(200)
                     
                 })
                 
@@ -168,7 +168,8 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                     
                     maker.top.equalTo(self.contentView.snp.bottom).offset(40)
                     maker.left.right.equalToSuperview().offset(5)
-                    maker.height.equalTo(160)
+                    maker.right.equalToSuperview().offset(-5)
+                    maker.height.equalTo(200)
                     
                 })
                 
@@ -179,8 +180,8 @@ class YQGenaralFeedBackDetailVC: UIViewController {
             } else if (mID != ""){
                 //只有经理批复
                 //经理
-                let mName = data!["mName"] as! String
-                let mReplyContent = data!["mReplyContent"] as! String
+                let mName = data!["mName"] as? String ?? ""
+                let mReplyContent = data!["mReplyContent"] as? String ?? ""
                 let mReplyTime = data!["mReplyTime"] as? String ?? ""
                 let v = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
                 
@@ -194,7 +195,7 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                     maker.top.equalTo(self.contentView.snp.top)
                     maker.left.equalTo(self.contentView.snp.left)
                     maker.right.equalTo(self.contentView.snp.right)
-                    maker.height.equalTo(160)
+                    maker.height.equalTo(200)
                 })
                 
                 self.view.setNeedsLayout()
@@ -204,8 +205,8 @@ class YQGenaralFeedBackDetailVC: UIViewController {
             }else if (gmID != ""){
                 //只有总经理批复
                 //总经理
-                let gmName = data!["gmName"] as! String
-                let gmReplyContent = data!["gmReplyContent"] as! String
+                let gmName = data!["gmName"] as? String ?? ""
+                let gmReplyContent = data!["gmReplyContent"] as? String ?? ""
                 let gmReplyTime = data!["gmReplyTime"] as? String ?? ""
                 
                 let gmv = Bundle.main.loadNibNamed("YQGeneralManagerReplyView", owner: nil, options: nil)?[0] as! YQGeneralManagerReplyView
@@ -220,7 +221,7 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                     maker.top.equalTo(self.contentView.snp.top)
                     maker.left.equalTo(self.contentView.snp.left)
                     maker.right.equalTo(self.contentView.snp.right)
-                    maker.height.equalTo(160)
+                    maker.height.equalTo(200)
                     
                 })
                 
@@ -252,15 +253,15 @@ class YQGenaralFeedBackDetailVC: UIViewController {
         
         if mV != nil && gmV != nil{
             
-            self.scrollViewHeightConstraint.constant = contentView.maxY + 200 + 60
+            self.scrollViewHeightConstraint.constant = contentView.maxY + 200 + 70
             
         }else if ( mV != nil){
             
-            self.scrollViewHeightConstraint.constant = contentView.maxY + 60
+            self.scrollViewHeightConstraint.constant = contentView.maxY + 70
             
         }else if (gmV != nil){
             
-            self.scrollViewHeightConstraint.constant = contentView.maxY + 60
+            self.scrollViewHeightConstraint.constant = contentView.maxY + 70
         }
 
     }

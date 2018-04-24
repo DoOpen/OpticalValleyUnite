@@ -16,7 +16,7 @@ class YQGeneralFeedBackModel: NSObject {
     //状态
     var status = -1
     //ID
-    var id = ""
+    var id = -1
     
     init(dict : [String : Any]) {
         super.init()

@@ -25,7 +25,7 @@ class YQFeedBackViewController: UIViewController {
     var parkID = ""
     
     //用户的权限
-    var UserRule :Int64 = 3
+    var UserRule :Int64 = -1
 
     
     override func viewDidLoad() {
@@ -86,9 +86,20 @@ class YQFeedBackViewController: UIViewController {
     func addRightBarItemButtonClick(){
         
         //跳转到反馈的界面
-        let vc = UIStoryboard.instantiateInitialViewController(name: "YQMyFeedList")
+        if self.UserRule != -1{
+            let vc = UIStoryboard.instantiateInitialViewController(name: "YQGenaralFeedBackListVC") as! YQGenaralFeedBackListVC
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }else{
+
+            let vc = UIStoryboard.instantiateInitialViewController(name: "YQMyFeedList") as! YQMyFeedListTVC
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
         
-        self.navigationController?.pushViewController(vc, animated: true)
+        
         
     }
     
@@ -132,7 +143,7 @@ class YQFeedBackViewController: UIViewController {
                 parameter["images"] = url
                 SVProgressHUD.show(withStatus: "正在保存...")
                 
-                if (self.UserRule == 3){//用户信息反馈
+                if (self.UserRule == -1){//用户信息反馈
                     //2.上传添加数据
                     HttpClient.instance.post(path: URLPath.getFeedbackAdd, parameters: parameter, success: { (response) in
                         
@@ -167,7 +178,7 @@ class YQFeedBackViewController: UIViewController {
             
             SVProgressHUD.show(withStatus: "正在保存...")
             
-            if (self.UserRule == 3){//用户信息反馈
+            if (self.UserRule == -1){//用户信息反馈
                 //2.上传添加数据
                 HttpClient.instance.post(path: URLPath.getFeedbackAdd, parameters: parameter, success: { (response) in
                     
@@ -194,7 +205,6 @@ class YQFeedBackViewController: UIViewController {
                     
                 })
             }
-            
             
         }
     }

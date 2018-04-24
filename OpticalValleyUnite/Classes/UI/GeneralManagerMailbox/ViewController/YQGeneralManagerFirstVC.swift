@@ -15,6 +15,9 @@ class YQGeneralManagerFirstVC: UIViewController {
     @IBOutlet weak var checkOutView: UIView!
     @IBOutlet weak var checkOutViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var feedBackView: UIView!
+    
+    
     //用户的权限
     var UserRule :Int64 = 2
     
@@ -47,8 +50,9 @@ class YQGeneralManagerFirstVC: UIViewController {
                     self.checkOutView.isHidden = true
                     self.checkOutViewHeight.constant = 1
                     
-                }else{//经理和总经理有所有权限
-
+                }else{//经理和总经理 只有查看权限
+                    self.feedBackView.isHidden = true
+                    
                 }
                 
                 self.UserRule = ruleNum

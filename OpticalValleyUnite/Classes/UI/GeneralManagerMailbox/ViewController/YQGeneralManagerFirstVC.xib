@@ -14,6 +14,7 @@
                 <outlet property="baseScrollViewHeightConstast" destination="Rx8-b1-8DW" id="Xnp-a5-Sah"/>
                 <outlet property="checkOutView" destination="ZZ7-k1-qhl" id="ixt-Hn-ym0"/>
                 <outlet property="checkOutViewHeight" destination="kEq-GL-mz2" id="q0x-1f-2dn"/>
+                <outlet property="feedBackView" destination="j5s-SO-mXa" id="DR0-4c-9k5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

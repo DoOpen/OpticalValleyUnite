@@ -50,23 +50,34 @@
                         <constraint firstAttribute="trailing" secondItem="Td1-1K-sUg" secondAttribute="trailing" constant="5" id="hA2-Ts-ptL"/>
                     </constraints>
                 </view>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ODP-yK-CVB">
-                    <rect key="frame" x="0.0" y="130" width="375" height="200"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ODP-yK-CVB">
+                    <rect key="frame" x="10" y="134" width="355" height="200"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="qcQ-HB-jZR"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请提供相关信息的截图或照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjf-bB-uqT">
-                    <rect key="frame" x="10" y="335" width="226" height="21"/>
+                    <rect key="frame" x="10" y="339" width="226" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qa-pS-4zK" customClass="ShowImageView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                    <rect key="frame" x="10" y="361" width="355" height="90"/>
+                    <rect key="frame" x="10" y="365" width="355" height="90"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="90" id="Tj4-Mo-Xcm"/>
@@ -78,14 +89,14 @@
                 <constraint firstItem="3qa-pS-4zK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="2BO-35-kBs"/>
                 <constraint firstItem="bdk-mS-0Cq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="HGB-fY-5SG"/>
                 <constraint firstItem="bdk-mS-0Cq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VlZ-sB-1ks"/>
-                <constraint firstItem="ODP-yK-CVB" firstAttribute="top" secondItem="bdk-mS-0Cq" secondAttribute="bottom" constant="1" id="Zbm-PO-xtP"/>
+                <constraint firstItem="ODP-yK-CVB" firstAttribute="top" secondItem="bdk-mS-0Cq" secondAttribute="bottom" constant="5" id="Zbm-PO-xtP"/>
                 <constraint firstAttribute="trailing" secondItem="bdk-mS-0Cq" secondAttribute="trailing" id="bqa-J5-ipC"/>
                 <constraint firstItem="3qa-pS-4zK" firstAttribute="top" secondItem="Tjf-bB-uqT" secondAttribute="bottom" constant="5" id="f57-YZ-32b"/>
                 <constraint firstAttribute="trailing" secondItem="3qa-pS-4zK" secondAttribute="trailing" constant="10" id="kCw-uZ-kjJ"/>
                 <constraint firstItem="Tjf-bB-uqT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="lcA-78-fWe"/>
-                <constraint firstAttribute="trailing" secondItem="ODP-yK-CVB" secondAttribute="trailing" id="r1U-bT-bgc"/>
+                <constraint firstAttribute="trailing" secondItem="ODP-yK-CVB" secondAttribute="trailing" constant="10" id="r1U-bT-bgc"/>
                 <constraint firstItem="Tjf-bB-uqT" firstAttribute="top" secondItem="ODP-yK-CVB" secondAttribute="bottom" constant="5" id="w2y-nc-yL7"/>
-                <constraint firstItem="ODP-yK-CVB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zNj-WY-XM9"/>
+                <constraint firstItem="ODP-yK-CVB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="zNj-WY-XM9"/>
             </constraints>
             <point key="canvasLocation" x="-232" y="-25"/>
         </view>

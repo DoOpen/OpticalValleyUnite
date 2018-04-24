@@ -31,6 +31,12 @@
         <!--Person Core View Controller-->
         <scene sceneID="fi2-ge-SqA">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naP-St-gZw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4bm-4g-K4P" userLabel="项目选择_TapGestureRecognizer">
+                    <connections>
+                        <action selector="allProjectSelectClick:" destination="GTU-aq-x3y" id="8Mk-9M-zI7"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <viewController id="GTU-aq-x3y" customClass="PersonCoreViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZPd-py-GWq"/>
@@ -472,18 +478,13 @@
                         <outlet property="nickNameLabel" destination="Oyz-p8-faX" id="aiB-Ab-4eP"/>
                         <outlet property="photoImageView" destination="Ood-Zj-6od" id="hLE-ve-3YP"/>
                         <outlet property="projectSelectName" destination="Qmb-QH-hBt" id="EaG-DG-OXB"/>
+                        <outlet property="starLabel" destination="IO8-hj-e9o" id="Eg0-5B-igB"/>
                         <outlet property="starView" destination="xp4-Yo-JXC" id="muY-7i-sKC"/>
                         <outlet property="userNameLabel" destination="OeV-ba-tFG" id="OmD-ru-qWQ"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="naP-St-gZw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="4bm-4g-K4P" userLabel="项目选择_TapGestureRecognizer">
-                    <connections>
-                        <action selector="allProjectSelectClick:" destination="GTU-aq-x3y" id="8Mk-9M-zI7"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="504.80000000000001" y="760.56971514242889"/>
+            <point key="canvasLocation" x="769" y="768"/>
         </scene>
         <!--我的统计-->
         <scene sceneID="3U1-0P-sJ6">

@@ -22,6 +22,9 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     @IBOutlet weak var starView: UIView!
     
+    @IBOutlet weak var starLabel: UILabel!
+    
+    
     var userNameMaxY : CGFloat = 0{
         
         didSet{
@@ -58,9 +61,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         //添加leftRightBar功能
         setupRightAndLeftBarItem()
         
-        //设置用户信息
-        setupUserData()
-        
+
         //设置星级服务
         setupStarViewData()
     }
@@ -72,6 +73,9 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         //设置项目选择的lable
         self.projectSelectName.text = setUpProjectNameLable()
+        
+        //设置用户信息
+        setupUserData()
       
     }
     
@@ -119,6 +123,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     // MARK: - 获取添加执行星级管家内容
     func setupStarViewData(){
         
+        
         HttpClient.instance.post(path: URLPath.getScoreDetail, parameters: nil, success: { (response) in
             
             let data = response["scoreDetail"] as? [String : Any]
@@ -143,12 +148,31 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
                 let starBtn = self.starView.subviews[i] as! UIButton
                 starBtn.isSelected = true
             }
-           
+            
+            switch star {
+                case 1:
+                    self.starLabel.text = "一星管家"
+                    break
+                case 2:
+                    self.starLabel.text = "二星管家"
+                    break
+                case 3:
+                    self.starLabel.text = "三星管家"
+                    break
+                case 4:
+                    self.starLabel.text = "四星管家"
+                    break
+                case 5:
+                    self.starLabel.text = "五星管家"
+                    break
+                default:
+                    break
+            }
+
         }) { (error) in
             
         }
-        
-        
+ 
     }
     
     // MARK: - 自定义的right_left barItem

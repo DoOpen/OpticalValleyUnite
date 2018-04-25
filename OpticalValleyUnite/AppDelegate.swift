@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
         UMessage.registerForRemoteNotifications()
-        UMessage.setBadgeClear(true)
+        UMessage.setBadgeClear(false)
         UIApplication.shared.applicationIconBadgeNumber = -1 //首次的appIconBadgeNumber 要求清零,保证用户没有登录的情况下,app首次下载的情况下,没有消息值
 
         // 3.如果是ios10 必须加上 如下的代码
@@ -96,8 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
         }
-        
-        
+
         //打开日志，方便调试
         UMessage.setLogEnabled(true)
 //        UMessage.openDebugMode(true)
@@ -117,7 +116,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(error.localizedDescription)
         }
 
-        
         // 即将进入后台的操作(app 没有被杀死的情况,语音播报是不能处理的)
         do {
             
@@ -217,6 +215,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
             
+            UMessage.setAutoAlert(false)
             UMessage.didReceiveRemoteNotification(userInfo)
             
             // 接受通知执行界面的跳转功能
@@ -227,7 +226,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         }
         
         UIApplication.shared.applicationIconBadgeNumber += 1
-        
+        completionHandler()
         
     }
     
@@ -429,9 +428,7 @@ extension AppDelegate{
         let mainViewController   = fireVC
         let drawerViewController = YQDrawerViewController()
         //初始化drawerVC的位置
-        let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 300)
-        
-        
+        let drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: 300)
         drawerController.mainViewController =  mainViewController
         
         drawerController.drawerViewController = drawerViewController

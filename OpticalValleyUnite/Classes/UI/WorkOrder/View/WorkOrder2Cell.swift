@@ -41,9 +41,6 @@ class WorkOrder2Cell: UITableViewCell {
             
             deviceBtn.isHidden =  model!.is_equip != 1
             
-            print(deviceBtn.isHidden)
-            
-            
             switch model!.status {
             case 0://待派发
 

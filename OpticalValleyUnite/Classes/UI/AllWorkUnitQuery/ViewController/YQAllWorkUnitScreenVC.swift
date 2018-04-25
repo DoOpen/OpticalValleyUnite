@@ -74,7 +74,7 @@ class YQAllWorkUnitScreenVC: UIViewController {
         didSet{
             
             let projectname = getUserDefaultsProject()
-            
+
             var indexNum = -1
             
             for index in 0 ..< projectData.count{
@@ -220,7 +220,6 @@ class YQAllWorkUnitScreenVC: UIViewController {
         }
         
         
-            
         setTagsView(tagsView: sourceTagsView,tags: ["系统后台","员工app","业主app"])
         
         let sourse = self.siftParmat?["sourse"] as? Int ?? -1
@@ -339,7 +338,6 @@ class YQAllWorkUnitScreenVC: UIViewController {
         spontaneousTagsView.deselectAll()
         
         
-        
         workOrderNameLabel.text = ""
         workOrderSourcePersonLabel.text = ""
         workNumberLabel.text = ""
@@ -366,7 +364,7 @@ class YQAllWorkUnitScreenVC: UIViewController {
         
         var paramert = [String: Any]()
         
-        let projectTagsViewIndex = projectTagsView.selectedTagIndexes.first?.intValue
+        let projectTagsViewIndex = projectTagsView.selectedTagIndexes.first?.intValue ?? -1
         let workTypeTagsViewIndex = workTypeTagsView.selectedTagIndexes.first?.intValue
         
         let reportTypeTagsViewIndex = reportTypeTagsView.selectedTagIndexes.first?.intValue
@@ -379,23 +377,23 @@ class YQAllWorkUnitScreenVC: UIViewController {
         
         let spontaneousTagsViewIndex = spontaneousTagsView.selectedTagIndexes.first?.intValue
         
-        if let index = projectTagsViewIndex{
+        if  projectTagsViewIndex != -1{
             
-            paramert["PARK_ID"] = projectData[index].projectId
+            paramert["PARK_ID"] = projectData[projectTagsViewIndex].projectId
             
             var dic = [String : Any]()
-            dic["ID"] = projectData[index].projectId
-            dic["PARK_NAME"] = projectData[index].projectName
+            dic["ID"] = projectData[projectTagsViewIndex].projectId
+            dic["PARK_NAME"] = projectData[projectTagsViewIndex].projectName
             
             UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
             
-        }else {//重置全局的项目选择
+        }else{//重置全局的项目选择
             
             UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
-        
         }
         
         if let index = workTypeTagsViewIndex{
+            
             paramert["WORKTYPE_ID"] = workTypeData[index].id
         }
         
@@ -405,7 +403,6 @@ class YQAllWorkUnitScreenVC: UIViewController {
         if let index = reportTypeTagsViewIndex{
             
             paramert["WORKUNIT_TYPE"] = index + 1
-            
         }
         
         
@@ -455,8 +452,6 @@ class YQAllWorkUnitScreenVC: UIViewController {
         if let text = workOrderImplementPersonTextField.text,text != ""{
             paramert["EXEC_PERSON_NAME"] = text
         }
-        
-        
         
         if let block = doneBtnClickHandel{
             //通过的是block的回调来进行的传值,如果是需要保存的话,要求保存paramert 的参数
@@ -522,8 +517,7 @@ class YQAllWorkUnitScreenVC: UIViewController {
         }
 
         HttpClient.instance.get(path: URLPath.getParkList, parameters: par, success: { (response) in
-            
-            
+
             var temp = [ProjectModel]()
             
             for dic in response as! Array<[String: Any]> {

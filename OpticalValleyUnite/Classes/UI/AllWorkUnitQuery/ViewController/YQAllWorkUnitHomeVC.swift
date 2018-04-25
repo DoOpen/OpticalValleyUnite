@@ -85,7 +85,6 @@ class YQAllWorkUnitHomeVC: UIViewController {
 
         }
 
-        
         self.getDataForServer(tag: self.currentBtn.tag)
         
 
@@ -173,8 +172,6 @@ class YQAllWorkUnitHomeVC: UIViewController {
 
     }
 
-    
-    
     // MARK: - 获取网络数据详情方法
     func getDataForServer(tag : Int, pageSize : Int = 20, pageIndex : Int = 0,dict : [String : Any] = [String : Any]()){
         
@@ -234,7 +231,6 @@ class YQAllWorkUnitHomeVC: UIViewController {
                     break
             }
 
-            
             let data = response["data"] as? Array<[String: Any]>
             
             if data == nil {

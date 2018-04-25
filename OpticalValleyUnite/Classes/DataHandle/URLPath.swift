@@ -153,7 +153,9 @@ struct URLPath {
     
     //获取报事记录
     static let getReportList = "workunit/myworkunitList.do"
-    
+    /*
+     myworkunitList
+     */
     
     //获取项目地址
     static let getParkAddress = "position/getParkDescription.do"

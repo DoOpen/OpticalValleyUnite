@@ -134,8 +134,8 @@ class ReportMasterViewController: UIViewController {
         }
         
         //2.拿取plist的缓存数据
-        let myReport1 = NSHomeDirectory() + "/Documents/myReport/lists.plist"
-        let myReport2 = NSHomeDirectory() + "/Documents/myReport/images.plist"
+        let myReport1 = NSHomeDirectory() + "/Documents/lists.plist"
+        let myReport2 = NSHomeDirectory() + "/Documents/images.plist"
         
         let imageArray = NSArray(contentsOfFile: myReport2)
         let reportListDict = NSDictionary.init(contentsOfFile: myReport1)
@@ -186,7 +186,7 @@ class ReportMasterViewController: UIViewController {
                 
                 //详细位置
                 if let locationAddress = reportListDict?["EVENT_ADDR"] as? String {
-                
+                    
                     address2Label.text = locationAddress
                 }
                 
@@ -737,7 +737,6 @@ class ReportMasterViewController: UIViewController {
                     self?.addressLabel.text = (self?.addressLabel.text)! + "-" + parkInfoModel.name
                     
                 }
-                
             }
             
             navigationController?.pushViewController(vc, animated: true)
@@ -747,56 +746,71 @@ class ReportMasterViewController: UIViewController {
     // MARK: - 新增报事的本地的保存实现
     @IBAction func saveButtonClick(_ sender: UIButton) {
         
-        let myReport1 = NSHomeDirectory() + "/Documents/myReport/lists.plist"
-        let myReport2 = NSHomeDirectory() + "/Documents/myReport/images.plist"
+        let myReport1 = NSHomeDirectory() + "/Documents/lists.plist"
+        let myReport2 = NSHomeDirectory() + "/Documents/images.plist"
+/* 测试plist的代码
+         
+         //        let array = NSArray(objects: "hangge.com","baidu.com","google.com","163.com","qq.com")
+         //        let filePath:String = NSHomeDirectory() + "/Documents/webs.plist"
+         //        array.write(toFile: myReport1, atomically: true)
+         
+         */
         
         //报事的本地保存是: 通过实现的是plist 文件来进行的存储!
         var plistDict = [String : Any]()
         //工单类型的保存
         var workType = [String : Any]()
-        
+
         workType["ID"] = selectWorkType?.id
         workType["WORKTYPE_NAME"] = selectWorkType?.name
-        
+
         plistDict["selectWorkType"] = workType
+
         //工单描述
-        plistDict["DESCRIPTION"] = textView.text
+        if textView.text != "" {
+            plistDict["DESCRIPTION"] = textView.text
+        }
+
         //紧急程度的level
         plistDict["level"] = urgentDegreeBtn?.tag
-        
+
         //报事位置的保存
         if selectParkInfo?.FLOOR_ID != ""{
-            
+
             var reportLocation = [String : Any]()
-            
+
             /*
              id = parmart["id"] as? String ?? ""
              STAGE_ID = parmart["app_need_stage"] as? String ?? ""
              FLOOR_ID = parmart["app_need_floor"] as? String ?? ""
              tempName = parmart["text"] as? String ?? ""
              name = tempName
-
              */
-            
+
             reportLocation["app_need_stage"] = selectParkInfo?.STAGE_ID
             reportLocation["app_need_floor"] = selectParkInfo?.FLOOR_ID
             reportLocation["id"] = selectParkInfo?.id
-                
-            reportLocation["STAGE_Name"] = selectParkInfo?.STAGE_Name
+            if selectParkInfo?.STAGE_Name != "" {
+
+                reportLocation["STAGE_Name"] = selectParkInfo?.STAGE_Name
+            }
             reportLocation["FLOOR_Name"] = selectParkInfo?.FLOOR_Name
             reportLocation["name"] = self.addressLabel.text
-            
+
             plistDict["selectParkInfo"] = reportLocation
         }
-        
+
         //详细位置信息的保存
-        plistDict["EVENT_ADDR"] = address2Label.text
-        
+        if address2Label.text != "" {
+
+            plistDict["EVENT_ADDR"] = address2Label.text
+        }
+
         //是否是 设备报事情况
-        if deviceModel?.id != -1 {
-            
+        if deviceModel?.id != -1 && deviceModel != nil {
+
             var deviceMessage = [String : Any]()
-            
+
             deviceMessage["id"] = deviceModel?.id
             deviceMessage["equip_code"] = deviceModel?.equip_code
             deviceMessage["floor_name"] = deviceModel?.floor_name
@@ -812,48 +826,51 @@ class ReportMasterViewController: UIViewController {
             //设备id
             plistDict["deviceModel"] = deviceMessage
         }
-        
+
         plistDict["EVENT_TYPE"] = self.currentSelectTypeBtn?.titleLabel?.text
-        
+
         //待客 模式报错的情况
         if brokerBtn.isSelected {
-            
+
             var ValetReport = [String : Any]()
-            
+
             ValetReport["CUSTOMER_NAME"] = ownerNameTextField.text
             ValetReport["CUSTOMER_ADDR"] = OwnerAddressTextField.text
-            
+
             ValetReport["CUSTOMER_PHONE"] = ownerPhoneTextField.text
-            
+
             ValetReport["REPRE_TYPE"] = !famlyBtn.isSelected
-            
+
             ValetReport["EXEC_DATE"] = selectDate?.dataString(dateFormetStr: "yyyy-MM-dd HH:mm:ss")
-            
+
             //待客的模块的专用的数据缓存
             plistDict["brokerBtn"] = ValetReport
-        
+
         }
-        
-        NSDictionary.init(dictionary: plistDict).write(toFile: myReport1, atomically: true)
-        
+
+        let dict = NSDictionary.init(dictionary: plistDict)
+        dict.write(toFile: myReport1, atomically: true)
+
+        print(dict)
+        print(myReport1)
+
+
         //图片的保存plist 数据情况!
         let images = addPhotoView.photos.map{$0.image}
-        
+
         if images.count > 0 {
-            
+
             var dataArray = Array<NSData>()
-            
             for image in images {
-                
+
                 let data : NSData = UIImageJPEGRepresentation(image, 1.0)! as NSData
                 dataArray.append(data)
             }
-            
+
             NSArray.init(array: dataArray).write(toFile: myReport2, atomically: true)
         }
-        
+
         SVProgressHUD.showSuccess(withStatus: "数据保存成功!")
-        
     }
     
     
@@ -908,7 +925,9 @@ class ReportMasterViewController: UIViewController {
         
         parmarReport["WORKTYPE_ID"] = workTypeId
         parmarReport["IMPORTENT_LEVEL"] = level
+        
         parmarReport["EVENT_ADDR"] = address2Label.text ?? ""
+        
         parmarReport["DESCRIPTION"] = textView.text
         
         //设备id
@@ -947,8 +966,7 @@ class ReportMasterViewController: UIViewController {
                 parmarReport["EXEC_DATE"] = selectDate?.dataString(dateFormetStr: "yyyy-MM-dd HH:mm:ss")
                 
             }else{
-                
-                
+
                 //自检 and 自发
                 if selfCheckingBtn.isSelected{
                 
@@ -1001,8 +1019,8 @@ class ReportMasterViewController: UIViewController {
                         
                         //操作文件管理器的类
                         let fileManager = FileManager.default
-                        let myReport1 = NSHomeDirectory() + "/Documents/myReport/lists.plist"
-                        let myReport2 = NSHomeDirectory() + "/Documents/myReport/images.plist"
+                        let myReport1 = NSHomeDirectory() + "/Documents/lists.plist"
+                        let myReport2 = NSHomeDirectory() + "/Documents/images.plist"
                         
                         do {
                             
@@ -1015,7 +1033,6 @@ class ReportMasterViewController: UIViewController {
                         }
 
                     }
-                    
                     self.navigationController?.popViewController(animated: true)
 
                 }) { (error) in
@@ -1050,8 +1067,8 @@ class ReportMasterViewController: UIViewController {
                 //保存完成后进行移除plist 文件
                 //操作文件管理器的类
                 let fileManager = FileManager.default
-                let myReport1 = NSHomeDirectory() + "/Documents/myReport/lists.plist"
-                let myReport2 = NSHomeDirectory() + "/Documents/myReport/images.plist"
+                let myReport1 = NSHomeDirectory() + "/Documents/lists.plist"
+                let myReport2 = NSHomeDirectory() + "/Documents/images.plist"
                 
                 do {
                     
@@ -1089,8 +1106,7 @@ class ReportMasterViewController: UIViewController {
         brokerBtn.isHidden = true
         selfCheckingBtn.isHidden = true
         spontaneousBtn.isHidden = true
-        
-        
+
         contentHeightConstraint.constant = 0
         contenView.layoutIfNeeded()
         

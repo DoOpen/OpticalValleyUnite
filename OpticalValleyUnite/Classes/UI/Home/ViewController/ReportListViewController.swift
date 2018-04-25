@@ -11,36 +11,63 @@ import SVProgressHUD
 import MJRefresh
 
 class ReportListViewController: UIViewController {
+    
+    
     @IBOutlet weak var tableView: UITableView!
     var currentDatas = [WorkOrderModel]()
     var pageNo = 0
+    var selectButton : UIButton?
+    
+    @IBOutlet weak var waitingHandleButton: UIButton!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-    self.navigationItem.title = "我的报事"
+        //1.init
+        self.navigationItem.title = "我的报事"
+        self.waitingHandleButton.isSelected = true
+        self.selectButton = waitingHandleButton
         addRefirsh()
         getWorkOrder()
         
+        //2.注册cell
         let nib = UINib(nibName: "WorkOrder2Cell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
     }
     
+    // MARK: - typeButtonClick方法
+    @IBAction func buttonSelectClick(_ sender: UIButton) {
+        
+        // 1 : 代表的是已关闭的 0 : 代表的是待处理的
+        self.selectButton?.isSelected = false
+        sender.isSelected = true
+        self.selectButton = sender
+        
+        getWorkOrder( tag: sender.tag)
+        
+    }
+    
     func addRefirsh(){
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
-            self.getWorkOrder()
+            
+            self.getWorkOrder(tag: (self.selectButton?.tag)!)
         })
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
-            self.getWorkOrder(self.pageNo + 1)
+            self.getWorkOrder(self.pageNo + 1,tag: (self.selectButton?.tag)!)
         })
     }
 
-    func getWorkOrder(_ indexPage: Int = 0){
+    
+    func getWorkOrder(_ indexPage: Int = 0 , tag : Int = 0){
         
         var parmat = [String: Any]()
         parmat["pageIndex"] = indexPage
+        parmat["isClosed"] = tag
+        
         SVProgressHUD.show(withStatus: "加载中...")
         
         HttpClient.instance.get(path: URLPath.getReportList, parameters: parmat, success: { (response) in
@@ -52,11 +79,11 @@ class ReportListViewController: UIViewController {
             if (data?.isEmpty)! {
                 
                 SVProgressHUD.showError(withStatus: "没有更多数据!")
-                
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
                 return
             }
-            
-            
+
             var temp = [WorkOrderModel]()
             for dic in data! {
                 
@@ -79,8 +106,7 @@ class ReportListViewController: UIViewController {
                     self.tableView.mj_footer.endRefreshing()
                 }
             }
-            
-            
+
             self.tableView.reloadData()
             
         }) { (error) in

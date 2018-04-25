@@ -274,8 +274,7 @@ class ReportMasterViewController: UIViewController {
                         break
                     }
                 }
-                
-    
+
             }else{
                 
                 // 默认调取了 自检的按钮
@@ -421,8 +420,7 @@ class ReportMasterViewController: UIViewController {
             self.addPhotoView.photoImages = imagePhoto
             
         }
-        
-        
+
     }
     
     

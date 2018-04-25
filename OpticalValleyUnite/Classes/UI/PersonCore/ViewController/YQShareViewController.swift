@@ -20,8 +20,8 @@ class YQShareViewController: UIViewController {
 
         self.title = "分享"
         
-        //1.设置左右leftbar
-        setupRightAndLeftBarItem()
+        //1.设置左右leftbar,暂时屏蔽掉分享功能
+        //setupRightAndLeftBarItem()
         
         //2.请求分享的下载地址
         shareURLwithData()

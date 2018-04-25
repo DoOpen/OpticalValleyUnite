@@ -226,6 +226,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
             //应用处于后台时的本地推送接受
         }
         
+        UIApplication.shared.applicationIconBadgeNumber += 1
+        
+        
     }
     
     //iOS10新增：处理前台收到通知的代理方法(接受通知的方法)

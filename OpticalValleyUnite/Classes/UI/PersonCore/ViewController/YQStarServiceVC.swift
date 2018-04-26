@@ -16,6 +16,7 @@ class YQStarServiceVC: UIViewController {
     @IBOutlet weak var useLabel: UILabel!
     
     @IBOutlet weak var starsView: UIView!
+    @IBOutlet weak var starsLabel: UILabel!
     
     @IBOutlet weak var beatContentLabel: UILabel!
     @IBOutlet weak var increaseContentLabel: UILabel!
@@ -121,6 +122,26 @@ class YQStarServiceVC: UIViewController {
             
             let starBtn = self.starsView.subviews[i] as! UIButton
             starBtn.isSelected = true
+        }
+        
+        switch star {
+        case 1:
+            self.starsLabel.text = "一星管家"
+            break
+        case 2:
+            self.starsLabel.text = "二星管家"
+            break
+        case 3:
+            self.starsLabel.text = "三星管家"
+            break
+        case 4:
+            self.starsLabel.text = "四星管家"
+            break
+        case 5:
+            self.starsLabel.text = "五星管家"
+            break
+        default:
+            break
         }
         
     }

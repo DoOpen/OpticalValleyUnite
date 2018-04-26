@@ -393,9 +393,7 @@ extension CheckNewBundleVersionProtocol{
                 }
                 
             }
-            
-            
-            
+
         }) { (error) in
             print(error)
         }

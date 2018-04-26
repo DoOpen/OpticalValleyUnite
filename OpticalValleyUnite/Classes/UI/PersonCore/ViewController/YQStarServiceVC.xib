@@ -20,6 +20,7 @@
                 <outlet property="star3Label" destination="Ulz-Ao-1cT" id="FKs-nI-vUu"/>
                 <outlet property="star4Label" destination="jv8-kI-5mm" id="vfc-BW-GPx"/>
                 <outlet property="star5Label" destination="876-9a-EEn" id="oRy-6U-sIm"/>
+                <outlet property="starsLabel" destination="3xw-2k-c9R" id="dO4-GQ-5pl"/>
                 <outlet property="starsView" destination="zTc-SP-KFs" id="cFh-u0-MSa"/>
                 <outlet property="useLabel" destination="GOs-ZG-H8w" id="E3G-VW-KYC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

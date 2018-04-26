@@ -388,7 +388,22 @@ class YQAllWorkUnitScreenVC: UIViewController {
             
         }else{//重置全局的项目选择
             
+            var parkString = ""
+            
+            for projectModel in projectData{
+                if parkString == "" {
+                    
+                    parkString = projectModel.projectId
+                    
+                }else{
+                    
+                    parkString = parkString + "," + projectModel.projectId
+                }
+                
+            }
+            paramert["PARK_ID"]  = parkString
             UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
+            
         }
         
         if let index = workTypeTagsViewIndex{
@@ -459,7 +474,6 @@ class YQAllWorkUnitScreenVC: UIViewController {
         
         doneBtnClickHandel = nil
 
-        
     }
     
     // MARK: - 获取默认的项目的值来显示

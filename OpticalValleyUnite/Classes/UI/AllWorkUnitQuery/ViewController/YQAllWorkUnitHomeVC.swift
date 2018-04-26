@@ -156,6 +156,7 @@ class YQAllWorkUnitHomeVC: UIViewController {
             if parmat.isEmpty{//为空的话
                 
                 self.siftsiftParmat = nil
+                self.parkID = ""
                 //在闭包的 回调中 拿到了选择的参数, 进行重新的网络请求,数据的刷新
                 self.getDataForServer(tag: (self.currentBtn?.tag)!)
                 

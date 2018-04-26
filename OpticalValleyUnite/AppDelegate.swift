@@ -212,7 +212,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
             startTranslattion(voicessss: voiceText!)
         }
 
-        
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
             
             UMessage.setAutoAlert(false)
@@ -226,6 +225,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         }
         
         UIApplication.shared.applicationIconBadgeNumber += 1
+        
         completionHandler()
         
     }
@@ -249,6 +249,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
             //关闭U-Push自带的弹出框
             UMessage.setAutoAlert(false)
             UMessage.didReceiveRemoteNotification(userInfo)
+        
             
         }else{
             //应用处于前台时的本地推送接受
@@ -456,8 +457,7 @@ extension AppDelegate{
     
     // MARK: - 语音播报的内容
     fileprivate func startTranslattion(voicessss : String){
-        
-       
+
         //1. 创建需要合成的声音类型
         let voice = AVSpeechSynthesisVoice(language: "zh-CN")
         
@@ -472,7 +472,9 @@ extension AppDelegate{
         avSpeech.speak(utterance)
         
         do {
+            
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .duckOthers)
+            
         } catch {
             
             print(error.localizedDescription)
@@ -489,7 +491,9 @@ extension AppDelegate : AVSpeechSynthesizerDelegate {
         //语音继承,结束后进行调用关闭
         do {
             try AVAudioSession.sharedInstance().setActive(false, with: .notifyOthersOnDeactivation)
+            
         } catch {
+            
             print(error.localizedDescription)
         }
         

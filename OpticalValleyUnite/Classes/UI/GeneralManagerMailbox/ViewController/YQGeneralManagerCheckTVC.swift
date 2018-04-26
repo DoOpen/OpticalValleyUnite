@@ -81,26 +81,21 @@ class YQGeneralManagerCheckTVC: UITableViewController {
             self.selectType = 1
             return
         }
-        
         //选项取反
         button.isSelected = !button.isSelected
         
         //两个接口轮流倒
-        switch (button.titleLabel?.text)! {
-            case "全部":
-                getListDataForService(type: 1)
-                self.selectType = 1
-                
-                break
-            case "待处理":
-                getListDataForService(type: 0)
-                self.selectType = 0
-                
-                break
+        if button.isSelected {//全部
             
-            default:
-                break
+            getListDataForService(type: 1)
+            self.selectType = 1
+            
+        }else{//待处理
+            
+            getListDataForService(type: 0)
+            self.selectType = 0
         }
+      
     }
     
     // MARK: - 获取查看的数据
@@ -153,7 +148,7 @@ class YQGeneralManagerCheckTVC: UITableViewController {
                         
                         self.tableView.mj_footer.endRefreshing()
                     }
-                    
+
                     self.tableView.reloadData()
                 }
             }

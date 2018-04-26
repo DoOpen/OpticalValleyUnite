@@ -342,8 +342,7 @@ class YQAllWorkUnitScreenVC: UIViewController {
         workOrderSourcePersonLabel.text = ""
         workNumberLabel.text = ""
         workOrderImplementPersonTextField.text = ""
-        
-        
+
         startTime = ""
         endTime = ""
         endBtn.setTitle("截止时间", for: .normal)

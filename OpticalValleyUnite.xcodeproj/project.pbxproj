@@ -129,7 +129,6 @@
 		2F52E5B72049500B0060A2BA /* YQEquipDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F52E5B62049500B0060A2BA /* YQEquipDetailListModel.swift */; };
 		2F52E5B9204975D40060A2BA /* YQSensorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F52E5B8204975D40060A2BA /* YQSensorDetailView.swift */; };
 		2F52E5BB204975FB0060A2BA /* YQSensorDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F52E5BA204975FB0060A2BA /* YQSensorDetailView.xib */; };
-		2F53A10C20760234003F8296 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F53A10B20760234003F8296 /* AudioToolbox.framework */; };
 		2F53A10F20762B8C003F8296 /* YQStarServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53A10D20762B8C003F8296 /* YQStarServiceVC.swift */; };
 		2F53A11020762B8C003F8296 /* YQStarServiceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F53A10E20762B8C003F8296 /* YQStarServiceVC.xib */; };
 		2F54BF0B1FCBF7C7006B4DCF /* YQExecTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */; };
@@ -629,7 +628,6 @@
 		2F52E5B62049500B0060A2BA /* YQEquipDetailListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQEquipDetailListModel.swift; sourceTree = "<group>"; };
 		2F52E5B8204975D40060A2BA /* YQSensorDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQSensorDetailView.swift; sourceTree = "<group>"; };
 		2F52E5BA204975FB0060A2BA /* YQSensorDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQSensorDetailView.xib; sourceTree = "<group>"; };
-		2F53A10B20760234003F8296 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2F53A10D20762B8C003F8296 /* YQStarServiceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStarServiceVC.swift; sourceTree = "<group>"; };
 		2F53A10E20762B8C003F8296 /* YQStarServiceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQStarServiceVC.xib; sourceTree = "<group>"; };
 		2F54BF091FCBF7C7006B4DCF /* YQExecTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQExecTextCell.swift; sourceTree = "<group>"; };
@@ -1113,7 +1111,6 @@
 				2F6FC9062074DE1B003915DA /* libYixinSDK.a in Frameworks */,
 				2F73FA631F74C0B600D37FDA /* AMapSearchKit.framework in Frameworks */,
 				2F6FC8F52074DE1A003915DA /* libAPOpenSdk.a in Frameworks */,
-				2F53A10C20760234003F8296 /* AudioToolbox.framework in Frameworks */,
 				2F6FC9012074DE1B003915DA /* libSocialSMS.a in Frameworks */,
 				2F6FC9032074DE1B003915DA /* libSocialUniqueId.a in Frameworks */,
 				4B3951D91E27D88A00E2642F /* JavaScriptCore.framework in Frameworks */,
@@ -1135,7 +1132,6 @@
 		2DE0C4DE5B1BF48FFA401773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2F53A10B20760234003F8296 /* AudioToolbox.framework */,
 				2F6C202F207378E200EEA98F /* ImageIO.framework */,
 				2F6C202D2073787C00EEA98F /* CoreGraphics.framework */,
 				2F6C202B2073786B00EEA98F /* libsqlite3.tbd */,
@@ -2713,7 +2709,7 @@
 								enabled = 1;
 							};
 							com.apple.InterAppAudio = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;

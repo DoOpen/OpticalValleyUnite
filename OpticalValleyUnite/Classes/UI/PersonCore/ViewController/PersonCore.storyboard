@@ -31,12 +31,6 @@
         <!--Person Core View Controller-->
         <scene sceneID="fi2-ge-SqA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="naP-St-gZw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="4bm-4g-K4P" userLabel="项目选择_TapGestureRecognizer">
-                    <connections>
-                        <action selector="allProjectSelectClick:" destination="GTU-aq-x3y" id="8Mk-9M-zI7"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <viewController id="GTU-aq-x3y" customClass="PersonCoreViewController" customModule="OpticalValleyUnite" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZPd-py-GWq"/>
@@ -363,8 +357,8 @@
                                                     <constraint firstItem="ORf-1E-WrN" firstAttribute="leading" secondItem="EUL-mJ-Wjk" secondAttribute="leading" constant="12" id="vrm-1U-pk1"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本号: 20180315" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiD-60-gI4">
-                                                <rect key="frame" x="118" y="344" width="138" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本号: 20180426" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiD-60-gI4">
+                                                <rect key="frame" x="116.5" y="344" width="141" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.59993284940719604" green="0.60003870725631714" blue="0.5999261736869812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -479,6 +473,12 @@
                         <outlet property="userNameLabel" destination="OeV-ba-tFG" id="OmD-ru-qWQ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naP-St-gZw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4bm-4g-K4P" userLabel="项目选择_TapGestureRecognizer">
+                    <connections>
+                        <action selector="allProjectSelectClick:" destination="GTU-aq-x3y" id="8Mk-9M-zI7"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="626" y="761"/>
         </scene>

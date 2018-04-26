@@ -3471,7 +3471,7 @@
 					"$(inherited)",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.Beta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3530,7 +3530,7 @@
 					"$(inherited)",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.OpticalValleyUnite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.OpticalValleyUnite.Beta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

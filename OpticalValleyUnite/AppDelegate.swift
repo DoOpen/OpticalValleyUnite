@@ -131,9 +131,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         
-        let num = UserDefaults.standard.object(forKey: Const.YQBadgeNumber) as?Int ?? 0
-        
-        UIApplication.shared.applicationIconBadgeNumber = num
+//        let num = UserDefaults.standard.object(forKey: Const.YQBadgeNumber) as?Int ?? 0
+//
+//        UIApplication.shared.applicationIconBadgeNumber = num
         
     }
 

@@ -79,13 +79,13 @@ class WorkOrderModel: Object {
     dynamic var reportPeopleName = ""
     dynamic var reportListPName = ""
     
-    var PARK_NAME = ""
-    var equipment_id = -1
-    var equipment_name = ""
-    var is_equip = -1
+    dynamic var PARK_NAME = ""
+    dynamic var equipment_id = -1
+    dynamic var equipment_name = ""
+    dynamic var is_equip = -1
     dynamic var type = ""
     dynamic var type2 = ""
-    
+    dynamic var WORKTYPE_NAME = ""
     
     convenience init(parmart: [String: Any]) {
         self.init()
@@ -120,6 +120,7 @@ class WorkOrderModel: Object {
             reportListPName = parmart["SOURCE_PERSON"] as? String ?? ""
         }
 
+        WORKTYPE_NAME = parmart["WORKTYPE_NAME"] as? String ?? ""
         
         if let _ = parmart["ID"] as? String ,((parmart["WORKUNIT_ID"] as? String) != nil){
             workOrderId = parmart["WORKUNIT_ID"] as? String ?? ""

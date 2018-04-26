@@ -755,7 +755,6 @@ class ExecutingViewConttroller: UIViewController {
             
         }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单的保存,保存实现原理不同
 
-            
             parmate?["stepId"] = "yingji"
             
             let images = addPhoneView.photos.map { (image) -> UIImage in
@@ -1396,14 +1395,13 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
                     
                     model.imageValue = newimageValue
 
-                    realm.delete(delete)
+                     realm.delete(delete)
                     //重新的逻辑替换
                     models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
                 }
                 
             }
-            
-            
+
             self.tableView.reloadRows(at: [currentRow], with: .automatic)
             //单行刷新列表
             return
@@ -1449,8 +1447,6 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
             models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
         }
         
-        
-
         //单行刷新列表
         self.tableView.reloadRows(at: [currentRow], with: .automatic)
         

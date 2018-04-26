@@ -35,9 +35,9 @@ class WorkOrder2Cell: UITableViewCell {
             workOrderIdLabel.text = model?.workOrderId
             contentLabel.text = model?.content
             timeLabel.text = model?.time
-            addressLabel.text = model?.PARK_NAME
+            addressLabel.text = model?.reportPeopleName
             
-            creatLabel.text = model?.reportListPName
+            creatLabel.text = model?.WORKTYPE_NAME
             
             deviceBtn.isHidden =  model!.is_equip != 1
             
@@ -46,6 +46,7 @@ class WorkOrder2Cell: UITableViewCell {
 
                 statusLabel.text = "待派发"
                 iconView.image = UIImage(name: "StayOut")
+                
             case 1://待接收（已派发
                 iconView.image = UIImage(name: "ToReceive")
                 statusLabel.text = "待接收"

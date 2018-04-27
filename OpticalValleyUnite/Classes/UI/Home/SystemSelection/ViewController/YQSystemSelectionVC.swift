@@ -35,6 +35,9 @@ class YQSystemSelectionVC: UIViewController {
     
     @IBOutlet weak var nineView: YQSystemView!
     
+    
+    @IBOutlet weak var scrollViewHightConstraint: NSLayoutConstraint!
+    
     ///保存消防的index
     var fireindex : Int = -1
     
@@ -98,8 +101,7 @@ class YQSystemSelectionVC: UIViewController {
                         
                         url = URL(string : URLPath.systemSelectionURL + pictureName)
                     }
-                    
-                    
+
                     dataV.logoImageView.kf.setImage(with: url, placeholder: UIImage(named: "login_icon_null"), options: nil, progressBlock: nil, completionHandler: nil)
                     
                     dataV.logoTitileLabel.text = data["name"] as? String
@@ -108,7 +110,7 @@ class YQSystemSelectionVC: UIViewController {
                         
                         fireindex = index
                     }
-//                    print(data)
+
                 }
                 
             } else if dataArray.count == 1 { //只有一条数据的时候处理
@@ -123,8 +125,7 @@ class YQSystemSelectionVC: UIViewController {
                 
                 SJKeyWindow?.rootViewController = tabVc
 
-            
-            }  else { // 直接跳转到home界面, 传递数据情况,(没有数据的逻辑处理)
+            } else { // 直接跳转到home界面, 传递数据情况,(没有数据的逻辑处理)
                 
                 //数据都需要保存下来,归档解档,plist文件
                 let tabVc = UITabBarController()
@@ -176,7 +177,18 @@ class YQSystemSelectionVC: UIViewController {
             
             //进行UI界面赋值添加
             self.dataArray = data as! NSArray
+            
+            if self.dataArray.count > 6{
+                
+                //对称的滚动美
+                self.scrollViewHightConstraint.constant = self.nineView.maxY + 20
+
+            }else{
+                
+                self.scrollViewHightConstraint.constant = SJScreeH + 20
+            }
         }
+        
         
     }
     

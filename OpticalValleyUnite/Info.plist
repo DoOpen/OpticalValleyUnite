@@ -144,5 +144,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>iOS11必须添加人员定位</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>iOS8-iOS11添加定位的必须设置</string>
 </dict>
 </plist>

@@ -801,6 +801,7 @@ class ExecutingViewConttroller: UIViewController {
                         }
                     }
                 }
+                
                 //保存的数据的接口的重调!
                 var parmat = [String: Any]()
                 parmat["WORKUNIT_ID"] = self.workOrderDetalModel?.id
@@ -830,7 +831,6 @@ class ExecutingViewConttroller: UIViewController {
                         //                    }
                     })
                 }
-                
                 
             }else{
                 

@@ -224,12 +224,11 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             projectName = dic?["PARK_NAME"] as! String
         }else{
-        
+         
             projectName = "项目选择"
         }
         
         return projectName
-        
     }
     
     // MARK: - 修改密码按钮点击功能实现
@@ -247,8 +246,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         let offlineVC = UIStoryboard.instantiateInitialViewController(name: "YQOffLineFirst") as? YQOffLineFirstWorkOrderVC
         
         self.navigationController?.pushViewController(offlineVC!, animated: true)
-        
-        
+
     }
     
     // MARK: - 个人详情信息的界面跳转
@@ -265,8 +263,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
         navigationController?.pushViewController(project, animated: true)
-    
-        
+
     }
     
     // MARK: - 分享界面的点击和跳转
@@ -350,6 +347,7 @@ protocol CheckNewBundleVersionProtocol {
 }
 
 extension CheckNewBundleVersionProtocol{
+    
     func checkNewBundleVersion(isBlack:Bool) -> (){
         
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String

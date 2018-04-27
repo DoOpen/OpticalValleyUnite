@@ -459,11 +459,11 @@ class ExecutingViewConttroller: UIViewController {
             realm.beginWrite()
             result?.save = true
             try! realm.commitWrite()
-
+            
             try! realm.write {
                 
                 realm.add(saveAndCompelete)
-                SVProgressHUD.showSuccess(withStatus: "保存数据成功!")
+                SVProgressHUD.showSuccess(withStatus: "工单保存成功!")
             }
 
             return
@@ -685,6 +685,7 @@ class ExecutingViewConttroller: UIViewController {
             
             realm.add(model)
         }
+        SVProgressHUD.showSuccess(withStatus: "保存成功!")
     
     }
     
@@ -747,6 +748,7 @@ class ExecutingViewConttroller: UIViewController {
                     
                     realm.add(saveAndCompelete)
                 }
+                SVProgressHUD.show(withStatus: "保存成功!")
                 
             }
 
@@ -773,7 +775,6 @@ class ExecutingViewConttroller: UIViewController {
             
             if images.count > 0 {
 
-                
                 if backDB {
                     
                     //应急工单,保存之前,数据要更新重置
@@ -798,9 +799,7 @@ class ExecutingViewConttroller: UIViewController {
                                 realm.delete(testArray)
                             }
                         }
-                        
                     }
-
                 }
                 //保存的数据的接口的重调!
                 var parmat = [String: Any]()
@@ -871,7 +870,7 @@ class ExecutingViewConttroller: UIViewController {
                         realm.add(saveAndCompelete)
                     }
                     
-                    
+                    SVProgressHUD.showSuccess(withStatus: "保存成功!")
                 }
                 
             }
@@ -907,7 +906,6 @@ class ExecutingViewConttroller: UIViewController {
                 
                 self.saveBtn.isSelected = false
                 self.saveBtn.isUserInteractionEnabled = true
-
             }
             
             self.ProgressVC?.reloadStatus(status: 7)
@@ -1264,6 +1262,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             model.isOpen = !model.isOpen
             self?.tableView.reloadData()
             try! realm.commitWrite()
+            SVProgressHUD.showSuccess(withStatus: "保存成功!")
             
         }
 
@@ -1310,6 +1309,7 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
             self.tableView.reloadRows(at: [currentRow], with: .automatic)
             
             try! realm.commitWrite()
+            SVProgressHUD.showSuccess(withStatus: "保存成功!")
             
             return
         }
@@ -1395,11 +1395,12 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
                     
                     model.imageValue = newimageValue
 
-                     realm.delete(delete)
+                    realm.delete(delete)
                     //重新的逻辑替换
                     models[(currentRow.section)].childs.replace(index: currentRow.row, object: model)
                 }
                 
+                 SVProgressHUD.showSuccess(withStatus: "保存成功!")
             }
 
             self.tableView.reloadRows(at: [currentRow], with: .automatic)
@@ -1471,7 +1472,7 @@ extension ExecutingViewConttroller : YQExecTextCellDelegate{
         models[(indexPath.section)].childs.replace(index: indexPath.row, object: model)
         
         try! realm.commitWrite()
-
+        SVProgressHUD.showSuccess(withStatus: "保存成功!")
         //单行刷新列表
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
 
@@ -1530,6 +1531,7 @@ extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCD
             models[(currentSelectIndexPath?.section)!].childs.replace(index: (currentSelectIndexPath?.row)!, object: model)
             
             try! realm.commitWrite()
+            SVProgressHUD.showSuccess(withStatus: "保存成功!")
             
         }else{
             

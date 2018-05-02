@@ -49,7 +49,6 @@ class YQAddView: UIView {
         if photos.count > maxCount {
             
             return
-            
         }else{
             
             self.PhotpView = SJPhotpView.photoView(image: image.image, deletBtnClickBlock: {

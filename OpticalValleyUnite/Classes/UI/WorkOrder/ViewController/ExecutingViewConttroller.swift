@@ -403,7 +403,8 @@ class ExecutingViewConttroller: UIViewController {
         }) { (error) in
             
             SVProgressHUD.dismiss()
-            SVProgressHUD.showSuccess(withStatus: "保存失败,请重试!")
+            
+            SVProgressHUD.showError(withStatus: "保存失败,请重试!")
             
             DispatchQueue.main.async {
                 
@@ -684,8 +685,8 @@ class ExecutingViewConttroller: UIViewController {
         try! realm.write {
             
             realm.add(model)
+            SVProgressHUD.showSuccess(withStatus: "保存成功!")
         }
-        SVProgressHUD.showSuccess(withStatus: "保存成功!")
     
     }
     
@@ -772,7 +773,6 @@ class ExecutingViewConttroller: UIViewController {
                 return
             }
 
-            
             if images.count > 0 {
 
                 if backDB {
@@ -1253,8 +1253,7 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
         }
         
 //        self.view.setNeedsDisplay()
-        
-        
+
         view.didTouchHandle = { [weak self] in
             
             let realm = try! Realm()
@@ -1262,8 +1261,12 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             model.isOpen = !model.isOpen
             self?.tableView.reloadData()
             try! realm.commitWrite()
-            SVProgressHUD.showSuccess(withStatus: "保存成功!")
             
+            if (self?.backDB)! {
+                
+                SVProgressHUD.showSuccess(withStatus: "保存成功!")
+                
+            }
         }
 
         return view
@@ -1472,7 +1475,10 @@ extension ExecutingViewConttroller : YQExecTextCellDelegate{
         models[(indexPath.section)].childs.replace(index: indexPath.row, object: model)
         
         try! realm.commitWrite()
-        SVProgressHUD.showSuccess(withStatus: "保存成功!")
+        if self.backDB {
+            
+            SVProgressHUD.showSuccess(withStatus: "保存成功!")
+        }
         //单行刷新列表
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
 
@@ -1531,7 +1537,10 @@ extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCD
             models[(currentSelectIndexPath?.section)!].childs.replace(index: (currentSelectIndexPath?.row)!, object: model)
             
             try! realm.commitWrite()
-            SVProgressHUD.showSuccess(withStatus: "保存成功!")
+            
+            if backDB {
+                SVProgressHUD.showSuccess(withStatus: "保存成功!")
+            }
             
         }else{
             

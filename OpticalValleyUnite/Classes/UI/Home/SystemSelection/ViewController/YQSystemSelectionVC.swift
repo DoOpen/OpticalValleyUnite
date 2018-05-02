@@ -110,7 +110,6 @@ class YQSystemSelectionVC: UIViewController {
                         
                         fireindex = index
                     }
-
                 }
                 
             } else if dataArray.count == 1 { //只有一条数据的时候处理
@@ -145,7 +144,6 @@ class YQSystemSelectionVC: UIViewController {
     lazy var viewArray:[YQSystemView] = {
         () ->[YQSystemView]
         in
-        
         return[self.firstView,self.SecondView,self.thridView,self.fourVIEW,self.fiveView,self.sixthView,self.sevenView,self.eightView,self.nineView]
         
     }()
@@ -186,10 +184,10 @@ class YQSystemSelectionVC: UIViewController {
             }else{
                 
                 self.scrollViewHightConstraint.constant = SJScreeH + 20
+                
             }
         }
-        
-        
+ 
     }
     
     

@@ -18,9 +18,7 @@ class YQAddView: UIView {
     var photos = [ImageProtocol]()
     
     var photoImages = [Photo]()
-    
-    
-    
+
     var PhotpView : SJPhotpView?
     
     
@@ -76,11 +74,11 @@ class YQAddView: UIView {
         }
         
         layoutSubviews()
-        
     }
     
     
     override func layoutSubviews() {
+        
         super.layoutSubviews()
         
         let cloms = 4, margin: CGFloat = 10.0, wh = self.height - CGFloat(2.0 * margin)
@@ -95,6 +93,7 @@ class YQAddView: UIView {
             img.frame = CGRect(x: x, y: y, width: wh, height: wh)
             i += 1
         }
+        
         if (self.subviews.count < self.maxCount) {
             addSubview(addButton)
         }
@@ -112,7 +111,7 @@ class YQAddView: UIView {
         let pb = PhotoBrowser(photos: self.photoImages , currentIndex: 0)
         pb.indicatorStyle = .pageControl
         
-        SJKeyWindow?.rootViewController?.present(pb, animated: true, completion: nil)
+        superVC?.present(pb, animated: true, completion: nil)
         
     }
 
@@ -125,6 +124,9 @@ class YQAddView: UIView {
         SJTakePhotoHandle.takePhoto(imageBlock: { (image) in
             
             self.addImage(AddViewModel(image: image!))
+            
+            let photo = Photo.init(image: image)
+            self.photoImages.append(photo)
             
         }, viewController: (self.superVC), select: Int32(index))
         

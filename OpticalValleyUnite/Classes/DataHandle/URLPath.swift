@@ -12,7 +12,6 @@ import Foundation
 // 项目要求的 整体的测试环境有四种:
 
 /*
- 
  1.生产环境: http://portal.ovuems.com/
  
  2.演示环境: http://demo.ovuems.com/
@@ -26,7 +25,6 @@ import Foundation
  6.新版的测试库环境: http://172.16.19.98:4399/
  
  7.新加的正式服务器环境: http://172.16.19.98:3018/
- 
  */
 
 
@@ -46,8 +44,7 @@ struct URLPath {
     ///测试服的域名链接: http://ovuems.com/ovu-base
     
     //服务器的basicBasicPath
-    
-    static let basicBasic = "http://beta.ovuems.com"
+    static let basicBasic = "http://172.16.19.98:8091"
     
     
     //服务器的basic 地址:

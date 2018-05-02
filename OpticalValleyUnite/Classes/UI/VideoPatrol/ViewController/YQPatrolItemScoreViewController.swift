@@ -183,6 +183,7 @@ class YQPatrolItemScoreViewController: UIViewController {
         for btn in starsView.subviews as! [UIButton]{
             btn.isSelected = btn.tag < sender.tag + 1
         }
+        
     }
 
     // MARK: - buttonClick的方法
@@ -376,6 +377,7 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomLastViewDelegate{
         par["checkType"] = self.model?.checkType
         
         if self.selectStarsBtn == nil {
+            
             par["score"] = 1
             
         }else{
@@ -427,7 +429,6 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomLastViewDelegate{
             }
         
         })
-        
     }
     
     

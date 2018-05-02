@@ -9,7 +9,7 @@
 import UIKit
 
 //swift 中的全局的宏的情况
-let isProjectBate = true
+let isProjectBate = false
 
 
 struct Const {

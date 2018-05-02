@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
-	<string>EMS-BETA</string>
+	<string>OVU-EMS</string>
 	<key>CFBundleExecutable</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -122,8 +122,12 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>扫描二维码</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>iOS11必须添加人员定位</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>获取职员实时位置</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>iOS8-iOS11添加定位的必须设置</string>
 	<key>NSMotionUsageDescription</key>
 	<string>App需要您的同意,才能访问运动与健身</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -144,9 +148,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>iOS11必须添加人员定位</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>iOS8-iOS11添加定位的必须设置</string>
 </dict>
 </plist>

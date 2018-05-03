@@ -10,7 +10,6 @@ import UIKit
 
 class YQEditTextVC: UIViewController {
 
-    
     @IBOutlet weak var editWebView: UIWebView!
     
     

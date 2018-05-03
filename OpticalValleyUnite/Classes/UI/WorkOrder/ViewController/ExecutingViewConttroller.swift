@@ -1357,8 +1357,7 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
         let id = model.id
         
         var tempArray =  model.imageValue.components(separatedBy: ",")
-        
-        
+
         if backDB {
             
             //删除移除数据库的picter图片
@@ -1426,8 +1425,7 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
 //            }
         
         }else{
-            
-            
+
             //移除网络图片
             tempArray.remove(at: buttonTag)
             
@@ -1453,7 +1451,6 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
         
         //单行刷新列表
         self.tableView.reloadRows(at: [currentRow], with: .automatic)
-        
     }
     
 }

@@ -11,9 +11,7 @@ import UIKit
 class YQFeedbackListModel: NSObject {
     
     var createTime = ""
-    
     var id  : Int64 = 0
-    
     var title = ""
     
     init(dict : [String : Any]) {

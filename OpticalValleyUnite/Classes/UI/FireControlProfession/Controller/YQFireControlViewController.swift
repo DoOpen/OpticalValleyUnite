@@ -161,14 +161,16 @@ class YQFireControlViewController: UIViewController {
             
             if url.contains("http") {
                 
-                bnt.kf.setImage(with: URL(string: url), for: .normal)
+                bnt.kf.setBackgroundImage(with: URL(string: url), for: .normal, placeholder: image, options: nil, progressBlock: nil
+                    , completionHandler: nil)
                 
             }else{
                 
                 let basicPath = URLPath.systemSelectionURL
                 let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                 
-                bnt.kf.setImage(with: URL(string: imageValue), for: .normal)
+                bnt.kf.setBackgroundImage(with: URL(string: imageValue), for: .normal, placeholder: image, options: nil, progressBlock: nil
+                    , completionHandler: nil)
             }
             
         }else {

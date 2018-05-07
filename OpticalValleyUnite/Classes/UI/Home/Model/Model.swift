@@ -185,6 +185,8 @@ class WorkOrderModel2: Object {
     dynamic var save = false
     dynamic var complete = false
 
+    //新增添加 频次的选项值:
+    dynamic var WORKTASK_RATE = ""
     
     convenience init(parmart: [String: Any]) {
         self.init()

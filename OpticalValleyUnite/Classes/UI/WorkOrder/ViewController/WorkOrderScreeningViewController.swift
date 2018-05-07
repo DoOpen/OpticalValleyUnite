@@ -217,7 +217,5 @@ extension WorkOrderScreeningViewController: RKTagsViewDelegate{
     func tagsViewContentSizeDidChange(_ tagsView: RKTagsView) {
         scrollView.contentSize = CGSize(width: 0, height: 330.0 + tagsView.contentSize.height)
     }
-    
-    
-    
+
 }

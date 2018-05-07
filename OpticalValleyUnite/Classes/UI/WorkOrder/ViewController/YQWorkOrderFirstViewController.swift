@@ -241,8 +241,6 @@ extension YQWorkOrderFirstViewController: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell: WorkOrder2Cell //注意的是,细小的bug 两个的cell是不同的模型
-        
-        
         cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! WorkOrder2Cell
         cell.model2 = currentDatas[indexPath.row]
         

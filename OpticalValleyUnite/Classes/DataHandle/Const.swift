@@ -13,7 +13,6 @@ let isProjectBate = false
 
 
 struct Const {
-    
 
     static let SJThemeColor = UIColor.colorFromRGB(rgbValue: 0x31A5EC)
     

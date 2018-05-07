@@ -87,7 +87,7 @@ class YQSystemSelectionVC: UIViewController {
                     //取出的view
                     let dataV = viewArray[index]
                     
-                    let pictureName = data["logo_url"] as! String
+                    let pictureName = data["logoUrl"] as! String
                     
                     var url = URL(string: "")
                     

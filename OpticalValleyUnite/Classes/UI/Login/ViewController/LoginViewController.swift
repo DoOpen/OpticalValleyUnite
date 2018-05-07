@@ -146,7 +146,7 @@ class LoginViewController: UIViewController {
 //                    let token = (value["data"] as!  [String: Any])["TOKEN"] as! String
                     if let data = value["data"] as? [String: Any]{
                         
-                        let token = data["TOKEN"] as! String
+                        let token = data["token"] as! String
                         
                         UserDefaults.standard.set(token, forKey: Const.SJToken)
                         

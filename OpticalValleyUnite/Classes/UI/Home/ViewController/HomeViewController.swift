@@ -228,7 +228,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         if systemSelection.count > 0 {
             
             
-            let array : NSArray = systemSelection["app_res"] as! [[String : Any]] as NSArray
+            let array : NSArray = systemSelection["appModules"] as! [[String : Any]] as NSArray
             let tempArray = NSMutableArray()
             tempArray.addObjects(from: array as! [Any])
             
@@ -240,10 +240,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 for yyyy in 0..<tempArray.count - 1 {
                 
                     let sortTemp = tempArray[yyyy] as! [String : Any]
-                    let SORT = sortTemp["SORT"] as? Int
+                    let SORT = sortTemp["sort"] as? Int
                     
                     let sortTemp1 = tempArray[yyyy + 1] as! [String : Any]
-                    let SORT1 = sortTemp1["SORT"] as? Int
+                    let SORT1 = sortTemp1["sort"] as? Int
 
                     if SORT! > SORT1! {
                         //交换元素
@@ -262,7 +262,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 let app = sortArray[0] as! [String : Any]
 //                let app_res = app["app_res"] as? NSArray
 //                let temp = app_res?[0] as? [String : Any]
-                let reportName = (app["APP_MODULE_NAME"] as? String)!
+                let reportName = (app["appModuleName"] as? String)!
                 
                 //设置保存电梯和普通的报事全局保存
                 UserDefaults.standard.set(reportName, forKey: Const.YQReportName)

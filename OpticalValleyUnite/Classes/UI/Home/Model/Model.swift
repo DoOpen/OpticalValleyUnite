@@ -151,6 +151,7 @@ class WorkOrderModel: Object {
 }
 
 class WorkOrderModel2: Object {
+    
     //UNIT_STATUS
     //    0：待派发  1：已派发
     //    2：已完成  3：已取消
@@ -184,6 +185,9 @@ class WorkOrderModel2: Object {
     
     dynamic var save = false
     dynamic var complete = false
+    
+    //新增添加 应急工单的报事类型
+    dynamic var WORKTYPE_NAME = ""
 
     //新增添加 频次的选项值:
     dynamic var WORKTASK_RATE = ""
@@ -194,13 +198,26 @@ class WorkOrderModel2: Object {
         content = parmart["DESCRIPTION"] as? String ?? ""
         
         if content == ""{
+            
             content = parmart["WORKUNIT_NAME"] as? String ?? ""
         }
         if content == ""{
+            
             content = parmart["NAME"] as? String ?? ""
         }
-        
+        //报事时间的更改
         time = parmart["CREATE_DATE"] as? String ?? ""
+        
+        if time == "" {
+            
+            time = parmart["EXEC_DATE"] as? String ?? ""
+        }
+        
+        if time == "" {
+            
+            time = parmart["ALLOCATION_TIME"] as? String ?? ""
+        }
+        
         status = parmart["UNIT_STATUS"] as? Int ?? -1
         execPersionId = parmart["EXEC_PERSON_ID"] as? String ?? ""
         PERSONTYPE = parmart["IS_ASSISTANCE_PERSON"] as? Int ?? 0
@@ -209,18 +226,21 @@ class WorkOrderModel2: Object {
         reportPeopleName = parmart["SOURCE_PERSON_NAME"] as? String ?? ""
         
 //        reportListPName = parmart["SOURCE_PERSON"] as? String ?? ""
+        //新增频次
+        WORKTASK_RATE = parmart["WORKTASK_RATE"] as? String ?? ""
+        
+        WORKTYPE_NAME = parmart["WORKTYPE_NAME"] as? String ?? ""
         
         if let text = parmart["ISSUPERVISE"] as? String{
+            
             isSupervise = text == "FALSE"
         }
         
+        // 报事人的类型有改动
         if reportPeopleName == "" {
-            reportPeopleName = parmart["SOURCE_PERSON_NAME"] as? String ?? ""
+            
+            reportPeopleName = parmart["MANAGE_PERSON_NAME"] as? String ?? ""
         }
-        
-//        if reportListPName == "" {
-//            reportListPName = parmart["SOURCE_PERSON"] as? String ?? ""
-//        }
         
         
         if let _ = parmart["ID"] as? String ,((parmart["WORKUNIT_ID"] as? String) != nil){

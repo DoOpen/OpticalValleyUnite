@@ -18,11 +18,13 @@ class WorkOrder2Cell: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    //创建的人名
+    
+    //创建的人名(中间第二个)
     @IBOutlet weak var creatLabel: UILabel!
     @IBOutlet weak var typeBtn: UIButton!
     //设备类的标签
     @IBOutlet weak var deviceBtn: UIButton!
+    
     @IBOutlet weak var addressLabel: UILabel!
 
     
@@ -82,6 +84,8 @@ class WorkOrder2Cell: UITableViewCell {
             if model?.type2 == "1"{
 
                 typeBtn.setTitle("计划工单", for: .normal)
+                
+                
             }else{
 
                 typeBtn.setTitle("应急工单", for: .normal)
@@ -91,18 +95,33 @@ class WorkOrder2Cell: UITableViewCell {
     }
     
     var model2: WorkOrderModel2?{
+        
         didSet{
+            
+            //通过的是不同的type类型来进行的赋值不同的选项值!
+            if model2?.type2 == "1"{
+                
+                typeBtn.setTitle("计划工单", for: .normal)
+                
+                creatLabel.text = model2?.WORKTASK_RATE
+
+            }else{
+                
+                typeBtn.setTitle("应急工单", for: .normal)
+                
+                creatLabel.text = model2?.WORKTYPE_NAME
+            }
             
             saveLabel.isHidden = true
             compelteLabel.isHidden = true
                 
             workOrderIdLabel.text = model2?.workOrderId
             contentLabel.text = model2?.content
+            
             timeLabel.text = model2?.time
             
-            addressLabel.text = model2?.PARK_NAME
-            
-            creatLabel.text = model2?.reportPeopleName
+            addressLabel.text = model2?.reportPeopleName
+            // creatLabel.text = model2?.PARK_NAME
             
             deviceBtn.isHidden =  model2!.is_equip != 1
             
@@ -153,16 +172,6 @@ class WorkOrder2Cell: UITableViewCell {
                 iconView.image = UIImage(name: "AssistToSee")
                 
             }
-            
-            
-            if model2?.type2 == "1"{
-                
-                typeBtn.setTitle("计划工单", for: .normal)
-            }else{
-                
-                typeBtn.setTitle("应急工单", for: .normal)
-            }
-            
         }
     }
     

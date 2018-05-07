@@ -234,7 +234,7 @@
                 <outlet property="typeBtn" destination="5VS-H5-BHA" id="U3p-NY-d7A"/>
                 <outlet property="workOrderIdLabel" destination="Yu9-gj-glD" id="t29-9Z-qNO"/>
             </connections>
-            <point key="canvasLocation" x="-299" y="9"/>
+            <point key="canvasLocation" x="-352" y="-62"/>
         </tableViewCell>
     </objects>
     <resources>

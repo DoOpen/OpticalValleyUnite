@@ -82,7 +82,7 @@ class LoginViewController: UIViewController {
         
         var parameters = [String : Any]()
 //        parameters["token"] = "123"
-        parameters["LOGIN_NAME"] = user
+        parameters["loginName"] = user
 
         
         //保存用户名和密码的情况
@@ -92,13 +92,13 @@ class LoginViewController: UIViewController {
         
             if self.isMd5 {
             
-                parameters["PASSWORD"] = UserDefaults.standard.object(forKey: Const.standardUserPwd)
+                parameters["password"] = UserDefaults.standard.object(forKey: Const.standardUserPwd)
                 
                 self.isMd5 = false
                 
             }else{
             
-                parameters["PASSWORD"] = password?.md5()
+                parameters["password"] = password?.md5()
                 
                 UserDefaults.standard.set(password?.md5(), forKey: Const.standardUserPwd)
             }
@@ -108,11 +108,11 @@ class LoginViewController: UIViewController {
             
             if self.isMd5 {
                 
-                parameters["PASSWORD"] = UserDefaults.standard.object(forKey: Const.standardUserPwd)
+                parameters["password"] = UserDefaults.standard.object(forKey: Const.standardUserPwd)
                 
             }else{
                 
-                parameters["PASSWORD"] = password?.md5()
+                parameters["password"] = password?.md5()
             
             }
             
@@ -122,7 +122,7 @@ class LoginViewController: UIViewController {
         
         if let token = UserDefaults.standard.object(forKey: "SJDeviceToken") as? String{
             
-            parameters["UMENG_TOKEN"] = token
+            parameters["umengToken"] = token
             
         }
         
@@ -163,8 +163,7 @@ class LoginViewController: UIViewController {
                      self.systemSelectionNetworkInterface()
                     // 跳转到日志的测试的模块
                     // self.pushToJournalViewController()
-                    
-                    
+
                     break
                 }
                 break
@@ -343,7 +342,8 @@ class LoginViewController: UIViewController {
         
         var paramet = [String: Any]()
         if let token = UserDefaults.standard.object(forKey: "SJDeviceToken") as? String{
-            paramet["UMENG_TOKEN"] = token
+            
+            paramet["token"] = token
         }
         
         HttpClient.instance.post(path: URLPath.logOut, parameters: paramet, success: { (data) in

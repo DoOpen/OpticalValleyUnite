@@ -573,7 +573,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     
     func uploadLocation(parmat: [String: Any]){
+        
 //        if lastUpdateTime.timeIntervalSinceNow < -3.0 * 60{
+        
             lastUpdateTime = Date()
         
             HttpClient.instance.post(path: URLPath.updateLocation, parameters: parmat, success: { (response) in
@@ -581,9 +583,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 
                 
             }) { (error) in
+                
                 print(error)
             }
+        
 //        }
+        
     }
     
     // MARK: - 天气按钮的点击情况
@@ -809,15 +814,14 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
         print("location:lat:\(location.coordinate.latitude); lon:\(location.coordinate.longitude); reGeocode:\(reGeocode)")
         
         var parmet = [String: Any]()
-        parmet["MAP_LAT"] = location.coordinate.latitude
-        parmet["MAP_LNG"] = location.coordinate.longitude
+        parmet["mapLat"] = location.coordinate.latitude
+        parmet["mapLng"] = location.coordinate.longitude
         
         if !User.isLogin(){
             
             return
         }
-        
-        
+
         if let latitude = UserDefaults.standard.object(forKey: "SJlatitude") as? CLLocationDegrees,let longitude = UserDefaults.standard.object(forKey: "SJlongitude") as? CLLocationDegrees{
             
             let lastCLLocation = CLLocation(latitude: latitude, longitude: longitude)
@@ -839,7 +843,7 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
 
         if reGeocode != nil
         {
-            parmet["RESERVER"] = reGeocode.formattedAddress
+            parmet["reserver"] = reGeocode.formattedAddress
             uploadLocation(parmat: parmet)
             //获取的是 逆地理的信息情况(各种的应用的参数)
             self.searchLiveWeather(city: reGeocode.city!)
@@ -850,7 +854,7 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
                 
                 if let address = address{
                     
-                    parmet["RESERVER"] = address
+                    parmet["reserver"] = address
                     let str = NSString.init(string: address)
                     let cityRange = str.range(of: "市")
                     let newRange = NSRange.init(location: 0, length: cityRange.location + 1)
@@ -866,6 +870,7 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
 
         }
     }
+    
     
     //MARK: - AMapSearchDelegate
     func aMapSearchRequest(_ request: Any!, didFailWithError error: Error!) {

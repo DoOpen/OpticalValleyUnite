@@ -82,7 +82,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQImplementFeedbackVC.swift"
-                  timestampString = "547456577.422547"
+                  timestampString = "547461135.642073"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "298"
@@ -97,7 +97,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQImplementFeedbackVC.swift"
-                  timestampString = "547456577.427632"
+                  timestampString = "547461135.6451859"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "300"
@@ -114,13 +114,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpticalValleyUnite/Classes/UI/Home/ViewController/ChooseHouseViewController.swift"
-            timestampString = "547456739.746832"
+            timestampString = "547461135.20183"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
             endingLineNumber = "175"
             landmarkName = "getDataTool()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/Home/ViewController/HomeViewController.swift"
+            timestampString = "547461380.432277"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "583"
+            endingLineNumber = "583"
+            landmarkName = "uploadLocation(parmat:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.AnyObject) -&gt; () in OpticalValleyUnite.HomeViewController.uploadLocation(parmat: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/Home/ViewController/HomeViewController.swift"
+                  timestampString = "547461380.6529109"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "585"
+                  endingLineNumber = "585"
+                  offsetFromSymbolStart = "170">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__ObjC.NSError) -&gt; () in OpticalValleyUnite.HomeViewController.uploadLocation(parmat: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/Home/ViewController/HomeViewController.swift"
+                  timestampString = "547461380.655407"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "587"
+                  endingLineNumber = "587"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

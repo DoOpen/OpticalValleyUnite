@@ -86,13 +86,15 @@ class PersonDetailViewController: UITableViewController{
 
     private func getDate(){
         
+        
         HttpClient.instance.get(path: URLPath.getPersonInfo, parameters: nil, success: { (response) in
             
-            if let dic = (response as? Array<[String: Any]>)?.first{
+            
+            if let dic = (response as? [String: Any]){
                 
                 self.model = PersonInfo(parmart: dic)
-                
             }
+            
             
         }) { (error) in
             

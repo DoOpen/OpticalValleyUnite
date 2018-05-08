@@ -355,6 +355,8 @@ extension CheckNewBundleVersionProtocol{
         var parmat = [String: Any]()
         parmat["version"] = version
         parmat["type"] = "iOS"
+        parmat["appCode"] = "ems" // beta的新的接口添加,调试!
+        
         
         HttpClient.instance.post(path: URLPath.getVersion, parameters: parmat, success: { (response) in
             
@@ -393,6 +395,7 @@ extension CheckNewBundleVersionProtocol{
             }
 
         }) { (error) in
+            
             print(error)
         }
 

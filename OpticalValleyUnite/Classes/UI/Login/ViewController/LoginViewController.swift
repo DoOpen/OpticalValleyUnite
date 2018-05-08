@@ -126,8 +126,13 @@ class LoginViewController: UIViewController {
             
         }
         
-        SVProgressHUD.show(withStatus: "登录中")
+        parameters["deviceToken"] = ""
         
+        print(parameters)
+        print(URLPath.newbasicPath + URLPath.login)
+        
+        SVProgressHUD.show(withStatus: "登录中")
+
         Alamofire.request(URLPath.newbasicPath + URLPath.login, method: .post, parameters: parameters).responseJSON { (response) in
             SVProgressHUD.dismiss()
             switch response.result {
@@ -209,7 +214,7 @@ class LoginViewController: UIViewController {
         
         HttpClient.instance.get(path: URLPath.getPersonInfo, parameters: nil, success: { (response) in
             
-            if let dic = (response as? Array<[String: Any]>)?.first{
+            if let dic = (response as? [String: Any]){
                 
                 let model = PersonInfo(parmart: dic)
                 let user = User.currentUser()

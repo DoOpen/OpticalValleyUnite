@@ -1132,11 +1132,12 @@ class PersonInfo {
     
     convenience init(parmart: [String: Any]) {
         self.init()
-        picture = parmart["USER_ICON"] as? String ?? ""
+        
+        picture = parmart["picture"] as? String ?? ""
         sex = parmart["sex"] as? String ?? ""
         name = parmart["name"] as? String ?? ""
-        job_code = parmart["job_code"] as? String ?? ""
-        partin_day = parmart["partin_day"] as? String ?? ""
+        job_code = parmart["jobCode"] as? String ?? ""
+        partin_day = parmart["partinDay"] as? String ?? ""
         birthday = parmart["birthday"] as? String ?? ""
         year = parmart["year"] as? String ?? ""
         

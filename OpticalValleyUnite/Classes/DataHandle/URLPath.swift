@@ -47,7 +47,7 @@ struct URLPath {
     ///测试服的域名链接: http://ovuems.com/ovu-base
     
     //服务器的basicBasicPath
-    static let basicBasic = " http://47.98.171.192:8000"
+    static let basicBasic = "http://172.16.11.55:81"
     
     
     //服务器的basic 地址:
@@ -148,8 +148,8 @@ struct URLPath {
     ///获取权限
     static let getModules = "module/getModules.do"
     
-    //获取去版本
-    static let getVersion = "workunit/getVersion.do"
+    //获取新版本(版本帐号)
+    static let getVersion = "version/getVersion.do"
     
     //获取报事记录
     static let getReportList = "workunit/myworkunitList.do"

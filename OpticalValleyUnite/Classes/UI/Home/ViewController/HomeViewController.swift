@@ -168,6 +168,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }) { (error) in
             print(error)
         }
+        
     }
     
     

@@ -42,8 +42,8 @@ class ProjectModel: NSObject{
         
         self.init()
         
-        projectName = parmart["PARK_NAME"] as? String ?? ""
-        projectId = parmart["ID"] as? String ?? ""
+        projectName = parmart["parkName"] as? String ?? ""
+        projectId = parmart["id"] as? String ?? ""
 
     }
     

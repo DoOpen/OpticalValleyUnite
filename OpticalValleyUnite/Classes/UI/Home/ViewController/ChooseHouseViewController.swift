@@ -169,7 +169,7 @@ class ChooseHouseViewController: UIViewController {
         
         SVProgressHUD.show()
         
-        HttpClient.instance.get(path: URLPath.getParkInfoById, parameters: ["PARK_ID": parkId!], success: { (response) in
+        HttpClient.instance.get(path: URLPath.getParkInfoById, parameters: ["parkId": parkId!], success: { (response) in
             
             SVProgressHUD.dismiss()
             

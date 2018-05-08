@@ -184,6 +184,9 @@ class WorkOrderModel2: Object {
     
     dynamic var save = false
     dynamic var complete = false
+    
+    //新增添加 应急工单的报事类型
+    dynamic var WORKTYPE_NAME = ""
 
     //新增添加 频次的选项值:
     dynamic var WORKTASK_RATE = ""
@@ -211,22 +214,24 @@ class WorkOrderModel2: Object {
 //        reportListPName = parmart["SOURCE_PERSON"] as? String ?? ""
         
         if let text = parmart["ISSUPERVISE"] as? String{
+            
             isSupervise = text == "FALSE"
+            
         }
         
         if reportPeopleName == "" {
+            
             reportPeopleName = parmart["SOURCE_PERSON_NAME"] as? String ?? ""
         }
         
-//        if reportListPName == "" {
-//            reportListPName = parmart["SOURCE_PERSON"] as? String ?? ""
-//        }
         
         
         if let _ = parmart["ID"] as? String ,((parmart["WORKUNIT_ID"] as? String) != nil){
+            
             workOrderId = parmart["WORKUNIT_ID"] as? String ?? ""
             
         }else{
+            
             workOrderId = parmart["ID"] as? String ?? ""
         }
         
@@ -1088,12 +1093,12 @@ class PermissionModel {
         self.oPENSTATUS = oPENSTATUS
     }
     convenience init?(json: [String: Any]) {
-        guard let iD = json["ID"] as? String else { return nil }
-        guard let sORT = json["SORT"] as? Int else { return nil }
-        guard let dESCRIPTION = json["DESCRIPTION"] as? String else { return nil }
-        guard let iSTOP = json["IS_TOP"] as? Int else { return nil }
-        guard let aPPMODULENAME = json["APP_MODULE_NAME"] as? String else { return nil }
-        guard let oPENSTATUS = json["OPEN_STATUS"] as? Int else { return nil }
+        guard let iD = json["id"] as? String else { return nil }
+        guard let sORT = json["sort"] as? Int else { return nil }
+        guard let dESCRIPTION = json["description"] as? String else { return nil }
+        guard let iSTOP = json["isTop"] as? Int else { return nil }
+        guard let aPPMODULENAME = json["appModuleName"] as? String else { return nil }
+        guard let oPENSTATUS = json["openStatus"] as? Int else { return nil }
         self.init(iD: iD, sORT: sORT, dESCRIPTION: dESCRIPTION, iSTOP: iSTOP, aPPMODULENAME: aPPMODULENAME, oPENSTATUS: oPENSTATUS)
     }
 }

@@ -129,8 +129,8 @@ class PersonDetailViewController: UITableViewController{
             }) { (error) in
                 
             }
-
         }
+        
     }
 
 }

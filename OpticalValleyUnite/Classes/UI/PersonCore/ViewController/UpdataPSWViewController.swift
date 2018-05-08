@@ -34,8 +34,8 @@ class UpdataPSWViewController: UIViewController {
         let string2 = NSString.init(string: (newPassword2?.md5())!)
         var paramet = [String: Any]()
         //修改密码,字符串要求全部转大写的情况!
-        paramet["OLD_PASSWORD"] = string1.uppercased
-        paramet["NEW_PASSWORD"] = string2.uppercased
+        paramet["oldPassword"] = string1.uppercased
+        paramet["newPassword"] = string2.uppercased
         
         SVProgressHUD.show()
         

@@ -214,8 +214,7 @@ class YQIntoDoorViewController: UIViewController {
                 
                 //传递所有开门的数据
                 par["deviceList"] = parArray
-                
-                
+
             }else{
                 
                 self.alert(message: "没有可用的蓝牙设备!")
@@ -340,7 +339,7 @@ class YQIntoDoorViewController: UIViewController {
     
     
     // MARK: - 设置保存记录的上传
-    func bluetoothOpenDoorSaveFunction(){
+    func bluetoothOpenDoorSaveFunction( cell : YQBluetoothCell){
     
         var allParams = [String : Any]()
         
@@ -383,6 +382,14 @@ class YQIntoDoorViewController: UIViewController {
             
             SVProgressHUD.dismiss()
             SVProgressHUD.showSuccess(withStatus: "保存成功!")
+            
+            //这里进行的延时复原的cell
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
+
+                cell.openButton.isSelected = false
+                
+                self.tableView.reloadData()
+            }
             
             
         }) { (error) in
@@ -551,7 +558,6 @@ extension YQIntoDoorViewController : UITableViewDelegate,UITableViewDataSource{
         return 100
     }
     
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -621,7 +627,7 @@ extension YQIntoDoorViewController : RfmSessionDelegate{
                 cell?.openButton.isSelected = true
                 
                 //发送保蓝牙开门操作记录!
-                self.bluetoothOpenDoorSaveFunction()
+                self.bluetoothOpenDoorSaveFunction(cell: cell!)
 
                 break
                 

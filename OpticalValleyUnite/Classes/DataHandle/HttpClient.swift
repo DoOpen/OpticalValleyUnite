@@ -67,10 +67,8 @@ extension HttpClient {
         }else{
             
             allurl = URLPath.basicPath + urlString
-            
         }
-        
-        
+
         print("请求URL:" + allurl)
         print("请求参数:")
         print(parameters)

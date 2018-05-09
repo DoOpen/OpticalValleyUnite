@@ -209,8 +209,8 @@ class SignInViewController: UIViewController {
     func getParkAddress(){
         
         var paramet = [String: Any]()
-        paramet["MAP_LNG"] = loction?.coordinate.longitude
-        paramet["MAP_LAT"] = loction?.coordinate.latitude
+        paramet["mapLng"] = loction?.coordinate.longitude
+        paramet["mapLat"] = loction?.coordinate.latitude
 //        paramet["MAP_LNG"] = "114.321783"
 //        paramet["MAP_LAT"] = "30.470451"
         HttpClient.instance.post(path: URLPath.getParkAddress, parameters: paramet, success: { (resposen) in
@@ -218,7 +218,7 @@ class SignInViewController: UIViewController {
                 
                 self.hasAddress = true
                 
-                if let address = arry.first?["PARK_NAME"] as? String,address != ""{//正常签到
+                if let address = arry.first?["parkName"] as? String,address != ""{//正常签到
                     
                     self.addressLabel.text = address
                     

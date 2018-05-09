@@ -837,9 +837,6 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
             UserDefaults.standard.set(location.coordinate.latitude, forKey: "SJlatitude")
             UserDefaults.standard.set(location.coordinate.longitude, forKey: "SJlongitude")
         }
-        
-        
-        
 
         if reGeocode != nil
         {

@@ -83,20 +83,19 @@ class SlotViewController: UIViewController {
 
 
     func  mapSetup(){
+        
         AMapServices.shared().enableHTTPS = true
         mapView.showsUserLocation = true;
         mapView.userTrackingMode = .followWithHeading;
         mapView.delegate = self
         mapView.zoomLevel = 17.0
-        
-        
-        
-        
+
     }
     
     func getData(_ date: String){
+        
         var parmat = [String: Any]()
-        parmat["DATE"] = date
+        parmat["date"] = date
         
         let url = URLPath.getPersonPosList
 
@@ -166,9 +165,6 @@ extension SlotViewController: MAMapViewDelegate{
                 label.text = "\(annotation.index)"
                 
             }
-            
-            
-            
             
             return view!
         }

@@ -1061,17 +1061,20 @@ class SignModel{
     
     convenience init(parmart: [String: Any]) {
         self.init()
-        MAP_LNG = parmart["MAP_LNG"] as? String ?? ""
-        MAP_LAT = parmart["MAP_LAT"] as? String ?? ""
+        
+        MAP_LNG = parmart["map_lng"] as? String ?? ""
+        MAP_LAT = parmart["map_lat"] as? String ?? ""
         ADDRESS = parmart["ADDRESS"] as? String ?? ""
         SIGN_TIME = parmart["SIGN_TIME"] as? String ?? ""
         SIGN_STATU = parmart["SIGN_STATU"] as? String ?? ""
         
         if SIGN_TIME == ""{
-            SIGN_TIME = parmart["POSITION_TIME"] as? String ?? ""
+            
+            SIGN_TIME = parmart["position_time"] as? String ?? ""
         }
         
         if ADDRESS == ""{
+            
             ADDRESS = parmart["RESERVER"] as? String ?? ""
         }
     }

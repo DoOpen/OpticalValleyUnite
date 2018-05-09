@@ -618,7 +618,6 @@ extension YQIntoDoorViewController : RfmSessionDelegate{
                 
                 //获取cell,设置button的属性
                 let cell  = self.tableView.cellForRow(at: self.currentIndexP!) as? YQBluetoothCell
-                
                 cell?.openButton.isSelected = true
                 
                 //发送保蓝牙开门操作记录!

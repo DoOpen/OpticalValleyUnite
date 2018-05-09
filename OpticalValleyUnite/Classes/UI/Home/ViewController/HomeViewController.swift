@@ -53,6 +53,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     var allPermissionModels = [PermissionModel]()
     var downPermissionModels = [PermissionModel]()
     
+    /// 项目选择按钮
+    @IBOutlet weak var projectButton: UIButton!
+    
     
     /// tabelView的拖线的指针
     @IBOutlet weak var tableView: UITableView!
@@ -114,6 +117,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         //搜索
         initSearch()
         
+        //获取项目选择title
+        let name = setUpProjectNameLable()
+        self.projectButton.titleLabel?.text = name
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -168,7 +175,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }) { (error) in
             print(error)
         }
-        
     }
     
     
@@ -338,7 +344,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 
             })
         }
-        
     }
     
 
@@ -390,7 +395,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }) { (error) in
             print(error)
         }
-        
     }
     
 
@@ -443,11 +447,16 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                     self?.actionPush(text: model.aPPMODULENAME)
                 }
             }
-            
         }
     }
     
-
+    // MARK: - 添加全局的项目选择的方法
+    @IBAction func projectSelectClick(_ sender: UIButton) {
+        
+        let project = UIStoryboard.instantiateInitialViewController(name: "YQAllProjectSelect")
+        navigationController?.pushViewController(project, animated: true)
+        
+    }
     
     // MARK: - 全部按钮点击界面跳转的方法
     /// 中间全部按钮的点击跳转
@@ -484,8 +493,26 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         locationManager.delegate = self
     
         locationManager.startUpdatingLocation()
-        
     }
+    
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectName  = ""
+        
+        if dic != nil {
+            
+            projectName = dic?["PARK_NAME"] as! String
+        }else{
+            
+            projectName = "项目选择"
+        }
+        
+        return projectName
+    }
+    
     
     //MARK: -top和down按钮组点击界面跳转的方法;
     /// action Push ---> 中间系列的按钮点击的navVC的界面的跳转!

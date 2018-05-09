@@ -289,7 +289,6 @@ class LoginViewController: UIViewController {
                         let message = value["MSG"] as! String
                         
                         self.alert(message: message)
-                        
                         return
                     }
                     
@@ -301,6 +300,7 @@ class LoginViewController: UIViewController {
                         //进行UI界面赋值添加
                         self.systemDataArray = data
                     }
+                    
                     break
                 }
                 

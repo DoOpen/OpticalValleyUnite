@@ -176,6 +176,7 @@ class ChooseHouseViewController: UIViewController {
             var temp = [ParkInfoModel]()
             
             for dic in response as! Array<[String: Any]> {
+                
                 temp.append(ParkInfoModel(parmart: dic))
             }
             

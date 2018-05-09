@@ -776,6 +776,7 @@ class ParkInfoModel{
         
 //        STAGE_Name = name
         if let arry = parmart["floorChild"] as? Array<[String: Any]> {
+            
             var temp = [ParkInfoModel]()
             for dic in arry{
                let model = ParkInfoModel(parmart: dic)
@@ -1052,8 +1053,8 @@ class RealmString: Object {
 
 class SignModel{
     
-    var MAP_LNG = ""
-    var MAP_LAT = ""
+    var MAP_LNG = "0"
+    var MAP_LAT = "0"
     var ADDRESS = ""
     var SIGN_TIME = ""
     var SIGN_STATU = ""
@@ -1062,8 +1063,8 @@ class SignModel{
     convenience init(parmart: [String: Any]) {
         self.init()
         
-        MAP_LNG = parmart["map_lng"] as? String ?? ""
-        MAP_LAT = parmart["map_lat"] as? String ?? ""
+        MAP_LNG = parmart["map_lng"] as? String ?? "0"
+        MAP_LAT = parmart["map_lat"] as? String ?? "0"
         ADDRESS = parmart["ADDRESS"] as? String ?? ""
         SIGN_TIME = parmart["SIGN_TIME"] as? String ?? ""
         SIGN_STATU = parmart["SIGN_STATU"] as? String ?? ""

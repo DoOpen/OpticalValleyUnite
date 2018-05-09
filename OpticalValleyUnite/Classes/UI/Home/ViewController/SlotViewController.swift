@@ -115,7 +115,8 @@ class SlotViewController: UIViewController {
             }
             
             if temp.isEmpty{
-                SVProgressHUD.showSuccess(withStatus: "数据为空")
+                
+                SVProgressHUD.showError(withStatus: "数据为空")
             }
             
             self.models = temp

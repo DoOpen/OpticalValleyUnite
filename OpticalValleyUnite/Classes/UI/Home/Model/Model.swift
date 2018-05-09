@@ -1070,12 +1070,12 @@ class SignModel{
         
         if SIGN_TIME == ""{
             
-            SIGN_TIME = parmart["position_time"] as? String ?? ""
+            SIGN_TIME = parmart["positionTime"] as? String ?? ""
         }
         
         if ADDRESS == ""{
             
-            ADDRESS = parmart["RESERVER"] as? String ?? ""
+            ADDRESS = parmart["reserver"] as? String ?? ""
         }
     }
 }

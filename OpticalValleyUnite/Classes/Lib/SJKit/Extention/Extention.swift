@@ -357,15 +357,27 @@ public extension FileManager{
 public extension UIImage{
 
     func addContent(content: String, frame: CGRect) -> UIImage{
+        
         UIGraphicsBeginImageContextWithOptions(self.size, false, 0)
         self.draw(at: CGPoint.zero)
+        
+        //画矩形框
+        let path = UIBezierPath(roundedRect: frame, cornerRadius: 3)
+        UIColor.gray.setFill()
+        path.fill()
+        
+        //画文字
         let dic = [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName: UIFont.systemFont(ofSize: 40)]
         let str = content as NSString
         str.draw(in: frame, withAttributes: dic)
+        
         let imageNew = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext();
+        
         return imageNew!;
+        
     }
+    
 }
 
 

@@ -82,7 +82,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQImplementFeedbackVC.swift"
-                  timestampString = "547630159.7893749"
+                  timestampString = "547632529.041015"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "298"
@@ -97,7 +97,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQImplementFeedbackVC.swift"
-                  timestampString = "547630159.792878"
+                  timestampString = "547632529.044171"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "300"
@@ -120,118 +120,6 @@
             startingLineNumber = "175"
             endingLineNumber = "175"
             landmarkName = "getDataTool()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/PersonCore/ViewController/PersonCoreViewController.swift"
-            timestampString = "547630159.367378"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
-            landmarkName = "checkNewBundleVersion(isBlack:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.AnyObject) -&gt; () in (extension in OpticalValleyUnite):OpticalValleyUnite.CheckNewBundleVersionProtocol.checkNewBundleVersion(isBlack: Swift.Bool) -&gt; ()"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/PersonCore/ViewController/PersonCoreViewController.swift"
-                  timestampString = "547630159.805535"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "369"
-                  endingLineNumber = "369"
-                  offsetFromSymbolStart = "595">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.UIAlertAction) -&gt; () in closure #1 (Swift.AnyObject) -&gt; () in (extension in OpticalValleyUnite):OpticalValleyUnite.CheckNewBundleVersionProtocol.checkNewBundleVersion(isBlack: Swift.Bool) -&gt; ()"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/PersonCore/ViewController/PersonCoreViewController.swift"
-                  timestampString = "547630159.809123"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "371"
-                  endingLineNumber = "371"
-                  offsetFromSymbolStart = "38">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/PersonCore/ViewController/PersonCoreViewController.swift"
-            timestampString = "547630159.36744"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
-            landmarkName = "checkNewBundleVersion(isBlack:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in OpticalValleyUnite):OpticalValleyUnite.CheckNewBundleVersionProtocol.checkNewBundleVersion(isBlack: Swift.Bool) -&gt; ()"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/PersonCore/ViewController/PersonCoreViewController.swift"
-                  timestampString = "547630159.815764"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "361"
-                  endingLineNumber = "361"
-                  offsetFromSymbolStart = "1847">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.AnyObject) -&gt; () in (extension in OpticalValleyUnite):OpticalValleyUnite.CheckNewBundleVersionProtocol.checkNewBundleVersion(isBlack: Swift.Bool) -&gt; ()"
-                  moduleName = "OpticalValleyUnite"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/PersonCore/ViewController/PersonCoreViewController.swift"
-                  timestampString = "547630159.820748"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "363"
-                  endingLineNumber = "363"
-                  offsetFromSymbolStart = "26">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/PersonCore/ViewController/PersonCoreViewController.swift"
-            timestampString = "547630159.367488"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
-            landmarkName = "checkNewBundleVersion(isBlack:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

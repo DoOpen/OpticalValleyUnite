@@ -53,7 +53,7 @@ extension HttpClient {
         let bool8 = urlString.contains("getRoles")
         let bool10 = urlString.contains("getPersonPositionList")
         let bool11 = urlString.contains("getOldPersonPosition")
-//        let bool12 = urlString.contains("loadPersonPosition")
+//        let bool12 = urlString.contains("getVersion.do")
         let bool13 = urlString.contains("getParkDescription")
         let bool14 = urlString.contains("personList3")
         let bool15 = urlString.contains("savePersonIcon")

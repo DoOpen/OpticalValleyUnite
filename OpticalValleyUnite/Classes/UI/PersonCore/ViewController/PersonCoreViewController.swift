@@ -354,44 +354,51 @@ extension CheckNewBundleVersionProtocol{
         print(" 当前版本号为：\(version)")
         var parmat = [String: Any]()
         parmat["version"] = version
-        parmat["type"] = "iOS"
+        parmat["type"] = "ios"
         parmat["appCode"] = "ems" // beta的新的接口添加,调试!
         
         
         HttpClient.instance.post(path: URLPath.getVersion, parameters: parmat, success: { (response) in
             
-            if let response = response as? String{
+            if let response = response as? [String : Any]{
                 
-                SJKeyWindow?.rootViewController?.alert(message: "有新的版本,点击确认下载最新版本", doneBlock: { (action) in
+                let isNew = response["isNew"] as? Bool
+                
+                if isNew! {
                     
-                    let urlString = response
-                    
-                    if let url = URL(string: urlString) {
-                        //根据iOS系统版本，分别处理
-                        if #available(iOS 10, *) {
+                    SJKeyWindow?.rootViewController?.alert(message: "有新的版本,点击确认下载最新版本", doneBlock: { (action) in
+                        
+                        let urlString = response["url"] as! String
+                        
+                        if let url = URL(string: urlString) {
+                            //根据iOS系统版本，分别处理
+                            if #available(iOS 10, *) {
+                                
+                                UIApplication.shared.open(url, options: [:],
+                                                          completionHandler: {
+                                                            (success) in
+                                })
+                                
+                            } else {
+                                
+                                UIApplication.shared.openURL(url)
+                            }
                             
-                            UIApplication.shared.open(url, options: [:],
-                                                      completionHandler: {
-                                                        (success) in
-                            })
-                            
-                        } else {
-                            
-                            UIApplication.shared.openURL(url)
                         }
                         
+                    }, cancleBlock: {
+                        (action) in
+                    })
+                    
+                }else{
+                    
+                    if !isBlack{
+                        SJKeyWindow?.rootViewController?.alert(message: "您的版本已经是最新的版本了");
                     }
                     
-                }, cancleBlock: {
-                    (action) in
-                })
-
-            }else{
-                
-                if !isBlack{
-                    SJKeyWindow?.rootViewController?.alert(message: "您的版本已经是最新的版本了");
                 }
                 
+
             }
 
         }) { (error) in

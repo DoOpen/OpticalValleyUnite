@@ -88,11 +88,11 @@ class YQStarServiceVC: UIViewController {
             self.setStarView(index: star)
             
             //设置评分项 选项
-            let rule = data!["rule"] as! [String : Any]
-            let score1 = rule["score1"] as? String ?? ""
-            let score2 = rule["score2"] as? String ?? ""
-            let score3 = rule["score3"] as? String ?? ""
-            let score4 = rule["score4"] as? String ?? ""
+            let rule = data!["rule"] as? [String : Any]
+            let score1 = rule?["score1"] as? String ?? ""
+            let score2 = rule?["score2"] as? String ?? ""
+            let score3 = rule?["score3"] as? String ?? ""
+            let score4 = rule?["score4"] as? String ?? ""
             
             self.star2Label.text = score1 + "分"
             self.star3Label.text = score2 + "分"

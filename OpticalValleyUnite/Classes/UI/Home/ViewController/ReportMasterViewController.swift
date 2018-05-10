@@ -975,7 +975,6 @@ class ReportMasterViewController: UIViewController {
                     parmarReport["EVENT_TYPE"] = 9
                 
                 }
-                
             }
             
         }else{//电梯报事:

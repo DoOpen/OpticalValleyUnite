@@ -38,13 +38,16 @@ class PersonCell: UITableViewCell {
                     iconView.image = UIImage(named: "avatar")
                 }
                 
-                if let dict = model.deptList?.first{
-                    
-                    let string =  dict["dept_name"] as? String ?? ""
-                    departmentLabel.text = "(" + string + ")"
-                    
-                }
-
+// 老版的显示接口的取值
+//                if let dict = model.deptList?.first{
+//
+//                    let string =  dict["dept_name"] as? String ?? ""
+//                    departmentLabel.text = "(" + string + ")"
+//
+//                }
+                
+                //改取岗位名称
+                departmentLabel.text = "(" + model.postNames + ")"
                 selectedBtn.isSelected = model.selected
                 
             }

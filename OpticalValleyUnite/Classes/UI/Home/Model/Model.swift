@@ -261,14 +261,21 @@ class PersonModel{
     var id = ""
     var selected = false
     
+    var deptNames = ""
+    
+    var postNames = ""
+    //以前的deptList部门的array接口
     var deptList : Array<[String : Any]>?
     
     convenience init(parmart: [String: Any]) {
         self.init()
-        name = parmart["NAME"] as? String ?? ""
-        icon = parmart["PICTURE"] as? String ?? ""
-        id = parmart["ID"] as? String ?? ""
+        name = parmart["name"] as? String ?? ""
+        icon = parmart["picture"] as? String ?? ""
+        id = parmart["id"] as? String ?? ""
 
+        deptNames = parmart["deptNames"] as? String ?? ""
+        postNames = parmart["postNames"] as? String ?? ""
+        
         deptList = parmart["deptList"] as? Array<[String : Any]>
         
     }

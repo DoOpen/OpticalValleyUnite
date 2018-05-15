@@ -138,6 +138,7 @@ class LoginViewController: UIViewController {
             switch response.result {
                 
             case .success(_):
+                
                 if let value = response.result.value as? [String: Any] {
                     
                     guard value["CODE"] as! String == "0" else{
@@ -288,7 +289,9 @@ class LoginViewController: UIViewController {
                     guard value["CODE"] as! String == "0" else{
                         let message = value["MSG"] as! String
                         
-                        self.alert(message: message)
+//                        self.alert(message: message)
+                        print(message)
+                        
                         return
                     }
                     

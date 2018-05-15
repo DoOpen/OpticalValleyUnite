@@ -11,6 +11,7 @@ import Kingfisher
 import SVProgressHUD
 
 class PersonDetailViewController: UITableViewController{
+    
     @IBOutlet weak var photoBtn: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var numberIdLabel: UILabel!
@@ -20,6 +21,7 @@ class PersonDetailViewController: UITableViewController{
     @IBOutlet weak var yearLabel: UILabel!
 
     var model: PersonInfo?{
+        
         didSet{
             if let model = model{
                 nameLabel.text = model.name
@@ -40,13 +42,11 @@ class PersonDetailViewController: UITableViewController{
 //                    yearLabel.text = String(compont.year!) + "岁"
 //                }
                 
-                
                 if model.year != "" {
                     
                     yearLabel.text = model.year
                     
                 }
-                
                 
                 if model.picture != ""{
                     
@@ -72,8 +72,8 @@ class PersonDetailViewController: UITableViewController{
                     
                 }
             }
-            
         }
+        
     }
 
     override func viewDidLoad() {
@@ -82,10 +82,10 @@ class PersonDetailViewController: UITableViewController{
         title = "个人中心"
         tableView.tableFooterView = UIView()
         getDate()
+        
     }
 
     private func getDate(){
-        
         
         HttpClient.instance.get(path: URLPath.getPersonInfo, parameters: nil, success: { (response) in
             
@@ -99,6 +99,7 @@ class PersonDetailViewController: UITableViewController{
         }) { (error) in
             
         }
+        
     }
     
     // MARK: - 调用点击上传图片框架接口

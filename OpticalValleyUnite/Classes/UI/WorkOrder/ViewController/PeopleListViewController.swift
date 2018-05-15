@@ -82,10 +82,11 @@ class PeopleListViewController: UIViewController {
         var parmat = [String: Any]()
         
         parmat["pageIndex"] = indexPage
+        parmat["pageSize"] = 20
         
         if name != ""{
             
-            parmat["NAME"] = name
+            parmat["name"] = name
         }
         
         //获取集团和 项目版的参数

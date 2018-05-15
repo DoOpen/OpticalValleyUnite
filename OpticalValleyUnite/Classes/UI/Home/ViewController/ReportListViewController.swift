@@ -122,13 +122,13 @@ extension ReportListViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         var cell: WorkOrder2Cell
-        
-        
         cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! WorkOrder2Cell
         cell.model = currentDatas[indexPath.row]
         
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

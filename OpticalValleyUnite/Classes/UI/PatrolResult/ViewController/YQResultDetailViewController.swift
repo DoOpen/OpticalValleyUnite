@@ -174,7 +174,6 @@ class YQResultDetailViewController: UIViewController {
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
-            
         }
     }
     
@@ -186,3 +185,17 @@ class YQResultDetailViewController: UIViewController {
     }
 
 }
+
+extension YQResultDetailViewController : UIScrollViewDelegate {
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        
+        // 获得当前需要显示的子控制器索引
+        let index = contentScrollView.contentOffset.x / contentScrollView.frame.size.width
+        
+        self.headScrollView.setContentOffset(CGPoint.init(x: index * 150, y: 0), animated: true)
+        
+    }
+    
+}
+

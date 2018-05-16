@@ -119,7 +119,7 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
         if type == 0 {
             
             execPeopleBtn.setTitle(models.first?.name, for: .normal)
-            self.execProjectLabel.text = models.first?.deptList?.first?["dept_name"] as? String ?? ""
+            self.execProjectLabel.text = models.first?.deptNames ?? ""
             
             let iconString = models.first?.icon
             
@@ -158,17 +158,15 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
                 
             }
             
-            
             execPeopleBtn.isHidden = false
             execPeopleModel = models.first
             
         }else if type == 1{
             
             managePeopleBtn.setTitle(models.first?.name, for: .normal)
-            manageProjectLabel.text = models.first?.deptList?.first?["dept_name"] as? String ?? ""
+            manageProjectLabel.text = models.first?.deptNames ?? ""
             
-            
-            
+
             let iconString = models.first?.icon
             
             if iconString != "" {
@@ -210,7 +208,7 @@ class ChoosePersonViewController: UIViewController,ShloudPopType {
             managePeopleModel = models.first
 
            
-        }else if type == 2{
+        }else if type == 2{//添加协助人
             
             addManageerView.models = models
             assePeopleModel = models

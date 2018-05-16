@@ -123,7 +123,7 @@ class AddScrollerView: UIView {
                 let projectLabel = UILabel()
                 projectLabel.font = UIFont.systemFont(ofSize: 12)
                 
-                projectLabel.text = model.deptList?.first?["dept_name"] as? String ?? ""
+                projectLabel.text = model.deptNames
                 projectLabel.textAlignment = NSTextAlignment.center
                 
                 self.addSubview(projectLabel)

@@ -48,7 +48,7 @@ struct URLPath {
     ///测试服的域名链接: http://ovuems.com/ovu-base
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://172.16.19.98:5678"
+    static let basicBasic = "http://172.16.11.59:8081"
     
     
     //服务器的basic 地址:
@@ -330,6 +330,9 @@ struct URLPath {
     static let getParkGroundNo = "park/groundNo.do"
     //查询楼层下房屋
     static let getParkHouse = "park/house.do"
+    //模糊查询搜索房屋编号
+    static let getHouse = "park/getHouse.do"
+    
     
     //业主信息的查询
     static let getHouseGet = "owner/house/get"

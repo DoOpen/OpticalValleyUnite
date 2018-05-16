@@ -739,6 +739,7 @@ class ReportMasterViewController: UIViewController {
             
             navigationController?.pushViewController(vc, animated: true)
         }
+        
     }
     
     // MARK: - 新增报事的本地的保存实现

@@ -58,12 +58,12 @@ class ChooseHouseViewController: UIViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-        
         title = "请选择报事房屋"
         
         setupTopView()
         
         if isDeviceChoose{
+            
             nextBtnHeightConstraint.constant = 54.0
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(ChooseHouseViewController.rightBtnClick))
         }

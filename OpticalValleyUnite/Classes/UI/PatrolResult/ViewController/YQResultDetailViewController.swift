@@ -192,8 +192,10 @@ extension YQResultDetailViewController : UIScrollViewDelegate {
         
         // 获得当前需要显示的子控制器索引
         let index = contentScrollView.contentOffset.x / contentScrollView.frame.size.width
-        
-        self.headScrollView.setContentOffset(CGPoint.init(x: index * 150, y: 0), animated: true)
+        if index * 150 > contentScrollView.frame.size.width {
+            
+            self.headScrollView.setContentOffset(CGPoint.init(x: index * 150, y: 0), animated: true)
+        }
         
     }
     

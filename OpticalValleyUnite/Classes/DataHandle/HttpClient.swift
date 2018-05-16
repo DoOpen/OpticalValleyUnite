@@ -59,8 +59,15 @@ extension HttpClient {
         let bool15 = urlString.contains("savePersonIcon")
         let bool16 = urlString.contains("getVersion")
         
+        let bool17 = urlString.contains("stage.do")
+        let bool18 = urlString.contains("floor.do")
+        let bool19 = urlString.contains("unitNo.do")
+        let bool20 = urlString.contains("groundNo.do")
+        let bool21 = urlString.contains("house.do")
         
-        if bool1 || bool2 || bool3 || bool5 || bool6 || bool8 || bool10 || bool11  || bool13 || bool14 || bool15 || bool16{
+//        let bool22 = urlString.contains("")
+        
+        if bool1 || bool2 || bool3 || bool5 || bool6 || bool8 || bool10 || bool11  || bool13 || bool14 || bool15 || bool16 || bool17 || bool18 || bool19 || bool20 || bool21{
             
             allurl = URLPath.newbasicPath + urlString
             

@@ -41,13 +41,14 @@ struct URLPath {
     ///元元 : http://172.16.11.76
     ///谢俊杰: http://172.16.11.63:8080  xiejunjie
     ///建丰 : "http://172.16.11.62:80"
+    ///ems 3.0 : "http://172.16.19.98:5678"
     
     
     ///正式服的域名链接: http://ovuems.com
     ///测试服的域名链接: http://ovuems.com/ovu-base
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://172.16.19.98:5678"
+    static let basicBasic = "http://172.16.11.59:8081"
     
     
     //服务器的basic 地址:
@@ -320,15 +321,15 @@ struct URLPath {
     static let getHouseList = "owner/list"
     //筛选条件的接口
     //根据项目id 查项目区期数
-    static let getParkStage = "owner/park/stage"
+    static let getParkStage = "park/stage.do"
     //根据查询期数下的楼栋
-    static let getParkFloor = "owner/park/floor"
+    static let getParkFloor = "park/floor.do"
     //查询楼栋下的单元
-    static let getParkUnitNu = "owner/park/unitNu"
+    static let getParkUnitNu = "park/unitNo.do"
     //查询单元下楼层
-    static let getParkGroundNo = "owner/park/groundNo"
+    static let getParkGroundNo = "park/groundNo.do"
     //查询楼层下房屋
-    static let getParkHouse = "owner/park/house"
+    static let getParkHouse = "park/house.do"
     
     //业主信息的查询
     static let getHouseGet = "owner/house/get"

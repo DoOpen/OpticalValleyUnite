@@ -101,13 +101,13 @@ extension YQHouseLocationScreenView : UITableViewDataSource,UITableViewDelegate{
             
         case "栋":
             let model = self.selectePrameter["floor"] as? YQDecorationFloorModel
-            cell?.locationLabel.text = model?.floorName ?? ""
+            cell?.locationLabel.text = model?.buildName ?? ""
             break
             
         case "单元":
             
             let model = self.selectePrameter["unitNo"] as? YQDecorationUnitNoModel
-            cell?.locationLabel.text = model?.unitNoName ?? ""
+            cell?.locationLabel.text = model?.unitNo ?? ""
             break
             
         case "楼":

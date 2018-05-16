@@ -14,10 +14,14 @@ class YQDecorationScreenModel: NSObject {
 
 
 class YQDecorationStageModel : NSObject {
+    
     //期ID
-    var stageId = ""
+    var id = ""
     //期名称
     var stageName = ""
+    //分期编码
+    var stageNo = ""
+    
 
     init(dict : [String : Any]) {
         super.init()
@@ -35,11 +39,16 @@ class YQDecorationStageModel : NSObject {
 class YQDecorationFloorModel : NSObject {
     
     //楼栋ID
-    var floorId = ""
+    var id = ""
     //楼栋名称
-    var floorName = ""
+    var buildName = ""
+    //楼栋编码
+    var buildNo = ""
+    
     //期ID
     var stageId = ""
+    
+    
     
     init(dict : [String : Any]) {
         super.init()
@@ -59,8 +68,9 @@ class YQDecorationUnitNoModel : NSObject {
     //楼层ID
 //    var floorId = ""
     //单元号
-    var unitNoName = ""
-    //单元数
+//    var unitNoName = ""
+    
+    //单元数(单元码)
     var unitNo = ""
     
     init(dict : [String : Any]) {
@@ -100,11 +110,19 @@ class YQDecorationGroundNoModel : NSObject {
 
 class YQDecorationHouseModel : NSObject {
     //房屋ID
-    var houseId = ""
+    var id = ""
+    //房号
+    var houseCode = ""
+    
     //房屋名称
     var houseName = ""
+    
+    //房屋编码
+    var houseNo = ""
+    
     //楼层ID
-    var floorId = ""
+    var groundNo = ""
+    
     //单元号
     var unitNo = ""
     

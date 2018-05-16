@@ -77,7 +77,7 @@ class YQDecorationScreenVC: UIViewController {
         
         if currentSelectBtn != nil && model != nil {
             
-            center.post(name: notiesName, object: nil, userInfo: [ "selectLocation": (model?.houseId)!,"decorationType" : (currentSelectBtn?.tag)!])
+            center.post(name: notiesName, object: nil, userInfo: [ "selectLocation": (model?.id)!,"decorationType" : (currentSelectBtn?.tag)!])
             
         }else if(model == nil ){
         
@@ -85,7 +85,7 @@ class YQDecorationScreenVC: UIViewController {
 
         }else if (currentSelectBtn == nil){
             
-            center.post(name: notiesName, object: nil, userInfo: [ "selectLocation": (model?.houseId)!])
+            center.post(name: notiesName, object: nil, userInfo: [ "selectLocation": (model?.id)!])
         }
 
         navigationController?.popViewController(animated: true)
@@ -139,12 +139,12 @@ extension YQDecorationScreenVC : UITableViewDataSource,UITableViewDelegate{
             break
         case "栋":
              let model = self.selectePrameter["floor"] as? YQDecorationFloorModel
-            cell.locationLabel.text = model?.floorName ?? ""
+            cell.locationLabel.text = model?.buildName ?? ""
             break
         case "单元":
             let model = self.selectePrameter["unitNo"] as? YQDecorationUnitNoModel
             
-            cell.locationLabel.text = model?.unitNoName ?? ""
+            cell.locationLabel.text = model?.unitNo ?? ""
             break
             
         case "楼":

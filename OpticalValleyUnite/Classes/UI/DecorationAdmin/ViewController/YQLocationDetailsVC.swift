@@ -96,7 +96,7 @@ class YQLocationDetailsVC: UIViewController {
                     
                 }
                 
-                par["stageId"] = model?.stageId
+                par["stageId"] = model?.id
                 self.getFloorData(par: par)
               
                 break
@@ -112,7 +112,7 @@ class YQLocationDetailsVC: UIViewController {
 
                 }
                 
-                par["floorId"] = model?.floorId
+                par["floorId"] = model?.id
                 
                 self.getUnitNoData(par: par)
                 
@@ -128,8 +128,8 @@ class YQLocationDetailsVC: UIViewController {
                     return
                     
                 }
-                par["floorId"] = model1?.floorId
-                par["unitNu"] = model?.unitNo
+                par["floorId"] = model1?.id
+                par["unitNo"] = model?.unitNo
             
                 self.getGroundNoData(par: par)
                 
@@ -147,8 +147,8 @@ class YQLocationDetailsVC: UIViewController {
                     return
                     
                 }
-                par["floorId"] = model2?.floorId
-                par["unitNu"] = model?.unitNo
+                par["floorId"] = model2?.id
+                par["unitNo"] = model?.unitNo
                 par["groundNo"] = model1?.groundNo
                 
                 self.getHouseData(par: par)
@@ -203,6 +203,7 @@ class YQLocationDetailsVC: UIViewController {
     // MARK: - 获取各个信息的数据情况
     func getStageData( par : [String : Any] ){
     
+        
         HttpClient.instance.post(path: URLPath.getParkStage, parameters: par, success: { (response) in
             SVProgressHUD.dismiss()
             
@@ -403,11 +404,11 @@ extension YQLocationDetailsVC : UITableViewDelegate,UITableViewDataSource{
                 break
             
             case "栋":
-                cell?.textLabel?.text = Floor[indexPath.row].floorName
+                cell?.textLabel?.text = Floor[indexPath.row].buildName
                 break
             
             case "单元":
-                cell?.textLabel?.text = UnitNo[indexPath.row].unitNoName
+                cell?.textLabel?.text = UnitNo[indexPath.row].unitNo
                 break
             
             case "楼":

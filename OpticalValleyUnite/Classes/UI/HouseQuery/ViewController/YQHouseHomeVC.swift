@@ -232,11 +232,11 @@ class YQHouseHomeVC: UIViewController {
         let phone = dict["phone"] as? String
         
         var par = [String : Any]()
-        par["stageId"] = stage?.stageId
-        par["floorId"] = floor?.floorId
+        par["stageId"] = stage?.id
+        par["floorId"] = floor?.id
         par["unitNu"] = unitNo?.unitNo
         par["groundNo"] = groupNo?.groundNo
-        par["houseId"] = house?.houseId
+        par["houseId"] = house?.id
         par["phone"] = phone
         
         self.notiesPramert = par

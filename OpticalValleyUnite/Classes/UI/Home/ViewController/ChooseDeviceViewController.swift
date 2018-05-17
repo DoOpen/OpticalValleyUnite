@@ -60,9 +60,13 @@ class ChooseDeviceViewController: UIViewController {
         vc.parkId = parkId
         vc.arry = ["选择分期", "楼栋"]
         vc.isDeviceChoose = true
+        
         vc.selectParkHandel = {[weak self] parkInfoModel in
+            
             self?.parkInfoModel = parkInfoModel
+            
             print(parkInfoModel)
+            
             if parkInfoModel.STAGE_ID != ""{//选择了两层
                 self?.parkInfoModel?.FLOOR_ID = parkInfoModel.id
                 self?.chooseAddressLabel.text = parkInfoModel.STAGE_Name + " " + parkInfoModel.name

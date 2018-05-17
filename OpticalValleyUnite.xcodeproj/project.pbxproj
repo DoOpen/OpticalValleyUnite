@@ -281,6 +281,9 @@
 		2F8D67F3208D853300F687FF /* YQGeneralCheckOutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8D67F2208D853300F687FF /* YQGeneralCheckOutModel.swift */; };
 		2F8D67F6208DB1B300F687FF /* YQGenaralManagerCheckAlreadyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8D67F4208DB1B300F687FF /* YQGenaralManagerCheckAlreadyDetailVC.swift */; };
 		2F8D67F7208DB1B300F687FF /* YQGenaralManagerCheckAlreadyDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8D67F5208DB1B300F687FF /* YQGenaralManagerCheckAlreadyDetailVC.xib */; };
+		2F90BF6620AD285E006DA25D /* YQChooseHouseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F90BF6520AD285E006DA25D /* YQChooseHouseCell.swift */; };
+		2F90BF6820AD2883006DA25D /* YQChooseHouseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F90BF6720AD2883006DA25D /* YQChooseHouseCell.xib */; };
+		2F90BF6A20AD2BDA006DA25D /* YQChooseHouseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F90BF6920AD2BDA006DA25D /* YQChooseHouseModel.swift */; };
 		2F92B2601FBB03D500168FC6 /* YQStepShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92B25F1FBB03D500168FC6 /* YQStepShowModel.swift */; };
 		2F94A27F1F73A5C500455162 /* YQFireMapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */; };
 		2F94A2811F73A5F500455162 /* YQFireMapDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */; };
@@ -824,6 +827,9 @@
 		2F8D67F2208D853300F687FF /* YQGeneralCheckOutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQGeneralCheckOutModel.swift; sourceTree = "<group>"; };
 		2F8D67F4208DB1B300F687FF /* YQGenaralManagerCheckAlreadyDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQGenaralManagerCheckAlreadyDetailVC.swift; sourceTree = "<group>"; };
 		2F8D67F5208DB1B300F687FF /* YQGenaralManagerCheckAlreadyDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQGenaralManagerCheckAlreadyDetailVC.xib; sourceTree = "<group>"; };
+		2F90BF6520AD285E006DA25D /* YQChooseHouseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQChooseHouseCell.swift; sourceTree = "<group>"; };
+		2F90BF6720AD2883006DA25D /* YQChooseHouseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQChooseHouseCell.xib; sourceTree = "<group>"; };
+		2F90BF6920AD2BDA006DA25D /* YQChooseHouseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQChooseHouseModel.swift; sourceTree = "<group>"; };
 		2F92B25F1FBB03D500168FC6 /* YQStepShowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQStepShowModel.swift; sourceTree = "<group>"; };
 		2F94A27E1F73A5C500455162 /* YQFireMapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireMapDetailViewController.swift; sourceTree = "<group>"; };
 		2F94A2801F73A5F500455162 /* YQFireMapDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireMapDetail.storyboard; sourceTree = "<group>"; };
@@ -2458,6 +2464,7 @@
 			isa = PBXGroup;
 			children = (
 				4B7A59C81E35E1AD002E96B6 /* Model.swift */,
+				2F90BF6920AD2BDA006DA25D /* YQChooseHouseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2487,6 +2494,8 @@
 				2F637F5F206A86AB00EFFFF8 /* YQWeatherHeadView.swift */,
 				2F637F61206A86DA00EFFFF8 /* YQWeatherHeadView.xib */,
 				2F24960D206B338600D5F61C /* YQWeatherCell.swift */,
+				2F90BF6520AD285E006DA25D /* YQChooseHouseCell.swift */,
+				2F90BF6720AD2883006DA25D /* YQChooseHouseCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2840,6 +2849,7 @@
 				2F2A2BB61F989E46003015E9 /* YQAllProjectSelect.storyboard in Resources */,
 				2F53A11020762B8C003F8296 /* YQStarServiceVC.xib in Resources */,
 				4BD4B9541E272EA600AE2BC9 /* WorkOrder.storyboard in Resources */,
+				2F90BF6820AD2883006DA25D /* YQChooseHouseCell.xib in Resources */,
 				2FC98A04202D93ED0080D1BE /* YQHouseScreenVC.xib in Resources */,
 				4B3FD0301E8B61AC005D5231 /* exportPlist.plist in Resources */,
 				2F612D3A209AFC37003B8D4D /* YQKnowledgeStudyCell.xib in Resources */,
@@ -3306,6 +3316,7 @@
 				4B3078111E2A136600FB4007 /* MyStatisticsViewController.swift in Sources */,
 				2F9F92242086F4EE00D860DF /* YQFeedbackListModel.swift in Sources */,
 				2F94A2891F73B9D800455162 /* YQFalsePositiveView.swift in Sources */,
+				2F90BF6A20AD2BDA006DA25D /* YQChooseHouseModel.swift in Sources */,
 				4B8EE7761F17047400A59F8D /* WorkOrderCell.swift in Sources */,
 				2F5F9ABC1FF3ADCE00630271 /* YQAddView.swift in Sources */,
 				2F51CCC5203AB511005723E8 /* YQEquipmentListTVC.swift in Sources */,
@@ -3364,6 +3375,7 @@
 				2F51D3DC1FEB8B0D00BC7B04 /* YQScanImageViewController.swift in Sources */,
 				4BE922661EE84BA100FDEFE1 /* ExecuteDetailSubCell.swift in Sources */,
 				4BD4B9591E2747F000AE2BC9 /* SJTextView.m in Sources */,
+				2F90BF6620AD285E006DA25D /* YQChooseHouseCell.swift in Sources */,
 				2F51CCCC203AB5E8005723E8 /* YQWorkListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

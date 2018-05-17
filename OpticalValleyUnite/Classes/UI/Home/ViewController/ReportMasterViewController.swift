@@ -710,31 +710,30 @@ class ReportMasterViewController: UIViewController {
             let vc = ChooseDeviceViewController.loadFromStoryboard(name: "ReportMaster") as! ChooseDeviceViewController
             vc.parkId = selectProject?.projectId
             vc.didSelectDeviceModelHandle = { model in
+                
                 self.deviceModel = model
                 self.deviceView.model = model
+                
             }
             
             navigationController?.pushViewController(vc, animated: true)
             
         }else{
             
-            let vc = ChooseHouseViewController.loadFromStoryboard(name: "ReportMaster") as! ChooseHouseViewController
+            let vc = YQChooseHouseVC.init(nibName: "YQChooseHouseVC", bundle: nil)
             
             vc.parkId = selectProject?.projectId
             
             vc.selectParkHandel = {[weak self] parkInfoModel in
                 
                 self?.selectParkInfo = parkInfoModel
-                
+
                 if self?.addressLabel.text == "" {
-                    
+
                     self?.addressLabel.text =  parkInfoModel.name
-                    
-                }else{
-                    
-                    self?.addressLabel.text = (self?.addressLabel.text)! + "-" + parkInfoModel.name
-                    
+
                 }
+                
             }
             
             navigationController?.pushViewController(vc, animated: true)

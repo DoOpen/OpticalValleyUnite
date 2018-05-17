@@ -275,7 +275,7 @@ extension ChooseHouseViewController: UITableViewDelegate, UITableViewDataSource{
             
             currentLevel += 1
 
-        }else {
+        } else {
             
             currentSelectCell?.setSelectCellClick(false)
             
@@ -290,9 +290,8 @@ extension ChooseHouseViewController: UITableViewDelegate, UITableViewDataSource{
             
             index = indexPath.row
             
-            
-            
         }
+        
     }
     
     

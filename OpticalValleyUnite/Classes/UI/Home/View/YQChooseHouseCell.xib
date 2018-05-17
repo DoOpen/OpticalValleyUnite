@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="YQChooseHouseCell" id="Wim-2Y-2ZE" customClass="YQChooseHouseCell" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wim-2Y-2ZE" id="ZJl-qS-6Zr">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1楼地下室" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxL-HR-5oD">
+                        <rect key="frame" x="14" y="13" width="328" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_checked_big" translatesAutoresizingMaskIntoConstraints="NO" id="Yqf-bw-mJQ">
+                        <rect key="frame" x="347" y="11" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="SnX-cs-oK3"/>
+                            <constraint firstAttribute="width" constant="20" id="q9G-cS-gLQ"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Yqf-bw-mJQ" firstAttribute="leading" secondItem="FxL-HR-5oD" secondAttribute="trailing" constant="5" id="1dG-NZ-Zi8"/>
+                    <constraint firstItem="Yqf-bw-mJQ" firstAttribute="centerY" secondItem="ZJl-qS-6Zr" secondAttribute="centerY" id="OfQ-ww-4kX"/>
+                    <constraint firstItem="FxL-HR-5oD" firstAttribute="leading" secondItem="ZJl-qS-6Zr" secondAttribute="leading" constant="14" id="e6p-tP-0C1"/>
+                    <constraint firstItem="FxL-HR-5oD" firstAttribute="centerY" secondItem="ZJl-qS-6Zr" secondAttribute="centerY" id="grd-zJ-EfN"/>
+                    <constraint firstAttribute="trailing" secondItem="Yqf-bw-mJQ" secondAttribute="trailing" constant="8" id="tDE-jH-v8D"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="selectImageView" destination="Yqf-bw-mJQ" id="Dn5-G7-wuk"/>
+                <outlet property="titleLabel" destination="FxL-HR-5oD" id="kUU-vt-ECh"/>
+            </connections>
+            <point key="canvasLocation" x="87.5" y="60"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="btn_checked_big" width="20" height="20"/>
+    </resources>
+</document>

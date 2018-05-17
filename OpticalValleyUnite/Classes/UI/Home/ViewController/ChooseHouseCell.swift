@@ -9,6 +9,7 @@
 import UIKit
 
 class ChooseHouseCell: UITableViewCell {
+    
     @IBOutlet weak var selectImageView: UIImageView!
 
     @IBOutlet weak var addressLabel: UILabel!

@@ -43,7 +43,7 @@ class SignInListViewController: UIViewController {
     func getData(_ date: String){
         
         var parmat = [String: Any]()
-        parmat["DATE"] = date
+        parmat["date"] = date
         
         let url = URLPath.getPersonSinList
         

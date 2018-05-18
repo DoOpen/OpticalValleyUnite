@@ -131,6 +131,7 @@ class SignInViewController: UIViewController {
         parmat["SIGN_TYPE"] = 1
         parmat["MAP_LNG"] = loction!.coordinate.longitude
         parmat["MAP_LAT"] = loction!.coordinate.latitude
+        
         HttpClient.instance.post(path: URLPath.sign, parameters: parmat, success: { (respose) in
             print("签到成功")
             
@@ -158,7 +159,7 @@ class SignInViewController: UIViewController {
     private func showList(){
         
         var parmat = [String: Any]()
-        parmat["DATE"] = Date.dateStringDate(dateFormetString: "YYYY-MM-dd")
+        parmat["date"] = Date.dateStringDate(dateFormetString: "YYYY-MM-dd")
         
         let url = URLPath.getPersonSinList
     

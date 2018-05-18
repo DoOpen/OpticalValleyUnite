@@ -23,13 +23,14 @@ class SlotViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         title = Date.dateStringDate(dateFormetString: "YYYY-MM-dd")
-        mapSetup()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100;
 
+        mapSetup()
         
         getData(Date.dateStringDate(dateFormetString: "YYYY-MM-dd"))
         let nib = UINib(nibName: "SigninCell", bundle: nil)
@@ -56,8 +57,7 @@ class SlotViewController: UIViewController {
             let annotation = FootAnnotation(model: model)
             annotation.index = mapView.annotations.count
             mapView.addAnnotation(annotation)
-        
-        
+
         }
         
         mapView.reloadMap()
@@ -66,19 +66,23 @@ class SlotViewController: UIViewController {
     
     
     @IBAction func listBtnClick() {
+        
         listBtn.isSelected = true
         mapBtn.isSelected = false
         
         tableView.isHidden = false
         mapView.isHidden = true
     }
+    
     @IBAction func mapBtnClick() {
+        
         mapBtn.isSelected = true
         listBtn.isSelected = false
         
         tableView.isHidden = true
         mapView.isHidden = false
         mapView.showAnnotations(mapView.annotations, animated: true)
+        
     }
 
 
@@ -125,17 +129,18 @@ class SlotViewController: UIViewController {
         }) { (error) in
             
         }
+        
     }
 
 }
 
 extension SlotViewController: MAMapViewDelegate{
+    
     func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
         //        print(mapView.userLocation.location)
     }
     
     func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
-        
         
         if let annotation = annotation as? FootAnnotation{
             var view = mapView.dequeueReusableAnnotationView(withIdentifier: "cell")

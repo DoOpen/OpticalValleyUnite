@@ -1070,8 +1070,8 @@ class SignModel{
     convenience init(parmart: [String: Any]) {
         self.init()
         
-        MAP_LNG = parmart["map_lng"] as? String ?? "0"
-        MAP_LAT = parmart["map_lat"] as? String ?? "0"
+        MAP_LNG = parmart["mapLng"] as? String ?? "0"
+        MAP_LAT = parmart["mapLat"] as? String ?? "0"
         ADDRESS = parmart["ADDRESS"] as? String ?? ""
         SIGN_TIME = parmart["SIGN_TIME"] as? String ?? ""
         SIGN_STATU = parmart["SIGN_STATU"] as? String ?? ""

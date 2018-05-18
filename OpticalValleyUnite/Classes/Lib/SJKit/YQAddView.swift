@@ -59,7 +59,7 @@ class YQAddView: UIView {
                     photo.image == image.image
                 }) ?? 0
                 self.photos.remove(at: index)
-                
+                self.photoImages.remove(at: index)
             })
             
             photos.append(image)

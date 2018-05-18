@@ -10,6 +10,7 @@ import UIKit
 import SVProgressHUD
 
 class SlotViewController: UIViewController {
+    
     @IBOutlet weak var listBtn: UIButton!
     @IBOutlet weak var mapBtn: UIButton!
     @IBOutlet weak var mapView: MAMapView!
@@ -177,13 +178,10 @@ extension SlotViewController: MAMapViewDelegate{
         
         return MAAnnotationView()
         
-       
     }
 }
 
 extension SlotViewController: UITableViewDelegate, UITableViewDataSource{
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
@@ -201,15 +199,18 @@ extension SlotViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 class FootAnnotation: NSObject,MAAnnotation{
+    
     var title: String?
     var coordinate: CLLocationCoordinate2D
     var subtitle: String?
     var index = 0
     
     init(model: SignModel) {
+        
         coordinate = CLLocationCoordinate2D(latitude:
             CLLocationDegrees(model.MAP_LAT)!, longitude: CLLocationDegrees(model.MAP_LNG)!)
         
         title = ((model.SIGN_TIME as NSString).substring(from: 10) as NSString).substring(to: 6) + " : " + model.ADDRESS
     }
+    
 }

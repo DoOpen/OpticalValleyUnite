@@ -2503,7 +2503,6 @@
 		4BD4B9281E272EA600AE2BC9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4B1DEC671E31F5D1000917D2 /* SlotViewController.swift */,
 				4BD4B92A1E272EA600AE2BC9 /* HomeViewController.swift */,
 				4BD4B9291E272EA600AE2BC9 /* Home.storyboard */,
 				4B1DEC631E31BE01000917D2 /* MapViewController.swift */,
@@ -2511,6 +2510,7 @@
 				4BD4B92C1E272EA600AE2BC9 /* SignInViewController.swift */,
 				4BD4B92B1E272EA600AE2BC9 /* SignIn.storyboard */,
 				4BD4B95A1E275BDB00AE2BC9 /* SignInListViewController.swift */,
+				4B1DEC671E31F5D1000917D2 /* SlotViewController.swift */,
 				4B3951EA1E28715700E2642F /* ReportMasterViewController.swift */,
 				4B3951EC1E28718200E2642F /* ReportMaster.storyboard */,
 				4B3951F01E2899AE00E2642F /* WorkOrderTypeChooseViewController.swift */,

@@ -197,9 +197,19 @@ class YQResultMapViewController: UIViewController {
                             
                             let longitude = temp?["longitude"] as? String
                             let latitude = temp?["latitude"] as? String
+                            
+                            if longitude == "" || latitude == "" {
+                                break
+                            }
+                            
                             let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude!)!, CLLocationDegrees(longitude!)!)
                             executeWayArray.append(CLLocationCoordinate2D)
                             
+                        }
+                        
+                        if executeWayArray.count < 1 {
+                            
+                            break
                         }
                         
                         self.mapView.setCenter(executeWayArray.first!, animated: true)
@@ -221,21 +231,31 @@ class YQResultMapViewController: UIViewController {
                 let temp1 = temp as! NSDictionary
                 
                 if let pointA = temp1["pointList"] as? NSArray {
+                    
                     if pointA.count > 0  {
                         
                         self.wayLineType = 2
                         var designWayArray = [CLLocationCoordinate2D]()
                         
                         for dict in pointA {
+                            
                             let temp = dict as? NSDictionary
                             
-                            let longitude = temp?["longitude"] as? String
-                            let latitude = temp?["latitude"] as? String
-                            let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude!)!, CLLocationDegrees(longitude!)!)
+                            let longitude = temp?["longitude"] as? String ?? "0"
+                            let latitude = temp?["latitude"] as? String ?? "0"
+                            if longitude == "" || latitude == "" {
+                                break
+                            }
+                            
+                            let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude)!, CLLocationDegrees(longitude)!)
                             designWayArray.append(CLLocationCoordinate2D)
                             
                         }
                         
+                        if designWayArray.count < 1 {
+                            
+                            break
+                        }
                         
                          self.mapView.setCenter(designWayArray.first!, animated: true)
                         //执行画线的方法
@@ -267,9 +287,20 @@ class YQResultMapViewController: UIViewController {
                             
                             let longitude = temp?["longitude"] as? String
                             let latitude = temp?["latitude"] as? String
+                            
+                            if longitude == "" || latitude == "" {
+                                
+                                break
+                            }
+                            
                             let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude!)!, CLLocationDegrees(longitude!)!)
                             realWayArray.append(CLLocationCoordinate2D)
                             
+                        }
+                        
+                        if realWayArray.count < 1 {
+                            
+                            break
                         }
                         
                         self.mapView.setCenter(realWayArray.first!, animated: true)
@@ -281,9 +312,7 @@ class YQResultMapViewController: UIViewController {
                     }
                     
                 }
-                
             }
-          
         }
         
         

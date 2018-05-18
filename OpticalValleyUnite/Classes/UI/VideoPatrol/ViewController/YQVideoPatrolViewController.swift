@@ -665,11 +665,23 @@ class YQVideoPatrolViewController: UIViewController {
                 
                 let longitude = d?["longitude"] as? String ?? "0"
                 let latitude = d?["latitude"] as? String ?? "0"
+                
+                if longitude == "" || latitude == "" {
+                    
+                    break
+                }
+                
                 let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude)!, CLLocationDegrees(longitude)!)
                 
                 videoMapLayWays.append(CLLocationCoordinate2D)
                 
                 tempModel.append(YQVideoMapPointModel.init(dict: dict as! [String : Any]))
+            }
+            
+            
+            if tempModel.count < 1 {
+                
+                break
             }
             
             //只是重新的打点的情况

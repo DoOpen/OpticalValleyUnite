@@ -59,7 +59,7 @@ class YQGenaralFeedBackListVC: UIViewController {
                         
                         SVProgressHUD.showError(withStatus: "没有更多数据!")
                         self.tableView.mj_header.endRefreshing()
-                        self.tableView.mj_header.endRefreshing()
+                        self.tableView.mj_footer.endRefreshing()
                         return
                         
                     }else{
@@ -96,6 +96,8 @@ class YQGenaralFeedBackListVC: UIViewController {
                 
         }) { (error) in
             
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
     }

@@ -326,7 +326,7 @@ class YQDecorationHomeVC: UIViewController {
         self.notiesPramert = pramert
         
         //刷新数据
-        getDataListFunction(pramert: pramert)
+        getDataListFunction(tag: (selectButton?.tag)!,pramert: pramert)
         
     }
     

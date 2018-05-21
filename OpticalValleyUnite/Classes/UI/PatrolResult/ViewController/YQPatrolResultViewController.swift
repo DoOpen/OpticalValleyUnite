@@ -124,6 +124,8 @@ class YQPatrolResultViewController: UIViewController {
             
         }) { (error) in
             
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
             
         }

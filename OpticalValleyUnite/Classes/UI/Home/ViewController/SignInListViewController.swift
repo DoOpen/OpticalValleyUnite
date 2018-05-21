@@ -43,7 +43,7 @@ class SignInListViewController: UIViewController {
     func getData(_ date: String){
         
         var parmat = [String: Any]()
-        parmat["date"] = date
+        parmat["DATE"] = date
         
         let url = URLPath.getPersonSinList
         
@@ -63,7 +63,8 @@ class SignInListViewController: UIViewController {
             }
 
             if temp.isEmpty{
-                SVProgressHUD.showSuccess(withStatus: "数据为空")
+                
+                SVProgressHUD.showError(withStatus: "数据为空")
             }
             
             self.models = temp

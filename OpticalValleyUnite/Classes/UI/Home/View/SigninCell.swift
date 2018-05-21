@@ -18,8 +18,12 @@ class SigninCell: UITableViewCell {
     var model: SignModel?{
         didSet{
             if let model = model {
+                
                 indexLabel.text = "\(model.index + 1)"
-                timeLabel.text = ((model.SIGN_TIME as NSString).substring(from: 10) as NSString).substring(to: 6)
+//                timeLabel.text = ((model.SIGN_TIME as NSString).substring(from: 10) as NSString).substring(to: 6)
+                
+                timeLabel.text = model.SIGN_TIME
+                
                 addressLabel.text = model.ADDRESS
                 addressLabel.sizeToFit()
             }

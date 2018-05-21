@@ -113,10 +113,12 @@ class SlotViewController: UIViewController {
             var temp = [SignModel]()
             
             if let arry = response as? Array<[String: Any]>{
+                
                 for dic in arry {
                     let model = SignModel(parmart: dic)
                     temp.append(model)
                 }
+                
             }
             
             if temp.isEmpty{

@@ -180,7 +180,7 @@ class YQChooseHouseVC: UIViewController {
                 
                 let data = response as? Array<[String : Any]>
                 
-                if data == nil {
+                if data == nil || (data?.isEmpty)! {
                     
                     SVProgressHUD.showError(withStatus: "没有更多数据!")
                     self.dataAarry.removeAll()

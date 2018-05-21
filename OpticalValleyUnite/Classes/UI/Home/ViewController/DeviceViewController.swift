@@ -194,9 +194,7 @@ class DeviceViewController: UIViewController {
             SVProgressHUD.dismiss()
             
             if let arry = response["data"] as? Array<[String: Any]>{
-                
-                
-                
+
                 if pageIndex == 0 {
                     //数据重新赋值,
 //                    var tempDCLTemp = [WorkOrderDetailModel]()
@@ -264,10 +262,17 @@ class DeviceViewController: UIViewController {
                     }
                 }
                 
+            }else{
+                
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
+                SVProgressHUD.showError(withStatus: "没有更多数据!")
             }
             
         }) { (error) in
             
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
         

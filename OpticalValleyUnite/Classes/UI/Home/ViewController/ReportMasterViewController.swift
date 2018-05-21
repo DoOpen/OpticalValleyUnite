@@ -121,10 +121,8 @@ class ReportMasterViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         //0.系统属性的归零处理情况
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
         
         //1.通过判断是普通报事,还是电梯报事
         if let reportName = UserDefaults.standard.object(forKey: Const.YQReportName){
@@ -703,7 +701,7 @@ class ReportMasterViewController: UIViewController {
     @IBAction func chooseBtnClick() {
         
         //重置
-        self.addressLabel.text = ""
+        //self.addressLabel.text = ""
         
         if self.deriveChoose{
             

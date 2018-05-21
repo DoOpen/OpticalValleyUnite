@@ -229,13 +229,13 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                 
                 self.view.setNeedsLayout()
 
-            }else if (mID != "" && gmID != ""){
+            }else if (mID == "" && gmID == ""){
                 
                 //都没有批复的情况
                 self.contentView.isHidden = false
-                self.NOReplyTextVIEW.placeHolder = "等待处理，未答复，请耐心等候，感谢您的反馈"
-                self.view.setNeedsLayout()
+                self.NOReplyTextVIEW.text = "等待处理，未答复，请耐心等候，感谢您的反馈"
                 self.scrollViewHeightConstraint.constant = self.contentView.maxY + 20
+                
             }
             
 

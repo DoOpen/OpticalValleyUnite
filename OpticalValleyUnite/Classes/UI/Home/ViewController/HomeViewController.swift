@@ -119,7 +119,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         //获取项目选择title
         let name = setUpProjectNameLable()
-        self.projectButton.titleLabel?.text = name
+        self.projectButton.setTitle(name, for: .normal)
         
     }
 

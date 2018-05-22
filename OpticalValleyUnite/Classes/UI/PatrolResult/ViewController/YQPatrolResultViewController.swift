@@ -82,7 +82,11 @@ class YQPatrolResultViewController: UIViewController {
             if array == nil {
                 
                 SVProgressHUD.showError(withStatus: "查询数据为空")
+                self.dataArray.removeAll()
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
                 return
+                
             }
             
             //拿到数据字典转模型

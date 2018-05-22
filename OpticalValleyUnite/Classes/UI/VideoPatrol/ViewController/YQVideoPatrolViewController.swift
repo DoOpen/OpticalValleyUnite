@@ -634,7 +634,7 @@ class YQVideoPatrolViewController: UIViewController {
         overlays.removeAll()
         
         let loadWays = noties.userInfo?[
-            "VideoLoadWaysArray"] as? NSArray
+            "VideoLoadWaysArray"] as? NSMutableArray
         
         if loadWays == nil {
             //调用首页的初始点的接口
@@ -651,6 +651,42 @@ class YQVideoPatrolViewController: UIViewController {
             drawerController.setDrawerState(.closed , animated: true)
         }
         
+        
+        var tempLoadWaysXXX = 0
+        //2.0 逻辑修复bug
+        for tempIndex in 0..<(loadWays?.count)!{
+
+            var tempA = loadWays![tempIndex - tempLoadWaysXXX] as? Array<[String : Any]>
+
+            var tempXXX = 0
+            for xxxxx in 0..<(tempA?.count)! {
+
+                let d = tempA![xxxxx - tempXXX]
+
+                let longitude = d["longitude"] as? String
+                let latitude = d["latitude"] as? String
+
+                if longitude == "" || latitude == "" {
+
+                    tempA?.remove(at: xxxxx - tempXXX)
+                    tempXXX += 1
+                }
+            }
+
+            if (tempA?.count)! < 1{
+
+                loadWays?.removeObject(at: tempIndex - tempLoadWaysXXX)
+                tempLoadWaysXXX += 1
+
+            }else{
+
+                loadWays?.replaceObject(at: tempIndex - tempLoadWaysXXX, with: tempA! )
+            }
+
+
+        }
+        
+        
         //2.获取数据重绘,多维的数组的情况,增加需求的判断情况:是否巡查点之后,要求换图标效果
         for array in loadWays! {
             
@@ -666,22 +702,12 @@ class YQVideoPatrolViewController: UIViewController {
                 let longitude = d?["longitude"] as? String ?? "0"
                 let latitude = d?["latitude"] as? String ?? "0"
                 
-                if longitude == "" || latitude == "" {
-                    
-                    break
-                }
                 
                 let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude)!, CLLocationDegrees(longitude)!)
                 
                 videoMapLayWays.append(CLLocationCoordinate2D)
                 
                 tempModel.append(YQVideoMapPointModel.init(dict: dict as! [String : Any]))
-            }
-            
-            
-            if tempModel.count < 1 {
-                
-                break
             }
             
             //只是重新的打点的情况
@@ -695,6 +721,7 @@ class YQVideoPatrolViewController: UIViewController {
 
             //划线
             let polyline: MAPolyline = MAPolyline(coordinates: &videoMapLayWays, count: UInt(videoMapLayWays.count))
+            
             overlays.append(polyline)
             
         }
@@ -858,6 +885,8 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
             
             let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
             renderer.lineWidth = 8.0
+            print(overlay.coordinate)
+            
 //            renderer.strokeColor = UIColor.cyan
             renderer.strokeImage = UIImage.init(named: "多边形-1")
 //            renderer.loadStrokeTextureImage(UIImage.init(named: "多边形1"))

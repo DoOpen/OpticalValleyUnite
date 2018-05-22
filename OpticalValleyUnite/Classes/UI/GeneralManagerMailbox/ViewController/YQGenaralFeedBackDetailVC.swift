@@ -32,6 +32,9 @@ class YQGenaralFeedBackDetailVC: UIViewController {
     var gmV : UIView?
     var mV : UIView?
     
+    //隐藏图片Constraint
+    @IBOutlet weak var hideImageConstraint: NSLayoutConstraint!
+    
     
     //反馈id
     var id = ""
@@ -78,7 +81,7 @@ class YQGenaralFeedBackDetailVC: UIViewController {
             //回显图片
             let imageString = data!["images"] as? String
             //showimages组内容
-            if imageString != nil {
+            if imageString != nil && imageString != "" {
                 
                 var photoImage = [Photo]()
                 
@@ -120,6 +123,12 @@ class YQGenaralFeedBackDetailVC: UIViewController {
                         self.present(pb, animated: true, completion: nil)
                     }
                 }
+                
+            }else{
+                
+                //移动约束hideImageView
+                self.hideImageConstraint.constant = -115
+                
             }
             
             let gmID = data!["gmId"] as? String ?? "" //总经理

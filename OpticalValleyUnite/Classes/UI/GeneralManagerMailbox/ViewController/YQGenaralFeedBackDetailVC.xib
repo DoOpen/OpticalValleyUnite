@@ -14,6 +14,7 @@
                 <outlet property="NOReplyTextVIEW" destination="jhW-UU-wEQ" id="tSD-Kc-0ih"/>
                 <outlet property="contentTextView" destination="gPo-Qd-2Af" id="5v9-ht-hBl"/>
                 <outlet property="contentView" destination="WeH-E8-bVD" id="1ev-2z-gkQ"/>
+                <outlet property="hideImageConstraint" destination="Qtw-pp-HlX" id="r2F-Q6-BYd"/>
                 <outlet property="scrollContentView" destination="GFh-uW-LWf" id="5WC-v6-Qdy"/>
                 <outlet property="scrollViewHeightConstraint" destination="TJ7-7l-aST" id="pd3-k6-6CD"/>
                 <outlet property="showImageView" destination="3oP-qK-yH0" id="qVe-2M-xqT"/>
@@ -58,31 +59,50 @@
                                         <constraint firstItem="BVO-on-E2y" firstAttribute="centerY" secondItem="Aa2-e5-6b3" secondAttribute="centerY" id="cQf-8f-SXk"/>
                                         <constraint firstItem="BVO-on-E2y" firstAttribute="leading" secondItem="Aa2-e5-6b3" secondAttribute="leading" constant="10" id="t81-uE-yvJ"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gPo-Qd-2Af">
-                                    <rect key="frame" x="0.0" y="65" width="374" height="200"/>
+                                    <rect key="frame" x="5" y="70" width="364" height="200"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="KIe-ul-2L0"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </textView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请提供相关信息的截图或照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeR-Id-2PG">
-                                    <rect key="frame" x="10" y="275" width="226" height="21"/>
+                                    <rect key="frame" x="10" y="280" width="226" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oP-qK-yH0" customClass="ShowImageView" customModule="OpticalValleyUnite" customModuleProvider="target">
-                                    <rect key="frame" x="10" y="301" width="354" height="90"/>
+                                    <rect key="frame" x="10" y="306" width="354" height="90"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="90" id="eBv-Jo-CkZ"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WeH-E8-bVD">
-                                    <rect key="frame" x="5" y="396" width="364" height="150"/>
+                                    <rect key="frame" x="5" y="406" width="364" height="150"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWw-hq-AXb">
                                             <rect key="frame" x="0.0" y="0.0" width="364" height="40"/>
@@ -125,14 +145,14 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="3oP-qK-yH0" firstAttribute="leading" secondItem="GFh-uW-LWf" secondAttribute="leading" constant="10" id="1hC-68-hlZ"/>
-                                <constraint firstItem="gPo-Qd-2Af" firstAttribute="top" secondItem="Aa2-e5-6b3" secondAttribute="bottom" id="42K-Y0-bQh"/>
-                                <constraint firstAttribute="trailing" secondItem="gPo-Qd-2Af" secondAttribute="trailing" id="44D-ta-nWB"/>
+                                <constraint firstItem="gPo-Qd-2Af" firstAttribute="top" secondItem="Aa2-e5-6b3" secondAttribute="bottom" constant="5" id="42K-Y0-bQh"/>
+                                <constraint firstAttribute="trailing" secondItem="gPo-Qd-2Af" secondAttribute="trailing" constant="5" id="44D-ta-nWB"/>
                                 <constraint firstItem="WeH-E8-bVD" firstAttribute="leading" secondItem="GFh-uW-LWf" secondAttribute="leading" constant="5" id="7vj-Lo-wgp"/>
                                 <constraint firstAttribute="trailing" secondItem="3oP-qK-yH0" secondAttribute="trailing" constant="10" id="EV9-uT-vZ1"/>
                                 <constraint firstAttribute="trailing" secondItem="WeH-E8-bVD" secondAttribute="trailing" constant="5" id="FiU-3F-de3"/>
-                                <constraint firstItem="WeH-E8-bVD" firstAttribute="top" secondItem="3oP-qK-yH0" secondAttribute="bottom" constant="5" id="Qtw-pp-HlX"/>
+                                <constraint firstItem="WeH-E8-bVD" firstAttribute="top" secondItem="3oP-qK-yH0" secondAttribute="bottom" constant="10" id="Qtw-pp-HlX"/>
                                 <constraint firstAttribute="height" constant="667" id="TJ7-7l-aST"/>
-                                <constraint firstItem="gPo-Qd-2Af" firstAttribute="leading" secondItem="GFh-uW-LWf" secondAttribute="leading" id="Z3J-4E-GXZ"/>
+                                <constraint firstItem="gPo-Qd-2Af" firstAttribute="leading" secondItem="GFh-uW-LWf" secondAttribute="leading" constant="5" id="Z3J-4E-GXZ"/>
                                 <constraint firstItem="MeR-Id-2PG" firstAttribute="top" secondItem="gPo-Qd-2Af" secondAttribute="bottom" constant="10" id="ZLA-nW-o7a"/>
                                 <constraint firstItem="Aa2-e5-6b3" firstAttribute="top" secondItem="GFh-uW-LWf" secondAttribute="top" id="aJl-zg-Bi0"/>
                                 <constraint firstItem="Aa2-e5-6b3" firstAttribute="leading" secondItem="GFh-uW-LWf" secondAttribute="leading" id="e6z-9C-WUX"/>

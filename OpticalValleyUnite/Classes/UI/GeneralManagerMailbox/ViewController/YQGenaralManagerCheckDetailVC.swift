@@ -44,6 +44,11 @@ class YQGenaralManagerCheckDetailVC: UIViewController {
     @IBOutlet weak var bottomButtonView: UIView!
     
     
+    //影藏imageConstraint
+    @IBOutlet weak var hideImageConstraint: NSLayoutConstraint!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,7 +87,7 @@ class YQGenaralManagerCheckDetailVC: UIViewController {
             //回显图片
             let imageString = data!["images"] as? String
             //showimages组内容
-            if imageString != nil {
+            if imageString != nil && imageString != "" {
                 
                 var photoImage = [Photo]()
                 
@@ -124,6 +129,13 @@ class YQGenaralManagerCheckDetailVC: UIViewController {
                         self.present(pb, animated: true, completion: nil)
                     }
                 }
+                
+            }else{
+                
+                //隐藏图片情况
+                self.hideImageConstraint.constant = -125
+                
+                
             }
             
             let mId = data!["mId"] as? String ?? ""

@@ -37,6 +37,10 @@ class YQGenaralManagerCheckAlreadyDetailVC: UIViewController {
     
     @IBOutlet weak var gmReplyContent: SJTextView!
     
+    //影藏图片内容约束Constraint
+    @IBOutlet weak var hideImageConstraint: NSLayoutConstraint!
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -77,7 +81,7 @@ class YQGenaralManagerCheckAlreadyDetailVC: UIViewController {
             //回显图片
             let imageString = data!["images"] as? String
             //showimages组内容
-            if imageString != nil {
+            if imageString != nil && imageString != "" {
                 
                 var photoImage = [Photo]()
                 
@@ -119,6 +123,12 @@ class YQGenaralManagerCheckAlreadyDetailVC: UIViewController {
                         self.present(pb, animated: true, completion: nil)
                     }
                 }
+                
+            }else{
+                
+                //hide
+                self.hideImageConstraint.constant = -135
+                
             }
 
             let mID = data!["mId"] as? String ?? ""//经理

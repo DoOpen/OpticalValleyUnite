@@ -16,6 +16,7 @@
                 <outlet property="contentViewTopConstraint" destination="Onf-09-qrc" id="Le6-E3-ZDV"/>
                 <outlet property="feedBackLabel" destination="lx4-fB-HI4" id="Mmq-CP-dgU"/>
                 <outlet property="gmReplyContent" destination="aSp-jA-pb6" id="Utb-hs-GZw"/>
+                <outlet property="hideImageConstraint" destination="Onf-09-qrc" id="8O6-vW-Wfn"/>
                 <outlet property="projectLabel" destination="xWL-hT-VsY" id="DRs-ml-87U"/>
                 <outlet property="scrollContentView" destination="234-31-aTY" id="C6J-op-A5p"/>
                 <outlet property="scrollViewHeightConstraint" destination="e83-JR-ayf" id="lRp-eI-TVi"/>
@@ -61,6 +62,14 @@
                                         <constraint firstAttribute="trailing" secondItem="OHo-We-aDD" secondAttribute="trailing" constant="10" id="gOU-OI-bcO"/>
                                         <constraint firstItem="OHo-We-aDD" firstAttribute="top" secondItem="nc2-ud-Xfj" secondAttribute="top" constant="8" id="uT4-W9-4bM"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ndz-r5-xbA">
                                     <rect key="frame" x="0.0" y="50" width="381" height="180"/>
@@ -89,6 +98,14 @@
                                                 <constraint firstItem="xWL-hT-VsY" firstAttribute="centerY" secondItem="svs-1H-o8y" secondAttribute="centerY" id="VIs-Af-Hbe"/>
                                                 <constraint firstItem="lx4-fB-HI4" firstAttribute="leading" secondItem="svs-1H-o8y" secondAttribute="leading" constant="10" id="qgC-8p-VKq"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rxI-zm-Eep">
                                             <rect key="frame" x="10" y="60" width="361" height="110"/>
@@ -148,7 +165,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMG-L5-lul">
-                                    <rect key="frame" x="0.0" y="405" width="381" height="150"/>
+                                    <rect key="frame" x="0.0" y="385" width="381" height="150"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aSp-jA-pb6" customClass="SJTextView">
                                             <rect key="frame" x="10" y="34" width="361" height="111"/>
@@ -194,7 +211,7 @@
                                 <constraint firstItem="KRc-Ej-5V4" firstAttribute="top" secondItem="ndz-r5-xbA" secondAttribute="bottom" id="Bbd-rj-m6i"/>
                                 <constraint firstItem="nc2-ud-Xfj" firstAttribute="top" secondItem="234-31-aTY" secondAttribute="top" id="BpV-7M-hmI"/>
                                 <constraint firstAttribute="trailing" secondItem="ndz-r5-xbA" secondAttribute="trailing" id="KYK-ob-2Bc"/>
-                                <constraint firstItem="IMG-L5-lul" firstAttribute="top" secondItem="KRc-Ej-5V4" secondAttribute="bottom" constant="40" id="Onf-09-qrc"/>
+                                <constraint firstItem="IMG-L5-lul" firstAttribute="top" secondItem="KRc-Ej-5V4" secondAttribute="bottom" constant="20" id="Onf-09-qrc"/>
                                 <constraint firstItem="nc2-ud-Xfj" firstAttribute="leading" secondItem="234-31-aTY" secondAttribute="leading" id="SK3-po-vr7"/>
                                 <constraint firstItem="IMG-L5-lul" firstAttribute="leading" secondItem="234-31-aTY" secondAttribute="leading" id="Tff-V1-0hP"/>
                                 <constraint firstItem="ndz-r5-xbA" firstAttribute="leading" secondItem="234-31-aTY" secondAttribute="leading" id="YYl-dN-DGK"/>

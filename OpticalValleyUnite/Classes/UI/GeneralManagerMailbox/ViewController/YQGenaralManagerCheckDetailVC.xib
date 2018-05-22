@@ -15,6 +15,7 @@
                 <outlet property="contentTextView" destination="bXK-uy-ZQd" id="5iw-dr-bZS"/>
                 <outlet property="contentView" destination="abx-OJ-FCJ" id="hYF-1c-YpL"/>
                 <outlet property="feedBackLabel" destination="EBf-0h-glA" id="ncq-RA-Zoc"/>
+                <outlet property="hideImageConstraint" destination="a45-LO-sdQ" id="ALj-fV-h7J"/>
                 <outlet property="isOnGmSwitch" destination="t3j-cC-lVg" id="NQd-47-eov"/>
                 <outlet property="lastView" destination="jVs-g9-bNr" id="JK8-31-D0z"/>
                 <outlet property="mReplyContent" destination="kAf-GV-BTo" id="peY-9W-5HN"/>
@@ -64,6 +65,14 @@
                                         <constraint firstItem="KXd-8l-Z0G" firstAttribute="top" secondItem="cI1-UR-uI4" secondAttribute="bottom" constant="3" id="nAy-WM-pIX"/>
                                         <constraint firstAttribute="trailing" secondItem="cI1-UR-uI4" secondAttribute="trailing" constant="10" id="wTj-GY-WYA"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbs-8A-Gjf">
                                     <rect key="frame" x="0.0" y="50" width="374" height="180"/>
@@ -92,6 +101,14 @@
                                                 <constraint firstAttribute="trailing" secondItem="WCC-j1-cR0" secondAttribute="trailing" constant="5" id="hGd-hb-Rc0"/>
                                                 <constraint firstItem="EBf-0h-glA" firstAttribute="centerY" secondItem="yQQ-KN-rbe" secondAttribute="centerY" id="zBH-1O-l3L"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bXK-uy-ZQd">
                                             <rect key="frame" x="10" y="60" width="354" height="110"/>
@@ -151,7 +168,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abx-OJ-FCJ">
-                                    <rect key="frame" x="0.0" y="355" width="374" height="150"/>
+                                    <rect key="frame" x="0.0" y="365" width="374" height="150"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kAf-GV-BTo" customClass="SJTextView">
                                             <rect key="frame" x="10" y="34" width="354" height="111"/>
@@ -189,7 +206,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVs-g9-bNr">
-                                    <rect key="frame" x="0.0" y="505" width="374" height="30"/>
+                                    <rect key="frame" x="0.0" y="515" width="374" height="30"/>
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t3j-cC-lVg">
                                             <rect key="frame" x="310" y="0.0" width="51" height="30"/>
@@ -223,7 +240,7 @@
                                 <constraint firstItem="jVs-g9-bNr" firstAttribute="leading" secondItem="7NK-2x-bcW" secondAttribute="leading" id="KCh-1H-RWs"/>
                                 <constraint firstItem="hRl-2P-sGe" firstAttribute="leading" secondItem="7NK-2x-bcW" secondAttribute="leading" id="TYw-7X-dHS"/>
                                 <constraint firstAttribute="trailing" secondItem="Xbs-8A-Gjf" secondAttribute="trailing" id="Yn0-JG-I9s"/>
-                                <constraint firstItem="abx-OJ-FCJ" firstAttribute="top" secondItem="91g-G9-fBE" secondAttribute="bottom" id="a45-LO-sdQ"/>
+                                <constraint firstItem="abx-OJ-FCJ" firstAttribute="top" secondItem="91g-G9-fBE" secondAttribute="bottom" constant="10" id="a45-LO-sdQ"/>
                                 <constraint firstAttribute="trailing" secondItem="jVs-g9-bNr" secondAttribute="trailing" id="bGe-8d-WNX"/>
                                 <constraint firstAttribute="height" constant="670" id="gdW-lK-1WT"/>
                                 <constraint firstItem="jVs-g9-bNr" firstAttribute="top" secondItem="abx-OJ-FCJ" secondAttribute="bottom" id="hsZ-Id-c3j"/>

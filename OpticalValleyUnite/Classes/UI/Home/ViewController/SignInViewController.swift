@@ -159,7 +159,7 @@ class SignInViewController: UIViewController {
     private func showList(){
         
         var parmat = [String: Any]()
-        parmat["date"] = Date.dateStringDate(dateFormetString: "YYYY-MM-dd")
+        parmat["DATE"] = Date.dateStringDate(dateFormetString: "YYYY-MM-dd")
         
         let url = URLPath.getPersonSinList
     

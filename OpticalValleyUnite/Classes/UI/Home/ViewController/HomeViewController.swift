@@ -227,8 +227,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         systemSelection = systemData as! NSDictionary
         
         
-        //新增 获取集团版 和 项目版  的区别 来进行的操作
-        let isgroup = systemSelection["is_group"] as? Int ?? -1
+        //新增 获取集团版 和 项目版  的区别 来进行的操作 //注意的是 2是集团版 3是项目版
+        let isgroup = systemSelection["isGroup"] as? Int ?? -1
         UserDefaults.standard.set(isgroup, forKey: Const.YQIs_Group)
         
         

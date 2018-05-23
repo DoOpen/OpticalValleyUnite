@@ -885,7 +885,7 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
                     
                 }
                 
-            }   else {
+            } else {
                 
                 switch (nowAnnotation?.videoModel?.type)! {
                 case 1://室内点

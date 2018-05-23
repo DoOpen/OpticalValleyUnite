@@ -30,6 +30,19 @@ class YQResultMapViewController: UIViewController {
         return Array<MAOverlay>()
     }()
 
+    // video模型数据
+    var videoMapPointModel = [YQVideoMapPointModel](){
+        
+        didSet{
+            
+            //调用地图渲染,打点的方法(有多少个模型,就需要多少个标记)
+            for model in videoMapPointModel{
+                
+                addLocationAndMessageView(model: model)
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,6 +163,30 @@ class YQResultMapViewController: UIViewController {
         })
     }
     
+    
+    // MARK: - mapView 进行打点的方法
+    func addLocationAndMessageView(model: YQVideoMapPointModel){
+        //进行判空的情况
+        if model.latitude == "" || model.longitude == "" {
+            
+            SVProgressHUD.showError(withStatus: "点位位置信息为空!")
+            return
+        }
+        
+        //设置打点的情况
+        let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(model.latitude)!, CLLocationDegrees(model.longitude)!)
+        
+        //设置定义MAPointAnnotation
+        let annotation: YQVideoPatrolAnnotation? = YQVideoPatrolAnnotation()
+        annotation?.coordinate = CLLocationCoordinate2D
+        annotation?.title = model.name
+        annotation?.videoModel = model
+        
+        mapView.addAnnotation(annotation)
+        
+    }
+    
+    
     // MARK: - 获取通知数据
     func receiveNotiesData(){
     
@@ -163,11 +200,13 @@ class YQResultMapViewController: UIViewController {
     func resultDrawerLoadWaysNoties (noties : Notification){
         
         //划线重新置空的情况
+        mapView.removeAnnotations(mapView.annotations)
         mapView.removeOverlays(overlays)
         overlays.removeAll()
         
         
         let dataArray = noties.userInfo?["VideoLoadWaysArray"] as? NSDictionary
+        
         if dataArray == nil {
             
             return
@@ -189,28 +228,36 @@ class YQResultMapViewController: UIViewController {
                 if let pointA =  temp2["pointList"] as? NSArray {
                     if pointA.count > 0  {
                         
+                        var tempModel = [YQVideoMapPointModel]()
                         self.wayLineType = 1
                         var executeWayArray = [CLLocationCoordinate2D]()
                         
                         for dict in pointA {
-                            let temp = dict as? NSDictionary
+                            let temp = dict as? [String : Any]
                             
                             let longitude = temp?["longitude"] as? String
                             let latitude = temp?["latitude"] as? String
                             
                             if longitude == "" || latitude == "" {
+                                
+                                SVProgressHUD.showError(withStatus: "实际执行点位信息为空!")
                                 break
                             }
                             
                             let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude!)!, CLLocationDegrees(longitude!)!)
                             executeWayArray.append(CLLocationCoordinate2D)
                             
+                            tempModel.append(YQVideoMapPointModel.init(dict: temp!))
+                            
                         }
+                        //渲染打点的情况
+                        self.videoMapPointModel = tempModel
                         
                         if executeWayArray.count < 1 {
                             
                             break
                         }
+                        
                         
                         self.mapView.setCenter(executeWayArray.first!, animated: true)
                         
@@ -236,28 +283,35 @@ class YQResultMapViewController: UIViewController {
                         
                         self.wayLineType = 2
                         var designWayArray = [CLLocationCoordinate2D]()
+                        var tempModel = [YQVideoMapPointModel]()
                         
                         for dict in pointA {
                             
-                            let temp = dict as? NSDictionary
+                            let temp = dict as? [String : Any]
                             
                             let longitude = temp?["longitude"] as? String ?? "0"
                             let latitude = temp?["latitude"] as? String ?? "0"
                             if longitude == "" || latitude == "" {
+                                
+                                SVProgressHUD.showError(withStatus: "设计路线点位信息为空!")
                                 break
                             }
                             
                             let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude)!, CLLocationDegrees(longitude)!)
                             designWayArray.append(CLLocationCoordinate2D)
                             
+                             tempModel.append(YQVideoMapPointModel.init(dict: temp!))
                         }
+                        //渲染打点的情况
+                        self.videoMapPointModel = tempModel
                         
                         if designWayArray.count < 1 {
                             
                             break
                         }
                         
-                         self.mapView.setCenter(designWayArray.first!, animated: true)
+                        self.mapView.setCenter(designWayArray.first!, animated: true)
+                        
                         //执行画线的方法
                         //划线
                         let polyline: MAPolyline = MAPolyline(coordinates: &designWayArray, count: UInt(designWayArray.count))
@@ -281,22 +335,28 @@ class YQResultMapViewController: UIViewController {
                         
                         self.wayLineType = 3
                         var realWayArray = [CLLocationCoordinate2D]()
+                        var tempModel = [YQVideoMapPointModel]()
                         
                         for dict in pointA {
-                            let temp = dict as? NSDictionary
+                            
+                            let temp = dict as? [String : Any]
                             
                             let longitude = temp?["longitude"] as? String
                             let latitude = temp?["latitude"] as? String
                             
                             if longitude == "" || latitude == "" {
-                                
+                                SVProgressHUD.showError(withStatus: "真实路线点位信息为空!")
                                 break
                             }
                             
                             let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude!)!, CLLocationDegrees(longitude!)!)
                             realWayArray.append(CLLocationCoordinate2D)
                             
+                            tempModel.append(YQVideoMapPointModel.init(dict: temp!))
                         }
+                        
+                        //渲染打点的情况
+                        self.videoMapPointModel = tempModel
                         
                         if realWayArray.count < 1 {
                             
@@ -310,11 +370,9 @@ class YQResultMapViewController: UIViewController {
                         let polyline: MAPolyline = MAPolyline(coordinates: &realWayArray, count: UInt(realWayArray.count))
                         overlays.append(polyline)
                     }
-                    
                 }
             }
         }
-        
         
         mapView.addOverlays(overlays)
         
@@ -379,6 +437,76 @@ extension YQResultMapViewController : MAMapViewDelegate {
         return nil
     }
 
-
+    // MARK: - 设置mark的标记的类型图标的方法
+    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
+        
+        let nowAnnotation = annotation as? YQVideoPatrolAnnotation
+        
+        if (annotation.isKind(of: YQVideoPatrolAnnotation.self)) {
+           
+            let pointReuseIndetifier = "videoPatrolReuseIndetifier"
+            
+            var annotationView: MAAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier)
+            
+            if annotationView == nil {
+                
+                annotationView = MAAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
+            }
+            
+            //添加逻辑的判断 情况: isint的属性来进行判断
+            //通过模型来进行的传递的 model
+            if nowAnnotation?.videoModel?.isIns == 0 { // 没有执行的情况
+                
+                switch (nowAnnotation?.videoModel?.type)! {
+                case 1://室内点
+                    annotationView?.image = UIImage.init(name: "室内2")
+                    break
+                case 2://室外点
+                    if nowAnnotation?.videoModel?.equipmentId != 0 {
+                        
+                        annotationView?.image = UIImage.init(name: "室外摄像头2")
+                    }else{
+                        
+                        annotationView?.image = UIImage.init(name: "室外2")
+                    }
+                    
+                    break
+                default:
+                    break
+                    
+                }
+                
+            } else {
+                
+                switch (nowAnnotation?.videoModel?.type)! {
+                case 1://室内点
+                    annotationView?.image = UIImage.init(name: "室内1")
+                    break
+                    
+                case 2://室外点
+                    
+                    if nowAnnotation?.videoModel?.equipmentId != 0 {
+                        
+                        annotationView?.image = UIImage.init(name: "室外摄像头1")
+                    }else{
+                        
+                        annotationView?.image = UIImage.init(name: "室外1")
+                    }
+                    
+                    break
+                default:
+                    break
+                    
+                }
+                
+            }
+            
+            annotationView!.canShowCallout = true //设置气泡可以弹出，默认为NO
+            
+            return annotationView!
+        }
+        
+        return nil
+    }
 
 }

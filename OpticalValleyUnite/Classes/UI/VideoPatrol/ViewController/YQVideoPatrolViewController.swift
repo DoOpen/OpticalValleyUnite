@@ -21,6 +21,28 @@ class YQVideoPatrolViewController: UIViewController {
     /// 项目parkID 的属性
     var parkId = ""
     
+    //路径实时的查询的所有类
+    var search : AMapSearchAPI!
+    var naviRoute: MANaviRoute?
+    
+    var currentSearchType: AMapRoutePlanningType = AMapRoutePlanningType.drive
+    
+    //除了驾车以外的所有的路径显示,高德的返回列表
+    var route: AMapRoute!{
+        
+        didSet{
+            
+            let MapPath = route?.paths[0]
+            
+            if MapPath == nil {
+                
+                return
+            }
+            //            let x = MapPath?.distance ?? 0
+            //            let y = MapPath?.duration ?? 0
+        }
+    }
+    
     
     /// 是否有室内点的情况
     var isIndoorPoint : Bool?
@@ -30,6 +52,7 @@ class YQVideoPatrolViewController: UIViewController {
 
     // video模型数据
     var videoMapPointModel = [YQVideoMapPointModel](){
+        
         didSet{
             
             //调用地图渲染,打点的方法(有多少个模型,就需要多少个标记)
@@ -40,7 +63,7 @@ class YQVideoPatrolViewController: UIViewController {
         }
     }
     
-//    var overlays: Array<MAOverlay>!
+    // var overlays: Array<MAOverlay>!
     
     // indoorVideo模型数据
     var indoorVideoPointModel = [YQVideoIndoorPatorlModel](){
@@ -116,6 +139,10 @@ class YQVideoPatrolViewController: UIViewController {
 
         //3.接受通知赋值
         setupNoties()
+        
+        //4.创建和设置search代理的方法
+        search = AMapSearchAPI()
+        search?.delegate = self
     
     }
     
@@ -628,10 +655,12 @@ class YQVideoPatrolViewController: UIViewController {
     }
     func videoLoadWaysNoties(noties : Notification){
         
+        //全部清除置空的情况
+        mapView.removeOverlays(self.naviRoute?.routePolylines)
         mapView.removeOverlays(overlays)
         mapView.removeAnnotations(mapView.annotations)
-        
         overlays.removeAll()
+        self.naviRoute?.routePolylines.removeAll()
         
         let loadWays = noties.userInfo?[
             "VideoLoadWaysArray"] as? NSMutableArray
@@ -718,6 +747,20 @@ class YQVideoPatrolViewController: UIViewController {
             
             self.mapView.setCenter(Coordinate2D, animated: true)
             
+            //画规划的步行路线
+            for indexxx in 0..<tempModel.count {
+                
+                if(indexxx == tempModel.count - 1){
+                    
+                    return
+                }
+                
+                let start =  CLLocationCoordinate2DMake(CLLocationDegrees(tempModel[indexxx].latitude)!, CLLocationDegrees(tempModel[indexxx].longitude)!)
+                
+                let end =  CLLocationCoordinate2DMake(CLLocationDegrees(tempModel[indexxx + 1].latitude)!, CLLocationDegrees(tempModel[indexxx + 1].longitude)!)
+                
+                showRoute(startCoordinate: start, endCoordinate: end)
+            }
 
             //划线
             let polyline: MAPolyline = MAPolyline(coordinates: &videoMapLayWays, count: UInt(videoMapLayWays.count))
@@ -741,11 +784,46 @@ class YQVideoPatrolViewController: UIViewController {
         
     }
     
-
+    // MARK: - 展示真实的路径规划情况
+    func showRoute(startCoordinate : CLLocationCoordinate2D, endCoordinate : CLLocationCoordinate2D) {
+        
+        //通过start 和 end 的经纬度来进行规划路线
+        let request = AMapWalkingRouteSearchRequest()
+        request.origin = AMapGeoPoint.location(withLatitude: CGFloat(startCoordinate.latitude), longitude: CGFloat(startCoordinate.longitude))
+        request.destination = AMapGeoPoint.location(withLatitude: CGFloat(endCoordinate.latitude), longitude: CGFloat(endCoordinate.longitude))
+        
+        search.aMapWalkingRouteSearch(request)
+        
+    }
+    
+    // MARK: - 展示当前路线方案,规划路径
+    /* 展示当前路线方案 */
+    func presentCurrentCourse(startCoordinate : CLLocationCoordinate2D,endCoordinate : CLLocationCoordinate2D) {
+        
+        let start = AMapGeoPoint.location(withLatitude: CGFloat(startCoordinate.latitude), longitude: CGFloat(startCoordinate.longitude))
+        let end = AMapGeoPoint.location(withLatitude: CGFloat(endCoordinate.latitude), longitude: CGFloat(endCoordinate.longitude))
+        
+        if currentSearchType == .bus || currentSearchType == .busCrossCity {
+            naviRoute = MANaviRoute(for: route?.transits.first, start: start, end: end)
+        } else {
+            let type = MANaviAnnotationType(rawValue: currentSearchType.rawValue)
+            
+            naviRoute = MANaviRoute(for: route?.paths.first, withNaviType: type!, showTraffic: true, start: start, end: end)
+        }
+        
+        naviRoute?.add(to: mapView)
+        
+        mapView.showOverlays(naviRoute?.routePolylines, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
+        mapView.zoomLevel = 16.0 //地图的缩放的级别比例
+        
+    }
+    
+    
     deinit {
         
         NotificationCenter.default.removeObserver(self)
     }
+    
 
 }
 
@@ -832,7 +910,6 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
 
             }
             
-            
             annotationView!.canShowCallout = true //设置气泡可以弹出，默认为NO
             
             return annotationView!
@@ -846,7 +923,6 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
     func mapView(_ mapView: MAMapView!, didDeselect view: MAAnnotationView!) {
         
         //设置为隐藏
-        
     }
 
 
@@ -898,5 +974,29 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
         return nil
     }
     
+}
 
+extension YQVideoPatrolViewController : AMapSearchDelegate{
+    
+    // MARK: - 解析search_response获取路径信息
+    func onRouteSearchDone(_ request: AMapRouteSearchBaseRequest!, response: AMapRouteSearchResponse!) {
+        
+        self.route = nil
+        
+        if response.count > 0 {
+            
+            self.route = response.route
+            let start =  CLLocationCoordinate2DMake(CLLocationDegrees(request.origin.latitude), CLLocationDegrees(request.origin.longitude))
+            let end = CLLocationCoordinate2DMake(CLLocationDegrees(request.destination.latitude), CLLocationDegrees(request.destination.longitude))
+            
+            self.presentCurrentCourse(startCoordinate: start, endCoordinate: end)
+            
+        }
+    }
+    
+    // MARK: - search失败的代理方法
+    func aMapSearchRequest(_ request: Any!, didFailWithError error: Error!) {
+        print("Error:\(error)")
+    }
+    
 }

@@ -140,12 +140,14 @@ class YQPatrolItemWeatherViewController: UIViewController {
             view.delegate = self
             
             bottomView.addSubview(view)
+            
             view.snp.makeConstraints({ (make) in
                 
                 make.top.left.right.bottom.equalToSuperview()
             })
 
             break
+            
         default:
             break
         }

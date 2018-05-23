@@ -91,7 +91,7 @@ class YQScoreResult: UIView {
             if (model?.score)! <= 0 {
                 
                 //解决model.source 的逻辑bug的 情况
-                model?.score = 1
+                model?.score = 5
                 
             }else if (model?.score)! > 5{
                 
@@ -136,7 +136,6 @@ class YQScoreResult: UIView {
                     }
                     
                     photoImage.append(pUrl)
-                    
                 }
                 
                 itemPictureView.showImageUrls(temp)

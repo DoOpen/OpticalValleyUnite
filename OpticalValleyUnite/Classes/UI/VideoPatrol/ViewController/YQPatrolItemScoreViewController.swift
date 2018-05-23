@@ -281,7 +281,7 @@ extension YQPatrolItemScoreViewController : YQPatrolBottomNextViewDelegate{
         
         
         if self.selectStarsBtn == nil {
-            par["score"] = 1
+            par["score"] = 5
             
         }else{
         

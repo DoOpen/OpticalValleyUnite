@@ -35,11 +35,10 @@ class YQWeatherResult: UIView {
             self.patrolType.text = model?.insItemTypeName
             self.describeLabel.text = model?.descriptionString
             
-            if model?.imgPath != ""{
+            if model?.imgPath != "" {
                 
                 var photoImage = [Photo]()
                 var pUrl = Photo()
-                
                 var imageValue = ""
                 
                 if (model?.imgPath.contains("http"))!{
@@ -125,7 +124,6 @@ class YQWeatherResult: UIView {
                         pb.indicatorStyle = .pageControl
                         self.superVC?.present(pb, animated: true, completion: nil)
                     }
-
                 }
             }
             
@@ -135,11 +133,11 @@ class YQWeatherResult: UIView {
                 self.noBtn.isSelected = false
             
             }else{//默认都是显示的 否
-                self.noBtn.isSelected = true
-                self.yesBtn.isSelected = false
+                self.yesBtn.isSelected = true
+                self.noBtn.isSelected = false
+                
             }
-            
-            
+
         }
     }
     

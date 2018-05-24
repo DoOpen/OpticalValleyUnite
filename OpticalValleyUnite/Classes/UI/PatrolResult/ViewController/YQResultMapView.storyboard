@@ -64,9 +64,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFn-ee-xxo">
-                                <rect key="frame" x="50" y="369" width="41" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <state key="normal" title="日期转换"/>
+                                <rect key="frame" x="50" y="369" width="54" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="日历转换"/>
                                 <connections>
                                     <action selector="dateModeButtonClick:" destination="gTC-38-O2U" eventType="touchUpInside" id="vn3-bV-Ol8"/>
                                 </connections>

@@ -95,6 +95,9 @@ class YQResultMapViewController: UIViewController {
         //日历的查询方法
         self.calendarView.select(Date())
         self.calendarView.scope = .week
+        //添加手势
+        let scopeGesture = UIPanGestureRecognizer(target: self.calendarView, action: #selector(self.calendarView.handleScopeGesture(_:)))
+        self.calendarView.addGestureRecognizer(scopeGesture)
         
         //路径导航初始化
         search = AMapSearchAPI()
@@ -633,6 +636,7 @@ extension YQResultMapViewController : MAMapViewDelegate {
 
 
 extension YQResultMapViewController : FSCalendarDataSource, FSCalendarDelegate {
+    
     
     //日历的控件的约束改变的delegate
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {

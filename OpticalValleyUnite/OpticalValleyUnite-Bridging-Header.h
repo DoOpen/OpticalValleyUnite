@@ -36,3 +36,6 @@
 
 // U-Share分享面板SDK，未添加分享面板SDK可将此行去掉
 #import <UShareUI/UShareUI.h>
+
+//日历的框架
+#import "FSCalendar.h"

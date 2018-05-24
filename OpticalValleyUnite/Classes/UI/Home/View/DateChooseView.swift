@@ -28,7 +28,8 @@ class DateChooseView: UIView {
     }
     
     override func awakeFromNib() {
-        addSubview(scrollView)
+        
+      addSubview(scrollView)
       scrollView.bounces = false
         
         let year = Date().dateCompoents().year!
@@ -88,6 +89,7 @@ class DateChooseView: UIView {
 }
 
 class DateView: UIView{
+    
     @IBOutlet weak var weekLabel: UILabel!
     @IBOutlet weak var dayBtn: UIButton!
     

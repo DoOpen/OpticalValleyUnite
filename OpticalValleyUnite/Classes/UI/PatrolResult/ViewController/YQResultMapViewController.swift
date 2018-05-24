@@ -14,7 +14,7 @@ import SVProgressHUD
 class YQResultMapViewController: UIViewController {
 
     ///属性列表
-    @IBOutlet weak var timeView: DateChooseView!
+    @IBOutlet weak var calendarView: FSCalendar!
    
     
     @IBOutlet weak var mapView: MAMapView!
@@ -43,6 +43,17 @@ class YQResultMapViewController: UIViewController {
         }
     }
     
+    ///新版日历属性的懒加载情况
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,16 +72,11 @@ class YQResultMapViewController: UIViewController {
         //获取项目筛选的数据,接受通知
         receiveNotiesData()
         
-        //日历查询的方法
-        timeView.didSelectHandle = { [weak self] dateStr in
-            
-            self?.title = "巡查轨迹" + dateStr
-            //发送通知来进行切换筛选
-            let center = NotificationCenter.default
-            let notiesName = NSNotification.Name(rawValue: "drawerUpdateNoties")
-            center.post(name: notiesName, object: nil, userInfo: ["drawerdateString": dateStr])
-            
-        }
+        //日历的查询方法
+        self.calendarView.select(Date())
+        self.calendarView.scope = .week
+        
+       
     }
     
     // MARK: - 重定位buttonClick
@@ -78,6 +84,17 @@ class YQResultMapViewController: UIViewController {
         
         mapViewSetup()
         
+    }
+    
+    // MARK: - 日期转换模式buttonClick
+    
+    @IBAction func dateModeButtonClick(_ sender: UIButton) {
+        
+        if self.calendarView.scope == .month {
+            self.calendarView.setScope(.week, animated: true)
+        } else {
+            self.calendarView.setScope(.month, animated: true)
+        }
     }
     
     
@@ -509,4 +526,44 @@ extension YQResultMapViewController : MAMapViewDelegate {
         return nil
     }
 
+}
+
+
+extension YQResultMapViewController : FSCalendarDataSource, FSCalendarDelegate {
+    
+    //日历的控件的约束改变的delegate
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.calendarHeightConstraint.constant = bounds.height
+        self.view.layoutIfNeeded()
+    }
+    
+    //点击日期的delegate方法
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
+        print("did select date \(self.dateFormatter.string(from: date))")
+        
+        let dateStr = self.dateFormatter.string(from: date)
+        self.title = "巡查轨迹" + dateStr
+        //发送通知来进行切换筛选
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "drawerUpdateNoties")
+        center.post(name: notiesName, object: nil, userInfo: ["drawerdateString": dateStr])
+        
+//        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+//
+//        print("selected dates is \(selectedDates)")
+        
+        if monthPosition == .next || monthPosition == .previous {
+            calendar.setCurrentPage(date, animated: true)
+        }
+        
+    
+    }
+    
+    ///切换月的代理方法
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        
+        print("\(self.dateFormatter.string(from: calendar.currentPage))")
+    }
+    
 }

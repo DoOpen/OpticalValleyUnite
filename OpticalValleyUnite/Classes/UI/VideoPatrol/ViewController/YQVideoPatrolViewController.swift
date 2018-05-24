@@ -656,11 +656,11 @@ class YQVideoPatrolViewController: UIViewController {
     func videoLoadWaysNoties(noties : Notification){
         
         //全部清除置空的情况
-        mapView.removeOverlays(self.naviRoute?.routePolylines)
+        mapView.removeOverlays(mapView.overlays)
         mapView.removeOverlays(overlays)
         mapView.removeAnnotations(mapView.annotations)
         overlays.removeAll()
-        self.naviRoute?.routePolylines.removeAll()
+        
         
         let loadWays = noties.userInfo?[
             "VideoLoadWaysArray"] as? NSMutableArray
@@ -669,7 +669,7 @@ class YQVideoPatrolViewController: UIViewController {
             //调用首页的初始点的接口
             // viewWill的方法再次进行调用实现了,重置打点的情况!
             makeMapLocationData()
-            
+
             return
         }
         

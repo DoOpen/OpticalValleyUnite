@@ -53,7 +53,27 @@ class YQResultMapViewController: UIViewController {
     
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
+    //路径实时的查询的所有类
+    var search : AMapSearchAPI!
+    var naviRoute: MANaviRoute?
     
+    var currentSearchType: AMapRoutePlanningType = AMapRoutePlanningType.drive
+    
+    //除了驾车以外的所有的路径显示,高德的返回列表
+    var route: AMapRoute!{
+        
+        didSet{
+            
+            let MapPath = route?.paths[0]
+            
+            if MapPath == nil {
+                
+                return
+            }
+            //            let x = MapPath?.distance ?? 0
+            //            let y = MapPath?.duration ?? 0
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +96,10 @@ class YQResultMapViewController: UIViewController {
         self.calendarView.select(Date())
         self.calendarView.scope = .week
         
-       
+        //路径导航初始化
+        search = AMapSearchAPI()
+        search?.delegate = self
+        
     }
     
     // MARK: - 重定位buttonClick
@@ -219,8 +242,9 @@ class YQResultMapViewController: UIViewController {
         //划线重新置空的情况
         mapView.removeAnnotations(mapView.annotations)
         mapView.removeOverlays(overlays)
+        mapView.removeOverlays(mapView.overlays)
         overlays.removeAll()
-        
+
         
         let dataArray = noties.userInfo?["VideoLoadWaysArray"] as? NSDictionary
         
@@ -275,12 +299,28 @@ class YQResultMapViewController: UIViewController {
                             break
                         }
                         
+                        //画规划的步行路线
+                        for indexxx in 0..<tempModel.count {
+                            
+                            if(indexxx == tempModel.count - 1){
+                                
+                                return
+                            }
+                            
+                            let start =  CLLocationCoordinate2DMake(CLLocationDegrees(tempModel[indexxx].latitude)!, CLLocationDegrees(tempModel[indexxx].longitude)!)
+                            
+                            let end =  CLLocationCoordinate2DMake(CLLocationDegrees(tempModel[indexxx + 1].latitude)!, CLLocationDegrees(tempModel[indexxx + 1].longitude)!)
+                            
+                            showRoute(startCoordinate: start, endCoordinate: end)
+                        }
+
                         
                         self.mapView.setCenter(executeWayArray.first!, animated: true)
                         
                         //执行画线的方法
                         //划线
                         let polyline: MAPolyline = MAPolyline(coordinates: &executeWayArray, count: UInt(executeWayArray.count))
+                        
                        overlays.append(polyline)
                     }
                 }
@@ -329,6 +369,21 @@ class YQResultMapViewController: UIViewController {
                         
                         self.mapView.setCenter(designWayArray.first!, animated: true)
                         
+                        //画规划的步行路线
+                        for indexxx in 0..<tempModel.count {
+
+                            if(indexxx == tempModel.count - 1){
+
+                                return
+                            }
+
+                            let start =  CLLocationCoordinate2DMake(CLLocationDegrees(tempModel[indexxx].latitude)!, CLLocationDegrees(tempModel[indexxx].longitude)!)
+
+                            let end =  CLLocationCoordinate2DMake(CLLocationDegrees(tempModel[indexxx + 1].latitude)!, CLLocationDegrees(tempModel[indexxx + 1].longitude)!)
+
+                            showRoute(startCoordinate: start, endCoordinate: end)
+                        }
+
                         //执行画线的方法
                         //划线
                         let polyline: MAPolyline = MAPolyline(coordinates: &designWayArray, count: UInt(designWayArray.count))
@@ -380,6 +435,21 @@ class YQResultMapViewController: UIViewController {
                             break
                         }
                         
+                        //画规划的步行路线
+                        for indexxx in 0..<tempModel.count {
+                            
+                            if(indexxx == tempModel.count - 1){
+                                
+                                return
+                            }
+                            
+                            let start =  CLLocationCoordinate2DMake(CLLocationDegrees(tempModel[indexxx].latitude)!, CLLocationDegrees(tempModel[indexxx].longitude)!)
+                            
+                            let end =  CLLocationCoordinate2DMake(CLLocationDegrees(tempModel[indexxx + 1].latitude)!, CLLocationDegrees(tempModel[indexxx + 1].longitude)!)
+                            
+                            showRoute(startCoordinate: start, endCoordinate: end)
+                        }
+
                         self.mapView.setCenter(realWayArray.first!, animated: true)
                         
                         //执行画线的方法
@@ -395,6 +465,39 @@ class YQResultMapViewController: UIViewController {
         
     }
     
+    // MARK: - 展示真实的路径规划情况
+    func showRoute(startCoordinate : CLLocationCoordinate2D, endCoordinate : CLLocationCoordinate2D) {
+        
+        //通过start 和 end 的经纬度来进行规划路线
+        let request = AMapWalkingRouteSearchRequest()
+        request.origin = AMapGeoPoint.location(withLatitude: CGFloat(startCoordinate.latitude), longitude: CGFloat(startCoordinate.longitude))
+        request.destination = AMapGeoPoint.location(withLatitude: CGFloat(endCoordinate.latitude), longitude: CGFloat(endCoordinate.longitude))
+        
+        search.aMapWalkingRouteSearch(request)
+        
+    }
+    
+    // MARK: - 展示当前路线方案,规划路径
+    /* 展示当前路线方案 */
+    func presentCurrentCourse(startCoordinate : CLLocationCoordinate2D,endCoordinate : CLLocationCoordinate2D) {
+        
+        let start = AMapGeoPoint.location(withLatitude: CGFloat(startCoordinate.latitude), longitude: CGFloat(startCoordinate.longitude))
+        let end = AMapGeoPoint.location(withLatitude: CGFloat(endCoordinate.latitude), longitude: CGFloat(endCoordinate.longitude))
+        
+        if currentSearchType == .bus || currentSearchType == .busCrossCity {
+            naviRoute = MANaviRoute(for: route?.transits.first, start: start, end: end)
+        } else {
+            let type = MANaviAnnotationType(rawValue: currentSearchType.rawValue)
+            
+            naviRoute = MANaviRoute(for: route?.paths.first, withNaviType: type!, showTraffic: true, start: start, end: end)
+        }
+        
+        naviRoute?.add(to: mapView)
+        
+        mapView.showOverlays(naviRoute?.routePolylines, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
+        mapView.zoomLevel = 16.0 //地图的缩放的级别比例
+        
+    }
     
     // MARK: - vc销毁的方法
     deinit {
@@ -564,6 +667,31 @@ extension YQResultMapViewController : FSCalendarDataSource, FSCalendarDelegate {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         
         print("\(self.dateFormatter.string(from: calendar.currentPage))")
+    }
+    
+}
+
+extension YQResultMapViewController : AMapSearchDelegate{
+    
+    // MARK: - 解析search_response获取路径信息
+    func onRouteSearchDone(_ request: AMapRouteSearchBaseRequest!, response: AMapRouteSearchResponse!) {
+        
+        self.route = nil
+        
+        if response.count > 0 {
+            
+            self.route = response.route
+            let start =  CLLocationCoordinate2DMake(CLLocationDegrees(request.origin.latitude), CLLocationDegrees(request.origin.longitude))
+            let end = CLLocationCoordinate2DMake(CLLocationDegrees(request.destination.latitude), CLLocationDegrees(request.destination.longitude))
+            
+            self.presentCurrentCourse(startCoordinate: start, endCoordinate: end)
+            
+        }
+    }
+    
+    // MARK: - search失败的代理方法
+    func aMapSearchRequest(_ request: Any!, didFailWithError error: Error!) {
+        print("Error:\(error)")
     }
     
 }

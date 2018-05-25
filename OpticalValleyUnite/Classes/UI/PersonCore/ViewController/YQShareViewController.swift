@@ -50,12 +50,16 @@ class YQShareViewController: UIViewController {
     // MARK: - shareURLwithData分享链接下载
     func shareURLwithData (){
     
-        var par = [String : Any]()
-        par["type"] = "ios"
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        
+        var parmat = [String: Any]()
+        parmat["version"] = version
+        parmat["type"] = "ios"
+        parmat["appCode"] = "ems" // beta的新的接口添加,调试!
         
         SVProgressHUD.show()
         
-        HttpClient.instance.get(path: URLPath.getDownloadUrl, parameters: par, success: { (response) in
+        HttpClient.instance.post(path: URLPath.getVersion, parameters: parmat, success: { (response) in
             
             SVProgressHUD.dismiss()
             

@@ -36,7 +36,8 @@ class YQDrawerViewController: UIViewController {
         //1.调用获取用户信息的接口
         let user = User.currentUser()
         if let user = user{
-            userName.text = user.userName!
+            
+            userName.text = user.userName
     
             if let url = user.avatar,url != ""{
                 

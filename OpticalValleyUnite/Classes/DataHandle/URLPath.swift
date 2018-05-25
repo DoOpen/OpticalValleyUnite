@@ -269,6 +269,11 @@ struct URLPath {
     static let getResultDetail  = "quality/insresult/detail"
     //巡查轨迹
     static let getResultInsOrbitList  = "quality/humanins/getInsOrbitList"
+    //分页查看巡查结果
+    static let getResultMergeList = "quality/insresult/mergeList"
+    //巡查结果巡查点列表
+    static let getResultInsPointList = "quality/insresult/insPointList"
+    
     
     ///门禁管理的接口
     //蓝牙开门成功之后的,保存的接口

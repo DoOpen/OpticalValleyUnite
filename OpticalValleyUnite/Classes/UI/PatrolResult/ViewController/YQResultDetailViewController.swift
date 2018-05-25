@@ -13,7 +13,7 @@ import SVProgressHUD
 class YQResultDetailViewController: UIViewController {
     
     /// 属性列表
-    var insResultId : Int = 0
+    var insResultId : Int64 = 0
     
     @IBOutlet weak var pointName: UILabel!
     

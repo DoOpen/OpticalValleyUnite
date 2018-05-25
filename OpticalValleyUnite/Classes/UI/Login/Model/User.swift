@@ -85,9 +85,9 @@ class User: NSObject, NSCoding {
 
     init?(data: [String: Any]){
        
-            self.nickname = data[UserKey.Nickname] as? String
-            self.avatar = data[UserKey.Avatar] as? String
-            self.userName = data[UserKey.Username] as? String
+            self.nickname = data[UserKey.Nickname] as? String ?? ""
+            self.avatar = data[UserKey.Avatar] as? String ?? ""
+            self.userName = data[UserKey.Username] as? String ?? ""
         
     }
     

@@ -26,14 +26,15 @@ class YQResultViewCell: UITableViewCell {
     @IBOutlet weak var pointNameLabel: UILabel!
 
     @IBOutlet weak var personNameLabel: UILabel!
-
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    
     @IBAction func searchButtonClick(_ sender: UIButton) {
         
         //通知代理来执行操作
         self.delegate?.resultViewCellDelegate(view: self, indexRow: indexpathRow)
     }
-    
-    
+
     var indexpathRow = 0
     
     weak var delegate : YQResultViewCellDelegate?
@@ -42,11 +43,20 @@ class YQResultViewCell: UITableViewCell {
         
         didSet{
             
-            self.noLabel.text = "\(indexpathRow + 1)"
-            
-            self.pointNameLabel.text = model?.insPointName
+            //巡查路线名称
+            self.noLabel.text = model?.insWayName
+            //巡查点名称
+            self.pointNameLabel.text = model?.wayPointName
             
             self.personNameLabel.text = model?.personName
+            
+            let timeInterval:TimeInterval = TimeInterval((model?.createTime)!)
+            let date = Date.init(timeIntervalSinceNow: timeInterval)
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            self.timeLabel.text = formatter.string(from: date)
+            
             
         }
     }

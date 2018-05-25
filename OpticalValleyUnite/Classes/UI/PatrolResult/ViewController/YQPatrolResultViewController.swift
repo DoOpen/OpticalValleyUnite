@@ -67,19 +67,19 @@ class YQPatrolResultViewController: UIViewController {
         
         par["pageIndex"] = pageIndexxxxx
         par["pageSize"] = pageSize
-        par["insPointName"] = self.pointSearch.text
+        par["insWayName"] = self.pointSearch.text
         par["personName"] = self.personNameSearch.text
         par["parkId"] = self.parkId
         
         SVProgressHUD.show()
         
-        HttpClient.instance.post(path: URLPath.getResultList, parameters: par, success: { (respose) in
+        HttpClient.instance.post(path: URLPath.getResultMergeList, parameters: par, success: { (respose) in
             
             SVProgressHUD.dismiss()
             
             let array = respose["data"] as? NSArray
             
-            if array == nil {
+            if array == nil  {
                 
                 SVProgressHUD.showError(withStatus: "查询数据为空")
                 self.dataArray.removeAll()
@@ -286,14 +286,12 @@ extension YQPatrolResultViewController : UITableViewDelegate,UITableViewDataSour
 extension YQPatrolResultViewController : YQResultViewCellDelegate{
     
     func resultViewCellDelegate(view: UIView, indexRow: Int) {
+        
         //传递参数, 跳转到详情页面
-        let detail = UIStoryboard.instantiateInitialViewController(name : "YQResultDetail") as? YQResultDetailViewController
+        let vc = YQPatrolWayResultVC.init(nibName: "YQPatrolWayResultVC", bundle: nil)
+        vc.id = "\(self.dataArray[indexRow].id)"
         
-        let model = self.dataArray[indexRow]
-        detail?.insResultId = model.insResultId
-        
-        navigationController?.pushViewController(detail!, animated: true)
-        
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

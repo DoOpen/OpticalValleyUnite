@@ -395,10 +395,8 @@ extension CheckNewBundleVersionProtocol{
                     if !isBlack{
                         SJKeyWindow?.rootViewController?.alert(message: "您的版本已经是最新的版本了");
                     }
-                    
                 }
-                
-
+        
             }
 
         }) { (error) in

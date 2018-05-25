@@ -84,8 +84,13 @@ struct URLPath {
     
     //获取督办接口
     static let getSurveillanceWorkOrderList = "workunit/workunitSuperviseList.do"
+    
     //获取房屋空间信息
     static let getParkInfoById = "user/getParkInfoById.do"
+    //接口改变获取房屋tree的3.0接口
+    static let getParkTreeById = "user/getParkTreeById.do"
+    
+    
     //报事类型判断
     static let typeOfReportMaster = "module/getModules.do"
     //报事提交

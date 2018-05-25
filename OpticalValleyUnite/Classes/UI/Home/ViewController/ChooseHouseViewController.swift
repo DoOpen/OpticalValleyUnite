@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import Alamofire
 
 class ChooseHouseViewController: UIViewController {
 
@@ -167,9 +168,62 @@ class ChooseHouseViewController: UIViewController {
             return
         }
         
+        var par = [String : Any]()
+        par["parkId"] = parkId
+        par["level"] = "2"
+        
         SVProgressHUD.show()
         
-        HttpClient.instance.get(path: URLPath.getParkInfoById, parameters: ["parkId": parkId!], success: { (response) in
+        Alamofire.request(URLPath.getParkTreeById, method: .post, parameters: par).responseJSON { (response) in
+            
+            switch response.result {
+                
+            case .success(_):
+                
+                if let value = response.result.value as? [String: Any] {
+                    
+                    guard !value.isEmpty else{
+                        print("返回数据为空")
+                        return
+                    }
+                    
+                    
+                    guard value["MSG"] as? String != "token无效" else{
+                        LoginViewController.loginOut()
+                        print("token无效")
+                        return
+                    }
+                    
+                    
+                    guard value["CODE"] as! String == "0" else{
+                        
+                        let message = value["MSG"] as! String
+                        
+//                        let status = 1111
+//                        print("系统错误:" + urlString)
+//                        print(NSError(domain: message, code: status, userInfo: nil))
+//                        failure(NSError(domain: message, code: status, userInfo: nil))
+                        
+                        SVProgressHUD.showError(withStatus: message)
+                        return
+                    }
+                    
+                    
+                    //success(value["data"]  as AnyObject)
+                    break
+                }
+                break
+            case .failure(let error):
+                
+                debugPrint(error)
+                
+                SVProgressHUD.dismiss()
+                
+                break
+            }
+        }
+        
+        HttpClient.instance.get(path: URLPath.getParkTreeById, parameters: ["parkId": parkId!], success: { (response) in
             
             SVProgressHUD.dismiss()
             
@@ -196,9 +250,7 @@ class ChooseHouseViewController: UIViewController {
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
-            
         }
-        
     }
     
 }

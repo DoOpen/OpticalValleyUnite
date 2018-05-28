@@ -174,83 +174,37 @@ class ChooseHouseViewController: UIViewController {
         
         SVProgressHUD.show()
         
-        Alamofire.request(URLPath.getParkTreeById, method: .post, parameters: par).responseJSON { (response) in
-            
-            switch response.result {
-                
-            case .success(_):
-                
-                if let value = response.result.value as? [String: Any] {
-                    
-                    guard !value.isEmpty else{
-                        print("返回数据为空")
-                        return
-                    }
-                    
-                    
-                    guard value["MSG"] as? String != "token无效" else{
-                        LoginViewController.loginOut()
-                        print("token无效")
-                        return
-                    }
-                    
-                    
-                    guard value["CODE"] as! String == "0" else{
-                        
-                        let message = value["MSG"] as! String
-                        
-//                        let status = 1111
-//                        print("系统错误:" + urlString)
-//                        print(NSError(domain: message, code: status, userInfo: nil))
-//                        failure(NSError(domain: message, code: status, userInfo: nil))
-                        
-                        SVProgressHUD.showError(withStatus: message)
-                        return
-                    }
-                    
-                    
-                    //success(value["data"]  as AnyObject)
-                    break
-                }
-                break
-            case .failure(let error):
-                
-                debugPrint(error)
-                
-                SVProgressHUD.dismiss()
-                
-                break
-            }
-        }
-        
-        HttpClient.instance.get(path: URLPath.getParkTreeById, parameters: ["parkId": parkId!], success: { (response) in
-            
+        HttpClient.instance.get(path: URLPath.getParkTreeById, parameters: par, success: { (response) in
+
             SVProgressHUD.dismiss()
             
-            var temp = [ParkInfoModel]()
             
+            var temp = [ParkInfoModel]()
+
             for dic in response as! Array<[String: Any]> {
-                
+
                 temp.append(ParkInfoModel(parmart: dic))
             }
-            
+
             self.parkInfoModels = temp
-            
+
             if temp.count > 0{
-                
+
                 self.currentParkInfoModel = temp
                 self.tableView.reloadData()
-                
+
             }else{
-                
+
                 SVProgressHUD.showSuccess(withStatus: "数据为空")
             }
-            
-            
+
+
         }) { (error) in
-            
+
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
+        
+        
     }
     
 }

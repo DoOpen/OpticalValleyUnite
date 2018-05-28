@@ -776,8 +776,9 @@ class ParkInfoModel{
         self.init()
         
         id = parmart["id"] as? String ?? ""
-        STAGE_ID = parmart["app_need_stage"] as? String ?? ""
-        FLOOR_ID = parmart["app_need_floor"] as? String ?? ""
+        //后面的层级都是id的情况
+//        STAGE_ID = parmart["id"] as? String ?? ""
+//        FLOOR_ID = parmart["id"] as? String ?? ""
         tempName = parmart["text"] as? String ?? ""
         name = tempName
         
@@ -785,27 +786,42 @@ class ParkInfoModel{
         if let arry = parmart["floorChild"] as? Array<[String: Any]> {
             
             var temp = [ParkInfoModel]()
+            
             for dic in arry{
+                
                let model = ParkInfoModel(parmart: dic)
 //                model.text = name + model.name
                 model.STAGE_ID = id
                 model.STAGE_Name = name
                 temp.append(model)
+                
             }
+            
             child = temp
         }
         
-        if let arry = parmart["houseChild"] as? Array<[String: Any]> {
+        if let arry = parmart["nodes"] as? Array<[String: Any]> {
+            
             var temp = [ParkInfoModel]()
+            
             for dic in arry{
+                
                 let model = ParkInfoModel(parmart: dic)
-                model.text = name + model.name
-//                model.FLOOR_ID = id
-//                model.STAGE_ID = STAGE_ID
-//                model.STAGE_Name = STAGE_Name
-                model.FLOOR_Name = name
+                
+                let dataDict = dic["data"] as? [String : Any]
+                
+                let string = dataDict!["buildName"] as? String ?? ""
+                model.text = name + string
+                model.id = dataDict!["id"] as? String ?? ""
+                
+                model.STAGE_ID = dataDict!["stageId"] as? String ?? ""
+                model.STAGE_Name = name
+                model.FLOOR_Name = dataDict!["buildName"] as? String ?? ""
+                
                 temp.append(model)
+                
             }
+            
             child = temp
             
         }

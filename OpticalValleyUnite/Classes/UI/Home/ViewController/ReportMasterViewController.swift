@@ -706,7 +706,9 @@ class ReportMasterViewController: UIViewController {
         if self.deriveChoose{
             
             let vc = ChooseDeviceViewController.loadFromStoryboard(name: "ReportMaster") as! ChooseDeviceViewController
+            
             vc.parkId = selectProject?.projectId
+            
             vc.didSelectDeviceModelHandle = { model in
                 
                 self.deviceModel = model

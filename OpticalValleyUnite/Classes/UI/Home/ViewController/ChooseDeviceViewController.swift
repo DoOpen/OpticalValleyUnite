@@ -68,11 +68,15 @@ class ChooseDeviceViewController: UIViewController {
             print(parkInfoModel)
             
             if parkInfoModel.STAGE_ID != ""{//选择了两层
+                
                 self?.parkInfoModel?.FLOOR_ID = parkInfoModel.id
                 self?.chooseAddressLabel.text = parkInfoModel.STAGE_Name + " " + parkInfoModel.name
-            }else{
+                
+            }else{//只是选择一级
+                
                 self?.parkInfoModel?.STAGE_ID = parkInfoModel.id
                 self?.chooseAddressLabel.text = parkInfoModel.name
+                
             }
             
             self?.getData(stageId: self?.parkInfoModel?.STAGE_ID, floorId: self?.parkInfoModel?.FLOOR_ID)
@@ -110,7 +114,9 @@ class ChooseDeviceViewController: UIViewController {
                 didSelectDeviceModelHandle = nil
                 _ = navigationController?.popViewController(animated: true)
             }
+            
         }else{
+            
             self.alert(message: "请先选择一项!")
         }
         

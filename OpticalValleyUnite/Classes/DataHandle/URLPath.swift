@@ -33,22 +33,23 @@ import Foundation
 
 struct URLPath {
     
-//    static let basicPath = "http://112.74.80.111:8888/ovu-pcos/api/"
+    // static let basicPath = "http://112.74.80.111:8888/ovu-pcos/api/"
     ///主机地址
-//    static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
+    // static let basicPath = "http://portal.ovuems.com/ovu-pcos/api/"
     ///新版测试服务器的域名 http://172.16.19.98:8091
     ///新版正式服 : http://116.62.117.82:2018
     ///元元 : http://172.16.11.76
     ///谢俊杰: http://172.16.11.63:8080  xiejunjie
     ///建丰 : "http://172.16.11.62:80"
     ///ems 3.0 : "http://172.16.19.98:5678"
+    ///ems 3.0 新 : "http://172.16.11.81:5678"
     
     
     ///正式服的域名链接: http://ovuems.com
     ///测试服的域名链接: http://ovuems.com/ovu-base
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://172.16.19.98:5678"
+    static let basicBasic = "http://172.16.11.81:5678"
     
     
     //服务器的basic 地址:

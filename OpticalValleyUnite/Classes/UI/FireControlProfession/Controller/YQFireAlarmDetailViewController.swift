@@ -18,7 +18,8 @@ class YQFireAlarmDetailViewController: UIViewController {
     
     @IBOutlet weak var handleTimeText: UITextField!
     
-    @IBOutlet weak var failureCauseText: UITextField!
+    @IBOutlet weak var failureCauseText: UILabel!
+    
 
     @IBOutlet weak var resultText: UITextField!
     

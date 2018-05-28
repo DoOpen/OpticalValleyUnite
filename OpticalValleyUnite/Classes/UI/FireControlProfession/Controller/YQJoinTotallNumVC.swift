@@ -42,12 +42,13 @@ class YQJoinTotallNumVC:UIViewController{
         
         //初始设置内容
         titleButton.setTitle(self.title, for: .normal)
-        //时间初始化
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let dateString = formatter.string(from: Date())
         
-        timeButton.setTitle(dateString, for: .normal)
+//        //时间初始化
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd"
+//        let dateString = formatter.string(from: Date())
+        
+        timeButton.setTitle("请选择时间", for: .normal)
         
         //添加leftBar属性
         self.setUpLeftBar()

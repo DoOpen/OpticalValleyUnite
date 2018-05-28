@@ -81,12 +81,10 @@ class ChooseDeviceViewController: UIViewController {
             
             self?.getData(stageId: self?.parkInfoModel?.STAGE_ID, floorId: self?.parkInfoModel?.FLOOR_ID)
 
-            
         }
         
         navigationController?.pushViewController(vc, animated: true)
 
-        
     }
     
     private func addRefirsh(){

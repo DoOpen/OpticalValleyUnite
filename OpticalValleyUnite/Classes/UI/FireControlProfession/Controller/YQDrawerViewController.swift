@@ -51,7 +51,7 @@ class YQDrawerViewController: UIViewController {
                     let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                     
                     userImageView.kf.setImage(with: URL(string: imageValue))
-                
+                    
                 }
                 
             }

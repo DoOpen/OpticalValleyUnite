@@ -17,7 +17,7 @@ class YQResultCellModel: NSObject {
     var creatorId : String = ""
     
     ///巡查时间
-    var createTime : Double = -1.1
+    var createTime : String = ""
     
     ///巡查路线名称
     var insWayName : String = ""

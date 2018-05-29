@@ -50,12 +50,13 @@ class YQResultViewCell: UITableViewCell {
             
             self.personNameLabel.text = model?.personName
             
-            let timeInterval:TimeInterval = TimeInterval((model?.createTime)!)
-            let date = Date.init(timeIntervalSinceNow: timeInterval)
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//            let timeInterval:TimeInterval = TimeInterval((model?.createTime)!)
+//            let date = Date.init(timeIntervalSinceNow: timeInterval)
+//            let formatter = DateFormatter()
+//            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//            formatter.string(from: date)
             
-            self.timeLabel.text = formatter.string(from: date)
+            self.timeLabel.text = model?.createTime
             
             
         }

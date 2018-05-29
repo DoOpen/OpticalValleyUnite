@@ -220,7 +220,7 @@ class LoginViewController: UIViewController {
                 let model = PersonInfo(parmart: dic)
                 let user = User.currentUser()
                 user?.nickname = model.name
-                user?.avatar = model.name
+                user?.avatar = model.picture
                 user?.saveUser()
                 
             }

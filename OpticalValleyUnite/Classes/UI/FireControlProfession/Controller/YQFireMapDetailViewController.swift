@@ -91,6 +91,9 @@ class YQFireMapDetailViewController: UIViewController {
         
         super.viewDidLoad()
         
+        let Coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(fireModel.latitude), CLLocationDegrees(fireModel.longitude))
+        self.endCoordinate = Coordinate
+        
         //创建和设置search代理的方法
         search = AMapSearchAPI()
         search?.delegate = self
@@ -99,15 +102,12 @@ class YQFireMapDetailViewController: UIViewController {
         mapSetup()
         
         //接受通知
-//        acceptNotes()
+        // acceptNotes()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        let Coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(fireModel.latitude), CLLocationDegrees(fireModel.longitude))
-        self.endCoordinate = Coordinate
-        
+
         //用户执行按钮可用
         self.giveupAbandon.isUserInteractionEnabled = true
         self.atOnceImplement.isUserInteractionEnabled = true
@@ -131,6 +131,7 @@ class YQFireMapDetailViewController: UIViewController {
         
         self.navigationController?.pushViewController(feedBack, animated: true)
     }
+    
     
     /*
      实现的逻辑:点击立即执行 --> 请求执行接口 ---> 刷新table列表数据接口 ---> 设置btn的状态属性

@@ -168,20 +168,20 @@ class YQImplementFeedbackVC: UIViewController {
                 
                 for model in models {
                     
+                    self.resolve.ImplementPersonTextField.text = model.name
                     
-                    if self.resolve.ImplementPersonTextField.text == "" {
-                        
-                        self.resolve.ImplementPersonTextField.text = model.name
-                        
-                        self.resolve.implementPersonID = model.id
-                        
-                    }else {
-                        
-                        self.resolve.ImplementPersonTextField.text = self.resolve.ImplementPersonTextField.text! + "," + model.name
-                        
-                        self.resolve.implementPersonID = self.resolve.implementPersonID + "," + model.id
-                        
-                    }
+                    self.resolve.implementPersonID = model.id
+                    
+//                    if self.resolve.ImplementPersonTextField.text == "" {
+//
+//
+//                    }else {
+//
+//                        self.resolve.ImplementPersonTextField.text = self.resolve.ImplementPersonTextField.text! + "," + model.name
+//
+//                        self.resolve.implementPersonID = self.resolve.implementPersonID + "," + model.id
+//
+//                    }
                     
                 }
                 
@@ -189,24 +189,25 @@ class YQImplementFeedbackVC: UIViewController {
                 
                 for model in models {
                     
-                    if self.falsePositive.addNameTextField.text == "" {
-                        
-                        self.falsePositive.addNameTextField.text = model.name
-                        self.falsePositive.implementPersonID = model.id
-
-                    }else {
-                        
-                        self.falsePositive.addNameTextField.text = self.falsePositive.addNameTextField.text! + "," + model.name
-                        self.falsePositive.implementPersonID = self.falsePositive.implementPersonID + "," + model.id
-                        
-                    }
+                    self.falsePositive.addNameTextField.text = model.name
+                    self.falsePositive.implementPersonID = model.id
+                    
+//                    if self.falsePositive.addNameTextField.text == "" {
+//
+//
+//                    }else {
+//
+//                        self.falsePositive.addNameTextField.text = self.falsePositive.addNameTextField.text! + "," + model.name
+//                        self.falsePositive.implementPersonID = self.falsePositive.implementPersonID + "," + model.id
+//
+//                    }
                     
                 }
             }
         }
         
         
-        if type == 1 {
+        if type == 2 {
             
             for model in models {
                 
@@ -216,10 +217,18 @@ class YQImplementFeedbackVC: UIViewController {
                     self.resolve.cooperatePersonID = model.id
                     
                 }else {
+                    //bug 修复,要求避免重复的人员添加
                     
-                    self.resolve.cooperatePersonTextField.text = self.resolve.cooperatePersonTextField.text! + "," + model.name
+                    if (self.resolve.cooperatePersonTextField.text?.contains(model.name))!{
+                        //相同的过掉
+                    }else{
+                        
+                        self.resolve.cooperatePersonTextField.text = self.resolve.cooperatePersonTextField.text! + "," + model.name
+                        
+                        self.resolve.cooperatePersonID = self.resolve.cooperatePersonID + "," + model.id
+                        
+                    }
                     
-                    self.resolve.cooperatePersonID = self.resolve.cooperatePersonID + "," + model.id
                 }
             }
         }
@@ -235,17 +244,17 @@ extension YQImplementFeedbackVC : YQResolvedViewDelegate{
     func resolvedViewSaveButtonClick(view :YQResolvedView ,images : NSArray,type : Int) {
         
         //已解决:   误报:  1:已解决 2:误报
-        if resolve.ImplementPersonTextField.text == nil {
+        if resolve.ImplementPersonTextField.text == "" || resolve.ImplementPersonTextField.text == "添加一个" {
             SVProgressHUD.showError(withStatus: "请选择执行人")
             return
         }
         
-        if resolve.reasonTextField.text == nil {
+        if resolve.reasonTextField.text == "" {
             SVProgressHUD.showError(withStatus: "请输入原因")
             return
         }
         
-        if resolve.proofImageAddView == nil {
+        if resolve.proofImageAddView.photoImages.isEmpty {
             SVProgressHUD.showError(withStatus: "请输图片")
             return
         }
@@ -332,7 +341,7 @@ extension YQImplementFeedbackVC : YQResolvedViewDelegate{
     // MARK: - resolve添加配合人
     func resolvedViewAddCooperatePerson(view: YQResolvedView) {
         
-        self.pushPersonListVC(type: 1)
+        self.pushPersonListVC(type: 2)
         
     }
 
@@ -351,17 +360,17 @@ extension YQImplementFeedbackVC : YQFalsePositiveViewDelegate{
     // MARK: - false保存按钮的点击
     func falsePositiveViewSaveButtonClick(view :YQFalsePositiveView, images: NSArray,type : Int ) {
         //已解决:   误报:  1:已解决 2:误报
-        if falsePositive.addNameTextField.text == nil {
+        if falsePositive.addNameTextField.text == "" || falsePositive.addNameTextField.text == "添加一个" {
             SVProgressHUD.showError(withStatus: "请选择执行人")
             return
         }
         
-        if falsePositive.reasonTextField.text == nil {
+        if falsePositive.reasonTextField.text == "" {
             SVProgressHUD.showError(withStatus: "请输入原因")
             return
         }
         
-        if falsePositive.proofPictureAddView == nil {
+        if falsePositive.proofPictureAddView.photoImages.isEmpty {
             SVProgressHUD.showError(withStatus: "请输图片")
             return
         }

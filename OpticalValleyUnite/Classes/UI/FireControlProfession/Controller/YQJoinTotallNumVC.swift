@@ -54,7 +54,7 @@ class YQJoinTotallNumVC:UIViewController{
         self.setUpLeftBar()
         
         //添加调用接口数据
-        requestFireDetailData(title: self.title!, time: nil, location: nil)
+        requestFireDetailData(title: self.title!, time: "", location: nil)
         
         //添加上拉下拉刷新界面
         addRefirsh()
@@ -99,7 +99,7 @@ class YQJoinTotallNumVC:UIViewController{
             self.timeButton .setTitle(text, for: .normal)
             
             //调用获取加载数据的方法
-            self.requestFireDetailData(title: (self.titleButton.titleLabel?.text)!, time: self.timeButton.titleLabel?.text, location:self
+            self.requestFireDetailData(title: (self.titleButton.titleLabel?.text)!, time: (self.timeButton.titleLabel?.text)!, location:self
                 .seachTextField?.text )
             
         })
@@ -124,7 +124,7 @@ class YQJoinTotallNumVC:UIViewController{
             
             
             // 调用筛选的接口
-            self?.requestFireDetailData(title: (self?.selectProject)!, time: self?.timeButton.titleLabel?.text, location:self?
+            self?.requestFireDetailData(title: (self?.selectProject)!, time: (self?.timeButton.titleLabel?.text)!, location:self?
                 .seachTextField?.text )
             
         })
@@ -134,15 +134,28 @@ class YQJoinTotallNumVC:UIViewController{
     @IBAction func searchImageClick(_ sender: Any) {
         
         self.view.endEditing(true)
+        
         // 调用筛选的接口
-        self.requestFireDetailData(title: (self.titleButton.titleLabel?.text)!, time: self.timeButton.titleLabel?.text, location:self
+        self.requestFireDetailData(title: (self.titleButton.titleLabel?.text)!, time: (self.timeButton.titleLabel?.text)!, location:self
             .seachTextField?.text )
         
     }
     
     
     // MARK: - 获取接口数据的方法
-    func requestFireDetailData(title : String, time : String?, location : String?, pageSize : Int = 20, pageIndex : Int = 0 ){
+    func requestFireDetailData(title : String, time : String, location : String?, pageSize : Int = 20, pageIndex : Int = 0 ){
+        
+        var parameters = [String : Any]()
+        
+        if (time.contains("请选择时间")){
+            
+            parameters["time"] = ""
+
+        }else{
+            
+            parameters["time"] = time
+        }
+        
         
         var type = -1
         
@@ -160,17 +173,21 @@ class YQJoinTotallNumVC:UIViewController{
                 break
         }
         
-        var parameters = [String : Any]()
+       
         
         let token = UserDefaults.standard.object(forKey: Const.SJToken)
         parameters["token"] = token
         parameters["type"] = type
-        parameters["time"] = time
+        
         parameters["location"] = location
         parameters["pageIndex"] = pageIndex
         parameters["pageSize"] = pageSize
         
         SVProgressHUD.show(withStatus: "加载中...")
+        
+//        print("请求URL:" + URLPath.basicPath + URLPath.getFireList)
+//        print(parameters)
+        
         Alamofire.request(URLPath.basicPath + URLPath.getFireList , method: .post, parameters: parameters).responseJSON { (response) in
             
             SVProgressHUD.dismiss()
@@ -255,13 +272,13 @@ class YQJoinTotallNumVC:UIViewController{
         
         detailTableV.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             
-            self.requestFireDetailData(title: self.title!, time: self.timeButton.titleLabel?.text, location: self.seachTextField.text)
+            self.requestFireDetailData(title: self.title!, time: (self.timeButton.titleLabel?.text)!, location: self.seachTextField.text)
         })
         
         
         detailTableV.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
-            self.requestFireDetailData(title: self.title!, time: self.timeButton.titleLabel?.text, location: self.seachTextField.text,pageIndex : self.currentIndex + 1)
+            self.requestFireDetailData(title: self.title!, time: (self.timeButton.titleLabel?.text)!, location: self.seachTextField.text,pageIndex : self.currentIndex + 1)
             
         })
         
@@ -304,7 +321,9 @@ extension YQJoinTotallNumVC : YQFireDetailCellDeleage {
     
     func fireDetailCellDetailClickDeleage(model: YQfireMessage) {
         
+        
         switch model.type {
+            
             case 1:
                 //跳入火警详情
                 let fireAlarm = YQFireAlarmDetailViewController.init(nibName: "YQFireAlarmDetailViewController", bundle: nil)

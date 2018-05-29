@@ -101,8 +101,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             userNameLabel.text = "账号: " + (user.userName ?? "")
             
             if let url = user.avatar,url != ""{
-                
-                
+
                 if url.contains("http") {
                     
                     photoImageView.kf.setImage(with: URL(string: url), placeholder: UIImage.init(name: "userIcon"), options: nil, progressBlock: nil, completionHandler: nil)

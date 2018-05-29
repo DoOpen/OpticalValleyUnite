@@ -28,6 +28,7 @@ class PeopleListViewController: UIViewController {
     var personType = ""
     
     //添加部门显示字段:
+    var isWorkOrderSift = false
     
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -98,52 +99,103 @@ class PeopleListViewController: UIViewController {
             parmat["parkId"] = parkId
         }
         
-        //新增一个选择执行人的类型
-        parmat["personType"] = personType
-        
-        HttpClient.instance.get(path: URLPath.getPersonList, parameters: parmat, success: { (response) in
+        if isWorkOrderSift {
             
-            SVProgressHUD.dismiss()
-            
-            let data = response["data"] as? Array<[String: Any]>
-            
-            if data == nil {
+            HttpClient.instance.post(path: URLPath.getPersonQuery, parameters: parmat, success: { (response) in
                 
-                SVProgressHUD.showError(withStatus: "没有更多数据!")
-                return
-            }
-            
-            var temp = [PersonModel]()
-            for dic in data! {
-                temp.append(PersonModel(parmart: dic))
-            }
-           
-            if self.isSearchIng{
-                self.orangeModels = self.models
-            }
-            
-            if indexPage == 0{
+                SVProgressHUD.dismiss()
                 
-                self.pageNo = 0
-                self.models = temp
-                self.tableView.mj_header.endRefreshing()
-
-            }else{
+                let data = response["data"] as? Array<[String: Any]>
                 
-                if temp.count > 0{
+                if data == nil {
                     
-                    self.pageNo = indexPage
-                    self.models.append(contentsOf: temp)
-                    
+                    SVProgressHUD.showError(withStatus: "没有更多数据!")
+                    return
                 }
+                var temp = [PersonModel]()
+                for dic in data! {
+                    temp.append(PersonModel(parmart: dic))
+                }
+                
+                if self.isSearchIng{
+                    self.orangeModels = self.models
+                }
+                
+                if indexPage == 0{
+                    
+                    self.pageNo = 0
+                    self.models = temp
+                    self.tableView.mj_header.endRefreshing()
+                    
+                }else{
+                    
+                    if temp.count > 0{
+                        
+                        self.pageNo = indexPage
+                        self.models.append(contentsOf: temp)
+                        
+                    }
+                    
+                    self.tableView.mj_footer.endRefreshing()
+                }
+                self.tableView.reloadData()
+                
+            }, failure: { (error) in
+                
+                SVProgressHUD.dismiss()
+            })
             
-                self.tableView.mj_footer.endRefreshing()
+            
+        }else{
+            
+            //新增一个选择执行人的类型
+            parmat["personType"] = personType
+            
+            HttpClient.instance.get(path: URLPath.getPersonList, parameters: parmat, success: { (response) in
+                
+                SVProgressHUD.dismiss()
+                
+                let data = response["data"] as? Array<[String: Any]>
+                
+                if data == nil {
+                    
+                    SVProgressHUD.showError(withStatus: "没有更多数据!")
+                    return
+                }
+                
+                var temp = [PersonModel]()
+                for dic in data! {
+                    temp.append(PersonModel(parmart: dic))
+                }
+                
+                if self.isSearchIng{
+                    self.orangeModels = self.models
+                }
+                
+                if indexPage == 0{
+                    
+                    self.pageNo = 0
+                    self.models = temp
+                    self.tableView.mj_header.endRefreshing()
+                    
+                }else{
+                    
+                    if temp.count > 0{
+                        
+                        self.pageNo = indexPage
+                        self.models.append(contentsOf: temp)
+                        
+                    }
+                    
+                    self.tableView.mj_footer.endRefreshing()
+                }
+                
+                self.tableView.reloadData()
+                
+            }) { (error) in
+                
+                SVProgressHUD.dismiss()
             }
-            
-            self.tableView.reloadData()
-            
-        }) { (error) in
-            SVProgressHUD.dismiss()
         }
         
     }
@@ -212,6 +264,37 @@ extension PeopleListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if isWorkOrderSift {
+            
+            if let index = currentSelecIndex?.row{
+                
+                var model = models[index]
+                model.selected = false
+                
+                model = models[indexPath.row]
+                model.selected = true
+                tableView.reloadRows(at: [currentSelecIndex!,indexPath], with: .none)
+            }else{
+                
+                let model = models[indexPath.row]
+                model.selected = true
+                tableView.reloadRows(at: [indexPath], with: .none)
+            }
+            
+            currentSelecIndex = indexPath
+            
+            let array = models.filter{$0.selected == true}
+            
+            if let block = doneBtnClickHandel {
+                
+                block(type,array)
+                
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            return
+        }
         
         if isMultipSelect{
             let model = models[indexPath.row]

@@ -53,7 +53,7 @@ extension HttpClient {
         let bool8 = urlString.contains("getRoles")
         let bool10 = urlString.contains("getPersonPositionList")
         let bool11 = urlString.contains("getOldPersonPosition")
-//        let bool12 = urlString.contains("getParkTreeById")
+        let bool12 = urlString.contains("queryList.do")
 //        let bool13 = urlString.contains("getParkDescription")
         let bool14 = urlString.contains("personList3")
         let bool15 = urlString.contains("savePersonIcon")
@@ -66,7 +66,7 @@ extension HttpClient {
         let bool21 = urlString.contains("house.do")
         let bool22 = urlString.contains("getHouse.do")
         
-        if bool1 || bool2 || bool3 || bool5 || bool6 || bool8 || bool10 || bool11  || bool14 || bool15 || bool16 || bool17 || bool18 || bool19 || bool20 || bool21 || bool22{
+        if bool1 || bool2 || bool3 || bool5 || bool6 || bool8 || bool10 || bool11 || bool12  || bool14 || bool15 || bool16 || bool17 || bool18 || bool19 || bool20 || bool21 || bool22{
             
             allurl = URLPath.newbasicPath + urlString
             
@@ -179,8 +179,7 @@ extension HttpClient {
                         print("token无效")
                         return
                     }
-                    
-        
+
                     guard value["CODE"] as! String == "0" else{
                         
                         let message = value["MSG"] as! String

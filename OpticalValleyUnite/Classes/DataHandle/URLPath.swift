@@ -107,6 +107,9 @@ struct URLPath {
     
     //获取人员信息
     static let getPersonList = "person/personList.do"
+    //获取筛选的人员信息
+    static let getPersonQuery = "person/queryList.do"
+    
     
     //工单派发
     static let workunitDistribute = "workunit/workunitDistribute.do"

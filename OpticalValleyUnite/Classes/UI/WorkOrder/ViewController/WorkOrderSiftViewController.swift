@@ -301,9 +301,29 @@ class WorkOrderSiftViewController: UIViewController {
         }) { (error) in
             print(error)
         }
+    }
+    
+    // MARK: - 工单生成人按钮点击的界面跳转
+    @IBAction func workOrderSourcePersonBtnClick(_ sender: UIButton) {
+        
+        let vc = PeopleListViewController.loadFromStoryboard(name: "WorkOrder") as! PeopleListViewController
+        //传递的是执行人的type,通过type来设置相应的 是 执行人还是协助人
+        vc.type = 0 // "选择执行人" 的 type值
+        vc.isWorkOrderSift = true
+        vc.doneBtnClickHandel = didSelecte
+        
+        self.present(vc, animated: true) {
+            
+        }
         
     }
     
+    func didSelecte(type: Int, models: [PersonModel]){
+        //更新约束
+        //view?.frame = CGRect(x: 100, y: 0, width: SJScreeW - 100, height: SJScreeH)
+        
+
+    }
     
     // MARK: - 点击完成时候实现的逻辑处理方法
     @IBAction func doenBtnClick() {

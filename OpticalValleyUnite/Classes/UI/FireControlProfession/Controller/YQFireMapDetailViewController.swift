@@ -236,16 +236,22 @@ class YQFireMapDetailViewController: UIViewController {
                             
                         }
                         
-                        let array = data["stateList"] as! NSArray
+                        let array = data["stateList"] as? NSArray
                         
-                        var temp = [YQStateListModel]()
-                        for dict in array{
+                        if array != nil || (array!.count > 1){
                             
-                            temp.append(YQStateListModel.init(dic: dict as! [String : Any]))
+                            var temp = [YQStateListModel]()
+                            
+                            for dict in array!{
+                                
+                                temp.append(YQStateListModel.init(dic: dict as! [String : Any]))
+                            }
+                            
+                            self.implementTableViewDataArray = temp
+                            
                         }
-                        
-                        self.implementTableViewDataArray = temp
                     }
+                    
                     break
                 }
                 break
@@ -384,7 +390,7 @@ class YQFireMapDetailViewController: UIViewController {
         naviRoute?.add(to: locationMapView)
         
         locationMapView.showOverlays(naviRoute?.routePolylines, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
-        locationMapView.zoomLevel = 16.0 //地图的缩放的级别比例
+        locationMapView.zoomLevel = 12.0 //地图的缩放的级别比例
         
     }
     

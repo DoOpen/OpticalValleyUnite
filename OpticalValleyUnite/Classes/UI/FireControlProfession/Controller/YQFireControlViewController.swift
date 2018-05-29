@@ -52,8 +52,17 @@ class YQFireControlViewController: UIViewController {
         didSet{
             
             //调用地图渲染,打点的方法(有多少个模型,就需要多少个标记)
-            for model in fireModel{
+            for modelIndex in 0..<fireModel.count{
                 
+                let model = fireModel[modelIndex]
+                
+                if modelIndex == 0 {
+                    
+                    let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(model.latitude), CLLocationDegrees(model.longitude))
+                    
+                    self.fireMapView.setCenter(CLLocationCoordinate2D, animated: true)
+                }
+
                 addLocationAndMessageView(model: model)
                 
             }
@@ -61,6 +70,7 @@ class YQFireControlViewController: UIViewController {
     }
     
     var stateListModel = [YQStateListModel](){
+        
         didSet{
             
             self.implementTableView.reloadData()
@@ -109,7 +119,7 @@ class YQFireControlViewController: UIViewController {
         fireMapView.showsUserLocation = true;
         fireMapView.userTrackingMode = .none;
         fireMapView.delegate = self as MAMapViewDelegate
-        fireMapView.zoomLevel = 16.0 //地图的缩放的级别比例
+        fireMapView.zoomLevel = 12.0 //地图的缩放的级别比例
         
         // 带逆地理信息的一次定位（返回坐标和地址信息）
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -124,9 +134,11 @@ class YQFireControlViewController: UIViewController {
          以下功能自iOS 地图 SDK V5.0.0 版本起支持。
         */
         let r = MAUserLocationRepresentation()
-        var image = UIImage(named: "icon_fire_position_blue")
+        let image = UIImage(named: "icon_fire_position_blue")
         
-        image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
+// 原始尺寸是导致图片拉伸的
+//        image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
+        
         r.image = image
         fireMapView.update(r)
         
@@ -141,10 +153,11 @@ class YQFireControlViewController: UIViewController {
                 
                 print(regeocode)
                 
-                self?.fireMapView.setCenter((location?.coordinate)!, animated: true)
+                //取消定位
+                //self?.fireMapView.setCenter((location?.coordinate)!, animated: true)
             }
             
-            })
+        })
         
     }
     

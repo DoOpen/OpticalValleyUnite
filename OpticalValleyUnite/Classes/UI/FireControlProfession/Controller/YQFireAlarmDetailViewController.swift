@@ -21,7 +21,8 @@ class YQFireAlarmDetailViewController: UIViewController {
     @IBOutlet weak var failureCauseText: UILabel!
     
 
-    @IBOutlet weak var resultText: UITextField!
+    @IBOutlet weak var resultText: UILabel!
+    
     
     @IBOutlet weak var addPhotoView: SJAddView!
     

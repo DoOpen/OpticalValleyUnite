@@ -109,6 +109,7 @@ class YQJoinTotallNumVC:UIViewController{
     // MARK: - allProjectPickerView的展示
     @IBAction func allProjectPickerButtonClick(_ sender: Any) {
         view.endEditing(true)
+        
         let temp = ["总单量","火警单","误报单"]
         
 //        SJPickerView.show(withDataArry2: temp, didSlected: { [weak self] index in
@@ -116,7 +117,7 @@ class YQJoinTotallNumVC:UIViewController{
 //            self?.selectProject = temp[index]
 //        })
         SJPickerView.show(withDataArry: temp, didSlected: { [weak self] index in
-            
+        
             
             self?.selectProject = temp[index]
             self?.titleButton.setTitle(self?.selectProject, for: .normal)

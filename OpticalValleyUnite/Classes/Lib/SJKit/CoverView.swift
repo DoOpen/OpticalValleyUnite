@@ -42,7 +42,7 @@ class CoverView: UIView {
 
     }
     
-    class func show(image:UIImage) {
+    class func show(image:UIImage)  {
         let coverView = CoverView()
         coverView.bounds = CGRect(x: 0, y: 0, width: SJScreeW, height: SJScreeH)
         coverView.center = SJKeyWindow!.center
@@ -55,7 +55,7 @@ class CoverView: UIView {
             {SJKeyWindow?.addSubview(coverView)}, completion: nil)
     }
     
-    class func show( view: UIView) {
+    class func show( view: UIView) -> CoverView {
         
         let coverView = CoverView()
         coverView.frame = CGRect(x: 0, y: 0, width: SJScreeW, height: SJScreeH)
@@ -64,6 +64,8 @@ class CoverView: UIView {
         
         UIView.transition(with: SJKeyWindow!, duration: 0.5, options:.curveEaseIn, animations:
             {SJKeyWindow?.addSubview(coverView)}, completion: nil)
+        
+        return coverView
     }
     
     class func show(urlStr: String, frame: CGRect = CGRect(x: 0, y: 60, width: SJScreeW - 112 * 2, height: SJScreeH - 60 * 2)) {
@@ -82,5 +84,7 @@ class CoverView: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeFromSuperview()
     }
+    
+   
 
 }

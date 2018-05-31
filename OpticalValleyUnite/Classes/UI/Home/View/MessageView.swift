@@ -57,7 +57,7 @@ class MessageView: UIView {
 //        view. = CGPoint(x: SJScreeW * 0.5, y: SJScreeH * 0.5 + 20)
         view.frame = CGRect(x: 10, y: SJScreeH * 0.3 + 20,width: SJScreeW - 20, height: 250)
         
-        CoverView.show(view: view)
+        let _ = CoverView.show(view: view)
     }
     
     

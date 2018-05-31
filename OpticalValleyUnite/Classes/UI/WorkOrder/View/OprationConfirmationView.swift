@@ -69,7 +69,7 @@ class OprationConfirmationView: UIView {
         
         view.textHandle = doneBtnClickHandel
         
-        CoverView.show(view: view)
+        let _ =  CoverView.show(view: view)
     }
     
     class func showConfirmationView(doneBtnClickHandel: ((UIImage?, String?) -> ())?){
@@ -85,7 +85,7 @@ class OprationConfirmationView: UIView {
         
         view.imageHandle = doneBtnClickHandel
         
-        CoverView.show(view: view)
+        let _ = CoverView.show(view: view)
     }
     
 

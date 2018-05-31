@@ -1834,7 +1834,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ut2-kN-cKC">
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ut2-kN-cKC">
                                         <rect key="frame" x="139" y="87" width="263" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="fbf-Dk-klI"/>
@@ -1871,9 +1871,24 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hM-Nu-QaC">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hM-Nu-QaC">
                                         <rect key="frame" x="139" y="87" width="263" height="35"/>
-                                        <state key="normal" title="Button"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="workOrderSourcePersonBtnClick:" destination="D23-T6-uGI" eventType="touchUpInside" id="ZhM-eh-VoI"/>
                                         </connections>
@@ -2336,6 +2351,7 @@
                     <connections>
                         <outlet property="deviceTagsView" destination="XAJ-Q0-BPZ" id="dZM-jV-Ebd"/>
                         <outlet property="endBtn" destination="qvs-iU-yWd" id="2yI-9G-TM5"/>
+                        <outlet property="newPersonButton" destination="4hM-Nu-QaC" id="Ict-RQ-X03"/>
                         <outlet property="projectTagsView" destination="oz6-9W-Z6f" id="f8Z-no-rz3"/>
                         <outlet property="reportTypeTagsView" destination="0UL-3h-f2Y" id="R8G-pG-ja7"/>
                         <outlet property="sourceTagsView" destination="nbi-Pk-9ey" id="tNA-bX-HDy"/>
@@ -2774,6 +2790,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="rightButtonItem" destination="hX0-wE-xHJ" id="GsF-7z-J5V"/>
                         <outlet property="searchBar" destination="Zen-be-Cbt" id="OlR-24-buH"/>
                         <outlet property="tableView" destination="vYH-1w-KzP" id="PPm-4J-dfa"/>
                     </connections>

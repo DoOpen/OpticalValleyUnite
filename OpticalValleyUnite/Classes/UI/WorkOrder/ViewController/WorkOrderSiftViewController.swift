@@ -30,8 +30,12 @@ class WorkOrderSiftViewController: UIViewController {
     ///输入的筛选的条件
     //工单名称
     @IBOutlet weak var workOrderNameLabel: UITextField!
-    //工单生成人
+    //工单生成人(改传id)
     @IBOutlet weak var workOrderSourcePersonLabel: UITextField!
+    
+    @IBOutlet weak var newPersonButton: UIButton!
+    
+    
     //工单编号
     @IBOutlet weak var workNumberLabel: UITextField!
     
@@ -190,12 +194,22 @@ class WorkOrderSiftViewController: UIViewController {
             
             workOrderNameLabel.text = text
         }
-        if let text = self.siftParmat?["SOURCE_PERSON_NAME"] as? String,text != ""{// SOURCE_PERSON_NAME
+        
+        if let text = self.siftParmat?["EXEC_PERSON_ID"] as? String,text != ""{// SOURCE_PERSON_NAME
             
             workOrderSourcePersonLabel.text = text
         }
+        if let text = self.siftParmat?["EXEC_PERSON_NAME"] as? String,text != ""{// SOURCE_PERSON_NAME
+            
+            newPersonButton.setTitle(text, for: .normal)
+        }
 
-       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.newPersonButton.isUserInteractionEnabled = true
     }
     
     
@@ -306,23 +320,27 @@ class WorkOrderSiftViewController: UIViewController {
     // MARK: - 工单生成人按钮点击的界面跳转
     @IBAction func workOrderSourcePersonBtnClick(_ sender: UIButton) {
         
-        let vc = PeopleListViewController.loadFromStoryboard(name: "WorkOrder") as! PeopleListViewController
-        //传递的是执行人的type,通过type来设置相应的 是 执行人还是协助人
-        vc.type = 0 // "选择执行人" 的 type值
-        vc.isWorkOrderSift = true
-        vc.doneBtnClickHandel = didSelecte
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "selectePersonVCNotice")
+        center.post(name: notiesName, object: nil)
         
-        self.present(vc, animated: true) {
+        self.newPersonButton.isUserInteractionEnabled = false
+    }
+    
+    
+    func didSelecte(type: Int, models: [PersonModel]){
+        
+        //传递参数,重新显示
+        for model in models{
+            
+            self.workOrderSourcePersonLabel.text = model.id
+            self.newPersonButton.setTitle(model.name, for: .normal)
             
         }
         
-    }
-    
-    func didSelecte(type: Int, models: [PersonModel]){
-        //更新约束
-        //view?.frame = CGRect(x: 100, y: 0, width: SJScreeW - 100, height: SJScreeH)
+        let _ = CoverView.show(view: self.view)
         
-
+        
     }
     
     // MARK: - 点击完成时候实现的逻辑处理方法
@@ -405,8 +423,14 @@ class WorkOrderSiftViewController: UIViewController {
         }
         if let text = workOrderSourcePersonLabel.text,text != ""{
             
-            paramert["SOURCE_PERSON_NAME"] = text
+            paramert["EXEC_PERSON_ID"] = text
         }
+        if let text = newPersonButton.titleLabel?.text,text != ""{
+            
+            paramert["EXEC_PERSON_NAME"] = text
+        }
+        
+        
         
         
         if let block = doenBtnClickHandel{

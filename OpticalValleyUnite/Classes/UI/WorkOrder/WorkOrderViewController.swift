@@ -67,6 +67,7 @@ class WorkOrderViewController: UIViewController {
     
     var currentStatusBtn: UIButton?
     
+    var coverView : CoverView?
 
     override func viewDidLoad() {
         
@@ -83,6 +84,8 @@ class WorkOrderViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
         
+        //接受通知
+        acceptNoticeFunction()
     }
     
     
@@ -106,7 +109,8 @@ class WorkOrderViewController: UIViewController {
         
         let subView = vc.view
         subView?.frame = CGRect(x: 100, y: 0, width: SJScreeW - 100, height: SJScreeH)
-        CoverView.show(view: subView!)
+        
+        self.coverView = CoverView.show(view: subView!)
         
         //点击筛选的完成的 block的回调的情况
         /*
@@ -180,6 +184,7 @@ class WorkOrderViewController: UIViewController {
     
         var tempArray = [WorkOrderModel2]()
         for model in result {
+            
             let model = model as WorkOrderModel2
             if model.type == type{
                 tempArray.append(model)
@@ -205,20 +210,33 @@ class WorkOrderViewController: UIViewController {
         parmat["pageIndex"] = indexPage
         
         for (key,value) in dic{
-           parmat[key] = value
+            
+            if key != "EXEC_PERSON_NAME"{
+                
+                parmat[key] = value
+            }
+            
         }
         
         //父控件传递的筛选的条件
         if let dic = siftParmat{
             for (key,value) in dic{
-                parmat[key] = value
+                
+                if key != "EXEC_PERSON_NAME"{
+                    
+                    parmat[key] = value
+                }
             }
         }
         
         //经过筛选项,筛选的条件
         if let dic = siftsiftParmat{
             for (key,value) in dic{
-                parmat[key] = value
+                
+                if key != "EXEC_PERSON_NAME"{
+                    
+                    parmat[key] = value
+                }
             }
         }
 
@@ -331,7 +349,6 @@ class WorkOrderViewController: UIViewController {
     }
     
     
-    
     func addRefirsh(){
         
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
@@ -345,7 +362,38 @@ class WorkOrderViewController: UIViewController {
         })
     }
     
-
+    
+    func acceptNoticeFunction(){
+        //更新约束的通知
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "selectePersonVCNotice")
+        
+        center.addObserver(self, selector: #selector(updateCoverViewFunction), name: notiesName, object: nil)
+        
+    }
+    
+    func updateCoverViewFunction(){
+        
+        self.coverView?.removeFromSuperview()
+        
+        let vc = PeopleListViewController.loadFromStoryboard(name: "WorkOrder") as! PeopleListViewController
+        //传递的是执行人的type,通过type来设置相应的 是 执行人还是协助人
+        vc.type = 0 // "选择执行人" 的 type值
+        vc.isWorkOrderSift = true
+        //block的多对多
+        vc.doneBtnClickHandel = siftVc?.didSelecte
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
+        
+    }
+    
 }
 
 

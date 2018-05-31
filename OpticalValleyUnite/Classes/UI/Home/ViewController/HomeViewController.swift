@@ -946,7 +946,7 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
                 
                 subView?.frame = CGRect.init(x: 10, y: 200, width: SJScreeW - 20, height: SJScreeH - 400)
                 
-                CoverView.show(view: subView!)
+                let _ = CoverView.show(view: subView!)
                 
             }
         }

@@ -30,6 +30,7 @@ class PeopleListViewController: UIViewController {
     //添加部门显示字段:
     var isWorkOrderSift = false
     
+    @IBOutlet weak var rightButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -59,6 +60,13 @@ class PeopleListViewController: UIViewController {
         
         getPeople()
         addRefirsh()
+        
+        if isWorkOrderSift {
+            
+            self.navigationItem.rightBarButtonItem?.customView?.isHidden = true
+            self.rightButtonItem.customView?.isHidden = true
+            self.rightButtonItem.tintColor = UIColor.clear
+        }
     }
     
     func addRefirsh(){
@@ -290,7 +298,7 @@ extension PeopleListViewController: UITableViewDelegate, UITableViewDataSource{
                 
                 block(type,array)
                 
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
             
             return

@@ -196,6 +196,9 @@ class YQFireControlViewController: UIViewController {
             bnt.setImage(image, for: .normal)
         }
         
+        //限制图片的拉伸情况
+        bnt.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        
         bnt.layer.cornerRadius = 20
         bnt.layer.borderColor = UIColor.black.cgColor
         bnt.layer.borderWidth = 1.0

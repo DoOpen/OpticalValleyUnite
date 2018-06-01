@@ -252,12 +252,12 @@ extension HttpClient {
     func upDataImage(_ image: UIImage, complit: @escaping ((String) -> ())){
         SVProgressHUD.show(withStatus: "上传图片中...")
         HttpClient.instance.upLoadImage(image, succses: { (url) in
+            
             SVProgressHUD.dismiss()
+            
             complit(url!)
             
         }) { (error) in
-            
-            
             
             SVProgressHUD.dismiss()
         }

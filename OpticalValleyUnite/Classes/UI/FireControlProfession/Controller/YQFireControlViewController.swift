@@ -108,6 +108,10 @@ class YQFireControlViewController: UIViewController {
         
         super.viewWillAppear(true)
         
+        if !self.implementView.isHidden && self.currentMapPointAnnotation != nil {
+            
+            implementViewDataAndDetailShow(pointAnnotation: self.currentMapPointAnnotation)
+        }
 
     }
     

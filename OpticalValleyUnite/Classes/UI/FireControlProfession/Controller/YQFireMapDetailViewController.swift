@@ -77,13 +77,18 @@ class YQFireMapDetailViewController: UIViewController {
             let y = MapPath?.duration ?? 0
 //            print(x)
 //            print(y)
-            self.distanceLable.text = "\(x)" + "m"
-            self.walkingMinuteLable.text = "\(y)" + "s"
+            self.distanceLable.text = "\(x/1000)" + "km"
+            
+            self.walkingMinuteLable.text = self.getFormatPlayTime(secounds: TimeInterval(y))
+            
+            
         
         }
     }
     
+
     var currentSearchType: AMapRoutePlanningType = AMapRoutePlanningType.drive
+
     
     
     // MARK: - 视图生命周期的方法
@@ -149,7 +154,7 @@ class YQFireMapDetailViewController: UIViewController {
         paramet["status"] = 1
         self.atOnceImplement.isUserInteractionEnabled = false
     
-        self.gotoImplementDataWithBackStage(parameters: paramet)
+        self.firePointExecuteFunction(par: paramet)
     
     }
     
@@ -167,16 +172,13 @@ class YQFireMapDetailViewController: UIViewController {
         paramet["status"] = 2
         self.giveupAbandon.isUserInteractionEnabled = false
         
-        self.gotoImplementDataWithBackStage(parameters: paramet)
-        
-        //界面重新跳会主界面
-        self.navigationController?.popViewController(animated: true)
+        self.firePointExecuteFunction(par: paramet)
+       
         
     }
     
     // MARK: - 手动添加定位按钮点击方法
     @IBAction func manualLocationBtnClick(_ sender: Any) {
-        
         
         
     }
@@ -195,6 +197,28 @@ class YQFireMapDetailViewController: UIViewController {
 //    
 //    }
     
+    // MARK: - 前往执行、放弃执行的方法
+    func firePointExecuteFunction(par : [String : Any]){
+        
+        SVProgressHUD.show()
+        HttpClient.instance.post(path: URLPath.getFireExecute, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            if par["status"] as? Int == 2 {
+                
+                self
+                    .navigationController?.popViewController(animated: true)
+            }
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "执行失败!")
+        }
+        
+        
+    }
+    
     
     // MARK: - 调用展示详情list的数据
     func makeImplementTableViewData(model : YQFireLocationModel){
@@ -208,11 +232,12 @@ class YQFireMapDetailViewController: UIViewController {
 
     }
     
-    // MARK: - 前往执行的数据接口方法
+    // MARK: - 获取fire的数据接口方法
     func gotoImplementDataWithBackStage(parameters : [String :Any]){
         
         SVProgressHUD.show(withStatus: "加载中...")
-        Alamofire.request(URLPath.basicPath + URLPath.getFireState , method: .get, parameters: parameters).responseJSON { (response) in
+        
+        Alamofire.request(URLPath.basicPath + URLPath.getFireState , method: .post, parameters: parameters).responseJSON { (response) in
             
             SVProgressHUD.dismiss()
             switch response.result {
@@ -228,6 +253,7 @@ class YQFireMapDetailViewController: UIViewController {
                         return
                     }
                     
+
                     if let data = value["data"] as? NSDictionary{
                         //判断isExec,主线程跟新UI设置
                         let isExec = data["isExec"] as! Bool
@@ -253,6 +279,7 @@ class YQFireMapDetailViewController: UIViewController {
                         }
                     }
                     
+                   
                     break
                 }
                 break
@@ -393,6 +420,25 @@ class YQFireMapDetailViewController: UIViewController {
         locationMapView.showOverlays(naviRoute?.routePolylines, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
         locationMapView.zoomLevel = 12.0 //地图的缩放的级别比例
         
+    }
+    
+    // MARK: - 分秒换算的方法
+    func getFormatPlayTime(secounds:TimeInterval)->String{
+        
+        if secounds.isNaN{
+            return "00:00"
+        }
+        
+        var Min = Int(secounds / 60)
+        let Sec = Int(secounds.truncatingRemainder(dividingBy: 60))
+        var Hour = 0
+        if Min>=60 {
+            Hour = Int(Min / 60)
+            Min = Min - Hour*60
+            return String(format: "%02d时%02d分%02d秒", Hour, Min, Sec)
+        }
+        
+        return String(format: "%02d分%02d秒", Min, Sec)
     }
     
 

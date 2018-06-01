@@ -24,6 +24,7 @@ class PersonDetailViewController: UITableViewController{
         
         didSet{
             if let model = model{
+                
                 nameLabel.text = model.name
                 numberIdLabel.text = model.job_code
                 sexLabel.text = model.sex
@@ -87,12 +88,13 @@ class PersonDetailViewController: UITableViewController{
 
     private func getDate(){
         
+        
         HttpClient.instance.get(path: URLPath.getPersonInfo, parameters: nil, success: { (response) in
-            
             
             if let dic = (response as? [String: Any]){
                 
                 self.model = PersonInfo(parmart: dic)
+                
             }
             
             
@@ -121,9 +123,13 @@ class PersonDetailViewController: UITableViewController{
     // MARK: - 更新后台的图片的接口
     func uploadImage(image:UIImage){
         
+        var par = [String : Any]()
+        
         HttpClient.instance.upDataImage(image) { (url) in
             
-            HttpClient.instance.post(path: URLPath.savePersonIcon, parameters: ["url": url], success: { (response) in
+            par["url"] = url
+            
+            HttpClient.instance.post(path: URLPath.savePersonIcon, parameters: par, success: { (response) in
                 
                 SVProgressHUD.showSuccess(withStatus: "上传成功")
                 //重调一下接口 来刷新数据
@@ -132,6 +138,7 @@ class PersonDetailViewController: UITableViewController{
             }) { (error) in
                 
             }
+            
         }
         
     }

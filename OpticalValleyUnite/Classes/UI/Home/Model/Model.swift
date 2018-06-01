@@ -213,6 +213,11 @@ class WorkOrderModel2: Object {
         
 //        reportListPName = parmart["SOURCE_PERSON"] as? String ?? ""
         
+        //新增频次
+        WORKTASK_RATE = parmart["WORKTASK_RATE"] as? String ?? ""
+        
+        WORKTYPE_NAME = parmart["WORKTYPE_NAME"] as? String ?? ""
+
         if let text = parmart["ISSUPERVISE"] as? String{
             
             isSupervise = text == "FALSE"

@@ -93,6 +93,52 @@ class WorkOrder2Cell: UITableViewCell {
     var model2: WorkOrderModel2?{
         didSet{
             
+            /*
+             //通过的是不同的type类型来进行的赋值不同的选项值!
+             
+             if model2?.type2 == "1"{
+             
+             typeBtn.setTitle("计划工单", for: .normal)
+             
+             creatLabel.text = model2?.WORKTASK_RATE
+             
+             }else{
+             
+             typeBtn.setTitle("应急工单", for: .normal)
+             
+             creatLabel.text = model2?.WORKTYPE_NAME
+             }
+             
+             saveLabel.isHidden = true
+             compelteLabel.isHidden = true
+             
+             workOrderIdLabel.text = model2?.workOrderId
+             contentLabel.text = model2?.content
+             
+             timeLabel.text = model2?.time
+             
+             addressLabel.text = model2?.reportPeopleName
+             // creatLabel.text = model2?.PARK_NAME
+             
+             deviceBtn.isHidden =  model2!.is_equip != 1
+             
+             }
+             
+             */
+            
+            if model2?.type2 == "1"{
+                
+                typeBtn.setTitle("计划工单", for: .normal)
+                
+                creatLabel.text = model2?.WORKTASK_RATE
+                
+            }else{
+                
+                typeBtn.setTitle("应急工单", for: .normal)
+                
+                creatLabel.text = model2?.WORKTYPE_NAME
+            }
+            
             saveLabel.isHidden = true
             compelteLabel.isHidden = true
                 
@@ -100,9 +146,9 @@ class WorkOrder2Cell: UITableViewCell {
             contentLabel.text = model2?.content
             timeLabel.text = model2?.time
             
-            addressLabel.text = model2?.PARK_NAME
+            addressLabel.text = model2?.reportPeopleName
             
-            creatLabel.text = model2?.reportPeopleName
+            //creatLabel.text = model2?.reportPeopleName
             
             deviceBtn.isHidden =  model2!.is_equip != 1
             

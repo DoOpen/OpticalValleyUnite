@@ -45,6 +45,7 @@ class YQHouseHomeVC: UIViewController {
         addRefirsh()
         
         //3.获取list数据
+        let _ = setUpProjectNameLable()
         getDataForList()
         
         //4.接受通知的方法
@@ -126,8 +127,7 @@ class YQHouseHomeVC: UIViewController {
             
             //添加上拉下拉刷新的情况
             if pageIndex == 0 {
-                
-                
+
                 self.dataArray = tempModel
                 self.tableView.mj_header.endRefreshing()
                 
@@ -145,7 +145,9 @@ class YQHouseHomeVC: UIViewController {
             
         }) { (error) in
             
-            SVProgressHUD.showError(withStatus: error.description)
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
+            SVProgressHUD.showError(withStatus: "数据获取失败,请检查网络!")
         }
         
     
@@ -273,7 +275,7 @@ extension YQHouseHomeVC : UITableViewDelegate, UITableViewDataSource{
         
         let model = self.dataArray[indexPath.row]
         
-        if model.ownerIds != "" {
+        if model.name != "" {
             
             return 200
             

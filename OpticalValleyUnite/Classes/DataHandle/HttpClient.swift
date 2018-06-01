@@ -65,8 +65,12 @@ extension HttpClient {
         let bool20 = urlString.contains("groundNo.do")
         let bool21 = urlString.contains("house.do")
         let bool22 = urlString.contains("getHouse.do")
+        //房屋查询的pcos转base
+        let bool23 = urlString.contains("owner/list")
+        let bool24 = urlString.contains("house/get")
+        let bool25 = urlString.contains("relative/list")
         
-        if bool1 || bool2 || bool3 || bool5 || bool6 || bool8 || bool10 || bool11 || bool12  || bool14 || bool15 || bool16 || bool17 || bool18 || bool19 || bool20 || bool21 || bool22{
+        if bool1 || bool2 || bool3 || bool5 || bool6 || bool8 || bool10 || bool11 || bool12  || bool14 || bool15 || bool16 || bool17 || bool18 || bool19 || bool20 || bool21 || bool22 || bool23 || bool24 || bool25{
             
             allurl = URLPath.newbasicPath + urlString
             

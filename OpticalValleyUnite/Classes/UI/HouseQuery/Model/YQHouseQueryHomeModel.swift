@@ -17,6 +17,8 @@ class YQHouseQueryHomeModel: NSObject {
     //房间名称（项目下房屋时返回）
     var houseName = ""
     
+    //详情houseID
+    var houseId = ""
     
     //业主id
     var ownerIds = ""
@@ -24,8 +26,8 @@ class YQHouseQueryHomeModel: NSObject {
     var address = ""
     //业主电话,多个用,号拼接
     var phone = ""
-    //业主名称,多个用,号拼接
-    var ownerName = ""
+    //业主名称,多个用,号拼接(更改字段)
+    var name = ""
     
     init(dict : [String : Any]) {
         

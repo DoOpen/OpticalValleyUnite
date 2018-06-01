@@ -30,10 +30,10 @@ class YQHouseHomeCell: UITableViewCell {
             houseNameLabel.text = model?.houseName
             houseNum.text = model?.houseCode
             
-            if model?.ownerIds != "" {
+            if model?.name != "" {
                 //通过判断来进行的缓存行高的选项
                 
-                ownerNameLabel.text = model?.ownerName
+                ownerNameLabel.text = model?.name
                 ownerPhoneLabel.text = model?.phone
                 owerAdressLabel.text = model?.address
             }

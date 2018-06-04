@@ -75,9 +75,112 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     lazy var counter = { () -> CMPedometer
         
         in
-        
         return CMPedometer()
     }()
+    
+    //改版home首页的属性
+    /**
+     *  自定义的navigationBar,添加默认的xib的情况
+     */
+    let mNavigationBarHeight: CGFloat = 64
+    let mCustomNavigationBarWidth: CGFloat = 300
+    
+    
+    private lazy var mCustomOneNavigationBar: UIView = {
+        
+        let tmp: UIView = UIView.init(frame: CGRect.init(x: (kScreenWidth - self.mCustomNavigationBarWidth)/2, y: 24, width: self.mCustomNavigationBarWidth, height: 36))
+            
+            
+        let v =  Bundle.main.loadNibNamed("YQDefaultHomeNavView", owner: nil, options: nil)?[0] as! YQDefaultHomeNavView
+        tmp.addSubview(v)
+        
+        v.snp.makeConstraints { (make) in
+            
+            make.left.right.top.bottom.equalToSuperview()
+        }
+        
+        return tmp
+        
+    }()
+    
+    private lazy var mCustomTwoNavigationBar: UIView = {
+        
+        let tmp: UIView = UIView.init(frame: CGRect.init(x: (kScreenWidth - self.mCustomNavigationBarWidth)/2, y: 24, width: self.mCustomNavigationBarWidth, height: 36))
+        
+        let subV =  Bundle.main.loadNibNamed("YQOtherHomeNavView", owner: nil, options: nil)?[0] as! UIView
+        
+        tmp.addSubview(subV)
+        
+        subV.snp.makeConstraints { (make) in
+            
+            make.left.right.top.bottom.equalToSuperview()
+        }
+        
+        return tmp
+        
+    }()
+    
+    
+    lazy var mCustomNavigationBar: UIView = {
+        let tmp: UIView = UIView()
+        tmp.backgroundColor = UIColor.orange
+        
+        tmp.addSubview(self.mCustomOneNavigationBar)
+        tmp.addSubview(self.mCustomTwoNavigationBar)
+        
+        return tmp
+    }()
+    
+    
+    /**
+     *  TOPView相关
+     */
+    private let mTopOneViewHeight: CGFloat = 120
+    private let mTopTwoViewHeight: CGFloat = 240
+    
+    private lazy var mTopOneView: UIView = {
+        let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: self.mTopOneViewHeight))
+        tmp.backgroundColor = UIColor.clear
+        
+        // 放置一些控件增加视觉效果
+        var x: CGFloat = 0
+        let tmpWidth: CGFloat = 70
+        let tmpHeight: CGFloat = 80
+        let leftMargin = (kScreenWidth/4.0 - tmpWidth)/2.0
+        x += leftMargin
+        
+        
+        
+        return tmp
+    }()
+    
+    private lazy var mTopTwoView: UIView = {
+        let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: self.mTopOneViewHeight, width: kScreenWidth, height: self.mTopTwoViewHeight))
+        tmp.backgroundColor = UIColor.white
+        
+        // 放置一些控件增加视觉效果
+        var x: CGFloat = 0
+        var y: CGFloat = 0
+        let tmpWidth: CGFloat = 40
+        let leftMargin = (kScreenWidth/5.0 - tmpWidth)/2.0
+        let topMargin = (self.mTopTwoViewHeight/3.0 - tmpWidth)/2.0
+        x += leftMargin
+        y += topMargin
+        
+        
+        return tmp
+    }()
+    
+    private lazy var mTopView: UIView = {
+        let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: self.mTopOneViewHeight + self.mTopTwoViewHeight))
+        tmp.backgroundColor = UIColor.orange
+        
+        tmp.addSubview(self.mTopOneView)
+        tmp.addSubview(self.mTopTwoView)
+        
+        return tmp
+    }()
+    
 
     
     // MARK: - 视图生命周期方法

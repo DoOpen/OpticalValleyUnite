@@ -353,9 +353,12 @@ class YQSystemSelectionVC: UIViewController {
 //            SJKeyWindow?.rootViewController = sjAllWorkUnit
             
             //知识库模块的界面
-            let knowledgeFirstVC = YQKnowledgeFirstVC.init(nibName: "YQKnowledgeFirstVC", bundle: nil)
-            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: knowledgeFirstVC)
-            SJKeyWindow?.rootViewController = sjKnowledgeFirstVC
+//            let knowledgeFirstVC = YQKnowledgeFirstVC.init(nibName: "YQKnowledgeFirstVC", bundle: nil)
+//            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: knowledgeFirstVC)
+            
+            //首页架构
+            let OneVC = MYPTestOneVC()
+            SJKeyWindow?.rootViewController = OneVC
             
         }else if tap.tapIndex == fireindex {//消防的界面的跳转的情况
             

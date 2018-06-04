@@ -71,6 +71,28 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N82-q3-JaW">
+                                        <rect key="frame" x="139" y="72" width="263" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="workOrderGenerateButtonClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="T75-sX-uIR"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工单编号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzx-Tg-LHD">
                                         <rect key="frame" x="12" y="126" width="90" height="21"/>
                                         <constraints>
@@ -117,10 +139,33 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nw-N7-P1c">
+                                        <rect key="frame" x="139" y="169" width="263" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="workOrderImplementButtonClick:" destination="V25-LM-q3n" eventType="touchUpInside" id="Fzw-Wa-rD4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="MsU-O6-sUE" firstAttribute="centerY" secondItem="sf7-Wl-xYD" secondAttribute="centerY" id="1jK-b8-qT3"/>
+                                    <constraint firstItem="2nw-N7-P1c" firstAttribute="top" secondItem="bwq-pr-Ipk" secondAttribute="top" id="26B-wF-bZM"/>
                                     <constraint firstItem="sf7-Wl-xYD" firstAttribute="leading" secondItem="XeH-3o-ilL" secondAttribute="leading" constant="12" id="3SQ-FX-GcP"/>
                                     <constraint firstItem="fsQ-8C-5uK" firstAttribute="leading" secondItem="MsU-O6-sUE" secondAttribute="leading" id="4h8-w0-ItE"/>
                                     <constraint firstAttribute="height" constant="220" id="4rK-bt-vSe"/>
@@ -128,6 +173,7 @@
                                     <constraint firstItem="fsQ-8C-5uK" firstAttribute="leading" secondItem="Zzx-Tg-LHD" secondAttribute="trailing" constant="37" id="93d-qr-bRr"/>
                                     <constraint firstItem="q6p-t6-yZF" firstAttribute="leading" secondItem="Zzx-Tg-LHD" secondAttribute="leading" id="CJA-Ym-RnH"/>
                                     <constraint firstItem="Zzx-Tg-LHD" firstAttribute="leading" secondItem="sf7-Wl-xYD" secondAttribute="leading" id="Dzg-yT-YTX"/>
+                                    <constraint firstItem="N82-q3-JaW" firstAttribute="leading" secondItem="eJK-Uq-SAS" secondAttribute="leading" id="FtL-ee-UCn"/>
                                     <constraint firstItem="eJK-Uq-SAS" firstAttribute="top" secondItem="MsU-O6-sUE" secondAttribute="bottom" constant="12" id="Fvx-cG-skj"/>
                                     <constraint firstItem="MsU-O6-sUE" firstAttribute="leading" secondItem="sf7-Wl-xYD" secondAttribute="trailing" constant="37" id="Gdy-KJ-182"/>
                                     <constraint firstItem="eJK-Uq-SAS" firstAttribute="centerY" secondItem="ZTM-7w-z8j" secondAttribute="centerY" id="IgL-5u-qwL"/>
@@ -139,10 +185,16 @@
                                     <constraint firstItem="eJK-Uq-SAS" firstAttribute="leading" secondItem="MsU-O6-sUE" secondAttribute="leading" id="PNz-CG-QTf"/>
                                     <constraint firstItem="eJK-Uq-SAS" firstAttribute="trailing" secondItem="MsU-O6-sUE" secondAttribute="trailing" id="WHu-CY-kR5"/>
                                     <constraint firstItem="eJK-Uq-SAS" firstAttribute="leading" secondItem="ZTM-7w-z8j" secondAttribute="trailing" constant="37" id="WkA-Yb-vIH"/>
+                                    <constraint firstItem="N82-q3-JaW" firstAttribute="trailing" secondItem="eJK-Uq-SAS" secondAttribute="trailing" id="X72-dZ-FOT"/>
+                                    <constraint firstItem="2nw-N7-P1c" firstAttribute="bottom" secondItem="bwq-pr-Ipk" secondAttribute="bottom" id="XI2-Jw-BJg"/>
                                     <constraint firstItem="bwq-pr-Ipk" firstAttribute="centerY" secondItem="q6p-t6-yZF" secondAttribute="centerY" id="exD-jb-O6R"/>
+                                    <constraint firstItem="2nw-N7-P1c" firstAttribute="leading" secondItem="bwq-pr-Ipk" secondAttribute="leading" id="i2u-Bk-x4n"/>
                                     <constraint firstItem="bwq-pr-Ipk" firstAttribute="leading" secondItem="q6p-t6-yZF" secondAttribute="trailing" constant="37" id="k0N-3h-Wan"/>
                                     <constraint firstItem="ZTM-7w-z8j" firstAttribute="leading" secondItem="sf7-Wl-xYD" secondAttribute="leading" id="kHH-1n-xlm"/>
+                                    <constraint firstItem="N82-q3-JaW" firstAttribute="bottom" secondItem="eJK-Uq-SAS" secondAttribute="bottom" id="lfc-5a-sCh"/>
+                                    <constraint firstItem="2nw-N7-P1c" firstAttribute="trailing" secondItem="bwq-pr-Ipk" secondAttribute="trailing" id="o80-Mj-2ZX"/>
                                     <constraint firstItem="fsQ-8C-5uK" firstAttribute="trailing" secondItem="MsU-O6-sUE" secondAttribute="trailing" id="w1f-FP-UMw"/>
+                                    <constraint firstItem="N82-q3-JaW" firstAttribute="top" secondItem="eJK-Uq-SAS" secondAttribute="top" id="z1J-8F-5Gr"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEf-t6-gDs">

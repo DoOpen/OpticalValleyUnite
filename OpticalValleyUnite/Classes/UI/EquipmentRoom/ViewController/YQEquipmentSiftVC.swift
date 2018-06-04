@@ -71,6 +71,7 @@ class YQEquipmentSiftVC: UIViewController {
  
     var doenBtnClickHandel: (([String: Any]) -> ())?
     
+    @IBOutlet weak var newPersonButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,9 +124,39 @@ class YQEquipmentSiftVC: UIViewController {
             
             workOrderSourcePersonLabel.text = text
         }
-
-
+        
+        if let text = self.siftParmat?["SOURCE_PERSON_ID"] as? String,text != ""{// SOURCE_PERSON_ID
+            
+            newPersonButton.setTitle(text, for: .normal)
+        }
+        
     }
+ 
+    
+    @IBAction func workOrderSourcePersonBtnClick(_ sender: UIButton) {
+        
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "siftPersonVCNotice")
+        center.post(name: notiesName, object: nil)
+        
+        self.newPersonButton.isUserInteractionEnabled = false
+        
+    }
+    
+    func didSelecte(type: Int, models: [PersonModel]){
+        
+        //传递参数,重新显示
+        for model in models{
+            
+            self.workOrderSourcePersonLabel.text = model.id
+            self.newPersonButton.setTitle(model.name, for: .normal)
+            
+        }
+        
+        let _ = CoverView.show(view: self.view)
+        
+    }
+    
     
     // MARK: - 完成按钮点击
     @IBAction func doenBtnClick(_ sender: UIButton) {
@@ -153,7 +184,6 @@ class YQEquipmentSiftVC: UIViewController {
             
         }
         
-        
         if let index = sourceTagsViewIndex{
             paramert["sourse"] = index + 1
         }
@@ -176,6 +206,11 @@ class YQEquipmentSiftVC: UIViewController {
             paramert["SOURCE_PERSON_NAME"] = text
         }
         
+        if let text = newPersonButton.titleLabel?.text, text != "" {
+            
+            paramert["SOURCE_PERSON_ID"] = text
+            
+        }
         
         if let block = doenBtnClickHandel{
             //通过的是block的回调来进行的传值,如果是需要保存的话,要求保存paramert 的参数
@@ -289,6 +324,7 @@ class YQEquipmentSiftVC: UIViewController {
         }
     }
 
-
+    
+    
 
 }

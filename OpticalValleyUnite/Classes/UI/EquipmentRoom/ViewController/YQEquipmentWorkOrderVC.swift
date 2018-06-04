@@ -31,6 +31,8 @@ class YQEquipmentWorkOrderVC: UIViewController {
     //项目id
     var parkID = "parkID"
     
+    var coverView : CoverView?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -52,6 +54,9 @@ class YQEquipmentWorkOrderVC: UIViewController {
         
         //2.添加上拉,下拉
         addRefirsh()
+        
+        //3.接受通知情况
+        acceptNoticeFunction()
         
 
     }
@@ -100,7 +105,8 @@ class YQEquipmentWorkOrderVC: UIViewController {
         let subView = vc.view
         
         subView?.frame = CGRect(x: 100, y: 0, width: SJScreeW - 100, height: SJScreeH)
-        CoverView.show(view: subView!)
+        
+        self.coverView =  CoverView.show(view: subView!)
         
         //点击筛选的完成的 block的回调的情况
         /*
@@ -202,7 +208,10 @@ class YQEquipmentWorkOrderVC: UIViewController {
         if let dic = siftsiftParmat{
             for (key,value) in dic{
                 
-                par[key] = value
+                if key != "SOURCE_PERSON_NAME"{
+                    
+                    par[key] = value
+                }
             }
         }
 
@@ -280,6 +289,40 @@ class YQEquipmentWorkOrderVC: UIViewController {
             self.getWorkOrderForServer(tag: (self.currentSelectBtn?.tag)!, pageIndex: self.pageNo + 1)
         })
     }
+    
+    
+    func acceptNoticeFunction(){
+        //更新约束的通知
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "siftPersonVCNotice")
+        
+        center.addObserver(self, selector: #selector(updateCoverViewFunction), name: notiesName, object: nil)
+        
+    }
+    
+    func updateCoverViewFunction(){
+        
+        self.coverView?.removeFromSuperview()
+        
+        let vc = PeopleListViewController.loadFromStoryboard(name: "WorkOrder") as! PeopleListViewController
+        //传递的是执行人的type,通过type来设置相应的 是 执行人还是协助人
+        vc.type = 0 // "选择执行人" 的 type值
+        vc.isWorkOrderSift = true
+        
+        //block的多对多
+        vc.doneBtnClickHandel = siftVc?.didSelecte
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
+        
+    }
+
 
 
 }

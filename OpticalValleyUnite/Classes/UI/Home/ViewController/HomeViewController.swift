@@ -691,6 +691,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 PHPhotoLibrary.requestAuthorization({ (authorizationStatus) in
                     
                 })
+                
             }else{
                 
                 self.alert(message: "授权失败")

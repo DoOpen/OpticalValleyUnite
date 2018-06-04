@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qe7-aq-JEb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qe7-aq-JEb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -71,6 +71,28 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQu-GA-Pol">
+                                        <rect key="frame" x="139" y="87" width="263" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="workOrderSourcePersonBtnClick:" destination="Qe7-aq-JEb" eventType="touchUpInside" id="Xjk-fl-LaL"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工单编号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vK-Lc-of3">
                                         <rect key="frame" x="12" y="141" width="90" height="21"/>
                                         <constraints>
@@ -103,16 +125,20 @@
                                     <constraint firstItem="FqE-jx-En1" firstAttribute="top" secondItem="197-jl-NZ5" secondAttribute="bottom" constant="12" id="ATZ-38-JRd"/>
                                     <constraint firstAttribute="bottom" secondItem="FqE-jx-En1" secondAttribute="bottom" constant="20" id="AcW-jp-Vft"/>
                                     <constraint firstItem="2hc-XT-KUL" firstAttribute="leading" secondItem="let-n7-sDG" secondAttribute="leading" constant="12" id="Bdp-lL-j9Z"/>
+                                    <constraint firstItem="jQu-GA-Pol" firstAttribute="bottom" secondItem="197-jl-NZ5" secondAttribute="bottom" id="Kw4-n4-6K0"/>
                                     <constraint firstAttribute="trailing" secondItem="afn-kQ-x5i" secondAttribute="trailing" constant="12" id="NJ3-Kd-Le7"/>
                                     <constraint firstItem="197-jl-NZ5" firstAttribute="leading" secondItem="hpB-C7-GsS" secondAttribute="trailing" constant="37" id="NbX-RP-AM0"/>
                                     <constraint firstItem="197-jl-NZ5" firstAttribute="centerY" secondItem="hpB-C7-GsS" secondAttribute="centerY" id="RBP-xH-nYF"/>
                                     <constraint firstItem="FqE-jx-En1" firstAttribute="leading" secondItem="8vK-Lc-of3" secondAttribute="trailing" constant="37" id="Tcr-1A-M2Z"/>
+                                    <constraint firstItem="jQu-GA-Pol" firstAttribute="top" secondItem="197-jl-NZ5" secondAttribute="top" id="ZtF-GS-OCt"/>
                                     <constraint firstItem="afn-kQ-x5i" firstAttribute="centerY" secondItem="2hc-XT-KUL" secondAttribute="centerY" id="ay5-cO-rjE"/>
                                     <constraint firstItem="197-jl-NZ5" firstAttribute="top" secondItem="afn-kQ-x5i" secondAttribute="bottom" constant="12" id="brX-1v-ODo"/>
                                     <constraint firstItem="afn-kQ-x5i" firstAttribute="leading" secondItem="2hc-XT-KUL" secondAttribute="trailing" constant="37" id="fTT-L1-xD2"/>
                                     <constraint firstItem="afn-kQ-x5i" firstAttribute="top" secondItem="let-n7-sDG" secondAttribute="top" constant="40" id="hXB-Mj-Jdt"/>
                                     <constraint firstItem="hpB-C7-GsS" firstAttribute="leading" secondItem="2hc-XT-KUL" secondAttribute="leading" id="kUx-uU-9ai"/>
                                     <constraint firstItem="FqE-jx-En1" firstAttribute="trailing" secondItem="afn-kQ-x5i" secondAttribute="trailing" id="kzt-nA-Von"/>
+                                    <constraint firstItem="jQu-GA-Pol" firstAttribute="leading" secondItem="197-jl-NZ5" secondAttribute="leading" id="r8C-kg-Hsm"/>
+                                    <constraint firstItem="jQu-GA-Pol" firstAttribute="trailing" secondItem="197-jl-NZ5" secondAttribute="trailing" id="wXD-BL-84p"/>
                                     <constraint firstItem="8vK-Lc-of3" firstAttribute="leading" secondItem="2hc-XT-KUL" secondAttribute="leading" id="wXM-5l-N6j"/>
                                     <constraint firstItem="197-jl-NZ5" firstAttribute="leading" secondItem="afn-kQ-x5i" secondAttribute="leading" id="wXe-zU-2F5"/>
                                 </constraints>
@@ -419,6 +445,7 @@
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="endBtn" destination="RPu-Bd-XzH" id="eet-BT-DR2"/>
+                        <outlet property="newPersonButton" destination="jQu-GA-Pol" id="6es-7m-kLI"/>
                         <outlet property="projectTagsView" destination="8nW-r4-7QK" id="pKg-u0-XU3"/>
                         <outlet property="sourceTagsView" destination="anT-mO-jhh" id="FhP-Qe-mLM"/>
                         <outlet property="startBtn" destination="wW2-L7-A6u" id="c6W-4X-fC8"/>

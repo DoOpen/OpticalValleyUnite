@@ -273,8 +273,33 @@ class YQAllWorkUnitScreenVC: UIViewController {
             
             workOrderImplementPersonTextField.text = text
         }
+    }
+    
+    // MARK: - 工单生成人buttonClick
+    @IBAction func workOrderGenerateButtonClick(_ sender: UIButton) {
+        
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "siftPersonVCNotice")
+        center.post(name: notiesName, object: nil)
+        
+//        self.newPersonButton.isUserInteractionEnabled = false
         
     }
+    
+    
+    // MARK: - 工单执行人buttonClick
+    @IBAction func workOrderImplementButtonClick(_ sender: UIButton) {
+        
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "siftPersonVCNotice")
+        center.post(name: notiesName, object: nil)
+        
+//        self.newPersonButton.isUserInteractionEnabled = false
+        
+    }
+    
+    
+    
     
     // MARK: - 点击的收起,展开的效果
     @IBAction func springProjectButtonClick(_ sender: UIButton) {
@@ -356,8 +381,8 @@ class YQAllWorkUnitScreenVC: UIViewController {
             block([String : Any]())
         }
 
-        
     }
+    
     
     @IBAction func doenBtnClick(_ sender: UIButton) {
         

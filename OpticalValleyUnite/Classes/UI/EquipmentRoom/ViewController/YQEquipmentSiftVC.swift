@@ -201,14 +201,15 @@ class YQEquipmentSiftVC: UIViewController {
         if let text = workOrderNameLabel.text,text != ""{
             paramert["NAME"] = text
         }
+        
         if let text = workOrderSourcePersonLabel.text,text != ""{
             
-            paramert["SOURCE_PERSON_NAME"] = text
+            paramert["SOURCE_PERSON_ID"] = text
         }
         
         if let text = newPersonButton.titleLabel?.text, text != "" {
             
-            paramert["SOURCE_PERSON_ID"] = text
+            paramert["SOURCE_PERSON_NAME"] = text
             
         }
         

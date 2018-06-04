@@ -38,7 +38,7 @@ class YQAllWorkUnitHomeVC: UIViewController {
     //集团版和项目版的情况
     var isgroup = -1
     
-    
+    var coverView : CoverView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +87,8 @@ class YQAllWorkUnitHomeVC: UIViewController {
 
         self.getDataForServer(tag: self.currentBtn.tag)
         
-
+        acceptNoticeFunction()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,7 +146,8 @@ class YQAllWorkUnitHomeVC: UIViewController {
         
         let subView = vc.view
         subView?.frame = CGRect(x: 100, y: 0, width: SJScreeW - 100, height: SJScreeH)
-        CoverView.show(view: subView!)
+        
+        self.coverView =  CoverView.show(view: subView!)
         
         //点击筛选的完成的 block的回调的情况
         /*
@@ -206,12 +208,15 @@ class YQAllWorkUnitHomeVC: UIViewController {
             
             for (key,value) in dic{
                 
-                par[key] = value
+                if key != "SOURCE_PERSON_NAME" && key != "EXEC_PERSON_NAME"{
+                    
+                    par[key] = value
+                }
             }
         }
 
-        
         SVProgressHUD.show()
+        
         //其余的都是,相应的筛选条件
         HttpClient.instance.post(path: URLPath.getAllworkunitList, parameters: par, success: { (response) in
             
@@ -247,7 +252,6 @@ class YQAllWorkUnitHomeVC: UIViewController {
 
             var temp = [WorkOrderModel2]()
             
-            
             for dic in data!  {
                 
                 let model = WorkOrderModel2(parmart: dic)
@@ -271,7 +275,6 @@ class YQAllWorkUnitHomeVC: UIViewController {
                     self.tableView.mj_footer.endRefreshing()
                     
                 }else{
-                    
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
                     
                 }
@@ -315,11 +318,42 @@ class YQAllWorkUnitHomeVC: UIViewController {
             self.getDataForServer(tag: self.currentBtn.tag,pageIndex : self.pageNo + 1)
 
         })
+    }
+    
+    
+    func acceptNoticeFunction(){
+        //更新约束的通知
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "workerSiftPersonVCNotice")
+        
+        center.addObserver(self, selector: #selector(updateCoverViewFunction), name: notiesName, object: nil)
+    }
+    
+    
+    func updateCoverViewFunction(){
+        
+        self.coverView?.removeFromSuperview()
+        
+        let vc = PeopleListViewController.loadFromStoryboard(name: "WorkOrder") as! PeopleListViewController
+        //传递的是执行人的type,通过type来设置相应的 是 执行人还是协助人
+        vc.type = 0 // "选择执行人" 的 type值
+        vc.isWorkOrderSift = true
+        
+        //block的多对多
+        vc.doneBtnClickHandel = siftVc?.didSelecte
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
         
     }
 
-
-   
+    
 }
 
 extension YQAllWorkUnitHomeVC : UITableViewDelegate,UITableViewDataSource{
@@ -356,7 +390,6 @@ extension YQAllWorkUnitHomeVC : UITableViewDelegate,UITableViewDataSource{
         // 执行的工单的 回退之后 进行的list的刷新, 要求的补全逻辑的代码
         //    vc.listVc = self
         navigationController?.pushViewController(vc, animated: true)
-        
         
     }
 

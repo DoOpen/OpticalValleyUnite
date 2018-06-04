@@ -694,8 +694,10 @@
                         <outlet property="spontaneousTagsView" destination="iab-vk-nUw" id="8NY-8b-WDa"/>
                         <outlet property="startBtn" destination="Dhk-ml-jK3" id="dm3-iB-pn7"/>
                         <outlet property="workNumberLabel" destination="fsQ-8C-5uK" id="2ZI-xs-WtL"/>
+                        <outlet property="workOrderImplementButton" destination="2nw-N7-P1c" id="yTI-S1-fUd"/>
                         <outlet property="workOrderImplementPersonTextField" destination="bwq-pr-Ipk" id="aOL-UX-EPb"/>
                         <outlet property="workOrderNameLabel" destination="MsU-O6-sUE" id="tXj-gX-OMu"/>
+                        <outlet property="workOrderSourcePersonButton" destination="N82-q3-JaW" id="nio-Hx-e2d"/>
                         <outlet property="workOrderSourcePersonLabel" destination="eJK-Uq-SAS" id="ND0-HK-rY3"/>
                         <outlet property="workStatusTagView" destination="fHl-mZ-hIs" id="lvN-Pi-Ife"/>
                         <outlet property="workTypeTagsView" destination="df1-zW-PIE" id="TaE-Jd-XIf"/>

@@ -38,6 +38,9 @@ class YQAllWorkUnitScreenVC: UIViewController {
     
     //工单生成人
     @IBOutlet weak var workOrderSourcePersonLabel: UITextField!
+    //工单生成人id button
+    @IBOutlet weak var workOrderSourcePersonButton: UIButton!
+    
     
     //工单编号
     @IBOutlet weak var workNumberLabel: UITextField!
@@ -45,7 +48,8 @@ class YQAllWorkUnitScreenVC: UIViewController {
     //新增的工单执行人
     //工单执行人
     @IBOutlet weak var workOrderImplementPersonTextField: UITextField!
-    
+    //工单执行人 id button
+    @IBOutlet weak var workOrderImplementButton: UIButton!
     
     ///开始和 结束的 按钮的
     @IBOutlet weak var startBtn: UIButton!
@@ -137,7 +141,9 @@ class YQAllWorkUnitScreenVC: UIViewController {
     
     
     var doneBtnClickHandel: (([String: Any]) -> ())?
-
+    
+    
+    var coverView : CoverView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -264,53 +270,95 @@ class YQAllWorkUnitScreenVC: UIViewController {
             
             workOrderNameLabel.text = text
         }
+        
         if let text = self.siftParmat?["SOURCE_PERSON_NAME"] as? String,text != ""{
             
-            workOrderSourcePersonLabel.text = text
+            workOrderSourcePersonButton.setTitle(text, for: .normal)
         }
         
         if let text = self.siftParmat?["EXEC_PERSON_NAME"] as? String,text != ""{
             
+            workOrderImplementButton.setTitle(text, for: .normal)
+        }
+        
+        if let text = self.siftParmat?["EXEC_PERSON_ID"] as? String,text != ""{
+            
             workOrderImplementPersonTextField.text = text
         }
+        
+        if let text = self.siftParmat?["SOURCE_PERSON_ID"] as? String,text != ""{
+            
+            workOrderSourcePersonLabel.text = text
+        }
+        
+        
+        
     }
     
     // MARK: - 工单生成人buttonClick
     @IBAction func workOrderGenerateButtonClick(_ sender: UIButton) {
         
+        sender.isSelected = true
+        self.workOrderImplementButton.isSelected = false
+        
         let center = NotificationCenter.default
-        let notiesName = NSNotification.Name(rawValue: "siftPersonVCNotice")
+        let notiesName = NSNotification.Name(rawValue: "workerSiftPersonVCNotice")
         center.post(name: notiesName, object: nil)
         
-//        self.newPersonButton.isUserInteractionEnabled = false
+        self.workOrderSourcePersonButton.isUserInteractionEnabled = false
         
+        self.coverView?.removeFromSuperview()
+
     }
     
     
     // MARK: - 工单执行人buttonClick
     @IBAction func workOrderImplementButtonClick(_ sender: UIButton) {
         
-        let center = NotificationCenter.default
-        let notiesName = NSNotification.Name(rawValue: "siftPersonVCNotice")
-        center.post(name: notiesName, object: nil)
+        sender.isSelected = true
+        self.workOrderSourcePersonButton.isSelected = false
         
-//        self.newPersonButton.isUserInteractionEnabled = false
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "workerSiftPersonVCNotice")
+        center.post(name: notiesName, object: nil, userInfo: ["type":"implement"])
+        
+        self.workOrderImplementButton.isUserInteractionEnabled = false
+        
+        self.coverView?.removeFromSuperview()
         
     }
     
-    
-    
+    func didSelecte(type: Int, models: [PersonModel]){
+        
+        //传递参数,重新显示
+        for model in models{
+            
+            if self.workOrderImplementButton.isSelected {
+                
+                workOrderImplementPersonTextField.text = model.id
+                self.workOrderImplementButton.setTitle(model.name, for: .normal)
+                
+            } else {
+                
+                self.workOrderSourcePersonLabel.text = model.id
+                self.workOrderSourcePersonButton.setTitle(model.name, for: .normal)
+            }
+            
+        }
+        
+        self.coverView = CoverView.show(view: self.view)
+        
+    }
+
     
     // MARK: - 点击的收起,展开的效果
     @IBAction func springProjectButtonClick(_ sender: UIButton) {
         
-
         if sender.isSelected {
             
             //调节死约束
             sender.setTitle("收起", for: .normal)
             self.projectHeightConstraint.constant = 100
-            
             view.setNeedsLayout()
             
         }else{
@@ -322,9 +370,8 @@ class YQAllWorkUnitScreenVC: UIViewController {
             view.setNeedsLayout()
 
         }
-        
+
         sender.isSelected = !sender.isSelected
-        
     }
     
     
@@ -486,11 +533,21 @@ class YQAllWorkUnitScreenVC: UIViewController {
             paramert["NAME"] = text
         }
         if let text = workOrderSourcePersonLabel.text,text != ""{
-            paramert["SOURCE_PERSON_NAME"] = text
+            paramert["SOURCE_PERSON_ID"] = text
         }
         if let text = workOrderImplementPersonTextField.text,text != ""{
+            paramert["EXEC_PERSON_ID"] = text
+        }
+        
+        if let text = workOrderSourcePersonButton.titleLabel?.text,text != ""{
+            paramert["SOURCE_PERSON_NAME"] = text
+            
+        }
+        if let text = workOrderImplementButton.titleLabel?.text,text != ""{
+            
             paramert["EXEC_PERSON_NAME"] = text
         }
+        
         
         if let block = doneBtnClickHandel{
             //通过的是block的回调来进行的传值,如果是需要保存的话,要求保存paramert 的参数

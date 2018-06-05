@@ -10,12 +10,17 @@ import UIKit
 
 class YQHomeTopView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+    var topBtnViewArray = [HomeBtnView]()
+    
+    @IBOutlet weak var top1BtnView: HomeBtnView!
+    
+    @IBOutlet weak var top2BtnView: HomeBtnView!
+    
+    @IBOutlet weak var top3BtnView: HomeBtnView!
+    
+    @IBOutlet weak var top4BtnView: HomeBtnView!
+    
+    
+    
+    
 }

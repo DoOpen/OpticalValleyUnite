@@ -16,6 +16,10 @@ import CoreMotion
 let KDistence = 25.0
 let KTime = 60 * 15
 
+let mNavigationBarHeight: CGFloat = 104
+let Spacing : CGFloat = 14
+
+
 class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     @IBOutlet weak var messageBtn: UIButton!
@@ -82,20 +86,16 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     /**
      *  自定义的navigationBar,添加默认的xib的情况
      */
-    let mNavigationBarHeight: CGFloat = 64
-    let mCustomNavigationBarWidth: CGFloat = 300
     
-    
-    private lazy var mCustomOneNavigationBar: UIView = {
+    lazy var mCustomOneNavigationBar: UIView = {
         
-        let tmp: UIView = UIView.init(frame: CGRect.init(x: (kScreenWidth - self.mCustomNavigationBarWidth)/2, y: 24, width: self.mCustomNavigationBarWidth, height: 36))
-            
-            
-        let v =  Bundle.main.loadNibNamed("YQDefaultHomeNavView", owner: nil, options: nil)?[0] as! YQDefaultHomeNavView
+        let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: Spacing, width: SJScreeW, height: mNavigationBarHeight - Spacing))
+        tmp.backgroundColor = UIColor.clear
+        let v =  Bundle.main.loadNibNamed("YQDefaultHomeNavView", owner: nil, options: nil)?[0] as! UIView
+        v.backgroundColor = UIColor.clear
         tmp.addSubview(v)
-        
         v.snp.makeConstraints { (make) in
-            
+
             make.left.right.top.bottom.equalToSuperview()
         }
         
@@ -103,12 +103,14 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
     }()
     
-    private lazy var mCustomTwoNavigationBar: UIView = {
+    lazy var mCustomTwoNavigationBar: UIView = {
         
-        let tmp: UIView = UIView.init(frame: CGRect.init(x: (kScreenWidth - self.mCustomNavigationBarWidth)/2, y: 24, width: self.mCustomNavigationBarWidth, height: 36))
-        
+        let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: Spacing, width: SJScreeW, height: mNavigationBarHeight - Spacing))
+        tmp.backgroundColor = UIColor.clear
         let subV =  Bundle.main.loadNibNamed("YQOtherHomeNavView", owner: nil, options: nil)?[0] as! UIView
         
+        subV.backgroundColor = UIColor.clear
+        tmp.alpha = 0
         tmp.addSubview(subV)
         
         subV.snp.makeConstraints { (make) in
@@ -123,10 +125,24 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     lazy var mCustomNavigationBar: UIView = {
         let tmp: UIView = UIView()
-        tmp.backgroundColor = UIColor.orange
+        
+        tmp.backgroundColor = UIColor.init(red: 73/255.0, green: 167/255.0, blue: 238/255.0, alpha: 0.9)
         
         tmp.addSubview(self.mCustomOneNavigationBar)
         tmp.addSubview(self.mCustomTwoNavigationBar)
+        
+        return tmp
+    }()
+    
+    /**
+     *  RefreshHeader
+     */
+    let mRefreshHeaderHeight: CGFloat = 65
+    
+    lazy var mRefreshHeader: MYPRefreshHeader = {
+        let tmp: MYPRefreshHeader = MYPRefreshHeader.init(frame: CGRect.init(x: 0, y: self.mTopOneViewHeight + self.mTopTwoViewHeight - self.mRefreshHeaderHeight, width: kScreenWidth, height: self.mRefreshHeaderHeight))
+        tmp.mDelegate = self
+        tmp.mRefreshStatus = MRefreshStatus.normal
         
         return tmp
     }()
@@ -135,45 +151,46 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     /**
      *  TOPView相关
      */
-    private let mTopOneViewHeight: CGFloat = 120
-    private let mTopTwoViewHeight: CGFloat = 240
+    let mTopOneViewHeight: CGFloat = 100
+    let mTopTwoViewHeight: CGFloat = 100
     
-    private lazy var mTopOneView: UIView = {
+    lazy var mTopOneView: UIView = {
         let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: self.mTopOneViewHeight))
         tmp.backgroundColor = UIColor.clear
-        
         // 放置一些控件增加视觉效果
-        var x: CGFloat = 0
-        let tmpWidth: CGFloat = 70
-        let tmpHeight: CGFloat = 80
-        let leftMargin = (kScreenWidth/4.0 - tmpWidth)/2.0
-        x += leftMargin
+        let TopView = Bundle.main.loadNibNamed("YQHomeTopView", owner: nil, options: nil)?[0] as! YQHomeTopView
+        TopView.backgroundColor = UIColor.init(red: 73/255.0, green: 167/255.0, blue: 238/255.0, alpha: 0.9)
         
+        tmp.addSubview(TopView)
         
+        TopView.snp.makeConstraints({ (maker) in
+            
+            maker.left.right.top.bottom.equalToSuperview()
+        })
         
         return tmp
     }()
     
-    private lazy var mTopTwoView: UIView = {
+    lazy var mTopTwoView: UIView = {
+        
         let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: self.mTopOneViewHeight, width: kScreenWidth, height: self.mTopTwoViewHeight))
         tmp.backgroundColor = UIColor.white
         
-        // 放置一些控件增加视觉效果
-        var x: CGFloat = 0
-        var y: CGFloat = 0
-        let tmpWidth: CGFloat = 40
-        let leftMargin = (kScreenWidth/5.0 - tmpWidth)/2.0
-        let topMargin = (self.mTopTwoViewHeight/3.0 - tmpWidth)/2.0
-        x += leftMargin
-        y += topMargin
+        let contentV = Bundle.main.loadNibNamed("YQHomeContentView", owner: nil, options: nil)?[0] as! YQHomeContentView
         
+        tmp.addSubview(contentV)
+        
+        contentV.snp.makeConstraints({ (maker) in
+            
+            maker.left.right.top.bottom.equalToSuperview()
+        })
         
         return tmp
     }()
     
-    private lazy var mTopView: UIView = {
+    lazy var mTopView: UIView = {
+        
         let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: self.mTopOneViewHeight + self.mTopTwoViewHeight))
-        tmp.backgroundColor = UIColor.orange
         
         tmp.addSubview(self.mTopOneView)
         tmp.addSubview(self.mTopTwoView)
@@ -189,8 +206,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         super.viewDidLoad()
 
         //分别设置两个(上下)按钮数组
+        self.automaticallyAdjustsScrollViewInsets = false
         topBtnViewArray = [top1BtnView,top2BtnView,top3BtnView,top4BtnView]
         downBtnViewArray = [donw1BtnView,donw2BtnView,donw3BtnView]
+        
+        //改版的init的方法
+        homeInterfaceReversionInit()
         
         //接受新的数据来显示
         getPermission()
@@ -234,6 +255,31 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
     }
     
+    // MARK: - home界面改版的init方法
+    func homeInterfaceReversionInit(){
+        
+        // 使用自定义的NavigationBar
+        self.navigationController?.view.sendSubview(toBack: (self.navigationController?.navigationBar)!)
+        
+        self.view.addSubview(mCustomNavigationBar)
+        
+        mCustomNavigationBar.snp.makeConstraints { (make) in
+            make.left.top.right.equalToSuperview()
+            make.bottom.equalTo(self.tableView.snp.top)
+        }
+        
+        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.mTopOneViewHeight + self.mTopTwoViewHeight, 0, 0, 0)
+        
+        self.tableView.contentSize = CGSize.init(width: 0, height: SJScreeH + 200)
+        self.tableView.showsVerticalScrollIndicator = true
+        
+        //初始化的刷新控件
+        self.resetTableHeaderView(tableview: tableView, height: self.mTopOneViewHeight + self.mTopTwoViewHeight)
+        
+        self.tableView.addSubview(self.mTopView)
+        
+    }
+    
     // MARK: - 搜索天气功能
     func initSearch() {
         
@@ -274,6 +320,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 self.datas = temp
                 self.tableView.reloadData()
             }
+            
             
         }) { (error) in
             print(error)
@@ -908,10 +955,11 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
 
 /// 全局的extension的tableView的数据源和代理的方法
 /// 订单数据的tabelView 代理和 数据源方法
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource,MYPRefreshHeaderDelegate{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return datas.count
     }
     
@@ -930,9 +978,211 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+
         return 120
     }
+    
+    
+    /**
+     *  处理滑动时候的状态变化
+     */
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 获取当前的offsetY
+        let tmpOffsetY: CGFloat = scrollView.contentOffset.y
+        
+        if tmpOffsetY <= 0 {
+            mTopView.frame = CGRect.init(x: 0, y: tmpOffsetY, width: kScreenWidth, height: mTopOneViewHeight + mTopTwoViewHeight)
+            
+            // 内部子控件恢复正常
+            // 凡是在else里处理过的控件，在该条件里面都需要恢复到初始状态
+            mCustomTwoNavigationBar.alpha = 0
+            mCustomOneNavigationBar.alpha = 1
+            mTopOneView.alpha = 1
+            mTopOneView.frame = CGRect.init(x: 0, y: 0, width: kScreenWidth, height: mTopOneViewHeight)
+        }
+        else {
+            // 上滑处理联动效果
+            
+            // 1.处理navigationBar
+            let navigationBarSwitchPointY: CGFloat = 40
+            
+            if tmpOffsetY <= navigationBarSwitchPointY {
+                mCustomTwoNavigationBar.alpha = 0
+                mCustomOneNavigationBar.alpha = 1 - tmpOffsetY/navigationBarSwitchPointY
+            }
+            else {
+                mCustomOneNavigationBar.alpha = 0
+                mCustomTwoNavigationBar.alpha = (tmpOffsetY - navigationBarSwitchPointY)/navigationBarSwitchPointY
+            }
+            
+            // 2.处理逐渐需要隐藏的mTopOneView
+            // 该值是根据mTopOneView的高度和内部button的高度确定的,mTopOneView.height - btn.height
+            let topOneViewSwitchPointY: CGFloat = mTopOneViewHeight/2.0
+            
+            if tmpOffsetY <= topOneViewSwitchPointY {
+                mTopOneView.alpha = 1 - tmpOffsetY/topOneViewSwitchPointY
+                // 高度处理
+                mTopOneView.frame = CGRect.init(x: 0, y: tmpOffsetY/2.0, width: kScreenWidth, height: mTopOneViewHeight)
+            }
+            else {
+                
+            }
+        }
+        
+        // 下拉刷新相关
+        if tmpOffsetY < 0 {
+            // 如果此时正在刷新，做特殊处理
+            if mRefreshHeader.mRefreshStatus == .refreshing {
+                return
+            }
+            
+            let refreshStatusSwitchPoint: CGFloat = mRefreshHeaderHeight
+            
+            if tmpOffsetY > -refreshStatusSwitchPoint {
+                mRefreshHeader.mRefreshStatus = .normal
+            }
+            else {
+                mRefreshHeader.mRefreshStatus = .willRefresh
+            }
+        }
+        
+    }
+    
+    /**
+     *  结束拖动
+     */
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // decelerate: 该值为true的时候表示scrollview在停止拖动之后还会向前滑动一段距离，并且在结束之后调用scrollViewDidEndDecelerating方法
+        // decelerate: 该值为NO的时候表示scrollview在停止拖拽之后立即停止滑动
+        if !decelerate {
+            // 如果已经停止滑动了，立刻判断是否需要处理mTopOneView
+            self.checkCurrentContentOffset(scrollView)
+        }
+        
+        // 判断此时是否需要刷新
+        let tmpOffsetY: CGFloat = scrollView.contentOffset.y
+        
+        // 该值需要和上面保持一致
+        let refreshStatusSwitchPoint: CGFloat = mRefreshHeaderHeight
+        if tmpOffsetY < -refreshStatusSwitchPoint {
+            // 如果此时正在刷新，做特殊处理
+            if mRefreshHeader.mRefreshStatus == .refreshing {
+                return
+            }
+            // 恢复原样先
+            self.tableView.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
+            // 开始刷新
+            mRefreshHeader.mRefreshStatus = .refreshing
+        }
+    }
+    
+    /**
+     *  减速停止
+     */
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.checkCurrentContentOffset(scrollView)
+    }
+    
+    /**
+     *  动画停止(暂时不使用,只有动画修改contentoffset或者scrollRectToVisible的时候才会调用)
+     *  现在采用在"checkCurrentContentOffset"方法中人为动画同时修改contentoffset和alpha的方式,避免alpha的突然变化
+     */
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        // 避免因为对mTopOneView的操作导致alpha的显示问题
+        // 不在"heckCurrentContentOffset"方法中操作的原因是为了避免alpha的突然变化
+        let tmpOffsetY: CGFloat = scrollView.contentOffset.y
+        if tmpOffsetY == 0 {
+            mTopOneView.alpha = 1
+        }
+        else {
+            mTopOneView.alpha = 0
+        }
+    }
+    
+    /**
+     *  检测当前坐标，判断mTopOneView需要显示还是隐藏
+     */
+    func checkCurrentContentOffset(_ scrollView: UIScrollView) {
+        let tmpOffsetY: CGFloat = scrollView.contentOffset.y
+        // 设置 >0 的判断单纯的是为了让这个方法只处理是否隐藏mTopOneView的事件
+        if tmpOffsetY > 0 {
+            // 设置状态变化的点，保持和上面的设值统一
+            let topOneViewSwitchPointY: CGFloat = mTopOneViewHeight/2.0
+            if tmpOffsetY <= topOneViewSwitchPointY {
+                // 恢复原样
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.tableView.contentOffset = CGPoint.init(x: 0, y: 0)
+                    self.mTopOneView.alpha = 1
+                }, completion: nil)
+            }
+            else if tmpOffsetY > topOneViewSwitchPointY && tmpOffsetY < mTopOneViewHeight {
+                // 隐藏mTopOneView
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.tableView.contentOffset = CGPoint.init(x: 0, y: self.mTopOneViewHeight)
+                    self.mTopOneView.alpha = 0
+                }, completion: nil)
+            }
+            else {
+                
+            }
+        }
+    }
+   
+    
+    /**
+     *  刷新相关
+     */
+    func mStartRefreshing(refreshHeader: MYPRefreshHeader) {
+        weak var weakSelf = self
+        UIView.animate(withDuration: 0.3, animations: {
+            self.resetTableHeaderView(tableview: self.tableView ,height: self.mTopOneViewHeight + self.mTopTwoViewHeight + self.mRefreshHeaderHeight)
+            self.tableView.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
+        }) { (result) in
+            // 效果,3S之后停止刷新
+            // 实际使用中，根据网络返回接口自行调用
+            DispatchQueue.global().async {
+                sleep(3)
+                DispatchQueue.main.async {
+                    weakSelf?.mRefreshHeader.mRefreshStatus = .none
+                }
+            }
+        }
+    }
+    
+    func mEndRefreshing(refreshHeader: MYPRefreshHeader) {
+        if self.tableView.frame.height != self.mTopOneViewHeight + self.mTopTwoViewHeight {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.resetTableHeaderView(tableview: self.tableView, height: self.mTopOneViewHeight + self.mTopTwoViewHeight)
+                // 停止刷新的时候是否需要会到contentoffset为(0,0)的状态根据需求确定
+
+            }) { (result) in
+
+            }
+        }
+    }
+
+    /**
+     *  设置TableHeaderView
+     *  该方法的主要作用在于在需要刷新的时候动态修改headerview的高度以显示refreshHeader
+     */
+    func resetTableHeaderView(tableview: UITableView,height: CGFloat) {
+        // 设置headerView
+        let tmpHeaderView: UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: height))
+        tmpHeaderView.backgroundColor = UIColor.clear
+        tableview.tableHeaderView = tmpHeaderView
+
+        // 修改refreshHeader的frame并重新添加到tableheaderview上面
+        mRefreshHeader.frame = CGRect.init(x: 0, y: height - mRefreshHeaderHeight, width: kScreenWidth, height: mRefreshHeaderHeight)
+        tableview.tableHeaderView?.addSubview(mRefreshHeader)
+
+        // 将topView放置到最上方,如果已经添加了的话
+        if tableview.subviews.contains(mTopView) {
+            
+            tableview.bringSubview(toFront: mTopView)
+        }
+        
+    }
+
     
 }
 

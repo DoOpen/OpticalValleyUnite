@@ -1,5 +1,5 @@
 //
-//  YQDefaultHomeNavView.swift
+//  YQHomeContentView.swift
 //  OpticalValleyUnite
 //
 //  Created by 杨庆 on 2018/6/5.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YQDefaultHomeNavView: UIView {
+class YQHomeContentView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.

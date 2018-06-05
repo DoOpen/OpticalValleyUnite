@@ -274,7 +274,6 @@
 		2F7945191FE795190085E803 /* NSData+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7945151FE795190085E803 /* NSData+YYExtend.m */; };
 		2F79451A1FE795190085E803 /* NSString+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7945171FE795190085E803 /* NSString+YYExtend.m */; };
 		2F79451C1FE7C4CD0085E803 /* YQBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79451B1FE7C4CD0085E803 /* YQBluetooth.swift */; };
-		2F7A609020C5362000AACFD9 /* YQDefaultHomeNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7A608F20C5362000AACFD9 /* YQDefaultHomeNavView.swift */; };
 		2F7A609220C537B000AACFD9 /* YQDefaultHomeNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7A609120C537B000AACFD9 /* YQDefaultHomeNavView.xib */; };
 		2F7A609420C538C000AACFD9 /* YQOtherHomeNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7A609320C538C000AACFD9 /* YQOtherHomeNavView.swift */; };
 		2F7A609620C538D100AACFD9 /* YQOtherHomeNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7A609520C538D100AACFD9 /* YQOtherHomeNavView.xib */; };
@@ -332,6 +331,9 @@
 		2F9F610E2047CFC700CD9B75 /* YQSensorPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F610D2047CFC700CD9B75 /* YQSensorPart.swift */; };
 		2F9F61102047CFF200CD9B75 /* YQSensorPart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9F610F2047CFF200CD9B75 /* YQSensorPart.xib */; };
 		2F9F92242086F4EE00D860DF /* YQFeedbackListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F92232086F4EE00D860DF /* YQFeedbackListModel.swift */; };
+		2FA3E3D220C629AB0003A979 /* YQHomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3E3D120C629AB0003A979 /* YQHomeContentView.swift */; };
+		2FA3E3D420C629C20003A979 /* YQHomeContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA3E3D320C629C20003A979 /* YQHomeContentView.xib */; };
+		2FA3E3D620C63AFD0003A979 /* YQDefaultHomeNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3E3D520C63AFD0003A979 /* YQDefaultHomeNavView.swift */; };
 		2FAA64221FB04B7F00A34311 /* YQDeviceCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA64201FB04B7F00A34311 /* YQDeviceCell2.swift */; };
 		2FAA64231FB04B7F00A34311 /* YQDeviceCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */; };
 		2FB180761FE69BEF00BC1A40 /* YQIntoDoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB180751FE69BEF00BC1A40 /* YQIntoDoorViewController.swift */; };
@@ -866,7 +868,6 @@
 		2F7945171FE795190085E803 /* NSString+YYExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YYExtend.m"; sourceTree = "<group>"; };
 		2F7945181FE795190085E803 /* YYCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCategory.h; sourceTree = "<group>"; };
 		2F79451B1FE7C4CD0085E803 /* YQBluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQBluetooth.swift; sourceTree = "<group>"; };
-		2F7A608F20C5362000AACFD9 /* YQDefaultHomeNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQDefaultHomeNavView.swift; sourceTree = "<group>"; };
 		2F7A609120C537B000AACFD9 /* YQDefaultHomeNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQDefaultHomeNavView.xib; sourceTree = "<group>"; };
 		2F7A609320C538C000AACFD9 /* YQOtherHomeNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQOtherHomeNavView.swift; sourceTree = "<group>"; };
 		2F7A609520C538D100AACFD9 /* YQOtherHomeNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQOtherHomeNavView.xib; sourceTree = "<group>"; };
@@ -924,6 +925,9 @@
 		2F9F610D2047CFC700CD9B75 /* YQSensorPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQSensorPart.swift; sourceTree = "<group>"; };
 		2F9F610F2047CFF200CD9B75 /* YQSensorPart.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQSensorPart.xib; sourceTree = "<group>"; };
 		2F9F92232086F4EE00D860DF /* YQFeedbackListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQFeedbackListModel.swift; sourceTree = "<group>"; };
+		2FA3E3D120C629AB0003A979 /* YQHomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQHomeContentView.swift; sourceTree = "<group>"; };
+		2FA3E3D320C629C20003A979 /* YQHomeContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQHomeContentView.xib; sourceTree = "<group>"; };
+		2FA3E3D520C63AFD0003A979 /* YQDefaultHomeNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQDefaultHomeNavView.swift; sourceTree = "<group>"; };
 		2FAA64201FB04B7F00A34311 /* YQDeviceCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDeviceCell2.swift; sourceTree = "<group>"; };
 		2FAA64211FB04B7F00A34311 /* YQDeviceCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDeviceCell2.xib; sourceTree = "<group>"; };
 		2FB180751FE69BEF00BC1A40 /* YQIntoDoorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQIntoDoorViewController.swift; sourceTree = "<group>"; };
@@ -2618,12 +2622,14 @@
 				2F24960D206B338600D5F61C /* YQWeatherCell.swift */,
 				2F90BF6520AD285E006DA25D /* YQChooseHouseCell.swift */,
 				2F90BF6720AD2883006DA25D /* YQChooseHouseCell.xib */,
-				2F7A608F20C5362000AACFD9 /* YQDefaultHomeNavView.swift */,
+				2FA3E3D520C63AFD0003A979 /* YQDefaultHomeNavView.swift */,
 				2F7A609120C537B000AACFD9 /* YQDefaultHomeNavView.xib */,
 				2F7A609320C538C000AACFD9 /* YQOtherHomeNavView.swift */,
 				2F7A609520C538D100AACFD9 /* YQOtherHomeNavView.xib */,
 				2F7A609B20C54B5700AACFD9 /* YQHomeTopView.swift */,
 				2F7A609D20C54B8600AACFD9 /* YQHomeTopView.xib */,
+				2FA3E3D120C629AB0003A979 /* YQHomeContentView.swift */,
+				2FA3E3D320C629C20003A979 /* YQHomeContentView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2981,6 +2987,7 @@
 				2F2A2BB61F989E46003015E9 /* YQAllProjectSelect.storyboard in Resources */,
 				2F53A11020762B8C003F8296 /* YQStarServiceVC.xib in Resources */,
 				2F6DF89D20B65C0B0053D1E1 /* Info.plist in Resources */,
+				2FA3E3D420C629C20003A979 /* YQHomeContentView.xib in Resources */,
 				4BD4B9541E272EA600AE2BC9 /* WorkOrder.storyboard in Resources */,
 				2F90BF6820AD2883006DA25D /* YQChooseHouseCell.xib in Resources */,
 				2FC98A04202D93ED0080D1BE /* YQHouseScreenVC.xib in Resources */,
@@ -3289,6 +3296,7 @@
 				4B30780D1E29FBD100FB4007 /* ChooseHouseCell.swift in Sources */,
 				2F5A3D601FE8EDC90069ABE1 /* YQScanCell.swift in Sources */,
 				2F07A0181FDBEC770064556D /* YQPatrolResultViewController.swift in Sources */,
+				2FA3E3D220C629AB0003A979 /* YQHomeContentView.swift in Sources */,
 				4B7A59C11E359B89002E96B6 /* UIMonthYearPicker.m in Sources */,
 				2F5D276C1F998DE20022F7D6 /* YQProjectSelectFooterView.swift in Sources */,
 				2FEB0E841F6E70900002DEE8 /* YQFireAlarmDetailViewController.swift in Sources */,
@@ -3401,6 +3409,7 @@
 				2F62734D20454B3000D36F14 /* YQEquipmentListHomeVC.swift in Sources */,
 				2F5993EC20294B7700AE124C /* YQDecorationHomeCell.swift in Sources */,
 				2F52E5B9204975D40060A2BA /* YQSensorDetailView.swift in Sources */,
+				2FA3E3D620C63AFD0003A979 /* YQDefaultHomeNavView.swift in Sources */,
 				2FC98A06202D97600080D1BE /* YQPhoneScreenView.swift in Sources */,
 				4B50D62B1EB9AA0200BB480F /* HomeBtnView.swift in Sources */,
 				2F4A65901F9462CF00F4C72A /* YQWorkRecordViewController.swift in Sources */,
@@ -3517,7 +3526,6 @@
 				2F45F7F91FFDD40E00293A23 /* YQOffLineWorkOrderVC.swift in Sources */,
 				4B8A9FD01E2C7C440009F757 /* AppraisalViewController.swift in Sources */,
 				2FCBC025201494B6003F1556 /* YQDrawSpontaneousView.swift in Sources */,
-				2F7A609020C5362000AACFD9 /* YQDefaultHomeNavView.swift in Sources */,
 				2FC167471F905F34001CEACD /* YQJournalDetailViewController.swift in Sources */,
 				2F52E5B42048F2050060A2BA /* YQWebVideoVC.swift in Sources */,
 				2FC7CC93208B307B00F6DEFA /* YQGeneralManagerReplyView.swift in Sources */,

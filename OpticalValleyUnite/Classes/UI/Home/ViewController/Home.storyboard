@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qtx-ni-0hT">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qtx-ni-0hT">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eyu-dr-Wog">
@@ -129,7 +129,7 @@
                                     <constraint firstAttribute="bottom" secondItem="ACN-td-8Ge" secondAttribute="bottom" id="vvf-kn-c91"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Xw-GY-sNP">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Xw-GY-sNP">
                                 <rect key="frame" x="0.0" y="1" width="414" height="1"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Pn-0T-cuJ">
@@ -277,7 +277,7 @@
                                     <constraint firstItem="4Pn-0T-cuJ" firstAttribute="top" secondItem="8Xw-GY-sNP" secondAttribute="top" id="wv6-A5-lhY"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QmW-kA-3Un">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QmW-kA-3Un">
                                 <rect key="frame" x="0.0" y="12" width="414" height="0.0"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Aa0-ON-HQK">
@@ -314,7 +314,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="113" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eJ7-xV-TzL">
-                                <rect key="frame" x="0.0" y="12" width="414" height="675"/>
+                                <rect key="frame" x="0.0" y="76" width="414" height="611"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="message" rowHeight="105" id="joV-KK-E6b" customClass="SystemMessageCell" customModule="OpticalValleyUnite" customModuleProvider="target">
@@ -413,7 +413,7 @@
                             <constraint firstAttribute="trailing" secondItem="QmW-kA-3Un" secondAttribute="trailing" id="lvo-De-uKC"/>
                             <constraint firstItem="QmW-kA-3Un" firstAttribute="top" secondItem="8Xw-GY-sNP" secondAttribute="bottom" constant="10" id="mqA-Gu-XwL"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ItE-1g-Tdh" secondAttribute="bottom" constant="60" id="s3r-Z1-sF3"/>
-                            <constraint firstItem="eJ7-xV-TzL" firstAttribute="top" secondItem="QmW-kA-3Un" secondAttribute="bottom" id="sXp-Hy-rgg"/>
+                            <constraint firstItem="eJ7-xV-TzL" firstAttribute="top" secondItem="QmW-kA-3Un" secondAttribute="bottom" constant="64" id="sXp-Hy-rgg"/>
                             <constraint firstItem="8Xw-GY-sNP" firstAttribute="top" secondItem="Qtx-ni-0hT" secondAttribute="bottom" id="v0a-5h-3yv"/>
                             <constraint firstItem="8Xw-GY-sNP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="x2g-gT-S1U"/>
                             <constraint firstAttribute="trailing" secondItem="Qtx-ni-0hT" secondAttribute="trailing" id="yIG-Wq-4O2"/>

@@ -11,16 +11,18 @@ import UIKit
 let kScreenWidth: CGFloat = UIScreen.main.bounds.width
 let kScreenHeight: CGFloat = UIScreen.main.bounds.height
 
-class MYPTestOneVC: UIViewController,UITableViewDataSource,UITableViewDelegate,MYPRefreshHeaderDelegate {
+class MYPTestOneVC: UIViewController,UITableViewDataSource,UITableViewDelegate,MYPRefreshHeaderDelegate{
     
+    //
     /**
      *  自定义的navigationBar
      */
-    let mNavigationBarHeight: CGFloat = 64
-    let mCustomNavigationBarWidth: CGFloat = 300
+    private let mNavigationBarHeight: CGFloat = 64
+    private let mCustomNavigationBarWidth: CGFloat = 300
     
     
     private lazy var mCustomOneNavigationBar: UIView = {
+        
         let tmp: UIView = UIView.init(frame: CGRect.init(x: (kScreenWidth - self.mCustomNavigationBarWidth)/2, y: 24, width: self.mCustomNavigationBarWidth, height: 36))
         
         // 增加控件增加视觉效果
@@ -35,7 +37,7 @@ class MYPTestOneVC: UIViewController,UITableViewDataSource,UITableViewDelegate,M
             make.center.equalToSuperview()
             make.top.equalToSuperview()
         })
-
+    
         return tmp
     }()
     
@@ -106,6 +108,7 @@ class MYPTestOneVC: UIViewController,UITableViewDataSource,UITableViewDelegate,M
         return tmp
     }()
     
+    
     private lazy var mTopTwoView: UIView = {
         let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: self.mTopOneViewHeight, width: kScreenWidth, height: self.mTopTwoViewHeight))
         tmp.backgroundColor = UIColor.white
@@ -142,9 +145,10 @@ class MYPTestOneVC: UIViewController,UITableViewDataSource,UITableViewDelegate,M
             }
         }
         
-        
         return tmp
+        
     }()
+    
     
     private lazy var mTopView: UIView = {
         let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: self.mTopOneViewHeight + self.mTopTwoViewHeight))
@@ -223,10 +227,9 @@ class MYPTestOneVC: UIViewController,UITableViewDataSource,UITableViewDelegate,M
     /**
      *  刷新相关
      */
-    
     func mStartRefreshing(refreshHeader: MYPRefreshHeader) {
         weak var weakSelf = self
-        UIView.animate(withDuration: 0.3, animations: { 
+        UIView.animate(withDuration: 0.3, animations: {
             self.resetTableHeaderView(tableview: self.mTableview ,height: self.mTopOneViewHeight + self.mTopTwoViewHeight + self.mRefreshHeaderHeight)
             self.mTableview.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
         }) { (result) in
@@ -240,15 +243,15 @@ class MYPTestOneVC: UIViewController,UITableViewDataSource,UITableViewDelegate,M
             }
         }
     }
-    
+
     func mEndRefreshing(refreshHeader: MYPRefreshHeader) {
         if self.mTableview.frame.height != self.mTopOneViewHeight + self.mTopTwoViewHeight {
             UIView.animate(withDuration: 0.3, animations: {
                 self.resetTableHeaderView(tableview: self.mTableview, height: self.mTopOneViewHeight + self.mTopTwoViewHeight)
                 // 停止刷新的时候是否需要会到contentoffset为(0,0)的状态根据需求确定
-                
+
             }) { (result) in
-                
+
             }
         }
     }
@@ -436,11 +439,11 @@ class MYPTestOneVC: UIViewController,UITableViewDataSource,UITableViewDelegate,M
         let tmpHeaderView: UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: height))
         tmpHeaderView.backgroundColor = UIColor.clear
         tableview.tableHeaderView = tmpHeaderView
-        
+
         // 修改refreshHeader的frame并重新添加到tableheaderview上面
         mRefreshHeader.frame = CGRect.init(x: 0, y: height - mRefreshHeaderHeight, width: kScreenWidth, height: mRefreshHeaderHeight)
         tableview.tableHeaderView?.addSubview(mRefreshHeader)
-        
+
         // 将topView放置到最上方,如果已经添加了的话
         if tableview.subviews.contains(mTopView) {
             tableview.bringSubview(toFront: mTopView)

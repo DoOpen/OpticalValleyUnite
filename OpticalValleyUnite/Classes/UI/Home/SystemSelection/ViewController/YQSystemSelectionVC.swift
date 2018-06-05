@@ -358,7 +358,8 @@ class YQSystemSelectionVC: UIViewController {
             
             //首页架构
             let OneVC = MYPTestOneVC()
-            SJKeyWindow?.rootViewController = OneVC
+            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: OneVC)
+            SJKeyWindow?.rootViewController = sjKnowledgeFirstVC
             
         }else if tap.tapIndex == fireindex {//消防的界面的跳转的情况
             

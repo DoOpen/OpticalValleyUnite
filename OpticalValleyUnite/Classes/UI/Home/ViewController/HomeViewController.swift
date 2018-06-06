@@ -90,8 +90,11 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: Spacing, width: SJScreeW, height: mNavigationBarHeight - Spacing))
         tmp.backgroundColor = UIColor.clear
-        let v =  Bundle.main.loadNibNamed("YQDefaultHomeNavView", owner: nil, options: nil)?[0] as! UIView
+        let v =  Bundle.main.loadNibNamed("YQDefaultHomeNavView", owner: nil, options: nil)?[0] as! YQDefaultHomeNavView
         v.backgroundColor = UIColor.clear
+        
+        v.delegate = self
+        
         tmp.addSubview(v)
         v.snp.makeConstraints { (make) in
 
@@ -182,6 +185,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         tmp.backgroundColor = UIColor.white
         
         let contentV = Bundle.main.loadNibNamed("YQHomeContentView", owner: nil, options: nil)?[0] as! YQHomeContentView
+        contentV.delegate = self
         
         tmp.addSubview(contentV)
         
@@ -1367,9 +1371,36 @@ extension HomeViewController:SGScanningQRCodeVCDelegate{
         }else{
         
             self.alert(message: "非可识别二维码!")
-            
         }
     }
     
-
 }
+
+extension HomeViewController : YQHomeContentViewDelegate,YQDefaultHomeNavViewDelegate{
+    
+    /// 改版的home 全部按钮点击
+    func homeContentViewAllButtonClick(view: UIView) {
+        
+        self.pushToAllVc()
+    }
+    
+    /// 改版的home 项目选择
+    func DefaultHomeNavViewProjectBtnClick() {
+        
+        self.projectSelectClick(UIButton())
+    }
+    
+    /// 改版的home 天气选择
+    func DefaultHomeNavViewWeatherBtnClick() {
+        
+        self.weatherButtonClick(UIButton())
+    }
+    
+    /// 改版的home 铃铛选择
+    func DefaultHomeNavViewMessageBtnClick() {
+        
+        self.messageBtnClick()
+    }
+    
+}
+

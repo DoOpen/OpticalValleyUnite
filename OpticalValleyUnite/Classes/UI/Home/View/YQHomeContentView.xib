@@ -110,6 +110,9 @@
                                         <constraint firstAttribute="width" secondItem="wOK-Wh-2BX" secondAttribute="height" id="Vkh-rB-rO0"/>
                                     </constraints>
                                     <state key="normal" backgroundImage="all"/>
+                                    <connections>
+                                        <action selector="allBtnClick:" destination="1R8-ab-hq3" eventType="touchUpInside" id="oP3-sf-PXY"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全部" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBg-B2-bra">
                                     <rect key="frame" x="0.0" y="65" width="124" height="16"/>
@@ -136,8 +139,8 @@
                         <constraint firstAttribute="bottom" secondItem="Z3q-fZ-GIk" secondAttribute="bottom" id="rz4-OV-Efb"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ua7-sZ-Xt8">
-                    <rect key="frame" x="0.0" y="120" width="547" height="1"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ua7-sZ-Xt8">
+                    <rect key="frame" x="0.0" y="96" width="498" height="1"/>
                     <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="2sr-HD-VQa"/>

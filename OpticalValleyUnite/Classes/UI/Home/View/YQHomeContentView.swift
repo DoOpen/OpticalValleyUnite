@@ -8,9 +8,17 @@
 
 import UIKit
 
+protocol YQHomeContentViewDelegate {
+    //全部按钮点击完成
+    func homeContentViewAllButtonClick(view : UIView)
+    
+}
+
 class YQHomeContentView: UIView {
 
     var downBtnViewArray = [HomeBtnView]()
+    
+    var delegate : YQHomeContentViewDelegate?
     
     @IBOutlet weak var donw1BtnView: HomeBtnView!
     
@@ -30,5 +38,12 @@ class YQHomeContentView: UIView {
         
         downBtnViewArray = [donw1BtnView,donw2BtnView,donw3BtnView]
     }
+    
+    @IBAction func allBtnClick(_ sender: UIButton) {
+        
+        self.delegate?.homeContentViewAllButtonClick(view: self)
+        
+    }
+    
 
 }

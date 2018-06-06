@@ -18,31 +18,34 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nM-5P-Ohd">
                     <rect key="frame" x="0.0" y="0.0" width="401" height="64"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OVU-EMS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3k1-Rv-Yf4">
-                            <rect key="frame" x="159.5" y="6" width="83" height="22"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIN-1V-2hf">
                             <rect key="frame" x="12" y="10" width="40" height="54"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="r2J-N5-YMY"/>
                             </constraints>
                             <state key="normal" image="mess"/>
+                            <connections>
+                                <action selector="messageButtonClick:" destination="VMV-14-7Eb" eventType="touchUpInside" id="ou4-Q2-n6W"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIm-xZ-4ui">
                             <rect key="frame" x="341" y="18.5" width="50" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="天气情况"/>
+                            <connections>
+                                <action selector="weatherButtonClick:" destination="VMV-14-7Eb" eventType="touchUpInside" id="MXZ-Sd-Tmm"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDN-yM-J7i">
-                            <rect key="frame" x="101" y="33" width="200" height="31"/>
+                            <rect key="frame" x="101" y="0.0" width="200" height="64"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="eBW-Qk-pZo"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <state key="normal" title="项目选择"/>
+                            <connections>
+                                <action selector="projectButtonClick:" destination="VMV-14-7Eb" eventType="touchUpInside" id="5To-H4-Z2t"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -50,13 +53,11 @@
                         <constraint firstItem="KDN-yM-J7i" firstAttribute="centerX" secondItem="3nM-5P-Ohd" secondAttribute="centerX" id="6EJ-ax-wZX"/>
                         <constraint firstAttribute="trailing" secondItem="wIm-xZ-4ui" secondAttribute="trailing" constant="10" id="EnF-iD-uIW"/>
                         <constraint firstItem="NIN-1V-2hf" firstAttribute="leading" secondItem="3nM-5P-Ohd" secondAttribute="leading" constant="12" id="I7c-fk-aRw"/>
-                        <constraint firstItem="3k1-Rv-Yf4" firstAttribute="centerY" secondItem="3nM-5P-Ohd" secondAttribute="centerY" constant="-15" id="P6d-Bf-dme"/>
+                        <constraint firstItem="KDN-yM-J7i" firstAttribute="centerY" secondItem="3nM-5P-Ohd" secondAttribute="centerY" id="JFd-04-wBC"/>
                         <constraint firstAttribute="bottom" secondItem="NIN-1V-2hf" secondAttribute="bottom" id="RKH-QE-tfB"/>
                         <constraint firstItem="wIm-xZ-4ui" firstAttribute="centerY" secondItem="3nM-5P-Ohd" secondAttribute="centerY" id="Vd1-iM-MoD"/>
                         <constraint firstItem="NIN-1V-2hf" firstAttribute="top" secondItem="3nM-5P-Ohd" secondAttribute="top" constant="10" id="e3s-vb-rME"/>
-                        <constraint firstItem="KDN-yM-J7i" firstAttribute="top" secondItem="3k1-Rv-Yf4" secondAttribute="bottom" constant="5" id="ehA-hu-51j"/>
                         <constraint firstAttribute="bottom" secondItem="KDN-yM-J7i" secondAttribute="bottom" id="h6i-mS-yDg"/>
-                        <constraint firstItem="3k1-Rv-Yf4" firstAttribute="centerX" secondItem="3nM-5P-Ohd" secondAttribute="centerX" id="jyl-oN-NKu"/>
                     </constraints>
                 </view>
             </subviews>
@@ -68,6 +69,11 @@
                 <constraint firstItem="3nM-5P-Ohd" firstAttribute="top" secondItem="VMV-14-7Eb" secondAttribute="top" id="vJP-tg-pah"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="messageBtn" destination="NIN-1V-2hf" id="cBc-ii-GCV"/>
+                <outlet property="projectBtn" destination="KDN-yM-J7i" id="0we-pQ-lU2"/>
+                <outlet property="weatherBtn" destination="wIm-xZ-4ui" id="HAi-iW-Tm4"/>
+            </connections>
             <point key="canvasLocation" x="-119.5" y="-19"/>
         </view>
     </objects>

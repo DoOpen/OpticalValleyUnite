@@ -8,14 +8,43 @@
 
 import UIKit
 
+protocol YQDefaultHomeNavViewDelegate  {
+    
+    func DefaultHomeNavViewProjectBtnClick()
+    
+    func DefaultHomeNavViewMessageBtnClick()
+    
+    func DefaultHomeNavViewWeatherBtnClick()
+    
+}
+
 class YQDefaultHomeNavView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var messageBtn: UIButton!
+    
+    @IBOutlet weak var weatherBtn: UIButton!
+    
+    @IBOutlet weak var projectBtn: UIButton!
+    
+    var delegate : YQDefaultHomeNavViewDelegate?
+    
+    // MARK: - 数据的按钮点击事件
+    @IBAction func projectButtonClick(_ sender: UIButton) {
+        
+        self.delegate?.DefaultHomeNavViewProjectBtnClick()
     }
-    */
-
+    
+    @IBAction func weatherButtonClick(_ sender: UIButton) {
+        
+        self.delegate?.DefaultHomeNavViewWeatherBtnClick()
+    }
+    
+    
+    @IBAction func messageButtonClick(_ sender: UIButton) {
+        
+        self.delegate?.DefaultHomeNavViewMessageBtnClick()
+        
+    }
+    
+    
 }

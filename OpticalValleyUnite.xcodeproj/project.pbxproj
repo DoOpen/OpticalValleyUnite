@@ -203,6 +203,8 @@
 		2F6A438E1F6A528D003E10C9 /* YQFireControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */; };
 		2F6A43901F6A52CA003E10C9 /* YQFireControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */; };
 		2F6A83911F5CE073002BB61C /* YQPartDataSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */; };
+		2F6BA21E20C78E7B004BAF4B /* YQHomeNoticeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6BA21D20C78E7B004BAF4B /* YQHomeNoticeContentView.swift */; };
+		2F6BA22020C78EA3004BAF4B /* YQHomeNoticeContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F6BA21F20C78EA3004BAF4B /* YQHomeNoticeContentView.xib */; };
 		2F6C202C2073786B00EEA98F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F6C202B2073786B00EEA98F /* libsqlite3.tbd */; };
 		2F6C202E2073787C00EEA98F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F6C202D2073787C00EEA98F /* CoreGraphics.framework */; };
 		2F6C2030207378E200EEA98F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F6C202F207378E200EEA98F /* ImageIO.framework */; };
@@ -751,6 +753,8 @@
 		2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireControlViewController.swift; sourceTree = "<group>"; };
 		2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireControl.storyboard; sourceTree = "<group>"; };
 		2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataSelectCell.swift; sourceTree = "<group>"; };
+		2F6BA21D20C78E7B004BAF4B /* YQHomeNoticeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQHomeNoticeContentView.swift; sourceTree = "<group>"; };
+		2F6BA21F20C78EA3004BAF4B /* YQHomeNoticeContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQHomeNoticeContentView.xib; sourceTree = "<group>"; };
 		2F6C202B2073786B00EEA98F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		2F6C202D2073787C00EEA98F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2F6C202F207378E200EEA98F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -2630,6 +2634,8 @@
 				2F7A609D20C54B8600AACFD9 /* YQHomeTopView.xib */,
 				2FA3E3D120C629AB0003A979 /* YQHomeContentView.swift */,
 				2FA3E3D320C629C20003A979 /* YQHomeContentView.xib */,
+				2F6BA21D20C78E7B004BAF4B /* YQHomeNoticeContentView.swift */,
+				2F6BA21F20C78EA3004BAF4B /* YQHomeNoticeContentView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3037,6 +3043,7 @@
 				2F5F945C206E2D32000DC20A /* YQShareViewController.xib in Resources */,
 				2F57D7E41FFF4A3300207E98 /* YQOffLineFirst.storyboard in Resources */,
 				2F4EB29A1FD532590004A532 /* YQVideoDrawerViewController.xib in Resources */,
+				2F6BA22020C78EA3004BAF4B /* YQHomeNoticeContentView.xib in Resources */,
 				2F8D67F7208DB1B300F687FF /* YQGenaralManagerCheckAlreadyDetailVC.xib in Resources */,
 				2F7550F51FA6C19100A5E242 /* YQFilterDepartment.storyboard in Resources */,
 				2FC98A0A202D97F80080D1BE /* YQPhoneScreen.xib in Resources */,
@@ -3405,6 +3412,7 @@
 				2F612D39209AFC37003B8D4D /* YQKnowledgeStudyCell.swift in Sources */,
 				2F9E2519204418B100035D8B /* YQEquipmentListModel.swift in Sources */,
 				4B1DEC591E31B646000917D2 /* SGScanningQRCodeVC.m in Sources */,
+				2F6BA21E20C78E7B004BAF4B /* YQHomeNoticeContentView.swift in Sources */,
 				4BD4B9431E272EA600AE2BC9 /* CoverView.swift in Sources */,
 				2F62734D20454B3000D36F14 /* YQEquipmentListHomeVC.swift in Sources */,
 				2F5993EC20294B7700AE124C /* YQDecorationHomeCell.swift in Sources */,

@@ -10,12 +10,25 @@ import UIKit
 
 class YQHomeContentView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    var downBtnViewArray = [HomeBtnView]()
+    
+    @IBOutlet weak var donw1BtnView: HomeBtnView!
+    
+    @IBOutlet weak var donw2BtnView: HomeBtnView!
+    
+    @IBOutlet weak var donw3BtnView: HomeBtnView!
+    
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+       
     }
-    */
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        downBtnViewArray = [donw1BtnView,donw2BtnView,donw3BtnView]
+    }
 
 }

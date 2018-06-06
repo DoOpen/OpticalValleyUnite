@@ -16,7 +16,7 @@ import CoreMotion
 let KDistence = 25.0
 let KTime = 60 * 15
 
-let mNavigationBarHeight: CGFloat = 104
+let mNavigationBarHeight: CGFloat = 84
 let Spacing : CGFloat = 14
 
 
@@ -86,7 +86,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     /**
      *  自定义的navigationBar,添加默认的xib的情况
      */
-    
     lazy var mCustomOneNavigationBar: UIView = {
         
         let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: Spacing, width: SJScreeW, height: mNavigationBarHeight - Spacing))
@@ -124,6 +123,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     
     lazy var mCustomNavigationBar: UIView = {
+        
         let tmp: UIView = UIView()
         
         tmp.backgroundColor = UIColor.init(red: 73/255.0, green: 167/255.0, blue: 238/255.0, alpha: 0.9)
@@ -140,19 +140,22 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     let mRefreshHeaderHeight: CGFloat = 65
     
     lazy var mRefreshHeader: MYPRefreshHeader = {
+        
         let tmp: MYPRefreshHeader = MYPRefreshHeader.init(frame: CGRect.init(x: 0, y: self.mTopOneViewHeight + self.mTopTwoViewHeight - self.mRefreshHeaderHeight, width: kScreenWidth, height: self.mRefreshHeaderHeight))
         tmp.mDelegate = self
         tmp.mRefreshStatus = MRefreshStatus.normal
         
         return tmp
+        
     }()
     
     
     /**
      *  TOPView相关
      */
-    let mTopOneViewHeight: CGFloat = 100
-    let mTopTwoViewHeight: CGFloat = 100
+    let mTopOneViewHeight: CGFloat = 90
+    let mTopTwoViewHeight: CGFloat = 90
+    let mTopThreeViewHeight : CGFloat = 35
     
     lazy var mTopOneView: UIView = {
         let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: self.mTopOneViewHeight))
@@ -162,6 +165,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         TopView.backgroundColor = UIColor.init(red: 73/255.0, green: 167/255.0, blue: 238/255.0, alpha: 0.9)
         
         tmp.addSubview(TopView)
+        
+        self.topBtnViewArray = TopView.topBtnViewArray
         
         TopView.snp.makeConstraints({ (maker) in
             
@@ -180,6 +185,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         tmp.addSubview(contentV)
         
+        self.downBtnViewArray = contentV.downBtnViewArray
+        
         contentV.snp.makeConstraints({ (maker) in
             
             maker.left.right.top.bottom.equalToSuperview()
@@ -188,12 +195,33 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         return tmp
     }()
     
+    lazy var mTopThreeView : UIView = {
+        
+        let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: self.mTopOneViewHeight + self.mTopTwoViewHeight, width: kScreenWidth, height: self.mTopThreeViewHeight))
+        tmp.backgroundColor = UIColor.white
+        
+        let contentV = Bundle.main.loadNibNamed("YQHomeNoticeContentView", owner: nil, options: nil)?[0] as! YQHomeNoticeContentView
+        
+        tmp.addSubview(contentV)
+        
+        contentV.snp.makeConstraints({ (maker) in
+            
+            maker.left.right.top.bottom.equalToSuperview()
+        })
+        
+        return tmp
+        
+    }()
+    
+    
+    
     lazy var mTopView: UIView = {
         
-        let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: self.mTopOneViewHeight + self.mTopTwoViewHeight))
+        let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: self.mTopOneViewHeight + self.mTopTwoViewHeight + self.mTopThreeViewHeight))
         
         tmp.addSubview(self.mTopOneView)
         tmp.addSubview(self.mTopTwoView)
+        tmp.addSubview(self.mTopThreeView)
         
         return tmp
     }()
@@ -205,15 +233,13 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         super.viewDidLoad()
 
-        //分别设置两个(上下)按钮数组
+        //原始init
         self.automaticallyAdjustsScrollViewInsets = false
-        topBtnViewArray = [top1BtnView,top2BtnView,top3BtnView,top4BtnView]
-        downBtnViewArray = [donw1BtnView,donw2BtnView,donw3BtnView]
         
         //改版的init的方法
         homeInterfaceReversionInit()
         
-        //接受新的数据来显示
+        //接受权限设置的模块
         getPermission()
 
         //接受VC的数据通知
@@ -274,7 +300,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         self.tableView.showsVerticalScrollIndicator = true
         
         //初始化的刷新控件
-        self.resetTableHeaderView(tableview: tableView, height: self.mTopOneViewHeight + self.mTopTwoViewHeight)
+        self.resetTableHeaderView(tableview: tableView, height: self.mTopOneViewHeight + self.mTopTwoViewHeight + self.mTopThreeViewHeight)
         
         self.tableView.addSubview(self.mTopView)
         
@@ -287,7 +313,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         search.delegate = self
     }
 
-    
     
     // MARK: - 接受服务器系统推送消息
     func getSystemMessage(){
@@ -304,6 +329,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }) { (error) in
             print(error)
         }
+        
     }
     
     // MARK: - 接受服务系统推送消息通知
@@ -334,17 +360,22 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         var topArry = [PermissionModel]()
         var downArry = [PermissionModel]()
         
-        for dic in arry{
+        for dic in arry {
+            
             let model = PermissionModel(json:dic)
+            
             if model?.iSTOP == 0{
+                
                 topArry.append(model!)
             }else{
+                
                 downArry.append(model!)
             }
             
         }
         
         downPermissionModels = downArry
+        
         self.allPermissionModels.append(contentsOf: topArry)
         self.allPermissionModels.append(contentsOf: downArry)
         self.settopArry(topArry: topArry, donwArry: downArry)
@@ -381,7 +412,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         let isgroup = systemSelection["isGroup"] as? Int ?? -1
         UserDefaults.standard.set(isgroup, forKey: Const.YQIs_Group)
         
-        
         if systemSelection.count > 0 {
             
             
@@ -412,6 +442,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             sortArray = tempArray
             
+            //设置权限的模块功能
             self.setPermission(arry: sortArray as! Array<[String : Any]> )
             
             if sortArray.count > 1 {
@@ -438,7 +469,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                     UserDefaults.standard.set(JSONString, forKey: "PermissionModels")
                 }
                 
-            } catch  {
+            } catch {
+                
                 print("转换错误 ")
             }
 
@@ -547,9 +579,11 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
     }
     
-
+    // MARK: - 赋值topView和downView的赋值方法
     func settopArry(topArry:[PermissionModel],donwArry: [PermissionModel]){
+        
         let imageDic = ["报事": "报事","工单": "工单","签到": "qiandao-1","扫描": "扫描","定位": "dingwei","待办事项": "daiban", "督办": "btn_duban","门禁": "intodoor","丽岛学院": "xueyuan","电梯报事":"报事","日志":"日志","计步器":"step","视频巡查" : "xuncha","巡查结果" : "xunguan","工作报告" : "more_icon_work_report","房屋管理" : "房屋查询","设备房" : "设备房","装修管理" : "装修管理","工单查询" : "more_icon_demand","总经理邮箱" : "gmMail"]
+        
         for (index,model) in topArry.enumerated(){
             
             if index >= 4{
@@ -557,8 +591,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             }
             let imageName = imageDic[model.aPPMODULENAME] ?? ""
             topBtnViewArray[index].imageView.image = UIImage(named:imageName)
+            
             //设置appicon的名字
             if(model.aPPMODULENAME == "电梯报事"){
+                
                 topBtnViewArray[index].textLabel.text = "报事"
 
             }else{
@@ -568,7 +604,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             topBtnViewArray[index].textLabel.textColor = UIColor.white
             topBtnViewArray[index].clickHandle = { [weak self] in
-                self?.actionPush(text: model.aPPMODULENAME)
+            self?.actionPush(text: model.aPPMODULENAME)
+                
             }
         }
         
@@ -598,6 +635,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 }
             }
         }
+        
     }
     
     // MARK: - 添加全局的项目选择的方法

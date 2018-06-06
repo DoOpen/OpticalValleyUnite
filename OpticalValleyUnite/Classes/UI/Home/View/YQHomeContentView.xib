@@ -104,7 +104,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="124" height="97"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOK-Wh-2BX">
-                                    <rect key="frame" x="41.5" y="20" width="40" height="40"/>
+                                    <rect key="frame" x="41.5" y="15" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="ATl-aK-ifQ"/>
                                         <constraint firstAttribute="width" secondItem="wOK-Wh-2BX" secondAttribute="height" id="Vkh-rB-rO0"/>
@@ -112,14 +112,14 @@
                                     <state key="normal" backgroundImage="all"/>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全部" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBg-B2-bra">
-                                    <rect key="frame" x="0.0" y="70" width="124" height="16"/>
+                                    <rect key="frame" x="0.0" y="65" width="124" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="wOK-Wh-2BX" firstAttribute="top" secondItem="Z3q-fZ-GIk" secondAttribute="top" constant="20" id="BpZ-wU-0Ai"/>
+                                <constraint firstItem="wOK-Wh-2BX" firstAttribute="top" secondItem="Z3q-fZ-GIk" secondAttribute="top" constant="15" id="BpZ-wU-0Ai"/>
                                 <constraint firstItem="wOK-Wh-2BX" firstAttribute="centerX" secondItem="Z3q-fZ-GIk" secondAttribute="centerX" id="l16-1K-afN"/>
                                 <constraint firstItem="hBg-B2-bra" firstAttribute="top" secondItem="wOK-Wh-2BX" secondAttribute="bottom" constant="10" id="lnC-Wu-UuR"/>
                                 <constraint firstItem="hBg-B2-bra" firstAttribute="leading" secondItem="Z3q-fZ-GIk" secondAttribute="leading" id="n4h-U4-fYC"/>
@@ -167,6 +167,11 @@
                 <constraint firstItem="56C-rn-cTT" firstAttribute="leading" secondItem="N0I-Ho-IDU" secondAttribute="trailing" id="ryw-S4-oTH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="donw1BtnView" destination="q6d-2l-WWJ" id="FB4-f9-Ydp"/>
+                <outlet property="donw2BtnView" destination="QkS-Y4-xew" id="zXW-fn-mgY"/>
+                <outlet property="donw3BtnView" destination="ETQ-We-TWF" id="eg0-Rl-5lC"/>
+            </connections>
             <point key="canvasLocation" x="-179" y="-817.5"/>
         </view>
     </objects>

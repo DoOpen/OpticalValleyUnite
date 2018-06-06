@@ -20,7 +20,18 @@ class YQHomeTopView: UIView {
     
     @IBOutlet weak var top4BtnView: HomeBtnView!
     
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
     
     
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        
+        topBtnViewArray = [top1BtnView,top2BtnView,top3BtnView,top4BtnView]
+    }
     
 }

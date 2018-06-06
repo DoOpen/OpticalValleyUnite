@@ -40,7 +40,7 @@ class YQFilterJournalViewController: UIViewController {
     
     func getFilterData(){
 
-        var paramet = [String : Any]()
+        let paramet = [String : Any]()
         
         SVProgressHUD.show(withStatus: "数据加载中")
         
@@ -61,7 +61,7 @@ class YQFilterJournalViewController: UIViewController {
             
         }) { (error) in
             
-            SVProgressHUD.showError(withStatus: error.debugDescription)
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
         
     }

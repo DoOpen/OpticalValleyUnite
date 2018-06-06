@@ -138,7 +138,7 @@ class YQWorkOrderCompleteVC: UIViewController {
             
         }) { (error) in
             
-            SVProgressHUD.showError(withStatus: error.debugDescription)
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
             

@@ -150,7 +150,7 @@ class YQReleaseJournalViewController: UIViewController {
             
         }) { (error) in
             
-            self.alert(message: error.debugDescription)
+            self.alert(message: "数据加载失败,请检查网络!")
             
         }
     }
@@ -249,7 +249,7 @@ class YQReleaseJournalViewController: UIViewController {
             
         }) { (error) in
             
-           self.alert(message: error.debugDescription)
+           self.alert(message: "数据加载失败,请检查网络!")
         }
         
     }

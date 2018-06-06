@@ -66,7 +66,7 @@ class YQObjectTableViewController: UITableViewController {
             
         }) { (error) in
             
-            SVProgressHUD.showError(withStatus: error.debugDescription)
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
 
     }

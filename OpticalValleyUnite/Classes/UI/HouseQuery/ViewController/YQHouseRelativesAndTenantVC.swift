@@ -87,7 +87,11 @@ class YQHouseRelativesAndTenantVC: UIViewController {
             if data == nil {
                 
                 SVProgressHUD.showError(withStatus: "没有更多数据")
-                self.dataAarry.removeAll()
+                
+                if pageIndex == 0 {
+                    
+                    self.dataAarry.removeAll()
+                }
                 self.tableView.mj_header.endRefreshing()
                 self.tableView.mj_footer.endRefreshing()
                 
@@ -102,7 +106,6 @@ class YQHouseRelativesAndTenantVC: UIViewController {
             
             //添加上拉下拉刷新的情况
             if pageIndex == 0 {
-                
                 
                 self.dataAarry = tempData
                 self.tableView.mj_header.endRefreshing()

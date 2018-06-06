@@ -28,7 +28,7 @@ class YQHouseHomeDetailVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.title = "房屋巡查详情"
+        self.title = "房屋详情"
 
         //通过模型来进行设置
         getOwerDetail()

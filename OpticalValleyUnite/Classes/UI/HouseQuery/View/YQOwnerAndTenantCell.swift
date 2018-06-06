@@ -45,7 +45,7 @@ class YQOwnerAndTenantCell: UITableViewCell {
 //            }
             
             
-            if model?.typeName != "" {
+            if model?.tenantName != "" {
                 
                 self.titleNameLabel.text = "租户姓名"
                 self.titleTelLabel.text = "租户电话"

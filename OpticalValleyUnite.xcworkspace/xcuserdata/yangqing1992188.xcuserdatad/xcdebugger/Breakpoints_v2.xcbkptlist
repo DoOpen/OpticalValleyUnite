@@ -66,7 +66,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQImplementFeedbackVC.swift"
-                  timestampString = "549960440.581673"
+                  timestampString = "549962750.00744"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "307"
@@ -81,7 +81,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQImplementFeedbackVC.swift"
-                  timestampString = "549960440.583521"
+                  timestampString = "549962750.009179"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "309"
@@ -130,7 +130,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/GeneralManagerMailbox/ViewController/YQGenaralManagerCheckAlreadyDetailVC.swift"
-                  timestampString = "549960440.590663"
+                  timestampString = "549962750.0160559"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "65"
@@ -145,7 +145,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/GeneralManagerMailbox/ViewController/YQGenaralManagerCheckAlreadyDetailVC.swift"
-                  timestampString = "549960440.592319"
+                  timestampString = "549962750.01789"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -153,54 +153,6 @@
                   offsetFromSymbolStart = "44">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/Home/ViewController/HomeViewController.swift"
-            timestampString = "549960492.918011"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1396"
-            endingLineNumber = "1396"
-            landmarkName = "DefaultHomeNavViewWeatherBtnClick()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/Home/ViewController/HomeViewController.swift"
-            timestampString = "549960509.835693"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "817"
-            endingLineNumber = "817"
-            landmarkName = "weatherButtonClick(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpticalValleyUnite/Classes/UI/Home/ViewController/HomeViewController.swift"
-            timestampString = "549960520.132104"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "981"
-            endingLineNumber = "981"
-            landmarkName = "searchForcastWeather(city:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

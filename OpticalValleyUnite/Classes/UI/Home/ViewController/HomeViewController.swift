@@ -14,7 +14,7 @@ import SnapKit
 import CoreMotion
 
 let KDistence = 25.0
-let KTime = 60 * 15
+let KTime = 60 * 20
 
 let mNavigationBarHeight: CGFloat = 84
 let Spacing : CGFloat = 14
@@ -82,6 +82,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         return CMPedometer()
     }()
     
+    var DefaultHomeNavView : YQDefaultHomeNavView?
+    
     //改版home首页的属性
     /**
      *  自定义的navigationBar,添加默认的xib的情况
@@ -91,8 +93,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: Spacing, width: SJScreeW, height: mNavigationBarHeight - Spacing))
         tmp.backgroundColor = UIColor.clear
         let v =  Bundle.main.loadNibNamed("YQDefaultHomeNavView", owner: nil, options: nil)?[0] as! YQDefaultHomeNavView
-        v.backgroundColor = UIColor.clear
         
+        v.backgroundColor = UIColor.clear
+        self.DefaultHomeNavView = v
         v.delegate = self
         
         tmp.addSubview(v)
@@ -273,7 +276,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         //获取项目选择title
         let name = setUpProjectNameLable()
-        self.projectButton.setTitle(name, for: .normal)
+        self.DefaultHomeNavView?.projectBtn.setTitle(name, for: .normal)
         
     }
 
@@ -566,7 +569,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 self.workCount = workCount
                 if tatolCount >= 0 {
                     
-                    self.messageBtn.badge(text: "\(tatolCount)")
+                    self.DefaultHomeNavView?.messageBtn.badge(text: "\(tatolCount)")
                     
                     DispatchQueue.main.async {
                         //设置 系统app的显示的图标的选项的情况
@@ -918,32 +921,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         
     }
-    
-    
-//    func addSuspendButton(){
-//        
-//        let button = UIButton()
-//        button.setImage( UIImage(named : "btn_home_quit_nor" ), for: UIControlState.normal)
-//        
-//        button.setImage( UIImage(named : "btn_home_quit_p" ), for: UIControlState.highlighted)
-//        button.frame = CGRect(x: 100, y: 100, width: 60, height: 60)
-//        
-//        button.backgroundColor = UIColor.blue
-//        view.addSubview(button)
-//        self.eixtButton = button
-//        
-//        //设置约束布局
-//        button.snp.makeConstraints { (make) in
-//            make.right.equalTo(40)
-//            make.bottom.equalTo(100)
-//            make.height.equalTo(60)
-//            make.width.equalTo(60)
-//        }
-//        
-//        view.bringSubview(toFront: button)
-//    
-//    }
-    
+
     
     func surveillanceWorkOrderBtnClick() {
         let vc = SurveillanceWorkOrderViewController.loadFromStoryboard(name: "WorkOrder")
@@ -1013,6 +991,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource,MYPRefr
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let vc = SystemMessageViewController.loadFromStoryboard(name: "Home") as! SystemMessageViewController
                 navigationController?.pushViewController(vc, animated: true)
         vc.model = datas[indexPath.row]
@@ -1264,6 +1243,8 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
         if reGeocode != nil
         {
             parmet["reserver"] = reGeocode.formattedAddress
+            parmet["type"] = 1
+            
             uploadLocation(parmat: parmet)
             //获取的是 逆地理的信息情况(各种的应用的参数)
             self.searchLiveWeather(city: reGeocode.city!)
@@ -1283,8 +1264,9 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
                     let newCityString = newCityArray.last
                     
                     self.searchLiveWeather(city: newCityString!)
-                    
+                    parmet["type"] = 1
                     self.uploadLocation(parmat: parmet)
+                    
                 }
             })
 
@@ -1317,7 +1299,7 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
                 let temperature = liveWeather.temperature
                 let all = weather! + " " + temperature! + "℃"
                 
-                self.weatherBtn.setTitle(all, for: .normal)
+                self.DefaultHomeNavView?.weatherBtn.setTitle(all, for: .normal)
                 
             }
             

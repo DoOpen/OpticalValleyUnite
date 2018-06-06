@@ -13,7 +13,13 @@ class HomeBtnView: UIView, LCNibBridge {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textLabel: UILabel!
-
+    
+    @IBOutlet weak var imageTopHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var imageWidthConstraint: NSLayoutConstraint!
+    
     var clickHandle: (() -> ())?
 
     override func awakeFromNib() {

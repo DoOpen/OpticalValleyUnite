@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,8 +18,8 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W1B-66-58W">
                     <rect key="frame" x="25" y="15" width="40" height="40"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="40" id="B6k-OH-q2l"/>
                         <constraint firstAttribute="height" constant="40" id="NWN-L0-zKX"/>
-                        <constraint firstAttribute="width" constant="40" id="cva-u6-pOJ"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFq-Bt-uAR">
@@ -38,7 +38,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="imageHeightConstraint" destination="NWN-L0-zKX" id="yF3-fv-naF"/>
+                <outlet property="imageTopHeightConstraint" destination="sEv-Eb-4lt" id="Igc-bJ-UQa"/>
                 <outlet property="imageView" destination="W1B-66-58W" id="iwx-Jp-qXd"/>
+                <outlet property="imageWidthConstraint" destination="B6k-OH-q2l" id="Ex3-qf-pCv"/>
                 <outlet property="textLabel" destination="IFq-Bt-uAR" id="CWS-12-yzW"/>
             </connections>
         </view>

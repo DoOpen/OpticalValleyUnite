@@ -52,6 +52,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     @IBOutlet weak var donw3BtnView: HomeBtnView!
 
     var topBtnViewArray = [HomeBtnView]()
+    var topOtherBtnViewArray = [HomeBtnView]()
     var downBtnViewArray = [HomeBtnView]()
     
     var allPermissionModels = [PermissionModel]()
@@ -82,7 +83,11 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         return CMPedometer()
     }()
     
+    ///新增的navBarView
     var DefaultHomeNavView : YQDefaultHomeNavView?
+    
+    var OtherHomeNavView : YQOtherHomeNavView?
+    
     
     //改版home首页的属性
     /**
@@ -112,7 +117,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         let tmp: UIView = UIView.init(frame: CGRect.init(x: 0, y: Spacing, width: SJScreeW, height: mNavigationBarHeight - Spacing))
         tmp.backgroundColor = UIColor.clear
-        let subV =  Bundle.main.loadNibNamed("YQOtherHomeNavView", owner: nil, options: nil)?[0] as! UIView
+        let subV =  Bundle.main.loadNibNamed("YQOtherHomeNavView", owner: nil, options: nil)?[0] as! YQOtherHomeNavView
+        subV.delegate = self
+        self.OtherHomeNavView = subV
+        self.topOtherBtnViewArray = subV.otherHomeNavArray
         
         subV.backgroundColor = UIColor.clear
         tmp.alpha = 0
@@ -219,8 +227,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         return tmp
         
     }()
-    
-    
     
     lazy var mTopView: UIView = {
         
@@ -405,7 +411,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
 
     
         //注意的是:通过的是子系统选择的界面功能取消   URLPath.getModules 的网络请求
-        
         let systemData = UserDefaults.standard.object(forKey: Const.YQSystemSelectData)
         if  systemData == nil {
             
@@ -570,6 +575,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 if tatolCount >= 0 {
                     
                     self.DefaultHomeNavView?.messageBtn.badge(text: "\(tatolCount)")
+                    self.OtherHomeNavView?.messageBtn.badge(text: "\(tatolCount)")
                     
                     DispatchQueue.main.async {
                         //设置 系统app的显示的图标的选项的情况
@@ -596,22 +602,39 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             if index >= 4{
                 break
             }
+            
             let imageName = imageDic[model.aPPMODULENAME] ?? ""
             topBtnViewArray[index].imageView.image = UIImage(named:imageName)
-            
+            topOtherBtnViewArray[index].imageView.image = UIImage(named:imageName)
             //设置appicon的名字
             if(model.aPPMODULENAME == "电梯报事"){
                 
                 topBtnViewArray[index].textLabel.text = "报事"
-
+                topOtherBtnViewArray[index].textLabel.text = "报事"
+                
             }else{
                 
                 topBtnViewArray[index].textLabel.text = model.aPPMODULENAME
+                topOtherBtnViewArray[index].textLabel.text = model.aPPMODULENAME
+                
             }
             
+            //属性设置!
             topBtnViewArray[index].textLabel.textColor = UIColor.white
+            //topNavView属性设置
+            topOtherBtnViewArray[index].textLabel.isHidden = true
+            
+            topOtherBtnViewArray[index].imageWidthConstraint.constant = 30
+            topOtherBtnViewArray[index].imageHeightConstraint.constant = 30
+            topOtherBtnViewArray[index].imageTopHeightConstraint.constant = 20
+            
             topBtnViewArray[index].clickHandle = { [weak self] in
             self?.actionPush(text: model.aPPMODULENAME)
+                
+            }
+            topOtherBtnViewArray[index].clickHandle = { [weak self] in
+                
+                self?.actionPush(text: model.aPPMODULENAME)
                 
             }
         }
@@ -637,6 +660,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 downBtnViewArray[index].imageView.image = UIImage(named:imageName)
                 downBtnViewArray[index].textLabel.text = model.aPPMODULENAME
                 downBtnViewArray[index].isHidden = false
+                
                 downBtnViewArray[index].clickHandle = { [weak self] in
                     self?.actionPush(text: model.aPPMODULENAME)
                 }
@@ -735,10 +759,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)
+            
         case "定位":
             
             let vc = UIStoryboard(name: "Map", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)
+            
         case "扫描":
             
             scanBtnClick()
@@ -927,7 +953,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         let vc = SurveillanceWorkOrderViewController.loadFromStoryboard(name: "WorkOrder")
         navigationController?.pushViewController(vc, animated: true)
     }
-    
     
     
     fileprivate func pushToDeviceViewController(equipmentId: String){
@@ -1358,7 +1383,7 @@ extension HomeViewController:SGScanningQRCodeVCDelegate{
     
 }
 
-extension HomeViewController : YQHomeContentViewDelegate,YQDefaultHomeNavViewDelegate{
+extension HomeViewController : YQHomeContentViewDelegate,YQDefaultHomeNavViewDelegate,YQOtherHomeNavViewDelegate{
     
     /// 改版的home 全部按钮点击
     func homeContentViewAllButtonClick(view: UIView) {
@@ -1380,6 +1405,12 @@ extension HomeViewController : YQHomeContentViewDelegate,YQDefaultHomeNavViewDel
     
     /// 改版的home 铃铛选择
     func DefaultHomeNavViewMessageBtnClick() {
+        
+        self.messageBtnClick()
+    }
+    
+    // 改版的home towNav铃铛选择
+    func OtherHomeNavViewMessageBtnClick() {
         
         self.messageBtnClick()
     }

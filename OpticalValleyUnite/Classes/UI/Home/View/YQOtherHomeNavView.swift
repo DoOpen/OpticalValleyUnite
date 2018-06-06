@@ -9,14 +9,40 @@
 
 import UIKit
 
+protocol YQOtherHomeNavViewDelegate {
+    
+    func OtherHomeNavViewMessageBtnClick()
+    
+}
+
 class YQOtherHomeNavView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var top1BtnView: HomeBtnView!
+    
+    @IBOutlet weak var top2BtnView: HomeBtnView!
+    
+    @IBOutlet weak var top3BtnView: HomeBtnView!
+    
+    @IBOutlet weak var top4BtnView: HomeBtnView!
+    
+    @IBOutlet weak var messageBtn: UIButton!
+    
+    
+    var delegate : YQOtherHomeNavViewDelegate?
+    
+    var otherHomeNavArray = [HomeBtnView]()
+    
+    @IBAction func messageBtnClick(_ sender: UIButton) {
+        
+        self.delegate?.OtherHomeNavViewMessageBtnClick()
+        
     }
-    */
+    
+    
+    override func awakeFromNib() {
+        
+        self.otherHomeNavArray = [top1BtnView,top2BtnView,top3BtnView,top4BtnView]
+    }
+    
 
 }

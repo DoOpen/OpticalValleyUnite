@@ -42,10 +42,13 @@ class MYPRefreshHeader: UIView {
     }()
     
     var mRefreshStatus:MRefreshStatus = .normal {
+        
         willSet(newValue) {
             
         }
+        
         didSet(oldValue) {
+            
             if self.mRefreshImageView.isAnimating {
                 self.mRefreshImageView.stopAnimating()
             }

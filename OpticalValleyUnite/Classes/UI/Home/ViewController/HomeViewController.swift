@@ -239,13 +239,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         return tmp
     }()
     
-
-    
     // MARK: - 视图生命周期方法
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
         //原始init
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -264,13 +261,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         //再次获取计步数据
         stepFunctionDidStart()
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        navigationItem.title = "光谷联合"
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        
         //设置定位
         setUpLocation()
         
@@ -280,6 +270,13 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         //搜索
         initSearch()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        navigationItem.title = "光谷联合"
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    
         //获取项目选择title
         let name = setUpProjectNameLable()
         self.DefaultHomeNavView?.projectBtn.setTitle(name, for: .normal)
@@ -418,7 +415,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
         
         systemSelection = systemData as! NSDictionary
-        
         
         //新增 获取集团版 和 项目版  的区别 来进行的操作 //注意的是 2是集团版 3是项目版
         let isgroup = systemSelection["isGroup"] as? Int ?? -1
@@ -712,6 +708,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         locationManager.delegate = self
     
         locationManager.startUpdatingLocation()
+        
     }
     
     // MARK: - 添加默认的项目选择方法
@@ -844,6 +841,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         //加载未来的信息
         self.searchForcastWeather( city : self.locaCity )
+        self.DefaultHomeNavView?.weatherBtn.isUserInteractionEnabled = false
         
     }
     
@@ -1179,27 +1177,36 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource,MYPRefr
      *  刷新相关
      */
     func mStartRefreshing(refreshHeader: MYPRefreshHeader) {
+        
         weak var weakSelf = self
+        
         UIView.animate(withDuration: 0.3, animations: {
-            self.resetTableHeaderView(tableview: self.tableView ,height: self.mTopOneViewHeight + self.mTopTwoViewHeight + self.mRefreshHeaderHeight)
+            
+            self.resetTableHeaderView(tableview: self.tableView ,height: self.mTopOneViewHeight + self.mTopTwoViewHeight + self.mTopThreeViewHeight + self.mRefreshHeaderHeight)
             self.tableView.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
+            
         }) { (result) in
+            
             // 效果,3S之后停止刷新
             // 实际使用中，根据网络返回接口自行调用
             DispatchQueue.global().async {
-                sleep(3)
+                sleep(2)
                 DispatchQueue.main.async {
                     weakSelf?.mRefreshHeader.mRefreshStatus = .none
                 }
             }
+            
+            
         }
     }
     
     func mEndRefreshing(refreshHeader: MYPRefreshHeader) {
-        if self.tableView.frame.height != self.mTopOneViewHeight + self.mTopTwoViewHeight {
+        
+        if self.tableView.frame.height != self.mTopOneViewHeight + self.mTopTwoViewHeight + self.mTopThreeViewHeight {
+            
             UIView.animate(withDuration: 0.3, animations: {
-                self.resetTableHeaderView(tableview: self.tableView, height: self.mTopOneViewHeight + self.mTopTwoViewHeight)
-                // 停止刷新的时候是否需要会到contentoffset为(0,0)的状态根据需求确定
+                self.resetTableHeaderView(tableview: self.tableView, height: self.mTopOneViewHeight + self.mTopTwoViewHeight + self.mTopThreeViewHeight)
+                // 停止刷新的时候是否需要回到contentoffset为(0,0)的状态根据需求确定
 
             }) { (result) in
 
@@ -1249,13 +1256,34 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
             return
         }
 
-        if let latitude = UserDefaults.standard.object(forKey: "SJlatitude") as? CLLocationDegrees,let longitude = UserDefaults.standard.object(forKey: "SJlongitude") as? CLLocationDegrees{
+        if let latitude = UserDefaults.standard.object(forKey: "SJlatitude") as? CLLocationDegrees,let longitude = UserDefaults.standard.object(forKey: "SJlongitude") as? CLLocationDegrees {
             
             let lastCLLocation = CLLocation(latitude: latitude, longitude: longitude)
             let nowCLLocation = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let distance = lastCLLocation.distance(from: nowCLLocation)
             
-            if distance < KDistence{
+            // 已经有点保存的情况,还是触发一次上传
+            HttpClient.instance.getAddress(lat: location.coordinate.latitude, lon: location.coordinate.longitude, succses: { (address) in
+                
+                if let address = address{
+                    
+                    parmet["reserver"] = address
+                    let str = NSString.init(string: address)
+                    let cityRange = str.range(of: "市")
+                    let newRange = NSRange.init(location: 0, length: cityRange.location + 1)
+                    let cityString = str.substring(with: newRange)
+                    let newCityArray = cityString.components(separatedBy: "省")
+                    let newCityString = newCityArray.last
+                    
+                    self.searchLiveWeather(city: newCityString!)
+                    parmet["type"] = 0
+                    self.uploadLocation(parmat: parmet)
+                    
+                }
+            })
+            
+            if distance < KDistence {
+                
                 return
             }
             
@@ -1350,6 +1378,8 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
                 subView?.frame = CGRect.init(x: 10, y: 200, width: SJScreeW - 20, height: SJScreeH - 400)
                 
                 let _ = CoverView.show(view: subView!)
+                
+                self.DefaultHomeNavView?.weatherBtn.isUserInteractionEnabled = true
                 
             }
         }

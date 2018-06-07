@@ -277,7 +277,7 @@ extension YQHouseHomeVC : UITableViewDelegate, UITableViewDataSource{
         
         if model.name != "" {
             
-            return 200
+            return 180
             
         }else{
             

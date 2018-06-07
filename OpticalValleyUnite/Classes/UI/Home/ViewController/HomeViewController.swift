@@ -56,6 +56,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     var downBtnViewArray = [HomeBtnView]()
     
     var allPermissionModels = [PermissionModel]()
+    var topPermissionModels = [PermissionModel]()
     var downPermissionModels = [PermissionModel]()
     
     /// 项目选择按钮
@@ -350,6 +351,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             var temp = [SystemMessageModel]()
             
             if let dic = respose as? [String: Any]{
+                
                 for dic2 in dic["data"] as! Array<[String: Any]>{
                     temp.append(SystemMessageModel(parmart: dic2))
                 }
@@ -377,6 +379,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             if model?.iSTOP == 0{
                 
                 topArry.append(model!)
+                
             }else{
                 
                 downArry.append(model!)
@@ -384,8 +387,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
         }
         
+        topPermissionModels = topArry
         downPermissionModels = downArry
         
+        //通过的是downArry和 topArry 来进行的赋值的上下边框的顺序!
         self.allPermissionModels.append(contentsOf: topArry)
         self.allPermissionModels.append(contentsOf: downArry)
         self.settopArry(topArry: topArry, donwArry: downArry)
@@ -679,8 +684,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         if !allPermissionModels.isEmpty{
             
-            let vc = AllViewController.loadFromStoryboard(name: "Home") as! AllViewController
-            vc.models = allPermissionModels
+//            let vc = AllViewController.loadFromStoryboard(name: "Home") as! AllViewController
+//            vc.models = allPermissionModels
+            
+            let vc = YQAllViewController()
+            vc.topArray = self.topPermissionModels
+            vc.bottomArray = self.downPermissionModels
             navigationController?.pushViewController(vc, animated: true)
         }
         

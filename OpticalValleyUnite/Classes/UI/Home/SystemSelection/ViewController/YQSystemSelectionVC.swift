@@ -324,7 +324,6 @@ class YQSystemSelectionVC: UIViewController {
             // report 日报周报月报
 //            let report = YQReportFormFirstVC.init(nibName: "YQReportFormFirstVC", bundle: nil)
 //            let sjnav = SJNavigationController.init(rootViewController: report)
-//            
 //            SJKeyWindow?.rootViewController = sjnav
             
 //            // 装修管理的跳转
@@ -357,7 +356,7 @@ class YQSystemSelectionVC: UIViewController {
 //            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: knowledgeFirstVC)
             
             //首页架构
-            let OneVC = MYPTestOneVC()
+            let OneVC = YQAllViewController()
             let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: OneVC)
             SJKeyWindow?.rootViewController = sjKnowledgeFirstVC
             

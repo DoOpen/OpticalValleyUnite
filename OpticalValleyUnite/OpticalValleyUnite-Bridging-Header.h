@@ -39,3 +39,8 @@
 
 //日历的框架
 #import "FSCalendar.h"
+
+//
+#import "SYLIfeManagerFooterView.h"
+#import "SYLifeManagerHeaderView.h"
+#import "SYLifeManagerLayout.h"

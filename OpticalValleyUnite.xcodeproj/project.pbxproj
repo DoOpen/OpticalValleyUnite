@@ -271,6 +271,12 @@
 		2F7550FB1FA71D1900A5E242 /* YQJournalDetailTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550FA1FA71D1900A5E242 /* YQJournalDetailTVCell.swift */; };
 		2F7550FD1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7550FC1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift */; };
 		2F7550FF1FA7313200A5E242 /* YQWorkRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */; };
+		2F77B86920C9064900C4079F /* YQAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77B86820C9064900C4079F /* YQAllViewController.swift */; };
+		2F77B87020C918CA00C4079F /* SYLIfeManagerFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F77B86C20C918C900C4079F /* SYLIfeManagerFooterView.m */; };
+		2F77B87120C918CA00C4079F /* SYLifeManagerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F77B86E20C918CA00C4079F /* SYLifeManagerHeaderView.m */; };
+		2F77B87420C91B7A00C4079F /* SYLifeManagerLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F77B87220C91B7A00C4079F /* SYLifeManagerLayout.m */; };
+		2F77B87720C9238300C4079F /* YQBtnViewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77B87520C9238300C4079F /* YQBtnViewCollectionCell.swift */; };
+		2F77B87820C9238300C4079F /* YQBtnViewCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F77B87620C9238300C4079F /* YQBtnViewCollectionCell.xib */; };
 		2F78D94D1FEA388D006F7692 /* YQDynamicPwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F78D94B1FEA388D006F7692 /* YQDynamicPwdViewController.swift */; };
 		2F78D94E1FEA388D006F7692 /* YQDynamicPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F78D94C1FEA388D006F7692 /* YQDynamicPwdViewController.xib */; };
 		2F7945191FE795190085E803 /* NSData+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7945151FE795190085E803 /* NSData+YYExtend.m */; };
@@ -864,6 +870,15 @@
 		2F7550FA1FA71D1900A5E242 /* YQJournalDetailTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalDetailTVCell.swift; sourceTree = "<group>"; };
 		2F7550FC1FA730F400A5E242 /* YQWorkRecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkRecordTableViewCell.swift; sourceTree = "<group>"; };
 		2F7550FE1FA7313200A5E242 /* YQWorkRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWorkRecord.xib; sourceTree = "<group>"; };
+		2F77B86820C9064900C4079F /* YQAllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQAllViewController.swift; sourceTree = "<group>"; };
+		2F77B86C20C918C900C4079F /* SYLIfeManagerFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYLIfeManagerFooterView.m; sourceTree = "<group>"; };
+		2F77B86D20C918C900C4079F /* SYLifeManagerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYLifeManagerHeaderView.h; sourceTree = "<group>"; };
+		2F77B86E20C918CA00C4079F /* SYLifeManagerHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYLifeManagerHeaderView.m; sourceTree = "<group>"; };
+		2F77B86F20C918CA00C4079F /* SYLIfeManagerFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYLIfeManagerFooterView.h; sourceTree = "<group>"; };
+		2F77B87220C91B7A00C4079F /* SYLifeManagerLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYLifeManagerLayout.m; sourceTree = "<group>"; };
+		2F77B87320C91B7A00C4079F /* SYLifeManagerLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYLifeManagerLayout.h; sourceTree = "<group>"; };
+		2F77B87520C9238300C4079F /* YQBtnViewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQBtnViewCollectionCell.swift; sourceTree = "<group>"; };
+		2F77B87620C9238300C4079F /* YQBtnViewCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQBtnViewCollectionCell.xib; sourceTree = "<group>"; };
 		2F78D94B1FEA388D006F7692 /* YQDynamicPwdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDynamicPwdViewController.swift; sourceTree = "<group>"; };
 		2F78D94C1FEA388D006F7692 /* YQDynamicPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDynamicPwdViewController.xib; sourceTree = "<group>"; };
 		2F7945141FE795190085E803 /* NSData+YYExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+YYExtend.h"; sourceTree = "<group>"; };
@@ -2524,6 +2539,12 @@
 				4BD4B9571E2747F000AE2BC9 /* SJTextView.h */,
 				4BD4B9581E2747F000AE2BC9 /* SJTextView.m */,
 				4BD4B9171E272EA600AE2BC9 /* CoverView.swift */,
+				2F77B86F20C918CA00C4079F /* SYLIfeManagerFooterView.h */,
+				2F77B86C20C918C900C4079F /* SYLIfeManagerFooterView.m */,
+				2F77B86D20C918C900C4079F /* SYLifeManagerHeaderView.h */,
+				2F77B86E20C918CA00C4079F /* SYLifeManagerHeaderView.m */,
+				2F77B87320C91B7A00C4079F /* SYLifeManagerLayout.h */,
+				2F77B87220C91B7A00C4079F /* SYLifeManagerLayout.m */,
 				4BD4B9181E272EA600AE2BC9 /* Extention */,
 				4BD4B91E1E272EA600AE2BC9 /* MessageShowView.swift */,
 				4BD4B91F1E272EA600AE2BC9 /* NSBadge.swift */,
@@ -2636,6 +2657,8 @@
 				2FA3E3D320C629C20003A979 /* YQHomeContentView.xib */,
 				2F6BA21D20C78E7B004BAF4B /* YQHomeNoticeContentView.swift */,
 				2F6BA21F20C78EA3004BAF4B /* YQHomeNoticeContentView.xib */,
+				2F77B87520C9238300C4079F /* YQBtnViewCollectionCell.swift */,
+				2F77B87620C9238300C4079F /* YQBtnViewCollectionCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2667,6 +2690,7 @@
 				4BB53FEC1F14B9C30061190F /* DeviceViewController.swift */,
 				2F637F5B206A813D00EFFFF8 /* YQHomeWeatherTVC.swift */,
 				2F637F5D206A82CB00EFFFF8 /* YQHomeWeather.storyboard */,
+				2F77B86820C9064900C4079F /* YQAllViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3035,6 +3059,7 @@
 				2F7DC8EF200DDDD60087E2FC /* YQReportFormDetail.storyboard in Resources */,
 				2F5F9458206E10EE000DC20A /* YQEditTextVC.xib in Resources */,
 				2F0532862025AB1800DB334A /* YQPartXib.xib in Resources */,
+				2F77B87820C9238300C4079F /* YQBtnViewCollectionCell.xib in Resources */,
 				2F7E0AA71FB595BF00344D4E /* YQPedometerVC.storyboard in Resources */,
 				4B4BAFC31E5C62F500C9C549 /* OprationConfirmationView.xib in Resources */,
 				4B5AF64B1E36F73B00844F3D /* LoginViewController.xib in Resources */,
@@ -3282,6 +3307,7 @@
 				4BD4B9441E272EA600AE2BC9 /* Extention.swift in Sources */,
 				2F6DF89C20B65C0B0053D1E1 /* FSCalendarWeekdayView.m in Sources */,
 				4B1DEC661E31E504000917D2 /* ChoosePersonViewController.swift in Sources */,
+				2F77B87420C91B7A00C4079F /* SYLifeManagerLayout.m in Sources */,
 				4B3951FC1E28CF5000E2642F /* WorkOrderDetailsCell.swift in Sources */,
 				2F3AC6AA1FD6937D0029AEE3 /* YQVideoIndoorPatorlModel.swift in Sources */,
 				2F612D35209AFAC3003B8D4D /* YQStudyContentVC.swift in Sources */,
@@ -3300,6 +3326,7 @@
 				4BD4B9471E272EA600AE2BC9 /* MessageShowView.swift in Sources */,
 				4BF0A08A1E5AD71600D9ECE5 /* PeopleListViewController.swift in Sources */,
 				4BD4B9011E272E0C00AE2BC9 /* AppDelegate.swift in Sources */,
+				2F77B87020C918CA00C4079F /* SYLIfeManagerFooterView.m in Sources */,
 				4B30780D1E29FBD100FB4007 /* ChooseHouseCell.swift in Sources */,
 				2F5A3D601FE8EDC90069ABE1 /* YQScanCell.swift in Sources */,
 				2F07A0181FDBEC770064556D /* YQPatrolResultViewController.swift in Sources */,
@@ -3349,6 +3376,7 @@
 				2FC7CC8B208B17F000F6DEFA /* YQGeneralFeedBackCell.swift in Sources */,
 				2F7A609C20C54B5700AACFD9 /* YQHomeTopView.swift in Sources */,
 				2FC989FE202D86010080D1BE /* YQHouseHomeVC.swift in Sources */,
+				2F77B86920C9064900C4079F /* YQAllViewController.swift in Sources */,
 				4B6E64E71EEA821900BA23E4 /* ExecutEmergencyCell.swift in Sources */,
 				4BB53FED1F14B9C30061190F /* DeviceViewController.swift in Sources */,
 				2F6A83911F5CE073002BB61C /* YQPartDataSelectCell.swift in Sources */,
@@ -3391,6 +3419,7 @@
 				2F6DF89620B65C0B0053D1E1 /* FSCalendarDelegationProxy.m in Sources */,
 				2F1F443E202A9E5400F9F51C /* YQLocationDetailsVC.swift in Sources */,
 				2FC167571F90B45B001CEACD /* YQReleaseJournalFooterV.swift in Sources */,
+				2F77B87120C918CA00C4079F /* SYLifeManagerHeaderView.m in Sources */,
 				4BD4B9421E272EA600AE2BC9 /* Const.swift in Sources */,
 				2F7E0AA51FB5956000344D4E /* YQPedometerViewController.swift in Sources */,
 				2F6DF89220B65C0B0053D1E1 /* FSCalendarCollectionView.m in Sources */,
@@ -3485,6 +3514,7 @@
 				2F9F92242086F4EE00D860DF /* YQFeedbackListModel.swift in Sources */,
 				2F94A2891F73B9D800455162 /* YQFalsePositiveView.swift in Sources */,
 				2F90BF6A20AD2BDA006DA25D /* YQChooseHouseModel.swift in Sources */,
+				2F77B87720C9238300C4079F /* YQBtnViewCollectionCell.swift in Sources */,
 				4B8EE7761F17047400A59F8D /* WorkOrderCell.swift in Sources */,
 				2F7F230B20B7E8EE00935E63 /* YQPatrolWayResultVC.swift in Sources */,
 				2F7A609A20C54ABF00AACFD9 /* MYPRefreshHeader.swift in Sources */,

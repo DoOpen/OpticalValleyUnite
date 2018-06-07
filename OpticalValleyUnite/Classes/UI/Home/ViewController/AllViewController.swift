@@ -57,7 +57,7 @@ class AllViewController: UIViewController {
             btnViews[index].isHidden = false
             btnViews[index].clickHandle = { [weak self] in
                 
-            self?.actionPush(text: (self?.models[index].aPPMODULENAME)!)
+                self?.actionPush(text: (self?.models[index].aPPMODULENAME)!)
                 
             }
         }

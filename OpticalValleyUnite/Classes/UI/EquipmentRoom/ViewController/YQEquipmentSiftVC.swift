@@ -122,12 +122,12 @@ class YQEquipmentSiftVC: UIViewController {
         }
         if let text = self.siftParmat?["SOURCE_PERSON_NAME"] as? String,text != ""{// SOURCE_PERSON_NAME
             
-            workOrderSourcePersonLabel.text = text
+            newPersonButton.setTitle(text, for: .normal)
         }
         
         if let text = self.siftParmat?["SOURCE_PERSON_ID"] as? String,text != ""{// SOURCE_PERSON_ID
             
-            newPersonButton.setTitle(text, for: .normal)
+            workOrderSourcePersonLabel.text = text
         }
         
     }

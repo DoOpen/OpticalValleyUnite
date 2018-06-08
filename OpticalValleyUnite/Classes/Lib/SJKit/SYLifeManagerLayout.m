@@ -70,16 +70,16 @@
 
 - (void)longGesture:(UILongPressGestureRecognizer *)gesture
 {
-    if (!self.inEditState) {
-        [self setInEditState:YES];
-    }
+//    if (!self.inEditState) {
+//        [self setInEditState:YES];
+//    }
     switch (gesture.state) {
         case UIGestureRecognizerStateBegan: {  //手势开始
             CGPoint location = [gesture locationInView:self.collectionView];
             //找到当前点击的cell的位置
             NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
             //判断哪个分区可以被点击并且移动
-            if (indexPath == nil || indexPath.section != 0) return;
+            if (indexPath == nil || indexPath.section != 1) return;
             self.currentIndexPath = indexPath;
             UICollectionViewCell *targetCell = [self.collectionView cellForItemAtIndexPath:self.currentIndexPath];
             //得到当前cell的映射(截图)
@@ -101,7 +101,7 @@
             self.moveView.center = point;
             NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
             if (indexPath == nil)  return;
-            if (indexPath.section == self.currentIndexPath.section && indexPath.section == 0) {
+            if (indexPath.section == self.currentIndexPath.section && indexPath.section == 1) {
                 //通过代理去改变数据源
                 if ([self.delegate respondsToSelector:@selector(moveItemAtIndexPath:toIndexPath:)]) {
                     [self.delegate moveItemAtIndexPath:self.currentIndexPath toIndexPath:indexPath];

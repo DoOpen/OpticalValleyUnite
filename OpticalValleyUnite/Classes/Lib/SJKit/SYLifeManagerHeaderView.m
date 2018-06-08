@@ -25,8 +25,8 @@
     if (!_headLabel) {
         
         _headLabel = [UILabel new];
-        _headLabel.font = [UIFont systemFontOfSize:16];
-        _headLabel.frame = CGRectMake(16, 0, 150, 20);
+        _headLabel.font = [UIFont systemFontOfSize:15];
+        _headLabel.frame = CGRectMake(16, 15, 150, 20);
         
     }
     

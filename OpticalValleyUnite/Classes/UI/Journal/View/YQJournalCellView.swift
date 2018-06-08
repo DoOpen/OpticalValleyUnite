@@ -67,35 +67,39 @@ class YQJournalCellView: UITableViewCell{
             }
             
             
-            //取出字段的数组的里面的title的内容的情况
-            if (model?.todoList?.count)! < 1 {
+            if (model?.todoList != nil){
                 
-                self.detailAarry = self.model?.todoList
-                
-                self.detailLabel.text = ""
-                
-                return
-            }
-            
-            for temp in 0 ..< (model?.todoList?.count)! {
-                
-                let dic = model?.todoList?[temp]
-                
-                if let titleDic : [String : Any] = dic as? [String : Any] {
-                
-                    let title = titleDic["title"] as! String
+                //取出字段的数组的里面的title的内容的情况
+                if (model?.todoList?.count)! < 1 {
                     
-                    if temp == 0 {
+                    self.detailAarry = self.model?.todoList
+                    
+                    self.detailLabel.text = ""
+                    
+                    return
+                }
+                
+                for temp in 0 ..< (model?.todoList?.count)! {
+                    
+                    let dic = model?.todoList?[temp]
+                    
+                    if let titleDic : [String : Any] = dic as? [String : Any] {
                         
-                        self.detailLabel.text = "1." + title
-                    }else{
-                    
-                        self.detailLabel.text = self.detailLabel.text! + "\n" + "\(temp + 1)." + title
+                        let title = titleDic["title"] as! String
+                        
+                        if temp == 0 {
+                            
+                            self.detailLabel.text = "1." + title
+                        }else{
+                            
+                            self.detailLabel.text = self.detailLabel.text! + "\n" + "\(temp + 1)." + title
+                        }
                     }
                 }
+                
+                detailAarry = model?.todoList
+                
             }
-            
-            detailAarry = model?.todoList
             
             setNeedsLayout()
             setNeedsDisplay()

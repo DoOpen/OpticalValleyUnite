@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
+import Photos
+import KYDrawerController
 
 class YQAllViewController: UIViewController {
 
@@ -44,18 +47,18 @@ class YQAllViewController: UIViewController {
     
     lazy var flowLayout: SYLifeManagerLayout = {
         
-        let width  = CGFloat((SJScreeW - 80) / 4)
+        let width  = CGFloat((SJScreeW - 40) / 4)
         
         let flayout = SYLifeManagerLayout()
         flayout.delegate = self;
         //设置每个图片的大小
-        flayout.itemSize = CGSize.init(width: width, height: width)
+        flayout.itemSize = CGSize.init(width: width, height: 80)
         //设置滚动方向的间距
-        flayout.minimumLineSpacing = 10
+        flayout.minimumLineSpacing = 5
         //设置上方的反方向
         flayout.minimumInteritemSpacing = 0
         //设置collectionView整体的上下左右之间的间距
-        flayout.sectionInset = UIEdgeInsetsMake(15, 20, 20, 20)
+        flayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
         //设置滚动方向
         flayout.scrollDirection = UICollectionViewScrollDirection.vertical
         
@@ -69,6 +72,7 @@ class YQAllViewController: UIViewController {
         
         //1.init
         self.view.addSubview(self.collectionView)
+        self.title = "全部"
         
         //2.rightAndLeftBar
         addRightBarButtonItem()
@@ -100,10 +104,146 @@ class YQAllViewController: UIViewController {
         
     }
     
+    func actionPush(text:String){
+        switch text {
+        case "报事":
+            let vc = UIStoryboard(name: "ReportMaster", bundle: nil).instantiateInitialViewController()
+            navigationController?.pushViewController(vc!, animated: true)
+            //            surveillanceWorkOrderBtnClick()
+            
+        case "电梯报事":
+            
+            let vc = UIStoryboard(name: "ReportMaster", bundle: nil).instantiateInitialViewController()
+            
+            navigationController?.pushViewController(vc!, animated: true)
+            
+        case "工单":
+            
+            let vc = UIStoryboard(name: "YQWorkOrderFirst", bundle: nil).instantiateInitialViewController()
+            navigationController?.pushViewController(vc!, animated: true)
+            
+        case "签到":
+            let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateInitialViewController()
+            navigationController?.pushViewController(vc!, animated: true)
+            
+        case "定位":
+            let vc = UIStoryboard(name: "Map", bundle: nil).instantiateInitialViewController()
+            navigationController?.pushViewController(vc!, animated: true)
+            
+        case "扫描":
+            scanBtnClick()
+            //            surveillanceWorkOrderBtnClick()
+            
+        case "督办":
+            surveillanceWorkOrderBtnClick()
+            
+        case "日志":
+            //测试日志模块
+            let journa = UIStoryboard.instantiateInitialViewController(name: "YQJournal")
+            self.present(journa, animated: true, completion: nil)
+            
+        case "计步器":
+            
+            let step = UIStoryboard.instantiateInitialViewController(name: "YQPedometerVC")
+            self.present(step, animated: true, completion: nil)
+            
+        case "视频巡查":
+            // 调试视频巡查的内容
+            let Video = UIStoryboard.instantiateInitialViewController(name: "YQVideoPatrol")
+            let mainViewController   = Video
+            let drawerViewController = YQVideoDrawerViewController()
+            // 初始化drawer抽屉的情况
+            let drawerController     = KYDrawerController(drawerDirection: .right, drawerWidth: 300)
+            drawerController.mainViewController =  mainViewController
+            
+            drawerController.drawerViewController = drawerViewController
+            self.present(drawerController, animated: true, completion: nil)
+            
+        case "巡查结果":
+            let videoResult = UIStoryboard.instantiateInitialViewController(name: "YQPatrolResult")
+            self.present(videoResult, animated: true, completion: nil)
+            
+            
+        case "门禁":
+            let door = UIStoryboard.instantiateInitialViewController(name: "YQIntoDoor")
+            self.present(door, animated: true, completion: nil)
+            
+        case "工作报告":
+            
+            let report = YQReportFormFirstVC.init(nibName: "YQReportFormFirstVC", bundle: nil)
+            self.navigationController?.pushViewController(report, animated: true)
+            
+        case "房屋管理" :
+            let house = UIStoryboard.instantiateInitialViewController(name: "YQHouseHome")
+            self.navigationController?.pushViewController(house, animated: true)
+            
+        case "装修管理" :
+            let decoration = UIStoryboard.instantiateInitialViewController(name: "YQDecorationHome")
+            self.navigationController?.pushViewController(decoration, animated: true)
+            
+        case "设备房" :
+            let equipVC = YQEquipmentFristVC.init(nibName: "YQEquipmentFristVC", bundle: nil)
+            self.navigationController?.pushViewController(equipVC, animated: true)
+            
+        case "工单查询" :
+            let allWorkUnit = UIStoryboard.instantiateInitialViewController(name: "YQAllWorkUnitHome")
+            self.navigationController?.pushViewController(allWorkUnit, animated: true)
+            
+        case "总经理邮箱" :
+            
+            let generalMailVC = YQGeneralManagerFirstVC.init(nibName: "YQGeneralManagerFirstVC", bundle: nil)
+            self.navigationController?.pushViewController(generalMailVC, animated: true)
+            
+        default: break
+            
+        }
+    }
+    
+    func scanBtnClick() {
+        
+        if Const.SJIsSIMULATOR {
+            alert(message: "模拟器不能使用扫描")
+            return
+        }
+        
+        let device = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
+        if device != nil {
+            
+            
+            let status = PHPhotoLibrary.authorizationStatus()
+            if status == .authorized{
+                let vc = SGScanningQRCodeVC()
+                //设置代理
+                vc.delegate = self
+                navigationController?.pushViewController(vc, animated: true)
+            }else if status == .notDetermined{
+                PHPhotoLibrary.requestAuthorization({ (authorizationStatus) in
+                    
+                })
+            }else{
+                self.alert(message: "授权失败")
+            }
+        }
+    }
+    
+    
+    func surveillanceWorkOrderBtnClick() {
+        let vc = SurveillanceWorkOrderViewController.loadFromStoryboard(name: "WorkOrder")
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - 跳转到设备详情扫描的界面
+    fileprivate func pushToDeviceViewController(equipmentId: String){
+        
+        let vc = DeviceViewController.loadFromStoryboard(name: "Home") as! DeviceViewController
+        vc.equipmentId = equipmentId
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }
 
-extension YQAllViewController : UICollectionViewDelegate,UICollectionViewDataSource,SYLifeManagerDelegate{
+extension YQAllViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SYLifeManagerDelegate{
    
     // MARK: - CollectionViewDataSource,Delegate
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -142,6 +282,18 @@ extension YQAllViewController : UICollectionViewDelegate,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        var name = ""
+        
+        if indexPath.section == 0 {
+            
+           name  = self.topArray[indexPath.item].aPPMODULENAME
+            
+        }else {
+            
+            name  = self.bottomArray[indexPath.item].aPPMODULENAME
+        }
+        
+        self.actionPush(text: name)
         
     }
     
@@ -149,6 +301,11 @@ extension YQAllViewController : UICollectionViewDelegate,UICollectionViewDataSou
     /// 更新数据源的方法
     func moveItem(at formPath: IndexPath!, to toPath: IndexPath!) {
         
+        let model  = self.bottomArray[formPath.row];
+        //先把移动的这个model移除
+        self.bottomArray.remove(at: formPath.row)
+        //再把这个移动的model插入到相应的位置
+        self.bottomArray.insert(model, at: toPath.row)
         
     }
     
@@ -158,13 +315,6 @@ extension YQAllViewController : UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     // MARK: - HeaderAndFooter
-    /*
-     collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:
-     
-     - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-     
-     - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
-     */
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         if (kind == UICollectionElementKindSectionHeader) {
@@ -172,9 +322,9 @@ extension YQAllViewController : UICollectionViewDelegate,UICollectionViewDataSou
             let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headCell, for: indexPath) as! SYLifeManagerHeaderView
             
             if (indexPath.section == 0) {
-                headView.headLabel.text = "我的应用";
+                headView.headLabel.text = "顶部模块";
             } else {
-                headView.headLabel.text = "便捷生活";
+                headView.headLabel.text = "底部模块";
             }
             
             return headView
@@ -188,14 +338,49 @@ extension YQAllViewController : UICollectionViewDelegate,UICollectionViewDataSou
         
         return UICollectionReusableView()
     }
+    //注意的是swift的delegate方法的拆分的库的改变,导致的坑
+    //footer
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        if (section == 0) {
+            
+            return CGSize.init(width: SJScreeW, height: 10);
+            
+        } else {
+            
+            return CGSize.init(width: SJScreeW, height: 0.5);
+        }
+    }
     
+    //header
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize.init(width: SJScreeW, height: 25)
+       
+    }
+    
+}
 
+extension YQAllViewController :SGScanningQRCodeVCDelegate{
     
     
-    
-    
-    
-    
+    func didScanningText(_ text: String!) {
+        
+        if text.contains("equipment"){//区分是否是自己的二维码的情况
+            
+            let str = text.components(separatedBy: ":").last
+            if let str = str{
+                
+                self.navigationController?.popViewController(animated: false)
+                self.pushToDeviceViewController(equipmentId: str)
+                
+            }
+            
+        }else{
+            
+            self.alert(message: "非可识别二维码!")
+        }
+    }
     
     
 }

@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import Photos
 import KYDrawerController
+import SVProgressHUD
 
 class YQAllViewController: UIViewController {
 
@@ -21,6 +22,8 @@ class YQAllViewController: UIViewController {
     var topArray = [PermissionModel]()
     
     var bottomArray = [PermissionModel]()
+    
+    var moduleId = ""
     
     
     lazy var collectionView : UICollectionView = {
@@ -89,7 +92,7 @@ class YQAllViewController: UIViewController {
         button.setTitle("完成", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
         button.sizeToFit()
-        button.addTarget(self, action: #selector(FinishEditorsButtonClick), for: .touchUpInside)
+        button.addTarget(self, action: #selector(FinishEditorsButtonClick(btn :)), for: .touchUpInside)
         
         let barItem = UIBarButtonItem()
         barItem.customView = button
@@ -98,8 +101,44 @@ class YQAllViewController: UIViewController {
         
     }
     
-    func FinishEditorsButtonClick(){
+    func FinishEditorsButtonClick(btn : UIButton){
         
+        btn.isUserInteractionEnabled = false
+        
+        var stringID = ""
+        for model in self.bottomArray{
+            
+            if stringID == "" {
+                
+                stringID = model.iD
+            }else{
+                stringID = stringID + "," + model.iD
+            }
+            
+        }
+        
+        var par = [String : Any]()
+        par["moduleId"] = self.moduleId
+        par["appModuleIds"] = stringID
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.saveUserModules, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            SVProgressHUD.showSuccess(withStatus: "保存成功!")
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
+        }
+        
+        //重新传值,归档解档(通知赋值)
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "upDateUserModules")
+        center.post(name: notiesName, object: nil, userInfo: ["bottomArray" : self.bottomArray])
         
         
     }
@@ -322,9 +361,9 @@ extension YQAllViewController : UICollectionViewDelegate,UICollectionViewDataSou
             let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headCell, for: indexPath) as! SYLifeManagerHeaderView
             
             if (indexPath.section == 0) {
-                headView.headLabel.text = "顶部模块";
+                headView.headLabel.text = "顶部模块 (不可编辑)";
             } else {
-                headView.headLabel.text = "底部模块";
+                headView.headLabel.text = "底部模块 (可编辑)";
             }
             
             return headView

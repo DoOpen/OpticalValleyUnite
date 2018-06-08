@@ -138,6 +138,9 @@ struct URLPath {
     /// uploadImg  新版上传接口
     /// workunit/imgs.do 旧版上传图片接口
     
+    ///选择排序的接口
+    static let saveUserModules = "module/saveUserModules.do"
+    
     
     ///获取签到记录
     static let getPersonSinList = "person/getPersonSinList.do"

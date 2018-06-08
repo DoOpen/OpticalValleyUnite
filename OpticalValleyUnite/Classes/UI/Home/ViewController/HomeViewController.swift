@@ -39,6 +39,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     var lastUpdateTime = Date().addingTimeInterval(-6.0 * 60.0)
     var workCount = 0
     var dubanCount = 0
+    ///新增子系统选择的id
+    var moduleId : String = ""
     
     /// 上面的4个按钮的拖线的事件
     @IBOutlet weak var top1BtnView: HomeBtnView!
@@ -414,6 +416,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     
         //注意的是:通过的是子系统选择的界面功能取消   URLPath.getModules 的网络请求
         let systemData = UserDefaults.standard.object(forKey: Const.YQSystemSelectData)
+        
         if  systemData == nil {
             
             return
@@ -427,6 +430,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         if systemSelection.count > 0 {
             
+            self.moduleId =  "\(systemSelection["id"] as! Int64)"
             
             let array : NSArray = systemSelection["appModules"] as! [[String : Any]] as NSArray
             let tempArray = NSMutableArray()
@@ -434,24 +438,25 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             var sortArray : NSMutableArray = {return NSMutableArray()}()
             
+            //算法注释不在需要排序
             //解决bug: 需要通过的是 "SORT" : 2 的值来进行对数据来重新排序
-            for _ in 0..<tempArray.count {
-                
-                for yyyy in 0..<tempArray.count - 1 {
-                
-                    let sortTemp = tempArray[yyyy] as! [String : Any]
-                    let SORT = sortTemp["sort"] as? Int
-                    
-                    let sortTemp1 = tempArray[yyyy + 1] as! [String : Any]
-                    let SORT1 = sortTemp1["sort"] as? Int
-
-                    if SORT! > SORT1! {
-                        //交换元素
-                        tempArray.exchangeObject(at: yyyy, withObjectAt: yyyy + 1)
-                        
-                    }
-                }
-            }
+//            for _ in 0..<tempArray.count {
+//
+//                for yyyy in 0..<tempArray.count - 1 {
+//
+//                    let sortTemp = tempArray[yyyy] as! [String : Any]
+//                    let SORT = sortTemp["sort"] as? Int
+//
+//                    let sortTemp1 = tempArray[yyyy + 1] as! [String : Any]
+//                    let SORT1 = sortTemp1["sort"] as? Int
+//
+//                    if SORT! > SORT1! {
+//                        //交换元素
+//                        tempArray.exchangeObject(at: yyyy, withObjectAt: yyyy + 1)
+//
+//                    }
+//                }
+//            }
             
             sortArray = tempArray
             
@@ -546,17 +551,74 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     func receiveNotes(){
         
         let center = NotificationCenter.default//创建通知
-        
         center.addObserver(self, selector: #selector(systemSelectionreceiveValue(info:)), name: NSNotification.Name(rawValue: "systemSelectionPassValue"), object: nil)//单个值得传递
         center.addObserver(self, selector: #selector(systemSelectionreceiveValue(info:)), name: NSNotification.Name(rawValue: "systemSelectionPassValue"), object: nil)
+        
+        //更新
+        let notiesName = NSNotification.Name(rawValue: "upDateUserModules")
+        center.addObserver(self, selector: #selector(upDateUserModulesFunction(notice :)), name: notiesName, object: nil)
+        
         
     }
     
     // MARK: - 通知实现的方法
-     func systemSelectionreceiveValue(info:NSNotification){
+    func systemSelectionreceiveValue(info:NSNotification){
         
         let dic = info.userInfo! as NSDictionary
         self.systemSelection = dic
+        
+    }
+    
+    func upDateUserModulesFunction( notice : NSNotification ){
+        
+        let notice = notice.userInfo!["bottomArray"] as! Array<PermissionModel>
+        self.downPermissionModels = notice
+        self.settopArry(topArry: self.topPermissionModels, donwArry: self.downPermissionModels)
+        self.allPermissionModels.removeAll()
+        self.allPermissionModels.append(contentsOf: self.topPermissionModels)
+        self.allPermissionModels.append(contentsOf: self.downPermissionModels)
+        
+        
+        //归档解档的重新的赋值
+        var systemData = UserDefaults.standard.object(forKey: Const.YQSystemSelectData) as? [String : Any]
+        
+        var array = Array<[String : Any]>()
+        for model in self.allPermissionModels{
+            var dcit = [String : Any]()
+            dcit["id"] = model.iD
+            dcit["appModuleName"] = model.aPPMODULENAME
+            dcit["sort"] = model.sORT
+            dcit["description"] = model.dESCRIPTION
+            dcit["isTop"] = model.iSTOP
+            dcit["openStatus"] = model.oPENSTATUS
+            array.append(dcit)
+        }
+        systemData?["appModules"] = array
+        
+        //UserDefaults.standard.removeObject(forKey: Const.YQSystemSelectData)
+        UserDefaults.standard.set(systemData, forKey: Const.YQSystemSelectData)
+        var allSystemData = UserDefaults.standard.object(forKey: Const.YQTotallData) as! Array<[String : Any]>
+        
+        let tempallSystemData = NSArray.init(array: allSystemData)
+        print(self.moduleId)
+        
+        for indexx in 0..<tempallSystemData.count {
+            
+            let dict = tempallSystemData[indexx] as! [String : Any]
+            
+            let stringID = dict["id"] as? Int64 ?? -1
+            //print(stringID)
+            //print(self.moduleId)
+            
+            if "\(stringID)" == self.moduleId {
+                
+                allSystemData.remove(at: indexx)
+                allSystemData.insert(systemData!, at: indexx)
+            }
+            
+        }
+        
+        UserDefaults.standard.set(allSystemData, forKey: Const.YQTotallData)
         
     }
     
@@ -690,6 +752,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             let vc = YQAllViewController()
             vc.topArray = self.topPermissionModels
             vc.bottomArray = self.downPermissionModels
+            vc.moduleId = self.moduleId
             navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -933,7 +996,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         let data = UserDefaults.standard.object(forKey: Const.YQTotallData) as? NSArray
         
-        if UserDefaults.standard.object(forKey: Const.YQTotallData) == nil {
+        if data == nil {
             
              LoginViewController.loginOut()
         }

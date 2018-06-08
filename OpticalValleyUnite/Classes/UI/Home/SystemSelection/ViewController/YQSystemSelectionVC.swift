@@ -197,7 +197,7 @@ class YQSystemSelectionVC: UIViewController {
         let token = UserDefaults.standard.object(forKey: Const.SJToken)
         parameters["token"] = token
         
-        Alamofire.request(URLPath.basicPath + URLPath.getSystemSelection, method: .post, parameters: parameters).responseJSON { (response) in
+        Alamofire.request(URLPath.newbasicPath + URLPath.getSystemSelection, method: .post, parameters: parameters).responseJSON { (response) in
             
             switch response.result {
                 

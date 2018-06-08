@@ -70,7 +70,10 @@ extension HttpClient {
         let bool24 = urlString.contains("house/get")
         let bool25 = urlString.contains("relative/list")
         
-        if bool1 || bool2 || bool3 || bool5 || bool6 || bool8 || bool10 || bool11 || bool12  || bool14 || bool15 || bool16 || bool17 || bool18 || bool19 || bool20 || bool21 || bool22 || bool23 || bool24 || bool25{
+        //sort编辑调试
+        let bool26 = urlString.contains("saveUserModules.do")
+        
+        if bool1 || bool2 || bool3 || bool5 || bool6 || bool8 || bool10 || bool11 || bool12  || bool14 || bool15 || bool16 || bool17 || bool18 || bool19 || bool20 || bool21 || bool22 || bool23 || bool24 || bool25 || bool26{
             
             allurl = URLPath.newbasicPath + urlString
             

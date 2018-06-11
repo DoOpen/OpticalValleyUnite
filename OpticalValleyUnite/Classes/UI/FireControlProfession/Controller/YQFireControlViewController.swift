@@ -171,46 +171,59 @@ class YQFireControlViewController: UIViewController {
     
         //1.设置leftBar图片和点击事件
         let image = UIImage(named : "icon_fire_admin")
-        let bnt = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         let user = User.currentUser()
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
         if let url = user?.avatar,url != ""{
             
             if url.contains("http") {
                 
-                bnt.kf.setBackgroundImage(with: URL(string: url), for: .normal, placeholder: image, options: nil, progressBlock: nil
-                    , completionHandler: nil)
+//                bnt.kf.setBackgroundImage(with: URL(string: url), for: .normal, placeholder: image, options: nil, progressBlock: nil
+//                    , completionHandler: nil)
+                
+//                imageView.kf.setImage(with: URL(string: url), for: .normal, placeholder: image, options: nil, progressBlock: nil, completionHandler: nil)
+                imageView.kf.setImage(with: URL(string: url), placeholder: image, options: nil, progressBlock: nil, completionHandler: nil)
                 
             }else{
                 
                 let basicPath = URLPath.systemSelectionURL
                 let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                 
-                bnt.kf.setBackgroundImage(with: URL(string: imageValue), for: .normal, placeholder: image, options: nil, progressBlock: nil
-                    , completionHandler: nil)
+//                bnt.kf.setBackgroundImage(with: URL(string: imageValue), for: .normal, placeholder: image, options: nil, progressBlock: nil
+//                    , completionHandler: nil)
+                
+                 imageView.kf.setImage(with: URL(string: imageValue), placeholder: image, options: nil, progressBlock: nil, completionHandler: nil)
             }
             
         }else {
             
             //没有头像的话就是 显示这个占位图
-            bnt.setImage(image, for: .normal)
+            imageView.image = image
+            
         }
-        
         //限制图片的拉伸情况
-        bnt.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        //bnt.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         
-        bnt.layer.cornerRadius = 20
-        bnt.layer.borderColor = UIColor.black.cgColor
-        bnt.layer.borderWidth = 1.0
-        bnt.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 20
+        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.layer.borderWidth = 1.0
+        imageView.layer.masksToBounds = true
         
-        bnt.addTarget(self, action:  #selector(leftBarButtonClick), for: UIControlEvents.touchUpInside)
+        let Tap = UITapGestureRecognizer()
+        Tap.addTarget(self, action: #selector(leftBarButtonClick))
+        view.addGestureRecognizer(Tap)
+        
+        view.addSubview(imageView)
+        //bnt.addTarget(self, action:  #selector(leftBarButtonClick), for: UIControlEvents.touchUpInside)
         
         //设置显示原始图片的情况
         // image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         // let item2=UIBarButtonItem(customView: btn1)
         // self.navigationItem.rightBarButtonItem=item2
-        let left = UIBarButtonItem(customView: bnt)
+        let left = UIBarButtonItem(customView: view)
         self.navigationItem.leftBarButtonItem = left
 
         //2.添加右边刷新按钮

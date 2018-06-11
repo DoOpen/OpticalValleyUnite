@@ -300,12 +300,12 @@ class YQAllWorkUnitScreenVC: UIViewController {
         
         sender.isSelected = true
         self.workOrderImplementButton.isSelected = false
+        self.workOrderSourcePersonButton.isUserInteractionEnabled = false
         
         let center = NotificationCenter.default
         let notiesName = NSNotification.Name(rawValue: "workerSiftPersonVCNotice")
         center.post(name: notiesName, object: nil)
         
-        self.workOrderSourcePersonButton.isUserInteractionEnabled = false
         
         self.coverView?.removeFromSuperview()
 
@@ -317,12 +317,11 @@ class YQAllWorkUnitScreenVC: UIViewController {
         
         sender.isSelected = true
         self.workOrderSourcePersonButton.isSelected = false
+        self.workOrderImplementButton.isUserInteractionEnabled = false
         
         let center = NotificationCenter.default
         let notiesName = NSNotification.Name(rawValue: "workerSiftPersonVCNotice")
         center.post(name: notiesName, object: nil, userInfo: ["type":"implement"])
-        
-        self.workOrderImplementButton.isUserInteractionEnabled = false
         
         self.coverView?.removeFromSuperview()
         

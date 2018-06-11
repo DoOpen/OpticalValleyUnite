@@ -105,8 +105,7 @@ class WorkOrderSiftViewController: UIViewController {
                     if WORKTYPE_ID == tag.id {
                         
                         self.workTypeTagsView.selectTag(at: index)
-                        
-                        
+
                     }
                 }
 
@@ -320,11 +319,11 @@ class WorkOrderSiftViewController: UIViewController {
     // MARK: - 工单生成人按钮点击的界面跳转
     @IBAction func workOrderSourcePersonBtnClick(_ sender: UIButton) {
         
+        self.newPersonButton.isUserInteractionEnabled = false
         let center = NotificationCenter.default
         let notiesName = NSNotification.Name(rawValue: "selectePersonVCNotice")
         center.post(name: notiesName, object: nil)
         
-        self.newPersonButton.isUserInteractionEnabled = false
     }
     
     

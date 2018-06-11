@@ -135,11 +135,12 @@ class YQEquipmentSiftVC: UIViewController {
     
     @IBAction func workOrderSourcePersonBtnClick(_ sender: UIButton) {
         
+        self.newPersonButton.isUserInteractionEnabled = false
+        
         let center = NotificationCenter.default
         let notiesName = NSNotification.Name(rawValue: "siftPersonVCNotice")
         center.post(name: notiesName, object: nil)
         
-        self.newPersonButton.isUserInteractionEnabled = false
         
     }
     

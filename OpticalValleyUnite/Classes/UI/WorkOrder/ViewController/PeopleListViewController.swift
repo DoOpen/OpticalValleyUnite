@@ -154,6 +154,8 @@ class PeopleListViewController: UIViewController {
                 SVProgressHUD.dismiss()
             })
             
+            return
+            
         }else{
             
             //新增一个选择执行人的类型

@@ -380,6 +380,8 @@ class WorkOrderViewController: UIViewController {
         //传递的是执行人的type,通过type来设置相应的 是 执行人还是协助人
         vc.type = 0 // "选择执行人" 的 type值
         vc.isWorkOrderSift = true
+        vc.parkId = getUserDefaultsProject()
+        
         //block的多对多
         vc.doneBtnClickHandel = siftVc?.didSelecte
         
@@ -387,6 +389,7 @@ class WorkOrderViewController: UIViewController {
         
     }
     
+   
     
     deinit {
         

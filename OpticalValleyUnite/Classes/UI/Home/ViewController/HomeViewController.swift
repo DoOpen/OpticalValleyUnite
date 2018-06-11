@@ -442,35 +442,35 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             //算法注释不在需要排序
             //解决bug: 需要通过的是 "SORT" : 2 的值来进行对数据来重新排序
-//            for _ in 0..<tempArray.count {
-//
-//                for yyyy in 0..<tempArray.count - 1 {
-//
-//                    let sortTemp = tempArray[yyyy] as! [String : Any]
-//                    let SORT = sortTemp["sort"] as? Int
-//
-//                    let sortTemp1 = tempArray[yyyy + 1] as! [String : Any]
-//                    let SORT1 = sortTemp1["sort"] as? Int
-//
-//                    if SORT! > SORT1! {
-//                        //交换元素
-//                        tempArray.exchangeObject(at: yyyy, withObjectAt: yyyy + 1)
-//
-//                    }
-//                }
-//            }
+            for _ in 0..<tempArray.count {
+
+                for yyyy in 0..<tempArray.count - 1 {
+
+                    let sortTemp = tempArray[yyyy] as! [String : Any]
+                    let SORT = sortTemp["sort"] as? Int
+
+                    let sortTemp1 = tempArray[yyyy + 1] as! [String : Any]
+                    let SORT1 = sortTemp1["sort"] as? Int
+
+                    if SORT! > SORT1! {
+                        //交换元素
+                        tempArray.exchangeObject(at: yyyy, withObjectAt: yyyy + 1)
+
+                    }
+                }
+            }
             
             sortArray = tempArray
             
             //设置权限的模块功能
             self.setPermission(arry: sortArray as! Array<[String : Any]> )
             
-            if sortArray.count > 1 {
+            if topPermissionModels.count > 1 {
                 
-                let app = sortArray[0] as! [String : Any]
+                let app = topPermissionModels[0]
 //                let app_res = app["app_res"] as? NSArray
 //                let temp = app_res?[0] as? [String : Any]
-                let reportName = (app["appModuleName"] as? String)!
+                let reportName = app.aPPMODULENAME
                 
                 //设置保存电梯和普通的报事全局保存
                 UserDefaults.standard.set(reportName, forKey: Const.YQReportName)
@@ -1011,10 +1011,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         //跳转到子系统的选择界面(需要的是逻辑的判断) 如果是只有一条数据的话,直接调到登录界面
         if (data?.count)! > 1{
             
+            UserDefaults.standard.removeObject(forKey: Const.YQTotallData)
+            
             let systemVC = YQSystemSelectionVC(nibName: "YQSystemSelectionVC", bundle: nil)
             SJKeyWindow?.rootViewController = systemVC
-
-        
+            //移除重新加载数据
+            
         }else{// 跳转到登录界面
             
             LoginViewController.loginOut()

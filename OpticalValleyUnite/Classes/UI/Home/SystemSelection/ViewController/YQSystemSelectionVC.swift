@@ -167,7 +167,7 @@ class YQSystemSelectionVC: UIViewController {
         //逻辑判断:如果有缓存的话,就不需要请求
         let data = UserDefaults.standard.object(forKey: Const.YQTotallData)
         
-        if data == nil {
+        if data == nil  {
             
             self.systemSelectionNetworkInterface()
             

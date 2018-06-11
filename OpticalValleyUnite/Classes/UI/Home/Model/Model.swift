@@ -1121,7 +1121,7 @@ class SignModel{
 
 class PermissionModel {
     let iD: String
-    let sORT: Int
+    var sORT: Int
     let dESCRIPTION: String
     let iSTOP: Int
     let aPPMODULENAME: String

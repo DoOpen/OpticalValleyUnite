@@ -195,11 +195,11 @@ class WorkOrderSiftViewController: UIViewController {
             workOrderNameLabel.text = text
         }
         
-        if let text = self.siftParmat?["EXEC_PERSON_ID"] as? String,text != ""{// SOURCE_PERSON_NAME
+        if let text = self.siftParmat?["SOURCE_PERSON_ID"] as? String,text != ""{// SOURCE_PERSON_NAME
             
             workOrderSourcePersonLabel.text = text
         }
-        if let text = self.siftParmat?["EXEC_PERSON_NAME"] as? String,text != ""{// SOURCE_PERSON_NAME
+        if let text = self.siftParmat?["SOURCE_PERSON_NAME"] as? String,text != ""{// SOURCE_PERSON_NAME
             
             newPersonButton.setTitle(text, for: .normal)
         }
@@ -423,11 +423,11 @@ class WorkOrderSiftViewController: UIViewController {
         }
         if let text = workOrderSourcePersonLabel.text,text != ""{
             
-            paramert["EXEC_PERSON_ID"] = text
+            paramert["SOURCE_PERSON_ID"] = text
         }
         if let text = newPersonButton.titleLabel?.text,text != ""{
             
-            paramert["EXEC_PERSON_NAME"] = text
+            paramert["SOURCE_PERSON_NAME"] = text
         }
         
         

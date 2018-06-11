@@ -352,6 +352,9 @@ extension YQAllViewController : UICollectionViewDelegate,UICollectionViewDataSou
         let model  = self.bottomArray[formPath.row];
         //先把移动的这个model移除
         self.bottomArray.remove(at: formPath.row)
+        
+        //let toPathModel = self.bottomArray[toPath.row]
+        
         //再把这个移动的model插入到相应的位置
         self.bottomArray.insert(model, at: toPath.row)
         

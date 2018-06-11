@@ -23,7 +23,7 @@ class YQHouseRelativeModel: NSObject {
     
     // 租户的信息的查询情况
     // 与业主的关系
-    var typeName = ""
+    var typeName = "租户"
     // 租户电话
     var tenantTel = ""
     // 租户姓名

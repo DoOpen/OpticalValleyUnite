@@ -782,8 +782,8 @@ class ParkInfoModel{
         
         id = parmart["id"] as? String ?? ""
         //后面的层级都是id的情况
-//        STAGE_ID = parmart["id"] as? String ?? ""
-//        FLOOR_ID = parmart["id"] as? String ?? ""
+        STAGE_ID = parmart["app_need_stage"] as? String ?? ""
+        FLOOR_ID = parmart["app_need_floor"] as? String ?? ""
         tempName = parmart["text"] as? String ?? ""
         name = tempName
         

@@ -104,6 +104,7 @@ class PeopleListViewController: UIViewController {
         if isgroup == 2 {//集团版
             
         }else{//项目版
+            
             parmat["parkId"] = parkId
         }
         
@@ -152,7 +153,6 @@ class PeopleListViewController: UIViewController {
                 
                 SVProgressHUD.dismiss()
             })
-            
             
         }else{
             

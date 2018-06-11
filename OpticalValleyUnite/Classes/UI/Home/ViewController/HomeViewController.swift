@@ -12,6 +12,7 @@ import Photos
 import Alamofire
 import SnapKit
 import CoreMotion
+import KYDrawerController
 
 let KDistence = 25.0
 let KTime = 60 * 20
@@ -813,12 +814,12 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     //  注意的是 有待办的事项没有设置过来
     func actionPush(text:String){
         switch text {
+            
         case "报事":
-            
             let vc = UIStoryboard(name: "ReportMaster", bundle: nil).instantiateInitialViewController()
-            
             navigationController?.pushViewController(vc!, animated: true)
-//            surveillanceWorkOrderBtnClick()
+            //            surveillanceWorkOrderBtnClick()
+            
         case "电梯报事":
             
             let vc = UIStoryboard(name: "ReportMaster", bundle: nil).instantiateInitialViewController()
@@ -827,46 +828,60 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             
         case "工单":
             
-            let WO = UIStoryboard.instantiateInitialViewController(name: "YQWorkOrderFirst")
-            navigationController?.pushViewController(WO, animated: true)
+            let vc = UIStoryboard(name: "YQWorkOrderFirst", bundle: nil).instantiateInitialViewController()
+            navigationController?.pushViewController(vc!, animated: true)
             
         case "签到":
-            
             let vc = UIStoryboard(name: "SignIn", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)
             
         case "定位":
-            
             let vc = UIStoryboard(name: "Map", bundle: nil).instantiateInitialViewController()
             navigationController?.pushViewController(vc!, animated: true)
             
         case "扫描":
-            
             scanBtnClick()
-//            surveillanceWorkOrderBtnClick()
-        case "督办":
+            //            surveillanceWorkOrderBtnClick()
             
+        case "督办":
             surveillanceWorkOrderBtnClick()
             
         case "日志":
             //测试日志模块
             let journa = UIStoryboard.instantiateInitialViewController(name: "YQJournal")
-            
-//            navigationController?.pushViewController(journa, animated: true)
             self.present(journa, animated: true, completion: nil)
             
         case "计步器":
             
             let step = UIStoryboard.instantiateInitialViewController(name: "YQPedometerVC")
-            
-            //            navigationController?.pushViewController(journa, animated: true)
             self.present(step, animated: true, completion: nil)
-        
+            
+        case "视频巡查":
+            // 调试视频巡查的内容
+            let Video = UIStoryboard.instantiateInitialViewController(name: "YQVideoPatrol")
+            let mainViewController   = Video
+            let drawerViewController = YQVideoDrawerViewController()
+            // 初始化drawer抽屉的情况
+            let drawerController     = KYDrawerController(drawerDirection: .right, drawerWidth: 300)
+            drawerController.mainViewController =  mainViewController
+            
+            drawerController.drawerViewController = drawerViewController
+            self.present(drawerController, animated: true, completion: nil)
+            
+        case "巡查结果":
+            let videoResult = UIStoryboard.instantiateInitialViewController(name: "YQPatrolResult")
+            self.present(videoResult, animated: true, completion: nil)
+            
+            
+        case "门禁":
+            let door = UIStoryboard.instantiateInitialViewController(name: "YQIntoDoor")
+            self.present(door, animated: true, completion: nil)
+            
         case "工作报告":
             
             let report = YQReportFormFirstVC.init(nibName: "YQReportFormFirstVC", bundle: nil)
             self.navigationController?.pushViewController(report, animated: true)
-        
+            
         case "房屋管理" :
             let house = UIStoryboard.instantiateInitialViewController(name: "YQHouseHome")
             self.navigationController?.pushViewController(house, animated: true)
@@ -874,15 +889,15 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         case "装修管理" :
             let decoration = UIStoryboard.instantiateInitialViewController(name: "YQDecorationHome")
             self.navigationController?.pushViewController(decoration, animated: true)
-        
+            
         case "设备房" :
             let equipVC = YQEquipmentFristVC.init(nibName: "YQEquipmentFristVC", bundle: nil)
-             self.navigationController?.pushViewController(equipVC, animated: true)
+            self.navigationController?.pushViewController(equipVC, animated: true)
             
         case "工单查询" :
             let allWorkUnit = UIStoryboard.instantiateInitialViewController(name: "YQAllWorkUnitHome")
             self.navigationController?.pushViewController(allWorkUnit, animated: true)
-
+            
         case "总经理邮箱" :
             
             let generalMailVC = YQGeneralManagerFirstVC.init(nibName: "YQGeneralManagerFirstVC", bundle: nil)

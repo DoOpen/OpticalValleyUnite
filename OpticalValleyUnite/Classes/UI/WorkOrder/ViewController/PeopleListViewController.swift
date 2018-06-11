@@ -109,7 +109,8 @@ class PeopleListViewController: UIViewController {
         }
         
         if isWorkOrderSift {
-            
+            //集团版有项目的时候也要查出 项目的人员
+            parmat["parkId"] = parkId
             HttpClient.instance.post(path: URLPath.getPersonQuery, parameters: parmat, success: { (response) in
                 
                 SVProgressHUD.dismiss()

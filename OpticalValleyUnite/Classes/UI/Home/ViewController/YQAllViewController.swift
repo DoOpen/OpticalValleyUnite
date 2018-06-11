@@ -25,6 +25,8 @@ class YQAllViewController: UIViewController {
     
     var moduleId = ""
     
+    var flishUpDateBtnClickHandel: (([String: Any]) -> ())?
+    
     
     lazy var collectionView : UICollectionView = {
         
@@ -128,17 +130,24 @@ class YQAllViewController: UIViewController {
             SVProgressHUD.dismiss()
             SVProgressHUD.showSuccess(withStatus: "保存成功!")
             
+            if let block = self.flishUpDateBtnClickHandel{
+                
+                block(["bottomArray" : self.bottomArray])
+            }
             self.navigationController?.popViewController(animated: true)
+            
             
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "保存失败,请检查网络!")
+            
+            btn.isUserInteractionEnabled = true
         }
         
-        //重新传值,归档解档(通知赋值)
-        let center = NotificationCenter.default
-        let notiesName = NSNotification.Name(rawValue: "upDateUserModules")
-        center.post(name: notiesName, object: nil, userInfo: ["bottomArray" : self.bottomArray])
+        //重新传值,归档解档(通知赋值,解决通知的多次的传值的swift bug)
+//        let center = NotificationCenter.default
+//        let notiesName = NSNotification.Name(rawValue: "upDateUserModules")
+//        center.post(name: notiesName, object: nil, userInfo: ["bottomArray" : self.bottomArray])
         
         
     }

@@ -78,6 +78,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     var locaCity : String = ""
     var weatherTvc : UITableViewController?
     
+    var AllVc : YQAllViewController?
+    
     ///计步器的功能模块属性
     //设置注册 计步设备的
     lazy var counter = { () -> CMPedometer
@@ -554,10 +556,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         center.addObserver(self, selector: #selector(systemSelectionreceiveValue(info:)), name: NSNotification.Name(rawValue: "systemSelectionPassValue"), object: nil)//单个值得传递
         center.addObserver(self, selector: #selector(systemSelectionreceiveValue(info:)), name: NSNotification.Name(rawValue: "systemSelectionPassValue"), object: nil)
         
-        //更新
-        let notiesName = NSNotification.Name(rawValue: "upDateUserModules")
-        center.addObserver(self, selector: #selector(upDateUserModulesFunction(notice :)), name: notiesName, object: nil)
-        
         
     }
     
@@ -569,9 +567,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
     }
     
-    func upDateUserModulesFunction( notice : NSNotification ){
+    func upDateUserModulesFunction( notice : [String : Any] ){
         
-        let notice = notice.userInfo!["bottomArray"] as! Array<PermissionModel>
+        
+        let notice = notice["bottomArray"] as! Array<PermissionModel>
         self.downPermissionModels = notice
         self.settopArry(topArry: self.topPermissionModels, donwArry: self.downPermissionModels)
         self.allPermissionModels.removeAll()
@@ -607,8 +606,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             let dict = tempallSystemData[indexx] as! [String : Any]
             
             let stringID = dict["id"] as? Int64 ?? -1
-            //print(stringID)
-            //print(self.moduleId)
             
             if "\(stringID)" == self.moduleId {
                 
@@ -753,7 +750,16 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             vc.topArray = self.topPermissionModels
             vc.bottomArray = self.downPermissionModels
             vc.moduleId = self.moduleId
+            self.AllVc = vc
+            //vc.flishUpDateBtnClickHandel
+            
             navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        self.AllVc?.flishUpDateBtnClickHandel = { parmert in
+            
+            self.upDateUserModulesFunction(notice: parmert)
+            
         }
         
     }

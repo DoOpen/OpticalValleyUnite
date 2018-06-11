@@ -39,7 +39,7 @@ class YQHouseHomeDetailVC: UIViewController {
         
         var par = [String : Any]()
         
-        par["houseId"] = self.houseModel?.houseId
+        par["houseId"] = self.houseModel?.id
         self.houseNum.text = self.houseModel?.houseCode
         
         SVProgressHUD.show()
@@ -82,7 +82,7 @@ extension YQHouseHomeDetailVC : UITableViewDelegate,UITableViewDataSource{
             case "业主亲属&租户":
                 let relativesTenantVC = UIStoryboard.instantiateInitialViewController(name: "YQHouseRelativesAndTenant") as! YQHouseRelativesAndTenantVC
                 
-                relativesTenantVC.houseID =  self.houseModel?.houseId
+                relativesTenantVC.houseID =  self.houseModel?.id
                 
                 navigationController?.pushViewController(relativesTenantVC, animated: true)
                 break
@@ -91,7 +91,7 @@ extension YQHouseHomeDetailVC : UITableViewDelegate,UITableViewDataSource{
                 
                 let equipmentVC = UIStoryboard.instantiateInitialViewController(name: "YQEquipmentListTVC") as! YQEquipmentListTVC
                 
-                equipmentVC.houseID = self.houseModel?.houseId
+                equipmentVC.houseID = self.houseModel?.id
                 navigationController?.pushViewController(equipmentVC, animated: true)
                 
                 break
@@ -99,7 +99,7 @@ extension YQHouseHomeDetailVC : UITableViewDelegate,UITableViewDataSource{
             case "工单列表":
                 
                 let workVC = UIStoryboard.instantiateInitialViewController(name: "YQWorkListVC") as! YQWorkListVC
-                workVC.houseID = self.houseModel?.houseId
+                workVC.houseID = self.houseModel?.id
                 
                 navigationController?.pushViewController(workVC, animated: true)
                 break

@@ -17,8 +17,8 @@ class YQHouseQueryHomeModel: NSObject {
     //房间名称（项目下房屋时返回）
     var houseName = ""
     
-    //详情houseID
-    var houseId = ""
+    //详情houseID(再次废弃这个ID)
+//    var houseId = ""
     
     //业主id
     var ownerIds = ""

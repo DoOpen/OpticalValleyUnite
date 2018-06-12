@@ -67,7 +67,7 @@ extension HttpClient {
         let bool22 = urlString.contains("getHouse.do")
         //房屋查询的pcos转base
         let bool23 = urlString.contains("owner/list")
-        let bool24 = urlString.contains("house/get")
+        let bool24 = urlString.contains("owner/house/get")
         let bool25 = urlString.contains("relative/list")
         
         //sort编辑调试

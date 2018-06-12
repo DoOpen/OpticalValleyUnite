@@ -1265,11 +1265,6 @@ extension ExecutingViewConttroller: UITableViewDelegate, UITableViewDataSource{
             self?.tableView.reloadData()
             try! realm.commitWrite()
             
-            if (self?.backDB)! {
-                
-                SVProgressHUD.showSuccess(withStatus: "保存成功!")
-                
-            }
         }
 
         return view

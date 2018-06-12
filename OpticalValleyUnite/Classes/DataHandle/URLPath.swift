@@ -49,6 +49,8 @@ struct URLPath {
     
     ///正式服的域名链接: http://ovuems.com
     ///测试服的域名链接: http://ovuems.com/ovu-base
+    ///  "http://pub.ovuems.com"
+    
     
     //服务器的basicBasicPath
     static let basicBasic = "http://pub.ovuems.com"

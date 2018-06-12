@@ -387,6 +387,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                             
                         }
                         
+                        self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleNone, value: 0, at: 1)
                         self.downloadButton.isUserInteractionEnabled = true
                         self.uploadButton.isUserInteractionEnabled = true
                     }

@@ -31,6 +31,8 @@
 #import "NSData+YYExtend.h"
 #import "NSString+YYExtend.h"
 
+#import "UITabBar+CustomBadge.h"
+
 // U-Share核心SDK
 #import <UMSocialCore/UMSocialCore.h>
 
@@ -40,7 +42,7 @@
 //日历的框架
 #import "FSCalendar.h"
 
-//
+//collcetionView的布局控件
 #import "SYLIfeManagerFooterView.h"
 #import "SYLifeManagerHeaderView.h"
 #import "SYLifeManagerLayout.h"

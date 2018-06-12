@@ -45,6 +45,7 @@
 		2F1F443F202A9E5400F9F51C /* YQLocationDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1F443D202A9E5400F9F51C /* YQLocationDetailsVC.xib */; };
 		2F2141961FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2141951FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift */; };
 		2F2141981FBD409A00EFFD36 /* YQPedometerHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2141971FBD409A00EFFD36 /* YQPedometerHistory.storyboard */; };
+		2F23530820CFA599001C5AAF /* UITabBar+CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F23530720CFA599001C5AAF /* UITabBar+CustomBadge.m */; };
 		2F236B701F6FADF700F1B0DF /* YQPersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */; };
 		2F236B721F6FE40300F1B0DF /* YQfireMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */; };
 		2F236B741F6FEA1B00F1B0DF /* YQFireDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */; };
@@ -596,6 +597,8 @@
 		2F1F443D202A9E5400F9F51C /* YQLocationDetailsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQLocationDetailsVC.xib; sourceTree = "<group>"; };
 		2F2141951FBD405F00EFFD36 /* YQPedometerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPedometerHistoryViewController.swift; sourceTree = "<group>"; };
 		2F2141971FBD409A00EFFD36 /* YQPedometerHistory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPedometerHistory.storyboard; sourceTree = "<group>"; };
+		2F23530620CFA599001C5AAF /* UITabBar+CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+CustomBadge.h"; sourceTree = "<group>"; };
+		2F23530720CFA599001C5AAF /* UITabBar+CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+CustomBadge.m"; sourceTree = "<group>"; };
 		2F236B6F1F6FADF700F1B0DF /* YQPersonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQPersonDetail.storyboard; sourceTree = "<group>"; };
 		2F236B711F6FE40300F1B0DF /* YQfireMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQfireMessage.swift; sourceTree = "<group>"; };
 		2F236B731F6FEA1B00F1B0DF /* YQFireDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireDetailCell.swift; sourceTree = "<group>"; };
@@ -2562,6 +2565,8 @@
 		4BD4B9181E272EA600AE2BC9 /* Extention */ = {
 			isa = PBXGroup;
 			children = (
+				2F23530620CFA599001C5AAF /* UITabBar+CustomBadge.h */,
+				2F23530720CFA599001C5AAF /* UITabBar+CustomBadge.m */,
 				4B3951F41E28B64A00E2642F /* UILabel+SJColor.h */,
 				4B3951F51E28B64A00E2642F /* UILabel+SJColor.m */,
 				4BD4B9191E272EA600AE2BC9 /* Extention.swift */,
@@ -3254,6 +3259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F23530820CFA599001C5AAF /* UITabBar+CustomBadge.m in Sources */,
 				2F9F610C20479D6F00CD9B75 /* YQEquipHomeListModel.swift in Sources */,
 				4B5AF64A1E36F73B00844F3D /* LoginViewController.swift in Sources */,
 				2F3C093F1F72623000036547 /* YQImplementDetailHeadView.swift in Sources */,

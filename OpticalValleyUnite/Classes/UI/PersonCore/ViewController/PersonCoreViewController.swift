@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreMotion
-
+import RealmSwift
 
 class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
 
@@ -80,6 +80,9 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         //设置用户信息
         setupUserData()
+        
+        //离线工单的显示和隐藏情况
+        setUpLineoffWorkOrderPrompt()
       
     }
     
@@ -281,7 +284,6 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     }
     
     
-
     @IBAction func checkNewBtnClick() {
         
         self.checkNewBundleVersion(isBlack: false)
@@ -342,8 +344,27 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             })
         }
     }
-
     
+    // MARK: - 设置添加离线工单的回显的数量
+    func setUpLineoffWorkOrderPrompt(){
+        
+        let realm = try! Realm()
+        let compelte = realm.objects(saveAndCompelteWorkIDModel.self)
+        
+        if !compelte.isEmpty && compelte.count > 1 {
+            
+            self.OfflineLabel.isHidden = true
+            self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleNone, value: 0, at: 1)
+            
+        }else{
+            
+            self.OfflineLabel.isHidden = false
+        }
+        
+        
+    }
+
+
 }
 
 protocol CheckNewBundleVersionProtocol {

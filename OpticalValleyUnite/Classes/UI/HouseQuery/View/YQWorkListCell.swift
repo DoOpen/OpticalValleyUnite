@@ -34,16 +34,20 @@ class YQWorkListCell: UITableViewCell {
     var model : YQWorkListModel?{
         didSet{
             
-            //工单编号
-            self.workNameLabel.text = model?.id
+            
             
             if selectTag == 2 {
                 
                 self.workStateButton.setTitle(model?.applyStatusName, for: .normal)
                 
+                //报装申请名称!
+                self.workNameLabel.text = model?.workunitName
+                
             }else{
                 
                 self.workStateButton.setTitle(model?.unitStatusName, for: .normal)
+                //工单编号
+                self.workNameLabel.text = model?.id
             }
             
             self.timeLabel.text = "执行人:" +  (model?.personName)!

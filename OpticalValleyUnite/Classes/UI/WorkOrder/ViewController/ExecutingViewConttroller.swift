@@ -466,6 +466,9 @@ class ExecutingViewConttroller: UIViewController {
                 realm.add(saveAndCompelete)
                 SVProgressHUD.showSuccess(withStatus: "工单保存成功!")
             }
+            
+            //添加小红点情况
+            self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleRedDot, value: 0, at: 1)
 
             return
         }

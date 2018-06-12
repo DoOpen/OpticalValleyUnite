@@ -51,6 +51,7 @@ class YQGeneralManagerFirstVC: UIViewController {
                     self.checkOutViewHeight.constant = 1
                     
                 }else{//经理和总经理 只有查看权限
+                    
                     self.feedBackView.isHidden = true
                     
                 }
@@ -59,7 +60,10 @@ class YQGeneralManagerFirstVC: UIViewController {
 
         }) { (error) in
 
-            SVProgressHUD.showError(withStatus: "获取网络数据失败,请检查网络!")
+            self.checkOutView.isHidden = true
+            self.feedBackView.isHidden = true
+            
+            SVProgressHUD.showError(withStatus: "获取权限失败,请检查网络!")
         }
         
     }

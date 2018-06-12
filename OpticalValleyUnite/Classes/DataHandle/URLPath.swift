@@ -28,6 +28,8 @@ import Foundation
  
  8.添加的 EMS_3.0 版本的接口:  http://47.98.171.192:8000/
  
+ 9. ems最新的bate环境 : http://pub.ovuems.com/
+ 
  */
 
 
@@ -49,7 +51,7 @@ struct URLPath {
     ///测试服的域名链接: http://ovuems.com/ovu-base
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://172.16.11.81:5678"
+    static let basicBasic = "http://pub.ovuems.com"
     
     
     //服务器的basic 地址:

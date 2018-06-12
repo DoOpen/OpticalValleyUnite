@@ -299,7 +299,7 @@ class YQSystemSelectionVC: UIViewController {
         if tap.tapIndex >= dataArray.count {
             
             //最后一个是显示的图标
-//             return
+             return
             
 //            // 调试视频巡查的内容
 //            let Video = UIStoryboard.instantiateInitialViewController(name: "YQVideoPatrol")
@@ -356,9 +356,9 @@ class YQSystemSelectionVC: UIViewController {
 //            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: knowledgeFirstVC)
             
             //首页架构
-            let OneVC = YQAllViewController()
-            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: OneVC)
-            SJKeyWindow?.rootViewController = sjKnowledgeFirstVC
+//            let OneVC = YQAllViewController()
+//            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: OneVC)
+//            SJKeyWindow?.rootViewController = sjKnowledgeFirstVC
             
         }else if tap.tapIndex == fireindex {//消防的界面的跳转的情况
             

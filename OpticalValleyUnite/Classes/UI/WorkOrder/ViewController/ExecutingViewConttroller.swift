@@ -138,6 +138,11 @@ class ExecutingViewConttroller: UIViewController {
             //只有的是 电梯报事中才又配件库的选择功能
             hiddenReportFromWorkOrder()
             
+            if backDB {
+                
+                setupRightAndLeftBarItem()
+            }
+            
         }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单,里面没有配件的功能
             emergencyView.isHidden = false
             saveBtn.isHidden = true
@@ -192,7 +197,6 @@ class ExecutingViewConttroller: UIViewController {
                 
             }
             
-    
         }
         
         if let model = hisriyModel{
@@ -209,6 +213,24 @@ class ExecutingViewConttroller: UIViewController {
         
         // 接受通知
         receiveNotes()
+        
+    }
+    
+    // MARK: - 自定义的right_left barItem
+    func setupRightAndLeftBarItem(){
+        
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"ic_return"),
+                                                            style:.plain, target:self, action: #selector(leftBarItemButtonClick))
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+    }
+    
+    func leftBarItemButtonClick() {
+        
+        self.saveBtnClick()
+        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -459,6 +481,8 @@ class ExecutingViewConttroller: UIViewController {
             
             realm.beginWrite()
             result?.save = true
+            result?.complete = false
+            
             try! realm.commitWrite()
             
             try! realm.write {

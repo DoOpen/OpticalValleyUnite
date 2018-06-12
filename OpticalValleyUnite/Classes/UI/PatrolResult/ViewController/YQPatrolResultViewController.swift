@@ -258,18 +258,18 @@ extension YQPatrolResultViewController : UITableViewDelegate,UITableViewDataSour
         
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let view = Bundle.main.loadNibNamed("YQResultCellHead", owner: nil, options: nil)?[0] as? YQResultCellHeadView
-        
-        return view
-    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return 50
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//
+//        let view = Bundle.main.loadNibNamed("YQResultCellHead", owner: nil, options: nil)?[0] as? YQResultCellHeadView
+//
+//        return view
+//    }
+//
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//
+//        return 50
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

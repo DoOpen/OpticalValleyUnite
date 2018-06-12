@@ -401,7 +401,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                 
             }else{
             
-                SVProgressHUD.showError(withStatus: "没有完成的工单可以上传!")
+                SVProgressHUD.showError(withStatus: "没有完成的工单,可以上传!")
             }
             
         }

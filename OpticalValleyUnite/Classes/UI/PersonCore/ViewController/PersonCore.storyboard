@@ -286,6 +286,12 @@
                                                             <constraint firstAttribute="width" constant="25" id="W6c-Eb-T4x"/>
                                                         </constraints>
                                                     </imageView>
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有未上传的离线工单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiR-LX-YpT">
+                                                        <rect key="frame" x="203.5" y="15" width="110.5" height="14.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pg2-Df-i4K">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                         <connections>
@@ -300,11 +306,13 @@
                                                     <constraint firstAttribute="trailing" secondItem="Pg2-Df-i4K" secondAttribute="trailing" id="N4z-85-gDd"/>
                                                     <constraint firstAttribute="trailing" secondItem="unA-Xn-vxy" secondAttribute="trailing" constant="15" id="UbK-KZ-Ao2"/>
                                                     <constraint firstItem="oVY-9A-7R0" firstAttribute="leading" secondItem="rwy-xP-mT0" secondAttribute="leading" constant="12" id="c0Q-KB-uzH"/>
+                                                    <constraint firstItem="LiR-LX-YpT" firstAttribute="centerY" secondItem="rwy-xP-mT0" secondAttribute="centerY" id="kdZ-m5-jSS"/>
                                                     <constraint firstItem="reS-YB-2La" firstAttribute="centerY" secondItem="rwy-xP-mT0" secondAttribute="centerY" id="lNU-Sf-jvE"/>
                                                     <constraint firstAttribute="height" constant="44" id="mgf-0x-jI1"/>
                                                     <constraint firstAttribute="bottom" secondItem="Pg2-Df-i4K" secondAttribute="bottom" id="nO9-9J-lr1"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="oTo-kA-bzG"/>
                                                     <constraint firstItem="oVY-9A-7R0" firstAttribute="centerY" secondItem="rwy-xP-mT0" secondAttribute="centerY" id="riG-zl-Akj"/>
+                                                    <constraint firstItem="unA-Xn-vxy" firstAttribute="leading" secondItem="LiR-LX-YpT" secondAttribute="trailing" constant="5" id="sUg-L9-Z0X"/>
                                                     <constraint firstItem="unA-Xn-vxy" firstAttribute="centerY" secondItem="rwy-xP-mT0" secondAttribute="centerY" id="ve5-CH-TOJ"/>
                                                     <constraint firstItem="Pg2-Df-i4K" firstAttribute="leading" secondItem="rwy-xP-mT0" secondAttribute="leading" id="x0h-zt-4cw"/>
                                                 </constraints>
@@ -463,6 +471,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="K3Y-Lr-cyw"/>
                     <connections>
+                        <outlet property="OfflineLabel" destination="LiR-LX-YpT" id="Evp-MI-qUu"/>
                         <outlet property="bundleVersionLabel" destination="xiD-60-gI4" id="CUE-pb-1JW"/>
                         <outlet property="headViewConstraint" destination="Ve4-vv-myU" id="8BQ-RL-CJh"/>
                         <outlet property="nickNameLabel" destination="Oyz-p8-faX" id="aiB-Ab-4eP"/>

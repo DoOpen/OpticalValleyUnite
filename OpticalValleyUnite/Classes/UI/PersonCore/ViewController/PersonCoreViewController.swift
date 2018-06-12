@@ -24,6 +24,11 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     
     @IBOutlet weak var starLabel: UILabel!
     
+    //新增添加 为上传的离线工单
+    @IBOutlet weak var OfflineLabel: UILabel!
+    
+    
+    
     
     var userNameMaxY : CGFloat = 0{
         

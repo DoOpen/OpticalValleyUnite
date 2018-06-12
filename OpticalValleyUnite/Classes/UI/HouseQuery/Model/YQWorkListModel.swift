@@ -37,6 +37,8 @@ class YQWorkListModel: NSObject {
     var parkName = ""
     //工单描述没有写
     
+    //审核状态名称 报装的工单的情况!
+    var applyStatusName = ""
   
     
     init(dict : [String : Any] ) {

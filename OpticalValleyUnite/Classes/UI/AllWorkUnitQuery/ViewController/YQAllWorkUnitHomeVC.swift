@@ -155,6 +155,7 @@ class YQAllWorkUnitHomeVC: UIViewController {
          */
         vc.doneBtnClickHandel = { parmat in
 
+            self.parkID = self.setUpProjectNameLable()
             if parmat.isEmpty{//为空的话
                 
                 self.siftsiftParmat = nil
@@ -171,6 +172,7 @@ class YQAllWorkUnitHomeVC: UIViewController {
             
             subView?.superview?.removeFromSuperview()
             self.siftVc = nil
+            
         }
 
     }

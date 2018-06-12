@@ -30,6 +30,9 @@ class YQGeneralManagerFirstVC: UIViewController {
         
         getGeneralRuleForService()
         
+        //默认隐藏
+        self.checkOutView.isHidden = true
+        self.feedBackView.isHidden = true
         
     }
     
@@ -47,12 +50,12 @@ class YQGeneralManagerFirstVC: UIViewController {
                 
                 if (ruleNum == 3){//其他只有反馈功能
                     
-                    self.checkOutView.isHidden = true
+                    self.feedBackView.isHidden = false
                     self.checkOutViewHeight.constant = 1
                     
                 }else{//经理和总经理 只有查看权限
                     
-                    self.feedBackView.isHidden = true
+                    self.checkOutView.isHidden = false
                     
                 }
                 
@@ -60,9 +63,6 @@ class YQGeneralManagerFirstVC: UIViewController {
 
         }) { (error) in
 
-            self.checkOutView.isHidden = true
-            self.feedBackView.isHidden = true
-            
             SVProgressHUD.showError(withStatus: "获取权限失败,请检查网络!")
         }
         

@@ -18,7 +18,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="412" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="处理答复:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFh-EJ-lQg">
-                            <rect key="frame" x="15" y="10" width="74" height="21"/>
+                            <rect key="frame" x="0.0" y="10" width="74" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                         <constraint firstItem="Q0Z-53-bfc" firstAttribute="leading" secondItem="64a-p5-EGO" secondAttribute="leading" id="ZqR-Hq-XWA"/>
                         <constraint firstAttribute="trailing" secondItem="Q0Z-53-bfc" secondAttribute="trailing" id="fJp-5p-bwr"/>
                         <constraint firstItem="oFh-EJ-lQg" firstAttribute="centerY" secondItem="64a-p5-EGO" secondAttribute="centerY" id="lyt-Bw-wBD"/>
-                        <constraint firstItem="oFh-EJ-lQg" firstAttribute="leading" secondItem="64a-p5-EGO" secondAttribute="leading" constant="15" id="y1E-uS-Sst"/>
+                        <constraint firstItem="oFh-EJ-lQg" firstAttribute="leading" secondItem="64a-p5-EGO" secondAttribute="leading" id="y1E-uS-Sst"/>
                     </constraints>
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B4K-xZ-xwk">

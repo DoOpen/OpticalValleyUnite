@@ -82,9 +82,10 @@ class YQPatrolResultViewController: UIViewController {
             if array == nil  {
                 
                 SVProgressHUD.showError(withStatus: "查询数据为空")
-                self.dataArray.removeAll()
                 self.tableView.mj_header.endRefreshing()
                 self.tableView.mj_footer.endRefreshing()
+                
+                self.dataArray.removeAll()
                 return
                 
             }
@@ -93,7 +94,7 @@ class YQPatrolResultViewController: UIViewController {
             var temp = [YQResultCellModel]()
             
             for dic in array! {
-                
+
                 temp.append(YQResultCellModel.init(dict: dic as! [String : Any]))
             }
 

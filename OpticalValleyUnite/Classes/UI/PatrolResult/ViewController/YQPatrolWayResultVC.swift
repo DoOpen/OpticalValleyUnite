@@ -38,6 +38,7 @@ class YQPatrolWayResultVC: UIViewController {
         HttpClient.instance.post(path:URLPath.getResultInsPointList , parameters: par, success: { (response) in
             
             SVProgressHUD.dismiss()
+            
             let data = response["data"] as? Array<[String : Any]>
             
             if data == nil || (data?.isEmpty)! {

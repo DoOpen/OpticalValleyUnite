@@ -42,7 +42,7 @@ class YQWorkListCell: UITableViewCell {
                 self.workStateButton.setTitle(model?.applyStatusName, for: .normal)
                 
                 //报装申请名称!
-                //self.workNameLabel.text = model?.workunitName
+                self.workNameLabel.text = ""
                 
             }else{
                 

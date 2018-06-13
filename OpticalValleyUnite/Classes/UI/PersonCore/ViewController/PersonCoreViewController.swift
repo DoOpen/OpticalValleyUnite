@@ -106,7 +106,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         if let user = user{
             
             nickNameLabel.text = user.nickname
-            userNameLabel.text = "账号: " + (user.userName ?? "")
+            userNameLabel.text = "工号: " + (user.workNumber ?? "")
             
             if let url = user.avatar,url != ""{
 
@@ -124,6 +124,8 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
                 }
             }
         }
+        
+        
     }
     
     

@@ -221,6 +221,8 @@ class LoginViewController: UIViewController {
                 let user = User.currentUser()
                 user?.nickname = model.name
                 user?.avatar = model.picture
+                user?.workNumber = model.job_code
+                
                 user?.saveUser()
                 
             }

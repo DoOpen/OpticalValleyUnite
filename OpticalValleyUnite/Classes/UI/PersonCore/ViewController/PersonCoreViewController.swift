@@ -354,7 +354,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         if !compelte.isEmpty && compelte.count > 1 {
             
             self.OfflineLabel.isHidden = false
-            self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleNone, value: 0, at: 1)
+            self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleRedDot, value: 0, at: 1)
             
         }else{
             

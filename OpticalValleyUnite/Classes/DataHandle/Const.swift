@@ -9,7 +9,8 @@
 import UIKit
 
 //swift 中的全局的宏的情况
-let isProjectBate = false
+//是否是 bate环境
+let isProjectBate = true
 
 
 struct Const {

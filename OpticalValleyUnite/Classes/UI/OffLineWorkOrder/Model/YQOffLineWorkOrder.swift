@@ -147,6 +147,8 @@ class saveAndCompelteWorkIDModel : Object{
     //备注信息
     dynamic var SUCCESS_TEXT = ""
     
+    dynamic var complete = false
+    
     
     convenience init(parmart: [String: Any]) {
         

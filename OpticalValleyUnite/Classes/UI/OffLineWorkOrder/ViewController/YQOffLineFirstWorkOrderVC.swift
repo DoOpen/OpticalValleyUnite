@@ -103,11 +103,21 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
             
             var parmart = [String : Any]()
             
-            
             //上传离线的工单的情况,根据保存和完成项的工单来进行的取值判断!
             //有图片的工单肯定上传,点击保存和完成的工单ID也是要进行的上传
             // parmat["SUCCESS_TEXT"] = self.RemarksTextView.text
-            let compelte = realm.objects(saveAndCompelteWorkIDModel.self)
+            
+            let nowCompelte = realm.objects(saveAndCompelteWorkIDModel.self)
+            
+            var compelte =  [saveAndCompelteWorkIDModel]()
+            
+            for temp in nowCompelte {
+                
+                if temp.complete {
+                    
+                    compelte.append(temp)
+                }
+            }
             
             if !compelte.isEmpty {
                 
@@ -118,6 +128,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                 var parmat = [String: Any]()
                 
                 for model in compelte {
+                    
                     
                     let id = model.WORKUNIT_ID
                     let stepid = model.stepId
@@ -214,7 +225,6 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     
                     let group = DispatchGroup()
                     
-                    
                     // 工单上传成功之后,再上传图片
                     SVProgressHUD.show(withStatus: "上传图片中...")
                     
@@ -287,7 +297,7 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                         }
                     }
                     
-                    parmart["type"] = "2" //计划工单
+                    parmart["type"] = "2" //计划工单图片上传
                     filerArray.removeAll()
                     
                     let plan = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
@@ -384,12 +394,15 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                             self.screenWithDataFromRealm()
                             
                             SVProgressHUD.dismiss()
+                            self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleNone, value: 0, at: 1)
                             
                         }
                         
-                        self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleNone, value: 0, at: 1)
                         self.downloadButton.isUserInteractionEnabled = true
                         self.uploadButton.isUserInteractionEnabled = true
+                        
+                        return
+                        
                     }
                     
                 }, failure: { (error) in
@@ -398,6 +411,31 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     self.uploadButton.isUserInteractionEnabled = true
                     SVProgressHUD.showError(withStatus: "工单保存失败,请检查网络!")
                 })
+                
+                //没有图片的工单内容的上传清空情况:
+                try! realm.write {
+                    
+                    for temp in compelte {
+                        
+                        let model = realm.objects(WorkOrderModel2.self).filter("id == %@",temp.WORKUNIT_ID)
+                        
+                        realm.delete(model)
+                        
+                    }
+                    
+                    //清空所有,然后再进行的添加
+                    realm.delete(compelte)//注意的是,这里的是,清空的完成表的情况
+                    
+                    self.screenWithDataFromRealm()
+                    
+                    SVProgressHUD.dismiss()
+                    self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleNone, value: 0, at: 1)
+                    
+                }
+                
+                self.downloadButton.isUserInteractionEnabled = true
+                self.uploadButton.isUserInteractionEnabled = true
+                
                 
             }else{
             
@@ -445,6 +483,17 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
             SVProgressHUD.dismiss()
             //大数据的处理情况
             let data = response["data"] as? NSArray
+            
+            if data == nil || (data?.count)! < 1{
+                
+                SVProgressHUD.showError(withStatus: "没有可下载的离线工单!")
+                return
+                
+            }else{
+                
+                let string = "共计下载工单数: " + "\(data!.count)" + "条"
+                SVProgressHUD.showSuccess(withStatus: string)
+            }
             
             //1.先转工单首页的模型数据表
             var tempWOModel2Data = [WorkOrderModel2]()

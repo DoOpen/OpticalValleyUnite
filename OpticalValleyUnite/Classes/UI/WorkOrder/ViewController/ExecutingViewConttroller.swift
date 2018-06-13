@@ -472,7 +472,7 @@ class ExecutingViewConttroller: UIViewController {
             
             parmate?["SUCCESS_TEXT"] = self.RemarksTextView.text
             
-            let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
+            
             let realm = try! Realm()
             
             let id = parmate?["WORKUNIT_ID"] as? String
@@ -482,6 +482,8 @@ class ExecutingViewConttroller: UIViewController {
             realm.beginWrite()
             result?.save = true
             result?.complete = false
+            parmate?["complete"] = result?.complete
+            let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
             
             try! realm.commitWrite()
             
@@ -761,6 +763,8 @@ class ExecutingViewConttroller: UIViewController {
             
             if backDB {
                 
+                parmate?["complete"] = true
+
                 let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
                 let realm = try! Realm()
                 
@@ -877,6 +881,7 @@ class ExecutingViewConttroller: UIViewController {
             if backDB {
                 
                 parmate?["SUCCESS_TEXT"] = self.textView.text
+                parmate?["complete"] = true
                 
                 let saveAndCompelete = saveAndCompelteWorkIDModel.init(parmart: parmate!)
                 

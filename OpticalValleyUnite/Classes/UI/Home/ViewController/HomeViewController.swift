@@ -116,8 +116,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
         
         return tmp
-        
     }()
+    
     
     lazy var mCustomTwoNavigationBar: UIView = {
         
@@ -138,7 +138,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         }
         
         return tmp
-        
     }()
     
     
@@ -154,6 +153,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         return tmp
     }()
     
+    
     /**
      *  RefreshHeader
      */
@@ -166,7 +166,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         tmp.mRefreshStatus = MRefreshStatus.normal
         
         return tmp
-        
     }()
     
     
@@ -354,7 +353,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         HttpClient.instance.get(path: URLPath.getNoticeList, parameters: nil, success: { (respose) in
             
             var temp = [SystemMessageModel]()
-            
             if let dic = respose as? [String: Any]{
                 
                 for dic2 in dic["data"] as! Array<[String: Any]>{
@@ -364,10 +362,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 self.tableView.reloadData()
             }
             
-            
         }) { (error) in
             print(error)
         }
+        
     }
     
     
@@ -416,7 +414,6 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
             self.subsystemBtn.isHidden = true
         }
 
-    
         //注意的是:通过的是子系统选择的界面功能取消   URLPath.getModules 的网络请求
         let systemData = UserDefaults.standard.object(forKey: Const.YQSystemSelectData)
         
@@ -1178,9 +1175,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource,MYPRefr
             let refreshStatusSwitchPoint: CGFloat = mRefreshHeaderHeight
             
             if tmpOffsetY > -refreshStatusSwitchPoint {
+                
                 mRefreshHeader.mRefreshStatus = .normal
             }
             else {
+                
                 mRefreshHeader.mRefreshStatus = .willRefresh
             }
         }
@@ -1204,6 +1203,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource,MYPRefr
         // 该值需要和上面保持一致
         let refreshStatusSwitchPoint: CGFloat = mRefreshHeaderHeight
         if tmpOffsetY < -refreshStatusSwitchPoint {
+            
             // 如果此时正在刷新，做特殊处理
             if mRefreshHeader.mRefreshStatus == .refreshing {
                 return
@@ -1212,6 +1212,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource,MYPRefr
             self.tableView.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
             // 开始刷新
             mRefreshHeader.mRefreshStatus = .refreshing
+            
         }
     }
     
@@ -1284,12 +1285,32 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource,MYPRefr
             
             // 效果,3S之后停止刷新
             // 实际使用中，根据网络返回接口自行调用
-            DispatchQueue.global().async {
-                sleep(2)
-                DispatchQueue.main.async {
-                    weakSelf?.mRefreshHeader.mRefreshStatus = .none
+//            DispatchQueue.global().async {
+//                sleep(2)
+//                DispatchQueue.main.async {
+//                    weakSelf?.mRefreshHeader.mRefreshStatus = .none
+//                }
+//            }
+            
+            //刷新通知的方法:
+            HttpClient.instance.get(path: URLPath.getNoticeList, parameters: nil, success: { (respose) in
+                
+                var temp = [SystemMessageModel]()
+                if let dic = respose as? [String: Any]{
+                    
+                    for dic2 in dic["data"] as! Array<[String: Any]>{
+                        temp.append(SystemMessageModel(parmart: dic2))
+                    }
+                    self.datas = temp
+                    self.tableView.reloadData()
                 }
+                
+                weakSelf?.mRefreshHeader.mRefreshStatus = .none
+                
+            }) { (error) in
+                print(error)
             }
+            
             
             
         }

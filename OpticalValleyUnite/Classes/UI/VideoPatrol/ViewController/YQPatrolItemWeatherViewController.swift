@@ -14,7 +14,6 @@ import SnapKit
 class YQPatrolItemWeatherViewController: UIViewController {
     
     ///属性列表情况
-    
     @IBOutlet weak var constraintViewHeight: NSLayoutConstraint!
 
     @IBOutlet weak var patrolItemLabel: UILabel!

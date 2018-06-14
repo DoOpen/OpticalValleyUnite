@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -284,8 +284,8 @@
                                 <constraint firstItem="3EA-5w-IXH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="WCE-Gj-0Tp"/>
                                 <constraint firstAttribute="height" constant="600" id="WKB-6m-Hu4"/>
                                 <constraint firstItem="Q7l-1i-cdk" firstAttribute="centerY" secondItem="3EA-5w-IXH" secondAttribute="centerY" id="Wgd-YM-FQO"/>
-                                <constraint firstItem="JPC-mS-ugn" firstAttribute="top" secondItem="y97-Bk-vKy" secondAttribute="bottom" constant="20" id="YbB-rD-tqA"/>
                                 <constraint firstItem="oZv-DS-bc6" firstAttribute="leading" secondItem="0eu-1T-pba" secondAttribute="trailing" id="aP3-qj-GJy"/>
+                                <constraint firstItem="dXw-ew-RJb" firstAttribute="top" secondItem="fgE-V4-DCq" secondAttribute="bottom" constant="22" id="bDW-sd-XbB"/>
                                 <constraint firstItem="1j6-RL-fDk" firstAttribute="centerY" secondItem="oZv-DS-bc6" secondAttribute="centerY" id="bZG-TE-PGA"/>
                                 <constraint firstItem="5Aa-Ww-Z7F" firstAttribute="leading" secondItem="PbB-Ek-4FJ" secondAttribute="trailing" constant="5" id="bzx-i4-BLx"/>
                                 <constraint firstItem="oZv-DS-bc6" firstAttribute="centerY" secondItem="0eu-1T-pba" secondAttribute="centerY" id="c0x-eS-FW2"/>

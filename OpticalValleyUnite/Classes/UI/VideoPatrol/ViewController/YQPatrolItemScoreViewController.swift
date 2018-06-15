@@ -77,7 +77,7 @@ class YQPatrolItemScoreViewController: UIViewController {
         
         self.addImageView.superVC = self
         
-        self.constraintHeight.constant = 800
+       
 //        self.scrollVIEW.contentSize = CGSize.init(width: 0, height: self.constraintHeight.constant)
         let _ = setUpProjectNameLable()
         
@@ -164,6 +164,15 @@ class YQPatrolItemScoreViewController: UIViewController {
         
         //接受通知情况
         
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+        self.viewDidAppear(true)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.constraintHeight.constant = self.bottomView.maxY > 700 ? self.bottomView.maxY + 200 : 800
         
     }
     
@@ -245,9 +254,7 @@ class YQPatrolItemScoreViewController: UIViewController {
             projectName = dic?["PARK_NAME"] as! String
             self.parkId = dic?["ID"] as! String
             
-            
         }else{
-            
             projectName = "请选择默认项目"
         }
         

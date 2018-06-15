@@ -66,8 +66,6 @@ class YQPatrolItemWeatherViewController: UIViewController {
         //设置remarkView
         self.remarkView.placeHolder = "巡查意见"
         
-        self.constraintViewHeight.constant = 800
-        
         let _ = setUpProjectNameLable()
         
         self.patrolTypeLabel.text = model?.insItemTypeName
@@ -113,8 +111,6 @@ class YQPatrolItemWeatherViewController: UIViewController {
                 }
 
             }
-
-            
         }
         
         //加载底部的项目
@@ -150,9 +146,23 @@ class YQPatrolItemWeatherViewController: UIViewController {
         default:
             break
         }
-
+        
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+        self.viewDidAppear(true)
+        
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.constraintViewHeight.constant = self.bottomView.maxY > 700 ? self.bottomView.maxY + 200 : 800
+        
+    }
+
+    
+    
+
     // MARK: - 选择buttonclick的点击事件
     @IBAction func yesButtonClick(_ sender: UIButton) {
         sender.isSelected = true

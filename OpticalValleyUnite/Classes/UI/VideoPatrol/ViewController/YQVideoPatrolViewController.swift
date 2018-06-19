@@ -572,9 +572,10 @@ class YQVideoPatrolViewController: UIViewController {
                 
                 var paramet = [String : Any]()
                 paramet["parkId"] = self.parkId
-                paramet["insPointId"] = self.videoAnnotationModel?.insPointId
+                //解决线上环境的 inspointid的传值的问题
+                paramet["insPointId"] = self.indoorVideoSelectModel?.insPointId
                 
-//                paramet["insPointName"] = self.videoAnnotationModel?.name
+                // paramet["insPointName"] = self.videoAnnotationModel?.name
                 
                     
                 HttpClient.instance.post(path: URLPath.getVideoPatrolLoadWayName, parameters: paramet, success: { (result) in

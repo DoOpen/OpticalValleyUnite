@@ -493,8 +493,8 @@ class YQVideoPatrolViewController: UIViewController {
     
     // MARK: - CheckBegin开始巡查的接口调直接调用
     func CheckBeginDataStart(){
-        
     
+        
         //要求的项目ID是必传的 情况!
         var par = [String : Any]()
         par["parkId"] = self.parkId
@@ -567,17 +567,14 @@ class YQVideoPatrolViewController: UIViewController {
                     
                 })
             
-            
             }else{//请求巡查路线
                 
                 var paramet = [String : Any]()
                 paramet["parkId"] = self.parkId
                 //解决线上环境的 inspointid的传值的问题
                 paramet["insPointId"] = self.indoorVideoSelectModel?.insPointId
-                
                 // paramet["insPointName"] = self.videoAnnotationModel?.name
                 
-                    
                 HttpClient.instance.post(path: URLPath.getVideoPatrolLoadWayName, parameters: paramet, success: { (result) in
                     
                     var stringArray = [String]()
@@ -616,7 +613,6 @@ class YQVideoPatrolViewController: UIViewController {
                         }
                         
                         
-                        
                         SJPickerView.show(withDataArry: array , didSlected: { (indexRow) in
                             
                              self.videoAllSelectParmeter["pointType"] = idArray[indexRow]
@@ -635,7 +631,6 @@ class YQVideoPatrolViewController: UIViewController {
                 })
         
             }
-            
             
         }, failure: { (error) in
             

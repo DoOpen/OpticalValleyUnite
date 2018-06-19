@@ -26,6 +26,7 @@ public class Photo {
     
     public init(urlString: String?) {
         if let urlString = urlString {
+            
             self.url = URL(string: urlString)
         }
         

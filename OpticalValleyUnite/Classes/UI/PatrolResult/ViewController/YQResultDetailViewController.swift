@@ -120,7 +120,6 @@ class YQResultDetailViewController: UIViewController {
         
         SVProgressHUD.show()
         
-        
         HttpClient.instance.post(path: URLPath.getResultDetail, parameters: par, success: { (response) in
             
             SVProgressHUD.dismiss()

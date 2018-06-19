@@ -44,6 +44,7 @@ class YQWeatherResult: UIView {
                 if (model?.imgPath.contains("http"))!{
                     
                     imageValue = (model?.imgPath)!
+                    
                     pUrl = Photo.init(urlString: model?.imgPath)
                     
                 }else{
@@ -97,8 +98,10 @@ class YQWeatherResult: UIView {
                     
                     if url.contains("http"){
                         
-                        temp.append(url)
-                        pUrl = Photo.init(urlString: url)
+                        //空格转义情况!bug添加
+                        let bUrl = url.replacingOccurrences(of: " ", with: "%20")
+                        temp.append(bUrl)
+                        pUrl = Photo.init(urlString: bUrl)
                         
                     }else{
                         

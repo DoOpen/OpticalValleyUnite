@@ -392,7 +392,7 @@ extension CheckNewBundleVersionProtocol{
                 
                 let isNew = response["isNew"] as? Bool
                 
-                if isNew! {
+                if !(isNew!) {
                     
                     SJKeyWindow?.rootViewController?.alert(message: "有新的版本,点击确认下载最新版本", doneBlock: { (action) in
                         

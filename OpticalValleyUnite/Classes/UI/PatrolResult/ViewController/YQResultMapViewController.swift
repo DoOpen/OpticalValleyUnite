@@ -57,7 +57,7 @@ class YQResultMapViewController: UIViewController {
     var search : AMapSearchAPI!
     var naviRoute: MANaviRoute?
     
-    var currentSearchType: AMapRoutePlanningType = AMapRoutePlanningType.drive
+    var currentSearchType: AMapRoutePlanningType = AMapRoutePlanningType.walk
     
     //除了驾车以外的所有的路径显示,高德的返回列表
     var route: AMapRoute!{

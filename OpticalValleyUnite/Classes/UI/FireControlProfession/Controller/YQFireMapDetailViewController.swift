@@ -87,7 +87,7 @@ class YQFireMapDetailViewController: UIViewController {
     }
     
 
-    var currentSearchType: AMapRoutePlanningType = AMapRoutePlanningType.drive
+    var currentSearchType: AMapRoutePlanningType = AMapRoutePlanningType.walk
 
     
     

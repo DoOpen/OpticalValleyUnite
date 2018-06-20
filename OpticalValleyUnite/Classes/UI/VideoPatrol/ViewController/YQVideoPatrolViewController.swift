@@ -28,20 +28,7 @@ class YQVideoPatrolViewController: UIViewController {
     var currentSearchType: AMapRoutePlanningType = AMapRoutePlanningType.walk
     
     //除了驾车以外的所有的路径显示,高德的返回列表
-    var route: AMapRoute!{
-        
-        didSet{
-            
-            let MapPath = route?.paths[0]
-            
-            if MapPath == nil {
-                
-                return
-            }
-            //            let x = MapPath?.distance ?? 0
-            //            let y = MapPath?.duration ?? 0
-        }
-    }
+    var route: AMapRoute!
     
     
     /// 是否有室内点的情况
@@ -727,7 +714,6 @@ class YQVideoPatrolViewController: UIViewController {
                 let longitude = d?["longitude"] as? String ?? "0"
                 let latitude = d?["latitude"] as? String ?? "0"
                 
-                
                 let CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude)!, CLLocationDegrees(longitude)!)
                 
                 videoMapLayWays.append(CLLocationCoordinate2D)
@@ -758,10 +744,10 @@ class YQVideoPatrolViewController: UIViewController {
                 showRoute(startCoordinate: start, endCoordinate: end)
             }
 
-            //划线
-            let polyline: MAPolyline = MAPolyline(coordinates: &videoMapLayWays, count: UInt(videoMapLayWays.count))
+            //普通的手工划线
+            //let polyline: MAPolyline = MAPolyline(coordinates: &videoMapLayWays, count: UInt(videoMapLayWays.count))
             
-            overlays.append(polyline)
+           // overlays.append(polyline)
             
         }
         
@@ -785,6 +771,7 @@ class YQVideoPatrolViewController: UIViewController {
         
         //通过start 和 end 的经纬度来进行规划路线
         let request = AMapWalkingRouteSearchRequest()
+        
         request.origin = AMapGeoPoint.location(withLatitude: CGFloat(startCoordinate.latitude), longitude: CGFloat(startCoordinate.longitude))
         request.destination = AMapGeoPoint.location(withLatitude: CGFloat(endCoordinate.latitude), longitude: CGFloat(endCoordinate.longitude))
         
@@ -802,6 +789,7 @@ class YQVideoPatrolViewController: UIViewController {
         if currentSearchType == .bus || currentSearchType == .busCrossCity {
             naviRoute = MANaviRoute(for: route?.transits.first, start: start, end: end)
         } else {
+            
             let type = MANaviAnnotationType(rawValue: currentSearchType.rawValue)
             
             naviRoute = MANaviRoute(for: route?.paths.first, withNaviType: type!, showTraffic: true, start: start, end: end)
@@ -953,8 +941,63 @@ extension YQVideoPatrolViewController : MAMapViewDelegate{
             polylineRenderer.loadStrokeTextureImage(UIImage.init(named: "arrowTexture"))
          */
         
-//        self.mapView.remove(overlay)
+        // self.mapView.remove(overlay)
         
+        
+        if overlay.isKind(of: LineDashPolyline.self) {
+            
+            let naviPolyline: LineDashPolyline = overlay as! LineDashPolyline
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: naviPolyline.polyline)
+            renderer.lineWidth = 8.0
+            
+            //            renderer.strokeColor = UIColor.cyan
+            renderer.strokeImage = UIImage.init(named: "多边形-1")
+            //            renderer.loadStrokeTextureImage(UIImage.init(named: "多边形1"))
+            //            renderer.loadTexture(UIImage.init(named: "多边形1"))
+            //            renderer.lineCapType = kMALineCapArrow 设置画箭头的属性情况
+            return renderer
+        }
+        
+        if overlay.isKind(of: MANaviPolyline.self) {
+            
+            let naviPolyline: MANaviPolyline = overlay as! MANaviPolyline
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: naviPolyline.polyline)
+            renderer.lineWidth = 8.0
+            
+            if naviPolyline.type == MANaviAnnotationType.walking {
+                
+                renderer.strokeImage = UIImage.init(named: "多边形-1")
+                
+            }
+            else if naviPolyline.type == MANaviAnnotationType.railway {
+                
+                 renderer.strokeColor = naviRoute?.railwayColor
+                
+            }
+            else {
+                
+               renderer.strokeColor = naviRoute?.routeColor
+                
+            }
+            
+            return renderer
+        }
+        
+        if overlay.isKind(of: MAMultiPolyline.self) {
+            
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
+            renderer.lineWidth = 8.0
+            //print(overlay.coordinate)
+            
+            //            renderer.strokeColor = UIColor.cyan
+            renderer.strokeImage = UIImage.init(named: "多边形-1")
+            //            renderer.loadStrokeTextureImage(UIImage.init(named: "多边形1"))
+            //            renderer.loadTexture(UIImage.init(named: "多边形1"))
+            //            renderer.lineCapType = kMALineCapArrow 设置画箭头的属性情况
+            return renderer
+        }
+        
+        //自定义的划线类型
         if overlay.isKind(of: MAPolyline.self) {
             
             let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
@@ -979,6 +1022,7 @@ extension YQVideoPatrolViewController : AMapSearchDelegate{
     // MARK: - 解析search_response获取路径信息
     func onRouteSearchDone(_ request: AMapRouteSearchBaseRequest!, response: AMapRouteSearchResponse!) {
         
+
         self.route = nil
         
         if response.count > 0 {

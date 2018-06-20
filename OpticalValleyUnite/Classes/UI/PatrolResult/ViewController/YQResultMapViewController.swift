@@ -488,8 +488,10 @@ class YQResultMapViewController: UIViewController {
         let end = AMapGeoPoint.location(withLatitude: CGFloat(endCoordinate.latitude), longitude: CGFloat(endCoordinate.longitude))
         
         if currentSearchType == .bus || currentSearchType == .busCrossCity {
+            
             naviRoute = MANaviRoute(for: route?.transits.first, start: start, end: end)
         } else {
+            
             let type = MANaviAnnotationType(rawValue: currentSearchType.rawValue)
             
             naviRoute = MANaviRoute(for: route?.paths.first, withNaviType: type!, showTraffic: true, start: start, end: end)
@@ -524,7 +526,111 @@ extension YQResultMapViewController : MAMapViewDelegate {
          */
         
         //重置渲染的情况
-//        self.mapView.remove(overlay)
+        // self.mapView.remove(overlay)
+        
+        if overlay.isKind(of: LineDashPolyline.self) {
+            
+            let naviPolyline: LineDashPolyline = overlay as! LineDashPolyline
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: naviPolyline.polyline)
+            renderer.lineWidth = 8.0
+            switch self.wayLineType {
+            case 1://实际行走执行轨迹
+                renderer.strokeImage = UIImage.init(named: "多边形-1")
+                
+                break
+                
+            case 2://设计轨迹,蓝色来 渲染
+                renderer.strokeColor = UIColor.blue
+                renderer.lineCapType = kMALineCapArrow //设置画箭头的属性情况
+                
+                break
+                
+            case 3://真实路线,绿色来 渲染
+                renderer.strokeColor = UIColor.green
+                renderer.lineCapType = kMALineCapArrow //设置画箭头的属性情况
+                
+                break
+                
+            default:
+                break
+            }
+            
+            return renderer
+        }
+        
+        if overlay.isKind(of: MANaviPolyline.self) {
+            
+            let naviPolyline: MANaviPolyline = overlay as! MANaviPolyline
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: naviPolyline.polyline)
+            renderer.lineWidth = 8.0
+            
+            if naviPolyline.type == MANaviAnnotationType.walking {
+                
+                switch self.wayLineType {
+                case 1://实际行走执行轨迹
+                    renderer.strokeImage = UIImage.init(named: "多边形-1")
+                    
+                    break
+                    
+                case 2://设计轨迹,蓝色来 渲染
+                    renderer.strokeColor = UIColor.blue
+                    renderer.lineCapType = kMALineCapArrow //设置画箭头的属性情况
+                    
+                    break
+                    
+                case 3://真实路线,绿色来 渲染
+                    renderer.strokeColor = UIColor.green
+                    renderer.lineCapType = kMALineCapArrow //设置画箭头的属性情况
+                    
+                    break
+                    
+                default:
+                    break
+                }
+                
+            }
+            else if naviPolyline.type == MANaviAnnotationType.railway {
+                
+                renderer.strokeColor = naviRoute?.railwayColor
+                
+            }
+            else {
+                
+                renderer.strokeColor = naviRoute?.routeColor
+            }
+            
+            return renderer
+        }
+        
+        if overlay.isKind(of: MAMultiPolyline.self) {
+            
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
+            renderer.lineWidth = 8.0
+            switch self.wayLineType {
+            case 1://实际行走执行轨迹
+                renderer.strokeImage = UIImage.init(named: "多边形-1")
+                
+                break
+                
+            case 2://设计轨迹,蓝色来 渲染
+                renderer.strokeColor = UIColor.blue
+                renderer.lineCapType = kMALineCapArrow //设置画箭头的属性情况
+                
+                break
+                
+            case 3://真实路线,绿色来 渲染
+                renderer.strokeColor = UIColor.green
+                renderer.lineCapType = kMALineCapArrow //设置画箭头的属性情况
+                
+                break
+                
+            default:
+                break
+            }
+            
+            return renderer
+        }
+        
         
         if overlay.isKind(of: MAPolyline.self) {
             
@@ -553,7 +659,6 @@ extension YQResultMapViewController : MAMapViewDelegate {
             default:
                 break
             }
-            
             
             return renderer
         }

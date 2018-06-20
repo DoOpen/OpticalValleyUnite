@@ -111,7 +111,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="no" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oF-V9-2S3">
-                                                    <rect key="frame" x="10" y="15" width="355" height="21"/>
+                                                    <rect key="frame" x="10" y="15" width="265" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -169,6 +169,7 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="8oF-V9-2S3" firstAttribute="trailing" secondItem="nUk-gW-z53" secondAttribute="trailing" id="0Mv-Rd-HfU"/>
                                                 <constraint firstItem="jn1-GK-xB3" firstAttribute="top" secondItem="nUk-gW-z53" secondAttribute="bottom" constant="5" id="DFH-3Z-Q9x"/>
                                                 <constraint firstAttribute="trailing" secondItem="jn1-GK-xB3" secondAttribute="trailing" id="Ehc-ys-xoX"/>
                                                 <constraint firstItem="nUk-gW-z53" firstAttribute="leading" secondItem="zYc-R6-JtL" secondAttribute="leading" constant="5" id="ShA-ih-mqa"/>
@@ -177,7 +178,6 @@
                                                 <constraint firstItem="jn1-GK-xB3" firstAttribute="leading" secondItem="zYc-R6-JtL" secondAttribute="leading" id="Wrh-6z-W27"/>
                                                 <constraint firstItem="8oF-V9-2S3" firstAttribute="top" secondItem="zYc-R6-JtL" secondAttribute="top" constant="15" id="d0b-ad-6e9"/>
                                                 <constraint firstItem="jn1-GK-xB3" firstAttribute="top" secondItem="38X-k4-dTM" secondAttribute="bottom" constant="15" id="ePc-PA-kBq"/>
-                                                <constraint firstAttribute="trailing" secondItem="8oF-V9-2S3" secondAttribute="trailing" constant="10" id="gGV-XJ-0sy"/>
                                                 <constraint firstItem="8oF-V9-2S3" firstAttribute="leading" secondItem="zYc-R6-JtL" secondAttribute="leading" constant="10" id="k2N-kF-vvr"/>
                                                 <constraint firstAttribute="bottom" secondItem="jn1-GK-xB3" secondAttribute="bottom" id="vNS-PM-Gkt"/>
                                                 <constraint firstItem="38X-k4-dTM" firstAttribute="leading" secondItem="nUk-gW-z53" secondAttribute="trailing" constant="10" id="xNK-4t-W5C"/>

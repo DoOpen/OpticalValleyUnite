@@ -26,6 +26,7 @@
 #import "RouteCommon.h"
 #import "AnimatedAnnotation.h"
 #import "AnimatedAnnotationView.h"
+#import "CommonUtility.h"
 
 #import <RfmAccessControl/RfmAccessControl.h>
 #import "NSData+YYExtend.h"

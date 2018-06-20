@@ -498,7 +498,8 @@ class YQResultMapViewController: UIViewController {
         naviRoute?.add(to: mapView)
         
         mapView.showOverlays(naviRoute?.routePolylines, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
-        mapView.zoomLevel = 16.0 //地图的缩放的级别比例
+        
+        mapView.setVisibleMapRect(CommonUtility.mapRect(forOverlays: naviRoute?.routePolylines), edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
         
     }
     

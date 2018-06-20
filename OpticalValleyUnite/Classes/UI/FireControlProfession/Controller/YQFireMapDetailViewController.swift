@@ -418,7 +418,8 @@ class YQFireMapDetailViewController: UIViewController {
         naviRoute?.add(to: locationMapView)
         
         locationMapView.showOverlays(naviRoute?.routePolylines, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
-        locationMapView.zoomLevel = 12.0 //地图的缩放的级别比例
+        
+        locationMapView.setVisibleMapRect(CommonUtility.mapRect(forOverlays: naviRoute?.routePolylines), edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
         
     }
     

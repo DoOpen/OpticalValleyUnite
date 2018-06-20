@@ -810,7 +810,9 @@ class YQVideoPatrolViewController: UIViewController {
         naviRoute?.add(to: mapView)
         
         mapView.showOverlays(naviRoute?.routePolylines, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
-        mapView.zoomLevel = 16.0 //地图的缩放的级别比例
+        //地图的缩放的级别比例
+        /* 缩放地图使其适应polylines的展示. */
+        mapView.setVisibleMapRect(CommonUtility.mapRect(forOverlays: naviRoute?.routePolylines), edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
         
     }
     

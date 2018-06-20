@@ -50,6 +50,10 @@ class YQPatrolResultViewController: UIViewController {
         
         addLeftRightBarButtonFunction()
         
+        //3.设置
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 300.0
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

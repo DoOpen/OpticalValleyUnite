@@ -359,6 +359,16 @@
 		2FC167551F90A9DB001CEACD /* YQReleaseJournal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC167541F90A9DB001CEACD /* YQReleaseJournal.storyboard */; };
 		2FC167571F90B45B001CEACD /* YQReleaseJournalFooterV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC167561F90B45B001CEACD /* YQReleaseJournalFooterV.swift */; };
 		2FC167591F90B4BE001CEACD /* YQReseaseJournalFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC167581F90B4BE001CEACD /* YQReseaseJournalFooter.xib */; };
+		2FC30D7720DB93220072AD5B /* YQPublicExaminationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC30D7520DB93220072AD5B /* YQPublicExaminationTVC.swift */; };
+		2FC30D7820DB93220072AD5B /* YQPublicExaminationTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC30D7620DB93220072AD5B /* YQPublicExaminationTVC.xib */; };
+		2FC30D7B20DB9F990072AD5B /* YQJoinExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC30D7920DB9F990072AD5B /* YQJoinExamCell.swift */; };
+		2FC30D7C20DB9F990072AD5B /* YQJoinExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC30D7A20DB9F990072AD5B /* YQJoinExamCell.xib */; };
+		2FC30D7F20DBA7A90072AD5B /* YQMyScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC30D7D20DBA7A90072AD5B /* YQMyScoreCell.swift */; };
+		2FC30D8020DBA7A90072AD5B /* YQMyScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC30D7E20DBA7A90072AD5B /* YQMyScoreCell.xib */; };
+		2FC30D8320DBA8DF0072AD5B /* YQExamRecordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC30D8120DBA8DF0072AD5B /* YQExamRecordsCell.swift */; };
+		2FC30D8420DBA8DF0072AD5B /* YQExamRecordsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC30D8220DBA8DF0072AD5B /* YQExamRecordsCell.xib */; };
+		2FC30D8720DBB3960072AD5B /* YQStudyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC30D8520DBB3960072AD5B /* YQStudyDetailVC.swift */; };
+		2FC30D8820DBB3960072AD5B /* YQStudyDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC30D8620DBB3960072AD5B /* YQStudyDetailVC.xib */; };
 		2FC74685207393E000556E1A /* UMShareSwiftInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC74684207393E000556E1A /* UMShareSwiftInterface.swift */; };
 		2FC7CC86208B137F00F6DEFA /* YQGenaralFeedBackListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7CC84208B137F00F6DEFA /* YQGenaralFeedBackListVC.swift */; };
 		2FC7CC89208B14A000F6DEFA /* YQGenaralFeedBackListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7CC88208B14A000F6DEFA /* YQGenaralFeedBackListVC.storyboard */; };
@@ -967,6 +977,16 @@
 		2FC167541F90A9DB001CEACD /* YQReleaseJournal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQReleaseJournal.storyboard; sourceTree = "<group>"; };
 		2FC167561F90B45B001CEACD /* YQReleaseJournalFooterV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQReleaseJournalFooterV.swift; sourceTree = "<group>"; };
 		2FC167581F90B4BE001CEACD /* YQReseaseJournalFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQReseaseJournalFooter.xib; sourceTree = "<group>"; };
+		2FC30D7520DB93220072AD5B /* YQPublicExaminationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQPublicExaminationTVC.swift; sourceTree = "<group>"; };
+		2FC30D7620DB93220072AD5B /* YQPublicExaminationTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQPublicExaminationTVC.xib; sourceTree = "<group>"; };
+		2FC30D7920DB9F990072AD5B /* YQJoinExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQJoinExamCell.swift; sourceTree = "<group>"; };
+		2FC30D7A20DB9F990072AD5B /* YQJoinExamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQJoinExamCell.xib; sourceTree = "<group>"; };
+		2FC30D7D20DBA7A90072AD5B /* YQMyScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQMyScoreCell.swift; sourceTree = "<group>"; };
+		2FC30D7E20DBA7A90072AD5B /* YQMyScoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQMyScoreCell.xib; sourceTree = "<group>"; };
+		2FC30D8120DBA8DF0072AD5B /* YQExamRecordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQExamRecordsCell.swift; sourceTree = "<group>"; };
+		2FC30D8220DBA8DF0072AD5B /* YQExamRecordsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQExamRecordsCell.xib; sourceTree = "<group>"; };
+		2FC30D8520DBB3960072AD5B /* YQStudyDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQStudyDetailVC.swift; sourceTree = "<group>"; };
+		2FC30D8620DBB3960072AD5B /* YQStudyDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQStudyDetailVC.xib; sourceTree = "<group>"; };
 		2FC74684207393E000556E1A /* UMShareSwiftInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UMShareSwiftInterface.swift; sourceTree = "<group>"; };
 		2FC7CC84208B137F00F6DEFA /* YQGenaralFeedBackListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQGenaralFeedBackListVC.swift; sourceTree = "<group>"; };
 		2FC7CC88208B14A000F6DEFA /* YQGenaralFeedBackListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = YQGenaralFeedBackListVC.storyboard; sourceTree = "<group>"; };
@@ -1656,6 +1676,12 @@
 			children = (
 				2F612D37209AFC37003B8D4D /* YQKnowledgeStudyCell.swift */,
 				2F612D38209AFC37003B8D4D /* YQKnowledgeStudyCell.xib */,
+				2FC30D7920DB9F990072AD5B /* YQJoinExamCell.swift */,
+				2FC30D7A20DB9F990072AD5B /* YQJoinExamCell.xib */,
+				2FC30D7D20DBA7A90072AD5B /* YQMyScoreCell.swift */,
+				2FC30D7E20DBA7A90072AD5B /* YQMyScoreCell.xib */,
+				2FC30D8120DBA8DF0072AD5B /* YQExamRecordsCell.swift */,
+				2FC30D8220DBA8DF0072AD5B /* YQExamRecordsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1667,8 +1693,12 @@
 				2F612D30209AF4D5003B8D4D /* YQKnowledgeFirstVC.xib */,
 				2F612D33209AFAC3003B8D4D /* YQStudyContentVC.swift */,
 				2F612D34209AFAC3003B8D4D /* YQStudyContentVC.xib */,
+				2FC30D8520DBB3960072AD5B /* YQStudyDetailVC.swift */,
+				2FC30D8620DBB3960072AD5B /* YQStudyDetailVC.xib */,
 				2F612D3B209AFE7A003B8D4D /* YQExaminationVC.swift */,
 				2F612D3C209AFE7A003B8D4D /* YQExaminationVC.xib */,
+				2FC30D7520DB93220072AD5B /* YQPublicExaminationTVC.swift */,
+				2FC30D7620DB93220072AD5B /* YQPublicExaminationTVC.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3071,6 +3101,8 @@
 				2FEB0E891F6E713F0002DEE8 /* YQFalsePositives.xib in Resources */,
 				2F5A3D651FE8EF770069ABE1 /* YQDynamicPasswordCell.xib in Resources */,
 				2F5F945C206E2D32000DC20A /* YQShareViewController.xib in Resources */,
+				2FC30D8020DBA7A90072AD5B /* YQMyScoreCell.xib in Resources */,
+				2FC30D7C20DB9F990072AD5B /* YQJoinExamCell.xib in Resources */,
 				2F57D7E41FFF4A3300207E98 /* YQOffLineFirst.storyboard in Resources */,
 				2F4EB29A1FD532590004A532 /* YQVideoDrawerViewController.xib in Resources */,
 				2F6BA22020C78EA3004BAF4B /* YQHomeNoticeContentView.xib in Resources */,
@@ -3080,6 +3112,7 @@
 				2F5789192011D43300C1C5DF /* YQWorkHighlightsDetailVC.xib in Resources */,
 				4BB53FF11F14D9CA0061190F /* DeviceCell.xib in Resources */,
 				2F71039520158D000051E367 /* YQReportFromPersonList.xib in Resources */,
+				2FC30D8420DBA8DF0072AD5B /* YQExamRecordsCell.xib in Resources */,
 				2F35356E1F95AE3300E8E77C /* YQWorkOrderFirst.storyboard in Resources */,
 				2FC167551F90A9DB001CEACD /* YQReleaseJournal.storyboard in Resources */,
 				2F2F95781F8DAECD00870DC8 /* YQJournal.storyboard in Resources */,
@@ -3092,6 +3125,7 @@
 				2F94A2851F73B49C00455162 /* YQImplementFeedback.storyboard in Resources */,
 				2FC7CC89208B14A000F6DEFA /* YQGenaralFeedBackListVC.storyboard in Resources */,
 				2F3F47CA20AC2C18006FE649 /* YQChooseHouseVC.xib in Resources */,
+				2FC30D7820DB93220072AD5B /* YQPublicExaminationTVC.xib in Resources */,
 				2FC98A00202D86210080D1BE /* YQHouseHome.storyboard in Resources */,
 				2F52E5B52048F2050060A2BA /* YQWebVideoVC.xib in Resources */,
 				2FC7CC95208B30A600F6DEFA /* YQGeneralManagerReplyView.xib in Resources */,
@@ -3148,6 +3182,7 @@
 				2F78D94E1FEA388D006F7692 /* YQDynamicPwdViewController.xib in Resources */,
 				4BBBEC971E2CAAE200F60313 /* BoPhotoPicker.bundle in Resources */,
 				2F0F87801F56DFFE0030A6DB /* YQPartHeadView.xib in Resources */,
+				2FC30D8820DBB3960072AD5B /* YQStudyDetailVC.xib in Resources */,
 				2FC1674B1F906BA4001CEACD /* YQJournalDetailHead.xib in Resources */,
 				2F40D9921FB942A4007971D1 /* YQStepStatistics.xib in Resources */,
 				2F4217361FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib in Resources */,
@@ -3289,6 +3324,7 @@
 				4BF807011F0E27AD0047E129 /* DeriveCell.swift in Sources */,
 				4BFD07C81E5D31A3004AF998 /* ExecutingViewConttroller.swift in Sources */,
 				4B1DEC5D1E31B646000917D2 /* SGScanningQRCodeView.m in Sources */,
+				2FC30D7F20DBA7A90072AD5B /* YQMyScoreCell.swift in Sources */,
 				2F7B8C71202EF37F000C66AA /* YQHouseHomeCell.swift in Sources */,
 				2F51CCD5203C2B13005723E8 /* YQWorkListCell.swift in Sources */,
 				2F54BF0B1FCBF7C7006B4DCF /* YQExecTextCell.swift in Sources */,
@@ -3301,6 +3337,7 @@
 				2F4EB2991FD532590004A532 /* YQVideoDrawerViewController.swift in Sources */,
 				2F7F231220B7EFC900935E63 /* YQPatrolWayResultModel.swift in Sources */,
 				2F51CCC8203AB582005723E8 /* YQHouseRelativesAndTenantVC.swift in Sources */,
+				2FC30D8320DBA8DF0072AD5B /* YQExamRecordsCell.swift in Sources */,
 				2F34E86420468720006EBAF8 /* YQEquipTypeTVC.swift in Sources */,
 				4B751BD31E5B301C00C0CEC0 /* AddScrollerView.swift in Sources */,
 				2F3B96001F6B68BE0008AFEB /* YQDrawerViewController.swift in Sources */,
@@ -3351,6 +3388,7 @@
 				2F07A0201FDBF4E90064556D /* YQResultMapViewController.swift in Sources */,
 				4BE9225F1EE6DB7C00FDEFE1 /* CallBackCell.swift in Sources */,
 				4B3951F31E28B38D00E2642F /* AddSignInViewController.swift in Sources */,
+				2FC30D8720DBB3960072AD5B /* YQStudyDetailVC.swift in Sources */,
 				4BA520361E8E0F8000398F34 /* ExexSwithCell.swift in Sources */,
 				2FCBC0272014951A003F1556 /* YQDrawPlanView.swift in Sources */,
 				2F637F5C206A813D00EFFFF8 /* YQHomeWeatherTVC.swift in Sources */,
@@ -3501,6 +3539,7 @@
 				2F41B2A32081A20B00A41E5D /* YQGeneralManagerFirstVC.swift in Sources */,
 				2F1764D51FD01BE500C816A8 /* YQExecScanCell.swift in Sources */,
 				2F6DF88D20B65C0B0053D1E1 /* FSCalendar+Deprecated.m in Sources */,
+				2FC30D7720DB93220072AD5B /* YQPublicExaminationTVC.swift in Sources */,
 				4B3951D21E278F5300E2642F /* APPHandle.swift in Sources */,
 				2F63436F1F9F4963005F930A /* AnimatedAnnotationView.m in Sources */,
 				2F648DAD1F57A2DC006D51D3 /* PartsModel.swift in Sources */,
@@ -3546,6 +3585,7 @@
 				4BD4B94E1E272EA600AE2BC9 /* HomeViewController.swift in Sources */,
 				2F7DC8E9200D9F500087E2FC /* YQReportFromViewController.swift in Sources */,
 				2F0223B61FA99ECF0090822F /* YQFilterPersonModel.swift in Sources */,
+				2FC30D7B20DB9F990072AD5B /* YQJoinExamCell.swift in Sources */,
 				2F4EB2941FD51AA00004A532 /* YQVideoPatrolViewController.swift in Sources */,
 				2F648DAF1F57C045006D51D3 /* YQPartDataCell.swift in Sources */,
 				4B5E43C31F2ECEFE00DCE5AC /* SiginCellView.swift in Sources */,

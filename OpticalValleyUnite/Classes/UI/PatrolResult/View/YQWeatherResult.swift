@@ -24,6 +24,9 @@ class YQWeatherResult: UIView {
     
     @IBOutlet weak var remarkView: UITextView!
     
+    @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
+    
+    
     //要求得到控制器的指针:
     var superVC : UIViewController?
 
@@ -141,6 +144,8 @@ class YQWeatherResult: UIView {
                 
             }
 
+            self.setNeedsLayout()
+            
         }
     }
     
@@ -150,4 +155,6 @@ class YQWeatherResult: UIView {
         self.remarkView.isEditable = false
         
     }
+    
+    
 }

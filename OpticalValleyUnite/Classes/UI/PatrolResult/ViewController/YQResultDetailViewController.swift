@@ -29,6 +29,10 @@ class YQResultDetailViewController: UIViewController {
     
     @IBOutlet weak var contentScrollView: UIScrollView!
     
+    var weatherV : YQWeatherResult?
+    
+    var ScoreV : YQScoreResult?
+    
     
     //定义的数据的模型数组
     var modelData = [YQResultDetailModel](){
@@ -64,6 +68,7 @@ class YQResultDetailViewController: UIViewController {
                     weather.frame = CGRect.init(x: xxx, y: CGFloat(y), width: self.contentScrollView.width, height: self.contentScrollView.height)
                     weather.model = model
                     weather.superVC = self
+                    self.weatherV = weather
                     
                     self.contentScrollView.addSubview(weather)
                     
@@ -76,6 +81,7 @@ class YQResultDetailViewController: UIViewController {
                     Score.frame = CGRect.init(x: xxx, y: CGFloat(y), width: self.contentScrollView.width, height: self.contentScrollView.height)
                     Score.model = model
                     Score.superVC = self
+                    self.ScoreV = Score
                     
                     self.contentScrollView.addSubview(Score)
 
@@ -111,6 +117,23 @@ class YQResultDetailViewController: UIViewController {
          makeUpDetailData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.weatherV != nil {
+            
+            self.weatherV?.scrollViewHeightConstraint.constant = (self.weatherV?.remarkView.maxY)! > CGFloat(400) ? (self.weatherV?.remarkView.maxY)! + 100 : 500
+            
+        }
+        
+        if self.ScoreV != nil {
+            
+            self.ScoreV?.scrollViewHeightConstraint.constant = (self.ScoreV?.remarkView.maxY)! > CGFloat(400) ? (self.ScoreV?.remarkView.maxY)! + 100 : 500
+        }
+        
+    }
+    
+
     // MARK: - 获取数据的详情
     func makeUpDetailData(){
     

@@ -25,12 +25,16 @@ class YQScoreResult: UIView {
     
     @IBOutlet weak var scoreLabel: UILabel!
     
+    @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
+    
+    
     //要求得到控制器的指针:
     var superVC : UIViewController?
     
     
     //数据模型
     var model : YQResultDetailModel?{
+        
         didSet{
             
             self.patrolTypeLabel.text = model?.insItemTypeName
@@ -157,6 +161,9 @@ class YQScoreResult: UIView {
 
                 }
             }
+
+            self.setNeedsLayout()
+            
         }
     }
     
@@ -166,8 +173,8 @@ class YQScoreResult: UIView {
         super.awakeFromNib()
         
         self.remarkView.isEditable = false
-        
     }
+ 
 
     
 }

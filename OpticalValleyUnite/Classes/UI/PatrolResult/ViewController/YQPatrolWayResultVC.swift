@@ -80,7 +80,7 @@ extension YQPatrolWayResultVC : UITableViewDelegate,UITableViewDataSource{
         
         if cell == nil {
             
-            cell = Bundle.main.loadNibNamed("YQPatrolWayResultCell", owner: nil, options: nil)?[0] as! YQPatrolWayResultCell
+            cell = Bundle.main.loadNibNamed("YQPatrolWayResultCell", owner: nil, options: nil)?[0] as? YQPatrolWayResultCell
         }
         
         cell?.model = self.dataArray[indexPath.row]

@@ -23,23 +23,31 @@ class YQExaminationVC: UIViewController {
     //参加考试
     @IBAction func joinExaminationButtonClick(_ sender: UIButton) {
         
+        let vc = YQPublicExaminationTVC.init(nibName: "YQPublicExaminationTVC", bundle: nil)
+        vc.cellType = 1
         
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
     //我的成绩
     @IBAction func myScoreButtonClick(_ sender: UIButton) {
         
+        let vc = YQPublicExaminationTVC.init(nibName: "YQPublicExaminationTVC", bundle: nil)
+        vc.cellType = 2
         
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
     //考试记录
     @IBAction func examRecordsButtonClick(_ sender: UIButton) {
         
+        let vc = YQPublicExaminationTVC.init(nibName: "YQPublicExaminationTVC", bundle: nil)
+        vc.cellType = 3
         
-        
-        
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     
     

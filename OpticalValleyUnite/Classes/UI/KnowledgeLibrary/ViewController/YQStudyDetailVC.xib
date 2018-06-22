@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3jn-47-JQh">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="60"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qkQ-7s-XE4">
                             <rect key="frame" x="20" y="59" width="350" height="1"/>
@@ -59,7 +59,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1A-Cg-xAY">
-                    <rect key="frame" x="0.0" y="60" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="124" width="375" height="200"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VF8-7f-YgM">
                             <rect key="frame" x="20" y="199" width="350" height="1"/>
@@ -87,7 +87,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="培训内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lD7-ZL-ufx">
-                    <rect key="frame" x="20" y="70" width="65" height="18"/>
+                    <rect key="frame" x="20" y="134" width="65" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="65" id="Ote-rA-JLT"/>
                     </constraints>
@@ -96,7 +96,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6H-1s-ANh">
-                    <rect key="frame" x="0.0" y="260" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="324" width="375" height="50"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pdf" translatesAutoresizingMaskIntoConstraints="NO" id="SFw-Du-G8l">
                             <rect key="frame" x="90" y="17" width="16" height="16"/>
@@ -113,7 +113,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="培训附件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BH-NV-Ifj">
-                    <rect key="frame" x="20" y="276" width="65" height="18"/>
+                    <rect key="frame" x="20" y="340" width="65" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="65" id="a0b-wp-7Fz"/>
                     </constraints>
@@ -122,7 +122,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WxS-4V-OBR">
-                    <rect key="frame" x="105" y="275" width="265" height="20"/>
+                    <rect key="frame" x="105" y="339" width="265" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="i6d-KA-fTB"/>
                     </constraints>
@@ -131,7 +131,7 @@
             </subviews>
             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="3jn-47-JQh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7Ac-wr-fRd"/>
+                <constraint firstItem="3jn-47-JQh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="7Ac-wr-fRd"/>
                 <constraint firstAttribute="trailing" secondItem="WxS-4V-OBR" secondAttribute="trailing" constant="5" id="9F0-sQ-X1e"/>
                 <constraint firstItem="zjp-6c-EyO" firstAttribute="top" secondItem="lD7-ZL-ufx" secondAttribute="top" id="Ezh-eR-9Pc"/>
                 <constraint firstItem="3jn-47-JQh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IIm-ei-JSn"/>

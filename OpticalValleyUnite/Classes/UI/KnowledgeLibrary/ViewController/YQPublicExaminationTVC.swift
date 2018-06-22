@@ -75,11 +75,9 @@ class YQPublicExaminationTVC: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellExamRecords, for: indexPath)
                 return cell
             
-            
             default:
                 break
         }
-        
         
         return UITableViewCell()
         
@@ -95,6 +93,34 @@ class YQPublicExaminationTVC: UITableViewController {
             
             return 100
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch self.cellType {
+            
+            case 1:
+                
+                let vc = YQStartExaminationVC.init(nibName: "YQStartExaminationVC", bundle: nil)
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+                break
+            
+            case 2:
+                
+                let vc = YQAchievementDetailVC.init(nibName: "YQAchievementDetailVC", bundle: nil)
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+                break
+            
+            case 3:
+                
+                break
+            
+            default:
+                break
+        }
+        
     }
     
     

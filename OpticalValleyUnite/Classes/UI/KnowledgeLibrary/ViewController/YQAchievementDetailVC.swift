@@ -88,7 +88,7 @@ extension YQAchievementDetailVC : UICollectionViewDelegate,UICollectionViewDataS
             
             cell?.questionBtn.isSelected = true
         }
-        cell?.questionBtn.setTitle("\(indexPath.item)", for: .normal)
+        cell?.questionBtn.setTitle("\(indexPath.item + 1)", for: .normal)
         
         return cell!
     }

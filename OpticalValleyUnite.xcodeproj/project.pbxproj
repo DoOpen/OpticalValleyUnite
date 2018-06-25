@@ -346,6 +346,9 @@
 		2F9F610E2047CFC700CD9B75 /* YQSensorPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F610D2047CFC700CD9B75 /* YQSensorPart.swift */; };
 		2F9F61102047CFF200CD9B75 /* YQSensorPart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9F610F2047CFF200CD9B75 /* YQSensorPart.xib */; };
 		2F9F92242086F4EE00D860DF /* YQFeedbackListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F92232086F4EE00D860DF /* YQFeedbackListModel.swift */; };
+		2FA364DB20E0C9940041D3BE /* YQStartExamDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA364D920E0C9940041D3BE /* YQStartExamDetailVC.swift */; };
+		2FA364DC20E0C9940041D3BE /* YQStartExamDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA364DA20E0C9940041D3BE /* YQStartExamDetailVC.xib */; };
+		2FA364DE20E0CD690041D3BE /* UIButton+YQTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA364DD20E0CD690041D3BE /* UIButton+YQTime.swift */; };
 		2FA3E3D220C629AB0003A979 /* YQHomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3E3D120C629AB0003A979 /* YQHomeContentView.swift */; };
 		2FA3E3D420C629C20003A979 /* YQHomeContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA3E3D320C629C20003A979 /* YQHomeContentView.xib */; };
 		2FA3E3D620C63AFD0003A979 /* YQDefaultHomeNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3E3D520C63AFD0003A979 /* YQDefaultHomeNavView.swift */; };
@@ -969,6 +972,9 @@
 		2F9F610D2047CFC700CD9B75 /* YQSensorPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQSensorPart.swift; sourceTree = "<group>"; };
 		2F9F610F2047CFF200CD9B75 /* YQSensorPart.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQSensorPart.xib; sourceTree = "<group>"; };
 		2F9F92232086F4EE00D860DF /* YQFeedbackListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQFeedbackListModel.swift; sourceTree = "<group>"; };
+		2FA364D920E0C9940041D3BE /* YQStartExamDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQStartExamDetailVC.swift; sourceTree = "<group>"; };
+		2FA364DA20E0C9940041D3BE /* YQStartExamDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQStartExamDetailVC.xib; sourceTree = "<group>"; };
+		2FA364DD20E0CD690041D3BE /* UIButton+YQTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+YQTime.swift"; sourceTree = "<group>"; };
 		2FA3E3D120C629AB0003A979 /* YQHomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQHomeContentView.swift; sourceTree = "<group>"; };
 		2FA3E3D320C629C20003A979 /* YQHomeContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQHomeContentView.xib; sourceTree = "<group>"; };
 		2FA3E3D520C63AFD0003A979 /* YQDefaultHomeNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQDefaultHomeNavView.swift; sourceTree = "<group>"; };
@@ -1717,6 +1723,8 @@
 				2F53E26A20DCCE5300266518 /* YQStartExaminationVC.xib */,
 				2F53E27120DCFF2800266518 /* YQAchievementDetailVC.swift */,
 				2F53E27220DCFF2800266518 /* YQAchievementDetailVC.xib */,
+				2FA364D920E0C9940041D3BE /* YQStartExamDetailVC.swift */,
+				2FA364DA20E0C9940041D3BE /* YQStartExamDetailVC.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2622,6 +2630,7 @@
 				4BD4B91B1E272EA600AE2BC9 /* UINavigationController+FDFullscreenPopGesture.m */,
 				4BD4B91C1E272EA600AE2BC9 /* UIView+AdjustFrame.h */,
 				4BD4B91D1E272EA600AE2BC9 /* UIView+AdjustFrame.m */,
+				2FA364DD20E0CD690041D3BE /* UIButton+YQTime.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -3085,6 +3094,7 @@
 				2F7F230C20B7E8EE00935E63 /* YQPatrolWayResultVC.xib in Resources */,
 				2F4A658E1F945AC300F4C72A /* YQJournalAddEvent.storyboard in Resources */,
 				2F616577205A97F100EB0B53 /* YQEquipmentSiftVC.storyboard in Resources */,
+				2FA364DC20E0C9940041D3BE /* YQStartExamDetailVC.xib in Resources */,
 				2F9F61102047CFF200CD9B75 /* YQSensorPart.xib in Resources */,
 				2F2F957C1F8DF7C800870DC8 /* YQJournalCell.xib in Resources */,
 				2F5A3D611FE8EDC90069ABE1 /* YQScanCell.xib in Resources */,
@@ -3361,6 +3371,7 @@
 				2FC30D8320DBA8DF0072AD5B /* YQExamRecordsCell.swift in Sources */,
 				2F34E86420468720006EBAF8 /* YQEquipTypeTVC.swift in Sources */,
 				4B751BD31E5B301C00C0CEC0 /* AddScrollerView.swift in Sources */,
+				2FA364DE20E0CD690041D3BE /* UIButton+YQTime.swift in Sources */,
 				2F3B96001F6B68BE0008AFEB /* YQDrawerViewController.swift in Sources */,
 				2F70DC2C1FDFA63F003B9938 /* YQScoreResult.swift in Sources */,
 				2F8D67F3208D853300F687FF /* YQGeneralCheckOutModel.swift in Sources */,
@@ -3643,6 +3654,7 @@
 				2F0223BA1FA9C2030090822F /* YQWorkOrderCompleteVC.swift in Sources */,
 				2F73073A1FA85DFA0067BC4D /* YQWorkLogListModel.swift in Sources */,
 				4B6E64FA1EEAEFCF00BA23E4 /* PhotoBrowser.swift in Sources */,
+				2FA364DB20E0C9940041D3BE /* YQStartExamDetailVC.swift in Sources */,
 				2F3AC6A81FD645100029AEE3 /* YQVideoPatrolAnnotation.swift in Sources */,
 				2F51CCD1203C2AAB005723E8 /* YQEquipmentListCell.swift in Sources */,
 				2F7A609420C538C000AACFD9 /* YQOtherHomeNavView.swift in Sources */,

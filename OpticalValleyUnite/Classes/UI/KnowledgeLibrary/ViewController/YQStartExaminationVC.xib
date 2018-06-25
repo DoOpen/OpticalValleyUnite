@@ -133,6 +133,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="367" height="50"/>
                             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="开始答题"/>
+                            <connections>
+                                <action selector="startAnswerBtnClick:" destination="-1" eventType="touchUpInside" id="iq9-6N-puL"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

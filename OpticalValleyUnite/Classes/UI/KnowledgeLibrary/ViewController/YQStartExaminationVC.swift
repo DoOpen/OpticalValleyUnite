@@ -58,7 +58,6 @@ class YQStartExaminationVC: UIViewController {
     }()
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -76,6 +75,16 @@ class YQStartExaminationVC: UIViewController {
         
     }
 
+    @IBAction func startAnswerBtnClick(_ sender: UIButton) {
+        //点击开始答题进行的从1开始
+        let vc = YQStartExamDetailVC.init(nibName: "YQStartExamDetailVC", bundle: nil)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+    }
+    
+    
 
 }
 
@@ -90,7 +99,7 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cell, for: indexPath) as? YQQuestionCollectionCell
         
-        cell?.questionBtn.setTitle("\(indexPath.item)", for: .normal)
+        cell?.questionBtn.setTitle("\(indexPath.item + 1)", for: .normal)
         
         return cell!
     }

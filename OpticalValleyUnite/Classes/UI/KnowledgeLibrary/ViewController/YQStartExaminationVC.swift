@@ -89,7 +89,9 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cell, for: indexPath) as? YQQuestionCollectionCell
-
+        
+        cell?.questionBtn.setTitle("\(indexPath.item)", for: .normal)
+        
         return cell!
     }
     

@@ -60,6 +60,7 @@ class YQAchievementDetailVC: UIViewController {
         self.title = "成绩详情"
         //2.设置约束
         self.scrollContentView.addSubview(self.collectionView)
+        
         self.collectionView.snp.makeConstraints { (maker) in
             
             maker.top.equalTo(self.headView.snp.bottom)
@@ -82,6 +83,12 @@ extension YQAchievementDetailVC : UICollectionViewDelegate,UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cell, for: indexPath) as? YQQuestionCollectionCell
+        
+        if indexPath.item % 2 == 0 {
+            
+            cell?.questionBtn.isSelected = true
+        }
+        cell?.questionBtn.setTitle("\(indexPath.item)", for: .normal)
         
         return cell!
     }

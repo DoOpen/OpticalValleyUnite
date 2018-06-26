@@ -207,6 +207,12 @@
 		2F648DAD1F57A2DC006D51D3 /* PartsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F648DAC1F57A2DC006D51D3 /* PartsModel.swift */; };
 		2F648DAF1F57C045006D51D3 /* YQPartDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F648DAE1F57C045006D51D3 /* YQPartDataCell.swift */; };
 		2F648DB11F57C063006D51D3 /* YQPartDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F648DB01F57C063006D51D3 /* YQPartDataCell.xib */; };
+		2F64D9C820E1EE53009C7EA2 /* YQQuestionOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64D9C720E1EE53009C7EA2 /* YQQuestionOptionView.swift */; };
+		2F64D9CA20E1EE6A009C7EA2 /* YQQuestionOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F64D9C920E1EE6A009C7EA2 /* YQQuestionOptionView.xib */; };
+		2F64D9CC20E219EC009C7EA2 /* YQMoreQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64D9CB20E219EC009C7EA2 /* YQMoreQuestionView.swift */; };
+		2F64D9CE20E21A0A009C7EA2 /* YQMoreQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F64D9CD20E21A0A009C7EA2 /* YQMoreQuestionView.xib */; };
+		2F64D9D020E222FA009C7EA2 /* YQJudgmentQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64D9CF20E222FA009C7EA2 /* YQJudgmentQuestionView.swift */; };
+		2F64D9D220E2231F009C7EA2 /* YQJudgmentQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F64D9D120E2231F009C7EA2 /* YQJudgmentQuestionView.xib */; };
 		2F6A438E1F6A528D003E10C9 /* YQFireControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */; };
 		2F6A43901F6A52CA003E10C9 /* YQFireControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */; };
 		2F6A83911F5CE073002BB61C /* YQPartDataSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */; };
@@ -784,6 +790,12 @@
 		2F648DAC1F57A2DC006D51D3 /* PartsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartsModel.swift; sourceTree = "<group>"; };
 		2F648DAE1F57C045006D51D3 /* YQPartDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataCell.swift; sourceTree = "<group>"; };
 		2F648DB01F57C063006D51D3 /* YQPartDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQPartDataCell.xib; sourceTree = "<group>"; };
+		2F64D9C720E1EE53009C7EA2 /* YQQuestionOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQQuestionOptionView.swift; sourceTree = "<group>"; };
+		2F64D9C920E1EE6A009C7EA2 /* YQQuestionOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQQuestionOptionView.xib; sourceTree = "<group>"; };
+		2F64D9CB20E219EC009C7EA2 /* YQMoreQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQMoreQuestionView.swift; sourceTree = "<group>"; };
+		2F64D9CD20E21A0A009C7EA2 /* YQMoreQuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQMoreQuestionView.xib; sourceTree = "<group>"; };
+		2F64D9CF20E222FA009C7EA2 /* YQJudgmentQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQJudgmentQuestionView.swift; sourceTree = "<group>"; };
+		2F64D9D120E2231F009C7EA2 /* YQJudgmentQuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQJudgmentQuestionView.xib; sourceTree = "<group>"; };
 		2F6A438D1F6A528D003E10C9 /* YQFireControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFireControlViewController.swift; sourceTree = "<group>"; };
 		2F6A438F1F6A52CA003E10C9 /* YQFireControl.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFireControl.storyboard; sourceTree = "<group>"; };
 		2F6A83901F5CE073002BB61C /* YQPartDataSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPartDataSelectCell.swift; sourceTree = "<group>"; };
@@ -1702,6 +1714,12 @@
 				2FC30D8220DBA8DF0072AD5B /* YQExamRecordsCell.xib */,
 				2F53E26D20DCDC6300266518 /* YQQuestionCollectionCell.swift */,
 				2F53E26E20DCDC6300266518 /* YQQuestionCollectionCell.xib */,
+				2F64D9C720E1EE53009C7EA2 /* YQQuestionOptionView.swift */,
+				2F64D9C920E1EE6A009C7EA2 /* YQQuestionOptionView.xib */,
+				2F64D9CB20E219EC009C7EA2 /* YQMoreQuestionView.swift */,
+				2F64D9CD20E21A0A009C7EA2 /* YQMoreQuestionView.xib */,
+				2F64D9CF20E222FA009C7EA2 /* YQJudgmentQuestionView.swift */,
+				2F64D9D120E2231F009C7EA2 /* YQJudgmentQuestionView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3080,6 +3098,7 @@
 				2F2A2BB61F989E46003015E9 /* YQAllProjectSelect.storyboard in Resources */,
 				2F53A11020762B8C003F8296 /* YQStarServiceVC.xib in Resources */,
 				2F6DF89D20B65C0B0053D1E1 /* Info.plist in Resources */,
+				2F64D9D220E2231F009C7EA2 /* YQJudgmentQuestionView.xib in Resources */,
 				2FA3E3D420C629C20003A979 /* YQHomeContentView.xib in Resources */,
 				4BD4B9541E272EA600AE2BC9 /* WorkOrder.storyboard in Resources */,
 				2F90BF6820AD2883006DA25D /* YQChooseHouseCell.xib in Resources */,
@@ -3191,6 +3210,7 @@
 				2F07A0241FDBF5510064556D /* YQResultMapView.storyboard in Resources */,
 				2F236B701F6FADF700F1B0DF /* YQPersonDetail.storyboard in Resources */,
 				2F7DC8E7200D99D60087E2FC /* YQReportFormFirstVC.xib in Resources */,
+				2F64D9CA20E1EE6A009C7EA2 /* YQQuestionOptionView.xib in Resources */,
 				4BE922631EE7EEA900FDEFE1 /* ExecutDetailCell.xib in Resources */,
 				2F5A3D5D1FE8ED7F0069ABE1 /* YQBluetoothCell.xib in Resources */,
 				2F7EF82B201082F40029D38D /* YQAddHighlights.xib in Resources */,
@@ -3219,6 +3239,7 @@
 				2F4217361FDA86F800B42BB3 /* YQPatrolItemScoreViewController.xib in Resources */,
 				2F648DB11F57C063006D51D3 /* YQPartDataCell.xib in Resources */,
 				4BD4B9061E272E0C00AE2BC9 /* Main.storyboard in Resources */,
+				2F64D9CE20E21A0A009C7EA2 /* YQMoreQuestionView.xib in Resources */,
 				2FC7CC8F208B18A700F6DEFA /* YQGenaralFeedBackDetailVC.xib in Resources */,
 				4B8EE7771F17047400A59F8D /* WorkOrder2Cell.xib in Resources */,
 				2F7A609620C538D100AACFD9 /* YQOtherHomeNavView.xib in Resources */,
@@ -3383,6 +3404,7 @@
 				2F6DF89C20B65C0B0053D1E1 /* FSCalendarWeekdayView.m in Sources */,
 				4B1DEC661E31E504000917D2 /* ChoosePersonViewController.swift in Sources */,
 				2F77B87420C91B7A00C4079F /* SYLifeManagerLayout.m in Sources */,
+				2F64D9C820E1EE53009C7EA2 /* YQQuestionOptionView.swift in Sources */,
 				4B3951FC1E28CF5000E2642F /* WorkOrderDetailsCell.swift in Sources */,
 				2F3AC6AA1FD6937D0029AEE3 /* YQVideoIndoorPatorlModel.swift in Sources */,
 				2F612D35209AFAC3003B8D4D /* YQStudyContentVC.swift in Sources */,
@@ -3546,6 +3568,7 @@
 				2F39D73E200EF52000074B83 /* YQReportFormDetailModel.swift in Sources */,
 				2F5993EF20295A0A00AE124C /* YQDecorationHomeModel.swift in Sources */,
 				4B776E681E3857100021B5CA /* UpdataPSWViewController.swift in Sources */,
+				2F64D9D020E222FA009C7EA2 /* YQJudgmentQuestionView.swift in Sources */,
 				2F5F945B206E2D32000DC20A /* YQShareViewController.swift in Sources */,
 				4B39520A1E29D25D00E2642F /* SJUpButton.m in Sources */,
 				2F62734F20454B7C00D36F14 /* YQEquipmentWorkOrderVC.swift in Sources */,
@@ -3647,6 +3670,7 @@
 				2FCBC025201494B6003F1556 /* YQDrawSpontaneousView.swift in Sources */,
 				2FC167471F905F34001CEACD /* YQJournalDetailViewController.swift in Sources */,
 				2F52E5B42048F2050060A2BA /* YQWebVideoVC.swift in Sources */,
+				2F64D9CC20E219EC009C7EA2 /* YQMoreQuestionView.swift in Sources */,
 				2FC7CC93208B307B00F6DEFA /* YQGeneralManagerReplyView.swift in Sources */,
 				2F92B2601FBB03D500168FC6 /* YQStepShowModel.swift in Sources */,
 				2F6DF89020B65C0B0053D1E1 /* FSCalendarCalculator.m in Sources */,

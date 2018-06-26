@@ -14,10 +14,10 @@ class YQStartExamDetailVC: UIViewController {
     //默认是第一题
     var titleIndes: Int = 1
     
-    var secondStr = ""
-    var minitStr = ""
-    var hourStr = ""
-    var dayStr = ""
+    //问题view
+    @IBOutlet weak var questionView: UIView!
+    
+    //option(选项view)
     
     
     override func viewDidLoad() {
@@ -57,7 +57,15 @@ class YQStartExamDetailVC: UIViewController {
         self.navigationItem.rightBarButtonItems = [right2Bar,right1Bar]
     }
     
-   
+    
+    // MARK: - 点击下一题的方法
+    @IBAction func nextButtonClick(_ sender: UIButton) {
+        //点击下一题的选项情况
+        //通知重新创建题目控件
+        
+        
+        
+    }
     
     
   
@@ -65,3 +73,4 @@ class YQStartExamDetailVC: UIViewController {
  
 
 }
+

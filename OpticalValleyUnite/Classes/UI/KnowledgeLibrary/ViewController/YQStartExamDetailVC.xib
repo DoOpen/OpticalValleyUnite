@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQStartExamDetailVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="questionView" destination="bE4-Xa-UmE" id="csx-ZO-tTJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,12 +21,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGg-76-NSa">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcP-bP-20m">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="650"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bE4-Xa-UmE">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="260"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="260" id="7ut-Mz-41P"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="bE4-Xa-UmE" firstAttribute="leading" secondItem="vcP-bP-20m" secondAttribute="leading" id="BAx-1i-P3g"/>
+                                <constraint firstAttribute="trailing" secondItem="bE4-Xa-UmE" secondAttribute="trailing" id="Dhs-aw-4yh"/>
+                                <constraint firstItem="bE4-Xa-UmE" firstAttribute="top" secondItem="vcP-bP-20m" secondAttribute="top" id="cvQ-0t-EgB"/>
                                 <constraint firstAttribute="height" constant="650" id="hcK-3p-JH4"/>
                             </constraints>
                         </view>
@@ -37,12 +50,37 @@
                         <constraint firstAttribute="bottom" secondItem="vcP-bP-20m" secondAttribute="bottom" id="wad-05-Pb3"/>
                     </constraints>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVS-gD-JRp">
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAn-A2-ElU">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="下一题"/>
+                            <connections>
+                                <action selector="nextButtonClick:" destination="-1" eventType="touchUpInside" id="kB0-OA-6DW"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="TAn-A2-ElU" secondAttribute="trailing" id="2lq-iv-cLU"/>
+                        <constraint firstAttribute="height" constant="50" id="3xa-cJ-UIO"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="4BS-qA-4Ci"/>
+                        <constraint firstItem="TAn-A2-ElU" firstAttribute="top" secondItem="gVS-gD-JRp" secondAttribute="top" id="bQS-Yw-7qS"/>
+                        <constraint firstItem="TAn-A2-ElU" firstAttribute="leading" secondItem="gVS-gD-JRp" secondAttribute="leading" id="fdZ-SF-MEM"/>
+                        <constraint firstAttribute="bottom" secondItem="TAn-A2-ElU" secondAttribute="bottom" id="hjl-zu-mSh"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="jGg-76-NSa" secondAttribute="bottom" id="4wy-we-eFB"/>
+                <constraint firstAttribute="trailing" secondItem="gVS-gD-JRp" secondAttribute="trailing" id="0ZI-xi-Gj8"/>
                 <constraint firstItem="vcP-bP-20m" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9oA-I5-ZlE"/>
+                <constraint firstItem="gVS-gD-JRp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IPw-z4-YDu"/>
                 <constraint firstItem="jGg-76-NSa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SSC-Nt-H04"/>
+                <constraint firstAttribute="bottom" secondItem="gVS-gD-JRp" secondAttribute="bottom" id="Tht-W2-7aa"/>
+                <constraint firstItem="gVS-gD-JRp" firstAttribute="top" secondItem="jGg-76-NSa" secondAttribute="bottom" id="XOb-bX-UFh"/>
                 <constraint firstItem="jGg-76-NSa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jVt-C8-QrV"/>
                 <constraint firstAttribute="trailing" secondItem="jGg-76-NSa" secondAttribute="trailing" id="mVd-1q-uzT"/>
             </constraints>

@@ -84,6 +84,7 @@
                 <constraint firstItem="jGg-76-NSa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jVt-C8-QrV"/>
                 <constraint firstAttribute="trailing" secondItem="jGg-76-NSa" secondAttribute="trailing" id="mVd-1q-uzT"/>
             </constraints>
+            <point key="canvasLocation" x="-171" y="69"/>
         </view>
     </objects>
 </document>

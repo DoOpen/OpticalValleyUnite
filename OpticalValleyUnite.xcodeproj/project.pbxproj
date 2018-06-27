@@ -166,6 +166,8 @@
 		2F5B701820E32DC30058C49B /* YQCheckAchievementDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5B701620E32DC30058C49B /* YQCheckAchievementDetailVC.xib */; };
 		2F5B701A20E331100058C49B /* YQCheckAchievementDetailV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B701920E331100058C49B /* YQCheckAchievementDetailV.swift */; };
 		2F5B701C20E331350058C49B /* YQCheckAchievementDetailV.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5B701B20E331350058C49B /* YQCheckAchievementDetailV.xib */; };
+		2F5B701E20E37E570058C49B /* YQShortAnswerQuestionsV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B701D20E37E570058C49B /* YQShortAnswerQuestionsV.swift */; };
+		2F5B702020E37E870058C49B /* YQShortAnswerQuestionsV.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5B701F20E37E870058C49B /* YQShortAnswerQuestionsV.xib */; };
 		2F5D276C1F998DE20022F7D6 /* YQProjectSelectFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D276B1F998DE20022F7D6 /* YQProjectSelectFooterView.swift */; };
 		2F5D276E1F998E0C0022F7D6 /* YQProjectSelectFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D276D1F998E0C0022F7D6 /* YQProjectSelectFooter.xib */; };
 		2F5D27701F998F340022F7D6 /* YQProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D276F1F998F340022F7D6 /* YQProjectTableViewCell.swift */; };
@@ -750,6 +752,8 @@
 		2F5B701620E32DC30058C49B /* YQCheckAchievementDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQCheckAchievementDetailVC.xib; sourceTree = "<group>"; };
 		2F5B701920E331100058C49B /* YQCheckAchievementDetailV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQCheckAchievementDetailV.swift; sourceTree = "<group>"; };
 		2F5B701B20E331350058C49B /* YQCheckAchievementDetailV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQCheckAchievementDetailV.xib; sourceTree = "<group>"; };
+		2F5B701D20E37E570058C49B /* YQShortAnswerQuestionsV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQShortAnswerQuestionsV.swift; sourceTree = "<group>"; };
+		2F5B701F20E37E870058C49B /* YQShortAnswerQuestionsV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQShortAnswerQuestionsV.xib; sourceTree = "<group>"; };
 		2F5D276B1F998DE20022F7D6 /* YQProjectSelectFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQProjectSelectFooterView.swift; sourceTree = "<group>"; };
 		2F5D276D1F998E0C0022F7D6 /* YQProjectSelectFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQProjectSelectFooter.xib; sourceTree = "<group>"; };
 		2F5D276F1F998F340022F7D6 /* YQProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQProjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -1667,31 +1671,6 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		2F5F9452206E109C000DC20A /* EditText */ = {
-			isa = PBXGroup;
-			children = (
-				2F5F9453206E109C000DC20A /* Controller */,
-				2F5F9454206E109C000DC20A /* View */,
-			);
-			path = EditText;
-			sourceTree = "<group>";
-		};
-		2F5F9453206E109C000DC20A /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				2F5F9455206E10EE000DC20A /* YQEditTextVC.swift */,
-				2F5F9456206E10EE000DC20A /* YQEditTextVC.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		2F5F9454206E109C000DC20A /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		2F612D2B209AF47D003B8D4D /* KnowledgeLibrary */ = {
 			isa = PBXGroup;
 			children = (
@@ -1730,6 +1709,8 @@
 				2F64D9D120E2231F009C7EA2 /* YQJudgmentQuestionView.xib */,
 				2F5B701920E331100058C49B /* YQCheckAchievementDetailV.swift */,
 				2F5B701B20E331350058C49B /* YQCheckAchievementDetailV.xib */,
+				2F5B701D20E37E570058C49B /* YQShortAnswerQuestionsV.swift */,
+				2F5B701F20E37E870058C49B /* YQShortAnswerQuestionsV.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1743,6 +1724,8 @@
 				2F612D34209AFAC3003B8D4D /* YQStudyContentVC.xib */,
 				2FC30D8520DBB3960072AD5B /* YQStudyDetailVC.swift */,
 				2FC30D8620DBB3960072AD5B /* YQStudyDetailVC.xib */,
+				2F5F9455206E10EE000DC20A /* YQEditTextVC.swift */,
+				2F5F9456206E10EE000DC20A /* YQEditTextVC.xib */,
 				2F612D3B209AFE7A003B8D4D /* YQExaminationVC.swift */,
 				2F612D3C209AFE7A003B8D4D /* YQExaminationVC.xib */,
 				2FC30D7520DB93220072AD5B /* YQPublicExaminationTVC.swift */,
@@ -2670,7 +2653,6 @@
 			children = (
 				2F612D2B209AF47D003B8D4D /* KnowledgeLibrary */,
 				2FC7468020738E9600556E1A /* GeneralManagerMailbox */,
-				2F5F9452206E109C000DC20A /* EditText */,
 				2F86DCBF204E82DA0029E54A /* AllWorkUnitQuery */,
 				2F6273442045434300D36F14 /* EquipmentRoom */,
 				2FC989F9202D85800080D1BE /* HouseQuery */,
@@ -3181,6 +3163,7 @@
 				2F7550F91FA6C24700A5E242 /* YQObject.storyboard in Resources */,
 				2F07A0281FDBF69B0064556D /* YQResultDetail.storyboard in Resources */,
 				2F62735320454C3400D36F14 /* YQEquipmentWO.storyboard in Resources */,
+				2F5B702020E37E870058C49B /* YQShortAnswerQuestionsV.xib in Resources */,
 				2F57891D2011D4F400C1C5DF /* YQWorkHighlightsDetailCell.xib in Resources */,
 				2F51CCDA203C2B7D005723E8 /* YQOwnerAndTenantCell.xib in Resources */,
 				2F7DC8F5200DEB440087E2FC /* YQWorkPlanVC.xib in Resources */,
@@ -3377,6 +3360,7 @@
 				4B7A59C91E35E1AD002E96B6 /* Model.swift in Sources */,
 				2F6DF88E20B65C0B0053D1E1 /* FSCalendar.m in Sources */,
 				4B3952061E29CE1F00E2642F /* WorkOrderOprationCell.swift in Sources */,
+				2F5B701E20E37E570058C49B /* YQShortAnswerQuestionsV.swift in Sources */,
 				2F39D742200F20DD00074B83 /* YQDrawView.swift in Sources */,
 				2F24CEBC1FBE7EB900EC6AF7 /* YQHistoryStepModel.swift in Sources */,
 				2F710397201596C50051E367 /* YQReportFromPersonList.swift in Sources */,

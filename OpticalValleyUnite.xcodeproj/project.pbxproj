@@ -168,6 +168,7 @@
 		2F5B701C20E331350058C49B /* YQCheckAchievementDetailV.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5B701B20E331350058C49B /* YQCheckAchievementDetailV.xib */; };
 		2F5B701E20E37E570058C49B /* YQShortAnswerQuestionsV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B701D20E37E570058C49B /* YQShortAnswerQuestionsV.swift */; };
 		2F5B702020E37E870058C49B /* YQShortAnswerQuestionsV.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5B701F20E37E870058C49B /* YQShortAnswerQuestionsV.xib */; };
+		2F5B702220E388F90058C49B /* YQCompletionQuestionV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B702120E388F90058C49B /* YQCompletionQuestionV.swift */; };
 		2F5D276C1F998DE20022F7D6 /* YQProjectSelectFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D276B1F998DE20022F7D6 /* YQProjectSelectFooterView.swift */; };
 		2F5D276E1F998E0C0022F7D6 /* YQProjectSelectFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5D276D1F998E0C0022F7D6 /* YQProjectSelectFooter.xib */; };
 		2F5D27701F998F340022F7D6 /* YQProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D276F1F998F340022F7D6 /* YQProjectTableViewCell.swift */; };
@@ -754,6 +755,7 @@
 		2F5B701B20E331350058C49B /* YQCheckAchievementDetailV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQCheckAchievementDetailV.xib; sourceTree = "<group>"; };
 		2F5B701D20E37E570058C49B /* YQShortAnswerQuestionsV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQShortAnswerQuestionsV.swift; sourceTree = "<group>"; };
 		2F5B701F20E37E870058C49B /* YQShortAnswerQuestionsV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQShortAnswerQuestionsV.xib; sourceTree = "<group>"; };
+		2F5B702120E388F90058C49B /* YQCompletionQuestionV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQCompletionQuestionV.swift; sourceTree = "<group>"; };
 		2F5D276B1F998DE20022F7D6 /* YQProjectSelectFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQProjectSelectFooterView.swift; sourceTree = "<group>"; };
 		2F5D276D1F998E0C0022F7D6 /* YQProjectSelectFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQProjectSelectFooter.xib; sourceTree = "<group>"; };
 		2F5D276F1F998F340022F7D6 /* YQProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQProjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -1711,6 +1713,7 @@
 				2F5B701B20E331350058C49B /* YQCheckAchievementDetailV.xib */,
 				2F5B701D20E37E570058C49B /* YQShortAnswerQuestionsV.swift */,
 				2F5B701F20E37E870058C49B /* YQShortAnswerQuestionsV.xib */,
+				2F5B702120E388F90058C49B /* YQCompletionQuestionV.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3442,6 +3445,7 @@
 				4BE9225F1EE6DB7C00FDEFE1 /* CallBackCell.swift in Sources */,
 				4B3951F31E28B38D00E2642F /* AddSignInViewController.swift in Sources */,
 				2FC30D8720DBB3960072AD5B /* YQStudyDetailVC.swift in Sources */,
+				2F5B702220E388F90058C49B /* YQCompletionQuestionV.swift in Sources */,
 				4BA520361E8E0F8000398F34 /* ExexSwithCell.swift in Sources */,
 				2FCBC0272014951A003F1556 /* YQDrawPlanView.swift in Sources */,
 				2F637F5C206A813D00EFFFF8 /* YQHomeWeatherTVC.swift in Sources */,

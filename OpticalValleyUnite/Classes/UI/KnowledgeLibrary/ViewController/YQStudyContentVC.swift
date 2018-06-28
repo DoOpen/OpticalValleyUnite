@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+
 
 class YQStudyContentVC: UIViewController {
 
@@ -14,6 +16,8 @@ class YQStudyContentVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var cellID = "studyCell"
+    
+    var dataArray = [YQStudyListModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +29,44 @@ class YQStudyContentVC: UIViewController {
         self.tableView.register(nib, forCellReuseIdentifier: cellID)
         
     }
+    
+    func getDataForServer(){
+        
+        var par = [String : Any]()
+        par["parkId"] = ""
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getNewknowledgeList, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            let data = response as? Array<[String : Any]>
+            
+            if data == nil || (data?.isEmpty)!{
+                
+                return
+            }
+            
+            var tempArray = [YQStudyListModel]()
+            
+            for dict in data! {
+                
+                tempArray.append(YQStudyListModel.init(dic: dict))
+            }
+            
+            self.dataArray = tempArray
+            
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "网络数据加载失败,请检查网络!")
+        }
+        
+    }
+    
+    
+    
 
 }
 

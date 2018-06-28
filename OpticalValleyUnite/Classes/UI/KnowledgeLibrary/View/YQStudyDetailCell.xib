@@ -64,6 +64,9 @@
                     <constraint firstItem="sqV-Cf-p4J" firstAttribute="leading" secondItem="nac-UP-wHn" secondAttribute="leading" id="eTl-oP-il7"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="titleButton" destination="lme-ab-jUD" id="lgs-yo-vBP"/>
+            </connections>
             <point key="canvasLocation" x="-231.5" y="-12"/>
         </tableViewCell>
     </objects>

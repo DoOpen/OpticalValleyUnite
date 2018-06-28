@@ -10,11 +10,17 @@ import UIKit
 
 class YQStudyDetailCell: UITableViewCell {
 
+    
+    @IBOutlet weak var titleButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
    
+    
+    
     
 }

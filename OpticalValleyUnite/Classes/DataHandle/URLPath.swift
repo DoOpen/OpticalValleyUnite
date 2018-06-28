@@ -418,4 +418,21 @@ struct URLPath {
     //意见反馈批复接口
     static let getEmailReply = "gm_email/reply"
     
+    
+    ///知识库模块
+    //培训(3个接口)
+    //列表查询
+    static let getNewknowledgeList = "newknowledge/train/list"
+    
+    //培训详情
+    static let getNewknowledgeDetail = "newknowledge/train/detail"
+    
+    //统计次数
+    static let getNewknowledgeCollect = "newknowledge/train/collect"
+    
+    //考试
+    
+    
+    
+    
 }

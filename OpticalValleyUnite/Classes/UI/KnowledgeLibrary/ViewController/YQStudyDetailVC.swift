@@ -31,6 +31,24 @@ class YQStudyDetailVC: UIViewController {
 
     }
     
+    
+    func getDetailDataForServer(){
+        
+        var par = [String : Any]()
+        par["id"] = ""
+        
+        HttpClient.instance.post(path: URLPath.getNewknowledgeDetail, parameters: par, success: { (response) in
+            
+            
+        }) { (error) in
+            
+            
+        }
+        
+        
+    }
+    
+    
 }
 
 extension YQStudyDetailVC : UITableViewDataSource,UITableViewDelegate{

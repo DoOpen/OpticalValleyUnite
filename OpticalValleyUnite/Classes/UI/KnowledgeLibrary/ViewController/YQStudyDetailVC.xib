@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQStudyDetailVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="studyContentTextV" destination="zjp-6c-EyO" id="pI3-dO-DCg"/>
+                <outlet property="studyTitleLabel" destination="bXD-8i-WYX" id="Bz5-Uv-b7B"/>
+                <outlet property="tableView" destination="Cjx-J6-xI2" id="zs8-Z5-pxn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -95,65 +98,32 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6H-1s-ANh">
-                    <rect key="frame" x="0.0" y="324" width="375" height="50"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pdf" translatesAutoresizingMaskIntoConstraints="NO" id="SFw-Du-G8l">
-                            <rect key="frame" x="90" y="17" width="16" height="16"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="16" id="T0P-RG-487"/>
-                                <constraint firstAttribute="height" constant="16" id="X9X-Z2-1WL"/>
-                            </constraints>
-                        </imageView>
-                    </subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cjx-J6-xI2">
+                    <rect key="frame" x="0.0" y="324" width="375" height="343"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="C8T-Kb-Sc9"/>
-                        <constraint firstItem="SFw-Du-G8l" firstAttribute="leading" secondItem="D6H-1s-ANh" secondAttribute="leading" constant="90" id="PVo-Hs-6bF"/>
-                    </constraints>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="培训附件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BH-NV-Ifj">
-                    <rect key="frame" x="20" y="340" width="65" height="18"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="65" id="a0b-wp-7Fz"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WxS-4V-OBR">
-                    <rect key="frame" x="105" y="339" width="265" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="i6d-KA-fTB"/>
-                    </constraints>
-                    <state key="normal" title="Button"/>
-                </button>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="WvB-50-yDT"/>
+                        <outlet property="delegate" destination="-1" id="P4d-hU-tQG"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="3jn-47-JQh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="7Ac-wr-fRd"/>
-                <constraint firstAttribute="trailing" secondItem="WxS-4V-OBR" secondAttribute="trailing" constant="5" id="9F0-sQ-X1e"/>
+                <constraint firstAttribute="bottom" secondItem="Cjx-J6-xI2" secondAttribute="bottom" id="AL7-HY-FDQ"/>
                 <constraint firstItem="zjp-6c-EyO" firstAttribute="top" secondItem="lD7-ZL-ufx" secondAttribute="top" id="Ezh-eR-9Pc"/>
                 <constraint firstItem="3jn-47-JQh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IIm-ei-JSn"/>
                 <constraint firstItem="lD7-ZL-ufx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Ixh-RK-TIL"/>
                 <constraint firstItem="lD7-ZL-ufx" firstAttribute="top" secondItem="3jn-47-JQh" secondAttribute="bottom" constant="10" id="KG4-cL-KtG"/>
                 <constraint firstAttribute="trailing" secondItem="3jn-47-JQh" secondAttribute="trailing" id="NSM-Db-H98"/>
-                <constraint firstAttribute="trailing" secondItem="D6H-1s-ANh" secondAttribute="trailing" id="Qx3-En-yXk"/>
-                <constraint firstItem="D6H-1s-ANh" firstAttribute="top" secondItem="T1A-Cg-xAY" secondAttribute="bottom" id="TNE-ky-uaY"/>
-                <constraint firstItem="WxS-4V-OBR" firstAttribute="leading" secondItem="9BH-NV-Ifj" secondAttribute="trailing" constant="20" id="c7i-iQ-Ucm"/>
-                <constraint firstItem="9BH-NV-Ifj" firstAttribute="centerY" secondItem="D6H-1s-ANh" secondAttribute="centerY" id="cLp-QR-TbT"/>
+                <constraint firstItem="Cjx-J6-xI2" firstAttribute="top" secondItem="T1A-Cg-xAY" secondAttribute="bottom" id="SOO-ZG-f2E"/>
                 <constraint firstItem="T1A-Cg-xAY" firstAttribute="top" secondItem="3jn-47-JQh" secondAttribute="bottom" id="e0m-OF-SmC"/>
-                <constraint firstItem="9BH-NV-Ifj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="iS6-qc-edK"/>
-                <constraint firstItem="SFw-Du-G8l" firstAttribute="centerY" secondItem="9BH-NV-Ifj" secondAttribute="centerY" id="ib1-Bo-eXU"/>
+                <constraint firstAttribute="trailing" secondItem="Cjx-J6-xI2" secondAttribute="trailing" id="hRp-2H-qYC"/>
                 <constraint firstItem="T1A-Cg-xAY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="plR-va-l0m"/>
-                <constraint firstItem="WxS-4V-OBR" firstAttribute="centerY" secondItem="SFw-Du-G8l" secondAttribute="centerY" id="qAr-f4-7xi"/>
-                <constraint firstItem="D6H-1s-ANh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qSR-Th-fq5"/>
+                <constraint firstItem="Cjx-J6-xI2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wmJ-7M-wUN"/>
                 <constraint firstAttribute="trailing" secondItem="T1A-Cg-xAY" secondAttribute="trailing" id="wwb-pL-TuG"/>
             </constraints>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="icon_pdf" width="16" height="16"/>
-    </resources>
 </document>

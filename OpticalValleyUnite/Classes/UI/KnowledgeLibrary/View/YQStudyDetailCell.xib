@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudyDetailCell" rowHeight="70" id="IhL-HW-Ar4" customClass="YQStudyDetailCell" customModule="OpticalValleyUnite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="437" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IhL-HW-Ar4" id="nac-UP-wHn">
+                <rect key="frame" x="0.0" y="0.0" width="437" height="69.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqV-Cf-p4J">
+                        <rect key="frame" x="0.0" y="0.0" width="437" height="69.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pdf" translatesAutoresizingMaskIntoConstraints="NO" id="Xz0-zd-fkf">
+                                <rect key="frame" x="90" y="27" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="LcT-e0-o5d"/>
+                                    <constraint firstAttribute="height" constant="16" id="UbS-in-cZZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="培训附件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhj-0N-yYa">
+                                <rect key="frame" x="15" y="26" width="65" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="Rnd-go-JEo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lme-ab-jUD">
+                                <rect key="frame" x="111" y="25" width="321" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="bXV-Cw-uB9"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lme-ab-jUD" firstAttribute="leading" secondItem="Xz0-zd-fkf" secondAttribute="trailing" constant="5" id="27e-Wq-Ycc"/>
+                            <constraint firstAttribute="trailing" secondItem="lme-ab-jUD" secondAttribute="trailing" constant="5" id="9e7-XC-IC5"/>
+                            <constraint firstItem="Xz0-zd-fkf" firstAttribute="centerY" secondItem="sqV-Cf-p4J" secondAttribute="centerY" id="Brl-p6-Js6"/>
+                            <constraint firstItem="lme-ab-jUD" firstAttribute="centerY" secondItem="sqV-Cf-p4J" secondAttribute="centerY" id="Trx-lF-KA7"/>
+                            <constraint firstItem="lhj-0N-yYa" firstAttribute="leading" secondItem="sqV-Cf-p4J" secondAttribute="leading" constant="15" id="bB0-Ph-PIv"/>
+                            <constraint firstItem="Xz0-zd-fkf" firstAttribute="leading" secondItem="sqV-Cf-p4J" secondAttribute="leading" constant="90" id="q8p-QZ-Bkr"/>
+                            <constraint firstItem="lhj-0N-yYa" firstAttribute="centerY" secondItem="sqV-Cf-p4J" secondAttribute="centerY" id="vyF-jV-Tw2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="sqV-Cf-p4J" firstAttribute="top" secondItem="nac-UP-wHn" secondAttribute="top" id="Bf7-WT-fqn"/>
+                    <constraint firstAttribute="trailing" secondItem="sqV-Cf-p4J" secondAttribute="trailing" id="Tld-aA-n9H"/>
+                    <constraint firstAttribute="bottom" secondItem="sqV-Cf-p4J" secondAttribute="bottom" id="dlF-fc-BkE"/>
+                    <constraint firstItem="sqV-Cf-p4J" firstAttribute="leading" secondItem="nac-UP-wHn" secondAttribute="leading" id="eTl-oP-il7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-231.5" y="-12"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_pdf" width="16" height="16"/>
+    </resources>
+</document>

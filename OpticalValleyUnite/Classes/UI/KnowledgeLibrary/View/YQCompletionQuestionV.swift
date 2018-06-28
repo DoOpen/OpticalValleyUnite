@@ -70,6 +70,7 @@ class YQCompletionQuestionV: UIView {
                     marker.top.equalTo(label!.snp.bottom).offset(10)
                     
                 }else{
+                    
                     marker.top.equalToSuperview().offset(15)
                 }
                 

@@ -451,11 +451,19 @@ class YQAllWorkUnitScreenVC: UIViewController {
             
             paramert["PARK_ID"] = projectData[projectTagsViewIndex].projectId
             
+            //设置的全局的项目选择 会有保存加载不到的bug问题
+//            if self.isAll == 1 {
+//
+//            }else{
+//
+//            }
+            
             var dic = [String : Any]()
             dic["ID"] = projectData[projectTagsViewIndex].projectId
             dic["PARK_NAME"] = projectData[projectTagsViewIndex].projectName
             
             UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
+            
             
         }else{//重置全局的项目选择
             

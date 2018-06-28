@@ -773,7 +773,9 @@ class ExecutingViewConttroller: UIViewController {
                 let result = realm.objects(WorkOrderModel2.self).filter("id == %@", id!).first
                 
                 realm.beginWrite()
+                
                 result?.complete = true
+                
                 try! realm.commitWrite()
                 
                 try! realm.write {

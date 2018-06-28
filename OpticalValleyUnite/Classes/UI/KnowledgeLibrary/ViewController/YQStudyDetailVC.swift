@@ -19,6 +19,7 @@ class YQStudyDetailVC: UIViewController {
     var cellID = "StudyDetailCell"
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         //1.init
         self.title = "培训详情"
@@ -28,7 +29,6 @@ class YQStudyDetailVC: UIViewController {
         self.tableView.register(nib, forCellReuseIdentifier: cellID)
         
         
-
     }
     
     

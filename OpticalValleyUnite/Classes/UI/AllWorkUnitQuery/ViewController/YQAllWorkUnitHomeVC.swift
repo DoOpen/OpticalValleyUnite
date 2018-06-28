@@ -201,6 +201,7 @@ class YQAllWorkUnitHomeVC: UIViewController {
                 
                 self.tableView.mj_header.endRefreshing()
                 self.tableView.mj_footer.endRefreshing()
+                
                 return
             }
         }
@@ -318,8 +319,8 @@ class YQAllWorkUnitHomeVC: UIViewController {
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
             self.getDataForServer(tag: self.currentBtn.tag,pageIndex : self.pageNo + 1)
-
         })
+        
     }
     
     

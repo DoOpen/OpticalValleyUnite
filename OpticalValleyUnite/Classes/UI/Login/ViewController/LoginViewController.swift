@@ -105,7 +105,6 @@ class LoginViewController: UIViewController {
             
         }else{
         
-            
             if self.isMd5 {
                 
                 parameters["password"] = UserDefaults.standard.object(forKey: Const.standardUserPwd)

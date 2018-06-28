@@ -53,7 +53,7 @@ struct URLPath {
     
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://ovuems.com"
+    static let basicBasic = "http://beta.ovuems.com"
     
     
     //服务器的basic 地址:
@@ -423,16 +423,17 @@ struct URLPath {
     //培训(3个接口)
     //列表查询
     static let getNewknowledgeList = "newknowledge/train/list"
-    
     //培训详情
     static let getNewknowledgeDetail = "newknowledge/train/detail"
-    
     //统计次数
     static let getNewknowledgeCollect = "newknowledge/train/collect"
     
-    //考试
+    //考试(6个接口)
+    //参加考试列表查询
+    static let getNewknowledgeOwnList = "newknowledge/own/list"
     
-    
+    //试卷试题详情
+    static let getNewknowledgeOwnDetail = "newknowledge/own/detail"
     
     
 }

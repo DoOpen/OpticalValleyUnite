@@ -207,13 +207,14 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     print("转换错误 ")
                 }
                 
+                let toallPictrue = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
     
                 HttpClient.instance.post(path: URLPath.getUploadOfflineUnits, parameters: parameters, success: { (response) in
                     
                     SVProgressHUD.showSuccess(withStatus: "工单保存成功!")
                     SVProgressHUD.dismiss()
                     
-                    let toallPictrue = realm.objects(offLineWorkOrderUpDatePictrueModel.self)
+                    
                     
                     if toallPictrue.isEmpty {
                         
@@ -412,30 +413,33 @@ class YQOffLineFirstWorkOrderVC: UIViewController {
                     SVProgressHUD.showError(withStatus: "工单保存失败,请检查网络!")
                 })
                 
-                //没有图片的工单内容的上传清空情况:
-                try! realm.write {
+                if toallPictrue.isEmpty {
                     
-                    for temp in compelte {
+                    //没有图片的工单内容的上传清空情况:
+                    try! realm.write {
                         
-                        let model = realm.objects(WorkOrderModel2.self).filter("id == %@",temp.WORKUNIT_ID)
+                        for temp in compelte {
+                            
+                            let model = realm.objects(WorkOrderModel2.self).filter("id == %@",temp.WORKUNIT_ID)
+                            
+                            realm.delete(model)
+                            
+                        }
                         
-                        realm.delete(model)
+                        //清空所有,然后再进行的添加
+                        realm.delete(compelte)//注意的是,这里的是,清空的完成表的情况
+                        
+                        self.screenWithDataFromRealm()
+                        
+                        SVProgressHUD.dismiss()
+                        self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleNone, value: 0, at: 1)
                         
                     }
                     
-                    //清空所有,然后再进行的添加
-                    realm.delete(compelte)//注意的是,这里的是,清空的完成表的情况
-                    
-                    self.screenWithDataFromRealm()
-                    
-                    SVProgressHUD.dismiss()
-                    self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleNone, value: 0, at: 1)
+                    self.downloadButton.isUserInteractionEnabled = true
+                    self.uploadButton.isUserInteractionEnabled = true
                     
                 }
-                
-                self.downloadButton.isUserInteractionEnabled = true
-                self.uploadButton.isUserInteractionEnabled = true
-                
                 
             }else{
             

@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQStartExamDetailVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="bottomViewHeightConstraint" destination="Tmu-kV-Vpu" id="zlG-7i-CdR"/>
+                <outlet property="handOverBtn" destination="lSI-3T-yMM" id="QKt-HL-Ey0"/>
+                <outlet property="nextBtn" destination="TAn-A2-ElU" id="foD-4i-YQL"/>
                 <outlet property="questionView" destination="bE4-Xa-UmE" id="csx-ZO-tTJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGg-76-NSa">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcP-bP-20m">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="650"/>
@@ -51,25 +54,52 @@
                     </constraints>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVS-gD-JRp">
-                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="567" width="375" height="100"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAn-A2-ElU">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSI-3T-yMM">
+                            <rect key="frame" x="0.0" y="50" width="375" height="50"/>
                             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="交卷"/>
+                            <connections>
+                                <action selector="HandOverButtonClick:" destination="-1" eventType="touchUpInside" id="X9V-R3-ZVh"/>
+                                <action selector="nextButtonClick:" destination="-1" eventType="touchUpInside" id="X0a-7o-D8i"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAn-A2-ElU">
+                            <rect key="frame" x="0.0" y="50" width="375" height="50"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="6JS-IH-w4a"/>
+                            </constraints>
                             <state key="normal" title="下一题"/>
                             <connections>
                                 <action selector="nextButtonClick:" destination="-1" eventType="touchUpInside" id="kB0-OA-6DW"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6o-0F-qYu">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="上一题"/>
+                            <connections>
+                                <action selector="nextButtonClick:" destination="-1" eventType="touchUpInside" id="HWn-bx-1UL"/>
+                                <action selector="upButtonClick:" destination="-1" eventType="touchUpInside" id="6kM-wk-J1o"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="TAn-A2-ElU" secondAttribute="trailing" id="2lq-iv-cLU"/>
-                        <constraint firstAttribute="height" constant="50" id="3xa-cJ-UIO"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="4BS-qA-4Ci"/>
-                        <constraint firstItem="TAn-A2-ElU" firstAttribute="top" secondItem="gVS-gD-JRp" secondAttribute="top" id="bQS-Yw-7qS"/>
+                        <constraint firstItem="W6o-0F-qYu" firstAttribute="leading" secondItem="gVS-gD-JRp" secondAttribute="leading" id="Ki2-oE-vXt"/>
+                        <constraint firstItem="lSI-3T-yMM" firstAttribute="top" secondItem="TAn-A2-ElU" secondAttribute="top" id="P6M-RO-5IN"/>
+                        <constraint firstAttribute="height" constant="100" id="Tmu-kV-Vpu"/>
+                        <constraint firstItem="lSI-3T-yMM" firstAttribute="top" secondItem="W6o-0F-qYu" secondAttribute="bottom" id="UGe-mc-4A0"/>
+                        <constraint firstItem="W6o-0F-qYu" firstAttribute="top" secondItem="gVS-gD-JRp" secondAttribute="top" id="a5p-SQ-QaE"/>
                         <constraint firstItem="TAn-A2-ElU" firstAttribute="leading" secondItem="gVS-gD-JRp" secondAttribute="leading" id="fdZ-SF-MEM"/>
+                        <constraint firstItem="lSI-3T-yMM" firstAttribute="bottom" secondItem="TAn-A2-ElU" secondAttribute="bottom" id="gbk-RJ-XuJ"/>
                         <constraint firstAttribute="bottom" secondItem="TAn-A2-ElU" secondAttribute="bottom" id="hjl-zu-mSh"/>
+                        <constraint firstItem="lSI-3T-yMM" firstAttribute="trailing" secondItem="TAn-A2-ElU" secondAttribute="trailing" id="hvS-zT-gxZ"/>
+                        <constraint firstItem="lSI-3T-yMM" firstAttribute="leading" secondItem="TAn-A2-ElU" secondAttribute="leading" id="rGX-K2-2tb"/>
+                        <constraint firstAttribute="trailing" secondItem="W6o-0F-qYu" secondAttribute="trailing" id="uSi-bh-Sll"/>
                     </constraints>
                 </view>
             </subviews>

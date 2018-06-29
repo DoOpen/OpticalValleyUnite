@@ -11,7 +11,6 @@ import UIKit
 class YQCheckAchievementDetailVC: UIViewController {
 
     //题目view
-    
     @IBOutlet weak var scrollContentView: UIView!
     
     @IBOutlet weak var scrollContentHightConstraint: NSLayoutConstraint!
@@ -19,6 +18,15 @@ class YQCheckAchievementDetailVC: UIViewController {
     @IBOutlet weak var answerTitleLabel: UILabel!
     
     @IBOutlet weak var answerLabel: UILabel!
+    
+    
+    // MARK: - 底部按钮组
+    @IBOutlet weak var nextBtn: UIButton!
+    
+    @IBOutlet weak var returnBtn: UIButton!
+    
+    @IBOutlet weak var bottomHightConstraint: NSLayoutConstraint!
+    
     
     
     override func viewDidLoad() {
@@ -30,8 +38,20 @@ class YQCheckAchievementDetailVC: UIViewController {
 
 
     // MARK: - 点击下一题
-    
     @IBAction func nextButtonClick(_ sender: UIButton) {
+        
+        
+    }
+    
+    // MARK: - 点击上一题
+    @IBAction func upButtonClick(_ sender: UIButton) {
+        
+        
+    }
+    
+    // MARK: - 最后点击返回按钮的情况
+    @IBAction func returnButtonClick(_ sender: UIButton) {
+        
         
         
     }

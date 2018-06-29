@@ -55,6 +55,7 @@ class YQStartExaminationVC: UIViewController {
         flayout.scrollDirection = UICollectionViewScrollDirection.vertical
         
         return flayout
+        
     }()
     
     

@@ -20,6 +20,14 @@ class YQStartExamDetailVC: UIViewController {
     //option(选项view)
     
     
+    //底部bottomView的约束调整
+    @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var nextBtn: UIButton!
+    
+    @IBOutlet weak var handOverBtn: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,6 +70,20 @@ class YQStartExamDetailVC: UIViewController {
     @IBAction func nextButtonClick(_ sender: UIButton) {
         //点击下一题的选项情况
         //通知重新创建题目控件
+        
+        
+        
+    }
+    
+    // MARK: - 点击上一题的方法
+    @IBAction func upButtonClick(_ sender: UIButton) {
+        
+        
+        
+    }
+    
+    // MARK: - 点击交卷按钮的方法
+    @IBAction func HandOverButtonClick(_ sender: UIButton) {
         
         
         

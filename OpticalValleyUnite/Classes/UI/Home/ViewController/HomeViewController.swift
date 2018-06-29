@@ -1378,27 +1378,27 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
             let nowCLLocation = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let distance = lastCLLocation.distance(from: nowCLLocation)
             
-            // 已经有点保存的情况,还是触发一次上传
-            HttpClient.instance.getAddress(lat: location.coordinate.latitude, lon: location.coordinate.longitude, succses: { (address) in
-                
-                if let address = address{
-                    
-                    parmet["reserver"] = address
-                    let str = NSString.init(string: address)
-                    let cityRange = str.range(of: "市")
-                    let newRange = NSRange.init(location: 0, length: cityRange.location + 1)
-                    let cityString = str.substring(with: newRange)
-                    let newCityArray = cityString.components(separatedBy: "省")
-                    let newCityString = newCityArray.last
-                    
-                    self.searchLiveWeather(city: newCityString!)
-                    parmet["type"] = 0
-                    self.uploadLocation(parmat: parmet)
-                    
-                }
-            })
-            
             if distance < KDistence {
+                
+                // 已经有点保存的情况,还是触发一次上传
+                HttpClient.instance.getAddress(lat: location.coordinate.latitude, lon: location.coordinate.longitude, succses: { (address) in
+                    
+                    if let address = address{
+                        
+                        parmet["reserver"] = address
+                        let str = NSString.init(string: address)
+                        let cityRange = str.range(of: "市")
+                        let newRange = NSRange.init(location: 0, length: cityRange.location + 1)
+                        let cityString = str.substring(with: newRange)
+                        let newCityArray = cityString.components(separatedBy: "省")
+                        let newCityString = newCityArray.last
+                        
+                        self.searchLiveWeather(city: newCityString!)
+                        parmet["type"] = 0
+                        self.uploadLocation(parmat: parmet)
+                        
+                    }
+                })
                 
                 return
             }
@@ -1438,7 +1438,6 @@ extension HomeViewController: AMapLocationManagerDelegate,AMapSearchDelegate{
                     
                 }
             })
-
         }
     }
     

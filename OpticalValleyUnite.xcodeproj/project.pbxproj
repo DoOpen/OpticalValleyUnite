@@ -278,6 +278,7 @@
 		2F70DC321FDFA6B1003B9938 /* YQWeatherResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F70DC311FDFA6B1003B9938 /* YQWeatherResult.xib */; };
 		2F71039520158D000051E367 /* YQReportFromPersonList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F71039420158D000051E367 /* YQReportFromPersonList.xib */; };
 		2F710397201596C50051E367 /* YQReportFromPersonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F710396201596C50051E367 /* YQReportFromPersonList.swift */; };
+		2F71BBC720E623D6008B9CB6 /* YQExamOwnListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F71BBC620E623D6008B9CB6 /* YQExamOwnListModel.swift */; };
 		2F7307381FA858910067BC4D /* YQToDoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7307371FA858910067BC4D /* YQToDoListModel.swift */; };
 		2F73073A1FA85DFA0067BC4D /* YQWorkLogListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7307391FA85DFA0067BC4D /* YQWorkLogListModel.swift */; };
 		2F7335272004680600384341 /* YQOffLineWorkOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7335262004680600384341 /* YQOffLineWorkOrder.swift */; };
@@ -914,6 +915,7 @@
 		2F70DC311FDFA6B1003B9938 /* YQWeatherResult.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQWeatherResult.xib; sourceTree = "<group>"; };
 		2F71039420158D000051E367 /* YQReportFromPersonList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQReportFromPersonList.xib; sourceTree = "<group>"; };
 		2F710396201596C50051E367 /* YQReportFromPersonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQReportFromPersonList.swift; sourceTree = "<group>"; };
+		2F71BBC620E623D6008B9CB6 /* YQExamOwnListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQExamOwnListModel.swift; sourceTree = "<group>"; };
 		2F7307371FA858910067BC4D /* YQToDoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQToDoListModel.swift; sourceTree = "<group>"; };
 		2F7307391FA85DFA0067BC4D /* YQWorkLogListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkLogListModel.swift; sourceTree = "<group>"; };
 		2F7335262004680600384341 /* YQOffLineWorkOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQOffLineWorkOrder.swift; sourceTree = "<group>"; };
@@ -1693,6 +1695,7 @@
 			isa = PBXGroup;
 			children = (
 				2F91B22420E4BB29002AD1A0 /* YQStudyListModel.swift */,
+				2F71BBC620E623D6008B9CB6 /* YQExamOwnListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3526,6 +3529,7 @@
 				4B6E64FD1EEAEFCF00BA23E4 /* PhotoTransition.swift in Sources */,
 				2F5A3D641FE8EF770069ABE1 /* YQDynamicPasswordCell.swift in Sources */,
 				2F58658E20286EEE00839655 /* YQDecorationHomeVC.swift in Sources */,
+				2F71BBC720E623D6008B9CB6 /* YQExamOwnListModel.swift in Sources */,
 				2F2F957A1F8DF74800870DC8 /* YQJournalCellView.swift in Sources */,
 				2F94A2831F73B46B00455162 /* YQImplementFeedbackVC.swift in Sources */,
 				4BD4A0E21EE2B18300F044C1 /* AppraisalCell.swift in Sources */,

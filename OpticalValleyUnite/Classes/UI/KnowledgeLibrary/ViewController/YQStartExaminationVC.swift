@@ -19,6 +19,11 @@ class YQStartExaminationVC: UIViewController {
     
     @IBOutlet weak var scrollHieghtConstraint: NSLayoutConstraint!
     
+    //bottomButton的选项属性
+    @IBOutlet weak var startButton: UIButton!
+    
+    @IBOutlet weak var handOverButton: UIButton!
+    
     let cell = "QuestionCollectionCell"
     
     //自定义的collectionView
@@ -81,8 +86,7 @@ class YQStartExaminationVC: UIViewController {
         let vc = YQStartExamDetailVC.init(nibName: "YQStartExamDetailVC", bundle: nil)
         
         self.navigationController?.pushViewController(vc, animated: true)
-        
-        
+    
     }
     
     

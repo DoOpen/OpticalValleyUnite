@@ -12,9 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQStartExaminationVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
                 <outlet property="bottomView" destination="YOb-aA-lYP" id="lWG-cs-1CZ"/>
+                <outlet property="handOverButton" destination="fJG-hL-9HS" id="DRc-w5-ABa"/>
                 <outlet property="headView" destination="V6G-2w-vJi" id="w5Q-M3-cU2"/>
                 <outlet property="scrollContentView" destination="Csv-lg-zxc" id="lGi-aY-fg6"/>
                 <outlet property="scrollHieghtConstraint" destination="PbX-K2-OaI" id="Ggg-We-fvp"/>
+                <outlet property="startButton" destination="ofY-d4-Orb" id="l5a-SE-QxN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -72,7 +74,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOb-aA-lYP">
-                                    <rect key="frame" x="0.0" y="596" width="367" height="70"/>
+                                    <rect key="frame" x="0.0" y="576" width="367" height="90"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.请认真审题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOF-vA-yo6">
                                             <rect key="frame" x="20" y="5" width="88" height="18"/>
@@ -90,7 +92,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="cOF-vA-yo6" firstAttribute="leading" secondItem="YOb-aA-lYP" secondAttribute="leading" constant="20" id="3Xa-xX-S3B"/>
-                                        <constraint firstAttribute="height" constant="70" id="3a6-jc-UHi"/>
+                                        <constraint firstAttribute="height" constant="90" id="3a6-jc-UHi"/>
                                         <constraint firstItem="cOF-vA-yo6" firstAttribute="top" secondItem="YOb-aA-lYP" secondAttribute="top" constant="5" id="Bsc-z2-nY7"/>
                                         <constraint firstItem="dvh-l6-8iN" firstAttribute="top" secondItem="cOF-vA-yo6" secondAttribute="bottom" constant="5" id="dPs-2r-enx"/>
                                         <constraint firstItem="dvh-l6-8iN" firstAttribute="leading" secondItem="cOF-vA-yo6" secondAttribute="leading" id="eR6-s1-AQs"/>
@@ -129,6 +131,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k11-VH-3iE">
                     <rect key="frame" x="0.0" y="656" width="367" height="50"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJG-hL-9HS">
+                            <rect key="frame" x="0.0" y="0.0" width="367" height="50"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="交卷"/>
+                            <connections>
+                                <action selector="startAnswerBtnClick:" destination="-1" eventType="touchUpInside" id="cLR-tJ-wJZ"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofY-d4-Orb">
                             <rect key="frame" x="0.0" y="0.0" width="367" height="50"/>
                             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -142,9 +152,13 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="ofY-d4-Orb" secondAttribute="bottom" id="30t-hF-gM0"/>
                         <constraint firstAttribute="trailing" secondItem="ofY-d4-Orb" secondAttribute="trailing" id="7s9-0T-LMc"/>
+                        <constraint firstAttribute="trailing" secondItem="fJG-hL-9HS" secondAttribute="trailing" id="Bud-0w-Qai"/>
                         <constraint firstItem="ofY-d4-Orb" firstAttribute="top" secondItem="k11-VH-3iE" secondAttribute="top" id="JVc-Bf-HVg"/>
+                        <constraint firstItem="fJG-hL-9HS" firstAttribute="leading" secondItem="k11-VH-3iE" secondAttribute="leading" id="P1V-B6-A4E"/>
                         <constraint firstAttribute="height" constant="50" id="U8I-mK-kmb"/>
                         <constraint firstItem="ofY-d4-Orb" firstAttribute="leading" secondItem="k11-VH-3iE" secondAttribute="leading" id="X5p-Qv-xgl"/>
+                        <constraint firstItem="fJG-hL-9HS" firstAttribute="top" secondItem="k11-VH-3iE" secondAttribute="top" id="nsz-KH-GR9"/>
+                        <constraint firstAttribute="bottom" secondItem="fJG-hL-9HS" secondAttribute="bottom" id="xLc-lG-SoE"/>
                     </constraints>
                 </view>
             </subviews>
@@ -160,7 +174,7 @@
                 <constraint firstAttribute="bottom" secondItem="k11-VH-3iE" secondAttribute="bottom" id="ulI-H1-wd7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="28.5" y="91"/>
+            <point key="canvasLocation" x="-149" y="56"/>
         </view>
     </objects>
     <resources>

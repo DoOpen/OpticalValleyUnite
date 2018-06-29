@@ -299,7 +299,7 @@ class YQSystemSelectionVC: UIViewController {
         if tap.tapIndex >= dataArray.count {
             
             //最后一个是显示的图标
-            return
+//            return
             
 //            // 调试视频巡查的内容
 //            let Video = UIStoryboard.instantiateInitialViewController(name: "YQVideoPatrol")
@@ -352,10 +352,11 @@ class YQSystemSelectionVC: UIViewController {
 //            SJKeyWindow?.rootViewController = sjAllWorkUnit
             
             //知识库模块的界面
-//            let knowledgeFirstVC = YQKnowledgeFirstVC.init(nibName: "YQKnowledgeFirstVC", bundle: nil)
-//            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: knowledgeFirstVC)
-//
-//            SJKeyWindow?.rootViewController = sjKnowledgeFirstVC
+            let knowledgeFirstVC = YQKnowledgeFirstVC.init(nibName: "YQKnowledgeFirstVC", bundle: nil)
+            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: knowledgeFirstVC)
+
+            SJKeyWindow?.rootViewController = sjKnowledgeFirstVC
+            
             
             //首页架构
 //            let OneVC = YQAllViewController()

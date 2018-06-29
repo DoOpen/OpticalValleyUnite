@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YQPublicExaminationTVC: UITableViewController {
     
     var cellType = -1
     
     var cellJoinExam = "JoinExam"
+    var joinExamArray = [YQExamOwnListModel]()
     
     var cellMyScore = "MyScore"
     
@@ -49,12 +51,66 @@ class YQPublicExaminationTVC: UITableViewController {
         }
         
     }
+    
+    // MARK: - "参加考试"list数据方法
+    func getStartExaminationListData(){
+        
+        var par = [String : Any]()
+        
+        par["parkId"] = ""
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getNewknowledgeOwnList, parameters: par, success: { (response) in
+            
+            let data = response["data"] as? Array<[String : Any]>
+            
+            if data == nil || (data?.isEmpty)! {
+                
+                SVProgressHUD.showError(withStatus: "没有更多数据")
+                return
+                
+            }
+            
+            var tempArray = [YQExamOwnListModel]()
+            
+            for dict in data!{
+                
+                tempArray.append(YQExamOwnListModel.init(dict: dict))
+            }
+            
+            self.joinExamArray = tempArray
+            self.tableView.reloadData()
+            
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
+        }
+        
+        
+    }
+    
 
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return 20
+        
+        switch self.cellType {
+        case 1:
+            return self.joinExamArray.count
+            
+        case 2:
+            return 20
+            
+        case 3:
+            return 20
+            
+        default:
+            
+            return 0
+        }
+        
     }
 
 

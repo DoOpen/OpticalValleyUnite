@@ -23,6 +23,7 @@ class YQPublicExaminationTVC: UITableViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         //1.注册原型cell
@@ -39,15 +40,20 @@ class YQPublicExaminationTVC: UITableViewController {
         switch cellType {
             case 1:
                 self.title = "参加考试"
+                self.getStartExaminationListData()
+                
                 break
             case 2:
                 self.title = "我的成绩"
+                
                 break
             case 3:
                 self.title = "考试记录"
+                
                 break
             default:
                 break
+            
         }
         
     }
@@ -88,7 +94,6 @@ class YQPublicExaminationTVC: UITableViewController {
             SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
         }
         
-        
     }
     
 
@@ -97,18 +102,19 @@ class YQPublicExaminationTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch self.cellType {
-        case 1:
-            return self.joinExamArray.count
+            case 1:
+                //return self.joinExamArray.count
+                return 20
             
-        case 2:
-            return 20
+            case 2:
+                return 20
             
-        case 3:
-            return 20
+            case 3:
+                return 20
             
-        default:
-            
-            return 0
+            default:
+                
+                return 0
         }
         
     }
@@ -136,7 +142,6 @@ class YQPublicExaminationTVC: UITableViewController {
         }
         
         return UITableViewCell()
-        
     }
  
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -354,6 +354,7 @@
 		2F94A28B1F73BA0000455162 /* YQResolvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94A28A1F73BA0000455162 /* YQResolvedView.swift */; };
 		2F94A28D1F73BA2D00455162 /* YQFalsePositive.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A28C1F73BA2D00455162 /* YQFalsePositive.xib */; };
 		2F94A28F1F73BA4F00455162 /* YQResolved.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F94A28E1F73BA4F00455162 /* YQResolved.xib */; };
+		2F99208020E9FDC800E2B131 /* YQSubjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99207F20E9FDC800E2B131 /* YQSubjectModel.swift */; };
 		2F9A27B0204FC5FE0049CEEB /* YQAllWorkUnitScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F9A27AF204FC5FE0049CEEB /* YQAllWorkUnitScreen.storyboard */; };
 		2F9A27B2204FE4520049CEEB /* YQAllWorkUnitScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A27B1204FE4520049CEEB /* YQAllWorkUnitScreenVC.swift */; };
 		2F9E25152043E00500035D8B /* YQEquipmentListTVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F9E25142043E00500035D8B /* YQEquipmentListTVC.storyboard */; };
@@ -997,6 +998,7 @@
 		2F94A28A1F73BA0000455162 /* YQResolvedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQResolvedView.swift; sourceTree = "<group>"; };
 		2F94A28C1F73BA2D00455162 /* YQFalsePositive.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQFalsePositive.xib; sourceTree = "<group>"; };
 		2F94A28E1F73BA4F00455162 /* YQResolved.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQResolved.xib; sourceTree = "<group>"; };
+		2F99207F20E9FDC800E2B131 /* YQSubjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQSubjectModel.swift; sourceTree = "<group>"; };
 		2F9A27AF204FC5FE0049CEEB /* YQAllWorkUnitScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQAllWorkUnitScreen.storyboard; sourceTree = "<group>"; };
 		2F9A27B1204FE4520049CEEB /* YQAllWorkUnitScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQAllWorkUnitScreenVC.swift; sourceTree = "<group>"; };
 		2F9E25142043E00500035D8B /* YQEquipmentListTVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQEquipmentListTVC.storyboard; sourceTree = "<group>"; };
@@ -1696,6 +1698,7 @@
 			children = (
 				2F91B22420E4BB29002AD1A0 /* YQStudyListModel.swift */,
 				2F71BBC620E623D6008B9CB6 /* YQExamOwnListModel.swift */,
+				2F99207F20E9FDC800E2B131 /* YQSubjectModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3575,6 +3578,7 @@
 				2F6DF89720B65C0B0053D1E1 /* FSCalendarExtensions.m in Sources */,
 				2F6A438E1F6A528D003E10C9 /* YQFireControlViewController.swift in Sources */,
 				4BE9225D1EE6ADD800FDEFE1 /* CallBackListViewController.swift in Sources */,
+				2F99208020E9FDC800E2B131 /* YQSubjectModel.swift in Sources */,
 				2F236B741F6FEA1B00F1B0DF /* YQFireDetailCell.swift in Sources */,
 				2FC7CC91208B24C000F6DEFA /* YQGeneralFeedBackModel.swift in Sources */,
 				2F0F877D1F56D23F0030A6DB /* YQPartsLibaryViewController.swift in Sources */,

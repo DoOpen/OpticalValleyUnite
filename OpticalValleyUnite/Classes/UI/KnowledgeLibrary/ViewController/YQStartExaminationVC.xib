@@ -12,11 +12,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQStartExaminationVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
                 <outlet property="bottomView" destination="YOb-aA-lYP" id="lWG-cs-1CZ"/>
+                <outlet property="countLabel" destination="dSf-tV-1Sa" id="150-aH-aX2"/>
                 <outlet property="handOverButton" destination="fJG-hL-9HS" id="DRc-w5-ABa"/>
                 <outlet property="headView" destination="V6G-2w-vJi" id="w5Q-M3-cU2"/>
                 <outlet property="scrollContentView" destination="Csv-lg-zxc" id="lGi-aY-fg6"/>
                 <outlet property="scrollHieghtConstraint" destination="PbX-K2-OaI" id="Ggg-We-fvp"/>
                 <outlet property="startButton" destination="ofY-d4-Orb" id="l5a-SE-QxN"/>
+                <outlet property="summaryLabel" destination="cOF-vA-yo6" id="z1d-Y8-NCk"/>
+                <outlet property="timeLabel" destination="NlX-uj-TdH" id="6aU-L5-2o6"/>
+                <outlet property="titleLabel" destination="MG3-5g-UJo" id="zBq-Jf-gge"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,8 +38,8 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6G-2w-vJi">
                                     <rect key="frame" x="0.0" y="0.0" width="367" height="85"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MG3-5g-UJo">
-                                            <rect key="frame" x="15" y="25" width="39.5" height="19.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="试题列表" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MG3-5g-UJo">
+                                            <rect key="frame" x="15" y="25" width="66" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

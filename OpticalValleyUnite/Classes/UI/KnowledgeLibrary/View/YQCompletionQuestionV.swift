@@ -13,7 +13,9 @@ class YQCompletionQuestionV: UIView {
     
     //label
     var labelContent =  "" {
+        
         didSet{
+            
             let label = UILabel()
             
             if labelContent != "" {
@@ -42,12 +44,13 @@ class YQCompletionQuestionV: UIView {
             label.numberOfLines = 0
             
             self.labelArray.append(label)
-            
         }
+        
     }
     
     //textView
     var textViewContent = "" {
+        
         didSet{
             
             let textView = UITextView()

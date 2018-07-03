@@ -101,8 +101,7 @@ class YQStartExaminationVC: UIViewController {
         //3.获取总的数据量
         getStartExamDetailData()
         
-        //4.模拟创建
-        creatSingleChoiceQuestion()
+        
         
         
     }
@@ -189,68 +188,7 @@ class YQStartExaminationVC: UIViewController {
         
     }
     
-    // MARK: - 创建各种题框的方法
-    //单选题
-    func creatSingleChoiceQuestion(){
-        
-        let SingleQuestion = Bundle.main.loadNibNamed("YQQuestionOptionView", owner: nil, options: nil)?[0] as? YQQuestionOptionView
-        
-        self.scrollContentView.addSubview(SingleQuestion!)
-        
-        SingleQuestion?.snp.makeConstraints({ (maker) in
-            
-            maker.top.equalTo(self.headView.snp.bottom).offset(20)
-            maker.bottom.equalTo(self.bottomView.snp.top)
-            maker.left.right.equalToSuperview()
-            
-        })
-    }
-    
-    //多选题
-    func creatMoreChoiceQuestion(){
-        
-        
-    }
-    
-    //判断题
-    func creatJudgmentProblem(){
-        
-        let JudgmentProblem = Bundle.main.loadNibNamed("", owner: nil, options: nil)?[0] as! YQJudgmentQuestionView
-        
-        self.scrollContentView.addSubview(JudgmentProblem)
-        
-        JudgmentProblem.snp.makeConstraints({ (maker) in
-            
-            maker.top.equalTo(self.headView.snp.bottom).offset(20)
-            maker.bottom.equalTo(self.bottomView.snp.top)
-            maker.left.right.equalToSuperview()
-            
-        })
-        
-    }
-    
-    //填空题
-    func creatCompletionQuestion(){
-        
-        
-    }
-    
-    //问答题
-    func creatQuestionAndAnswerQuestion(){
-        
-        let ShortAnswerQuestionsV = Bundle.main.loadNibNamed("YQShortAnswerQuestionsV", owner: nil, options: nil)?[0] as! YQShortAnswerQuestionsV
-        
-        self.scrollContentView.addSubview(ShortAnswerQuestionsV)
-        
-        ShortAnswerQuestionsV.snp.makeConstraints { (maker) in
-            
-            maker.top.equalTo(self.headView.snp.bottom).offset(20)
-            maker.bottom.equalTo(self.bottomView.snp.top)
-            maker.left.right.equalToSuperview()
-            
-        }
-    
-    }
+ 
     
     
     

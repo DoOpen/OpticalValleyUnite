@@ -25,6 +25,9 @@ class YQMoreQuestionView: UIView {
     
     var selectButtonArray = [UIButton]()
     
+    var isEdit = true
+
+    
     @IBAction func more1ButtonClick(_ sender: UIButton) {
         
         moreButton1.isSelected = !moreButton1.isSelected
@@ -46,12 +49,13 @@ class YQMoreQuestionView: UIView {
         moreButton4.isSelected = !moreButton4.isSelected
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    
+    
+    override func awakeFromNib() {
         
-        super.init(coder: aDecoder)
-        
-        self.selectButtonArray = [self.moreButton1,self.moreButton2,self.moreButton3,self.moreButton4]
-        
+        self.moreButton1.isUserInteractionEnabled = self.isEdit
+       
     }
+    
     
 }

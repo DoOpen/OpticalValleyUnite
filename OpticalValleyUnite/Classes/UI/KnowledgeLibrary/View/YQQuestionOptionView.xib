@@ -12,14 +12,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="r3G-xE-dek" customClass="YQQuestionOptionView" customModule="OpticalValleyUnite" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="326" height="183"/>
+            <rect key="frame" x="0.0" y="0.0" width="370" height="173"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6R-HN-1l3">
-                    <rect key="frame" x="0.0" y="0.0" width="326" height="46"/>
+                    <rect key="frame" x="0.0" y="0.0" width="370" height="43.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrG-Ey-Otc">
-                            <rect key="frame" x="10" y="12" width="22" height="22"/>
+                            <rect key="frame" x="10" y="10.5" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="daY-wv-UvQ"/>
                                 <constraint firstAttribute="width" constant="22" id="kFT-az-7yi"/>
@@ -28,13 +28,13 @@
                             <state key="selected" image="home_item_icon_  selecte"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A. 物业建设单位或社区委" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgA-jE-MPj">
-                            <rect key="frame" x="42" y="14" width="274" height="18"/>
+                            <rect key="frame" x="42" y="12.5" width="318" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aea-L0-Wla">
-                            <rect key="frame" x="0.0" y="0.0" width="200" height="46"/>
+                            <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="6ew-Hw-kU6"/>
                             </constraints>
@@ -55,10 +55,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1IF-Cd-bOa">
-                    <rect key="frame" x="0.0" y="46" width="326" height="45.5"/>
+                    <rect key="frame" x="0.0" y="43.5" width="370" height="43"/>
                     <subviews>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTW-u0-4Ul">
-                            <rect key="frame" x="10" y="11.5" width="22" height="22"/>
+                            <rect key="frame" x="10" y="10" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="lqr-ok-aiw"/>
                                 <constraint firstAttribute="width" constant="22" id="naF-pt-sJN"/>
@@ -67,13 +67,13 @@
                             <state key="selected" image="home_item_icon_  selecte"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B. 物业建设单位或社区委" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Uo-uQ-rJt">
-                            <rect key="frame" x="42" y="13.5" width="274" height="18"/>
+                            <rect key="frame" x="42" y="12" width="318" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZA-xw-glM">
-                            <rect key="frame" x="0.0" y="0.0" width="200" height="45"/>
+                            <rect key="frame" x="0.0" y="0.0" width="200" height="42.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="VaE-8E-oh2"/>
                             </constraints>
@@ -94,10 +94,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fs3-N4-O3m">
-                    <rect key="frame" x="0.0" y="91.5" width="326" height="46"/>
+                    <rect key="frame" x="0.0" y="86.5" width="370" height="43.5"/>
                     <subviews>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRR-Yn-MBf">
-                            <rect key="frame" x="10" y="12" width="22" height="22"/>
+                            <rect key="frame" x="10" y="10.5" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="22" id="ugI-yy-syU"/>
                                 <constraint firstAttribute="height" constant="22" id="yRx-Jh-LHX"/>
@@ -106,13 +106,13 @@
                             <state key="selected" image="home_item_icon_  selecte"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C. 物业建设单位或社区委" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cH-VR-tMz">
-                            <rect key="frame" x="42" y="14" width="274" height="18"/>
+                            <rect key="frame" x="42" y="12.5" width="318" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QbX-rH-yhj">
-                            <rect key="frame" x="0.0" y="-0.5" width="200" height="46"/>
+                            <rect key="frame" x="0.0" y="-0.5" width="200" height="43.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="sCB-6c-hix"/>
                             </constraints>
@@ -133,10 +133,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XA5-Su-O9h">
-                    <rect key="frame" x="0.0" y="137.5" width="326" height="45.5"/>
+                    <rect key="frame" x="0.0" y="130" width="370" height="43"/>
                     <subviews>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MT2-1e-uft">
-                            <rect key="frame" x="10" y="11.5" width="22" height="22"/>
+                            <rect key="frame" x="10" y="10" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="22" id="mo7-06-RkK"/>
                                 <constraint firstAttribute="height" constant="22" id="zKS-VD-Ce5"/>
@@ -145,13 +145,13 @@
                             <state key="selected" image="home_item_icon_  selecte"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D. 物业建设单位或社区委" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooy-Yv-NhG">
-                            <rect key="frame" x="42" y="13.5" width="274" height="18"/>
+                            <rect key="frame" x="42" y="12" width="318" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcI-Nf-gpE">
-                            <rect key="frame" x="0.0" y="-0.5" width="200" height="46"/>
+                            <rect key="frame" x="0.0" y="-0.5" width="200" height="43.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="R5H-Hl-mjX"/>
                             </constraints>
@@ -202,7 +202,7 @@
                 <outlet property="Single4Button" destination="MT2-1e-uft" id="lhx-df-nl7"/>
                 <outlet property="Single4Label" destination="ooy-Yv-NhG" id="946-lW-W4Z"/>
             </connections>
-            <point key="canvasLocation" x="-138" y="-537.5"/>
+            <point key="canvasLocation" x="-84" y="-483.5"/>
         </view>
     </objects>
     <resources>

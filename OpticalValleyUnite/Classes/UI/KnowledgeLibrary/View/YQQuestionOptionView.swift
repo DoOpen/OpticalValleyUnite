@@ -29,6 +29,8 @@ class YQQuestionOptionView: UIView {
     
    
     var selectButtonArray = [UIButton]()
+    
+    var isEdit = true
   
     @IBAction func selectButtonClick(_ sender: UIButton) {
         
@@ -49,25 +51,34 @@ class YQQuestionOptionView: UIView {
 //                break
 //        }
         
+       
+        
         for indexxx in 0..<self.selectButtonArray.count {
             
-            if indexxx == sender.tag{
+            let btn = self.selectButtonArray[indexxx]
+            
+            if sender.tag == indexxx {
                 
-                sender.isSelected = true
+                btn.isSelected = true
                 
             }else{
                 
-                sender.isSelected = false
+                btn.isSelected = false
             }
         }
         
     }
+
     
-    required init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
+    override func awakeFromNib() {
         
         self.selectButtonArray = [self.Single1Button,self.Single2Button,self.Single3Button,self.Single4Button]
+        
+        for temp in self.selectButtonArray{
+            
+            temp.isUserInteractionEnabled = self.isEdit
+            
+        }
         
     }
     

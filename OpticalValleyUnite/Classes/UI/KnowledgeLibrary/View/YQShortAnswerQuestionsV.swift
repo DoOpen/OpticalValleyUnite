@@ -13,5 +13,14 @@ class YQShortAnswerQuestionsV: UIView {
     
     @IBOutlet weak var shortAnswerTextView: UITextView!
     
+    var isEdit = true
+    
+    override func awakeFromNib() {
+        
+        self.shortAnswerTextView.isEditable = isEdit
+        
+        
+    }
+
     
 }

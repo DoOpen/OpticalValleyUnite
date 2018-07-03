@@ -11,10 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQStartExamDetailVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="bottomView" destination="gVS-gD-JRp" id="910-bG-Wed"/>
                 <outlet property="bottomViewHeightConstraint" destination="Tmu-kV-Vpu" id="zlG-7i-CdR"/>
                 <outlet property="handOverBtn" destination="lSI-3T-yMM" id="QKt-HL-Ey0"/>
                 <outlet property="nextBtn" destination="TAn-A2-ElU" id="foD-4i-YQL"/>
                 <outlet property="questionView" destination="bE4-Xa-UmE" id="csx-ZO-tTJ"/>
+                <outlet property="scrollContentView" destination="vcP-bP-20m" id="VdN-nJ-wdF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

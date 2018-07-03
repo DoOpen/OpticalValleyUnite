@@ -17,7 +17,12 @@ class YQJudgmentQuestionView: UIView {
     
     var selectButtonArray = [UIButton]()
     
+    var isEdit = true
+
+    
     @IBAction func selectButtonClick(_ sender: UIButton) {
+        
+        
         
         if sender.tag == 0 {
             
@@ -33,12 +38,15 @@ class YQJudgmentQuestionView: UIView {
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
+    override func awakeFromNib() {
         
         self.selectButtonArray = [self.judgmentButton1,self.judgmentButton2]
         
+        for temp in self.selectButtonArray{
+            
+            temp.isUserInteractionEnabled = self.isEdit
+            
+        }
     }
     
     

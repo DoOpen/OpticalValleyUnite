@@ -47,3 +47,6 @@
 #import "SYLIfeManagerFooterView.h"
 #import "SYLifeManagerHeaderView.h"
 #import "SYLifeManagerLayout.h"
+
+//bugly  工具
+#import <Bugly/Bugly.h>

@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.5.1)
+  - Bugly (2.5.0)
   - IQKeyboardManager (4.0.13)
   - Kingfisher (3.2.4)
   - KYDrawerController (2.0.4)
@@ -16,6 +17,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.5.0)
+  - Bugly
   - IQKeyboardManager (~> 4.0.0)
   - Kingfisher (~> 3.2.4)
   - KYDrawerController
@@ -28,6 +30,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   IQKeyboardManager: 8eab4d8111418414619d1df8e4779ce5d0f8d7e2
   Kingfisher: 8d80f39da403cd9c9ee11984e1655f4d6a566cdb
   KYDrawerController: cf5839877c442132123e9d482f458821026defdf
@@ -39,6 +42,6 @@ SPEC CHECKSUMS:
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 9d174af88afc3ca734e0052953a6c7a296c9427e
+PODFILE CHECKSUM: ee4ffc003cc964c14307b85f9d269e9bb1321cec
 
 COCOAPODS: 1.4.0

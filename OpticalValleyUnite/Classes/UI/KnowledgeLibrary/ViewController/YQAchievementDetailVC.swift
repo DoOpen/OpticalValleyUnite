@@ -16,6 +16,10 @@ class YQAchievementDetailVC: UIViewController {
     
     let cell = "QuestionCollectionCell"
     
+    @IBOutlet weak var returnBtn: UIButton!
+    
+    @IBOutlet weak var checkBtn: UIButton!
+    
     //自定义的collectionView
     lazy var collectionView : UICollectionView = {
         
@@ -69,6 +73,21 @@ class YQAchievementDetailVC: UIViewController {
         }
 
     }
+    
+    // MARK: - 按钮点击的方法
+    @IBAction func checkButtonClick(_ sender: UIButton) {
+        
+        //点击开始答题进行的从1开始
+        let vc = YQCheckAchievementDetailVC.init(nibName: "YQCheckAchievementDetailVC", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    @IBAction func returnButtonClick(_ sender: UIButton) {
+        
+        
+    }
+    
 
 
 }
@@ -95,6 +114,9 @@ extension YQAchievementDetailVC : UICollectionViewDelegate,UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        //传递题型,查看某个题目情况
+        let vc = YQCheckAchievementDetailVC.init(nibName: "YQCheckAchievementDetailVC", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

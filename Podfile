@@ -17,6 +17,7 @@ pod 'Kingfisher', '~> 3.2.4'
 pod 'LCNibBridge'
 pod 'SnapKit', '~> 3.2.0'
 pod 'KYDrawerController'
+pod 'Bugly'
 end
 
 

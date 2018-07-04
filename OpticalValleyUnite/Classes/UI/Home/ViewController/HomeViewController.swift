@@ -1014,7 +1014,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         let data = UserDefaults.standard.object(forKey: Const.YQTotallData) as? NSArray
         
-        if data == nil {
+        if data == nil || data?.firstObject == nil {
             
              LoginViewController.loginOut()
         }

@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQAchievementDetailVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="checkBtn" destination="M5z-mC-UU6" id="3La-dS-nHk"/>
                 <outlet property="headView" destination="R4c-5Q-Bag" id="K1m-yW-xvd"/>
+                <outlet property="returnBtn" destination="27d-nX-XBe" id="9Un-md-Lfg"/>
                 <outlet property="scrollContentView" destination="A9d-7y-z2h" id="iC7-f8-gfb"/>
                 <outlet property="view" destination="J3e-Sx-k2N" id="0j2-59-EWk"/>
             </connections>
@@ -155,18 +157,33 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQp-cj-dzv">
                     <rect key="frame" x="0.0" y="656" width="367" height="50"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27d-nX-XBe">
+                            <rect key="frame" x="0.0" y="0.0" width="367" height="50"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="返回"/>
+                            <connections>
+                                <action selector="returnButtonClick:" destination="-1" eventType="touchUpInside" id="XAR-pO-AkR"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5z-mC-UU6">
                             <rect key="frame" x="0.0" y="0.0" width="367" height="50"/>
                             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="查看"/>
+                            <connections>
+                                <action selector="checkButtonClick:" destination="-1" eventType="touchUpInside" id="RnI-L9-yfZ"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="M5z-mC-UU6" firstAttribute="top" secondItem="dQp-cj-dzv" secondAttribute="top" id="Atu-Mt-Oo9"/>
+                        <constraint firstItem="27d-nX-XBe" firstAttribute="leading" secondItem="dQp-cj-dzv" secondAttribute="leading" id="DHM-7K-ukN"/>
                         <constraint firstAttribute="bottom" secondItem="M5z-mC-UU6" secondAttribute="bottom" id="IDl-NP-sOw"/>
+                        <constraint firstAttribute="trailing" secondItem="27d-nX-XBe" secondAttribute="trailing" id="TXo-Sj-2df"/>
                         <constraint firstAttribute="height" constant="50" id="Vz4-lM-R39"/>
+                        <constraint firstItem="27d-nX-XBe" firstAttribute="top" secondItem="dQp-cj-dzv" secondAttribute="top" id="fFb-Z5-8HU"/>
                         <constraint firstItem="M5z-mC-UU6" firstAttribute="leading" secondItem="dQp-cj-dzv" secondAttribute="leading" id="fP3-FH-biQ"/>
+                        <constraint firstAttribute="bottom" secondItem="27d-nX-XBe" secondAttribute="bottom" id="oty-eK-aDT"/>
                         <constraint firstAttribute="trailing" secondItem="M5z-mC-UU6" secondAttribute="trailing" id="qR3-Ox-yaB"/>
                     </constraints>
                 </view>

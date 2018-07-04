@@ -210,6 +210,9 @@ class YQStartExaminationVC: UIViewController {
  
     func setupRightAndLeftBarItem(){
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"ic_return"),
+                                                                style:.plain, target:self, action: #selector(leftBarItemButtonClick))
+        
         let imageView = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 13, height: 13))
         imageView.image = UIImage.init(name: "clock")
         
@@ -227,7 +230,7 @@ class YQStartExaminationVC: UIViewController {
             
             right_add_Button.countDown(count: 60 * 60)
             
-        }else{//再次逻辑跳转
+        } else {//再次逻辑跳转
             
             right_add_Button.countDown(count: YQTimeCount)
         }
@@ -239,7 +242,21 @@ class YQStartExaminationVC: UIViewController {
         right2Bar.customView = right_add_Button
         
         self.navigationItem.rightBarButtonItems = [right2Bar,right1Bar]
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
+    func leftBarItemButtonClick() {
+        
+        self.alert(message: "是否确定退出", doneBlock: { (alert) in
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        }) { (alert) in
+            
+        }
+        
+    }
+    
     
     deinit {
         

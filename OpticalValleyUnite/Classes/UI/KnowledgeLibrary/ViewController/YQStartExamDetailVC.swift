@@ -75,10 +75,9 @@ class YQStartExamDetailVC: UIViewController {
             
         }else{//再次逻辑跳转
             
-             right_add_Button.countDown(count: YQTimeCount)
+            right_add_Button.countDown(count: YQTimeCount)
         }
         
-       
         let right1Bar = UIBarButtonItem()
         right1Bar.customView = imageView
         

@@ -30,8 +30,7 @@ extension UIButton{
         var remainingCount: Int = count {
             
             willSet {
-                
-                
+
                 DispatchQueue.main.async(execute: {
                     
                     YQTimeCount = remainingCount
@@ -52,8 +51,11 @@ extension UIButton{
                     }
                     
                     if seconds < 10 {
+                        
                         second = "0" + "\(seconds)"
+                        
                     } else {
+                        
                        second = "\(seconds)"
                     }
                     
@@ -64,6 +66,8 @@ extension UIButton{
                     if newValue <= 0 {
                         
                         self.setTitle("考试结束", for: .normal)
+                        //实现的逻辑要求强制的通知提交答案,并且强制界面返回刷新
+                        
                     }
                     
                 })

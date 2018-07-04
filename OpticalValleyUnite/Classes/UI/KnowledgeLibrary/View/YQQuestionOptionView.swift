@@ -52,7 +52,6 @@ class YQQuestionOptionView: UIView {
 //        }
         
        
-        
         for indexxx in 0..<self.selectButtonArray.count {
             
             let btn = self.selectButtonArray[indexxx]

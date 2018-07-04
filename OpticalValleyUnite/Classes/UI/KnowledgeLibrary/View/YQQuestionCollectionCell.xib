@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="86" height="72"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRT-Dq-5Vq">
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRT-Dq-5Vq">
                         <rect key="frame" x="0.0" y="0.0" width="86" height="72"/>
                         <state key="normal" title="Button"/>
                         <userDefinedRuntimeAttributes>

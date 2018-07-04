@@ -8,6 +8,9 @@
 
 import UIKit
 
+//设置全局的时间保存宏
+var YQTimeCount = 0
+
 class UIButton_YQTime: UIButton {
 
 }
@@ -25,10 +28,13 @@ extension UIButton{
         
         
         var remainingCount: Int = count {
+            
             willSet {
+                
                 
                 DispatchQueue.main.async(execute: {
                     
+                    YQTimeCount = remainingCount
                     //计算剩余时间
                     let days = Int(remainingCount) / (3600 * 24)
                     
@@ -61,8 +67,8 @@ extension UIButton{
                     }
                     
                 })
-                
             }
+            
         }
         
         // 在global线程里创建一个时间源

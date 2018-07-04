@@ -140,6 +140,7 @@
                             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="交卷"/>
                             <connections>
+                                <action selector="handOverButtonClick:" destination="-1" eventType="touchUpInside" id="ezl-BE-9Up"/>
                                 <action selector="startAnswerBtnClick:" destination="-1" eventType="touchUpInside" id="cLR-tJ-wJZ"/>
                             </connections>
                         </button>
@@ -178,7 +179,7 @@
                 <constraint firstAttribute="bottom" secondItem="k11-VH-3iE" secondAttribute="bottom" id="ulI-H1-wd7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-149" y="56"/>
+            <point key="canvasLocation" x="-414" y="26"/>
         </view>
     </objects>
     <resources>

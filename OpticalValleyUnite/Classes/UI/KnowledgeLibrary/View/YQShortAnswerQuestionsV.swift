@@ -11,13 +11,15 @@ import UIKit
 class YQShortAnswerQuestionsV: UIView {
 
     
-    @IBOutlet weak var shortAnswerTextView: UITextView!
+    @IBOutlet weak var shortAnswerTextView: SJTextView!
     
     var isEdit = true
     
     override func awakeFromNib() {
         
         self.shortAnswerTextView.isEditable = isEdit
+        
+        self.shortAnswerTextView.placeHolder = "填写答案,不多于500字"
         
         
     }

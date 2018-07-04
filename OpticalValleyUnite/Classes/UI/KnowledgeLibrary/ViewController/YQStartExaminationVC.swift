@@ -59,6 +59,7 @@ class YQStartExaminationVC: UIViewController {
         collectionV.register(nib, forCellWithReuseIdentifier: self.cell)
         
         return collectionV
+        
     }()
     
     //自定义的流水布局
@@ -103,16 +104,34 @@ class YQStartExaminationVC: UIViewController {
         
         
         
-        
     }
 
+    
+    
+    // MARK: - 开始结束答题的按钮的点击
     @IBAction func startAnswerBtnClick(_ sender: UIButton) {
         //点击开始答题进行的从1开始
         let vc = YQStartExamDetailVC.init(nibName: "YQStartExamDetailVC", bundle: nil)
         
         self.navigationController?.pushViewController(vc, animated: true)
+        
+        //同时设置两个计时工具
+        setupRightAndLeftBarItem()
+        
+        self.startButton.isHidden = true
+        self.handOverButton.isHidden = false
+        
     
     }
+    
+    @IBAction func handOverButtonClick(_ sender: UIButton) {
+        
+        //完成交卷的逻辑!数据提交
+        
+        
+    }
+    
+    
     
     // MARK: - 获取考试数据详情的界面
     func getStartExamDetailData(){
@@ -189,8 +208,45 @@ class YQStartExaminationVC: UIViewController {
     }
     
  
+    func setupRightAndLeftBarItem(){
+        
+        let imageView = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 13, height: 13))
+        imageView.image = UIImage.init(name: "clock")
+        
+        let right_add_Button = UIButton()
+        right_add_Button.frame = CGRect(x : 0, y : 0, width : 60, height : 40)
+        
+        //设置font
+        right_add_Button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+        right_add_Button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        right_add_Button.setTitleColor(UIColor.init(red: 255/255.0, green: 144.001/255.0, blue: 0.01/255.0, alpha: 1), for: .normal)
+        //设置时间,单位是s
+        //总的时间是 1个小时
+        //总的时间是 1个小时
+        if YQTimeCount == 0 {//初始化第一次进来
+            
+            right_add_Button.countDown(count: 60 * 60)
+            
+        }else{//再次逻辑跳转
+            
+            right_add_Button.countDown(count: YQTimeCount)
+        }
+        
+        let right1Bar = UIBarButtonItem()
+        right1Bar.customView = imageView
+        
+        let  right2Bar = UIBarButtonItem()
+        right2Bar.customView = right_add_Button
+        
+        self.navigationItem.rightBarButtonItems = [right2Bar,right1Bar]
+    }
     
-    
+    deinit {
+        
+        //清空时间宏
+        YQTimeCount = 0
+        
+    }
     
 }
 
@@ -211,6 +267,19 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        if !self.startButton.isHidden {
+            
+            return
+            
+        }else{
+            
+            //点击开始答题进行的从1开始
+            let vc = YQStartExamDetailVC.init(nibName: "YQStartExamDetailVC", bundle: nil)
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
         
     }

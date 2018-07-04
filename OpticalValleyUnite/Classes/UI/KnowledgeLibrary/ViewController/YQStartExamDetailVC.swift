@@ -40,9 +40,6 @@ class YQStartExamDetailVC: UIViewController {
     var currentView : UIView?
     
    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,8 +69,15 @@ class YQStartExamDetailVC: UIViewController {
         right_add_Button.setTitleColor(UIColor.init(red: 255/255.0, green: 144.001/255.0, blue: 0.01/255.0, alpha: 1), for: .normal)
         //设置时间,单位是s
         //总的时间是 1个小时
-        right_add_Button.countDown(count: 60 * 60)
-       
+        if YQTimeCount == 0 {//初始化第一次进来
+            
+            right_add_Button.countDown(count: 60 * 60)
+            
+        }else{//再次逻辑跳转
+            
+             right_add_Button.countDown(count: YQTimeCount)
+        }
+        
        
         let right1Bar = UIBarButtonItem()
         right1Bar.customView = imageView
@@ -82,7 +86,9 @@ class YQStartExamDetailVC: UIViewController {
         right2Bar.customView = right_add_Button
         
         self.navigationItem.rightBarButtonItems = [right2Bar,right1Bar]
+        
     }
+    
     
     
     // MARK: - 点击下一题的方法

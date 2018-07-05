@@ -203,6 +203,7 @@ class YQPublicExaminationTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch self.cellType {
+            
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellJoinExam, for: indexPath)
                 return cell
@@ -224,6 +225,7 @@ class YQPublicExaminationTVC: UITableViewController {
         return UITableViewCell()
     }
  
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if self.cellType == 2{
@@ -236,6 +238,7 @@ class YQPublicExaminationTVC: UITableViewController {
         }
         
     }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

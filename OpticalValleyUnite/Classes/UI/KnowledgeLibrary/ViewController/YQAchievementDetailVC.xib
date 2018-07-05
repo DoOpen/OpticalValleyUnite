@@ -14,23 +14,29 @@
                 <outlet property="checkBtn" destination="M5z-mC-UU6" id="3La-dS-nHk"/>
                 <outlet property="headView" destination="R4c-5Q-Bag" id="K1m-yW-xvd"/>
                 <outlet property="returnBtn" destination="27d-nX-XBe" id="9Un-md-Lfg"/>
+                <outlet property="rightLabel" destination="ofK-4O-Z8D" id="Sro-Lq-9gV"/>
+                <outlet property="scoreLabel" destination="dv2-4b-CiI" id="aev-ya-d3l"/>
                 <outlet property="scrollContentView" destination="A9d-7y-z2h" id="iC7-f8-gfb"/>
+                <outlet property="timeLabel" destination="Kgf-Th-aBk" id="PY8-cD-IrZ"/>
+                <outlet property="titleLabel" destination="597-7u-j4a" id="Gx9-gp-dwW"/>
+                <outlet property="totalCountLabel" destination="2j8-aA-7iz" id="xsK-L1-c5J"/>
                 <outlet property="view" destination="J3e-Sx-k2N" id="0j2-59-EWk"/>
+                <outlet property="wrongLabel" destination="kJp-hU-El4" id="5gw-xx-MTH"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="J3e-Sx-k2N">
-            <rect key="frame" x="0.0" y="0.0" width="367" height="706"/>
+            <rect key="frame" x="0.0" y="0.0" width="371" height="686"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwr-tO-kyX">
-                    <rect key="frame" x="0.0" y="0.0" width="367" height="656"/>
+                    <rect key="frame" x="0.0" y="0.0" width="371" height="636"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9d-7y-z2h">
-                            <rect key="frame" x="0.0" y="0.0" width="367" height="666"/>
+                            <rect key="frame" x="0.0" y="0.0" width="371" height="666"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4c-5Q-Bag">
-                                    <rect key="frame" x="0.0" y="0.0" width="367" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="371" height="100"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="597-7u-j4a">
                                             <rect key="frame" x="15" y="10" width="39.5" height="19.5"/>
@@ -87,7 +93,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="85分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dv2-4b-CiI">
-                                            <rect key="frame" x="306.5" y="25" width="40.5" height="21.5"/>
+                                            <rect key="frame" x="310.5" y="25" width="40.5" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -128,7 +134,7 @@
                                     </constraints>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D9c-aC-6vt">
-                                    <rect key="frame" x="0.0" y="100" width="367" height="1"/>
+                                    <rect key="frame" x="0.0" y="100" width="371" height="1"/>
                                     <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="saa-PZ-dJg"/>
@@ -155,10 +161,10 @@
                     </constraints>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQp-cj-dzv">
-                    <rect key="frame" x="0.0" y="656" width="367" height="50"/>
+                    <rect key="frame" x="0.0" y="636" width="371" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27d-nX-XBe">
-                            <rect key="frame" x="0.0" y="0.0" width="367" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="371" height="50"/>
                             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="返回"/>
                             <connections>
@@ -166,7 +172,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5z-mC-UU6">
-                            <rect key="frame" x="0.0" y="0.0" width="367" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="371" height="50"/>
                             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="查看"/>
                             <connections>
@@ -200,7 +206,7 @@
                 <constraint firstItem="dwr-tO-kyX" firstAttribute="top" secondItem="J3e-Sx-k2N" secondAttribute="top" id="vZn-fC-AeE"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="28.5" y="91"/>
+            <point key="canvasLocation" x="12.5" y="66"/>
         </view>
     </objects>
     <resources>

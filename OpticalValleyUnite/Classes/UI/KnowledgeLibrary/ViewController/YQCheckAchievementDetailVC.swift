@@ -31,8 +31,10 @@ class YQCheckAchievementDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        
+        //1.init
+        self.title = ""
+        
     
     }
 
@@ -52,8 +54,9 @@ class YQCheckAchievementDetailVC: UIViewController {
     // MARK: - 最后点击返回按钮的情况
     @IBAction func returnButtonClick(_ sender: UIButton) {
         
-        
-        
+        //达到最后一题之后点击,返回按钮
+        self.navigationController?.popViewController(animated: true)
+
     }
     
 

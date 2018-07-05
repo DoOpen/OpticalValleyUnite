@@ -7,10 +7,24 @@
 //
 
 import UIKit
+import SVProgressHUD
+
 
 class YQAchievementDetailVC: UIViewController {
 
     @IBOutlet weak var headView: UIView!
+    //试题属性列表
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var totalCountLabel: UILabel!
+    
+    @IBOutlet weak var rightLabel: UILabel!
+    @IBOutlet weak var wrongLabel: UILabel!
+    
+    
     
     @IBOutlet weak var scrollContentView: UIView!
     
@@ -19,6 +33,9 @@ class YQAchievementDetailVC: UIViewController {
     @IBOutlet weak var returnBtn: UIButton!
     
     @IBOutlet weak var checkBtn: UIButton!
+    //重点数据(试题的模型数组)
+    var questionsArray = [YQSubjectModel]()
+    
     
     //自定义的collectionView
     lazy var collectionView : UICollectionView = {
@@ -73,6 +90,72 @@ class YQAchievementDetailVC: UIViewController {
         }
 
     }
+    
+    // MARK: - 获取成绩详情的数据接口
+    func getAchievementsDataForServer(){
+        
+        var par = [String : Any]()
+        
+        //试卷id
+        par["id"] = ""
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getNewknowledgeOwnResultDetail, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            let data = response as? [String : Any]
+            
+            if data == nil {
+                
+                SVProgressHUD.showError(withStatus: "没有更多数据!")
+                return
+            }
+            
+            //试卷name
+            let name = data!["name"] as? String ?? ""
+            self.titleLabel.text = name
+            
+            //考试时间
+            let time = data!["time"] as? String ?? ""
+            self.timeLabel.text = time
+            
+            //总题目数
+            let count = data!["count"] as? Int ?? 0
+            self.totalCountLabel.text = "共 " + "\(count)" + " 题"
+            
+            //答对多少题
+            let correctCount = data!["correctCount"] as? Int ?? 0
+            self.rightLabel.text = "\(correctCount)"
+            
+            //答错多少题
+            let errorCount = data!["errorCount"] as? Int ?? 0
+            self.wrongLabel.text = "\(errorCount)"
+            
+            //总得分
+            let totalGrade = data!["totalGrade"] as? Int ?? 0
+            self.scoreLabel.text = "\(totalGrade)" + "分"
+            
+            //核心数据字典转模型的操作:
+            let subjectDetail = data!["subjectDetail"] as? Array<[String : Any]>
+            
+            var tempArray = [YQSubjectModel]()
+            
+            for dict in subjectDetail!{
+                
+                tempArray.append(YQSubjectModel.init(dict: dict))
+            }
+            
+            self.questionsArray = tempArray
+            
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
+        }
+    }
+    
     
     // MARK: - 按钮点击的方法
     @IBAction func checkButtonClick(_ sender: UIButton) {

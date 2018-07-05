@@ -127,6 +127,25 @@ class YQStartExaminationVC: UIViewController {
     @IBAction func handOverButtonClick(_ sender: UIButton) {
         
         //完成交卷的逻辑!数据提交
+        var par = [String : Any]()
+        //这里的要求格式化json
+        par["paperId"] = ""
+        
+        //格式化的对象
+        par["subjectList"] = ""
+        
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getNewknowledgeOwnSubmit, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "")
+        }
         
         
     }

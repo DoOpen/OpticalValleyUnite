@@ -17,9 +17,10 @@ class YQPublicExaminationTVC: UITableViewController {
     var joinExamArray = [YQExamOwnListModel]()
     
     var cellMyScore = "MyScore"
+    var myScoreArray = [YQMyAchievementsModel]()
     
     var cellExamRecords = "ExamRecords"
-    
+    var examRecordsArray = [YQExaminationRecordsModel]()
     
     
     override func viewDidLoad() {
@@ -45,10 +46,12 @@ class YQPublicExaminationTVC: UITableViewController {
                 break
             case 2:
                 self.title = "我的成绩"
+                self.getMyAchievementsListData()
                 
                 break
             case 3:
                 self.title = "考试记录"
+                self.getExaminationRecordsListData()
                 
                 break
             default:
@@ -93,28 +96,105 @@ class YQPublicExaminationTVC: UITableViewController {
             
             SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
         }
+    }
+    
+    // MARK: - "我的成绩"list数据方法
+    func getMyAchievementsListData(){
+        
+        var par = [String : Any]()
+        par["parkId"] = ""
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getNewknowledgeOwnResultList, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            let data = response["data"] as? Array<[String : Any]>
+            
+            if data == nil || (data?.isEmpty)! {
+                
+                SVProgressHUD.showError(withStatus: "没有更多数据!")
+                return
+            }
+            
+            var tempArray = [YQMyAchievementsModel]()
+            
+            for dict in data! {
+                
+                tempArray.append(YQMyAchievementsModel.init(dict: dict))
+            }
+            
+            self.myScoreArray = tempArray
+            self.tableView.reloadData()
+            
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
+        }
         
     }
     
+    // MARK: - "考试记录"list数据方法
+    func getExaminationRecordsListData(){
+        
+        var par = [String : Any]()
+        par["parkId"] = ""
+        
+        SVProgressHUD.show()
+        
+        HttpClient.instance.post(path: URLPath.getNewknowledgeOwnRecord, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
+            
+            let data = response["data"] as? Array<[String : Any]>
+            
+            if data == nil || (data?.isEmpty)! {
+                
+                SVProgressHUD.showError(withStatus: "没有更多数据!")
+                return
+            }
+            
+            var tempArray = [YQExaminationRecordsModel]()
+            
+            for dict in data! {
+                
+                tempArray.append(YQExaminationRecordsModel.init(dict: dict))
+            }
+            
+            self.examRecordsArray = tempArray
+            self.tableView.reloadData()
+            
+            
+        }) { (error) in
+            
+            SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
+        }
+    }
+
 
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch self.cellType {
+            
             case 1:
                 //return self.joinExamArray.count
                 return 20
             
             case 2:
+                //return self.myScoreArray.count
                 return 20
             
             case 3:
+                //return self.examRecordsArray.count
                 return 20
             
             default:
-                
                 return 0
+            
         }
         
     }
@@ -154,6 +234,7 @@ class YQPublicExaminationTVC: UITableViewController {
             
             return 100
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

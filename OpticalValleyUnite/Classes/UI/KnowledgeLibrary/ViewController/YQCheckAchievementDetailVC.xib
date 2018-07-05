@@ -18,18 +18,19 @@
                 <outlet property="returnBtn" destination="Tsn-vL-Say" id="a2g-WY-YTW"/>
                 <outlet property="scrollContentHightConstraint" destination="VbC-TC-RAR" id="Hv3-5t-Pld"/>
                 <outlet property="scrollContentView" destination="wDY-ew-HJD" id="Zr7-nI-CCo"/>
+                <outlet property="view" destination="9af-J2-4Ea" id="L5R-cb-AmU"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9af-J2-4Ea" customClass="YQCheckAchievementDetailV" customModule="OpticalValleyUnite" customModuleProvider="target">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9af-J2-4Ea">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRW-fH-8K6">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="187"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="487"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDY-ew-HJD">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="650"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="666"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7Q-1G-NxK">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="260"/>
@@ -62,7 +63,7 @@
                                 <constraint firstItem="w7Q-1G-NxK" firstAttribute="leading" secondItem="wDY-ew-HJD" secondAttribute="leading" id="EWx-H1-8sL"/>
                                 <constraint firstItem="oSX-Z9-2EG" firstAttribute="top" secondItem="w7Q-1G-NxK" secondAttribute="bottom" id="KAG-Y0-6QE"/>
                                 <constraint firstAttribute="trailing" secondItem="oSX-Z9-2EG" secondAttribute="trailing" id="L26-Zx-PBP"/>
-                                <constraint firstAttribute="height" constant="650" id="VbC-TC-RAR"/>
+                                <constraint firstAttribute="height" constant="666" id="VbC-TC-RAR"/>
                                 <constraint firstItem="oSX-Z9-2EG" firstAttribute="leading" secondItem="wDY-ew-HJD" secondAttribute="leading" id="XY2-Od-6ji"/>
                                 <constraint firstAttribute="trailing" secondItem="w7Q-1G-NxK" secondAttribute="trailing" id="tKC-Sr-oZq"/>
                             </constraints>
@@ -183,7 +184,7 @@
                 <constraint firstItem="mRW-fH-8K6" firstAttribute="leading" secondItem="9af-J2-4Ea" secondAttribute="leading" id="Sty-Wt-dbW"/>
                 <constraint firstAttribute="trailing" secondItem="tCq-Dm-Ha6" secondAttribute="trailing" id="WXx-BU-7qF"/>
                 <constraint firstItem="Kvb-fs-2On" firstAttribute="leading" secondItem="9af-J2-4Ea" secondAttribute="leading" id="Yze-4u-lgL"/>
-                <constraint firstItem="Kvb-fs-2On" firstAttribute="top" secondItem="mRW-fH-8K6" secondAttribute="bottom" constant="300" id="d2Y-LX-i25"/>
+                <constraint firstItem="Kvb-fs-2On" firstAttribute="top" secondItem="mRW-fH-8K6" secondAttribute="bottom" id="d2Y-LX-i25"/>
                 <constraint firstAttribute="trailing" secondItem="mRW-fH-8K6" secondAttribute="trailing" id="dvi-3d-2DF"/>
                 <constraint firstItem="wDY-ew-HJD" firstAttribute="centerX" secondItem="9af-J2-4Ea" secondAttribute="centerX" id="icB-6J-rCe"/>
                 <constraint firstAttribute="trailing" secondItem="Kvb-fs-2On" secondAttribute="trailing" id="pzU-vW-1mD"/>

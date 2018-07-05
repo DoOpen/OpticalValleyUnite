@@ -184,6 +184,8 @@
 		2F5F945E206E381E000DC20A /* YQFeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F945D206E381E000DC20A /* YQFeedBackViewController.swift */; };
 		2F5F9460206E385D000DC20A /* YQFeedBackVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F5F945F206E385D000DC20A /* YQFeedBackVC.storyboard */; };
 		2F5F9ABC1FF3ADCE00630271 /* YQAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F9ABB1FF3ADCE00630271 /* YQAddView.swift */; };
+		2F601E8920EDF03A0018BFF0 /* YQExaminationRecordsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F601E8820EDF03A0018BFF0 /* YQExaminationRecordsModel.swift */; };
+		2F601E8B20EDF0770018BFF0 /* YQMyAchievementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F601E8A20EDF0770018BFF0 /* YQMyAchievementsModel.swift */; };
 		2F612D31209AF4D5003B8D4D /* YQKnowledgeFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F612D2F209AF4D5003B8D4D /* YQKnowledgeFirstVC.swift */; };
 		2F612D32209AF4D5003B8D4D /* YQKnowledgeFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F612D30209AF4D5003B8D4D /* YQKnowledgeFirstVC.xib */; };
 		2F612D35209AFAC3003B8D4D /* YQStudyContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F612D33209AFAC3003B8D4D /* YQStudyContentVC.swift */; };
@@ -776,6 +778,8 @@
 		2F5F945D206E381E000DC20A /* YQFeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQFeedBackViewController.swift; sourceTree = "<group>"; };
 		2F5F945F206E385D000DC20A /* YQFeedBackVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQFeedBackVC.storyboard; sourceTree = "<group>"; };
 		2F5F9ABB1FF3ADCE00630271 /* YQAddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQAddView.swift; sourceTree = "<group>"; };
+		2F601E8820EDF03A0018BFF0 /* YQExaminationRecordsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQExaminationRecordsModel.swift; sourceTree = "<group>"; };
+		2F601E8A20EDF0770018BFF0 /* YQMyAchievementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQMyAchievementsModel.swift; sourceTree = "<group>"; };
 		2F612D2F209AF4D5003B8D4D /* YQKnowledgeFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQKnowledgeFirstVC.swift; sourceTree = "<group>"; };
 		2F612D30209AF4D5003B8D4D /* YQKnowledgeFirstVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQKnowledgeFirstVC.xib; sourceTree = "<group>"; };
 		2F612D33209AFAC3003B8D4D /* YQStudyContentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQStudyContentVC.swift; sourceTree = "<group>"; };
@@ -1699,6 +1703,8 @@
 				2F91B22420E4BB29002AD1A0 /* YQStudyListModel.swift */,
 				2F71BBC620E623D6008B9CB6 /* YQExamOwnListModel.swift */,
 				2F99207F20E9FDC800E2B131 /* YQSubjectModel.swift */,
+				2F601E8820EDF03A0018BFF0 /* YQExaminationRecordsModel.swift */,
+				2F601E8A20EDF0770018BFF0 /* YQMyAchievementsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3398,6 +3404,7 @@
 				2F7B8C71202EF37F000C66AA /* YQHouseHomeCell.swift in Sources */,
 				2F51CCD5203C2B13005723E8 /* YQWorkListCell.swift in Sources */,
 				2F54BF0B1FCBF7C7006B4DCF /* YQExecTextCell.swift in Sources */,
+				2F601E8920EDF03A0018BFF0 /* YQExaminationRecordsModel.swift in Sources */,
 				2F94A28B1F73BA0000455162 /* YQResolvedView.swift in Sources */,
 				4BBBEC981E2CAAE200F60313 /* BoPhotoPickerViewController.m in Sources */,
 				2FF3E9312081FF19006255A0 /* YQGeneralManagerCheckCell.swift in Sources */,
@@ -3694,6 +3701,7 @@
 				2FCBC025201494B6003F1556 /* YQDrawSpontaneousView.swift in Sources */,
 				2FC167471F905F34001CEACD /* YQJournalDetailViewController.swift in Sources */,
 				2F52E5B42048F2050060A2BA /* YQWebVideoVC.swift in Sources */,
+				2F601E8B20EDF0770018BFF0 /* YQMyAchievementsModel.swift in Sources */,
 				2F64D9CC20E219EC009C7EA2 /* YQMoreQuestionView.swift in Sources */,
 				2FC7CC93208B307B00F6DEFA /* YQGeneralManagerReplyView.swift in Sources */,
 				2F92B2601FBB03D500168FC6 /* YQStepShowModel.swift in Sources */,

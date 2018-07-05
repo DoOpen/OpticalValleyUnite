@@ -101,6 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UMessage.setLogEnabled(true)
 //        UMessage.openDebugMode(true)
         
+        Bugly.start(withAppId: "com.OpticalValleyUnite.OpticalValleyUnite")
+        
         return true
         
     }
@@ -227,7 +229,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         UIApplication.shared.applicationIconBadgeNumber += 1
         
         completionHandler()
-        
     }
     
     //iOS10新增：处理前台收到通知的代理方法(接受通知的方法)
@@ -250,7 +251,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
             UMessage.setAutoAlert(false)
             UMessage.didReceiveRemoteNotification(userInfo)
         
-            
         }else{
             //应用处于前台时的本地推送接受
 

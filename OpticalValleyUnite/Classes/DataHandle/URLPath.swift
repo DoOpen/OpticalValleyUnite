@@ -435,8 +435,13 @@ struct URLPath {
     static let getNewknowledgeOwnDetail = "newknowledge/own/detail"
     //答题结束交卷
     static let getNewknowledgeOwnSubmit = "newknowledge/own/submit"
-    //
     
+    //我的成绩列表
+    static let getNewknowledgeOwnResultList = "newknowledge/own/resultList"
+    //已考成绩详情
+    static let getNewknowledgeOwnResultDetail = "newknowledge/own/resultDetail"
     
+    //考试记录
+    static let getNewknowledgeOwnRecord = "newknowledge/own/record"
     
 }

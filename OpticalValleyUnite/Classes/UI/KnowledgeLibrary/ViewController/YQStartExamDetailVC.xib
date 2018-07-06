@@ -64,7 +64,6 @@
                             <state key="normal" title="交卷"/>
                             <connections>
                                 <action selector="HandOverButtonClick:" destination="-1" eventType="touchUpInside" id="X9V-R3-ZVh"/>
-                                <action selector="nextButtonClick:" destination="-1" eventType="touchUpInside" id="X0a-7o-D8i"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAn-A2-ElU">
@@ -84,7 +83,6 @@
                             <state key="normal" title="上一题"/>
                             <connections>
                                 <action selector="nextButtonClick:" destination="-1" eventType="touchUpInside" id="HWn-bx-1UL"/>
-                                <action selector="upButtonClick:" destination="-1" eventType="touchUpInside" id="6kM-wk-J1o"/>
                             </connections>
                         </button>
                     </subviews>

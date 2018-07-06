@@ -12,11 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="giv-79-VwH" customClass="YQCheckAchievementDetailV" customModule="OpticalValleyUnite" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="331" height="36"/>
+            <rect key="frame" x="0.0" y="0.0" width="309" height="49"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQr-Bw-Wog">
-                    <rect key="frame" x="10" y="7" width="22" height="22"/>
+                    <rect key="frame" x="10" y="13.5" width="22" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="3fi-z7-cB3"/>
                         <constraint firstAttribute="width" constant="22" id="YKl-fH-U6z"/>
@@ -25,7 +25,7 @@
                     <state key="selected" image="home_item_icon_  selecte"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A. 物业建设单位或社区委" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktn-g1-NZ0">
-                    <rect key="frame" x="42" y="9" width="279" height="18"/>
+                    <rect key="frame" x="42" y="15.5" width="257" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                 <outlet property="optionLabel" destination="ktn-g1-NZ0" id="8eJ-j5-Jpj"/>
                 <outlet property="selectButton" destination="aQr-Bw-Wog" id="yZc-lH-DWX"/>
             </connections>
-            <point key="canvasLocation" x="-156" y="-82"/>
+            <point key="canvasLocation" x="-167.5" y="-75.5"/>
         </view>
     </objects>
     <resources>

@@ -25,6 +25,17 @@ class YQSubjectModel: NSObject {
     //考生选的答案，多个用$区分
     var choose = ""
     
+    //已考的新增的数据模型
+    //已考的答案试题
+    var score = -1
+    
+    //是否答对 0为未答对 1答对
+    var isRight = -1
+    
+    //正确答案
+    var answer = ""
+    
+    
     //题目下面的选项内容
     var optionDetail = Array<[String : Any]>()
     

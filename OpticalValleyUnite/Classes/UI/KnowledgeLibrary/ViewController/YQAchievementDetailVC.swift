@@ -162,6 +162,9 @@ class YQAchievementDetailVC: UIViewController {
         
         //点击开始答题进行的从1开始
         let vc = YQCheckAchievementDetailVC.init(nibName: "YQCheckAchievementDetailVC", bundle: nil)
+        //传递所有的数据,索引从1开始
+        
+        
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -199,6 +202,9 @@ extension YQAchievementDetailVC : UICollectionViewDelegate,UICollectionViewDataS
         
         //传递题型,查看某个题目情况
         let vc = YQCheckAchievementDetailVC.init(nibName: "YQCheckAchievementDetailVC", bundle: nil)
+        //传递所有的数据以及 当前显示的题目情况
+        vc.selectIndex = indexPath.row + 1
+        
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

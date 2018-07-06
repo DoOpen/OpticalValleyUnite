@@ -11,13 +11,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YQCheckAchievementDetailVC" customModule="OpticalValleyUnite" customModuleProvider="target">
             <connections>
+                <outlet property="MiddleView" destination="oSX-Z9-2EG" id="jmX-gN-u8A"/>
                 <outlet property="answerLabel" destination="eYz-Ak-EXz" id="do2-6p-pkA"/>
                 <outlet property="answerTitleLabel" destination="FUB-tR-Nv7" id="C2F-dM-01H"/>
                 <outlet property="bottomHightConstraint" destination="Epe-28-xp5" id="kV5-lD-l4e"/>
+                <outlet property="headView" destination="w7Q-1G-NxK" id="gV4-T0-Q8i"/>
                 <outlet property="nextBtn" destination="iI8-F4-tp8" id="Tv6-Cl-aSw"/>
                 <outlet property="returnBtn" destination="Tsn-vL-Say" id="a2g-WY-YTW"/>
                 <outlet property="scrollContentHightConstraint" destination="VbC-TC-RAR" id="Hv3-5t-Pld"/>
                 <outlet property="scrollContentView" destination="wDY-ew-HJD" id="Zr7-nI-CCo"/>
+                <outlet property="upBtn" destination="t0M-Ga-sTF" id="qaF-eh-5Uy"/>
                 <outlet property="view" destination="9af-J2-4Ea" id="L5R-cb-AmU"/>
             </connections>
         </placeholder>
@@ -87,7 +90,6 @@
                             </constraints>
                             <state key="normal" title="返回"/>
                             <connections>
-                                <action selector="nextButtonClick:" destination="-1" eventType="touchUpInside" id="tFF-ne-XN1"/>
                                 <action selector="returnButtonClick:" destination="-1" eventType="touchUpInside" id="o74-7Y-DLk"/>
                             </connections>
                         </button>
@@ -110,7 +112,6 @@
                             </constraints>
                             <state key="normal" title="上一题"/>
                             <connections>
-                                <action selector="nextButtonClick:" destination="-1" eventType="touchUpInside" id="O9x-7q-N9C"/>
                                 <action selector="upButtonClick:" destination="-1" eventType="touchUpInside" id="xIZ-ar-3vr"/>
                             </connections>
                         </button>

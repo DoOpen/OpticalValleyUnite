@@ -14,6 +14,8 @@
                 <outlet property="MiddleView" destination="oSX-Z9-2EG" id="jmX-gN-u8A"/>
                 <outlet property="answerLabel" destination="eYz-Ak-EXz" id="do2-6p-pkA"/>
                 <outlet property="answerTitleLabel" destination="FUB-tR-Nv7" id="C2F-dM-01H"/>
+                <outlet property="answerView" destination="Kvb-fs-2On" id="jK0-M1-rPA"/>
+                <outlet property="answerViewHeightConstraint" destination="u8x-Yl-cdQ" id="gnl-w5-uog"/>
                 <outlet property="bottomHightConstraint" destination="Epe-28-xp5" id="kV5-lD-l4e"/>
                 <outlet property="headView" destination="w7Q-1G-NxK" id="gV4-T0-Q8i"/>
                 <outlet property="nextBtn" destination="iI8-F4-tp8" id="Tv6-Cl-aSw"/>

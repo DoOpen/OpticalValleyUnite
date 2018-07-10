@@ -60,6 +60,8 @@
 		2F2F95781F8DAECD00870DC8 /* YQJournal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F95771F8DAECD00870DC8 /* YQJournal.storyboard */; };
 		2F2F957A1F8DF74800870DC8 /* YQJournalCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F95791F8DF74800870DC8 /* YQJournalCellView.swift */; };
 		2F2F957C1F8DF7C800870DC8 /* YQJournalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F957B1F8DF7C800870DC8 /* YQJournalCell.xib */; };
+		2F3032DB20F45D27002B4576 /* YQAnswerAndShortAnswerV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3032DA20F45D27002B4576 /* YQAnswerAndShortAnswerV.swift */; };
+		2F3032DD20F45D35002B4576 /* YQAnswerAndShortAnswerV.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3032DC20F45D35002B4576 /* YQAnswerAndShortAnswerV.xib */; };
 		2F34E86420468720006EBAF8 /* YQEquipTypeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F34E86320468720006EBAF8 /* YQEquipTypeTVC.swift */; };
 		2F34E86620468763006EBAF8 /* YQEquipTypeTVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F34E86520468763006EBAF8 /* YQEquipTypeTVC.storyboard */; };
 		2F35356C1F95AE0C00E8E77C /* YQWorkOrderFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35356B1F95AE0C00E8E77C /* YQWorkOrderFirstViewController.swift */; };
@@ -653,6 +655,8 @@
 		2F2F95771F8DAECD00870DC8 /* YQJournal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQJournal.storyboard; sourceTree = "<group>"; };
 		2F2F95791F8DF74800870DC8 /* YQJournalCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQJournalCellView.swift; sourceTree = "<group>"; };
 		2F2F957B1F8DF7C800870DC8 /* YQJournalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQJournalCell.xib; sourceTree = "<group>"; };
+		2F3032DA20F45D27002B4576 /* YQAnswerAndShortAnswerV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQAnswerAndShortAnswerV.swift; sourceTree = "<group>"; };
+		2F3032DC20F45D35002B4576 /* YQAnswerAndShortAnswerV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQAnswerAndShortAnswerV.xib; sourceTree = "<group>"; };
 		2F34E86320468720006EBAF8 /* YQEquipTypeTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQEquipTypeTVC.swift; sourceTree = "<group>"; };
 		2F34E86520468763006EBAF8 /* YQEquipTypeTVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YQEquipTypeTVC.storyboard; sourceTree = "<group>"; };
 		2F35356B1F95AE0C00E8E77C /* YQWorkOrderFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQWorkOrderFirstViewController.swift; sourceTree = "<group>"; };
@@ -1735,6 +1739,8 @@
 				2F5B702120E388F90058C49B /* YQCompletionQuestionV.swift */,
 				2F91B22020E47CDB002AD1A0 /* YQStudyDetailCell.swift */,
 				2F91B22120E47CDB002AD1A0 /* YQStudyDetailCell.xib */,
+				2F3032DA20F45D27002B4576 /* YQAnswerAndShortAnswerV.swift */,
+				2F3032DC20F45D35002B4576 /* YQAnswerAndShortAnswerV.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3211,6 +3217,7 @@
 				2F9A27B0204FC5FE0049CEEB /* YQAllWorkUnitScreen.storyboard in Resources */,
 				4B3951ED1E28718200E2642F /* ReportMaster.storyboard in Resources */,
 				2F45F7FC1FFDD45D00293A23 /* YQOffLineWorkOrder.storyboard in Resources */,
+				2F3032DD20F45D35002B4576 /* YQAnswerAndShortAnswerV.xib in Resources */,
 				2F5F9460206E385D000DC20A /* YQFeedBackVC.storyboard in Resources */,
 				2F86DCC5204E838C0029E54A /* YQAllWorkUnitHome.storyboard in Resources */,
 				2FF3E935208202C0006255A0 /* YQGenaralManagerCheckDetailVC.xib in Resources */,
@@ -3423,6 +3430,7 @@
 				2F8D67F3208D853300F687FF /* YQGeneralCheckOutModel.swift in Sources */,
 				2F70DC301FDFA69F003B9938 /* YQWeatherResult.swift in Sources */,
 				2F068C7C2071D79D00848129 /* YQMyFeedBackCell.swift in Sources */,
+				2F3032DB20F45D27002B4576 /* YQAnswerAndShortAnswerV.swift in Sources */,
 				4BFD07CA1E5D3ABC004AF998 /* ExecutingSectionView.swift in Sources */,
 				4BBBEC841E2CA76900F60313 /* SJPhotpView.m in Sources */,
 				4BD4B9441E272EA600AE2BC9 /* Extention.swift in Sources */,

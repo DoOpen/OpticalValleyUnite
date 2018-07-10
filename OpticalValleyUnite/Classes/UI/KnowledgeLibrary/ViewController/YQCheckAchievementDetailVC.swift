@@ -15,13 +15,17 @@ class YQCheckAchievementDetailVC: UIViewController {
     
     @IBOutlet weak var scrollContentHightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var answerTitleLabel: UILabel!
-    
-    @IBOutlet weak var answerLabel: UILabel!
-    
     @IBOutlet weak var headView: UIView!
     
     @IBOutlet weak var MiddleView: UIView!
+    
+    
+  
+    //选择题答案的整体选项
+    @IBOutlet weak var answerTitleLabel: UILabel!
+    @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var answerView: UIView!
+    @IBOutlet weak var answerViewHeightConstraint: NSLayoutConstraint!
     
     
     
@@ -32,17 +36,16 @@ class YQCheckAchievementDetailVC: UIViewController {
     
     @IBOutlet weak var upBtn: UIButton!
     
-    
     @IBOutlet weak var bottomHightConstraint: NSLayoutConstraint!
+    
     
     //数据data
     var dataArray = [YQSubjectModel]()
-    
     //选择的索引
     var selectIndex = 1
     //缓存加载view
     var currentView : UIView?
-    
+    var currentAnswerView : UIView?
 
     override func viewDidLoad() {
         
@@ -284,19 +287,119 @@ class YQCheckAchievementDetailVC: UIViewController {
     //判断题
     func creatJudgmentProblem(model : YQSubjectModel){
       
+        let view = UIView()
+        
+        let choose = model.choose
+        
+        //创建 是否 两个选项
+        for indexxx in 0..<2 {
+            
+            let AchievementV = Bundle.main.loadNibNamed("YQCheckAchievementDetailV", owner: nil
+                , options: nil)?[0] as! YQCheckAchievementDetailV
+            
+            let dict = model.optionDetail[indexxx]
+            let options = dict["option"] as? String ?? ""
+            
+            
+            //布局约束
+            if indexxx == 0 {
+                
+                AchievementV.optionLabel.text = options + " 是"
+                view.addSubview(AchievementV)
+                
+                AchievementV.snp.makeConstraints({ (maker) in
+                    
+                    maker.top.left.right.equalToSuperview()
+                    maker.height.equalTo(moreQuestionHeight)
+                    
+                })
+                
+            }else{
+                
+                AchievementV.optionLabel.text = options + " 否"
+                
+                let lastSubV = view.subviews.last
+                view.addSubview(AchievementV)
+                
+                AchievementV.snp.makeConstraints({ (maker) in
+                    
+                    maker.top.equalTo((lastSubV?.snp.bottom)!)
+                    maker.left.right.equalToSuperview()
+                    maker.height.equalTo(moreQuestionHeight)
+                    
+                })
+            }
+        }
+        
         
     }
     
     //填空题
     func creatCompletionQuestion(model : YQSubjectModel){
         
+        let Completion = YQCompletionQuestionV()
+        
+        for indexxx in 0..<model.optionDetail.count{
+            
+            Completion.labelContent = "填空题" + "\(indexxx)"
+            Completion.textViewContent =  "\(indexxx)" + "."
+            
+        }
+        
+        self.scrollContentView.addSubview(Completion)
+        self.currentView = Completion
+        
+        Completion.snp.makeConstraints({ (maker) in
+            
+            maker.top.equalToSuperview()
+            maker.left.right.bottom.equalToSuperview().offset(20)
+            
+        })
+        
+        addAnswerXib(answer: model.answer)
         
     }
     
     //简答题
     func creatQuestionAndAnswerQuestion(model : YQSubjectModel){
-     
         
+        let ShortAnswerQuestionsV = Bundle.main.loadNibNamed("YQShortAnswerQuestionsV", owner: nil, options: nil)?[0] as! YQShortAnswerQuestionsV
+        
+        self.scrollContentView.addSubview(ShortAnswerQuestionsV)
+        
+        self.currentView =  ShortAnswerQuestionsV
+        
+        ShortAnswerQuestionsV.snp.makeConstraints { (maker) in
+            
+            maker.top.equalTo(self.headView.snp.bottom)
+            maker.height.equalTo(200)
+            maker.left.right.equalToSuperview().offset(20)
+            
+        }
+        
+        //添加答案
+        addAnswerXib(answer: model.answer)
+        
+    }
+    
+    // MARK: - 创建添加答案的方法
+    func addAnswerXib(answer : String){
+        
+        self.currentAnswerView?.removeFromSuperview()
+        
+        let answerV = Bundle.main.loadNibNamed("YQAnswerAndShortAnswerV", owner: nil, options: nil)?[0] as! YQAnswerAndShortAnswerV
+        
+        answerV.answerTextV.text = answer
+        
+        self.answerViewHeightConstraint.constant = 120
+        self.answerView.addSubview(answerV)
+        
+        answerV.snp.makeConstraints { (maker) in
+            
+            maker.top.bottom.left.right.equalToSuperview()
+        }
+        
+        self.currentAnswerView = answerV
         
     }
     

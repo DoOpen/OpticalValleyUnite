@@ -8,7 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-
+import MJRefresh
 
 class YQStudyContentVC: UIViewController {
 
@@ -18,8 +18,10 @@ class YQStudyContentVC: UIViewController {
     var cellID = "studyCell"
     
     var dataArray = [YQStudyListModel]()
+    var currentIndex = 0
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         //1.init
         self.title = "学习"
@@ -28,12 +30,18 @@ class YQStudyContentVC: UIViewController {
         let nib = UINib.init(nibName: "YQKnowledgeStudyCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: cellID)
         
+        //3.获取数据
+        getDataForServer()
+        addRefirsh()
+        
     }
     
-    func getDataForServer(){
+    func getDataForServer(pageIndex : Int = 0,pageSize : Int = 20){
         
         var par = [String : Any]()
-        par["parkId"] = ""
+        par["parkId"] = self.setUpProjectNameLable()
+        par["pageIndex"] = pageIndex
+        par["pageSize"] = pageSize
         
         SVProgressHUD.show()
         
@@ -41,7 +49,7 @@ class YQStudyContentVC: UIViewController {
             
             SVProgressHUD.dismiss()
             
-            let data = response as? Array<[String : Any]>
+            let data = response["data"] as? Array<[String : Any]>
             
             if data == nil || (data?.isEmpty)!{
                 
@@ -55,8 +63,28 @@ class YQStudyContentVC: UIViewController {
                 tempArray.append(YQStudyListModel.init(dic: dict))
             }
             
-            self.dataArray = tempArray
+            if pageIndex == 0{
+                
+                self.currentIndex = 0
+                self.dataArray = tempArray
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.resetNoMoreData()
+                
+            }else{
+                
+                if tempArray.count > 0{
+                    
+                    self.currentIndex = pageIndex
+                    self.dataArray.append(contentsOf: tempArray)
+                    self.tableView.mj_footer.endRefreshing()
+                    
+                }else{
+                    
+                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                }
+            }
             
+            self.tableView.reloadData()
             
         }) { (error) in
             
@@ -65,6 +93,35 @@ class YQStudyContentVC: UIViewController {
         
     }
     
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectId  = ""
+        
+        if dic != nil {
+            
+            projectId = (dic?["ID"] as? String)!
+        }
+        
+        return projectId
+    }
+    
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            self.getDataForServer()
+        })
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+            self.getDataForServer(pageIndex: self.currentIndex + 1)
+        })
+        
+    }
     
     
 
@@ -75,13 +132,15 @@ extension YQStudyContentVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 30
+        return self.dataArray.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! YQKnowledgeStudyCell
+        
+        cell.model = self.dataArray[indexPath.row]
         
         return cell
         
@@ -91,10 +150,9 @@ extension YQStudyContentVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let vc = YQStudyDetailVC.init(nibName: "YQStudyDetailVC", bundle: nil)
-        
+        vc.id = "\(self.dataArray[indexPath.row].id)"
         self.navigationController?.pushViewController(vc, animated: true)
-        
-        
+    
     }
     
     

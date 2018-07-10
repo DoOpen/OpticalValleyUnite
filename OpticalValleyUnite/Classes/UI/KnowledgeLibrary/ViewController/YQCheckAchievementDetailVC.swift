@@ -330,8 +330,6 @@ class YQCheckAchievementDetailVC: UIViewController {
                 })
             }
         }
-        
-        
     }
     
     //填空题

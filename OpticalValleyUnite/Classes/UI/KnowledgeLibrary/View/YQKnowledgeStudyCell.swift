@@ -18,9 +18,10 @@ class YQKnowledgeStudyCell: UITableViewCell {
     
     }
     
-    var model : Any?{
+    var model : YQStudyListModel?{
         didSet{
             
+            self.trainLabel.text = model?.title
             
         }
     }

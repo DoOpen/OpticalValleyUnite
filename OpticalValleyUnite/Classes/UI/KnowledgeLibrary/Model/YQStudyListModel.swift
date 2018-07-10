@@ -14,7 +14,7 @@ class YQStudyListModel: NSObject {
     //标题
     var title : String = ""
     //主键id
-    var id : String = ""
+    var id : Int64 = -1
     
     init(dic : [String : Any]) {
         super.init()

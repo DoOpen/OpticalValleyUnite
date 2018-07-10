@@ -1016,7 +1016,9 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         
         if data == nil || data?.firstObject == nil {
             
-             LoginViewController.loginOut()
+            LoginViewController.loginOut()
+            return
+            
         }
         
         

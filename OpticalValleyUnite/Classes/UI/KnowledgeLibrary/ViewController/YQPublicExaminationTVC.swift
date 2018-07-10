@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import MJRefresh
 
 class YQPublicExaminationTVC: UITableViewController {
     
@@ -173,6 +174,35 @@ class YQPublicExaminationTVC: UITableViewController {
         }
     }
 
+    
+    // MARK: - 添加默认的项目选择方法
+    func setUpProjectNameLable() -> String{
+        
+        let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
+        
+        var projectId  = ""
+        
+        if dic != nil {
+            
+            projectId = (dic?["ID"] as? String)!
+        }
+        
+        return projectId
+    }
+    
+    // MARK: - 上下拉的刷新的界面情况
+    func addRefirsh(){
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            //self.getDataForServer()
+        })
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            
+            //self.getDataForServer(pageIndex: self.currentIndex + 1)
+        })
+    }
 
 
     // MARK: - Table view data source
@@ -181,16 +211,13 @@ class YQPublicExaminationTVC: UITableViewController {
         switch self.cellType {
             
             case 1:
-                //return self.joinExamArray.count
-                return 20
+                return self.joinExamArray.count
             
             case 2:
-                //return self.myScoreArray.count
-                return 20
+                return self.myScoreArray.count
             
             case 3:
-                //return self.examRecordsArray.count
-                return 20
+                return self.examRecordsArray.count
             
             default:
                 return 0
@@ -205,7 +232,9 @@ class YQPublicExaminationTVC: UITableViewController {
         switch self.cellType {
             
             case 1:
+                
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellJoinExam, for: indexPath)
+                
                 return cell
             
             

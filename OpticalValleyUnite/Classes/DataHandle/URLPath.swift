@@ -430,18 +430,18 @@ struct URLPath {
     
     //考试(6个接口)
     //参加考试列表查询
-    static let getNewknowledgeOwnList = "newknowledge/own/list"
+    static let getNewknowledgeOwnList = "newknowledge/result/list"
     //试卷试题详情
-    static let getNewknowledgeOwnDetail = "newknowledge/own/detail"
+    static let getNewknowledgeOwnDetail = "newknowledge/result/detail"
     //答题结束交卷
-    static let getNewknowledgeOwnSubmit = "newknowledge/own/submit"
+    static let getNewknowledgeOwnSubmit = "newknowledge/result/submit"
     
     //我的成绩列表
-    static let getNewknowledgeOwnResultList = "newknowledge/own/resultList"
+    static let getNewknowledgeOwnResultList = "newknowledge/result/resultList"
     //已考成绩详情
-    static let getNewknowledgeOwnResultDetail = "newknowledge/own/resultDetail"
+    static let getNewknowledgeOwnResultDetail = "newknowledge/result/resultDetail"
     
     //考试记录
-    static let getNewknowledgeOwnRecord = "newknowledge/own/record"
+    static let getNewknowledgeOwnRecord = "newknowledge/result/record"
     
 }

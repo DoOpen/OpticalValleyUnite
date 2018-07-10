@@ -112,6 +112,24 @@ class YQStartExamDetailVC: UIViewController {
     // MARK: - 点击交卷按钮的方法
     @IBAction func HandOverButtonClick(_ sender: UIButton) {
         
+        //数据整合:提交交卷
+        var par = [String : Any]()
+        
+        //数据的格式化显示:
+        par["paperId"] = ""
+        
+        par["subjectList"] = ""
+//        par[""] =
+//        par[""] =
+        
+        HttpClient.instance.post(path: URLPath.getNewknowledgeOwnSubmit, parameters: par, success: { (response) in
+            
+            
+            
+        }) { (error) in
+            
+            
+        }
         
         
     }

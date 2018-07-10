@@ -10,7 +10,7 @@ import UIKit
 
 class YQExamOwnListModel: NSObject {
     //试卷id
-    var id = ""
+    var id : Int64 = -1
     //试卷名称
     var name = ""
     //试卷总分

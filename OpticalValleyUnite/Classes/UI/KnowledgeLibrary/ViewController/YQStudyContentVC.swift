@@ -120,7 +120,6 @@ class YQStudyContentVC: UIViewController {
             
             self.getDataForServer(pageIndex: self.currentIndex + 1)
         })
-        
     }
     
     

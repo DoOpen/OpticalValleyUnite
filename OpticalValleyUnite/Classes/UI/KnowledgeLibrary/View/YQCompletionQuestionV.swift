@@ -23,6 +23,8 @@ class YQCompletionQuestionV: UIView {
                 label.text = labelContent
             }
             
+            label.numberOfLines = 0
+            
             self.addSubview(label)
             
             let text = self.textFiledArray.last
@@ -38,10 +40,9 @@ class YQCompletionQuestionV: UIView {
                     maker.top.equalToSuperview().offset(15)
                 }
                 
-                maker.left.right.equalToSuperview().offset(10)
-                
+                maker.left.equalToSuperview().offset(20)
+                maker.right.equalToSuperview().offset(-20)
             }
-            label.numberOfLines = 0
             
             self.labelArray.append(label)
         }
@@ -60,6 +61,7 @@ class YQCompletionQuestionV: UIView {
                 textView.text = textViewContent
             }
             
+            textView.backgroundColor = UIColor.init(red: 160/255.0, green: 160/255.0, blue: 160/255.0, alpha: 1.0)
             textView.isEditable = isEdit
             
             self.addSubview(textView)
@@ -77,7 +79,9 @@ class YQCompletionQuestionV: UIView {
                     marker.top.equalToSuperview().offset(15)
                 }
                 
-                marker.left.right.equalToSuperview().offset(10)
+                marker.left.equalToSuperview().offset(20)
+                marker.right.equalToSuperview().offset(-20)
+                
                 marker.height.equalTo(50)
                 
             }

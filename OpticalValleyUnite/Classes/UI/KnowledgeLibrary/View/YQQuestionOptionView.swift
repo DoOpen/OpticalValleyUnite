@@ -29,28 +29,11 @@ class YQQuestionOptionView: UIView {
     
    
     var selectButtonArray = [UIButton]()
+    var contentLabelArray = [UILabel]()
     
     var isEdit = true
   
     @IBAction func selectButtonClick(_ sender: UIButton) {
-        
-//        switch sender.tag {
-//            case 0:
-//
-//                break
-//            case 1:
-//
-//                break
-//            case 2:
-//
-//                break
-//            case 3:
-//
-//                break
-//            default:
-//                break
-//        }
-        
        
         for indexxx in 0..<self.selectButtonArray.count {
             
@@ -72,6 +55,7 @@ class YQQuestionOptionView: UIView {
     override func awakeFromNib() {
         
         self.selectButtonArray = [self.Single1Button,self.Single2Button,self.Single3Button,self.Single4Button]
+        self.contentLabelArray = [self.Single1Label,self.Single2Label,self.Single3Label,self.Single4Label]
         
         for temp in self.selectButtonArray{
             

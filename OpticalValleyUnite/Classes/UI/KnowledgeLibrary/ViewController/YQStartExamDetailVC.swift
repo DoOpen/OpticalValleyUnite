@@ -21,6 +21,11 @@ class YQStartExamDetailVC: UIViewController {
     @IBOutlet weak var scrollContentView: UIView!
     
     //option(选项view)
+    @IBOutlet weak var stemLabel: UILabel!
+    
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var showImageV: ShowImageView!
+    @IBOutlet weak var headViewConstraint: NSLayoutConstraint!
     
     
     //底部view
@@ -55,6 +60,8 @@ class YQStartExamDetailVC: UIViewController {
         
         //2.模拟创建
         checkBottomViewChangeFunction(Index: selectIndex)
+        let model = self.dataArray[selectIndex - 1]
+        ClassificationOfQuestions(model: model)
 
     }
     
@@ -102,7 +109,8 @@ class YQStartExamDetailVC: UIViewController {
         
         self.currentView?.removeFromSuperview()
         //数据模型的导入方法
-        
+        let model = self.dataArray[selectIndex - 1]
+        ClassificationOfQuestions(model: model)
         
     }
     
@@ -115,7 +123,8 @@ class YQStartExamDetailVC: UIViewController {
         
         self.currentView?.removeFromSuperview()
         //数据模型的导入方法
-        
+        let model = self.dataArray[selectIndex - 1]
+        ClassificationOfQuestions(model: model)
     }
     
     // MARK: - 点击交卷按钮的方法
@@ -161,7 +170,7 @@ class YQStartExamDetailVC: UIViewController {
             break
             
         case 2://多选
-            creatSingleChoiceQuestion(model: model)
+            creatMoreChoiceQuestion(model: model)
             break
             
         case 3://判断
@@ -180,14 +189,66 @@ class YQStartExamDetailVC: UIViewController {
             break
             
         }
-        
     }
     
     // MARK: - 创建各种题框的方法
     //单选题
     func creatSingleChoiceQuestion(model : YQSubjectModel){
         
+        //先输入 题干的情况
+        self.stemLabel.text = model.question
+        self.typeLabel.text = "单选题"
+        
+        if model.images != "" {
+            
+            var photoImage = [Photo]()
+            var pUrl = Photo()
+            
+            let images = model.images.components(separatedBy: ",")
+            var temp = [String]()
+            
+            for url in images{
+                
+                if url.contains("http"){
+                    
+                    //空格转义情况!bug添加
+                    let bUrl = url.replacingOccurrences(of: " ", with: "%20")
+                    temp.append(bUrl)
+                    pUrl = Photo.init(urlString: bUrl)
+                    
+                }else{
+                    
+                    let basicPath = URLPath.systemSelectionURL
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                    temp.append(imageValue)
+                    pUrl = Photo.init(urlString: url)
+                    
+                }
+                photoImage.append(pUrl)
+            }
+            
+            self.showImageV.showImageUrls(temp)
+            
+        }else{
+            //调节约束展示
+            self.headViewConstraint.constant = self.stemLabel.maxY + 20
+        }
+        
+        //答题选项的内容情况
         let SingleQuestion = Bundle.main.loadNibNamed("YQQuestionOptionView", owner: nil, options: nil)?[0] as? YQQuestionOptionView
+        
+        let labelA = SingleQuestion?.contentLabelArray
+        
+        for indexxx in 0..<model.optionDetail.count{
+            
+            let optionDetail = model.optionDetail[indexxx]
+            let str1 = optionDetail["option"] as? String ?? ""
+            let str2 = optionDetail["optionContent"] as? String ?? ""
+            
+            let label = labelA![indexxx]
+            
+            label.text = str1 + ". " + str2
+        }
         
         self.scrollContentView.addSubview(SingleQuestion!)
         
@@ -200,19 +261,61 @@ class YQStartExamDetailVC: UIViewController {
             maker.left.right.equalToSuperview().offset(20)
             
         })
+        
     }
     
     //多选题
     func creatMoreChoiceQuestion(model : YQSubjectModel){
         
-//        let abcArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N" ,"O", "P", "Q" ,"R", "S" ,"T", "U", "V", "W", "X", "Y", "Z" ]
+        self.stemLabel.text = model.question
+        self.typeLabel.text = "多选题"
+        
+        if model.images != "" {
+            
+            var photoImage = [Photo]()
+            var pUrl = Photo()
+            
+            let images = model.images.components(separatedBy: ",")
+            var temp = [String]()
+            
+            for url in images{
+                
+                if url.contains("http"){
+                    
+                    //空格转义情况!bug添加
+                    let bUrl = url.replacingOccurrences(of: " ", with: "%20")
+                    temp.append(bUrl)
+                    pUrl = Photo.init(urlString: bUrl)
+                    
+                }else{
+                    
+                    let basicPath = URLPath.systemSelectionURL
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                    temp.append(imageValue)
+                    pUrl = Photo.init(urlString: url)
+                    
+                }
+                photoImage.append(pUrl)
+            }
+            
+            self.showImageV.showImageUrls(temp)
+            
+        }else{
+            //调节约束展示
+            self.headViewConstraint.constant = self.stemLabel.maxY + 20
+        }
         
         let view = UIView()
         
-        for indexxxxx in 0..<5 {
+        for indexxxxx in 0..<model.optionDetail.count {
             
             let moreQV = Bundle.main.loadNibNamed("YQMoreQuestionView", owner: nil, options: nil)?[0] as! YQMoreQuestionView
             
+            let optionDetail = model.optionDetail[indexxxxx]
+            let str1 = optionDetail["option"] as? String ?? ""
+            let str2 = optionDetail["optionContent"] as? String ?? ""
+            
+            moreQV.moreLabel1.text = str1 + ". " + str2
             
             if indexxxxx == 0 {
                 
@@ -222,7 +325,6 @@ class YQStartExamDetailVC: UIViewController {
                     
                     maker.top.left.right.equalToSuperview()
                     maker.height.equalTo(moreQuestionHeight)
-                    
                 })
                 
             }else{
@@ -256,6 +358,44 @@ class YQStartExamDetailVC: UIViewController {
     //判断题
     func creatJudgmentProblem(model : YQSubjectModel){
         
+        self.stemLabel.text = model.question
+        self.typeLabel.text = "判断题"
+        
+        if model.images != "" {
+            
+            var photoImage = [Photo]()
+            var pUrl = Photo()
+            
+            let images = model.images.components(separatedBy: ",")
+            var temp = [String]()
+            
+            for url in images{
+                
+                if url.contains("http"){
+                    
+                    //空格转义情况!bug添加
+                    let bUrl = url.replacingOccurrences(of: " ", with: "%20")
+                    temp.append(bUrl)
+                    pUrl = Photo.init(urlString: bUrl)
+                    
+                }else{
+                    
+                    let basicPath = URLPath.systemSelectionURL
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                    temp.append(imageValue)
+                    pUrl = Photo.init(urlString: url)
+                    
+                }
+                photoImage.append(pUrl)
+            }
+            
+            self.showImageV.showImageUrls(temp)
+            
+        }else{
+            //调节约束展示
+            self.headViewConstraint.constant = self.stemLabel.maxY + 20
+        }
+        
         let JudgmentProblem = Bundle.main.loadNibNamed("YQJudgmentQuestionView", owner: nil, options: nil)?[0] as! YQJudgmentQuestionView
         
         self.scrollContentView.addSubview(JudgmentProblem)
@@ -275,13 +415,26 @@ class YQStartExamDetailVC: UIViewController {
     //填空题
     func creatCompletionQuestion(model : YQSubjectModel){
         
-        let Completion = YQCompletionQuestionV()
         
-        for indexxx in 0..<5{
+        let Completion = YQCompletionQuestionV()
+        Completion.backgroundColor = UIColor.white
+        self.typeLabel.text = "填空题"
+        
+        for indexxx in 0..<model.optionDetail.count{
 
-            Completion.labelContent = "填空题" + "\(indexxx)"
-            Completion.textViewContent =  "\(indexxx)" + "."
+            let optionDetail = model.optionDetail[indexxx]
+            let str1 = optionDetail["type"] as? Int64 ?? -1
+            let str2 = optionDetail["blankContent"] as? String ?? ""
             
+            if str1 == 1 {
+                
+                Completion.labelContent = str2
+                
+            }else{
+                
+                Completion.textViewContent =  ""
+            }
+
         }
         
         self.scrollContentView.addSubview(Completion)
@@ -291,14 +444,52 @@ class YQStartExamDetailVC: UIViewController {
             
             maker.top.equalToSuperview()
             
-            maker.left.right.bottom.equalToSuperview().offset(20)
-            
+            maker.left.right.bottom.equalToSuperview().offset(10)
         })
         
     }
     
     //问答题
     func creatQuestionAndAnswerQuestion(model : YQSubjectModel){
+        
+        self.stemLabel.text = model.question
+        self.typeLabel.text = "问答题"
+        
+        if model.images != "" {
+            
+            var photoImage = [Photo]()
+            var pUrl = Photo()
+            
+            let images = model.images.components(separatedBy: ",")
+            var temp = [String]()
+            
+            for url in images{
+                
+                if url.contains("http"){
+                    
+                    //空格转义情况!bug添加
+                    let bUrl = url.replacingOccurrences(of: " ", with: "%20")
+                    temp.append(bUrl)
+                    pUrl = Photo.init(urlString: bUrl)
+                    
+                }else{
+                    
+                    let basicPath = URLPath.systemSelectionURL
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                    temp.append(imageValue)
+                    pUrl = Photo.init(urlString: url)
+                    
+                }
+                photoImage.append(pUrl)
+            }
+            
+            self.showImageV.showImageUrls(temp)
+            
+        }else{
+            //调节约束展示
+            self.headViewConstraint.constant = self.stemLabel.maxY + 20
+        }
+        
         
         let ShortAnswerQuestionsV = Bundle.main.loadNibNamed("YQShortAnswerQuestionsV", owner: nil, options: nil)?[0] as! YQShortAnswerQuestionsV
         
@@ -313,13 +504,7 @@ class YQStartExamDetailVC: UIViewController {
             maker.left.right.equalToSuperview().offset(20)
             
         }
-        
     }
-    
-    
-  
-
- 
 
 }
 

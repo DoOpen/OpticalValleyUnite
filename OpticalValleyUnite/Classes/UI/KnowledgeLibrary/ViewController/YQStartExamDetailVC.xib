@@ -17,6 +17,7 @@
                 <outlet property="nextBtn" destination="TAn-A2-ElU" id="foD-4i-YQL"/>
                 <outlet property="questionView" destination="bE4-Xa-UmE" id="csx-ZO-tTJ"/>
                 <outlet property="scrollContentView" destination="vcP-bP-20m" id="VdN-nJ-wdF"/>
+                <outlet property="upBtn" destination="W6o-0F-qYu" id="7mI-mv-vD8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -61,7 +62,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSI-3T-yMM">
                             <rect key="frame" x="0.0" y="50" width="375" height="50"/>
                             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" title="交卷"/>
+                            <state key="normal" title="结束答题"/>
                             <connections>
                                 <action selector="HandOverButtonClick:" destination="-1" eventType="touchUpInside" id="X9V-R3-ZVh"/>
                             </connections>
@@ -82,7 +83,7 @@
                             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="上一题"/>
                             <connections>
-                                <action selector="nextButtonClick:" destination="-1" eventType="touchUpInside" id="HWn-bx-1UL"/>
+                                <action selector="upButtonClick:" destination="-1" eventType="touchUpInside" id="t9x-Xp-qOg"/>
                             </connections>
                         </button>
                     </subviews>

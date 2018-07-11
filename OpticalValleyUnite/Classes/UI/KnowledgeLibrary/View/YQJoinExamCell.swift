@@ -32,7 +32,7 @@ class YQJoinExamCell: UITableViewCell {
             
             self.examTilteLabel.text = model?.name
             self.joinExamScoreLabel.text = "考试分数  " + "\(model?.totalScore ?? 0)"
-            self.examTilteLabel.text = "考试时间  " + (model?.time)!
+            self.examTimeLabel.text = "考试时间  " + (model?.time)!
             
             //判断是否 参加
             if model?.isAttend == 1{

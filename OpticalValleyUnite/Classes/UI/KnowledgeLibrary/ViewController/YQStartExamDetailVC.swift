@@ -29,20 +29,23 @@ class YQStartExamDetailVC: UIViewController {
     //底部bottomView的约束调整
     @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var upBtn: UIButton!
+    
     @IBOutlet weak var nextBtn: UIButton!
     
     @IBOutlet weak var handOverBtn: UIButton!
     
     //传递模型数组过来测试!
-    var dataArray = [UIView]()
+    var dataArray = [YQSubjectModel]()
     
     //记录当前的缓存view
     var currentView : UIView?
+    //记录索引
+    var selectIndex = 1
     
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         //init
         self.title = "题号: " + "\(self.titleIndes)"
@@ -51,7 +54,7 @@ class YQStartExamDetailVC: UIViewController {
         setupRightAndLeftBarItem()
         
         //2.模拟创建
-        creatSingleChoiceQuestion()
+        checkBottomViewChangeFunction(Index: selectIndex)
 
     }
     
@@ -94,49 +97,95 @@ class YQStartExamDetailVC: UIViewController {
     @IBAction func nextButtonClick(_ sender: UIButton) {
         //点击下一题的选项情况
         //通知重新创建题目控件
-        self.currentView?.removeFromSuperview()
+        self.selectIndex += 1
+        checkBottomViewChangeFunction(Index: selectIndex)
         
-        self.creatCompletionQuestion()
+        self.currentView?.removeFromSuperview()
+        //数据模型的导入方法
+        
         
     }
     
     // MARK: - 点击上一题的方法
     @IBAction func upButtonClick(_ sender: UIButton) {
         
-        self.currentView?.removeFromSuperview()
         
-        self.creatQuestionAndAnswerQuestion()
+        self.selectIndex -= 1
+        checkBottomViewChangeFunction(Index: selectIndex)
+        
+        self.currentView?.removeFromSuperview()
+        //数据模型的导入方法
         
     }
     
     // MARK: - 点击交卷按钮的方法
     @IBAction func HandOverButtonClick(_ sender: UIButton) {
         
-        //数据整合:提交交卷
-        var par = [String : Any]()
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - bottomButton的显示状态的方法
+    func checkBottomViewChangeFunction(Index : Int){
         
-        //数据的格式化显示:
-        par["paperId"] = ""
-        
-        par["subjectList"] = ""
-//        par[""] =
-//        par[""] =
-        
-        HttpClient.instance.post(path: URLPath.getNewknowledgeOwnSubmit, parameters: par, success: { (response) in
+        if Index == 1 {//最开始 头
             
+            self.upBtn.isHidden = true
+            self.nextBtn.isHidden = false
+            self.bottomViewHeightConstraint.constant = 50
+
+        }else if (Index == self.dataArray.count){//最尾部 末
             
+            self.nextBtn.isHidden = true
             
-        }) { (error) in
+            self.bottomViewHeightConstraint.constant = 100
             
+        }else{//中间的业务跳转
             
+            self.upBtn.isHidden = false
+            self.nextBtn.isHidden = false
+            self.bottomViewHeightConstraint.constant = 100
         }
         
+        self.handOverBtn.isHidden = !self.nextBtn.isHidden
+        self.title = "题号" + "\(selectIndex)"
+        
+    }
+    
+    // MARK: - 判断各种的题型的方法
+    func ClassificationOfQuestions(model : YQSubjectModel){
+        
+        switch model.type {
+        //题目类型. 1单选 2多选 3判断 4填空 5问答
+        case 1://单选
+            creatSingleChoiceQuestion(model: model)
+            break
+            
+        case 2://多选
+            creatSingleChoiceQuestion(model: model)
+            break
+            
+        case 3://判断
+            creatJudgmentProblem(model: model)
+            break
+            
+        case 4://填空
+            creatCompletionQuestion(model: model)
+            break
+            
+        case 5://问答
+            creatQuestionAndAnswerQuestion(model: model)
+            break
+            
+        default:
+            break
+            
+        }
         
     }
     
     // MARK: - 创建各种题框的方法
     //单选题
-    func creatSingleChoiceQuestion(){
+    func creatSingleChoiceQuestion(model : YQSubjectModel){
         
         let SingleQuestion = Bundle.main.loadNibNamed("YQQuestionOptionView", owner: nil, options: nil)?[0] as? YQQuestionOptionView
         
@@ -154,7 +203,7 @@ class YQStartExamDetailVC: UIViewController {
     }
     
     //多选题
-    func creatMoreChoiceQuestion(){
+    func creatMoreChoiceQuestion(model : YQSubjectModel){
         
 //        let abcArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N" ,"O", "P", "Q" ,"R", "S" ,"T", "U", "V", "W", "X", "Y", "Z" ]
         
@@ -205,7 +254,7 @@ class YQStartExamDetailVC: UIViewController {
     }
     
     //判断题
-    func creatJudgmentProblem(){
+    func creatJudgmentProblem(model : YQSubjectModel){
         
         let JudgmentProblem = Bundle.main.loadNibNamed("YQJudgmentQuestionView", owner: nil, options: nil)?[0] as! YQJudgmentQuestionView
         
@@ -224,7 +273,7 @@ class YQStartExamDetailVC: UIViewController {
     }
     
     //填空题
-    func creatCompletionQuestion(){
+    func creatCompletionQuestion(model : YQSubjectModel){
         
         let Completion = YQCompletionQuestionV()
         
@@ -248,9 +297,8 @@ class YQStartExamDetailVC: UIViewController {
         
     }
     
-    
     //问答题
-    func creatQuestionAndAnswerQuestion(){
+    func creatQuestionAndAnswerQuestion(model : YQSubjectModel){
         
         let ShortAnswerQuestionsV = Bundle.main.loadNibNamed("YQShortAnswerQuestionsV", owner: nil, options: nil)?[0] as! YQShortAnswerQuestionsV
         

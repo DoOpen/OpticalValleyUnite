@@ -33,7 +33,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="367" height="656"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Csv-lg-zxc">
-                            <rect key="frame" x="0.0" y="0.0" width="367" height="666"/>
+                            <rect key="frame" x="0.0" y="0.0" width="367" height="600"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6G-2w-vJi">
                                     <rect key="frame" x="0.0" y="0.0" width="367" height="85"/>
@@ -53,7 +53,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSf-tV-1Sa">
                                             <rect key="frame" x="312.5" y="25" width="39.5" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" red="0.19215686269999999" green="0.64705882349999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="时间" translatesAutoresizingMaskIntoConstraints="NO" id="xYR-Mz-BVI">
@@ -78,16 +78,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOb-aA-lYP">
-                                    <rect key="frame" x="0.0" y="576" width="367" height="90"/>
+                                    <rect key="frame" x="0.0" y="510" width="367" height="90"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.请认真审题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOF-vA-yo6">
-                                            <rect key="frame" x="20" y="5" width="88" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.本试卷有客观题,请把握好时间答题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvh-l6-8iN">
-                                            <rect key="frame" x="20" y="28" width="247" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.请认真审题" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOF-vA-yo6">
+                                            <rect key="frame" x="10" y="5" width="347" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -95,11 +89,10 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="cOF-vA-yo6" firstAttribute="leading" secondItem="YOb-aA-lYP" secondAttribute="leading" constant="20" id="3Xa-xX-S3B"/>
+                                        <constraint firstItem="cOF-vA-yo6" firstAttribute="leading" secondItem="YOb-aA-lYP" secondAttribute="leading" constant="10" id="3Xa-xX-S3B"/>
                                         <constraint firstAttribute="height" constant="90" id="3a6-jc-UHi"/>
                                         <constraint firstItem="cOF-vA-yo6" firstAttribute="top" secondItem="YOb-aA-lYP" secondAttribute="top" constant="5" id="Bsc-z2-nY7"/>
-                                        <constraint firstItem="dvh-l6-8iN" firstAttribute="top" secondItem="cOF-vA-yo6" secondAttribute="bottom" constant="5" id="dPs-2r-enx"/>
-                                        <constraint firstItem="dvh-l6-8iN" firstAttribute="leading" secondItem="cOF-vA-yo6" secondAttribute="leading" id="eR6-s1-AQs"/>
+                                        <constraint firstAttribute="trailing" secondItem="cOF-vA-yo6" secondAttribute="trailing" constant="10" id="g8R-7M-Obx"/>
                                     </constraints>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="luH-2c-gtc">
@@ -115,7 +108,7 @@
                                 <constraint firstItem="luH-2c-gtc" firstAttribute="top" secondItem="V6G-2w-vJi" secondAttribute="bottom" id="Gzt-Zj-OjO"/>
                                 <constraint firstItem="luH-2c-gtc" firstAttribute="leading" secondItem="Csv-lg-zxc" secondAttribute="leading" id="I0z-ul-vgY"/>
                                 <constraint firstAttribute="trailing" secondItem="YOb-aA-lYP" secondAttribute="trailing" id="Kt0-oS-ux4"/>
-                                <constraint firstAttribute="height" constant="666" id="PbX-K2-OaI"/>
+                                <constraint firstAttribute="height" constant="600" id="PbX-K2-OaI"/>
                                 <constraint firstAttribute="trailing" secondItem="luH-2c-gtc" secondAttribute="trailing" id="Y9T-iW-Bjw"/>
                                 <constraint firstItem="YOb-aA-lYP" firstAttribute="leading" secondItem="Csv-lg-zxc" secondAttribute="leading" id="ZWc-qt-xoD"/>
                                 <constraint firstAttribute="trailing" secondItem="V6G-2w-vJi" secondAttribute="trailing" id="bzL-n5-Fvg"/>

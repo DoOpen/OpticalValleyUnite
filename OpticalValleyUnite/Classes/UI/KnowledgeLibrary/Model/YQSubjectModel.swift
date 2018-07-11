@@ -11,7 +11,7 @@ import UIKit
 class YQSubjectModel: NSObject {
     
     //题目id
-    var id = ""
+    var id : Int64 = -1
     
     //题目类型. 1单选 2多选 3判断 4填空 5问答
     var type = -1
@@ -38,6 +38,9 @@ class YQSubjectModel: NSObject {
     
     //题目下面的选项内容
     var optionDetail = Array<[String : Any]>()
+    
+    //该考试是否结束 0未结束 1结束
+    //var isEnd : Int64 = -1
     
     init(dict : [String : Any]) {
         

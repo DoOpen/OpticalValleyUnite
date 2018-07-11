@@ -110,9 +110,7 @@ class YQStartExaminationVC: UIViewController {
         
         //3.获取总的数据量
         getStartExamDetailData()
-        
-        
-        
+
     }
 
     
@@ -121,7 +119,7 @@ class YQStartExaminationVC: UIViewController {
     @IBAction func startAnswerBtnClick(_ sender: UIButton) {
         //点击开始答题进行的从1开始
         let vc = YQStartExamDetailVC.init(nibName: "YQStartExamDetailVC", bundle: nil)
-        
+        vc.dataArray = self.subjectArray
         self.navigationController?.pushViewController(vc, animated: true)
         
         //同时设置两个计时工具
@@ -173,7 +171,7 @@ class YQStartExaminationVC: UIViewController {
         HttpClient.instance.post(path: URLPath.getNewknowledgeOwnDetail, parameters: par, success: { (response) in
             
             SVProgressHUD.dismiss()
-            let data = response as? Array<[String : Any]>
+            let data = response as? [String : Any]
             
             if data == nil || (data?.isEmpty)! {
                 
@@ -181,21 +179,21 @@ class YQStartExaminationVC: UIViewController {
                 return
             }
             
-            let dict = data![0]
+            let dict = data!
             //是否结束
             self.isEnd = dict["isEnd"] as? Int ?? -1
             
             //时间
             let time = dict["time"] as? String ?? ""
-            self.timeLabel.text = time + "分"
+            self.timeLabel.text = "考试时间 " + time + "分"
             
             //纪要
             let print = dict["points"] as? String ?? ""
             self.summaryLabel.text = print
             
             //题目数量
-            let count = dict["count"] as? Int ?? 0
-            self.countLabel.text = "\(count)" + "题"
+            let count = dict["totalCount"] as? Int ?? 0
+            self.countLabel.text = "共" + "\(count)" + "题"
             
             //题目数组
             let subjectDetail = dict["subjectDetail"] as? Array<[String : Any]>  //里面包含选项的数组id
@@ -203,30 +201,12 @@ class YQStartExaminationVC: UIViewController {
             var tempArray = [YQSubjectModel]()
             
             for dict in subjectDetail!{
-                
                 tempArray.append(YQSubjectModel.init(dict: dict))
             }
             
             self.subjectArray = tempArray
-            //取出第一个
-            let first = tempArray.first
             
-            if first?.type == 1 {//单选
-                
-                
-            }else if (first?.type == 2){//多选
-                
-                
-            }else if (first?.type == 3){//判断
-                
-                
-            }else if (first?.type == 4){//填空
-                
-                
-            }else if (first?.type == 5){//问答
-                
-                
-            }
+            self.collectionView.reloadData()
             
             
         }) { (error) in
@@ -286,7 +266,6 @@ class YQStartExaminationVC: UIViewController {
         
     }
     
-    
     deinit {
         
         //清空时间宏
@@ -300,7 +279,7 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
-        return 21
+        return self.subjectArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -323,8 +302,11 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
             
             //点击开始答题进行的从1开始
             let vc = YQStartExamDetailVC.init(nibName: "YQStartExamDetailVC", bundle: nil)
+            vc.dataArray = self.subjectArray
+            vc.selectIndex = indexPath.row + 1
             
             self.navigationController?.pushViewController(vc, animated: true)
+            
         }
         
         

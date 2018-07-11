@@ -11,11 +11,11 @@ import UIKit
 class YQExaminationRecordsModel: NSObject {
     
     //主键id
-    var id = ""
+    var id : Int64 = -1
     //试卷总分
     var totalScore = -1
     //总得分
-    var totalGrade = -1
+    var scoreContent = ""
     //考试总时间
     var time = ""
     //试卷名称

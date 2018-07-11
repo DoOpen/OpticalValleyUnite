@@ -60,8 +60,8 @@
                             <constraint firstAttribute="height" constant="8" id="FsC-Pu-RhH"/>
                         </constraints>
                     </imageView>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已通过" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfq-8e-Lbo">
-                        <rect key="frame" x="257" y="15" width="49" height="19.5"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已参加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfq-8e-Lbo">
+                        <rect key="frame" x="257" y="15" width="49" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.19215686269999999" green="0.64705882349999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -88,6 +88,8 @@
             <connections>
                 <outlet property="alreadyLabel" destination="nfq-8e-Lbo" id="HOy-jk-ES7"/>
                 <outlet property="examTilteLabel" destination="a34-rf-0yo" id="h0K-fj-gPe"/>
+                <outlet property="examTimeLabel" destination="WJS-q3-UEl" id="Xrc-mv-kmy"/>
+                <outlet property="joinExamScoreLabel" destination="rdK-dG-Vza" id="FHa-kV-Nz7"/>
             </connections>
             <point key="canvasLocation" x="20.5" y="76"/>
         </tableViewCell>

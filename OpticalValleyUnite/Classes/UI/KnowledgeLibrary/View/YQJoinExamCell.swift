@@ -14,6 +14,10 @@ class YQJoinExamCell: UITableViewCell {
     
     @IBOutlet weak var alreadyLabel: UILabel!
     
+    @IBOutlet weak var joinExamScoreLabel: UILabel!
+    
+    @IBOutlet weak var examTimeLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +25,26 @@ class YQJoinExamCell: UITableViewCell {
     
     }
 
+    
+    var model : YQExamOwnListModel?{
+        
+        didSet{
+            
+            self.examTilteLabel.text = model?.name
+            self.joinExamScoreLabel.text = "考试分数  " + "\(model?.totalScore ?? 0)"
+            self.examTilteLabel.text = "考试时间  " + (model?.time)!
+            
+            //判断是否 参加
+            if model?.isAttend == 1{
+                
+                self.alreadyLabel.isHidden = false
+                
+            }
+            
+            
+        }
+        
+    }
   
     
 }

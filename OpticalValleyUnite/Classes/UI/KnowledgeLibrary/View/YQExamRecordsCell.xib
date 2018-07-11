@@ -86,7 +86,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="examScoreLabel" destination="B9f-Qs-Jkv" id="zNq-NZ-Qal"/>
                 <outlet property="examTilteLabel" destination="s0y-E9-K8D" id="wUy-8u-rdm"/>
+                <outlet property="examTimeLabel" destination="wCU-sS-edv" id="ncn-db-U9h"/>
                 <outlet property="scoreLabel" destination="trz-eP-ppW" id="rT3-Fb-pUh"/>
             </connections>
             <point key="canvasLocation" x="-104.5" y="159"/>

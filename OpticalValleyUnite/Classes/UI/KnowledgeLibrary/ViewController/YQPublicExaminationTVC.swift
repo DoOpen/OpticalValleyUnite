@@ -67,11 +67,13 @@ class YQPublicExaminationTVC: UITableViewController {
         
         var par = [String : Any]()
         
-        par["parkId"] = ""
+        par["parkId"] = setUpProjectNameLable()
         
         SVProgressHUD.show()
         
         HttpClient.instance.post(path: URLPath.getNewknowledgeOwnList, parameters: par, success: { (response) in
+            
+            SVProgressHUD.dismiss()
             
             let data = response["data"] as? Array<[String : Any]>
             
@@ -79,7 +81,6 @@ class YQPublicExaminationTVC: UITableViewController {
                 
                 SVProgressHUD.showError(withStatus: "没有更多数据")
                 return
-                
             }
             
             var tempArray = [YQExamOwnListModel]()
@@ -92,7 +93,6 @@ class YQPublicExaminationTVC: UITableViewController {
             self.joinExamArray = tempArray
             self.tableView.reloadData()
             
-            
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
@@ -103,7 +103,7 @@ class YQPublicExaminationTVC: UITableViewController {
     func getMyAchievementsListData(){
         
         var par = [String : Any]()
-        par["parkId"] = ""
+        par["parkId"] = setUpProjectNameLable()
         
         SVProgressHUD.show()
         
@@ -141,7 +141,7 @@ class YQPublicExaminationTVC: UITableViewController {
     func getExaminationRecordsListData(){
         
         var par = [String : Any]()
-        par["parkId"] = ""
+        par["parkId"] = setUpProjectNameLable()
         
         SVProgressHUD.show()
         
@@ -233,18 +233,26 @@ class YQPublicExaminationTVC: UITableViewController {
             
             case 1:
                 
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellJoinExam, for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellJoinExam, for: indexPath) as! YQJoinExamCell
+                
+                cell.model = self.joinExamArray[indexPath.row]
                 
                 return cell
             
             
             case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellMyScore, for: indexPath)
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellMyScore, for: indexPath) as! YQMyScoreCell
+                cell.model = self.myScoreArray[indexPath.row]
+                
                 return cell
             
             
             case 3:
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellExamRecords, for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellExamRecords, for: indexPath) as! YQExamRecordsCell
+                
+                cell.model = self.examRecordsArray[indexPath.row]
+                
                 return cell
             
             default:
@@ -276,6 +284,8 @@ class YQPublicExaminationTVC: UITableViewController {
             case 1:
                 
                 let vc = YQStartExaminationVC.init(nibName: "YQStartExaminationVC", bundle: nil)
+                vc.id = "\(self.joinExamArray[indexPath.row].id)"
+                
                 self.navigationController?.pushViewController(vc, animated: true)
                 
                 break
@@ -283,11 +293,9 @@ class YQPublicExaminationTVC: UITableViewController {
             case 2:
                 
                 let vc = YQAchievementDetailVC.init(nibName: "YQAchievementDetailVC", bundle: nil)
-                self.navigationController?.pushViewController(vc, animated: true)
+                vc.id = "\(self.myScoreArray[indexPath.row].id)"
                 
-                break
-            
-            case 3:
+                self.navigationController?.pushViewController(vc, animated: true)
                 
                 break
             

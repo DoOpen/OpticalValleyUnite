@@ -37,12 +37,21 @@ class YQStartExaminationVC: UIViewController {
     let cell = "QuestionCollectionCell"
     
     //考试是否结束
-    var isEnd = -1
+    var isEnd = -1{
+        didSet{
+            
+            if isEnd == 1{
+                SVProgressHUD.showError(withStatus: "考试已结束")
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
     
     //题目数组(核心数据)
     //模型数组
     var subjectArray  = [YQSubjectModel]()
     
+    var id = ""
     
     
     //自定义的collectionView
@@ -157,7 +166,7 @@ class YQStartExaminationVC: UIViewController {
         
         var par = [String : Any]()
         
-        par["id"] = ""
+        par["id"] = self.id
         
         SVProgressHUD.show()
         
@@ -169,6 +178,7 @@ class YQStartExaminationVC: UIViewController {
             if data == nil || (data?.isEmpty)! {
                 
                 SVProgressHUD.showError(withStatus: "没有更多数据!")
+                return
             }
             
             let dict = data![0]

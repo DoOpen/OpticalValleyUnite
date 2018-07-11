@@ -14,11 +14,29 @@ class YQExamRecordsCell: UITableViewCell {
     
     @IBOutlet weak var scoreLabel: UILabel!
     
+    @IBOutlet weak var examTimeLabel: UILabel!
+    
+    @IBOutlet weak var examScoreLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
     
+    }
+    
+    var model : YQExaminationRecordsModel?{
+        didSet{
+            
+            self.examTilteLabel.text = model?.name
+            self.examScoreLabel.text = model?.scoreContent
+            self.examScoreLabel.text = "考试分数  " + "\(model?.totalScore ?? 0)"
+            
+            self.examTimeLabel.text = model?.time
+            
+            
+        }
+        
     }
 
     

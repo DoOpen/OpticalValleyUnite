@@ -36,6 +36,8 @@ class YQAchievementDetailVC: UIViewController {
     //重点数据(试题的模型数组)
     var questionsArray = [YQSubjectModel]()
     
+    var id = ""
+    
     
     //自定义的collectionView
     lazy var collectionView : UICollectionView = {
@@ -97,7 +99,7 @@ class YQAchievementDetailVC: UIViewController {
         var par = [String : Any]()
         
         //试卷id
-        par["id"] = ""
+        par["id"] = self.id
         
         SVProgressHUD.show()
         
@@ -169,9 +171,10 @@ class YQAchievementDetailVC: UIViewController {
         
     }
     
+    
     @IBAction func returnButtonClick(_ sender: UIButton) {
         
-        
+        self.navigationController?.popViewController(animated: true)
     }
     
 

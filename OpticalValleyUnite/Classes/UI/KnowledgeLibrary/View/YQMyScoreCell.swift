@@ -21,6 +21,18 @@ class YQMyScoreCell: UITableViewCell {
     
     }
 
+    
+    var model : YQMyAchievementsModel?{
+        
+        didSet{
+            
+            self.examTitleLabel.text = model?.name
+            
+            self.scoreLabel.text = model?.scoreContent
+            
+        }
+        
+    }
    
     
 }

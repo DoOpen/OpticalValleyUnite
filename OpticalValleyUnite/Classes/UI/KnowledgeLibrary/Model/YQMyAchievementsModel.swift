@@ -11,10 +11,10 @@ import UIKit
 class YQMyAchievementsModel: NSObject {
 
     //试卷id
-    var id = ""
+    var id = -1
     
     //考试得分
-    var totalGrade = -1
+    var scoreContent = ""
     
     //试卷名称
     var name = ""

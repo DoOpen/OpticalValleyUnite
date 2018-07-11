@@ -14,13 +14,13 @@ class YQExamOwnListModel: NSObject {
     //试卷名称
     var name = ""
     //试卷总分
-    var totalScore = ""
+    var totalScore = -1
     //考试总时间
     var time = ""
     //考试是否结束 0未结束 1结束
-    var isEnd = ""
+    var isEnd = -1
     //考试是否已经参加 0未参加 1已经参加
-    var isAttend = ""
+    var isAttend = -1
     
     init(dict : [String : Any]) {
         super.init()

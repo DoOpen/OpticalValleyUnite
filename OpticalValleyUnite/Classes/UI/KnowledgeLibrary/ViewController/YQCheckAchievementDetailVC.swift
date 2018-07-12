@@ -160,6 +160,8 @@ class YQCheckAchievementDetailVC: UIViewController {
     //单选题,多选题的创建的核心代码逻辑
     func creatSingleChoiceQuestion(model : YQSubjectModel){
         
+        
+        
         let view = UIView()
         
         let choose = model.choose

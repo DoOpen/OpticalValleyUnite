@@ -20,6 +20,8 @@ class YQStartExamDetailVC: UIViewController {
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var scrollContentView: UIView!
     
+    @IBOutlet weak var showImageVConstraint: NSLayoutConstraint!
+    
     //option(选项view)
     @IBOutlet weak var stemLabel: UILabel!
     
@@ -48,6 +50,7 @@ class YQStartExamDetailVC: UIViewController {
     //记录索引
     var selectIndex = 1
     
+    let LetterA = ["A","B","C","D","E","F","G","H","I","J","K"]
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +69,9 @@ class YQStartExamDetailVC: UIViewController {
     }
     
     func setupRightAndLeftBarItem(){
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named:"ic_return"),
+                                                                style:.plain, target:self, action: #selector(leftBarItemButtonClick))
         
         let imageView = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 13, height: 13))
         imageView.image = UIImage.init(name: "clock")
@@ -98,10 +104,18 @@ class YQStartExamDetailVC: UIViewController {
         
     }
     
+    func leftBarItemButtonClick() {
+        //bolck 回调传值
+        
+        
+    }
     
     
     // MARK: - 点击下一题的方法
     @IBAction func nextButtonClick(_ sender: UIButton) {
+       
+        saveAnswerFunction()
+        
         //点击下一题的选项情况
         //通知重新创建题目控件
         self.selectIndex += 1
@@ -109,14 +123,16 @@ class YQStartExamDetailVC: UIViewController {
         
         self.currentView?.removeFromSuperview()
         //数据模型的导入方法
-        let model = self.dataArray[selectIndex - 1]
-        ClassificationOfQuestions(model: model)
+        let newModel = self.dataArray[selectIndex - 1]
+        ClassificationOfQuestions(model: newModel)
         
+    
     }
     
     // MARK: - 点击上一题的方法
     @IBAction func upButtonClick(_ sender: UIButton) {
         
+        saveAnswerFunction()
         
         self.selectIndex -= 1
         checkBottomViewChangeFunction(Index: selectIndex)
@@ -131,6 +147,99 @@ class YQStartExamDetailVC: UIViewController {
     @IBAction func HandOverButtonClick(_ sender: UIButton) {
         
         self.navigationController?.popViewController(animated: true)
+        //block进行的传值处理
+        
+        
+    }
+    
+    func saveAnswerFunction(){
+        //旧模型
+        let model = self.dataArray[selectIndex - 1]
+        
+        //答案内容的写入情况:
+        if (self.currentView?.isKind(of: YQQuestionOptionView.classForCoder()))!{
+            //单选
+            let view = self.currentView as! YQQuestionOptionView
+            
+            for indexxx in 0..<view.selectButtonArray.count {
+                
+                let btn = view.selectButtonArray[indexxx]
+                
+                if btn.isSelected {
+                    
+                    model.choose = self.LetterA[indexxx]
+                }
+                
+            }
+            
+            
+        } else if (self.currentView?.isKind(of: YQJudgmentQuestionView.classForCoder()))!{
+            //判断题
+            let view = self.currentView as! YQJudgmentQuestionView
+            if view.judgmentButton1.isSelected {
+                
+                model.choose = "A"
+                
+            }else if(view.judgmentButton2.isSelected){
+                
+                model.choose = "B"
+            }
+            
+        } else if (self.currentView?.isKind(of: YQCompletionQuestionV.classForCoder()))!{
+            //填空题
+            let view = self.currentView as! YQCompletionQuestionV
+            var str = ""
+            
+            for indexxx in 0..<view.textFiledArray.count{
+                
+                let textV = view.textFiledArray[indexxx]
+                
+                if str == "" {
+                    
+                    str = textV.text
+                    
+                }else{
+                    
+                    str = str + "$" + textV.text
+                }
+            }
+            
+            model.choose = str
+
+        }else if (self.currentView?.isKind(of: YQShortAnswerQuestionsV.classForCoder()))!{
+            
+            //简答题
+            let view = self.currentView as! YQShortAnswerQuestionsV
+            model.choose = view.shortAnswerTextView.text
+            
+        } else {
+            
+            var str = ""
+            //多选题的情况
+            for indexxx in 0..<(self.currentView?.subviews.count)! {
+                
+                let tempV = self.currentView?.subviews[indexxx] as! YQMoreQuestionView
+                
+                if (tempV.moreButton1.isSelected){
+                    
+                    if str == "" {
+                        
+                        str = LetterA[indexxx]
+                        
+                    }else{
+                        
+                        str = str + "$" + LetterA[indexxx]
+                    }
+                }
+            }
+            
+            model.choose = str
+            
+        }
+        
+        self.dataArray.remove(at: selectIndex - 1)
+        self.dataArray.insert(model, at: selectIndex - 1)
+        
     }
     
     // MARK: - bottomButton的显示状态的方法
@@ -194,6 +303,8 @@ class YQStartExamDetailVC: UIViewController {
     // MARK: - 创建各种题框的方法
     //单选题
     func creatSingleChoiceQuestion(model : YQSubjectModel){
+    
+        let choose = model.choose
         
         //先输入 题干的情况
         self.stemLabel.text = model.question
@@ -227,23 +338,33 @@ class YQStartExamDetailVC: UIViewController {
                 photoImage.append(pUrl)
             }
             
+            self.showImageVConstraint.constant = 90
             self.showImageV.showImageUrls(temp)
             
         }else{
+            
             //调节约束展示
-            self.headViewConstraint.constant = self.stemLabel.maxY + 20
+            self.headViewConstraint.constant = 120
+            self.showImageVConstraint.constant = 0
+            
         }
         
         //答题选项的内容情况
         let SingleQuestion = Bundle.main.loadNibNamed("YQQuestionOptionView", owner: nil, options: nil)?[0] as? YQQuestionOptionView
         
         let labelA = SingleQuestion?.contentLabelArray
+        let btnA = SingleQuestion?.selectButtonArray
         
         for indexxx in 0..<model.optionDetail.count{
             
             let optionDetail = model.optionDetail[indexxx]
             let str1 = optionDetail["option"] as? String ?? ""
             let str2 = optionDetail["optionContent"] as? String ?? ""
+            
+            if choose != "" && str1 == choose {
+                
+                btnA![indexxx].isSelected = true
+            }
             
             let label = labelA![indexxx]
             
@@ -266,6 +387,10 @@ class YQStartExamDetailVC: UIViewController {
     
     //多选题
     func creatMoreChoiceQuestion(model : YQSubjectModel){
+        
+        let choose = model.choose
+        let arrString = choose.components(separatedBy: "$")
+        
         
         self.stemLabel.text = model.question
         self.typeLabel.text = "多选题"
@@ -298,22 +423,34 @@ class YQStartExamDetailVC: UIViewController {
                 photoImage.append(pUrl)
             }
             
+            self.showImageVConstraint.constant = 90
             self.showImageV.showImageUrls(temp)
             
         }else{
             //调节约束展示
-            self.headViewConstraint.constant = self.stemLabel.maxY + 20
+            //self.headViewConstraint.constant = self.stemLabel.maxY + 20
         }
         
         let view = UIView()
+        var chooseStr = ""
         
         for indexxxxx in 0..<model.optionDetail.count {
+            
+            if indexxxxx <= arrString.count - 1 {
+                
+               chooseStr = arrString[indexxxxx]
+            }
             
             let moreQV = Bundle.main.loadNibNamed("YQMoreQuestionView", owner: nil, options: nil)?[0] as! YQMoreQuestionView
             
             let optionDetail = model.optionDetail[indexxxxx]
             let str1 = optionDetail["option"] as? String ?? ""
             let str2 = optionDetail["optionContent"] as? String ?? ""
+            
+            if chooseStr != "" && chooseStr == str1 {
+                
+                moreQV.moreButton1.isSelected = true
+            }
             
             moreQV.moreLabel1.text = str1 + ". " + str2
             
@@ -355,8 +492,11 @@ class YQStartExamDetailVC: UIViewController {
         
     }
     
+    
     //判断题
     func creatJudgmentProblem(model : YQSubjectModel){
+        
+        let choose = model.choose
         
         self.stemLabel.text = model.question
         self.typeLabel.text = "判断题"
@@ -389,16 +529,26 @@ class YQStartExamDetailVC: UIViewController {
                 photoImage.append(pUrl)
             }
             
+            self.showImageVConstraint.constant = 90
             self.showImageV.showImageUrls(temp)
             
         }else{
             //调节约束展示
-            self.headViewConstraint.constant = self.stemLabel.maxY + 20
+            //self.headViewConstraint.constant = self.stemLabel.maxY + 20
         }
         
         let JudgmentProblem = Bundle.main.loadNibNamed("YQJudgmentQuestionView", owner: nil, options: nil)?[0] as! YQJudgmentQuestionView
         
         self.scrollContentView.addSubview(JudgmentProblem)
+        
+        if choose == "A"{
+            
+            JudgmentProblem.judgmentButton1.isSelected = true
+            
+        }else if (choose == "B"){
+            
+            JudgmentProblem.judgmentButton2.isSelected = true
+        }
         
         self.currentView = JudgmentProblem
         
@@ -415,6 +565,8 @@ class YQStartExamDetailVC: UIViewController {
     //填空题
     func creatCompletionQuestion(model : YQSubjectModel){
         
+        let choose = model.choose
+        let arrString = choose.components(separatedBy: "$")
         
         let Completion = YQCompletionQuestionV()
         Completion.backgroundColor = UIColor.white
@@ -432,9 +584,25 @@ class YQStartExamDetailVC: UIViewController {
                 
             }else{
                 
-                Completion.textViewContent =  ""
+                Completion.textViewContent =  "( " + " )"
             }
 
+        }
+        
+        //填空题的赋值方法
+        if arrString.count == Completion.textFiledArray.count{
+            
+            for indexxxx in 0..<Completion.textFiledArray.count{
+                
+                let textV = Completion.textFiledArray[indexxxx]
+                
+                let str =  arrString[indexxxx]
+                if str != "" {
+                    
+                    textV.text = str
+                }
+            }
+            
         }
         
         self.scrollContentView.addSubview(Completion)
@@ -481,17 +649,26 @@ class YQStartExamDetailVC: UIViewController {
                     
                 }
                 photoImage.append(pUrl)
-            }
             
+            }
+            self.showImageVConstraint.constant = 90
             self.showImageV.showImageUrls(temp)
             
         }else{
+            
             //调节约束展示
-            self.headViewConstraint.constant = self.stemLabel.maxY + 20
+            //self.headViewConstraint.constant = self.stemLabel.maxY + 20
         }
         
         
         let ShortAnswerQuestionsV = Bundle.main.loadNibNamed("YQShortAnswerQuestionsV", owner: nil, options: nil)?[0] as! YQShortAnswerQuestionsV
+        
+        if model.choose != "" {
+            
+            ShortAnswerQuestionsV.shortAnswerTextView.placeHolder = ""
+            ShortAnswerQuestionsV.shortAnswerTextView.text = model.choose
+            
+        }
         
         self.scrollContentView.addSubview(ShortAnswerQuestionsV)
         
@@ -505,6 +682,14 @@ class YQStartExamDetailVC: UIViewController {
             
         }
     }
+    
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//
+//        self.headViewConstraint.constant = self.stemLabel.maxY + 20
+//
+//    }
+    
 
 }
 

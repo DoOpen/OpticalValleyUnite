@@ -61,7 +61,7 @@ class YQCompletionQuestionV: UIView {
                 textView.text = textViewContent
             }
             
-            textView.backgroundColor = UIColor.init(red: 160/255.0, green: 160/255.0, blue: 160/255.0, alpha: 1.0)
+            textView.backgroundColor = UIColor.init(red: 244/255.0, green: 244/255.0, blue: 244/255.0, alpha: 1.0)
             textView.isEditable = isEdit
             
             self.addSubview(textView)

@@ -51,6 +51,9 @@ class YQStartExamDetailVC: UIViewController {
     var selectIndex = 1
     
     let LetterA = ["A","B","C","D","E","F","G","H","I","J","K"]
+    
+    var endBtnClickHandel: (([YQSubjectModel]) -> ())?
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,9 +108,17 @@ class YQStartExamDetailVC: UIViewController {
     }
     
     func leftBarItemButtonClick() {
+        
+        self.saveAnswerFunction()
         //bolck 回调传值
+        if let bolck = endBtnClickHandel{
+            
+            bolck(self.dataArray)
+        }
         
+        endBtnClickHandel = nil
         
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -146,9 +157,16 @@ class YQStartExamDetailVC: UIViewController {
     // MARK: - 点击交卷按钮的方法
     @IBAction func HandOverButtonClick(_ sender: UIButton) {
         
-        self.navigationController?.popViewController(animated: true)
-        //block进行的传值处理
+        self.saveAnswerFunction()
+        //bolck 回调传值
+        if let bolck = endBtnClickHandel{
+            
+            bolck(self.dataArray)
+        }
         
+        endBtnClickHandel = nil
+        
+        self.navigationController?.popViewController(animated: true)
         
     }
     

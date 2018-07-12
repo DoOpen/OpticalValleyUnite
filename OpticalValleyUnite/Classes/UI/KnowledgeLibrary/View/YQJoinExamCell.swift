@@ -38,6 +38,12 @@ class YQJoinExamCell: UITableViewCell {
             if model?.isAttend == 1{
                 
                 self.alreadyLabel.isHidden = false
+                self.alreadyLabel.text = "已参加"
+                
+            }else{
+                
+                self.alreadyLabel.isHidden = false
+                self.alreadyLabel.text = "未参加"
                 
             }
             

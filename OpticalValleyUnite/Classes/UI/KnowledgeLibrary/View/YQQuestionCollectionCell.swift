@@ -22,6 +22,7 @@ class YQQuestionCollectionCell: UICollectionViewCell {
         self.questionBtn.layer.cornerRadius = width
         self.questionBtn.layer.masksToBounds = true
         // self.questionBtn.clipsToBounds = true
+        self.questionBtn.backgroundColor = UIColor.clear
         
         let image = UIImage.init(named: "错题背景")
         self.questionBtn.setBackgroundImage(image, for: .selected)

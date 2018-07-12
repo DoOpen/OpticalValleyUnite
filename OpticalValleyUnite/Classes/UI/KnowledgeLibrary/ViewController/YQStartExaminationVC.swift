@@ -120,6 +120,14 @@ class YQStartExaminationVC: UIViewController {
         //点击开始答题进行的从1开始
         let vc = YQStartExamDetailVC.init(nibName: "YQStartExamDetailVC", bundle: nil)
         vc.dataArray = self.subjectArray
+        
+        vc.endBtnClickHandel = { data in
+            
+            self.subjectArray = data
+            self.collectionView.reloadData()
+            
+        }
+        
         self.navigationController?.pushViewController(vc, animated: true)
         
         //同时设置两个计时工具
@@ -136,22 +144,54 @@ class YQStartExaminationVC: UIViewController {
         //完成交卷的逻辑!数据提交
         var par = [String : Any]()
         //这里的要求格式化json
-        par["paperId"] = ""
+        par["paperId"] = self.id
         
-        //格式化的对象
-        par["subjectList"] = ""
+        var temp =  Array<[String : Any]>()
         
+        for answer in self.subjectArray{
+            var dict = [String : Any]()
+            dict["subjectId"] = "\(answer.id)"
+            dict["choose"] = answer.choose
+            
+            temp.append(dict)
+            
+        }
+        
+        do{
+            
+            let jsonData = try JSONSerialization.data(withJSONObject: temp, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8){
+                
+                //格式化的json字典的情况
+                print(JSONString)
+                
+                //注意的是这里的par 要求序列化json
+                par["params"] = JSONString
+                
+            }
+            
+        }catch {
+            
+            print("转换错误 ")
+        }
         
         SVProgressHUD.show()
         
         HttpClient.instance.post(path: URLPath.getNewknowledgeOwnSubmit, parameters: par, success: { (response) in
             
             SVProgressHUD.dismiss()
+            SVProgressHUD.showSuccess(withStatus: "提交成功!")
+            
+            DispatchQueue.main.async {
+                
+                self.navigationController?.popViewController(animated: true)
+            }
             
             
         }) { (error) in
             
-            SVProgressHUD.showError(withStatus: "")
+            SVProgressHUD.showError(withStatus: "提交失败,请检查网络!")
         }
         
         
@@ -288,6 +328,12 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
         
         cell?.questionBtn.setTitle("\(indexPath.item + 1)", for: .normal)
         
+        let model = self.subjectArray[indexPath.row]
+        if model.choose != "" && model.choose != "(  )$(  )$(  )" {
+            
+            cell?.questionBtn.backgroundColor = UIColor.init(red: 108/255.0, green: 202/255.0, blue: 255/255.0, alpha: 1)
+        }
+        
         return cell!
     }
     
@@ -305,6 +351,12 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
             vc.dataArray = self.subjectArray
             vc.selectIndex = indexPath.row + 1
             
+            vc.endBtnClickHandel = { data in
+                
+                self.subjectArray = data
+                self.collectionView.reloadData()
+                
+            }
             self.navigationController?.pushViewController(vc, animated: true)
             
         }

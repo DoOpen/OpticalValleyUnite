@@ -134,7 +134,6 @@
                             <state key="normal" title="交卷"/>
                             <connections>
                                 <action selector="handOverButtonClick:" destination="-1" eventType="touchUpInside" id="ezl-BE-9Up"/>
-                                <action selector="startAnswerBtnClick:" destination="-1" eventType="touchUpInside" id="cLR-tJ-wJZ"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofY-d4-Orb">

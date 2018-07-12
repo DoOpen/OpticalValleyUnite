@@ -62,6 +62,16 @@ class YQPublicExaminationTVC: UITableViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.cellType == 1 {
+            //实时刷新下
+            self.getStartExaminationListData()
+        }
+        
+    }
+    
     // MARK: - "参加考试"list数据方法
     func getStartExaminationListData(){
         

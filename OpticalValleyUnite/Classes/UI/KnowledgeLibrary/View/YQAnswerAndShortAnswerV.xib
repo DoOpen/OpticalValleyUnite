@@ -16,13 +16,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="答案:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbw-TH-MJy">
-                    <rect key="frame" x="0.0" y="0.0" width="39.5" height="20.5"/>
+                    <rect key="frame" x="15" y="0.0" width="39.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xHY-in-D6C" customClass="SJTextView">
-                    <rect key="frame" x="0.0" y="20.5" width="310" height="64.5"/>
+                    <rect key="frame" x="15" y="20.5" width="280" height="64.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -31,11 +31,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="lbw-TH-MJy" firstAttribute="top" secondItem="dZt-4e-zGM" secondAttribute="top" id="2oB-rc-SXt"/>
-                <constraint firstItem="xHY-in-D6C" firstAttribute="leading" secondItem="dZt-4e-zGM" secondAttribute="leading" id="Uds-6N-UCj"/>
+                <constraint firstItem="xHY-in-D6C" firstAttribute="leading" secondItem="dZt-4e-zGM" secondAttribute="leading" constant="15" id="Uds-6N-UCj"/>
                 <constraint firstItem="xHY-in-D6C" firstAttribute="top" secondItem="lbw-TH-MJy" secondAttribute="bottom" id="fXa-WO-wDE"/>
-                <constraint firstItem="lbw-TH-MJy" firstAttribute="leading" secondItem="dZt-4e-zGM" secondAttribute="leading" id="hfE-Lj-UCh"/>
+                <constraint firstItem="lbw-TH-MJy" firstAttribute="leading" secondItem="dZt-4e-zGM" secondAttribute="leading" constant="15" id="hfE-Lj-UCh"/>
                 <constraint firstAttribute="bottom" secondItem="xHY-in-D6C" secondAttribute="bottom" id="j1Q-Vn-LWD"/>
-                <constraint firstAttribute="trailing" secondItem="xHY-in-D6C" secondAttribute="trailing" id="srN-uA-NyD"/>
+                <constraint firstAttribute="trailing" secondItem="xHY-in-D6C" secondAttribute="trailing" constant="15" id="srN-uA-NyD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

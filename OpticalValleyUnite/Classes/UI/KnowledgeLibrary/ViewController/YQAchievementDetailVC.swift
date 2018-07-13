@@ -90,6 +90,9 @@ class YQAchievementDetailVC: UIViewController {
             maker.left.right.bottom.equalToSuperview()
             
         }
+        
+        //3.数据加载
+        getAchievementsDataForServer()
 
     }
     
@@ -121,10 +124,10 @@ class YQAchievementDetailVC: UIViewController {
             
             //考试时间
             let time = data!["time"] as? String ?? ""
-            self.timeLabel.text = time
+            self.timeLabel.text = "考试时间 " +  time
             
             //总题目数
-            let count = data!["count"] as? Int ?? 0
+            let count = data!["totalCount"] as? Int ?? 0
             self.totalCountLabel.text = "共 " + "\(count)" + " 题"
             
             //答对多少题
@@ -150,6 +153,7 @@ class YQAchievementDetailVC: UIViewController {
             }
             
             self.questionsArray = tempArray
+            self.collectionView.reloadData()
             
             
         }) { (error) in
@@ -165,7 +169,7 @@ class YQAchievementDetailVC: UIViewController {
         //点击开始答题进行的从1开始
         let vc = YQCheckAchievementDetailVC.init(nibName: "YQCheckAchievementDetailVC", bundle: nil)
         //传递所有的数据,索引从1开始
-        
+         vc.dataArray = self.questionsArray
         
         self.navigationController?.pushViewController(vc, animated: true)
         
@@ -185,17 +189,17 @@ extension YQAchievementDetailVC : UICollectionViewDelegate,UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 21
+        return self.questionsArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cell, for: indexPath) as? YQQuestionCollectionCell
         
-        if indexPath.item % 2 == 0 {
-            
+        if self.questionsArray[indexPath.row].isRight == 0{
             cell?.questionBtn.isSelected = true
         }
+        
         cell?.questionBtn.setTitle("\(indexPath.item + 1)", for: .normal)
         
         return cell!
@@ -205,11 +209,12 @@ extension YQAchievementDetailVC : UICollectionViewDelegate,UICollectionViewDataS
         
         //传递题型,查看某个题目情况
         let vc = YQCheckAchievementDetailVC.init(nibName: "YQCheckAchievementDetailVC", bundle: nil)
+        vc.dataArray = self.questionsArray
         //传递所有的数据以及 当前显示的题目情况
         vc.selectIndex = indexPath.row + 1
-        
+
         self.navigationController?.pushViewController(vc, animated: true)
-        
+    
     }
     
 

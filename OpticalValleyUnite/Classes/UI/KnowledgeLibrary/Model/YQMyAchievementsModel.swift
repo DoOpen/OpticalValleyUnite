@@ -11,7 +11,7 @@ import UIKit
 class YQMyAchievementsModel: NSObject {
 
     //试卷id
-    var id = -1
+    var paperId = -1
     
     //考试得分
     var scoreContent = ""

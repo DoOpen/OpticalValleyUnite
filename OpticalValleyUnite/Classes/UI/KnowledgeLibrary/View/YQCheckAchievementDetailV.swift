@@ -21,13 +21,13 @@ class YQCheckAchievementDetailV: UIView {
           
             if isRight == false{
                 
-                self.backgroundColor = UIColor.init(red: 118/255.0, green: 32.4/255.0, blue: 32.4/255.0, alpha: 1.0)
+                self.backgroundColor = UIColor.init(red: 236/255.0, green: 65/255.0, blue: 65/255.0, alpha: 0.7)
                 //UIColor colorWithRed:118/255.0 green:32.4/255.0 blue:32.4/255.0 alpha:1
                 
             }else{//答对的
                 
-                self.backgroundColor = UIColor.init(red: 2.3/255.0, green: 97.5/255.0, blue: 0.01/255.0, alpha: 1.0)
-                //colorWithRed:2.3/255.0 green:97.5/255.0 blue:0/255.0 alpha:1]
+                self.backgroundColor = UIColor.init(red: 5/255.0, green: 195/255.0, blue: 0.01/255.0, alpha: 0.7)
+                
             }
         }
     }

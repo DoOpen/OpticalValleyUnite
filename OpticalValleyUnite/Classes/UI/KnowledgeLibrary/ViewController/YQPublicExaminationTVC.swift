@@ -317,7 +317,14 @@ class YQPublicExaminationTVC: UITableViewController {
             case 2:
                 
                 let vc = YQAchievementDetailVC.init(nibName: "YQAchievementDetailVC", bundle: nil)
-                vc.id = "\(self.myScoreArray[indexPath.row].id)"
+                vc.id = "\(self.myScoreArray[indexPath.row].paperId)"
+                
+                let status = self.myScoreArray[indexPath.row].scoreContent
+                
+                if status == "待评分" || status == "未考试" {
+                    SVProgressHUD.showError(withStatus: "没有评分项!")
+                    return
+                }
                 
                 self.navigationController?.pushViewController(vc, animated: true)
                 

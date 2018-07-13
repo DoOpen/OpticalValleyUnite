@@ -148,7 +148,6 @@ class YQStartExaminationVC: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
         
         //同时设置两个计时工具
-        
         if !isCheck {
             
             setupRightAndLeftBarItem()
@@ -198,7 +197,7 @@ class YQStartExaminationVC: UIViewController {
                 
             }
             
-        }catch {
+        } catch {
             
             print("转换错误 ")
         }

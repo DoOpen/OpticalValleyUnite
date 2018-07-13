@@ -54,6 +54,11 @@ class YQStartExamDetailVC: UIViewController {
     
     var endBtnClickHandel: (([YQSubjectModel]) -> ())?
     
+    //总体的开关属性
+    var isCheck = false
+    var isEnd = false
+    
+    var timeValue = 0
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +67,15 @@ class YQStartExamDetailVC: UIViewController {
         self.title = "题号: " + "\(self.titleIndes)"
         
         //1.添加right
-        setupRightAndLeftBarItem()
+        if !isCheck {
+            
+            setupRightAndLeftBarItem()
+            
+        }else{
+            
+            self.handOverBtn.setTitle("返回", for: .normal)
+            
+        }
         
         //2.模拟创建
         checkBottomViewChangeFunction(Index: selectIndex)
@@ -90,7 +103,7 @@ class YQStartExamDetailVC: UIViewController {
         //总的时间是 1个小时
         if YQTimeCount == 0 {//初始化第一次进来
             
-            right_add_Button.countDown(count: 60 * 60)
+            right_add_Button.countDown(count: timeValue * 60)
             
         }else{//再次逻辑跳转
             
@@ -156,6 +169,12 @@ class YQStartExamDetailVC: UIViewController {
     
     // MARK: - 点击交卷按钮的方法
     @IBAction func HandOverButtonClick(_ sender: UIButton) {
+        
+        if isCheck {
+            
+            self.navigationController?.popViewController(animated: true)
+            return
+        }
         
         self.saveAnswerFunction()
         //bolck 回调传值
@@ -369,6 +388,8 @@ class YQStartExamDetailVC: UIViewController {
         
         //答题选项的内容情况
         let SingleQuestion = Bundle.main.loadNibNamed("YQQuestionOptionView", owner: nil, options: nil)?[0] as? YQQuestionOptionView
+    
+        SingleQuestion?.isUserInteractionEnabled = !isCheck
         
         let labelA = SingleQuestion?.contentLabelArray
         let btnA = SingleQuestion?.selectButtonArray
@@ -460,6 +481,7 @@ class YQStartExamDetailVC: UIViewController {
             }
             
             let moreQV = Bundle.main.loadNibNamed("YQMoreQuestionView", owner: nil, options: nil)?[0] as! YQMoreQuestionView
+            moreQV.isUserInteractionEnabled = !isCheck
             
             let optionDetail = model.optionDetail[indexxxxx]
             let str1 = optionDetail["option"] as? String ?? ""
@@ -556,6 +578,7 @@ class YQStartExamDetailVC: UIViewController {
         }
         
         let JudgmentProblem = Bundle.main.loadNibNamed("YQJudgmentQuestionView", owner: nil, options: nil)?[0] as! YQJudgmentQuestionView
+        JudgmentProblem.isUserInteractionEnabled = !isCheck
         
         self.scrollContentView.addSubview(JudgmentProblem)
         
@@ -589,6 +612,7 @@ class YQStartExamDetailVC: UIViewController {
         let Completion = YQCompletionQuestionV()
         Completion.backgroundColor = UIColor.white
         self.typeLabel.text = "填空题"
+        Completion.isEdit = !isCheck
         
         for indexxx in 0..<model.optionDetail.count{
 
@@ -680,6 +704,7 @@ class YQStartExamDetailVC: UIViewController {
         
         
         let ShortAnswerQuestionsV = Bundle.main.loadNibNamed("YQShortAnswerQuestionsV", owner: nil, options: nil)?[0] as! YQShortAnswerQuestionsV
+        ShortAnswerQuestionsV.isUserInteractionEnabled = !isCheck
         
         if model.choose != "" {
             

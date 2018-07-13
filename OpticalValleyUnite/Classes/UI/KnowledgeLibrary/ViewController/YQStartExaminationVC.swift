@@ -41,6 +41,7 @@ class YQStartExaminationVC: UIViewController {
         didSet{
             
             if isEnd == 1{
+                
                 SVProgressHUD.showError(withStatus: "考试已结束")
                 self.navigationController?.popViewController(animated: true)
             }
@@ -52,6 +53,11 @@ class YQStartExaminationVC: UIViewController {
     var subjectArray  = [YQSubjectModel]()
     
     var id = ""
+    
+    //只能查看的 开关 按钮
+    var isCheck = false
+    
+    var time = 0
     
     
     //自定义的collectionView
@@ -98,6 +104,15 @@ class YQStartExaminationVC: UIViewController {
 
         //1.init
         self.title = "开始考试"
+        
+        if isCheck {//查看试卷的情况
+            
+            self.startButton.setTitle("查看", for: .normal)
+            self.handOverButton.setTitle("返回", for: .normal)
+            
+        }
+        
+        
         //2.设置约束
         self.scrollContentView.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (maker) in
@@ -125,13 +140,19 @@ class YQStartExaminationVC: UIViewController {
             
             self.subjectArray = data
             self.collectionView.reloadData()
-            
         }
+        
+        vc.isCheck = self.isCheck
+        vc.timeValue = self.time
         
         self.navigationController?.pushViewController(vc, animated: true)
         
         //同时设置两个计时工具
-        setupRightAndLeftBarItem()
+        
+        if !isCheck {
+            
+            setupRightAndLeftBarItem()
+        }
         
         self.startButton.isHidden = true
         self.handOverButton.isHidden = false
@@ -140,6 +161,12 @@ class YQStartExaminationVC: UIViewController {
     }
     
     @IBAction func handOverButtonClick(_ sender: UIButton) {
+        
+        if isCheck {
+            
+            self.navigationController?.popViewController(animated: true)
+            return
+        }
         
         //完成交卷的逻辑!数据提交
         var par = [String : Any]()
@@ -226,6 +253,7 @@ class YQStartExaminationVC: UIViewController {
             //时间
             let time = dict["time"] as? String ?? ""
             self.timeLabel.text = "考试时间 " + time + "分"
+            self.time = Int(time)!
             
             //纪要
             let print = dict["points"] as? String ?? ""
@@ -277,7 +305,7 @@ class YQStartExaminationVC: UIViewController {
         //总的时间是 1个小时
         if YQTimeCount == 0 {//初始化第一次进来
             
-            right_add_Button.countDown(count: 60 * 60)
+            right_add_Button.countDown(count: time * 60)
             
         } else {//再次逻辑跳转
             
@@ -326,9 +354,11 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cell, for: indexPath) as? YQQuestionCollectionCell
         
+        cell?.backgroundColor = UIColor.clear
         cell?.questionBtn.setTitle("\(indexPath.item + 1)", for: .normal)
         
         let model = self.subjectArray[indexPath.row]
+        
         if model.choose != "" && model.choose != "(  )$(  )$(  )" {
             
             cell?.questionBtn.backgroundColor = UIColor.init(red: 108/255.0, green: 202/255.0, blue: 255/255.0, alpha: 1)
@@ -342,6 +372,23 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
         
         if !self.startButton.isHidden {
             
+            if isCheck {
+                
+                //点击开始答题进行的从1开始
+                let vc = YQStartExamDetailVC.init(nibName: "YQStartExamDetailVC", bundle: nil)
+                vc.dataArray = self.subjectArray
+                vc.selectIndex = indexPath.row + 1
+                vc.isCheck = self.isCheck
+                
+                vc.endBtnClickHandel = { data in
+                    
+                    self.subjectArray = data
+                    self.collectionView.reloadData()
+                }
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }
+            
             return
             
         }else{
@@ -350,6 +397,8 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
             let vc = YQStartExamDetailVC.init(nibName: "YQStartExamDetailVC", bundle: nil)
             vc.dataArray = self.subjectArray
             vc.selectIndex = indexPath.row + 1
+            vc.isCheck = self.isCheck
+            vc.timeValue = self.time
             
             vc.endBtnClickHandel = { data in
                 

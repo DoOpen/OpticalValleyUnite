@@ -296,6 +296,20 @@ class YQPublicExaminationTVC: UITableViewController {
                 let vc = YQStartExaminationVC.init(nibName: "YQStartExaminationVC", bundle: nil)
                 vc.id = "\(self.joinExamArray[indexPath.row].id)"
                 
+                if self.joinExamArray[indexPath.row].isAttend == 1 {//显示都是可以点击的
+                    //已参加
+                    vc.isCheck = true
+                    
+                }else {//未参加
+                    
+                    if self.joinExamArray[indexPath.row].isEnd == 1 {
+                        
+                        SVProgressHUD.showError(withStatus: "对不起,考试已结束")
+                        return
+                    }
+
+                }
+                
                 self.navigationController?.pushViewController(vc, animated: true)
                 
                 break

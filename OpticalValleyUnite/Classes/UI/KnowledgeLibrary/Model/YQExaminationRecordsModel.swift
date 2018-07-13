@@ -27,7 +27,7 @@ class YQExaminationRecordsModel: NSObject {
         setValuesForKeys(dict)
     }
     
-    override func setValue(_ value: Any?, forKeyPath keyPath: String) {
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
         
     }
     

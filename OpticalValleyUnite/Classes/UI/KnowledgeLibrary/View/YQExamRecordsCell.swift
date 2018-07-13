@@ -26,14 +26,13 @@ class YQExamRecordsCell: UITableViewCell {
     }
     
     var model : YQExaminationRecordsModel?{
+        
         didSet{
             
             self.examTilteLabel.text = model?.name
-            self.examScoreLabel.text = model?.scoreContent
+            self.scoreLabel.text = model?.scoreContent
             self.examScoreLabel.text = "考试分数  " + "\(model?.totalScore ?? 0)"
-            
-            self.examTimeLabel.text = model?.time
-            
+            self.examTimeLabel.text = "考试时间 " +  (model?.time)!
             
         }
         

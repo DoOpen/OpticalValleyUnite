@@ -181,7 +181,6 @@ class YQCheckAchievementDetailVC: UIViewController {
         self.stemLabel.text = model.question
         self.typeLabel.text = "单选题"
     
-        
         let view = UIView()
         let choose = model.choose
         //let chooseArray = choose.components(separatedBy: "$")
@@ -260,6 +259,11 @@ class YQCheckAchievementDetailVC: UIViewController {
             let string = dict["optionContent"] as? String ?? ""
             
             AchievementV.optionLabel.text = options + ". " + string
+            
+            if choose.contains(options) {
+                
+                AchievementV.selectButton.isSelected = true
+            }
             
             if isRight == 1 {
                 
@@ -360,6 +364,10 @@ class YQCheckAchievementDetailVC: UIViewController {
             //布局约束
             if indexxx == 0 {
                 
+                if choose.contains("A") {
+                    
+                    AchievementV.selectButton.isSelected = true
+                }
                 AchievementV.optionLabel.text = "A. " + " 是"
                 view.addSubview(AchievementV)
                 
@@ -371,6 +379,12 @@ class YQCheckAchievementDetailVC: UIViewController {
                 })
                 
             }else{
+                
+                if choose.contains("B") {
+                    
+                    AchievementV.selectButton.isSelected = true
+                }
+                
                 AchievementV.optionLabel.text = "B. " + " 否"
                 
                 let lastSubV = view.subviews.last

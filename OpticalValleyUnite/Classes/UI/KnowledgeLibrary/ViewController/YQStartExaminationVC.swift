@@ -126,6 +126,9 @@ class YQStartExaminationVC: UIViewController {
         
         //3.获取总的数据量
         getStartExamDetailData()
+        
+        //4.接受通知
+        acceptNotice()
 
     }
 
@@ -178,46 +181,7 @@ class YQStartExaminationVC: UIViewController {
         for answer in self.subjectArray{
             
             var dict = [String : Any]()
-            
-//            if answer.type == 4{//填空题的情况
-//
-//                dict["subjectId"] = "\(answer.id)"
-//
-//                var str = ""
-//                //拼接题干
-//                for xxxx in 0..<answer.optionDetail.count{
-//
-//                    let type = answer.optionDetail[xxxx]["type"] as? Int ?? -1
-//                    let blankContent = answer.optionDetail[xxxx]["blankContent"] as? String ?? ""
-//
-//                    if type == 1 {//题干部分
-//
-//                        if str == "" {
-//
-//                            str = "_$"
-//                        }else {
-//
-//                            str = str + "_$"
-//                        }
-//
-//                    } else {
-//
-//                        if str == "" {
-//
-//                            str = blankContent
-//                        }else {
-//
-//                            str = str + blankContent
-//                        }
-//                    }
-//                }
-//
-//                dict["choose"] = str
-//
-//            } else {
-//
-//            }
-            
+        
             dict["subjectId"] = "\(answer.id)"
             dict["choose"] = answer.choose
             
@@ -260,7 +224,6 @@ class YQStartExaminationVC: UIViewController {
             
             SVProgressHUD.showError(withStatus: "提交失败,请检查网络!")
         }
-        
         
     }
     
@@ -371,13 +334,37 @@ class YQStartExaminationVC: UIViewController {
         }) { (alert) in
             
         }
+    }
+    
+    // MARK: - 接受通知的方法
+    func acceptNotice(){
+        
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "defaultFileNotice")
+        
+        center.addObserver(self, selector: #selector(noticeFunction(notes :)), name: notiesName, object: nil)
         
     }
+    
+    func noticeFunction(notes : NSNotification){
+        
+        let id = notes.userInfo!["id"] as! String
+        
+        if self.id == id {
+            
+           self.handOverButtonClick(UIButton())
+            
+        }
+        
+    }
+    
     
     deinit {
         
         //清空时间宏
         YQTimeCount = 0
+        
+        NotificationCenter.default.removeObserver(self)
         
     }
     
@@ -409,7 +396,6 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
         if !self.startButton.isHidden {
             
             if isCheck {
@@ -439,15 +425,15 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
             vc.selectIndex = indexPath.row + 1
             vc.isCheck = self.isCheck
             vc.timeValue = self.time
+            vc.id = self.id
             
             vc.endBtnClickHandel = { data in
                 
                 self.subjectArray = data
                 self.collectionView.reloadData()
-                
             }
-            self.navigationController?.pushViewController(vc, animated: true)
             
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
         

@@ -275,6 +275,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         
     }
     
+    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print(error)
         
@@ -338,7 +339,13 @@ extension AppDelegate{
                 let journalID = userInfo["id"] as! String
                 pushToJournalDetailController(journalId: journalID)
             
+            }else if type == "知识库" {
+                
+                let knowlegeID = userInfo["id"] as! String
+                DefaultFileNotice(id: knowlegeID)
             }
+            
+            
         }
     }
     
@@ -370,6 +377,8 @@ extension AppDelegate{
 //        }
     }
     
+    
+    
     func getNavController(_ vc: UIViewController = (SJKeyWindow!.rootViewController)!) -> UINavigationController?{
         
         if let vc = vc as? UITabBarController{
@@ -382,8 +391,8 @@ extension AppDelegate{
         }
         
         return nil
-
     }
+    
     
     // MARK: - push到 工单的界面
     func pushToWorkOrderViewController(_ workId: String){
@@ -393,7 +402,9 @@ extension AppDelegate{
         parmat["WORKUNIT_ID"] = workId
         vc.parmate = parmat
         getNavController()?.pushViewController(vc, animated: true)
+        
     }
+    
     
     // MARK: - push到 督办的界面
     func pushToDubanViewController(_ workId: String){
@@ -440,7 +451,7 @@ extension AppDelegate{
         //getNavController()?.popToViewController(drawerController, animated: true)
         
         SJKeyWindow!.rootViewController?.present(drawerController, animated: true, completion: nil)
-//        getNavController()?.pushViewController(drawerController, animated: true)
+        //getNavController()?.pushViewController(drawerController, animated: true)
         
     }
     
@@ -449,9 +460,18 @@ extension AppDelegate{
         
         let journal = UIStoryboard.instantiateInitialViewController(name: "YQJournalDetail") as! YQJournalDetailViewController
         journal.workIDid = Int64(journalId)!
-        
+
         getNavController()?.pushViewController(journal, animated: true)
         
+    }
+    
+    
+    // MARK: - 实现通知交卷的默认的方法
+    func DefaultFileNotice( id : String! ){
+    
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "defaultFileNotice")
+        center.post(name: notiesName, object: nil, userInfo: ["id" : id])
     }
     
     
@@ -499,6 +519,7 @@ extension AppDelegate : AVSpeechSynthesizerDelegate {
         
         speechUtterance = nil
     }
+    
 }
 
 

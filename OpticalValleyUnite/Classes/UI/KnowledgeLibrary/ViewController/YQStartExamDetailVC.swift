@@ -59,6 +59,9 @@ class YQStartExamDetailVC: UIViewController {
     var isEnd = false
     
     var timeValue = 0
+    
+    var id = ""
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,7 +153,6 @@ class YQStartExamDetailVC: UIViewController {
         let newModel = self.dataArray[selectIndex - 1]
         ClassificationOfQuestions(model: newModel)
         
-    
     }
     
     // MARK: - 点击上一题的方法
@@ -770,6 +772,28 @@ class YQStartExamDetailVC: UIViewController {
 //        self.headViewConstraint.constant = self.stemLabel.maxY + 20
 //
 //    }
+    
+    
+    // MARK: - 接受通知的方法
+    func acceptNotice(){
+        
+        let center = NotificationCenter.default
+        let notiesName = NSNotification.Name(rawValue: "defaultFileNotice")
+        
+        center.addObserver(self, selector: #selector(noticeFunction(notes :)), name: notiesName, object: nil)
+        
+    }
+    
+    func noticeFunction(notes : NSNotification){
+        
+        let id = notes.userInfo!["id"] as! String
+        
+        if self.id == id {
+            //传值交卷的情况
+            
+        }
+        
+    }
     
 
 }

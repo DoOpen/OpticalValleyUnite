@@ -222,23 +222,41 @@ class YQStartExamDetailVC: UIViewController {
                 model.choose = "B"
             }
             
-        } else if (self.currentView?.isKind(of: YQCompletionQuestionV.classForCoder()))!{
+        }else if (self.currentView?.isKind(of: YQCompletionQuestionV.classForCoder()))!{
+            
             //填空题
             let view = self.currentView as! YQCompletionQuestionV
             var str = ""
             
-            for indexxx in 0..<view.textFiledArray.count{
+            for indexxx in 0..<view.subviews.count{
                 
-                let textV = view.textFiledArray[indexxx]
+                let subV = view.subviews[indexxx]
                 
-                if str == "" {
+                if subV.isKind(of: UILabel.classForCoder()){
+
+                    if str == "" {
+                        
+                        str = "_"
+                        
+                    }else{
+                        
+                        str = str + "$" + "_"
+                    }
                     
-                    str = textV.text
+                }else if (subV.isKind(of: UITextView.classForCoder())){
                     
-                }else{
+                    let textV = subV as! UITextView
                     
-                    str = str + "$" + textV.text
+                    if str == "" {
+                        
+                        str = textV.text
+                        
+                    }else{
+                        
+                        str = str + "$" + textV.text
+                    }
                 }
+                
             }
             
             model.choose = str
@@ -467,7 +485,8 @@ class YQStartExamDetailVC: UIViewController {
             
         }else{
             //调节约束展示
-            //self.headViewConstraint.constant = self.stemLabel.maxY + 20
+            self.headViewConstraint.constant = 120
+            self.showImageVConstraint.constant = 0
         }
         
         let view = UIView()
@@ -574,7 +593,8 @@ class YQStartExamDetailVC: UIViewController {
             
         }else{
             //调节约束展示
-            //self.headViewConstraint.constant = self.stemLabel.maxY + 20
+            self.headViewConstraint.constant = 120
+            self.showImageVConstraint.constant = 0
         }
         
         let JudgmentProblem = Bundle.main.loadNibNamed("YQJudgmentQuestionView", owner: nil, options: nil)?[0] as! YQJudgmentQuestionView
@@ -626,9 +646,16 @@ class YQStartExamDetailVC: UIViewController {
                 
             }else{
                 
-                Completion.textViewContent =  "( " + " )"
+                if Completion.isEdit {
+                    
+                    Completion.textViewContent =  "( " + " )"
+                    
+                }else {
+                    
+                    Completion.textViewContent = str2
+                }
+                
             }
-
         }
         
         //填空题的赋值方法
@@ -699,7 +726,8 @@ class YQStartExamDetailVC: UIViewController {
         }else{
             
             //调节约束展示
-            //self.headViewConstraint.constant = self.stemLabel.maxY + 20
+            self.headViewConstraint.constant = 120
+            self.showImageVConstraint.constant = 0
         }
         
         

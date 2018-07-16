@@ -53,7 +53,7 @@ struct URLPath {
     
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://172.16.11.89:8081"
+    static let basicBasic = "http://172.16.11.108:8081"
     
     
     //服务器的basic 地址:

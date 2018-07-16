@@ -42,8 +42,8 @@ class YQStartExaminationVC: UIViewController {
             
             if isEnd == 1{
                 
-                SVProgressHUD.showError(withStatus: "考试已结束")
                 self.navigationController?.popViewController(animated: true)
+                SVProgressHUD.showError(withStatus: "考试已结束")
             }
         }
     }
@@ -175,12 +175,52 @@ class YQStartExaminationVC: UIViewController {
         var temp =  Array<[String : Any]>()
         
         for answer in self.subjectArray{
+            
             var dict = [String : Any]()
+            
+//            if answer.type == 4{//填空题的情况
+//
+//                dict["subjectId"] = "\(answer.id)"
+//
+//                var str = ""
+//                //拼接题干
+//                for xxxx in 0..<answer.optionDetail.count{
+//
+//                    let type = answer.optionDetail[xxxx]["type"] as? Int ?? -1
+//                    let blankContent = answer.optionDetail[xxxx]["blankContent"] as? String ?? ""
+//
+//                    if type == 1 {//题干部分
+//
+//                        if str == "" {
+//
+//                            str = "_$"
+//                        }else {
+//
+//                            str = str + "_$"
+//                        }
+//
+//                    } else {
+//
+//                        if str == "" {
+//
+//                            str = blankContent
+//                        }else {
+//
+//                            str = str + blankContent
+//                        }
+//                    }
+//                }
+//
+//                dict["choose"] = str
+//
+//            } else {
+//
+//            }
+            
             dict["subjectId"] = "\(answer.id)"
             dict["choose"] = answer.choose
             
             temp.append(dict)
-            
         }
         
         do{

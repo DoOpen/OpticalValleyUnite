@@ -65,12 +65,14 @@ class YQCheckAchievementDetailVC: UIViewController {
         
         //2.取模型进行判断执行
         let QustionModel = self.dataArray[self.selectIndex - 1]
+        checkBottomViewChangeFunction(Index: selectIndex)
         ClassificationOfQuestions(model: QustionModel)
+        
         
         //3.题型选项的隐藏和判断
         checkBottomViewChangeFunction(Index: selectIndex)
         
-       
+        
     }
 
 
@@ -182,12 +184,12 @@ class YQCheckAchievementDetailVC: UIViewController {
         self.typeLabel.text = "单选题"
     
         let view = UIView()
-        let choose = model.choose
-        //let chooseArray = choose.components(separatedBy: "$")
+        let choose = model.choose.replacingOccurrences(of: "$", with: ",")
+        
         
         let isRight = model.isRight
         
-        let answer = model.answer
+        let answer = model.answer.replacingOccurrences(of: "$", with: ",")
         
         if isRight == 1 {
             
@@ -201,7 +203,7 @@ class YQCheckAchievementDetailVC: UIViewController {
             
         }
         
-        self.answerLabel.text = "你选择了" + model.choose
+        self.answerLabel.text = "你选择了" + choose
         self.rightAnswerLabel.text = "正确答案" + answer
         self.rightAnswerLabel.textColor = UIColor.init(red: 5/255.0, green: 195/255.0, blue: 0/255.0, alpha: 1)
         
@@ -331,11 +333,54 @@ class YQCheckAchievementDetailVC: UIViewController {
     //判断题
     func creatJudgmentProblem(model : YQSubjectModel){
       
+        self.stemLabel.text = model.question
+        self.typeLabel.text = "判断题"
+        
         let view = UIView()
         
         let choose = model.choose
         let isRight = model.isRight
         let answer = model.answer
+        
+        if model.images != "" {
+            
+            var photoImage = [Photo]()
+            var pUrl = Photo()
+            
+            let images = model.images.components(separatedBy: ",")
+            var temp = [String]()
+            
+            for url in images{
+                
+                if url.contains("http"){
+                    
+                    //空格转义情况!bug添加
+                    let bUrl = url.replacingOccurrences(of: " ", with: "%20")
+                    temp.append(bUrl)
+                    pUrl = Photo.init(urlString: bUrl)
+                    
+                }else{
+                    
+                    let basicPath = URLPath.systemSelectionURL
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                    temp.append(imageValue)
+                    pUrl = Photo.init(urlString: url)
+                    
+                }
+                photoImage.append(pUrl)
+            }
+            
+            self.showImageVConstraint.constant = 90
+            self.showImageV.showImageUrls(temp)
+            //self.headViewConstraint.constant = 0
+            
+        }else{
+            
+            //调节约束展示
+            self.headViewConstraint.constant = 120
+            self.showImageVConstraint.constant = 0
+            
+        }
         
         if isRight == 1 {
             
@@ -361,13 +406,31 @@ class YQCheckAchievementDetailVC: UIViewController {
             
             AchievementV.isUserInteractionEnabled = false
             
+           
             //布局约束
             if indexxx == 0 {
                 
                 if choose.contains("A") {
                     
                     AchievementV.selectButton.isSelected = true
+                    if isRight == 1 {
+                        
+                        AchievementV.isRight = true
+                    }else{
+                        
+                        AchievementV.isRight = false
+                    }
+                    
+                }else{
+                    
+                    if isRight == 1 {
+                        
+                    }else{//没有选择而且又是 答错了  -->  显示的正确的答案逻辑
+                        AchievementV.isRight = true
+                    }
+                    
                 }
+                
                 AchievementV.optionLabel.text = "A. " + " 是"
                 view.addSubview(AchievementV)
                 
@@ -380,9 +443,18 @@ class YQCheckAchievementDetailVC: UIViewController {
                 
             }else{
                 
+               
                 if choose.contains("B") {
                     
                     AchievementV.selectButton.isSelected = true
+                    if isRight == 1 {
+                        
+                        AchievementV.isRight = true
+                    }else{
+                        
+                        AchievementV.isRight = false
+                    }
+                    
                 }
                 
                 AchievementV.optionLabel.text = "B. " + " 否"
@@ -420,10 +492,22 @@ class YQCheckAchievementDetailVC: UIViewController {
         Completion.backgroundColor = UIColor.white
         Completion.isUserInteractionEnabled = false
         
+        let chooseArray = model.choose.components(separatedBy: "$")
+        
         for indexxx in 0..<model.optionDetail.count{
             
-            Completion.labelContent = "填空题" + "\(indexxx)"
-            Completion.textViewContent =  "\(indexxx)" + "."
+            let optionDetail = model.optionDetail[indexxx]
+            let str1 = optionDetail["type"] as? Int64 ?? -1
+            let str2 = optionDetail["blankContent"] as? String ?? ""
+            
+            if str1 == 1 {
+                
+                Completion.labelContent = str2
+                
+            }else{
+                
+                Completion.textViewContent =  chooseArray[indexxx]
+            }
         }
         
         self.scrollContentView.addSubview(Completion)
@@ -437,15 +521,60 @@ class YQCheckAchievementDetailVC: UIViewController {
             
         })
         
-        addAnswerXib(answer: model.answer)
+        addAnswerXib(answer: model.answer.replacingOccurrences(of: "$", with: ","))
         
     }
     
     //简答题
     func creatQuestionAndAnswerQuestion(model : YQSubjectModel){
         
+        self.stemLabel.text = model.question
+        self.typeLabel.text = "简答题"
+        
+        if model.images != "" {
+            
+            var photoImage = [Photo]()
+            var pUrl = Photo()
+            
+            let images = model.images.components(separatedBy: ",")
+            var temp = [String]()
+            
+            for url in images{
+                
+                if url.contains("http"){
+                    
+                    //空格转义情况!bug添加
+                    let bUrl = url.replacingOccurrences(of: " ", with: "%20")
+                    temp.append(bUrl)
+                    pUrl = Photo.init(urlString: bUrl)
+                    
+                }else{
+                    
+                    let basicPath = URLPath.systemSelectionURL
+                    let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
+                    temp.append(imageValue)
+                    pUrl = Photo.init(urlString: url)
+                    
+                }
+                photoImage.append(pUrl)
+            }
+            
+            self.showImageVConstraint.constant = 90
+            self.showImageV.showImageUrls(temp)
+            //self.headViewConstraint.constant = 0
+            
+        }else{
+            
+            //调节约束展示
+            self.headViewConstraint.constant = 120
+            self.showImageVConstraint.constant = 0
+            
+        }
+        
         let ShortAnswerQuestionsV = Bundle.main.loadNibNamed("YQShortAnswerQuestionsV", owner: nil, options: nil)?[0] as! YQShortAnswerQuestionsV
         ShortAnswerQuestionsV.isUserInteractionEnabled = false
+        ShortAnswerQuestionsV.shortAnswerTextView.placeHolder = ""
+        ShortAnswerQuestionsV.shortAnswerTextView.text = model.choose
         
         self.scrollContentView.addSubview(ShortAnswerQuestionsV)
         
@@ -461,7 +590,6 @@ class YQCheckAchievementDetailVC: UIViewController {
         
         //添加答案
         addAnswerXib(answer: model.answer)
-        
     }
     
     // MARK: - 创建添加答案的方法

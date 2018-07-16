@@ -81,7 +81,6 @@ class YQCompletionQuestionV: UIView {
                 
                 marker.left.equalToSuperview().offset(20)
                 marker.right.equalToSuperview().offset(-20)
-                
                 marker.height.equalTo(50)
                 
             }
@@ -90,15 +89,12 @@ class YQCompletionQuestionV: UIView {
         }
     }
     
-
-    var isEdit = true
     
+    var isEdit = true
     //text总数数组
     var textFiledArray = [UITextView]()
-    
     //label总数数组
     var labelArray = [UILabel]()
-    
     
 
 }

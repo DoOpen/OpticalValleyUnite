@@ -42,8 +42,11 @@ class YQStartExaminationVC: UIViewController {
             
             if isEnd == 1{
                 
-                self.navigationController?.popViewController(animated: true)
                 SVProgressHUD.showError(withStatus: "考试已结束")
+                isCheck = true
+                
+                self.startButton.setTitle("查看", for: .normal)
+                self.handOverButton.setTitle("返回", for: .normal)
             }
         }
     }
@@ -109,7 +112,6 @@ class YQStartExaminationVC: UIViewController {
             
             self.startButton.setTitle("查看", for: .normal)
             self.handOverButton.setTitle("返回", for: .normal)
-            
         }
         
         
@@ -120,7 +122,6 @@ class YQStartExaminationVC: UIViewController {
             maker.top.equalTo(self.headView.snp.bottom)
             maker.bottom.equalTo(self.bottomView.snp.top)
             maker.left.right.equalToSuperview()
-            
         }
         
         //3.获取总的数据量

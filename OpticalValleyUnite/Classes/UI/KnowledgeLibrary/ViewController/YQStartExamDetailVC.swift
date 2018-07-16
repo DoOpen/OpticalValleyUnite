@@ -634,6 +634,8 @@ class YQStartExamDetailVC: UIViewController {
         self.typeLabel.text = "填空题"
         Completion.isEdit = !isCheck
         
+        let chooseArray = model.choose.components(separatedBy: "$")
+        
         for indexxx in 0..<model.optionDetail.count{
 
             let optionDetail = model.optionDetail[indexxx]
@@ -652,7 +654,15 @@ class YQStartExamDetailVC: UIViewController {
                     
                 }else {
                     
-                    Completion.textViewContent = str2
+                    if chooseArray.count == model.optionDetail.count {
+                        
+                        Completion.textViewContent = chooseArray[indexxx]
+                        
+                    }else{
+                        
+                        Completion.textViewContent =  "( " + " )"
+                    }
+                    
                 }
                 
             }

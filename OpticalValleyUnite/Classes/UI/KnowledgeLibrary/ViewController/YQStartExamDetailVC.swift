@@ -788,9 +788,23 @@ class YQStartExamDetailVC: UIViewController {
         
         let id = notes.userInfo!["id"] as! String
         
-        if self.id == id {
-            //传值交卷的情况
+        if self.isCheck {
             
+            return
+        }
+        
+        if self.id == id || id == "TestTimeOver"{
+            //传值交卷的情况
+            self.saveAnswerFunction()
+            //bolck 回调传值
+            if let bolck = endBtnClickHandel{
+                
+                bolck(self.dataArray)
+            }
+            
+            endBtnClickHandel = nil
+            
+            self.navigationController?.popViewController(animated: true)
         }
         
     }

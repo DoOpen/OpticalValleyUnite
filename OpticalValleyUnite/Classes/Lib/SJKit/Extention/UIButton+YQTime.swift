@@ -67,7 +67,10 @@ extension UIButton{
                         
                         self.setTitle("考试结束", for: .normal)
                         //实现的逻辑要求强制的通知提交答案,并且强制界面返回刷新
-                        
+                        //强制执行刷新
+                        let center = NotificationCenter.default
+                        let notiesName = NSNotification.Name(rawValue: "defaultFileNotice")
+                        center.post(name: notiesName, object: nil, userInfo: ["id" : "TestTimeOver"])
                     }
                     
                 })

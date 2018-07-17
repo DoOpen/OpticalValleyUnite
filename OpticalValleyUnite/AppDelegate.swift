@@ -472,6 +472,7 @@ extension AppDelegate{
         let center = NotificationCenter.default
         let notiesName = NSNotification.Name(rawValue: "defaultFileNotice")
         center.post(name: notiesName, object: nil, userInfo: ["id" : id])
+        
     }
     
     
@@ -499,7 +500,7 @@ extension AppDelegate{
             
             print(error.localizedDescription)
         }
-      
+        
     }
 
 }

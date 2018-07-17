@@ -350,10 +350,21 @@ class YQStartExaminationVC: UIViewController {
         
         let id = notes.userInfo!["id"] as! String
         
-        if self.id == id {
+        if self.isCheck {
             
-           self.handOverButtonClick(UIButton())
+            return
+        }
+        
+        if self.id == id || id == "TestTimeOver" {
             
+            //全部锁屏
+            self.view.isUserInteractionEnabled = false
+            
+            //延时三秒提交 答案情况
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3, execute: {
+                
+                self.handOverButtonClick(UIButton())
+            })
         }
         
     }
@@ -414,7 +425,6 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
                 self.navigationController?.pushViewController(vc, animated: true)
                 
             }
-            
             return
             
         }else{
@@ -434,6 +444,7 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
             }
             
             self.navigationController?.pushViewController(vc, animated: true)
+            
         }
         
         

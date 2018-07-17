@@ -70,7 +70,17 @@ UIImagePickerControllerDelegate
     for (ALAsset *asset in assets) {
         UIImage *tempImg=[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
         NSLog(@"%@",tempImg);
-        [tempArry addObject:tempImg];
+        
+        NSDate* pictureDate = [asset valueForProperty:ALAssetPropertyDate];
+        NSDateFormatter * matter = [[NSDateFormatter alloc]init];
+        [matter setDateFormat:@"YYYY-MM-dd HH:mm"];
+        CGRect frame = CGRectMake( tempImg.size.width - 400,  tempImg.size.height - 80, 400, 40);
+        
+        NSString * str = [matter stringFromDate:pictureDate];
+        
+        UIImage * newImage =  [self WaterImageWithImage:tempImg text:str textRect:frame];
+        
+        [tempArry addObject:newImage];
         
         if (self.selecteImageBlock) {
             self.selecteImageBlock(tempImg);
@@ -89,7 +99,7 @@ UIImagePickerControllerDelegate
 /**
  *  获取照相相片
  *
- *  @param picker <#picker description#>
+ *  @param picker 弹窗的pickerView
  */
 - (void)photoPickerTapAction:(BoPhotoPickerViewController *)picker {
 
@@ -113,19 +123,59 @@ UIImagePickerControllerDelegate
 
 #pragma mark - 相机拍摄的图片在这里找
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
-    UIImage *originalImage;
-    if (CFStringCompare((CFStringRef) mediaType,kUTTypeImage, 0)== kCFCompareEqualTo) {
-        originalImage = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage];
-    }
-    originalImage = [self imageByScalingAndCroppingForSize:CGSizeMake(1000, 1000 * originalImage.size.height / originalImage.size.width) withSourceImage:originalImage];
     
-    if (self.selecteImageBlock) {
-        self.selecteImageBlock(originalImage);
-        self.selecteImageBlock = nil;
-        [self removeFromSuperview];
-    }
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
+    __block UIImage *originalImage;
+    
+    
+    //添加的相册的图片信息
+    //图片的添加新的功能
+    NSURL* imageUrl = [info objectForKey:UIImagePickerControllerReferenceURL];
+    ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
+    __weak typeof(self) weakself = self;
+    
+    [library assetForURL:imageUrl resultBlock:^(ALAsset *asset) {
+        
+        UIImage * image = [UIImage imageWithCGImage:asset.defaultRepresentation.fullResolutionImage];
+        
+         __strong typeof(self) strongself = weakself;
+        
+        if(image)
+        {
+            NSDate * pictureDate = [asset valueForProperty:ALAssetPropertyDate];
+            
+            //下面是我自己的处理函数，我在第一篇中进行了简单介绍的，有性趣去看一下。
+            //UIImage* resultImage =[ImageUtility addTimeString:[DateUtility getFormatedDateStringOfDate:pictureDate] toCurrentImage:_image withBoolValue:YES];
+            NSDateFormatter * matter = [[NSDateFormatter alloc]init];
+            [matter setDateFormat:@"YYYY-MM-dd HH:mm"];
+            CGRect frame = CGRectMake( image.size.width - 400,  image.size.height - 80, 400, 40);
+            
+            NSString * str = [matter stringFromDate:pictureDate];
+            
+            
+            originalImage = [strongself WaterImageWithImage:image text:str textRect:frame];
+            
+            originalImage = [self imageByScalingAndCroppingForSize:CGSizeMake(1000, 1000 * originalImage.size.height / originalImage.size.width) withSourceImage:originalImage];
+            
+            if (strongself.selecteImageBlock) {
+                strongself.selecteImageBlock(originalImage);
+                strongself.selecteImageBlock = nil;
+                [strongself removeFromSuperview];
+            }
+            
+            [picker dismissViewControllerAnimated:YES completion:nil];
+        }
+        
+     } failureBlock:^(NSError *error) {
+         
+     }];
+    
+
+//    if (CFStringCompare((CFStringRef) mediaType,kUTTypeImage, 0)== kCFCompareEqualTo) {
+//        originalImage = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage];
+//    }
+    
+    
 }
 
 
@@ -175,6 +225,31 @@ UIImagePickerControllerDelegate
     //pop the context to get back to the default
     UIGraphicsEndImageContext();
     
+    return newImage;
+}
+
+
+- (UIImage *)WaterImageWithImage:(UIImage *)image text:(NSString *)text textRect:(CGRect)rect {
+    
+    NSDictionary * dict = @{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:40]};
+    
+    //1.开启上下文
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, 0);
+    
+    //2.画矩形框
+    UIBezierPath * bezierP = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:3];
+    [UIColor grayColor ].setFill;
+    bezierP.fill;
+    
+    //添加水印文字
+    [text drawInRect:rect withAttributes:dict];
+    
+    //3.从上下文中获取新图片
+    UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
+    //4.关闭图形上下文
+    UIGraphicsEndImageContext();
+    
+    //返回图片
     return newImage;
 }
 

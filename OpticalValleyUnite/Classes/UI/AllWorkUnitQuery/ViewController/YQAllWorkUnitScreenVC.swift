@@ -73,8 +73,10 @@ class YQAllWorkUnitScreenVC: UIViewController {
     /// 父级的筛选条件的
     var siftParmat: [String: Any]?
     
+    
     /// 项目选择的
     var projectData = [ProjectModel](){
+        
         didSet{
             
             let projectname = getUserDefaultsProject()
@@ -103,7 +105,11 @@ class YQAllWorkUnitScreenVC: UIViewController {
                 self.projectTagsView.selectTag(at: indexNum)
             }
         }
+        
     }
+    
+    
+    
 
     var workTypeData = [WorkTypeModel](){
         
@@ -452,18 +458,25 @@ class YQAllWorkUnitScreenVC: UIViewController {
             paramert["PARK_ID"] = projectData[projectTagsViewIndex].projectId
             
             //设置的全局的项目选择 会有保存加载不到的bug问题
-//            if self.isAll == 1 {
-//
-//            }else{
-//
-//            }
+            let isgroup = UserDefaults.standard.object(forKey: Const.YQIs_Group) as? Int ?? -1
             
-            var dic = [String : Any]()
-            dic["ID"] = projectData[projectTagsViewIndex].projectId
-            dic["PARK_NAME"] = projectData[projectTagsViewIndex].projectName
-            
-            UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
-            
+            if isgroup == 2 {
+                //域下面所有项目(获取集团下的所有项目情况!)
+                var dic = [String : Any]()
+                dic["ID"] = projectData[projectTagsViewIndex].projectId
+                dic["PARK_NAME"] = projectData[projectTagsViewIndex].projectName
+                
+                UserDefaults.standard.set(dic, forKey: Const.YQAllProjectModel)
+
+            }else{
+                
+                var dic = [String : Any]()
+                dic["ID"] = projectData[projectTagsViewIndex].projectId
+                dic["PARK_NAME"] = projectData[projectTagsViewIndex].projectName
+                
+                UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
+
+            }
             
         }else{//重置全局的项目选择
             
@@ -494,7 +507,6 @@ class YQAllWorkUnitScreenVC: UIViewController {
          要求实现的是 将工单类型的筛选条件也拿出来到最外层,这里是不显示,不传值的
          */
         if let index = reportTypeTagsViewIndex{
-            
             paramert["WORKUNIT_TYPE"] = index + 1
         }
         
@@ -510,7 +522,7 @@ class YQAllWorkUnitScreenVC: UIViewController {
         */
         if let index = workStatusTagsViewIndex{
 
-           let dic = ["待派发": 0,"待执行" : 5, "待评价": 7,"待接收": 1,"已关闭": 8,"已退回" : 4]
+            let dic = ["待派发": 0,"待执行" : 5, "待评价": 7,"待接收": 1,"已关闭": 8,"已退回" : 4]
             
             paramert["UNIT_STATUS"] = dic[workStatus[index]]
             
@@ -567,6 +579,22 @@ class YQAllWorkUnitScreenVC: UIViewController {
     
     // MARK: - 获取默认的项目的值来显示
     func getUserDefaultsProject() -> String {
+        
+        let isAll = UserDefaults.standard.object(forKey: Const.YQIs_Group) as? Int
+        
+        if isAll == 2 {
+            
+            let dic = UserDefaults.standard.object(forKey: Const.YQAllProjectModel) as? [String : Any]
+            
+            var projectName  = ""
+            
+            if dic != nil {
+                projectName = dic?["PARK_NAME"] as! String
+            }
+            
+            return projectName
+            
+        }
         
         let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
         
@@ -631,6 +659,7 @@ class YQAllWorkUnitScreenVC: UIViewController {
         }) { (error) in
             
         }
+        
     }
 
     

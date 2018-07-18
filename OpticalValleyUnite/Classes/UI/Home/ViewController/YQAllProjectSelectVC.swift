@@ -110,8 +110,8 @@ class YQAllProjectSelectVC: UIViewController {
         if dic != nil {
             projectName = dic?["PARK_NAME"] as! String
         }
-        
         return projectName
+        
     }
 
     // MARK: - 获取项目data的数据
@@ -124,21 +124,17 @@ class YQAllProjectSelectVC: UIViewController {
         
         //根据需求来进行的查询区分, 集团版和 项目版的
         if self.isAll == 1 {
-        
+            
             if isgroup == 2 {//集团版
-                
                 par["isAll"] = 1 // 1是查全部的项目; 2是关联自己的项目
                 
             }else{//项目版
-                
                 par["isAll"] = 2
+                
             }
-        
         }
 
-
         HttpClient.instance.get(path: URLPath.getParkList, parameters: par, success: { (response) in
-            
             
             var temp = [ProjectModel]()
             for dic in response as! Array<[String: Any]> {
@@ -153,6 +149,7 @@ class YQAllProjectSelectVC: UIViewController {
         }) { (error) in
             
         }
+        
     }
 
     // MARK: - 上下拉的刷新的界面情况
@@ -187,8 +184,8 @@ class YQAllProjectSelectVC: UIViewController {
         }
         
         self.projectData = temp
-    
     }
+    
 
 }
 
@@ -274,6 +271,7 @@ extension YQAllProjectSelectVC : UITableViewDelegate,UITableViewDataSource,YQPro
             
             //应用归档解档来存储项目名称
             UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
+            UserDefaults.standard.set(dic, forKey: Const.YQAllProjectModel)
         }
         
         navigationController?.popViewController(animated: true)
@@ -286,6 +284,7 @@ extension YQAllProjectSelectVC : UITableViewDelegate,UITableViewDataSource,YQPro
 extension YQAllProjectSelectVC : UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         if let text = searchBar.text{
             //自定义的模糊查询的方法
             self.fuzzyQueryMethod(text: text)

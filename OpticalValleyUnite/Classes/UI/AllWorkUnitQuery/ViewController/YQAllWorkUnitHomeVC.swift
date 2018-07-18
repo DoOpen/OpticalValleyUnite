@@ -295,6 +295,22 @@ class YQAllWorkUnitHomeVC: UIViewController {
     // MARK: - 添加默认的项目选择方法
     func setUpProjectNameLable() -> String{
         
+        let isAll = UserDefaults.standard.object(forKey: Const.YQIs_Group) as? Int
+        
+        if isAll == 2 {
+            
+            let dic = UserDefaults.standard.object(forKey: Const.YQAllProjectModel) as? [String : Any]
+            
+            var projectId  = ""
+            
+            if dic != nil {
+                
+                projectId = (dic?["ID"] as? String)!
+            }
+            return projectId
+            
+        }
+        
         let dic = UserDefaults.standard.object(forKey: Const.YQProjectModel) as? [String : Any]
         
         var projectId  = ""
@@ -303,8 +319,8 @@ class YQAllWorkUnitHomeVC: UIViewController {
             
             projectId = (dic?["ID"] as? String)!
         }
-        
         return projectId
+        
     }
 
     // MARK: - 上下拉的刷新的界面情况

@@ -372,6 +372,7 @@ class LoginViewController: UIViewController {
 //        "SJlatitude") as? CLLocationDegrees,let longitude = .object(forKey: "SJlongitude")
         UserDefaults.standard.removeObject(forKey: Const.YQIs_Group)
         UserDefaults.standard.removeObject(forKey: Const.YQProjectModel)
+        UserDefaults.standard.removeObject(forKey: Const.YQAllProjectModel)
         UserDefaults.standard.removeObject(forKey: Const.YQReportName)
         
         UserDefaults.standard.removeObject(forKey: Const.YQBadgeNumber)

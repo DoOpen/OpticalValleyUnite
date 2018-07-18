@@ -40,6 +40,7 @@ struct Const {
     static let YQIs_Group = "YQIs_Group"
     
     static let YQProjectModel = "YQProjectModel"
+    static let YQAllProjectModel = "YQAllProjectModel"
     
     static let YQReportName = "YQReportName"
     

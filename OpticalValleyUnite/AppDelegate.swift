@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UMessage.setLogEnabled(true)
 //        UMessage.openDebugMode(true)
         
-        Bugly.start(withAppId: "com.OpticalValleyUnite.OpticalValleyUnite")
+        Bugly.start(withAppId: "c1b1b19108")
         
         return true
         

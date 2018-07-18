@@ -53,7 +53,7 @@ struct URLPath {
     
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://172.16.11.108:8081"
+    static let basicBasic = "http://172.16.11.81:5678"
     
     
     //服务器的basic 地址:
@@ -81,7 +81,7 @@ struct URLPath {
     
     //子系统选择图片服务器的地址(所有的图片)(子系统选择和 图片上传所有的图片URL)
     static let systemSelectionURL = basicBasic + "/ovu-base/"
-
+    
     //获取配件库主页数据接口
     static let getPartsHome = "parts/list.do"
     
@@ -174,6 +174,7 @@ struct URLPath {
     /*
      myworkunitList
      */
+    
     
     //获取项目地址
     static let getParkAddress = "position/getParkDescription.do"
@@ -402,6 +403,7 @@ struct URLPath {
     static let getFeedbackList = "feedback/list"
     //反馈详情查询
     static let getFeedbackDetail = "feedback/detail"
+    
     
     ///总经理邮箱的接口
     //人员角色判断接口

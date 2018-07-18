@@ -1145,10 +1145,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource,MYPRefr
             let navigationBarSwitchPointY: CGFloat = 40
             
             if tmpOffsetY <= navigationBarSwitchPointY {
+                
                 mCustomTwoNavigationBar.alpha = 0
                 mCustomOneNavigationBar.alpha = 1 - tmpOffsetY/navigationBarSwitchPointY
-            }
-            else {
+            } else {
+                
                 mCustomOneNavigationBar.alpha = 0
                 mCustomTwoNavigationBar.alpha = (tmpOffsetY - navigationBarSwitchPointY)/navigationBarSwitchPointY
             }

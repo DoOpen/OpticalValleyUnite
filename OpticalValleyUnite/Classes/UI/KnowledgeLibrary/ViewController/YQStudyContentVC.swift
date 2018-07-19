@@ -101,7 +101,6 @@ class YQStudyContentVC: UIViewController {
         var projectId  = ""
         
         if dic != nil {
-            
             projectId = (dic?["ID"] as? String)!
         }
         
@@ -120,6 +119,7 @@ class YQStudyContentVC: UIViewController {
             
             self.getDataForServer(pageIndex: self.currentIndex + 1)
         })
+        
     }
     
     

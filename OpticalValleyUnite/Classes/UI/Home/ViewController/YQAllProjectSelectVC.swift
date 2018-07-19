@@ -132,6 +132,7 @@ class YQAllProjectSelectVC: UIViewController {
                 par["isAll"] = 2
                 
             }
+            
         }
 
         HttpClient.instance.get(path: URLPath.getParkList, parameters: par, success: { (response) in

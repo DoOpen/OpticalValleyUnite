@@ -23,6 +23,9 @@ class YQPublicExaminationTVC: UITableViewController {
     var cellExamRecords = "ExamRecords"
     var examRecordsArray = [YQExaminationRecordsModel]()
     
+    //当前的索引
+    var currentIndex = 0
+    
     
     override func viewDidLoad() {
         
@@ -73,11 +76,13 @@ class YQPublicExaminationTVC: UITableViewController {
     }
     
     // MARK: - "参加考试"list数据方法
-    func getStartExaminationListData(){
+    func getStartExaminationListData(pageIndex : Int = 0, pageSize : Int = 20){
         
         var par = [String : Any]()
         
         par["parkId"] = setUpProjectNameLable()
+        par["pageIndex"] = pageIndex
+        par["pageSize"] = pageSize
         
         SVProgressHUD.show()
         
@@ -90,6 +95,9 @@ class YQPublicExaminationTVC: UITableViewController {
             if data == nil || (data?.isEmpty)! {
                 
                 SVProgressHUD.showError(withStatus: "没有更多数据")
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.resetNoMoreData()
+                
                 return
             }
             
@@ -100,20 +108,35 @@ class YQPublicExaminationTVC: UITableViewController {
                 tempArray.append(YQExamOwnListModel.init(dict: dict))
             }
             
-            self.joinExamArray = tempArray
+            if tempArray.count > 0{
+                
+                self.currentIndex = pageIndex
+                self.joinExamArray.append(contentsOf: tempArray)
+                self.tableView.mj_footer.endRefreshing()
+                
+            }else{
+                
+                self.tableView.mj_footer.endRefreshingWithNoMoreData()
+            }
+            
+            
             self.tableView.reloadData()
             
         }) { (error) in
             
             SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
         }
+        
+        
     }
     
     // MARK: - "我的成绩"list数据方法
-    func getMyAchievementsListData(){
+    func getMyAchievementsListData(pageIndex : Int = 0, pageSize : Int = 20){
         
         var par = [String : Any]()
         par["parkId"] = setUpProjectNameLable()
+        par["pageIndex"] = pageIndex
+        par["pageSize"] = pageSize
         
         SVProgressHUD.show()
         
@@ -126,8 +149,11 @@ class YQPublicExaminationTVC: UITableViewController {
             if data == nil || (data?.isEmpty)! {
                 
                 SVProgressHUD.showError(withStatus: "没有更多数据!")
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.resetNoMoreData()
                 return
             }
+            
             
             var tempArray = [YQMyAchievementsModel]()
             
@@ -136,9 +162,18 @@ class YQPublicExaminationTVC: UITableViewController {
                 tempArray.append(YQMyAchievementsModel.init(dict: dict))
             }
             
-            self.myScoreArray = tempArray
-            self.tableView.reloadData()
+            if tempArray.count > 0{
+                
+                self.currentIndex = pageIndex
+                self.myScoreArray.append(contentsOf: tempArray)
+                self.tableView.mj_footer.endRefreshing()
+                
+            }else{
+                
+                self.tableView.mj_footer.endRefreshingWithNoMoreData()
+            }
             
+            self.tableView.reloadData()
             
         }) { (error) in
             
@@ -148,10 +183,12 @@ class YQPublicExaminationTVC: UITableViewController {
     }
     
     // MARK: - "考试记录"list数据方法
-    func getExaminationRecordsListData(){
+    func getExaminationRecordsListData(pageIndex : Int = 0, pageSize : Int = 20){
         
         var par = [String : Any]()
         par["parkId"] = setUpProjectNameLable()
+        par["pageIndex"] = pageIndex
+        par["pageSize"] = pageSize
         
         SVProgressHUD.show()
         
@@ -164,7 +201,10 @@ class YQPublicExaminationTVC: UITableViewController {
             if data == nil || (data?.isEmpty)! {
                 
                 SVProgressHUD.showError(withStatus: "没有更多数据!")
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.resetNoMoreData()
                 return
+                
             }
             
             var tempArray = [YQExaminationRecordsModel]()
@@ -174,7 +214,17 @@ class YQPublicExaminationTVC: UITableViewController {
                 tempArray.append(YQExaminationRecordsModel.init(dict: dict))
             }
             
-            self.examRecordsArray = tempArray
+            if tempArray.count > 0{
+                
+                self.currentIndex = pageIndex
+                self.examRecordsArray.append(contentsOf: tempArray)
+                self.tableView.mj_footer.endRefreshing()
+                
+            }else{
+                
+                self.tableView.mj_footer.endRefreshingWithNoMoreData()
+            }
+            
             self.tableView.reloadData()
             
             
@@ -196,7 +246,6 @@ class YQPublicExaminationTVC: UITableViewController {
             
             projectId = (dic?["ID"] as? String)!
         }
-        
         return projectId
     }
     
@@ -205,13 +254,46 @@ class YQPublicExaminationTVC: UITableViewController {
         
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             
-            //self.getDataForServer()
+            switch self.cellType {
+                case 1:
+                    self.getStartExaminationListData()
+                    
+                    break
+                case 2:
+                    self.getMyAchievementsListData()
+                    
+                    break
+                case 3:
+                    self.getExaminationRecordsListData()
+                    
+                    break
+                default:
+                    break
+                
+            }
         })
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             
-            //self.getDataForServer(pageIndex: self.currentIndex + 1)
+            switch self.cellType {
+                case 1:
+                    self.getStartExaminationListData(pageIndex: self.currentIndex + 1)
+                    
+                    break
+                case 2:
+                    self.getMyAchievementsListData(pageIndex: self.currentIndex + 1)
+                    
+                    break
+                case 3:
+                    self.getExaminationRecordsListData(pageIndex: self.currentIndex + 1)
+                    
+                    break
+                default:
+                    break
+                
+            }
         })
+        
     }
 
 
@@ -278,7 +360,6 @@ class YQPublicExaminationTVC: UITableViewController {
         if self.cellType == 2{
             
             return 50
-            
         }else{
             
             return 100
@@ -333,7 +414,6 @@ class YQPublicExaminationTVC: UITableViewController {
             default:
                 break
         }
-        
     }
     
     

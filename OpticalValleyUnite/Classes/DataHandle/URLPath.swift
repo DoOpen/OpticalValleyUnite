@@ -44,7 +44,7 @@ struct URLPath {
     ///谢俊杰: http://172.16.11.63:8080  xiejunjie
     ///建丰 : "http://172.16.11.62:80"
     ///ems 3.0 : "http://172.16.19.98:5678"
-    ///ems 3.0 新 : "http://172.16.11.81:5678"
+    ///ems 3.0 新 : "http://192.168.0.14:5678"
     
     
     ///正式服的域名链接: http://ovuems.com
@@ -53,7 +53,7 @@ struct URLPath {
     
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://172.16.11.81:5678"
+    static let basicBasic = "http://192.168.0.14:5678"
     
     
     //服务器的basic 地址:

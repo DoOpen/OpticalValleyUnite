@@ -60,9 +60,10 @@ class YQPublicExaminationTVC: UITableViewController {
                 break
             default:
                 break
-            
         }
         
+        //添加上拉下拉刷新
+        addRefirsh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,8 +98,8 @@ class YQPublicExaminationTVC: UITableViewController {
                 SVProgressHUD.showError(withStatus: "没有更多数据")
                 self.tableView.mj_header.endRefreshing()
                 self.tableView.mj_footer.resetNoMoreData()
-                
                 return
+                
             }
             
             var tempArray = [YQExamOwnListModel]()
@@ -119,7 +120,6 @@ class YQPublicExaminationTVC: UITableViewController {
                 self.tableView.mj_footer.endRefreshingWithNoMoreData()
             }
             
-            
             self.tableView.reloadData()
             
         }) { (error) in
@@ -127,8 +127,8 @@ class YQPublicExaminationTVC: UITableViewController {
             SVProgressHUD.showError(withStatus: "网络请求失败,请检查网络!")
         }
         
-        
     }
+    
     
     // MARK: - "我的成绩"list数据方法
     func getMyAchievementsListData(pageIndex : Int = 0, pageSize : Int = 20){
@@ -313,9 +313,7 @@ class YQPublicExaminationTVC: UITableViewController {
             
             default:
                 return 0
-            
         }
-        
     }
 
 

@@ -368,21 +368,12 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKP-CS-zbv">
                                                 <rect key="frame" x="0.0" y="320" width="374" height="44"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="语音开关" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nha-mo-D8A">
-                                                        <rect key="frame" x="45" y="12.5" width="69.5" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推送语音开关" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nha-mo-D8A">
+                                                        <rect key="frame" x="45" y="11.5" width="104" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="larr" translatesAutoresizingMaskIntoConstraints="NO" id="6DH-KM-rGE">
-                                                        <rect key="frame" x="319" y="2" width="40" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="0bh-mK-adu"/>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="J4y-Q4-chg"/>
-                                                            <constraint firstAttribute="height" constant="40" id="ULf-dM-aoC"/>
-                                                            <constraint firstAttribute="width" constant="40" id="Vke-Fj-sNy"/>
-                                                        </constraints>
-                                                    </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_Voice switch" translatesAutoresizingMaskIntoConstraints="NO" id="QfR-2B-riY">
                                                         <rect key="frame" x="12" y="9.5" width="25" height="25"/>
                                                         <constraints>
@@ -390,27 +381,23 @@
                                                             <constraint firstAttribute="width" constant="25" id="Ynm-BL-NRn"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiD-A4-8IP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zdi-q8-hA6">
+                                                        <rect key="frame" x="312.5" y="7" width="51" height="31"/>
                                                         <connections>
-                                                            <action selector="shareButtonClick:" destination="GTU-aq-x3y" eventType="touchUpInside" id="GcR-Hl-pRz"/>
+                                                            <action selector="isOnSwitchClick:" destination="GTU-aq-x3y" eventType="valueChanged" id="0VD-yX-d9T"/>
                                                         </connections>
-                                                    </button>
+                                                    </switch>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="XiD-A4-8IP" secondAttribute="trailing" id="2EV-0E-MoP"/>
                                                     <constraint firstItem="QfR-2B-riY" firstAttribute="centerY" secondItem="nKP-CS-zbv" secondAttribute="centerY" id="3hF-fA-gDc"/>
                                                     <constraint firstItem="Nha-mo-D8A" firstAttribute="centerY" secondItem="nKP-CS-zbv" secondAttribute="centerY" id="NqB-O2-2UG"/>
-                                                    <constraint firstItem="6DH-KM-rGE" firstAttribute="centerY" secondItem="nKP-CS-zbv" secondAttribute="centerY" id="Oih-Rl-fSV"/>
-                                                    <constraint firstAttribute="trailing" secondItem="6DH-KM-rGE" secondAttribute="trailing" constant="15" id="cHh-ah-OZt"/>
                                                     <constraint firstAttribute="height" constant="44" id="ceT-XT-bZg"/>
-                                                    <constraint firstItem="XiD-A4-8IP" firstAttribute="leading" secondItem="nKP-CS-zbv" secondAttribute="leading" id="fXY-AE-Qiz"/>
+                                                    <constraint firstItem="Zdi-q8-hA6" firstAttribute="centerY" secondItem="nKP-CS-zbv" secondAttribute="centerY" id="fbl-E6-kFu"/>
                                                     <constraint firstItem="QfR-2B-riY" firstAttribute="leading" secondItem="nKP-CS-zbv" secondAttribute="leading" constant="12" id="h9D-9u-WHQ"/>
                                                     <constraint firstItem="Nha-mo-D8A" firstAttribute="leading" secondItem="nKP-CS-zbv" secondAttribute="leading" constant="45" id="jwa-Ld-SYb"/>
-                                                    <constraint firstAttribute="bottom" secondItem="XiD-A4-8IP" secondAttribute="bottom" id="lnU-RD-KCv"/>
-                                                    <constraint firstItem="XiD-A4-8IP" firstAttribute="top" secondItem="nKP-CS-zbv" secondAttribute="top" id="s7c-Ye-DdO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Zdi-q8-hA6" secondAttribute="trailing" constant="12.5" id="tG8-pj-hia"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本号: 20180628" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiD-60-gI4">
@@ -525,6 +512,7 @@
                         <outlet property="OfflineLabel" destination="LiR-LX-YpT" id="Evp-MI-qUu"/>
                         <outlet property="bundleVersionLabel" destination="xiD-60-gI4" id="CUE-pb-1JW"/>
                         <outlet property="headViewConstraint" destination="Ve4-vv-myU" id="8BQ-RL-CJh"/>
+                        <outlet property="isOnSwitch" destination="Zdi-q8-hA6" id="YPx-lG-ar6"/>
                         <outlet property="nickNameLabel" destination="Oyz-p8-faX" id="aiB-Ab-4eP"/>
                         <outlet property="photoImageView" destination="Ood-Zj-6od" id="hLE-ve-3YP"/>
                         <outlet property="projectSelectName" destination="Qmb-QH-hBt" id="EaG-DG-OXB"/>

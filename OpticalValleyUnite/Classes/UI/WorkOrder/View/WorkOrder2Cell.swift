@@ -199,8 +199,7 @@ class WorkOrder2Cell: UITableViewCell {
                 iconView.image = UIImage(name: "AssistToSee")
                 
             }
-            
-            
+        
             if model2?.type2 == "1"{
                 
                 typeBtn.setTitle("计划工单", for: .normal)

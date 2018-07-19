@@ -10,6 +10,9 @@ import UIKit
 import CoreMotion
 import RealmSwift
 
+var pushNotiesVoicessss = true
+
+
 class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
 
     @IBOutlet weak var bundleVersionLabel: UILabel!
@@ -27,7 +30,7 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
     //新增添加 为上传的离线工单
     @IBOutlet weak var OfflineLabel: UILabel!
     
-    
+    @IBOutlet weak var isOnSwitch: UISwitch!
     
     
     var userNameMaxY : CGFloat = 0{
@@ -362,10 +365,16 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
             
             self.OfflineLabel.isHidden = true
         }
+    
+    }
+    
+    // MARK: - 全局的语音开关的点击方法
+    @IBAction func isOnSwitchClick(_ sender: UISwitch) {
         
+        pushNotiesVoicessss = sender.isOn
         
     }
-
+    
 
 }
 

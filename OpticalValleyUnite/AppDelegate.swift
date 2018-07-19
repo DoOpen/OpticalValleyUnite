@@ -191,8 +191,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         if let body = userInfo["aps"] as? [String : Any]{
             
             let voiceText = body["alert"] as? String
-            //添加语音推送的消息内容
-            startTranslattion(voicessss: voiceText!)
+            
+            if pushNotiesVoicessss {
+                
+                //添加语音推送的消息内容
+                startTranslattion(voicessss: voiceText!)
+            }
         }
 
         noticHandel(userInfo: userInfo)
@@ -210,8 +214,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         if let body = userInfo["aps"] as? [String : Any]{
             
             let voiceText = body["alert"] as? String
-            //添加语音推送的消息内容
-            startTranslattion(voicessss: voiceText!)
+            
+            if pushNotiesVoicessss {
+                
+                //添加语音推送的消息内容
+                startTranslattion(voicessss: voiceText!)
+            }
         }
 
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
@@ -241,8 +249,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         if let body = userInfo["aps"] as? [String : Any]{
             
             let voiceText = body["alert"] as? String
-            //添加语音推送的消息内容
-            startTranslattion(voicessss: voiceText!)
+            
+            if pushNotiesVoicessss {
+                
+                //添加语音推送的消息内容
+                startTranslattion(voicessss: voiceText!)
+            }
+            
         }
 
         if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
@@ -416,6 +429,7 @@ extension AppDelegate{
         vc.workType = 1
         vc.hasDuban = 0
         getNavController()?.pushViewController(vc, animated: true)
+        
     }
     
     // MARK: - push到 主界面的情况

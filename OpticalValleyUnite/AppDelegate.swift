@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UMessage.setLogEnabled(true)
 //        UMessage.openDebugMode(true)
         
-        Bugly.start(withAppId: "c1b1b19108")
+        Bugly.start(withAppId: "6a0cd1da8d")
         
         return true
         

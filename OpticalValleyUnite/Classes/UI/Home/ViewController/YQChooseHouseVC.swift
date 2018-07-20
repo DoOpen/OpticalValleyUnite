@@ -32,6 +32,7 @@ class YQChooseHouseVC: UIViewController {
     var selectParkHandel: ((ParkInfoModel) -> ())?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -40,7 +41,6 @@ class YQChooseHouseVC: UIViewController {
         
         self.automaticallyAdjustsScrollViewInsets = false
         
-    
     }
 
     // MARK: - buttonClick方法实现
@@ -87,6 +87,8 @@ class YQChooseHouseVC: UIViewController {
                 self.Stage = tempModel[indexnum]
                 
                 self.stagesBtn.setTitle(stringArray[indexnum], for: .normal )
+                //调用手动查询房屋的接口
+                self.searchButtonClick(UIButton())
                 
              })
             
@@ -141,16 +143,16 @@ class YQChooseHouseVC: UIViewController {
                     self.Floor = tempModel[indexnum]
                     
                     self.buildingBtn.setTitle(stringArray[indexnum], for: .normal )
+                    //调用手动查询房屋的接口
+                    self.searchButtonClick(UIButton())
                     
                 })
-                
-                
+
             }, failure: { (error) in
                 
                 SVProgressHUD.showError(withStatus: "楼栋信息查询失败,请检查网络!")
             })
 
-            
         }
         
     }
@@ -184,6 +186,7 @@ class YQChooseHouseVC: UIViewController {
                     
                     SVProgressHUD.showError(withStatus: "没有更多数据!")
                     self.dataAarry.removeAll()
+                    self.tableView.reloadData()
                     
                 }else{
                     
@@ -241,6 +244,7 @@ extension YQChooseHouseVC : UITableViewDelegate,UITableViewDataSource{
             let ParkInfo = ParkInfoModel.init(parmart: dict)
             
             selectParkHandel!(ParkInfo)
+            
         }
         
     }
@@ -261,6 +265,7 @@ extension YQChooseHouseVC : UITableViewDelegate,UITableViewDataSource{
         }
         
         cell?.model = self.dataAarry[indexPath.row]
+        
         if index == indexPath.row {
             
             cell?.setSelectCellClick(true)

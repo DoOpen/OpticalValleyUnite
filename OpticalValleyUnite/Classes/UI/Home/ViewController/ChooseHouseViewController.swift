@@ -178,7 +178,6 @@ class ChooseHouseViewController: UIViewController {
 
             SVProgressHUD.dismiss()
             
-            
             var temp = [ParkInfoModel]()
 
             for dic in response as! Array<[String: Any]> {
@@ -198,13 +197,10 @@ class ChooseHouseViewController: UIViewController {
                 SVProgressHUD.showSuccess(withStatus: "数据为空")
             }
 
-
         }) { (error) in
 
             SVProgressHUD.showError(withStatus: "数据加载失败,请检查网络!")
         }
-        
-        
     }
     
 }

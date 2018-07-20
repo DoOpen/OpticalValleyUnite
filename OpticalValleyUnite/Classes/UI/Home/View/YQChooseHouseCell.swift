@@ -28,7 +28,7 @@ class YQChooseHouseCell: UITableViewCell {
             let string1 = (model?.groundNo)! + "楼层"
             let string2 = (model?.houseCode)! + "室"
             
-            self.titleLabel.text = string + string1 + string2
+            self.titleLabel.text = (model?.stageName)!  + "-" + (model?.buildName)! + "_" + string + string1 + string2
             
         }
         

@@ -42,8 +42,13 @@ class WorkOrderDetailsCell: UITableViewCell {
     @IBOutlet weak var seePhotpBtn: UIButton!
     @IBOutlet weak var parkNameLabel: UILabel!
     
+    //设备详情的属性情况
     //工单的设备类的数据的label的拖线
     @IBOutlet weak var deviceName: UILabel!
+    //新增的位置惯用名
+    @IBOutlet weak var positionHabitualNameLabel: UILabel!
+    
+    
     @IBOutlet weak var deviceBrand: UILabel!
     @IBOutlet weak var deviceModel: UILabel!
     @IBOutlet weak var madePeople: UILabel!
@@ -61,17 +66,16 @@ class WorkOrderDetailsCell: UITableViewCell {
     var callBackCell : Bool = false
     
     
-    
     var equipmentModel: EquimentModel?{
         didSet{
             if let model = equipmentModel{
-                
-                
-                
+
                 deviceName.text = model.name
                 deviceBrand.text = model.brand_name
                 
                 deviceModel.text = model.model_name
+                //新增位置惯用名
+                positionHabitualNameLabel.text = model.loc_simple_name
                 
                 //厂商和 产地 字段的显示问题的bug 解决!
                 madePeople.text = model.made_company

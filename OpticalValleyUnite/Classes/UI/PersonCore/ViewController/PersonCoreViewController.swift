@@ -375,8 +375,8 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         
     }
     
-
 }
+
 
 protocol CheckNewBundleVersionProtocol {
     

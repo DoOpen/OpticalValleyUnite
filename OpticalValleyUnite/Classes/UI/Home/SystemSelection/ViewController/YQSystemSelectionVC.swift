@@ -72,6 +72,7 @@ class YQSystemSelectionVC: UIViewController {
                         dataV.logoImageView.image = UIImage(named: "login_icon_null")
                         
                     }else{
+                        
                         //剩余的都进行的隐藏
                         //取出的view
                         dataV.isHidden = true
@@ -352,10 +353,10 @@ class YQSystemSelectionVC: UIViewController {
 //            SJKeyWindow?.rootViewController = sjAllWorkUnit
             
             //知识库模块的界面
-            let knowledgeFirstVC = YQKnowledgeFirstVC.init(nibName: "YQKnowledgeFirstVC", bundle: nil)
-            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: knowledgeFirstVC)
-
-            SJKeyWindow?.rootViewController = sjKnowledgeFirstVC
+//            let knowledgeFirstVC = YQKnowledgeFirstVC.init(nibName: "YQKnowledgeFirstVC", bundle: nil)
+//            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: knowledgeFirstVC)
+//
+//            SJKeyWindow?.rootViewController = sjKnowledgeFirstVC
             
             
             //首页架构
@@ -363,7 +364,7 @@ class YQSystemSelectionVC: UIViewController {
 //            let sjKnowledgeFirstVC = SJNavigationController.init(rootViewController: OneVC)
 //            SJKeyWindow?.rootViewController = sjKnowledgeFirstVC
             
-        }else if tap.tapIndex == fireindex {//消防的界面的跳转的情况
+        }else if (tap.tapIndex == fireindex) {//消防的界面的跳转的情况
             
             //跳进消防的界面功能
             let fireVC = UIStoryboard.instantiateInitialViewController(name: "YQFireControl")
@@ -401,14 +402,12 @@ class YQSystemSelectionVC: UIViewController {
 //            getNavController()?.present(drawerController, animated: true, completion: nil)
 
         
-        }else{
+        } else {
             
             //数组取值,进行传值,控制器加载跳转
             let data = dataArray[tap.tapIndex] as! [String : Any]
             
             UserDefaults.standard.set(data, forKey: Const.YQSystemSelectData)
-
-            
             let tabVc = UITabBarController()
             
             let vc1 = UIStoryboard.instantiateInitialViewController(name: "Home")

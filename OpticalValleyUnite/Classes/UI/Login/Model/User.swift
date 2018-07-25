@@ -33,6 +33,7 @@ public struct UserKey {
     static let DetailAddress = "address"
     
     static let WorkNumber = "workNumber"
+    static let personId = "personId"
     
     static let UserFileKey = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!.appending("/account.data")
 }
@@ -84,6 +85,7 @@ class User: NSObject, NSCoding {
     var avatar: String?
     var userName: String?
     var workNumber : String?
+    var personId : String?
     
 
     init?(data: [String: Any]){
@@ -92,6 +94,7 @@ class User: NSObject, NSCoding {
             self.avatar = data[UserKey.Avatar] as? String ?? ""
             self.userName = data[UserKey.Username] as? String ?? ""
             self.workNumber = data[UserKey.WorkNumber] as? String ?? ""
+            self.personId = data[UserKey.personId] as? String ?? ""
         
     }
     
@@ -103,7 +106,7 @@ class User: NSObject, NSCoding {
         self.avatar = decoder.decodeObject(forKey: "avatar") as? String
         self.userName = decoder.decodeObject(forKey: "userName") as? String
         self.workNumber = decoder.decodeObject(forKey: "workNumber") as? String
-        
+        self.personId = decoder.decodeObject(forKey: "personId") as? String
         
     }
     
@@ -114,6 +117,7 @@ class User: NSObject, NSCoding {
         aCoder.encode(avatar, forKey: "avatar")
         aCoder.encode(userName, forKey: "userName")
         aCoder.encode(workNumber, forKey: "workNumber")
+        aCoder.encode(personId, forKey: "personId")
         
     }
     

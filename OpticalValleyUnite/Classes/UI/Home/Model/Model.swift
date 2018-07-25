@@ -325,7 +325,9 @@ class WorkHistoryModel{
 //    var icon = ""
 //    var content = ""
 //    
-//    var exexName = ""
+    var exexName = ""
+    var assesName = ""
+    var managerNmae = ""
 //    var execPictrue = ""
 //    var assesNamae = ""
 //    var assesPictrue = ""
@@ -343,6 +345,11 @@ class WorkHistoryModel{
         source = parmart["EVALUATE_SCORE"] as? Int ?? 10
         text = parmart["text"] as? String ?? ""
         DESCRIPTION = parmart["content"] as? String ?? ""
+        
+        exexName = parmart["execPersonName"] as? String ?? ""
+        assesName = parmart["assisPersonNames"] as? String ?? ""
+        managerNmae = parmart["managePersonName"] as? String ?? ""
+        
         
         if let content = parmart["EVALUATE_TEXT"] as? String{
             self.content = content
@@ -378,6 +385,7 @@ class WorkHistoryModel{
         
     }
 }
+
 
 class WorkOrderDetailModel: Object{
     ///添加的工单的执行type
@@ -417,7 +425,7 @@ class WorkOrderDetailModel: Object{
     dynamic var exexName = ""
     dynamic var assesNamae = ""
     dynamic var managerNmae = ""
-
+    dynamic var EXEC_PERSON_ID = ""
     
     dynamic var statu = ""
     dynamic var picture = ""
@@ -456,6 +464,8 @@ class WorkOrderDetailModel: Object{
         PARK_ID = parmart["PARK_ID"] as? String ?? ""
         
         PERSONTYPE = parmart["IS_ASSISTANCE_PERSON"] as? Int ?? 0
+        
+        EXEC_PERSON_ID = parmart["EXEC_PERSON_ID"] as? String ?? ""
         
         if let type = parmart["WORKUNIT_TYPE"] as? String{//计划工单
             

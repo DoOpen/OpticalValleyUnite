@@ -27,10 +27,12 @@ class WorkOrderDistributionCell: UITableViewCell {
     }
 
     var model: WorkHistoryModel?{
+        
         didSet{
+            
             if let model = model{
                 
-                if let model2 = model2{
+                if let model2 = model2 {
                     
                     var text = ""
                     timeLabel.text = model.time
@@ -38,20 +40,24 @@ class WorkOrderDistributionCell: UITableViewCell {
                     markLabel.text = "备注: " + model.DESCRIPTION
                     
                     guard model2.assesNamae != "" else {
-                        text = "派发人:  \(model.person_name )    执行人:  \(model2.exexName )     协助人:        管理人: \(model2.managerNmae )"
+                        text = "派发人:  \(model.person_name)    执行人:  \(model.exexName)     协助人:   \(model.assesName)    管理人:  \(model.managerNmae )"
+                        
                         contentLabel.text = text
                         contentLabel.setLineSpacing(10)
                         return
                     }
                     
-                    text = "派发人:  \(model.person_name)    执行人:  \(model2.exexName)     协助人:   \(model2.assesNamae)    管理人:  \(model2.managerNmae )"
+                    text = "派发人:  \(model.person_name)    执行人:  \(model.exexName)     协助人:   \(model.assesName)    管理人:  \(model.managerNmae )"
                     contentLabel.text = text
                     contentLabel.setLineSpacing(10)
                 }
                 
             }
+            
         }
+        
     }
+    
     
     var model2: WorkOrderDetailModel?
     

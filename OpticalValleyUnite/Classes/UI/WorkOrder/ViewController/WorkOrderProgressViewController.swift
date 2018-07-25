@@ -59,6 +59,7 @@ class WorkOrderProgressViewController: UIViewController {
     var type = OperationType.none {
         
         didSet{
+            let user = User.currentUser()
             
             var leftText = ""
             var rightText = ""
@@ -71,6 +72,7 @@ class WorkOrderProgressViewController: UIViewController {
                 
                 leftText = ""
                 rightText = "派发"
+                
                 leftBtn.isHidden = true
        
                 setupTimer()
@@ -79,7 +81,16 @@ class WorkOrderProgressViewController: UIViewController {
                 leftBtnClickHandel = meetsList
                 rightBtnClickHandel = meetsListClose
                 
-                leftText = "接单"
+                if user?.personId == workOrderDetalModel?.EXEC_PERSON_ID {
+                    
+                    leftText = "接单"
+                    
+                }else {
+                    
+                    leftText = "协助"
+                }
+                //添加新增的需求,这里比较id; 查看状态是 接单 和 协助
+                
                 rightText = "退回"
                 leftBtn.isHidden = false
                 
@@ -434,12 +445,6 @@ class WorkOrderProgressViewController: UIViewController {
             
             self.callbackModels = temp2
 
-            if let type = respose["type"] as? NSString{
-                self.type = OperationType(rawValue:Int(type as String)!)!
-             }else{
-                self.type = OperationType(rawValue:0)!
-            }
-            
             if let dic = respose as? [String: Any]{
                 
                 let model = WorkOrderDetailModel(parmart: dic)
@@ -453,6 +458,12 @@ class WorkOrderProgressViewController: UIViewController {
             
             self.models = temp
             
+            if let type = respose["type"] as? NSString{
+                self.type = OperationType(rawValue:Int(type as String)!)!
+            }else{
+                self.type = OperationType(rawValue:0)!
+            }
+            
             self.tableView.reloadData()
             
         }) { (error) in
@@ -461,7 +472,6 @@ class WorkOrderProgressViewController: UIViewController {
             
             SVProgressHUD.dismiss()
         }
-        
         
     }
     

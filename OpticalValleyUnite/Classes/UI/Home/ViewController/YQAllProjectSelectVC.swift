@@ -271,8 +271,19 @@ extension YQAllProjectSelectVC : UITableViewDelegate,UITableViewDataSource,YQPro
             dic["ID"] = model.projectId
             
             //应用归档解档来存储项目名称
-            UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
-            UserDefaults.standard.set(dic, forKey: Const.YQAllProjectModel)
+            let isgroup = UserDefaults.standard.object(forKey: Const.YQIs_Group) as? Int ?? -1
+            if self.isAll == 1 {
+                
+                if isgroup == 2 {//集团版
+                    UserDefaults.standard.set(dic, forKey: Const.YQAllProjectModel)
+                    
+                }
+            }else{
+                
+                UserDefaults.standard.set(dic, forKey: Const.YQProjectModel)
+                UserDefaults.standard.set(dic, forKey: Const.YQAllProjectModel)
+                
+            }
         }
         
         navigationController?.popViewController(animated: true)

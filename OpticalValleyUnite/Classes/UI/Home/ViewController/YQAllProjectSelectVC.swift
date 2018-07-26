@@ -253,6 +253,7 @@ extension YQAllProjectSelectVC : UITableViewDelegate,UITableViewDataSource,YQPro
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
         return 50
         
     }

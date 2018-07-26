@@ -85,9 +85,11 @@ class WorkOrderProgressViewController: UIViewController {
                     
                     leftText = "接单"
                     
-                }else {
+                } else {
                     
                     leftText = "协助"
+                    rightBtn.isHidden = true
+                    
                 }
                 //添加新增的需求,这里比较id; 查看状态是 接单 和 协助
                 
@@ -222,6 +224,8 @@ class WorkOrderProgressViewController: UIViewController {
     // MARK: - left,rightButton的点击
     @IBAction func leftBtnClick() {
         
+        rightBtn.isHidden  = false
+        
         switch type {
             
         //待派发
@@ -253,6 +257,7 @@ class WorkOrderProgressViewController: UIViewController {
     }
     
     @IBAction func rightBtnClick() {
+        
         
         switch type {
         //待派发

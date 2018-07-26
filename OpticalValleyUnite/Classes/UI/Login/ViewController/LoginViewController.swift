@@ -124,8 +124,10 @@ class LoginViewController: UIViewController {
             parameters["umengToken"] = token
             
         }
-        
-        parameters["deviceToken"] = ""
+        //获取设备的唯一标识传递
+        let deviceUUID = UIDevice.current.identifierForVendor?.uuidString
+        //identifierForVendor.UUIDString  //获取设备唯一标识符 例如：FBF2306E-A0D8-4F4B-BDED-9333B627D3E6
+        parameters["deviceToken"] = deviceUUID
         
         print(parameters)
         print(URLPath.newbasicPath + URLPath.login)
@@ -165,7 +167,7 @@ class LoginViewController: UIViewController {
                     /// 直接跳转到home的主页
                     //  self.pushToHomeViewController()
                     // 正版的跳转到子系统选择的界面
-                     self.systemSelectionNetworkInterface()
+                    self.systemSelectionNetworkInterface()
                     // 跳转到日志的测试的模块
                     // self.pushToJournalViewController()
 

@@ -45,6 +45,7 @@ static NSString * const kBadgeTop = @"kBadgeTop";
         [self adjustBadgeNumberViewWithLabel:label number:badgeValue];
         
     }else if(type == kCustomBadgeStyleNone){
+        
     }
 }
 

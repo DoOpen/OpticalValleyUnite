@@ -8,9 +8,14 @@
 
 #import "SJTextView.h"
 #import "UIView+AdjustFrame.h"
+
 @interface SJTextView ()
+
 @property (nonatomic,weak) UILabel *placeHolderLabel;
+
 @end
+
+
 @implementation SJTextView
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
@@ -45,6 +50,9 @@
     return self;
 }
 
+/*
+ 设置其代理之后再进行的 调用通知的方法!
+ */
 - (void)textDidChange{
     
     if (self.text.length != 0) {
@@ -71,13 +79,18 @@
     _placeHolder = placeHolder;
     _placeHolderLabel.text = placeHolder;
 //    [_placeHolderLabel sizeToFit];
+    
 }
+
 - (void)setFont:(UIFont *)font{
     [super setFont:font];
     _placeHolderLabel.font = font;
     [_placeHolderLabel sizeToFit];
 }
+
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+
 @end

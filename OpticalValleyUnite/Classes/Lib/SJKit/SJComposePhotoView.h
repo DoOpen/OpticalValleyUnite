@@ -14,6 +14,7 @@
  *  再次添加图片的时候 设置这个值
  */
 @property (nonatomic,strong) UIImage *photo;
+
 /**
  *  初始化时候添加多张图片
  */
@@ -22,6 +23,7 @@
 @property (nonatomic, copy) NSString *moviePath;
 
 @property (nonatomic, weak) UIViewController *rootVc;
+
 /**
  *  最多图片数
  */
@@ -30,4 +32,6 @@
 @property (nonatomic, strong , readonly) NSArray<UIImage *> *images;
 
 - (NSArray *)imagesForLoad;
+
+
 @end

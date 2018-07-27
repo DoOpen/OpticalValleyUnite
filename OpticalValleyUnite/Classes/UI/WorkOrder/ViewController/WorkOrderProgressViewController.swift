@@ -84,6 +84,7 @@ class WorkOrderProgressViewController: UIViewController {
                 if user?.personId == workOrderDetalModel?.EXEC_PERSON_ID {
                     
                     leftText = "接单"
+                    rightBtn.isHidden = false
                     
                 } else {
                     

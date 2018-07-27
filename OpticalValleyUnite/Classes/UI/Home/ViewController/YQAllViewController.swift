@@ -27,7 +27,6 @@ class YQAllViewController: UIViewController {
     
     var flishUpDateBtnClickHandel: (([String: Any]) -> ())?
     
-    
     lazy var collectionView : UICollectionView = {
         
         let collectionV = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: SJScreeW, height: SJScreeH), collectionViewLayout: self.flowLayout)
@@ -46,9 +45,9 @@ class YQAllViewController: UIViewController {
         //注册footer
         collectionV.register(SYLIfeManagerFooterView.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: self.footCell)
         
-        
         return collectionV
     }()
+    
     
     lazy var flowLayout: SYLifeManagerLayout = {
         

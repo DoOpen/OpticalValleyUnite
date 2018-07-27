@@ -66,7 +66,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQImplementFeedbackVC.swift"
-                  timestampString = "554262852.342375"
+                  timestampString = "554363613.584388"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "307"
@@ -81,7 +81,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/FireControlProfession/Controller/YQImplementFeedbackVC.swift"
-                  timestampString = "554262852.345409"
+                  timestampString = "554363613.588227"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "309"
@@ -130,7 +130,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/Home/ViewController/ReportMasterViewController.swift"
-                  timestampString = "554262852.356217"
+                  timestampString = "554363613.6030819"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1007"
@@ -145,7 +145,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/Home/ViewController/ReportMasterViewController.swift"
-                  timestampString = "554262852.3593301"
+                  timestampString = "554363613.605968"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1010"
@@ -194,7 +194,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/Home/ViewController/ReportMasterViewController.swift"
-                  timestampString = "554262852.370742"
+                  timestampString = "554363613.625357"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1059"
@@ -209,7 +209,7 @@
                   moduleName = "OpticalValleyUnite"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/Home/ViewController/ReportMasterViewController.swift"
-                  timestampString = "554262852.373286"
+                  timestampString = "554363613.628119"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1061"
@@ -297,6 +297,118 @@
             endingLineNumber = "423"
             landmarkName = "workOrderUpButtonClick(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ExecutingViewConttroller.swift"
+            timestampString = "554364694.671723"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1349"
+            endingLineNumber = "1349"
+            landmarkName = "ExecNewCellMakePhotoFunction(view:currentRow:image:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ExecutingViewConttroller.swift"
+            timestampString = "554364754.364127"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1353"
+            endingLineNumber = "1353"
+            landmarkName = "ExecNewCellMakePhotoFunction(view:currentRow:image:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in OpticalValleyUnite.ExecutingViewConttroller.ExecNewCellMakePhotoFunction(view: OpticalValleyUnite.YQExecNewCell, currentRow: Foundation.IndexPath, image: __ObjC.UIImage) -&gt; ()"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ExecutingViewConttroller.swift"
+                  timestampString = "554364754.371809"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1353"
+                  endingLineNumber = "1353"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.String) -&gt; () in OpticalValleyUnite.ExecutingViewConttroller.ExecNewCellMakePhotoFunction(view: OpticalValleyUnite.YQExecNewCell, currentRow: Foundation.IndexPath, image: __ObjC.UIImage) -&gt; ()"
+                  moduleName = "OpticalValleyUnite"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangqing1992188/Documents/OpticalValleyUnite_tow/OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ExecutingViewConttroller.swift"
+                  timestampString = "554364754.374892"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1355"
+                  endingLineNumber = "1355"
+                  offsetFromSymbolStart = "54">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/ViewController/ExecutingViewConttroller.swift"
+            timestampString = "554364868.11551"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1366"
+            endingLineNumber = "1366"
+            landmarkName = "ExecNewCellMakePhotoFunction(view:currentRow:image:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/View/YQExecNewCell.swift"
+            timestampString = "554364931.798038"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "model"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpticalValleyUnite/Classes/UI/WorkOrder/View/YQExecNewCell.swift"
+            timestampString = "554364954.966807"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "model"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

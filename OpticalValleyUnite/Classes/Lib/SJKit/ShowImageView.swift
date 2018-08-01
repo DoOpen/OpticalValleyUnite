@@ -30,6 +30,7 @@ class ShowImageView: UIView {
         }
         
         for (index,imageView) in subviews.enumerated(){
+            
             if let imageView = imageView as? UIButton{
                 
 //                var nowindex = index

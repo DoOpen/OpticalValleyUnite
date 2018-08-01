@@ -140,7 +140,10 @@ class YQStartExamDetailVC: UIViewController {
     
     // MARK: - 点击下一题的方法
     @IBAction func nextButtonClick(_ sender: UIButton) {
-       
+        for v in self.showImageV.subviews{
+            v.removeFromSuperview()
+        }
+        
         saveAnswerFunction()
         
         //点击下一题的选项情况
@@ -157,6 +160,10 @@ class YQStartExamDetailVC: UIViewController {
     
     // MARK: - 点击上一题的方法
     @IBAction func upButtonClick(_ sender: UIButton) {
+        
+        for v in self.showImageV.subviews{
+            v.removeFromSuperview()
+        }
         
         saveAnswerFunction()
         
@@ -208,9 +215,7 @@ class YQStartExamDetailVC: UIViewController {
                     
                     model.choose = self.LetterA[indexxx]
                 }
-                
             }
-            
             
         } else if (self.currentView?.isKind(of: YQJudgmentQuestionView.classForCoder()))!{
             //判断题

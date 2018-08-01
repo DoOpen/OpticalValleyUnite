@@ -241,6 +241,10 @@ class YQAllViewController: UIViewController {
             let generalMailVC = YQGeneralManagerFirstVC.init(nibName: "YQGeneralManagerFirstVC", bundle: nil)
             self.navigationController?.pushViewController(generalMailVC, animated: true)
             
+        case "知识库" :
+            let knowledgeFirstVC = YQKnowledgeFirstVC.init(nibName: "YQKnowledgeFirstVC", bundle: nil)
+            self.navigationController?.pushViewController(knowledgeFirstVC, animated: true)
+            
         default: break
             
         }

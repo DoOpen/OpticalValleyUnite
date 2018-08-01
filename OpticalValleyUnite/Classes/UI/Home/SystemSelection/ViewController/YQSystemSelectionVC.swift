@@ -301,7 +301,7 @@ class YQSystemSelectionVC: UIViewController {
         if tap.tapIndex >= dataArray.count {
             
             //最后一个是显示的图标
-//            return
+            return
             
 //            // 调试视频巡查的内容
 //            let Video = UIStoryboard.instantiateInitialViewController(name: "YQVideoPatrol")

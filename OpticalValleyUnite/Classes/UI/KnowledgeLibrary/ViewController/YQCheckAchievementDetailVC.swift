@@ -71,13 +71,17 @@ class YQCheckAchievementDetailVC: UIViewController {
         
         //3.题型选项的隐藏和判断
         checkBottomViewChangeFunction(Index: selectIndex)
-        
-        
+ 
     }
 
 
     // MARK: - 点击下一题
     @IBAction func nextButtonClick(_ sender: UIButton) {
+        
+        for v in self.showImageV.subviews{
+            
+            v.removeFromSuperview()
+        }
         
         self.selectIndex += 1
         checkBottomViewChangeFunction(Index: selectIndex)
@@ -92,6 +96,11 @@ class YQCheckAchievementDetailVC: UIViewController {
     
     // MARK: - 点击上一题
     @IBAction func upButtonClick(_ sender: UIButton) {
+        
+        for v in self.showImageV.subviews{
+            
+            v.removeFromSuperview()
+        }
         
         self.selectIndex -= 1
         checkBottomViewChangeFunction(Index: selectIndex)
@@ -233,6 +242,7 @@ class YQCheckAchievementDetailVC: UIViewController {
                     pUrl = Photo.init(urlString: url)
                     
                 }
+                
                 photoImage.append(pUrl)
             }
             

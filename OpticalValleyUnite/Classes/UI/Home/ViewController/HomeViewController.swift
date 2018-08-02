@@ -739,6 +739,8 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
     /// 中间全部按钮的点击跳转
     @IBAction func pushToAllVc(){
         
+        
+        
         if !allPermissionModels.isEmpty{
             
 //            let vc = AllViewController.loadFromStoryboard(name: "Home") as! AllViewController

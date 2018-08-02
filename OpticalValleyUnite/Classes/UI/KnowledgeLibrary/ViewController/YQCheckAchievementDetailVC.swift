@@ -188,7 +188,8 @@ class YQCheckAchievementDetailVC: UIViewController {
     // MARK: - 创建各种题型的方法
     //单选题,多选题的创建的核心代码逻辑
     func creatSingleChoiceQuestion(model : YQSubjectModel){
-        
+        self.MiddleView.isHidden = false
+
         self.stemLabel.text = model.question
         self.typeLabel.text = "单选题"
     
@@ -248,12 +249,12 @@ class YQCheckAchievementDetailVC: UIViewController {
             
             self.showImageVConstraint.constant = 90
             self.showImageV.showImageUrls(temp)
-            //self.headViewConstraint.constant = 0
+            self.headViewConstraint.constant = 200
             
         }else{
             
             //调节约束展示
-            self.headViewConstraint.constant = 120
+            self.headViewConstraint.constant = 100
             self.showImageVConstraint.constant = 0
             
         }
@@ -343,6 +344,8 @@ class YQCheckAchievementDetailVC: UIViewController {
     //判断题
     func creatJudgmentProblem(model : YQSubjectModel){
       
+        self.MiddleView.isHidden = false
+        
         self.stemLabel.text = model.question
         self.typeLabel.text = "判断题"
         
@@ -382,12 +385,12 @@ class YQCheckAchievementDetailVC: UIViewController {
             
             self.showImageVConstraint.constant = 90
             self.showImageV.showImageUrls(temp)
-            //self.headViewConstraint.constant = 0
+            self.headViewConstraint.constant = 200
             
         }else{
             
             //调节约束展示
-            self.headViewConstraint.constant = 120
+            self.headViewConstraint.constant = 100
             self.showImageVConstraint.constant = 0
             
         }
@@ -438,7 +441,6 @@ class YQCheckAchievementDetailVC: UIViewController {
                     }else{//没有选择而且又是 答错了  -->  显示的正确的答案逻辑
                         AchievementV.isRight = true
                     }
-                    
                 }
                 
                 AchievementV.optionLabel.text = "A. " + " 是"
@@ -490,7 +492,6 @@ class YQCheckAchievementDetailVC: UIViewController {
             maker.top.equalTo(self.MiddleView.snp.bottom).offset(5)
             maker.right.left.equalToSuperview()
             maker.height.equalTo(view.subviews.count * 45)
-            
         }
         
     }
@@ -538,6 +539,8 @@ class YQCheckAchievementDetailVC: UIViewController {
     //简答题
     func creatQuestionAndAnswerQuestion(model : YQSubjectModel){
         
+        self.MiddleView.isHidden = true
+        
         self.stemLabel.text = model.question
         self.typeLabel.text = "简答题"
         
@@ -571,12 +574,12 @@ class YQCheckAchievementDetailVC: UIViewController {
             
             self.showImageVConstraint.constant = 90
             self.showImageV.showImageUrls(temp)
-            //self.headViewConstraint.constant = 0
+            self.headViewConstraint.constant = 200
             
         }else{
             
             //调节约束展示
-            self.headViewConstraint.constant = 120
+            self.headViewConstraint.constant = 100
             self.showImageVConstraint.constant = 0
             
         }
@@ -592,7 +595,7 @@ class YQCheckAchievementDetailVC: UIViewController {
         
         ShortAnswerQuestionsV.snp.makeConstraints { (maker) in
             
-            maker.top.equalTo(self.headView.snp.bottom)
+            maker.top.equalTo(self.typeLabel.snp.bottom)
             maker.height.equalTo(200)
             maker.left.equalToSuperview().offset(10)
             maker.right.equalToSuperview().offset(-10)

@@ -371,12 +371,10 @@ class YQStartExaminationVC: UIViewController {
     
     
     deinit {
-        
         //清空时间宏
         YQTimeCount = 0
         
         NotificationCenter.default.removeObserver(self)
-        
     }
     
 }
@@ -393,13 +391,38 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cell, for: indexPath) as? YQQuestionCollectionCell
         
         cell?.backgroundColor = UIColor.clear
+        cell?.questionBtn.backgroundColor = UIColor.clear
         cell?.questionBtn.setTitle("\(indexPath.item + 1)", for: .normal)
         
         let model = self.subjectArray[indexPath.row]
         
-        if model.choose != "" && model.choose != "(  )$(  )$(  )" {
+        if model.choose != "" {
             
-            cell?.questionBtn.backgroundColor = UIColor.init(red: 108/255.0, green: 202/255.0, blue: 255/255.0, alpha: 1)
+            let strArray = model.choose.components(separatedBy: "$")
+            
+            if strArray.count > 1 {
+                
+                for indexxxx in 0..<strArray.count {
+                    
+                    let tempStr = strArray[indexxxx]
+                    
+                    if tempStr == "" || tempStr == "()" {
+                        
+                        return cell!
+                    }
+                    
+                    if indexxxx == strArray.count - 1 {
+                        
+                        cell?.questionBtn.backgroundColor = UIColor.init(red: 108/255.0, green: 202/255.0, blue: 255/255.0, alpha: 1)
+                    }
+                }
+                
+            }else{
+                
+                
+                cell?.questionBtn.backgroundColor = UIColor.init(red: 108/255.0, green: 202/255.0, blue: 255/255.0, alpha: 1)
+            }
+            
         }
         
         return cell!
@@ -446,8 +469,7 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
-        
-        
+
     }
     
     

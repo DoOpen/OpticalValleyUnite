@@ -12,6 +12,8 @@ import UIKit
 //是否是 bate环境
 let isProjectBate = false
 
+//设置全局的时间保存宏
+var YQTimeCount = 0
 
 struct Const {
 

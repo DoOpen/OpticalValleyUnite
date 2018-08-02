@@ -8,8 +8,7 @@
 
 import UIKit
 
-//设置全局的时间保存宏
-var YQTimeCount = 0
+
 
 class UIButton_YQTime: UIButton {
 

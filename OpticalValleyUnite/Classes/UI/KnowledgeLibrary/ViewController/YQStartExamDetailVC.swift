@@ -253,17 +253,20 @@ class YQStartExamDetailVC: UIViewController {
                 }else if (subV.isKind(of: UITextView.classForCoder())){
                     
                     let textV = subV as! UITextView
+                    //替换()
+                    let textStr = textV.text.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+                    
+//                    let textStr2 = textStr.replacingOccurrences(of: ")", with: "") //删除指定的字符情况 str1.trimmingCharacters(in: .whitespaces)
                     
                     if str == "" {
                         
-                        str = textV.text
+                        str = textStr
                         
                     }else{
                         
-                        str = str + "$" + textV.text
+                        str = str + "$" + textStr
                     }
                 }
-                
             }
             
             model.choose = str
@@ -367,7 +370,7 @@ class YQStartExamDetailVC: UIViewController {
     func creatSingleChoiceQuestion(model : YQSubjectModel){
     
         let choose = model.choose
-        
+        //self.MiddleView.isHidden = false
         //先输入 题干的情况
         self.stemLabel.text = model.question
         self.typeLabel.text = "单选题"
@@ -402,11 +405,11 @@ class YQStartExamDetailVC: UIViewController {
             
             self.showImageVConstraint.constant = 90
             self.showImageV.showImageUrls(temp)
-            
+            self.headViewConstraint.constant = 200
         }else{
             
             //调节约束展示
-            self.headViewConstraint.constant = 120
+            self.headViewConstraint.constant = 100
             self.showImageVConstraint.constant = 0
             
         }
@@ -454,7 +457,7 @@ class YQStartExamDetailVC: UIViewController {
         
         let choose = model.choose
         let arrString = choose.components(separatedBy: "$")
-        
+        //self.MiddleView.isHidden = false
         
         self.stemLabel.text = model.question
         self.typeLabel.text = "多选题"
@@ -489,10 +492,12 @@ class YQStartExamDetailVC: UIViewController {
             
             self.showImageVConstraint.constant = 90
             self.showImageV.showImageUrls(temp)
+            self.headViewConstraint.constant = 200
+
             
         }else{
             //调节约束展示
-            self.headViewConstraint.constant = 120
+            self.headViewConstraint.constant = 100
             self.showImageVConstraint.constant = 0
         }
         
@@ -563,7 +568,7 @@ class YQStartExamDetailVC: UIViewController {
     func creatJudgmentProblem(model : YQSubjectModel){
         
         let choose = model.choose
-        
+        //self.MiddleView.isHidden = false
         self.stemLabel.text = model.question
         self.typeLabel.text = "判断题"
         
@@ -597,10 +602,11 @@ class YQStartExamDetailVC: UIViewController {
             
             self.showImageVConstraint.constant = 90
             self.showImageV.showImageUrls(temp)
-            
+            self.headViewConstraint.constant = 200
+
         }else{
             //调节约束展示
-            self.headViewConstraint.constant = 120
+            self.headViewConstraint.constant = 100
             self.showImageVConstraint.constant = 0
         }
         
@@ -676,19 +682,23 @@ class YQStartExamDetailVC: UIViewController {
         }
         
         //填空题的赋值方法
-        if arrString.count == Completion.textFiledArray.count{
+        if arrString.count == Completion.subviews.count{
             
-            for indexxxx in 0..<Completion.textFiledArray.count{
+            for indexxxx in 0..<Completion.subviews.count{
                 
-                let textV = Completion.textFiledArray[indexxxx]
+                let tempV = Completion.subviews[indexxxx]
                 
-                let str =  arrString[indexxxx]
-                if str != "" {
+                if tempV.isKind(of: UITextView.classForCoder()){
                     
-                    textV.text = str
+                    let textV = Completion.subviews[indexxxx] as! UITextView
+                    let str =  arrString[indexxxx]
+                    
+                    if str != "" {
+                        
+                        textV.text = str
+                    }
                 }
             }
-            
         }
         
         self.scrollContentView.addSubview(Completion)
@@ -705,7 +715,7 @@ class YQStartExamDetailVC: UIViewController {
     
     //问答题
     func creatQuestionAndAnswerQuestion(model : YQSubjectModel){
-        
+        //self.MiddleView.isHidden = true
         self.stemLabel.text = model.question
         self.typeLabel.text = "问答题"
         
@@ -739,11 +749,13 @@ class YQStartExamDetailVC: UIViewController {
             }
             self.showImageVConstraint.constant = 90
             self.showImageV.showImageUrls(temp)
+            self.headViewConstraint.constant = 200
+
             
         }else{
             
             //调节约束展示
-            self.headViewConstraint.constant = 120
+            self.headViewConstraint.constant = 100
             self.showImageVConstraint.constant = 0
         }
         
@@ -764,7 +776,7 @@ class YQStartExamDetailVC: UIViewController {
         
         ShortAnswerQuestionsV.snp.makeConstraints { (maker) in
             
-            maker.top.equalTo(self.questionView.snp.bottom)
+            maker.top.equalTo(self.typeLabel.snp.bottom)
             maker.height.equalTo(200)
             maker.left.right.equalToSuperview().offset(20)
             

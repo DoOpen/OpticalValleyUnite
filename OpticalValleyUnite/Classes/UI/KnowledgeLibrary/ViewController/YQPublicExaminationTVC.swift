@@ -45,7 +45,8 @@ class YQPublicExaminationTVC: UITableViewController {
         switch cellType {
             case 1:
                 self.title = "参加考试"
-                self.getStartExaminationListData()
+                //避免重复刷2次
+                //self.getStartExaminationListData()
                 
                 break
             case 2:
@@ -70,8 +71,10 @@ class YQPublicExaminationTVC: UITableViewController {
         super.viewWillAppear(animated)
         
         if self.cellType == 1 {
+            
             //实时刷新下
             self.getStartExaminationListData()
+            
         }
         
     }
@@ -112,11 +115,22 @@ class YQPublicExaminationTVC: UITableViewController {
             if tempArray.count > 0{
                 
                 self.currentIndex = pageIndex
-                self.joinExamArray.append(contentsOf: tempArray)
+                if pageIndex == 0 {
+                    
+                    self.joinExamArray = tempArray
+                    
+                }else{
+                    
+                    self.joinExamArray.append(contentsOf: tempArray)
+                    
+                }
+                
+                self.tableView.mj_header.endRefreshing()
                 self.tableView.mj_footer.endRefreshing()
                 
             }else{
                 
+                self.tableView.mj_header.endRefreshing()
                 self.tableView.mj_footer.endRefreshingWithNoMoreData()
             }
             
@@ -165,11 +179,22 @@ class YQPublicExaminationTVC: UITableViewController {
             if tempArray.count > 0{
                 
                 self.currentIndex = pageIndex
-                self.myScoreArray.append(contentsOf: tempArray)
+                
+                if pageIndex == 0 {
+                    
+                    self.myScoreArray = tempArray
+                    
+                }else{
+                    
+                   self.myScoreArray.append(contentsOf: tempArray)
+                    
+                }
+                self.tableView.mj_header.endRefreshing()
                 self.tableView.mj_footer.endRefreshing()
                 
             }else{
-                
+                self.tableView.mj_header.endRefreshing()
+
                 self.tableView.mj_footer.endRefreshingWithNoMoreData()
             }
             
@@ -217,11 +242,23 @@ class YQPublicExaminationTVC: UITableViewController {
             if tempArray.count > 0{
                 
                 self.currentIndex = pageIndex
-                self.examRecordsArray.append(contentsOf: tempArray)
+                
+                if pageIndex == 0 {
+                    
+                    self.examRecordsArray = tempArray
+                    
+                }else{
+                    
+                    self.examRecordsArray.append(contentsOf: tempArray)
+                    
+                }
+                
+                self.tableView.mj_header.endRefreshing()
                 self.tableView.mj_footer.endRefreshing()
                 
             }else{
                 
+                self.tableView.mj_header.endRefreshing()
                 self.tableView.mj_footer.endRefreshingWithNoMoreData()
             }
             

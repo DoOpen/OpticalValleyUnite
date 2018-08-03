@@ -20,6 +20,7 @@ class ExecutingViewConttroller: UIViewController {
     
     @IBOutlet weak var downView: UIView!
     var isToSee = false
+    var weatherIsMatch = false
     
     @IBOutlet weak var addPhoneView: SJAddView!
     
@@ -53,6 +54,7 @@ class ExecutingViewConttroller: UIViewController {
     
     
     @IBOutlet weak var saveBtn: UIButton!
+    @IBOutlet weak var completeBtn: UIButton!
     
     // 配件库的功能的组件
     // 使用配件
@@ -723,6 +725,13 @@ class ExecutingViewConttroller: UIViewController {
     //MARK: - 所有完成按钮点击( 数据要求的是 补全接口的相关 数据)
     @IBAction func doneBtnClick() {
         
+        if self.weatherIsMatch {//有执行的条件
+            
+            self.alert(message: "设备不匹配无法完成工单!")
+            
+            return
+        }
+        
         //添加执行完成之后的工单,要求确认所有步骤执行完成
         for model in self.models{
             
@@ -737,11 +746,8 @@ class ExecutingViewConttroller: UIViewController {
                     self.alert(message: "请填写完工单执行步骤!")
                     return
                 }
-            
             }
-           
         }
-
         
         if workOrderDetalModel?.orderType == "计划工单"{ //计划工单
             var parmat = [String: Any]()
@@ -789,7 +795,7 @@ class ExecutingViewConttroller: UIViewController {
             //设置添加配件库的模型数据进来
             self.upload(parmat)
             
-        }else if workOrderDetalModel?.orderType == "应急工单"{//应急工单的保存,保存实现原理不同
+        } else if workOrderDetalModel?.orderType == "应急工单"{//应急工单的保存,保存实现原理不同
 
             parmate?["stepId"] = "yingji"
             
@@ -906,9 +912,7 @@ class ExecutingViewConttroller: UIViewController {
                     
                     SVProgressHUD.showSuccess(withStatus: "保存成功!")
                 }
-                
             }
-
         }
         
     }
@@ -1319,7 +1323,6 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
         //离线工单的图片保存
         if backDB {
             
-
             self.offLineImageSave(image, stepId: model.id)
             
             let realm = try! Realm()
@@ -1359,7 +1362,6 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
                 }else{
                     //传递image 刷新列表
                     model.imageValue = model.imageValue + "," + url
-                    
                 }
                 
                 //重新的逻辑替换
@@ -1371,6 +1373,7 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
             }
             
         },errorHandle: {
+            
             SVProgressHUD.showError(withStatus: "网络超时,请重试!")
         })
         
@@ -1398,7 +1401,6 @@ extension ExecutingViewConttroller : YQExecNewCellClickDelegate{
                 
                 return
             }
-            
             
             //本地的模型也要进行清除对应的数据
             if buttonTag <= deleteArray.count - 1 {
@@ -1548,6 +1550,7 @@ extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCD
                     cell.color = "green"
                     model.value = "工单设备已匹配"
 //                    self.tableView.reloadRows(at: [currentSelectIndexPath!], with: .automatic)
+                    self.weatherIsMatch = false;
                     
                 }else{
                     
@@ -1556,8 +1559,10 @@ extension ExecutingViewConttroller : YQExecScanCellDelegate ,SGScanningQRCodeVCD
                     cell.color = "red"
                     model.value = "未匹配对应的设备"
 //                    self.tableView.reloadRows(at: [currentSelectIndexPath!], with: .automatic)
-
+                    
+                    self.weatherIsMatch = true;
                 }
+                
             }
             
             models[(currentSelectIndexPath?.section)!].childs.replace(index: (currentSelectIndexPath?.row)!, object: model)

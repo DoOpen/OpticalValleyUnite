@@ -418,6 +418,7 @@ extension WorkOrderViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let vc = WorkOrderProgressViewController.loadFromStoryboard(name: "WorkOrder") as! WorkOrderProgressViewController
 //        vc.workModelId = currentDatas[indexPath.row].workOrderId
         let model = currentDatas[indexPath.row]
@@ -431,6 +432,7 @@ extension WorkOrderViewController: UITableViewDataSource, UITableViewDelegate{
         vc.parmate = parmat
         vc.listVc = self
         navigationController?.pushViewController(vc, animated: true)
+        
     }
     
 }

@@ -3376,6 +3376,7 @@
                     <connections>
                         <outlet property="RemarksTextView" destination="un5-Qq-dQ9" id="h8W-s1-tPy"/>
                         <outlet property="addPhoneView" destination="BaE-Pc-NRb" id="v09-1E-qZl"/>
+                        <outlet property="completeBtn" destination="lEN-q3-dCr" id="KU8-Zt-sqZ"/>
                         <outlet property="doMessageDetailV" destination="nH9-ka-3RX" id="M7W-48-jm3"/>
                         <outlet property="doMessageV" destination="nyi-ZF-szR" id="7pR-9v-BFY"/>
                         <outlet property="doMessageViewHeight" destination="Z2g-YF-qov" id="kTf-oe-gzt"/>

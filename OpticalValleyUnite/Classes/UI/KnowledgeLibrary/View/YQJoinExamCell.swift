@@ -35,17 +35,35 @@ class YQJoinExamCell: UITableViewCell {
             self.examTimeLabel.text = "考试时间  " + (model?.time)!
             
             //判断是否 参加
-            if model?.isAttend == 1{
+            if model?.isEnd == 0 {//考试未结束的情况
                 
-                self.alreadyLabel.isHidden = false
-                self.alreadyLabel.text = "已参加"
+                if model?.isAttend == 1{
+                    
+                    self.alreadyLabel.isHidden = false
+                    self.alreadyLabel.text = "已参加"
+                    
+                }else{
+                    
+                    self.alreadyLabel.isHidden = false
+                    self.alreadyLabel.text = "未参加"
+                    
+                }
                 
-            }else{
+            }else if( model?.isEnd == 1) {//考试已结束的情况
                 
-                self.alreadyLabel.isHidden = false
-                self.alreadyLabel.text = "未参加"
+                if model?.isAttend == 1{
+                    
+                    self.alreadyLabel.isHidden = false
+                    self.alreadyLabel.text = "已参加"
+                    
+                }else{
+                    
+                    self.alreadyLabel.isHidden = false
+                    self.alreadyLabel.text = "已结束"
+                }
                 
             }
+            
             
             
         }

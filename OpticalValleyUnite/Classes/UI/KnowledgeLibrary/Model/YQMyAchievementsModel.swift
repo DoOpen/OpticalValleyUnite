@@ -19,6 +19,11 @@ class YQMyAchievementsModel: NSObject {
     //试卷名称
     var name = ""
     
+    var isEnd = -1
+    //考试是否已经参加 0未参加 1已经参加
+    var isAttend = -1
+    
+    
     init(dict : [String : Any]) {
         super.init()
         

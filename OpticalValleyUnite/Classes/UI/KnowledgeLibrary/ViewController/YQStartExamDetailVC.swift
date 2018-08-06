@@ -84,6 +84,8 @@ class YQStartExamDetailVC: UIViewController {
         checkBottomViewChangeFunction(Index: selectIndex)
         let model = self.dataArray[selectIndex - 1]
         ClassificationOfQuestions(model: model)
+        
+        acceptNotice()
 
     }
     
@@ -279,8 +281,8 @@ class YQStartExamDetailVC: UIViewController {
             
         } else {
             
-            var str = ""
             //多选题的情况
+            var str = ""
             for indexxx in 0..<(self.currentView?.subviews.count)! {
                 
                 let tempV = self.currentView?.subviews[indexxx] as! YQMoreQuestionView
@@ -503,14 +505,10 @@ class YQStartExamDetailVC: UIViewController {
         
         let view = UIView()
         var chooseStr = ""
-        
+        //填所有的选项
         for indexxxxx in 0..<model.optionDetail.count {
             
-            if indexxxxx <= arrString.count - 1 {
-                
-               chooseStr = arrString[indexxxxx]
-            }
-            
+           
             let moreQV = Bundle.main.loadNibNamed("YQMoreQuestionView", owner: nil, options: nil)?[0] as! YQMoreQuestionView
             moreQV.isUserInteractionEnabled = !isCheck
             
@@ -518,10 +516,6 @@ class YQStartExamDetailVC: UIViewController {
             let str1 = optionDetail["option"] as? String ?? ""
             let str2 = optionDetail["optionContent"] as? String ?? ""
             
-            if chooseStr != "" && chooseStr == str1 {
-                
-                moreQV.moreButton1.isSelected = true
-            }
             
             moreQV.moreLabel1.text = str1 + ". " + str2
             
@@ -552,7 +546,7 @@ class YQStartExamDetailVC: UIViewController {
         
         self.scrollContentView.addSubview(view)
         self.currentView = view
-        
+
         view.snp.makeConstraints({ (maker) in
             
             maker.top.equalTo(self.questionView.snp.bottom)
@@ -560,6 +554,25 @@ class YQStartExamDetailVC: UIViewController {
             maker.left.right.equalToSuperview().offset(20)
             
         })
+        
+        //填所选的答案; 添加选项内容
+        for indexxxxx in 0..<arrString.count {
+        
+            chooseStr = arrString[indexxxxx]
+            
+            for indexxx in 0..<(self.currentView?.subviews.count)! {
+                
+                let str1 = self.LetterA[indexxx]
+                let moreQV = self.currentView?.subviews[indexxx] as! YQMoreQuestionView
+                
+                if chooseStr != "" && chooseStr == str1 {
+                    
+                    moreQV.moreButton1.isSelected = true
+                }
+            }
+        }
+        
+        
         
     }
     
@@ -663,7 +676,7 @@ class YQStartExamDetailVC: UIViewController {
                 
                 if Completion.isEdit {
                     
-                    Completion.textViewContent =  "( " + " )"
+                    Completion.textViewContent =  ""
                     
                 }else {
                     
@@ -673,7 +686,7 @@ class YQStartExamDetailVC: UIViewController {
                         
                     }else{
                         
-                        Completion.textViewContent =  "( " + " )"
+                        Completion.textViewContent =  ""
                     }
                     
                 }

@@ -436,6 +436,14 @@ class YQPublicExaminationTVC: UITableViewController {
                 vc.id = "\(self.myScoreArray[indexPath.row].paperId)"
                 
                 let status = self.myScoreArray[indexPath.row].scoreContent
+                //let isEnd = self.myScoreArray[indexPath.row].isEnd
+                let isAttend = self.myScoreArray[indexPath.row].isAttend
+                
+                if isAttend == 0 && status == "0分"{
+                    
+                    SVProgressHUD.showError(withStatus: "没有参加考试!")
+                    return
+                }
                 
                 if status == "待评分" || status == "未考试" {
                     SVProgressHUD.showError(withStatus: "没有评分项!")

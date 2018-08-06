@@ -62,6 +62,7 @@ class YQStartExamDetailVC: UIViewController {
     
     var id = ""
     
+    var realTime = 0
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,7 +107,7 @@ class YQStartExamDetailVC: UIViewController {
         right_add_Button.setTitleColor(UIColor.init(red: 255/255.0, green: 144.001/255.0, blue: 0.01/255.0, alpha: 1), for: .normal)
         //设置时间,单位是s
         //总的时间是 1个小时
-        if YQTimeCount == 0 {//初始化第一次进来
+        if realTime == 0 {//初始化第一次进来
             
             right_add_Button.countDown(count: timeValue * 60)
             

@@ -11,10 +11,13 @@ import UIKit
 
 
 class UIButton_YQTime: UIButton {
+    // 在global线程里创建一个时间源
+    //let codeTimer = DispatchSource.makeTimerSource(queue:DispatchQueue.global())
 
 }
 
 extension UIButton{
+    
     
     public func countDown(count: Int){
         // 倒计时开始,禁止点击事件
@@ -99,6 +102,7 @@ extension UIButton{
             }
             
         })
+        
         // 启动时间源
         codeTimer.resume()
     }

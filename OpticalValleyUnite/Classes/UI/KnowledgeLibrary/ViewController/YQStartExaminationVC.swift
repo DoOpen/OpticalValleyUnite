@@ -62,6 +62,9 @@ class YQStartExaminationVC: UIViewController {
     
     var time = 0
     
+//    //是否返回
+    var isReturn = 0
+    
     
     //自定义的collectionView
     lazy var collectionView : UICollectionView = {
@@ -148,8 +151,11 @@ class YQStartExaminationVC: UIViewController {
         
         vc.isCheck = self.isCheck
         vc.timeValue = self.time
+        vc.realTime = isReturn
+
         
         self.navigationController?.pushViewController(vc, animated: true)
+        self.isReturn = 1
         
         //同时设置两个计时工具
         if !isCheck {
@@ -372,8 +378,6 @@ class YQStartExaminationVC: UIViewController {
     
     deinit {
         //清空时间宏
-        YQTimeCount = 0
-        
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -439,6 +443,7 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
                 vc.dataArray = self.subjectArray
                 vc.selectIndex = indexPath.row + 1
                 vc.isCheck = self.isCheck
+                vc.realTime = isReturn
                 
                 vc.endBtnClickHandel = { data in
                     
@@ -459,6 +464,8 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
             vc.isCheck = self.isCheck
             vc.timeValue = self.time
             vc.id = self.id
+            vc.realTime = isReturn
+
             
             vc.endBtnClickHandel = { data in
                 

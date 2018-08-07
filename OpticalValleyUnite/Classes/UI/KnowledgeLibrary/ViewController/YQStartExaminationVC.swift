@@ -130,11 +130,23 @@ class YQStartExaminationVC: UIViewController {
         //3.获取总的数据量
         getStartExamDetailData()
         
-        //4.接受通知
-        acceptNotice()
+        
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //4.接受通知
+        acceptNotice()
+    }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+        
+    }
     
     
     // MARK: - 开始结束答题的按钮的点击

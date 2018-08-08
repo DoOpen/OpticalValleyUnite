@@ -378,11 +378,15 @@ class YQStartExaminationVC: UIViewController {
             //全部锁屏
             self.view.isUserInteractionEnabled = false
             
-            //延时三秒提交 答案情况
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3, execute: {
+            DispatchQueue.once(token: "TestTimeOver", block: {
+                //延时三秒提交 答案情况
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                    
+                    self.handOverButtonClick(UIButton())
+                })
                 
-                self.handOverButtonClick(UIButton())
             })
+            
         }
         
     }

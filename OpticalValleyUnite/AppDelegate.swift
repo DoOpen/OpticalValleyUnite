@@ -56,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UMessage.start(withAppkey: Const.YQUMPushKey, launchOptions: launchOptions)
             //bate 环境
             UMSocialManager.default().umSocialAppkey = "5abcbc02f29d982d7700011b"
+            
+            Bugly.start(withAppId: Const.YQBuglyKey)
 
         }else { // 正式 环境的内容情况
         
@@ -65,6 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
             //正式环境的 appkey
             UMSocialManager.default().umSocialAppkey = "5976ad34677baa2de60006dc"
+            
+            Bugly.start(withAppId: Const.SJBuglyKey)
         }
         
         /*
@@ -101,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UMessage.setLogEnabled(true)
 //        UMessage.openDebugMode(true)
         
-        Bugly.start(withAppId: "6a0cd1da8d")
+        
         
         return true
     }

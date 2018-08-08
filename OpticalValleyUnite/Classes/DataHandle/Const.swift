@@ -10,7 +10,7 @@ import UIKit
 
 //swift 中的全局的宏的情况
 //是否是 bate环境
-let isProjectBate = false
+let isProjectBate = true
 
 //设置全局的时间保存宏
 var YQTimeCount = 0
@@ -27,12 +27,15 @@ struct Const {
     
     static let SJUMPushKey = "5976ad34677baa2de60006dc"//企业打包
     //    static let SJUMPushKey = "598ad9d5aed17922bc001225"
+    static let SJBuglyKey = "6a0cd1da8d"
     
 
-    //OVU-BATE 的push 和 map 的值key的情况
+    //OVU-BATE 的push 和 map 的值key的情况 bugly的值情况
     static let YQMapKey = "9af215c7fb21b6b2eb61009e31fa6763" //企业打包
     
     static let YQUMPushKey = "5abcbc02f29d982d7700011b" //企业打包
+    
+    static let YQBuglyKey = "386b948e78"
     
     
     static let SJToken = "SJToken"

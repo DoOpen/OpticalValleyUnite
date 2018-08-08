@@ -255,11 +255,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
             let voiceText = body["alert"] as? String
             
             if pushNotiesVoicessss {
-                
                 //添加语音推送的消息内容
                 startTranslattion(voicessss: voiceText!)
             }
-            
         }
 
         if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
@@ -270,11 +268,21 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         
         }else{
             //应用处于前台时的本地推送接受
-
         }
         
         UIApplication.shared.applicationIconBadgeNumber += 1
         completionHandler(UNNotificationPresentationOptions.alert)
+        
+        //新增前台获取考试结束的通知情况!
+        if let type = userInfo["type"] as? String{
+            
+            if type == "知识库" {
+                
+                let knowlegeID = userInfo["id"] as! String
+                DefaultFileNotice(id: knowlegeID)
+                
+            }
+        }
     }
     
     
@@ -360,6 +368,7 @@ extension AppDelegate{
                 
                 let knowlegeID = userInfo["id"] as! String
                 DefaultFileNotice(id: knowlegeID)
+                
             }
             
             

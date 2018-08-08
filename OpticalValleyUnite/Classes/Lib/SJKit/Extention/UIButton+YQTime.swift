@@ -72,6 +72,7 @@ extension UIButton{
                         //强制执行刷新
                         let center = NotificationCenter.default
                         let notiesName = NSNotification.Name(rawValue: "defaultFileNotice")
+                        //"TestTimeOver"
                         center.post(name: notiesName, object: nil, userInfo: ["id" : "TestTimeOver"])
                     }
                     

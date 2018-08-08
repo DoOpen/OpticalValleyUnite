@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="物业综合考试" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a34-rf-0yo">
-                        <rect key="frame" x="10" y="15" width="98" height="19.5"/>
+                        <rect key="frame" x="10" y="15" width="241" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -61,7 +61,10 @@
                         </constraints>
                     </imageView>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已参加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfq-8e-Lbo">
-                        <rect key="frame" x="257" y="15" width="49" height="20"/>
+                        <rect key="frame" x="256" y="15" width="50" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="Gj5-xt-Qgn"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.19215686269999999" green="0.64705882349999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -69,6 +72,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="n7v-q6-LjG" firstAttribute="leading" secondItem="a34-rf-0yo" secondAttribute="leading" id="71G-GE-odA"/>
+                    <constraint firstItem="nfq-8e-Lbo" firstAttribute="leading" secondItem="a34-rf-0yo" secondAttribute="trailing" constant="5" id="9xJ-4U-X3Q"/>
                     <constraint firstItem="9YE-Gh-ktW" firstAttribute="centerY" secondItem="rdK-dG-Vza" secondAttribute="centerY" id="D7W-3D-obS"/>
                     <constraint firstItem="WJS-q3-UEl" firstAttribute="centerY" secondItem="9YE-Gh-ktW" secondAttribute="centerY" id="Dhm-Bb-QA5"/>
                     <constraint firstItem="n7v-q6-LjG" firstAttribute="top" secondItem="a34-rf-0yo" secondAttribute="bottom" constant="20" id="EtR-Eo-5BK"/>

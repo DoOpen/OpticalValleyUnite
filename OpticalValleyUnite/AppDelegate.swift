@@ -372,7 +372,6 @@ extension AppDelegate{
                 
             }
             
-            
         }
     }
     
@@ -499,7 +498,13 @@ extension AppDelegate{
     
         let center = NotificationCenter.default
         let notiesName = NSNotification.Name(rawValue: "defaultFileNotice")
-        center.post(name: notiesName, object: nil, userInfo: ["id" : id])
+        let notiesName2 = NSNotification.Name(rawValue: "defaultFileNotice222")
+        center.post(name: notiesName2, object: nil, userInfo: ["id" : id])
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+            center.post(name: notiesName, object: nil, userInfo: ["id" : id])
+            
+        })
         
     }
     

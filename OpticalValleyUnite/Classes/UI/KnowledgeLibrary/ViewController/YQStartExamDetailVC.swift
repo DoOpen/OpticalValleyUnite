@@ -86,7 +86,6 @@ class YQStartExamDetailVC: UIViewController {
         let model = self.dataArray[selectIndex - 1]
         ClassificationOfQuestions(model: model)
         
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -825,17 +824,22 @@ class YQStartExamDetailVC: UIViewController {
         
         let center = NotificationCenter.default
         let notiesName = NSNotification.Name(rawValue: "defaultFileNotice")
-        
         center.addObserver(self, selector: #selector(noticeFunction(notes :)), name: notiesName, object: nil)
+        
+        let notiesName2 = NSNotification.Name(rawValue: "defaultFileNotice222")
+         center.addObserver(self, selector: #selector(noticeFunction(notes :)), name: notiesName2, object: nil)
         
     }
     
     func noticeFunction(notes : NSNotification){
         
+        self.view.isUserInteractionEnabled = false
+        
         let id = notes.userInfo!["id"] as! String
         
         if self.isCheck {
             
+            self.navigationController?.popViewController(animated: true)
             return
         }
         
@@ -852,9 +856,12 @@ class YQStartExamDetailVC: UIViewController {
             
             self.navigationController?.popViewController(animated: true)
         }
-        
     }
     
+    deinit {
+        //清空时间宏
+        NotificationCenter.default.removeObserver(self)
+    }
 
 }
 

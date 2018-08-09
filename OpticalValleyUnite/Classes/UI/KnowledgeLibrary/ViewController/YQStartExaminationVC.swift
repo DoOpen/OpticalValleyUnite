@@ -129,8 +129,6 @@ class YQStartExaminationVC: UIViewController {
         
         //3.获取总的数据量
         getStartExamDetailData()
-        
-        
 
     }
     
@@ -164,6 +162,7 @@ class YQStartExaminationVC: UIViewController {
         vc.isCheck = self.isCheck
         vc.timeValue = self.time
         vc.realTime = isReturn
+        vc.id = self.id
 
         
         self.navigationController?.pushViewController(vc, animated: true)
@@ -178,14 +177,12 @@ class YQStartExaminationVC: UIViewController {
         self.startButton.isHidden = true
         self.handOverButton.isHidden = false
         
-    
     }
     
     @IBAction func handOverButtonClick(_ sender: UIButton) {
         
         if isCheck {
             
-            self.navigationController?.popViewController(animated: true)
             return
         }
         
@@ -462,6 +459,7 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
                 vc.selectIndex = indexPath.row + 1
                 vc.isCheck = self.isCheck
                 vc.realTime = isReturn
+                vc.id = self.id
                 
                 vc.endBtnClickHandel = { data in
                     
@@ -484,7 +482,6 @@ extension YQStartExaminationVC : UICollectionViewDelegate,UICollectionViewDataSo
             vc.id = self.id
             vc.realTime = isReturn
 
-            
             vc.endBtnClickHandel = { data in
                 
                 self.subjectArray = data

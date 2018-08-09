@@ -86,9 +86,24 @@ class YQStartExamDetailVC: UIViewController {
         let model = self.dataArray[selectIndex - 1]
         ClassificationOfQuestions(model: model)
         
-        acceptNotice()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //4.接受通知
+        acceptNotice()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+        
+    }
+    
+    
     
     func setupRightAndLeftBarItem(){
         

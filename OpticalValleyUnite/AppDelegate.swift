@@ -259,7 +259,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
                 startTranslattion(voicessss: voiceText!)
             }
         }
-
+        
         if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.classForCoder()))!{
             //应用处于前台时的远程推送接受
             //关闭U-Push自带的弹出框
@@ -283,6 +283,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
                 
             }
         }
+        
     }
     
     

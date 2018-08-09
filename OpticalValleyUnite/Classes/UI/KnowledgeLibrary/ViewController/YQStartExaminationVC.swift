@@ -234,6 +234,7 @@ class YQStartExaminationVC: UIViewController {
             
             DispatchQueue.main.async {
                 
+                self.isCheck = true
                 self.navigationController?.popViewController(animated: true)
             }
             
@@ -378,15 +379,16 @@ class YQStartExaminationVC: UIViewController {
             //全部锁屏
             self.view.isUserInteractionEnabled = false
             
-            DispatchQueue.once(token: "TestTimeOver", block: {
-                //延时三秒提交 答案情况
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-                    
-                    self.handOverButtonClick(UIButton())
-                })
+//            DispatchQueue.once(token: "TestTimeOver", block: {
+//
+//            })
+            
+            //延时三秒提交 答案情况
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                
+                self.handOverButtonClick(UIButton())
                 
             })
-            
         }
         
     }

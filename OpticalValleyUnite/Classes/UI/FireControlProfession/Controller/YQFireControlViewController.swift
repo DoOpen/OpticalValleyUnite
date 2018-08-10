@@ -134,9 +134,9 @@ class YQFireControlViewController: UIViewController {
         
         //添加自定义的小蓝点的情况
         /*
-         
          以下功能自iOS 地图 SDK V5.0.0 版本起支持。
         */
+        
         let r = MAUserLocationRepresentation()
         let image = UIImage(named: "icon_fire_position_blue")
         
@@ -158,7 +158,7 @@ class YQFireControlViewController: UIViewController {
                 print(regeocode)
                 
                 //取消定位
-                //self?.fireMapView.setCenter((location?.coordinate)!, animated: true)
+                self?.fireMapView.setCenter((location?.coordinate)!, animated: true)
             }
             
         })

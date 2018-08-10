@@ -122,7 +122,6 @@ class YQJoinTotallNumVC:UIViewController{
             self?.selectProject = temp[index]
             self?.titleButton.setTitle(self?.selectProject, for: .normal)
             
-            
             // 调用筛选的接口
             self?.requestFireDetailData(title: (self?.selectProject)!, time: (self?.timeButton.titleLabel?.text)!, location:self?
                 .seachTextField?.text )
@@ -138,7 +137,6 @@ class YQJoinTotallNumVC:UIViewController{
         // 调用筛选的接口
         self.requestFireDetailData(title: (self.titleButton.titleLabel?.text)!, time: (self.timeButton.titleLabel?.text)!, location:self
             .seachTextField?.text )
-        
     }
     
     

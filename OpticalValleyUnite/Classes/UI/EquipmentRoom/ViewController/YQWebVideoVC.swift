@@ -50,7 +50,10 @@ class YQWebVideoVC: UIViewController {
             
             //接口请求调取相应的设备id
             let baseUrl = URLPath.basicVideoURLPath
-            let tempUrl = "mobile/mobileVideo.html?equipmentIds="
+            /*
+             mobile/mobileVideo.html?equipmentIds=
+             */
+            let tempUrl = "view/video.html?equipmentId="
             let url = baseUrl + tempUrl + data!
             
             let nowurl = URL(string: url)

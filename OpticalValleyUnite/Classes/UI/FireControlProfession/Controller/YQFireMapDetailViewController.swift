@@ -87,7 +87,6 @@ class YQFireMapDetailViewController: UIViewController {
                 self.distanceLable.text = "\(x)" + "m"
             }
             
-            
             self.walkingMinuteLable.text = self.getFormatPlayTime(secounds: TimeInterval(y))
 
         }

@@ -163,7 +163,11 @@ class YQVideoMonitorAndPatrolVC: UIViewController {
             par["equipmentId"] = "\(insPointId)"
             
             let baseUrl = URLPath.basicVideoURLPath
-            let tempUrl = "mobile/mobileVideo.html?equipmentIds="
+            /*
+             mobile/mobileVideo.html?equipmentIds=
+             /view/video.html?equipmentId=
+             */
+            let tempUrl = "view/video.html?equipmentId="
             let url = baseUrl + tempUrl + "\(insPointId)"
             
             let nowurl = URL(string: url)

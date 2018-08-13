@@ -33,20 +33,31 @@ class YQDrawerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        //3.设置可以滚动(验证调试失败)
+        let point = CGPoint( x: 0, y: self.lastView.bounds.origin.y + 800)
+        self.contentScrollView.contentSize = CGSize(width: self.view.bounds.width, height: point.y)
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
         //1.调用获取用户信息的接口
         let user = User.currentUser()
         if let user = user{
             
-            userName.text = user.userName
-    
+            userName.text = user.nickname
+            
             if let url = user.avatar,url != ""{
                 
                 if url.contains("http"){
-                
+                    
                     userImageView.kf.setImage(with: URL(string: url))
-
+                    
                 }else{
-                
+                    
                     let basicPath = URLPath.systemSelectionURL
                     let imageValue = basicPath.replacingOccurrences(of: "/api/", with: "") + "/" + url
                     
@@ -59,16 +70,6 @@ class YQDrawerViewController: UIViewController {
         
         //2.调用火警数量的接口
         requestData()
-        
-        //3.设置可以滚动(验证调试失败)
-        let point = CGPoint( x: 0, y: self.lastView.bounds.origin.y + 800)
-        self.contentScrollView.contentSize = CGSize(width: self.view.bounds.width, height: point.y)
-       
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
         
     }
     

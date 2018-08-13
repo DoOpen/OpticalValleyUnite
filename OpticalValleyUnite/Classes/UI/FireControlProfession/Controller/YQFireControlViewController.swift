@@ -85,9 +85,6 @@ class YQFireControlViewController: UIViewController {
         
         super.viewDidLoad()
         
-        //添加right_leftbar
-        leftAndRightButtonBarAdd()
-        
         self.messageContentV.backgroundColor = UIColor(red: 255.0/255.0, green: 240.0/255.0, blue: 230.0/255.0, alpha: 1.0)
         
         //设置地图
@@ -107,6 +104,9 @@ class YQFireControlViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
+        
+        //添加right_leftbar
+        leftAndRightButtonBarAdd()
         
         if !self.implementView.isHidden && self.currentMapPointAnnotation != nil {
             

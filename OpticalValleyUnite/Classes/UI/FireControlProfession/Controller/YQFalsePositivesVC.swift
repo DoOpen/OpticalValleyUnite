@@ -74,7 +74,7 @@ class YQFalsePositivesVC: UIViewController {
 //                            self.dataArray = model
                             
                             self.handlePerson.text = dataList["execPersonName"] as? String
-                            self.handleTime.text = dataList["coopPersonName"] as? String
+                            self.handleTime.text = dataList["time"] as? String
                         
                            
                             

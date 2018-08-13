@@ -77,12 +77,19 @@ class YQFireMapDetailViewController: UIViewController {
             let y = MapPath?.duration ?? 0
 //            print(x)
 //            print(y)
-            self.distanceLable.text = "\(x/1000)" + "km"
+            
+            if x > 1000 {
+                
+                self.distanceLable.text = "\(x/1000)" + "km"
+                
+            }else {
+                
+                self.distanceLable.text = "\(x)" + "m"
+            }
+            
             
             self.walkingMinuteLable.text = self.getFormatPlayTime(secounds: TimeInterval(y))
-            
-            
-        
+
         }
     }
     

@@ -16,6 +16,7 @@ class YQWebVideoVC: UIViewController {
     var equipHouseId = ""
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         self.title = "查看视频"
@@ -45,7 +46,6 @@ class YQWebVideoVC: UIViewController {
                 SVProgressHUD.showError(withStatus: "没有更多数据!")
                 
                 return
-            
             }
             
             //接口请求调取相应的设备id

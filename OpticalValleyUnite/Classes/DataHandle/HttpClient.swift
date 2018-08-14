@@ -102,7 +102,7 @@ extension HttpClient {
                         return
                     }
                     
-                    guard value["CODE"] as? String == "0" else{
+                    guard value["CODE"] as! String == "0" else{
                         
                         let message = (value["MSG"] as? String) ?? ""
                         let status = Int(value["CODE"] as! String) ?? 1111
@@ -187,7 +187,7 @@ extension HttpClient {
                         return
                     }
 
-                    guard value["CODE"] as! String == "0" else{
+                    guard value["CODE"] as? String == "0" else{
                         
                         let message = value["MSG"] as! String
                         let status = 1111

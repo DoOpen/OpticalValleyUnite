@@ -47,14 +47,14 @@ struct URLPath {
     ///ems 3.0 最新 : "http://192.168.0.14:5678"
     
     
-    ///正式服的域名链接: http://ovuems.com
+    ///正式服的域名链接: http://www.ovuems.com
     ///测试服的域名链接: http://beta.ovuems.com
     
     ///  "http://pub.ovuems.com"
     
     
     //服务器的basicBasicPath
-    static let basicBasic = "http://beta.ovuems.com"
+    static let basicBasic = "http://www.ovuems.com"
     
     
     //服务器的basic 地址:

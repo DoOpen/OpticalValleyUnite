@@ -379,6 +379,9 @@ class LoginViewController: UIViewController {
         
         UserDefaults.standard.removeObject(forKey: Const.YQBadgeNumber)
         
+//        ///88888888888888888888888888888888888888888888888///////////////
+//        UserDefaults.standard.removeObject(forKey: Const.appFirstLoadNum)
+        
         User.removeUser()
         UserDefaults.standard.set(nil, forKey: Const.SJToken)
         chooseRootViewController()

@@ -356,10 +356,10 @@ class PersonCoreViewController: UIViewController,CheckNewBundleVersionProtocol {
         let realm = try! Realm()
         let compelte = realm.objects(saveAndCompelteWorkIDModel.self)
         
-        if !compelte.isEmpty && compelte.count > 1 {
+        if !(compelte.isEmpty) && (compelte.count) > 1 {
             
             self.OfflineLabel.isHidden = false
-            self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleRedDot, value: 0, at: 1)
+        self.tabBarController?.tabBar.setBadgeStyle(CustomBadgeType.styleRedDot, value: 0, at: 1)
             
         }else{
             

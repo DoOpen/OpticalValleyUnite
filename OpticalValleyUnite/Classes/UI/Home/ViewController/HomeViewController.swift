@@ -253,16 +253,36 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         self.automaticallyAdjustsScrollViewInsets = false
         
         //EMS的3.0.1的正式版的补加的升级逻辑
-        let allFirstLoadNum = UserDefaults.standard.object(forKey: Const.appFirstLoadNum) as? String ?? ""
+        let allFirstLoadNum = UserDefaults.standard.object(forKey: Const.appFirstLoadNum) as? String ?? "0.0.0"
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         
         if allFirstLoadNum != version && allFirstLoadNum != "" {
             
-            let realm = try! Realm()
-            try! realm.write {
-                
-                realm.deleteAll()
+//            let realm = try! Realm()
+//            
+//            try! realm.write {
+//                
+//                realm.deleteAll()
+//                UserDefaults.standard.set(version, forKey: Const.appFirstLoadNum)
+//            }
+            
+            //应用更新的时候一定要删除对应的realm数据库的文件
+            let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
+            let realmURLs = [
+                realmURL,
+                realmURL.appendingPathExtension("lock"),
+                realmURL.appendingPathExtension("note"),
+                realmURL.appendingPathExtension("management")
+            ]
+            for URL in realmURLs {
+                do {
+                    try FileManager.default.removeItem(at: URL)
+                } catch {
+                    // 错误处理
+                    
+                }
             }
+            
             
             UserDefaults.standard.set(version, forKey: Const.appFirstLoadNum)
         }

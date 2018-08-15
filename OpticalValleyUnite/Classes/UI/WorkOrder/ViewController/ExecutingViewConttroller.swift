@@ -700,18 +700,15 @@ class ExecutingViewConttroller: UIViewController {
         try! realm.commitWrite()
         
         //将图片数据分别进行本地的保存列表选项的数据表中
-        //保存图片到数据库中:
+        //保存图片到数据库中:(注意的是,这里的图片要求压缩处理!)
         var dict = [String : Any]()
         
-        dict["data"] = UIImagePNGRepresentation( images )
+        dict["data"] = UIImageJPEGRepresentation(images, 0.5)
         dict["stepId"] = stepId
         dict["id"] = parmate?["WORKUNIT_ID"]
         dict["type"] = self.orderType//不是工单里面的,而是步骤里面的
         
-//        let offModelTeamp =
-        
         let model = offLineWorkOrderUpDatePictrueModel.init(parmart: dict)
-        
         
         try! realm.write {
             

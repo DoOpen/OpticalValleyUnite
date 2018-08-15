@@ -53,8 +53,10 @@ struct Const {
     
     //用户名和 密码(加密)
     static let standardUserName = "YQstandardUserName"
-    
     static let standardUserPwd = "YQstandardUserPwd"
+    
+    //temp临时的app下载的属性zhi
+    static let appFirstLoadNum = "appFirstLoadNum"
 
     #if TARGET_IPHONE_SIMULATOR
     static let SJIsSIMULATOR = true //真机

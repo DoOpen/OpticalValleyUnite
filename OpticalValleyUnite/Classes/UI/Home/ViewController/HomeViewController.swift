@@ -13,6 +13,7 @@ import Alamofire
 import SnapKit
 import CoreMotion
 import KYDrawerController
+import RealmSwift
 
 let KDistence = 25.0
 let KTime = 60 * 20
@@ -250,6 +251,19 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         super.viewDidLoad()
         //原始init
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        //EMS的3.0.1的正式版的补加的升级逻辑
+        let allFirstLoadNum = UserDefaults.standard.object(forKey: Const.appFirstLoadNum) as? Int ?? 0
+        if allFirstLoadNum == 0 {
+            
+            let realm = try! Realm()
+            try! realm.write {
+                
+                realm.deleteAll()
+            }
+            
+            UserDefaults.standard.set(1, forKey: Const.appFirstLoadNum)
+        }
         
         //改版的init的方法
         homeInterfaceReversionInit()

@@ -423,6 +423,12 @@ extension CheckNewBundleVersionProtocol{
                             
                         }
                         
+                        let realm = try! Realm()
+                        try! realm.write {
+                            
+                            realm.deleteAll()
+                        }
+                        
                     }, cancleBlock: {
                         (action) in
                     })

@@ -253,8 +253,10 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
         self.automaticallyAdjustsScrollViewInsets = false
         
         //EMS的3.0.1的正式版的补加的升级逻辑
-        let allFirstLoadNum = UserDefaults.standard.object(forKey: Const.appFirstLoadNum) as? Int ?? 0
-        if allFirstLoadNum == 0 {
+        let allFirstLoadNum = UserDefaults.standard.object(forKey: Const.appFirstLoadNum) as? String ?? ""
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        
+        if allFirstLoadNum != version && allFirstLoadNum != "" {
             
             let realm = try! Realm()
             try! realm.write {
@@ -262,7 +264,7 @@ class HomeViewController: UIViewController,CheckNewBundleVersionProtocol {
                 realm.deleteAll()
             }
             
-            UserDefaults.standard.set(1, forKey: Const.appFirstLoadNum)
+            UserDefaults.standard.set(version, forKey: Const.appFirstLoadNum)
         }
         
         //改版的init的方法
